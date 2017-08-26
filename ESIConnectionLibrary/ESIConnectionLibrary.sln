@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESIConnectionLibrary", "ESIConnectionLibrary\ESIConnectionLibrary.csproj", "{37A329E4-195E-41AB-B944-6F8051D96BF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESIConnectionLibraryTests", "ESIConnectionLibraryTests\ESIConnectionLibraryTests.csproj", "{9EE9123B-E3BD-4465-BBB7-5C1469CBD2E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{37A329E4-195E-41AB-B944-6F8051D96BF3} = {37A329E4-195E-41AB-B944-6F8051D96BF3}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37A329E4-195E-41AB-B944-6F8051D96BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A329E4-195E-41AB-B944-6F8051D96BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A329E4-195E-41AB-B944-6F8051D96BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A329E4-195E-41AB-B944-6F8051D96BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE9123B-E3BD-4465-BBB7-5C1469CBD2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE9123B-E3BD-4465-BBB7-5C1469CBD2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE9123B-E3BD-4465-BBB7-5C1469CBD2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE9123B-E3BD-4465-BBB7-5C1469CBD2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B5DA0AC-75FA-4921-99CD-F77EAB0BFF10}
+	EndGlobalSection
+EndGlobal

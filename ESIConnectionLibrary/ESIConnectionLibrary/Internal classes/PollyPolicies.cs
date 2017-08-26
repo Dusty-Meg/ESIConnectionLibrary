@@ -2,7 +2,6 @@
 using System.Net;
 using ESIConnectionLibrary.Exceptions;
 using Polly;
-using Polly.Wrap;
 
 namespace ESIConnectionLibrary.Internal_classes
 {

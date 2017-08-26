@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="LazyCache, Version=0.7.1.44, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LazyCache.0.7.1.44\lib\net45\LazyCache.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -38,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,9 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ESIModels\ESISkillQueue.cs" />
+    <Compile Include="ESIModels\ESISkillQueueSkill.cs" />
     <Compile Include="ESIModels\OauthToken.cs" />
     <Compile Include="ESIModels\OauthVerify.cs" />
     <Compile Include="Exceptions\ESIException.cs" />
+    <Compile Include="Internal classes\IInternalSkills.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalAuthentication.cs" />
     <Compile Include="Internal classes\InternalAuthentication.cs" />
     <Compile Include="Internal classes\Interfaces\IWebClient.cs" />
@@ -56,7 +66,9 @@
     <Compile Include="Internal classes\PollyPolicies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public classes\Authentication.cs" />
+    <Compile Include="Public classes\Skills.cs" />
     <Compile Include="PublicModels\Scopes.cs" />
+    <Compile Include="PublicModels\SkillQueueSkill.cs" />
     <Compile Include="PublicModels\SsoLogicToken.cs" />
     <Compile Include="PublicModels\TokenType.cs" />
     <Compile Include="Internal classes\WebClient.cs" />

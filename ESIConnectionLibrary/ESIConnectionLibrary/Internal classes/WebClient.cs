@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Net;
+using System.Net.Cache;
 using ESIConnectionLibrary.Exceptions;
+using LazyCache;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
     internal class WebClient : IWebClient
     {
-        public string Post(WebHeaderCollection headers, string address, string data)
+        private IAppCache Cache { get; }
+
+        public WebClient()
+        {
+            Cache = new CachingService();
+        }
+
+        public string Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
-                Headers = headers
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
             };
 
             client.Headers["UserAgent"] = "Dusty Meg";
 
             try
             {
-                return client.UploadString(address, data);
+                return Cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {
@@ -34,7 +44,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public string Get(WebHeaderCollection headers, string address)
+        public string Get(WebHeaderCollection headers, string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -45,7 +55,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return client.DownloadString(address);
+                return Cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {
@@ -62,7 +72,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public string Get(string address)
+        public string Get(string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -71,7 +81,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return client.DownloadString(address);
+                return Cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {

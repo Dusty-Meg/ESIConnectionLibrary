@@ -49,9 +49,11 @@
     <Compile Include="ESIModels\OauthToken.cs" />
     <Compile Include="ESIModels\OauthVerify.cs" />
     <Compile Include="Exceptions\ESIException.cs" />
-    <Compile Include="Internal classes\IInternalAuthentication.cs" />
+    <Compile Include="Internal classes\Interfaces\IInternalAuthentication.cs" />
     <Compile Include="Internal classes\InternalAuthentication.cs" />
-    <Compile Include="Internal classes\IWebClient.cs" />
+    <Compile Include="Internal classes\Interfaces\IWebClient.cs" />
+    <Compile Include="Internal classes\InternalSkills.cs" />
+    <Compile Include="Internal classes\PollyPolicies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public classes\Authentication.cs" />
     <Compile Include="PublicModels\Scopes.cs" />

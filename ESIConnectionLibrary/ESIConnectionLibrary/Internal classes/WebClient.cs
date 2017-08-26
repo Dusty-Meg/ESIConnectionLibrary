@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
+using ESIConnectionLibrary.Exceptions;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
@@ -13,7 +15,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
             client.Headers["UserAgent"] = "Dusty Meg";
 
-            return client.UploadString(address, data);
+            try
+            {
+                return client.UploadString(address, data);
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
         }
 
         public string Get(WebHeaderCollection headers, string address)
@@ -25,7 +43,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
             client.Headers["UserAgent"] = "Dusty Meg";
 
-            return client.DownloadString(address);
+            try
+            {
+                return client.DownloadString(address);
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
         }
 
         public string Get(string address)
@@ -35,7 +69,23 @@ namespace ESIConnectionLibrary.Internal_classes
                 Headers = { ["UserAgent"] = "Dusty Meg" }
             };
 
-            return client.DownloadString(address);
+            try
+            {
+                return client.DownloadString(address);
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            } 
         }
     }
 }

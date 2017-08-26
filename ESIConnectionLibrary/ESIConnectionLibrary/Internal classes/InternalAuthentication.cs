@@ -6,6 +6,7 @@ using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
 using Polly;
+using Polly.Retry;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
@@ -27,7 +28,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string ssoData = "grant_type=authorization_code&code=" + code;
 
-            OauthToken oauthToken = Policy.Handle<WebException>().WaitAndRetry(new []{TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3)}).Execute(() => GetOauthToken(evessokey, ssoData));
+            OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
             OauthVerify oauthVerify = GetOauthVerify(oauthToken.access_token);
 
             return new SsoLogicToken
@@ -78,7 +79,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            string ssoRaw = WebClient.Post(headers, "https://login-tq.eveonline.com/oauth/token/", data);
+            string ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Post(headers, "https://login-tq.eveonline.com/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
         }
 
@@ -90,7 +91,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login
             };
 
-            string clientStringRaw = WebClient.Get(headers2, @"https://login.eveonline.com/oauth/verify");
+            string clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(headers2, @"https://login.eveonline.com/oauth/verify"));
             return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw);
         }
 

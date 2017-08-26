@@ -9,11 +9,8 @@ namespace ESIConnectionLibrary.Exceptions
             
         }
 
-        public ESIException(string message, string stackTrace, Exception innerException) : base(message, innerException)
+        public ESIException(string message, Exception innerException) : base(message, innerException)
         {
-            StackTrace = stackTrace;
         }
-
-        public override string StackTrace { get; }
     }
 }

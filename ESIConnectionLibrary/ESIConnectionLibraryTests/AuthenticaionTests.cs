@@ -23,7 +23,7 @@ namespace ESIConnectionLibraryTests
             string verifyJson = "{\"CharacterID\":" + characterId + ",\"CharacterName\": \"" + characterName + "\",\"ExpiresOn\": \"2014-05-23T15:01:15.182864Z\",\"Scopes\": \" \",\"TokenType\": \"Character\",\"CharacterOwnerHash\": \"ThisIsAHash = \"}";
             Guid userId = Guid.NewGuid();
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(),"https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>())).Returns(tokenJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>())).Returns(tokenJson);
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/verify")).Returns(verifyJson);
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
@@ -66,7 +66,7 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
 
-            SsoLogicToken inputToken = new SsoLogicToken{AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
+            SsoLogicToken inputToken = new SsoLogicToken {AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
 
             SsoLogicToken token = internalAuthentication.RefreshToken(inputToken, "Blah");
 
@@ -85,6 +85,14 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal("Token or EVESSOKey is null or empty", ex.Message);
             Assert.Null(ex.InnerException);
+        }
+
+        //[Fact]
+        public void Test()
+        {
+            InternalAuthentication internalAuthentication = new InternalAuthentication(null);
+
+            internalAuthentication.MakeToken("test", "test", Guid.Empty);
         }
     }
 }

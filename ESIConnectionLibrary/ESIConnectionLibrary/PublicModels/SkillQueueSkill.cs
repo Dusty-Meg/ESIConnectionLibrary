@@ -10,9 +10,4 @@ namespace ESIConnectionLibrary.PublicModels
         public int SkillId { get; set; }
         public DateTime StartDate { get; set; }
     }
-
-    public class SkillQueue
-    {
-        public SkillQueueSkill[] Skills { get; set; }
-    }
 }

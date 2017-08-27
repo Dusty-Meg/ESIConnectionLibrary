@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
@@ -34,6 +31,7 @@ namespace ESIConnectionLibraryTests
             IList<SkillQueueSkill> skillQueue = internalSkills.GetSkillQueue(inputToken);
 
             Assert.Equal(3, skillQueue.Count);
+            Assert.NotNull(skillQueue.First().SkillId);
         }
 
         [Fact]
@@ -60,7 +58,60 @@ namespace ESIConnectionLibraryTests
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(inputToken));
 
-            Assert.Equal("This token does not have esi-skills.read_skillqueue.v1", ex.Message);
+            Assert.Equal("This token does not have esi_skills_read_skillqueue_v1", ex.Message);
+            Assert.Null(ex.InnerException);
+        }
+
+
+        [Fact]
+        public void GetSkills_successfully_returns_a_Skills()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            IList<Scopes> scopes = new List<Scopes> { Scopes.esi_skills_read_skills_v1 };
+
+            SsoLogicToken inputToken = new SsoLogicToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes };
+            string skillJson = "{\"skills\": [{\"current_skill_level\": 1,\"skill_id\": 1,\"skillpoints_in_skill\": 10000},{\"current_skill_level\": 1,\"skill_id\": 2,\"skillpoints_in_skill\": 10000}],\"total_sp\": 20000}";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillJson);
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Skills skills = internalSkills.GetSkills(inputToken);
+
+            Assert.NotNull(skills.skills);
+            Assert.Equal(20000, skills.TotalSp);
+            Assert.Equal(2, skills.skills.Length);
+            Assert.Equal(10000, skills.skills.First().SkillpointsInSkill);
+        }
+
+        [Fact]
+        public void Passing_in_a_null_as_token_to_GetSkills_will_be_handled_correctly()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(null));
+
+            Assert.Equal("Token can not be null", ex.Message);
+            Assert.Null(ex.InnerException);
+        }
+
+        [Fact]
+        public void Passing_in_a_token_without_the_needed_scope_to_GetSkills_will_be_handled_correctly()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            SsoLogicToken inputToken = new SsoLogicToken();
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(inputToken));
+
+            Assert.Equal("This token does not have esi_skills_read_skills_v1", ex.Message);
             Assert.Null(ex.InnerException);
         }
     }

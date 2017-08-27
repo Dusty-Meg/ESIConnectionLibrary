@@ -4,11 +4,11 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class Authentication
+    public class AuthenticationEndpoints
     {
         private IInternalAuthentication InternalAuthentication { get; }
 
-        public Authentication()
+        public AuthenticationEndpoints()
         {
             InternalAuthentication = new InternalAuthentication(null);
         }

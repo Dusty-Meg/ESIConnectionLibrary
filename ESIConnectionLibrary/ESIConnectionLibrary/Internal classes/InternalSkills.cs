@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using AutoMapper;
+using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
-using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
 
@@ -17,7 +16,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<ESISkillQueueSkill, SkillQueueSkill>();
+                cfg.AddProfile<SkillsMappings>();
+                cfg.AddProfile<SkillsQueueMappings>();
+                cfg.AddProfile<SkillsSkillMappings>();
             } );
 
             WebClient = webClient ?? new WebClient();
@@ -26,28 +27,28 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<SkillQueueSkill> GetSkillQueue(SsoLogicToken token)
         {
-            if (token == null)
-            {
-                throw new ESIException("Token can not be null");
-            }
+            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skillqueue_v1);
 
-            if (token.ScopeList == null || !token.ScopeList.Contains(Scopes.esi_skills_read_skillqueue_v1))
-            {
-                throw new ESIException("This token does not have esi-skills.read_skillqueue.v1");
-            }
-            
-            WebHeaderCollection headers = new WebHeaderCollection
-            {
-                [HttpRequestHeader.Authorization] = $"Bearer {token.AccessToken}",
-                [HttpRequestHeader.Accept] = "application/json"
-            };
+            string url = $@"https://esi.tech.ccp.is/v2/characters/{token.CharacterId}/skillqueue/";
 
-            string membersUrl = $@"https://esi.tech.ccp.is/latest/characters/{token.CharacterId}/skillqueue/";
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            string skillsRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(headers, membersUrl, 120));
-            IList<ESISkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<ESISkillQueueSkill>>(skillsRaw);
+            IList<EsiSkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiSkillQueueSkill>>(esiRaw);
 
-            return Mapper.Map<IList<ESISkillQueueSkill>, IList<SkillQueueSkill>>(esiSkillQueue);
+            return Mapper.Map<IList<EsiSkillQueueSkill>, IList<SkillQueueSkill>>(esiSkillQueue);
+        }
+
+        public Skills GetSkills(SsoLogicToken token)
+        {
+            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+
+            string url = $@"https://esi.tech.ccp.is/v3/characters/{token.CharacterId}/skills/";
+
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+
+            EsiSkills esiSkills = JsonConvert.DeserializeObject<EsiSkills>(esiRaw);
+
+            return Mapper.Map<EsiSkills, Skills>(esiSkills);
         }
     }
 }

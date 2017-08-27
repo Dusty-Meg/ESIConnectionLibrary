@@ -2,7 +2,7 @@ using System;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class ESISkillQueueSkill
+    internal class EsiSkillQueueSkill
     {
         public DateTime finish_date { get; set; }
         public int finished_level { get; set; }

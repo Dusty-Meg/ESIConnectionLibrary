@@ -6,18 +6,18 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public class AuthenticationEndpoints : IAuthenticationEndpoints
     {
-        private IInternalAuthentication InternalAuthentication { get; }
+        private readonly IInternalAuthentication _internalAuthentication;
 
         public AuthenticationEndpoints()
         {
-            InternalAuthentication = new InternalAuthentication(null);
+            _internalAuthentication = new InternalAuthentication(null);
         }
 
         public SsoToken CheckToken (SsoToken token, string evessokey)
         {
             if (DateTime.UtcNow.CompareTo(token.ExpiresIn) == 1)
             {
-                token = InternalAuthentication.RefreshToken(token, evessokey);
+                token = _internalAuthentication.RefreshToken(token, evessokey);
             }
 
             return token;
@@ -25,7 +25,7 @@ namespace ESIConnectionLibrary.Public_classes
 
         public SsoToken CreateToken(string code, string evessokey, Guid userId)
         {
-            return InternalAuthentication.MakeToken(code, evessokey, userId);
+            return _internalAuthentication.MakeToken(code, evessokey, userId);
         }
     }
 }

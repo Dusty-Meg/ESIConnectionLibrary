@@ -4,7 +4,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class AuthenticationEndpoints
+    public class AuthenticationEndpoints : IAuthenticationEndpoints
     {
         private IInternalAuthentication InternalAuthentication { get; }
 
@@ -13,7 +13,7 @@ namespace ESIConnectionLibrary.Public_classes
             InternalAuthentication = new InternalAuthentication(null);
         }
 
-        public SsoLogicToken CheckToken(SsoLogicToken token, string evessokey)
+        public SsoToken CheckToken (SsoToken token, string evessokey)
         {
             if (DateTime.UtcNow.CompareTo(token.ExpiresIn) == 1)
             {
@@ -23,7 +23,7 @@ namespace ESIConnectionLibrary.Public_classes
             return token;
         }
 
-        public SsoLogicToken CreateToken(string code, string evessokey, Guid userId)
+        public SsoToken CreateToken(string code, string evessokey, Guid userId)
         {
             return InternalAuthentication.MakeToken(code, evessokey, userId);
         }

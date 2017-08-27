@@ -21,7 +21,7 @@ namespace ESIConnectionLibraryTests
             string characterName = "ThisIsACharacter";
             IList<Scopes> scopes = new List<Scopes>{ Scopes.esi_skills_read_skillqueue_v1 };
 
-            SsoLogicToken inputToken = new SsoLogicToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes};
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes};
             string skillQueueJson = "[{\"finish_date\": \"2016-06-29T10:47:00Z\",\"finished_level\": 3,\"queue_position\": 0,\"skill_id\": 1,\"start_date\": \"2016-06-29T10:46:00Z\"},{\"finish_date\": \"2016-07-15T10:47:00Z\", \"finished_level\": 4,\"queue_position\": 1,\"skill_id\": 1,\"start_date\": \"2016-06-29T10:47:00Z\"},{\"finish_date\": \"2016-08-30T10:47:00Z\",\"finished_level\": 2,\"queue_position\": 2,\"skill_id\": 2,\"start_date\": \"2016-07-15T10:47:00Z\"}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillQueueJson);
@@ -52,7 +52,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            SsoLogicToken inputToken = new SsoLogicToken();
+            SsoToken inputToken = new SsoToken();
 
             InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
 
@@ -72,7 +72,7 @@ namespace ESIConnectionLibraryTests
             string characterName = "ThisIsACharacter";
             IList<Scopes> scopes = new List<Scopes> { Scopes.esi_skills_read_skills_v1 };
 
-            SsoLogicToken inputToken = new SsoLogicToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes };
             string skillJson = "{\"skills\": [{\"current_skill_level\": 1,\"skill_id\": 1,\"skillpoints_in_skill\": 10000},{\"current_skill_level\": 1,\"skill_id\": 2,\"skillpoints_in_skill\": 10000}],\"total_sp\": 20000}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillJson);
@@ -105,7 +105,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            SsoLogicToken inputToken = new SsoLogicToken();
+            SsoToken inputToken = new SsoToken();
 
             InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
 

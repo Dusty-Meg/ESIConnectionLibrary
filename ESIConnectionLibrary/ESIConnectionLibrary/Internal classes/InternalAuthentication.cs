@@ -5,8 +5,6 @@ using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
-using Polly;
-using Polly.Retry;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
@@ -19,7 +17,7 @@ namespace ESIConnectionLibrary.Internal_classes
             WebClient = webClient ?? new WebClient();
         }
 
-        public SsoLogicToken MakeToken(string code, string evessokey, Guid userId)
+        public SsoToken MakeToken(string code, string evessokey, Guid userId)
         {
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(evessokey))
             {
@@ -31,7 +29,7 @@ namespace ESIConnectionLibrary.Internal_classes
             OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
             OauthVerify oauthVerify = GetOauthVerify(oauthToken.access_token);
 
-            return new SsoLogicToken
+            return new SsoToken
             {
                 UserId = userId,
                 AccessToken = oauthToken.access_token,
@@ -40,11 +38,12 @@ namespace ESIConnectionLibrary.Internal_classes
                 CharacterId = oauthVerify.CharacterID,
                 CharacterName = oauthVerify.CharacterName,
                 ScopeList = CreateScopesList(oauthVerify.Scopes),
+                Scopes = oauthVerify.Scopes,
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
             };
         }
 
-        public SsoLogicToken RefreshToken(SsoLogicToken token, string evessokey)
+        public SsoToken RefreshToken(SsoToken token, string evessokey)
         {
             if (token == null || string.IsNullOrEmpty(evessokey))
             {
@@ -97,9 +96,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
         private IList<Scopes> CreateScopesList(string scopes)
         {
-            string[] scopeList = scopes.Split(' ');
-
             IList<Scopes> scopeCollection = new List<Scopes>();
+
+            string[] scopeList = scopes.Split(' ');
 
             foreach (string scope in scopeList)
             {

@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
 
-            SsoLogicToken token = internalAuthentication.MakeToken("Blah", "blahblah", userId);
+            SsoToken token = internalAuthentication.MakeToken("Blah", "blahblah", userId);
 
             Assert.Equal(token.AccessToken, accessToken);
             Assert.Equal(token.CharacterId, characterId);
@@ -66,9 +66,9 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
 
-            SsoLogicToken inputToken = new SsoLogicToken {AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
+            SsoToken inputToken = new SsoToken {AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
 
-            SsoLogicToken token = internalAuthentication.RefreshToken(inputToken, "Blah");
+            SsoToken token = internalAuthentication.RefreshToken(inputToken, "Blah");
 
             Assert.Equal(token.AccessToken, accessToken);
             Assert.Equal(token.RefreshToken, refreshToken);

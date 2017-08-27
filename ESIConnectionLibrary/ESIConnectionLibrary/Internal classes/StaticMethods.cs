@@ -6,7 +6,7 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal class StaticMethods
     {
-        public static void CheckToken(SsoLogicToken token, Scopes scope)
+        public static void CheckToken(SsoToken token, Scopes scope)
         {
             if (token == null)
             {
@@ -19,7 +19,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public static WebHeaderCollection CreateHeaders(SsoLogicToken token)
+        public static WebHeaderCollection CreateHeaders(SsoToken token)
         {
             return new WebHeaderCollection
             {

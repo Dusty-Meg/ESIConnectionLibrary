@@ -25,7 +25,7 @@ namespace ESIConnectionLibrary.Internal_classes
             Mapper = new Mapper(provider);
         }
 
-        public IList<SkillQueueSkill> GetSkillQueue(SsoLogicToken token)
+        public IList<SkillQueueSkill> GetSkillQueue(SsoToken token)
         {
             StaticMethods.CheckToken(token, Scopes.esi_skills_read_skillqueue_v1);
 
@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return Mapper.Map<IList<EsiSkillQueueSkill>, IList<SkillQueueSkill>>(esiSkillQueue);
         }
 
-        public Skills GetSkills(SsoLogicToken token)
+        public Skills GetSkills(SsoToken token)
         {
             StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
 

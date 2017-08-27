@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class SsoLogicToken
+    public class SsoToken
     {
         public Guid UserId { get; set; }
         public string AccessToken { get; set; }

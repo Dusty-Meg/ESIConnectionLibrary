@@ -4,7 +4,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class SkillsEndpoints
+    public class SkillsEndpoints : ISkillsEndpoints
     {
         private IInternalSkills InternalSkills { get; }
 
@@ -13,12 +13,12 @@ namespace ESIConnectionLibrary.Public_classes
             InternalSkills = new InternalSkills(null);
         }
 
-        public IList<SkillQueueSkill> GetSkillQueue(SsoLogicToken token)
+        public IList<SkillQueueSkill> GetSkillQueue(SsoToken token)
         {
             return InternalSkills.GetSkillQueue(token);
         }
 
-        public Skills GetSkills(SsoLogicToken token)
+        public Skills GetSkills(SsoToken token)
         {
             return InternalSkills.GetSkills(token);
         }

@@ -22,5 +22,10 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return _internalSkills.GetSkills(token);
         }
+
+        public Attributes GetAttributes(SsoToken token)
+        {
+            return _internalSkills.GetAttributes(token);
+        }
     }
 }

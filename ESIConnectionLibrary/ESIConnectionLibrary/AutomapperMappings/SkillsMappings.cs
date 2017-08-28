@@ -40,4 +40,21 @@ namespace ESIConnectionLibrary.AutomapperMappings
                 ;
         }
     }
+
+    internal class AttributesMappings : Profile
+    {
+        public AttributesMappings()
+        {
+            CreateMap<EsiAttributes, Attributes>()
+                .ForMember(x => x.AccruedRemapCooldownDate, m => m.MapFrom(a => a.accrued_remap_cooldown_date))
+                .ForMember(x => x.BonusRemaps, m => m.MapFrom(a => a.bonus_remaps))
+                .ForMember(x => x.Charisma, m => m.MapFrom(a => a.charisma))
+                .ForMember(x => x.Intelligence, m => m.MapFrom(a => a.intelligence))
+                .ForMember(x => x.LastRemapDate, m => m.MapFrom(a => a.last_remap_date))
+                .ForMember(x => x.Memory, m => m.MapFrom(a => a.memory))
+                .ForMember(x => x.Perception, m => m.MapFrom(a => a.perception))
+                .ForMember(x => x.Willpower, m => m.MapFrom(a => a.willpower))
+                ;
+        }
+    }
 }

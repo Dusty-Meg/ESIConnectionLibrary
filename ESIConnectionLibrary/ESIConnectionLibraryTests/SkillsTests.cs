@@ -114,5 +114,55 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("This token does not have esi_skills_read_skills_v1", ex.Message);
             Assert.Null(ex.InnerException);
         }
+
+
+        [Fact]
+        public void GetAttributes_successfully_returns_a_Skills()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            IList<Scopes> scopes = new List<Scopes> { Scopes.esi_skills_read_skills_v1 };
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopeList = scopes };
+            string attributesJson = "{\"charisma\": 20,\"intelligence\": 20,\"memory\": 20,\"perception\": 20,\"willpower\": 20}";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(attributesJson);
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Attributes attributes = internalSkills.GetAttributes(inputToken);
+
+            Assert.Equal(20, attributes.Charisma);
+        }
+
+        [Fact]
+        public void Passing_in_a_null_as_token_to_GetAttributes_will_be_handled_correctly()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(null));
+
+            Assert.Equal("Token can not be null", ex.Message);
+            Assert.Null(ex.InnerException);
+        }
+
+        [Fact]
+        public void Passing_in_a_token_without_the_needed_scope_to_GetAttributes_will_be_handled_correctly()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            SsoToken inputToken = new SsoToken();
+
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+
+            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(inputToken));
+
+            Assert.Equal("This token does not have esi_skills_read_skills_v1", ex.Message);
+            Assert.Null(ex.InnerException);
+        }
     }
 }

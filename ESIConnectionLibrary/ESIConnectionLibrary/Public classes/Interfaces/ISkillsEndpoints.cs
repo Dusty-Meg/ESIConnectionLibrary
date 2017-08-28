@@ -7,5 +7,6 @@ namespace ESIConnectionLibrary.Public_classes
     {
         IList<SkillQueueSkill> GetSkillQueue(SsoToken token);
         Skills GetSkills(SsoToken token);
+        Attributes GetAttributes(SsoToken token);
     }
 }

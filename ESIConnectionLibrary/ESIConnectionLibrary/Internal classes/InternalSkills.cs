@@ -19,6 +19,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 cfg.AddProfile<SkillsMappings>();
                 cfg.AddProfile<SkillsQueueMappings>();
                 cfg.AddProfile<SkillsSkillMappings>();
+                cfg.AddProfile<AttributesMappings>();
             } );
 
             WebClient = webClient ?? new WebClient();
@@ -49,6 +50,19 @@ namespace ESIConnectionLibrary.Internal_classes
             EsiSkills esiSkills = JsonConvert.DeserializeObject<EsiSkills>(esiRaw);
 
             return Mapper.Map<EsiSkills, Skills>(esiSkills);
+        }
+
+        public Attributes GetAttributes(SsoToken token)
+        {
+            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+
+            string url = $@"https://esi.tech.ccp.is/v1/characters/{token.CharacterId}/attributes/";
+
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+
+            EsiAttributes esiAttributes = JsonConvert.DeserializeObject<EsiAttributes>(esiRaw);
+
+            return Mapper.Map<EsiAttributes, Attributes>(esiAttributes);
         }
     }
 }

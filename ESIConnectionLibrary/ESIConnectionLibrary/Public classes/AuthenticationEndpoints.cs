@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalAuthentication _internalAuthentication;
 
-        public AuthenticationEndpoints()
+        public AuthenticationEndpoints(string userAgent)
         {
-            _internalAuthentication = new InternalAuthentication(null);
+            _internalAuthentication = new InternalAuthentication(null, userAgent);
         }
 
         public SsoToken CheckToken (SsoToken token, string evessokey)

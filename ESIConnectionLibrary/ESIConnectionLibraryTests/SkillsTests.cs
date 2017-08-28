@@ -26,7 +26,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillQueueJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             IList<SkillQueueSkill> skillQueue = internalSkills.GetSkillQueue(inputToken);
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(null));
 
@@ -54,7 +54,7 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(inputToken));
 
@@ -77,7 +77,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Skills skills = internalSkills.GetSkills(inputToken);
 
@@ -92,7 +92,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(null));
 
@@ -107,7 +107,7 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(inputToken));
 
@@ -130,7 +130,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(attributesJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Attributes attributes = internalSkills.GetAttributes(inputToken);
 
@@ -142,7 +142,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(null));
 
@@ -157,7 +157,7 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object);
+            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(inputToken));
 

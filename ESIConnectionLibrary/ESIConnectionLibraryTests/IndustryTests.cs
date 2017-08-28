@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(charactersIndustryJobsJson);
 
-            InternalIndustry internalIndustry = new InternalIndustry(mockedWebClient.Object);
+            InternalIndustry internalIndustry = new InternalIndustry(mockedWebClient.Object, string.Empty);
 
             IList<CharacterIndustryJob> characterIndustryJob = internalIndustry.GetCharactersIndustryJobs(inputToken, false);
 

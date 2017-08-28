@@ -12,14 +12,14 @@ namespace ESIConnectionLibrary.Internal_classes
         private IWebClient WebClient { get; }
         private IMapper Mapper { get; }
 
-        public InternalIndustry(IWebClient webClient)
+        public InternalIndustry(IWebClient webClient, string userAgent)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<CharacterIndustryJobsMappings>();
             });
 
-            WebClient = webClient ?? new WebClient();
+            WebClient = webClient ?? new WebClient(userAgent);
             Mapper = new Mapper(provider);
         }
 

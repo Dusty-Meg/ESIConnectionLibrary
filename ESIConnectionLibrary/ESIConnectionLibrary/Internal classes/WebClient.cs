@@ -8,11 +8,14 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal class WebClient : IWebClient
     {
-        private IAppCache Cache { get; }
+        private readonly IAppCache _cache;
+        private readonly string _userAgent;
 
-        public WebClient()
+
+        public WebClient(string userAgent)
         {
-            Cache = new CachingService();
+            _cache = new CachingService();
+            _userAgent = userAgent;
         }
 
         public string Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
@@ -23,11 +26,11 @@ namespace ESIConnectionLibrary.Internal_classes
                 CachePolicy = new HttpRequestCachePolicy()
             };
 
-            client.Headers["UserAgent"] = "Dusty Meg";
+            client.Headers["UserAgent"] = _userAgent;
 
             try
             {
-                return Cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {
@@ -51,11 +54,11 @@ namespace ESIConnectionLibrary.Internal_classes
                 Headers = headers
             };
 
-            client.Headers["UserAgent"] = "Dusty Meg";
+            client.Headers["UserAgent"] = _userAgent;
 
             try
             {
-                return Cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {
@@ -76,12 +79,12 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
-                Headers = { ["UserAgent"] = "Dusty Meg" }
+                Headers = { ["UserAgent"] = _userAgent }
             };
 
             try
             {
-                return Cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {

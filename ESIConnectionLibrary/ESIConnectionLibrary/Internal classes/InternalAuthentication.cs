@@ -12,9 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private IWebClient WebClient { get; }
 
-        public InternalAuthentication(IWebClient webClient)
+        public InternalAuthentication(IWebClient webClient, string userAgent)
         {
-            WebClient = webClient ?? new WebClient();
+            WebClient = webClient ?? new WebClient(userAgent);
         }
 
         public SsoToken MakeToken(string code, string evessokey, Guid userId)

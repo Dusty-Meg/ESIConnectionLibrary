@@ -11,14 +11,14 @@ namespace ESIConnectionLibrary.Internal_classes
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
 
-        public InternalFleets(IWebClient webClient)
+        public InternalFleets(IWebClient webClient, string userAgent)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<GetFleetMappings>();
             });
 
-            _webClient = webClient ?? new WebClient();
+            _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
         }
 

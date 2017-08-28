@@ -26,7 +26,7 @@ namespace ESIConnectionLibraryTests
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/verify", It.IsAny<int>())).Returns(verifyJson);
 
-            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
+            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
             SsoToken token = internalAuthentication.MakeToken("Blah", "blahblah", userId);
 
@@ -43,7 +43,7 @@ namespace ESIConnectionLibraryTests
 
             Guid userId = Guid.NewGuid();
 
-            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
+            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalAuthentication.MakeToken(null, null, userId));
 
@@ -64,7 +64,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
 
-            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
+            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
             SsoToken inputToken = new SsoToken {AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
 
@@ -79,7 +79,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object);
+            InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalAuthentication.RefreshToken(null, null));
 
@@ -90,7 +90,7 @@ namespace ESIConnectionLibraryTests
         //[Fact]
         public void Test()
         {
-            InternalAuthentication internalAuthentication = new InternalAuthentication(null);
+            InternalAuthentication internalAuthentication = new InternalAuthentication(null, string.Empty);
 
             internalAuthentication.MakeToken("test", "test", Guid.Empty);
         }

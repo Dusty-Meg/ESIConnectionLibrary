@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalSkills _internalSkills;
 
-        public SkillsEndpoints()
+        public SkillsEndpoints(string userAgent)
         {
-            _internalSkills = new InternalSkills(null);
+            _internalSkills = new InternalSkills(null, userAgent);
         }
 
         public IList<SkillQueueSkill> GetSkillQueue(SsoToken token)

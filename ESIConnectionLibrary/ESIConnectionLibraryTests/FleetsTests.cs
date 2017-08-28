@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getFleetsJson);
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object);
+            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
 
             GetFleet getFleet = internalFleets.GetFleet(inputToken, long.MinValue);
 
@@ -42,7 +42,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object);
+            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalFleets.GetFleet(null, long.MinValue));
 
@@ -57,7 +57,7 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object);
+            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
 
             Exception ex = Assert.Throws<ESIException>(() => internalFleets.GetFleet(inputToken, long.MinValue));
 

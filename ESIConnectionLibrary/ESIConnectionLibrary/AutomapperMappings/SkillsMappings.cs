@@ -11,9 +11,12 @@ namespace ESIConnectionLibrary.AutomapperMappings
             CreateMap<EsiSkillQueueSkill, SkillQueueSkill>()
                 .ForMember(x => x.FinishDate, m => m.MapFrom(a => a.finish_date))
                 .ForMember(x => x.FinishedLevel, m => m.MapFrom(a => a.finished_level))
+                .ForMember(x => x.LevelEndSp, m => m.MapFrom(a => a.level_end_sp))
+                .ForMember(x => x.LevelStartSp, m => m.MapFrom(a => a.level_start_sp))
                 .ForMember(x => x.QueuePosition, m => m.MapFrom(a => a.queue_position))
                 .ForMember(x => x.SkillId, m => m.MapFrom(a => a.skill_id))
                 .ForMember(x => x.StartDate, m => m.MapFrom(a => a.start_date))
+                .ForMember(x => x.TrainingStartSp, m => m.MapFrom(a => a.training_start_sp))
                 ;
         }
     }

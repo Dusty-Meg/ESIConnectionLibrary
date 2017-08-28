@@ -117,7 +117,7 @@ namespace ESIConnectionLibraryTests
 
 
         [Fact]
-        public void GetAttributes_successfully_returns_a_Skills()
+        public void GetAttributes_successfully_returns_a_Attributes()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 

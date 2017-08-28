@@ -28,5 +28,7 @@ namespace ESIConnectionLibrary.Internal_classes
             };
 
         }
+
+        public static string EsiBaseUrl => "https://esi.tech.ccp.is";
     }
 }

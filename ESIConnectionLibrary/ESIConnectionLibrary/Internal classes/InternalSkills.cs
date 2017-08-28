@@ -9,8 +9,8 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal class InternalSkills : IInternalSkills
     {
-        private IWebClient WebClient { get; }
-        private IMapper Mapper { get; }
+        private readonly IWebClient _webClient;
+        private readonly IMapper _mapper;
 
         public InternalSkills(IWebClient webClient)
         {
@@ -22,8 +22,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 cfg.AddProfile<AttributesMappings>();
             } );
 
-            WebClient = webClient ?? new WebClient();
-            Mapper = new Mapper(provider);
+            _webClient = webClient ?? new WebClient();
+            _mapper = new Mapper(provider);
         }
 
         public IList<SkillQueueSkill> GetSkillQueue(SsoToken token)
@@ -32,11 +32,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = $@"https://esi.tech.ccp.is/v2/characters/{token.CharacterId}/skillqueue/";
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
             IList<EsiSkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiSkillQueueSkill>>(esiRaw);
 
-            return Mapper.Map<IList<EsiSkillQueueSkill>, IList<SkillQueueSkill>>(esiSkillQueue);
+            return _mapper.Map<IList<EsiSkillQueueSkill>, IList<SkillQueueSkill>>(esiSkillQueue);
         }
 
         public Skills GetSkills(SsoToken token)
@@ -45,11 +45,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = $@"https://esi.tech.ccp.is/v3/characters/{token.CharacterId}/skills/";
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
             EsiSkills esiSkills = JsonConvert.DeserializeObject<EsiSkills>(esiRaw);
 
-            return Mapper.Map<EsiSkills, Skills>(esiSkills);
+            return _mapper.Map<EsiSkills, Skills>(esiSkills);
         }
 
         public Attributes GetAttributes(SsoToken token)
@@ -58,11 +58,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = $@"https://esi.tech.ccp.is/v1/characters/{token.CharacterId}/attributes/";
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
             EsiAttributes esiAttributes = JsonConvert.DeserializeObject<EsiAttributes>(esiRaw);
 
-            return Mapper.Map<EsiAttributes, Attributes>(esiAttributes);
+            return _mapper.Map<EsiAttributes, Attributes>(esiAttributes);
         }
     }
 }

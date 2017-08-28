@@ -3,7 +3,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class FleetsEndpoints
+    public class FleetsEndpoints : IFleetsEndpoints
     {
         private readonly IInternalFleets _internalFleets;
 

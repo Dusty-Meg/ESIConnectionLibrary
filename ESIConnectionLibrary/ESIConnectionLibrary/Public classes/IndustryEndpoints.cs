@@ -15,7 +15,7 @@ namespace ESIConnectionLibrary.Public_classes
 
         public IList<CharacterIndustryJob> GetCharacterIndustryJobs(SsoToken token, bool includeCompletedJobs)
         {
-            return _internalIndustry.GetChractersIndustryJobs(token, includeCompletedJobs);
+            return _internalIndustry.GetCharactersIndustryJobs(token, includeCompletedJobs);
         }
     }
 }

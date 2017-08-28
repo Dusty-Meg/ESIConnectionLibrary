@@ -29,7 +29,7 @@ namespace ESIConnectionLibraryTests
 
             InternalIndustry internalIndustry = new InternalIndustry(mockedWebClient.Object);
 
-            IList<CharacterIndustryJob> characterIndustryJob = internalIndustry.GetChractersIndustryJobs(inputToken, false);
+            IList<CharacterIndustryJob> characterIndustryJob = internalIndustry.GetCharactersIndustryJobs(inputToken, false);
 
             Assert.Equal(1, characterIndustryJob.Count);
             Assert.NotNull(characterIndustryJob.First().ActivityId);

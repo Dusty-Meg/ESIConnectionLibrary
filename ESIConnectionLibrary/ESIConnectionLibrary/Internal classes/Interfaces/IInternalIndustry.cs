@@ -5,6 +5,6 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalIndustry
     {
-        IList<CharacterIndustryJob> GetChractersIndustryJobs(SsoToken token, bool includeCompletedJobs);
+        IList<CharacterIndustryJob> GetCharactersIndustryJobs(SsoToken token, bool includeCompletedJobs);
     }
 }

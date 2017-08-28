@@ -30,7 +30,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, Scopes.esi_skills_read_skillqueue_v1);
 
-            string url = $@"https://esi.tech.ccp.is/v2/characters/{token.CharacterId}/skillqueue/";
+            string url = $@"{StaticMethods.EsiBaseUrl}/v2/characters/{token.CharacterId}/skillqueue/";
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
@@ -43,7 +43,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
 
-            string url = $@"https://esi.tech.ccp.is/v3/characters/{token.CharacterId}/skills/";
+            string url = $@"{StaticMethods.EsiBaseUrl}/v3/characters/{token.CharacterId}/skills/";
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
@@ -56,7 +56,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
 
-            string url = $@"https://esi.tech.ccp.is/v1/characters/{token.CharacterId}/attributes/";
+            string url = $@"{StaticMethods.EsiBaseUrl}/v1/characters/{token.CharacterId}/attributes/";
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 

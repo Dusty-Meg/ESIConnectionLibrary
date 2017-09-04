@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, Scopes.esi_fleets_read_fleet_v1);
 
-            string url = $@"{StaticMethods.EsiBaseUrl}/v1/fleets/{fleetId}/";
+            string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 

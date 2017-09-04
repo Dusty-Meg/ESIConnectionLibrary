@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticaionTests.cs" />
+    <Compile Include="EndpointTesting.cs" />
     <Compile Include="FleetsTests.cs" />
     <Compile Include="IndustryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

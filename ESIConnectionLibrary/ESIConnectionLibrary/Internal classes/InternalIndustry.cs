@@ -27,7 +27,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, Scopes.esi_industry_read_character_jobs_v1);
 
-            string url = $@"{StaticMethods.EsiBaseUrl}/v1/characters/{token.CharacterId}/industry/jobs/?include_completed={includeCompletedJobs}";
+            string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 

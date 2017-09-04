@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
 
@@ -28,7 +29,68 @@ namespace ESIConnectionLibrary.Internal_classes
             };
 
         }
+    }
 
-        public static string EsiBaseUrl => "https://esi.tech.ccp.is";
+    internal class StaticConnectionStrings
+    {
+        private static string UrlBuilder(string rawUrl, params string[] urls)
+        {
+            int count = urls.Length;
+            string urlBuilder = rawUrl;
+
+            for (int i = 0; i < count; i += 2)
+            {
+                urlBuilder += urlBuilder.Replace(urls[i], urls[i + 1]);
+            }
+
+            return EsiBaseUrl + urlBuilder;
+        }
+
+        private static string EsiBaseUrl => "https://esi.tech.ccp.is";
+
+        #region Skills
+
+        private static string SkillsSkillsRaw => "/v3/characters/{character_id}/skills/";
+        private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
+        private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
+
+        public static string SkillsSkills(long characterId)
+        {
+            return UrlBuilder(SkillsSkillsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string SkillsAttributes(long characterId)
+        {
+            return UrlBuilder(SkillsAttributesRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string SkillsSkillQueue(long characterId)
+        {
+            return UrlBuilder(SkillsSkillQueueRaw, "{character_id}", characterId.ToString());
+        }
+
+        #endregion
+
+        #region Industry
+
+        private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
+
+        public static string IndustryCharacterJobs(long characterId, bool includeCompletedJobs)
+        {
+            return $"{UrlBuilder(IndustryCharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
+        }
+
+        #endregion
+
+        #region Fleets
+
+        private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";
+
+        public static string FleetsGetFleet(long fleetId)
+        {
+            return UrlBuilder(FleetsGetFleetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        #endregion
     }
 }

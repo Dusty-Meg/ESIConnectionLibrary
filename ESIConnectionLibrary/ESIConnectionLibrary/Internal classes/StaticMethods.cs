@@ -14,7 +14,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 throw new ESIException("Token can not be null");
             }
 
-            if (token.ScopeList == null || !token.ScopeList.Contains(scope))
+            if (token.ScopesFlags == Scopes.None || !token.ScopesFlags.Has(scope))
             {
                 throw new ESIException($"This token does not have {scope}");
             }
@@ -92,5 +92,70 @@ namespace ESIConnectionLibrary.Internal_classes
         }
 
         #endregion
+    }
+
+    public static class EnumerationExtensions
+    {
+
+        //checks if the value contains the provided type
+        public static bool Has<T>(this System.Enum type, T value)
+        {
+            try
+            {
+                return (((long)(object)type & (long)(object)value) == (long)(object)value);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //checks if the value is only the provided type
+        public static bool Is<T>(this System.Enum type, T value)
+        {
+            try
+            {
+                return (long)(object)type == (long)(object)value;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //appends a value
+        public static T Add<T>(this System.Enum type, T value)
+        {
+            try
+            {
+                return (T)(object)(((long)(object)type | (long)(object)value));
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        "Could not append value from enumerated type '{0}'.",
+                        typeof(T).Name
+                    ), ex);
+            }
+        }
+
+        //completely removes the value
+        public static T Remove<T>(this System.Enum type, T value)
+        {
+            try
+            {
+                return (T)(object)(((long)(object)type & ~(long)(object)value));
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        "Could not remove value from enumerated type '{0}'.",
+                        typeof(T).Name
+                    ), ex);
+            }
+        }
+
     }
 }

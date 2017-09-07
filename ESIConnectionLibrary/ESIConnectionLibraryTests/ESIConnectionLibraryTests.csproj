@@ -67,6 +67,7 @@
     <Compile Include="EndpointTesting.cs" />
     <Compile Include="FleetsTests.cs" />
     <Compile Include="IndustryTests.cs" />
+    <Compile Include="KillmailsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkillsTests.cs" />
   </ItemGroup>

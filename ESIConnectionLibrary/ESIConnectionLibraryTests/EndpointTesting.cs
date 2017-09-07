@@ -66,5 +66,12 @@ namespace ESIConnectionLibraryTests
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString("FleetsGetFleetRaw")));
         }
+
+        [Theory]
+        [InlineData("KillmailsGetSingleKillmailRaw")]
+        public void KillmailsEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
     }
 }

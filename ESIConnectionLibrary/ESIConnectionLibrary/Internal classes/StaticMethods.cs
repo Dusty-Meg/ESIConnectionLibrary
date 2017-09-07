@@ -27,7 +27,14 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Authorization] = $"Bearer {token.AccessToken}",
                 [HttpRequestHeader.Accept] = "application/json"
             };
+        }
 
+        public static WebHeaderCollection CreateHeaders()
+        {
+            return new WebHeaderCollection
+            {
+                [HttpRequestHeader.Accept] = "application/json"
+            };
         }
     }
 
@@ -89,6 +96,17 @@ namespace ESIConnectionLibrary.Internal_classes
         public static string FleetsGetFleet(long fleetId)
         {
             return UrlBuilder(FleetsGetFleetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        #endregion
+
+        #region Fleets
+
+        private static string KillmailsGetSingleKillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
+
+        public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
+        {
+            return UrlBuilder(FleetsGetFleetRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
         }
 
         #endregion

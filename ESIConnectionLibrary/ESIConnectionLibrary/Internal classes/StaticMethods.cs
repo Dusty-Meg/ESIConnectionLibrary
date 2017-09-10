@@ -47,7 +47,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             for (int i = 0; i < count; i += 2)
             {
-                urlBuilder += urlBuilder.Replace(urls[i], urls[i + 1]);
+                urlBuilder = urlBuilder.Replace(urls[i], urls[i + 1]);
             }
 
             return EsiBaseUrl + urlBuilder;
@@ -106,7 +106,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
         {
-            return UrlBuilder(FleetsGetFleetRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
+            return UrlBuilder(KillmailsGetSingleKillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
         }
 
         #endregion

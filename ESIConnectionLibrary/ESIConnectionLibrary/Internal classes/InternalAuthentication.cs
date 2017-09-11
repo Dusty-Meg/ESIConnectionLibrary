@@ -37,8 +37,6 @@ namespace ESIConnectionLibrary.Internal_classes
                 RefreshToken = oauthToken.refresh_token,
                 CharacterId = oauthVerify.CharacterID,
                 CharacterName = oauthVerify.CharacterName,
-                //ScopeList = CreateScopesList(oauthVerify.Scopes),
-                //Scopes = oauthVerify.Scopes,
                 ScopesFlags = CreateScopesFlags(oauthVerify.Scopes),
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
             };
@@ -58,12 +56,6 @@ namespace ESIConnectionLibrary.Internal_classes
             token.AccessToken = oauthToken.access_token;
             token.ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.expires_in);
             token.RefreshToken = oauthToken.refresh_token;
-
-            if (!string.IsNullOrEmpty(token.Scopes))
-            {
-                token.ScopeList = CreateScopesList(token.Scopes);
-                token.Scopes = null;
-            }
 
             return token;
         }

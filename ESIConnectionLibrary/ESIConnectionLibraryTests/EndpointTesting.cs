@@ -73,5 +73,12 @@ namespace ESIConnectionLibraryTests
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
         }
+
+        [Theory]
+        [InlineData("CorporationsGetRolesRaw")]
+        public void CorporationsEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
     }
 }

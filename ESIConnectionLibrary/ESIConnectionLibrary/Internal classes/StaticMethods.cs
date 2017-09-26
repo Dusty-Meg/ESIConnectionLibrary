@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             if (token.ScopesFlags == Scopes.None || !token.ScopesFlags.Has(scope))
             {
-                throw new ESIException($"This token does not have {scope}");
+                throw new ESIException($"This token does not have {scope} {token.ScopesFlags}");
             }
         }
 
@@ -100,13 +100,24 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
-        #region Fleets
+        #region Killmails
 
         private static string KillmailsGetSingleKillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
 
         public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
         {
             return UrlBuilder(KillmailsGetSingleKillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
+        }
+
+        #endregion
+
+        #region Corporations
+
+        private static string CorporationsGetRolesRaw => "/v1/corporations/{corporation_id}/roles/";
+
+        public static string CorporationsGetRoles(long corporationId)
+        {
+            return UrlBuilder(CorporationsGetRolesRaw, "{corporation_id}", corporationId.ToString());
         }
 
         #endregion

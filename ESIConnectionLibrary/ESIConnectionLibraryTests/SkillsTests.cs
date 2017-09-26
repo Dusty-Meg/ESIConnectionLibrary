@@ -58,7 +58,7 @@ namespace ESIConnectionLibraryTests
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(inputToken));
 
-            Assert.Equal("This token does not have esi_skills_read_skillqueue_v1", ex.Message);
+            Assert.Equal("This token does not have esi_skills_read_skillqueue_v1 None", ex.Message);
             Assert.Null(ex.InnerException);
         }
 
@@ -111,7 +111,7 @@ namespace ESIConnectionLibraryTests
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(inputToken));
 
-            Assert.Equal("This token does not have esi_skills_read_skills_v1", ex.Message);
+            Assert.Equal("This token does not have esi_skills_read_skills_v1 None", ex.Message);
             Assert.Null(ex.InnerException);
         }
 
@@ -161,7 +161,7 @@ namespace ESIConnectionLibraryTests
 
             Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(inputToken));
 
-            Assert.Equal("This token does not have esi_skills_read_skills_v1", ex.Message);
+            Assert.Equal("This token does not have esi_skills_read_skills_v1 None", ex.Message);
             Assert.Null(ex.InnerException);
         }
     }

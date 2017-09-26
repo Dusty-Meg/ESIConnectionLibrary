@@ -9,8 +9,8 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal class InternalIndustry : IInternalIndustry
     {
-        private IWebClient WebClient { get; }
-        private IMapper Mapper { get; }
+        private readonly IWebClient _webClient;
+        private readonly IMapper _mapper;
 
         public InternalIndustry(IWebClient webClient, string userAgent)
         {
@@ -19,8 +19,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 cfg.AddProfile<CharacterIndustryJobsMappings>();
             });
 
-            WebClient = webClient ?? new WebClient(userAgent);
-            Mapper = new Mapper(provider);
+            _webClient = webClient ?? new WebClient(userAgent);
+            _mapper = new Mapper(provider);
         }
 
         public IList<CharacterIndustryJob> GetCharactersIndustryJobs(SsoToken token, bool includeCompletedJobs)
@@ -29,11 +29,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => WebClient.Get(StaticMethods.CreateHeaders(token), url, 300));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
             IList<EsiCharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiCharacterIndustryJob>>(esiRaw);
 
-            return Mapper.Map<IList<EsiCharacterIndustryJob>, IList<CharacterIndustryJob>>(esiSkillQueue);
+            return _mapper.Map<IList<EsiCharacterIndustryJob>, IList<CharacterIndustryJob>>(esiSkillQueue);
         }
     }
 }

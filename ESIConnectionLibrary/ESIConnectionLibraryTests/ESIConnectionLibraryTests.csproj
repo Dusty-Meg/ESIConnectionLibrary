@@ -71,6 +71,7 @@
     <Compile Include="KillmailsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkillsTests.cs" />
+    <Compile Include="UniverseTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -58,6 +58,7 @@
     <Compile Include="AutomapperMappings\IndustryMappings.cs" />
     <Compile Include="AutomapperMappings\InsuranceMappings.cs" />
     <Compile Include="AutomapperMappings\KillmailsMappings.cs" />
+    <Compile Include="AutomapperMappings\UniverseMappings.cs" />
     <Compile Include="ESIModels\EsiAttributes.cs" />
     <Compile Include="ESIModels\EsiCharacterIndustryJob.cs" />
     <Compile Include="ESIModels\EsiCorporationsRoles.cs" />
@@ -71,8 +72,10 @@
     <Compile Include="ESIModels\EsiSkillsSkill.cs" />
     <Compile Include="ESIModels\OauthToken.cs" />
     <Compile Include="ESIModels\OauthVerify.cs" />
+    <Compile Include="ESIModels\EsiUniverseNames.cs" />
     <Compile Include="Exceptions\ESIException.cs" />
     <Compile Include="AutomapperMappings\SkillsMappings.cs" />
+    <Compile Include="Internal classes\Interfaces\IInternalUniverse.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalInsurance.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalCorporations.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalKillmails.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Internal classes\InternalInsurance.cs" />
     <Compile Include="Internal classes\InternalKillmails.cs" />
     <Compile Include="Internal classes\InternalSkills.cs" />
+    <Compile Include="Internal classes\InternalUniverse.cs" />
     <Compile Include="Internal classes\PollyPolicies.cs" />
     <Compile Include="Internal classes\StaticMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,8 +105,10 @@
     <Compile Include="Public classes\IndustryEndpoints.cs" />
     <Compile Include="Public classes\Interfaces\IAuthenticationEndpoints.cs" />
     <Compile Include="Public classes\Interfaces\ISkillsEndpoints.cs" />
+    <Compile Include="Public classes\Interfaces\IUniverseEndpoints.cs" />
     <Compile Include="Public classes\KillmailsEndpoints.cs" />
     <Compile Include="Public classes\SkillsEndpoints.cs" />
+    <Compile Include="Public classes\UniverseEndpoints.cs" />
     <Compile Include="PublicModels\Attributes.cs" />
     <Compile Include="PublicModels\CharacterIndustryJob.cs" />
     <Compile Include="PublicModels\CorporationsRoles.cs" />
@@ -118,6 +124,7 @@
     <Compile Include="PublicModels\SsoToken.cs" />
     <Compile Include="PublicModels\TokenType.cs" />
     <Compile Include="Internal classes\WebClient.cs" />
+    <Compile Include="PublicModels\UniverseNames.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

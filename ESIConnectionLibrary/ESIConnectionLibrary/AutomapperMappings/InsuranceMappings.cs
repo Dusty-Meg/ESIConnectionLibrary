@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESIConnectionLibrary.ESIModels;
+using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.AutomapperMappings
 {
@@ -7,9 +8,9 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPricesMappings()
         {
-            CreateMap<EsiInsuranceShipPrices, EsiInsuranceShipPrices>()
-                .ForMember(x => x.type_id, m => m.MapFrom(a => a.type_id))
-                .ForMember(x => x.levels, m => m.MapFrom(a => a.levels))
+            CreateMap<EsiInsuranceShipPrices, InsuranceShipPrices>()
+                .ForMember(x => x.TypeId, m => m.MapFrom(a => a.type_id))
+                .ForMember(x => x.Levels, m => m.MapFrom(a => a.levels))
                 ;
         }
     }
@@ -18,10 +19,10 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPriceLevelsMappings()
         {
-            CreateMap<EsiInsuranceShipPriceLevels, EsiInsuranceShipPriceLevels>()
-                .ForMember(x => x.cost, m => m.MapFrom(a => a.cost))
-                .ForMember(x => x.name, m => m.MapFrom(a => a.name))
-                .ForMember(x => x.payout, m => m.MapFrom(a => a.payout))
+            CreateMap<EsiInsuranceShipPriceLevels, InsuranceShipPriceLevels>()
+                .ForMember(x => x.Cost, m => m.MapFrom(a => a.cost))
+                .ForMember(x => x.Name, m => m.MapFrom(a => a.name))
+                .ForMember(x => x.Payout, m => m.MapFrom(a => a.payout))
                 ;
         }
     }

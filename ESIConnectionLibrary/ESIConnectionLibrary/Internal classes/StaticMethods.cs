@@ -121,6 +121,17 @@ namespace ESIConnectionLibrary.Internal_classes
         }
 
         #endregion
+
+        #region Insurance
+
+        private static string InsuranceGetPricesRaw => "/v1/insurance/prices/";
+
+        public static string InsuranceGetPrices()
+        {
+            return UrlBuilder(InsuranceGetPricesRaw);
+        }
+
+        #endregion
     }
 
     public static class EnumerationExtensions

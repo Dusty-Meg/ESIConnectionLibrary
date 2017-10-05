@@ -8,7 +8,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class CorporationsEndpoints
+    public class CorporationsEndpoints : ICorporationsEndpoints
     {
         private readonly IInternalCorporations _internalCorporations;
 

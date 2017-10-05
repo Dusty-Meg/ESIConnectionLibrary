@@ -56,11 +56,14 @@
     <Compile Include="AutomapperMappings\CorporationsMappings.cs" />
     <Compile Include="AutomapperMappings\FleetsMappings.cs" />
     <Compile Include="AutomapperMappings\IndustryMappings.cs" />
+    <Compile Include="AutomapperMappings\InsuranceMappings.cs" />
     <Compile Include="AutomapperMappings\KillmailsMappings.cs" />
     <Compile Include="ESIModels\EsiAttributes.cs" />
     <Compile Include="ESIModels\EsiCharacterIndustryJob.cs" />
     <Compile Include="ESIModels\EsiCorporationsRoles.cs" />
     <Compile Include="ESIModels\EsiGetFleet.cs" />
+    <Compile Include="ESIModels\EsiInsuranceShipPriceLevels.cs" />
+    <Compile Include="ESIModels\EsiInsuranceShipPrices.cs" />
     <Compile Include="ESIModels\EsiKillmail.cs" />
     <Compile Include="ESIModels\EsiKillmailCharacterKIllmails.cs" />
     <Compile Include="ESIModels\EsiSkillQueueSkill.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="ESIModels\OauthVerify.cs" />
     <Compile Include="Exceptions\ESIException.cs" />
     <Compile Include="AutomapperMappings\SkillsMappings.cs" />
+    <Compile Include="Internal classes\Interfaces\IInternalInsurance.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalCorporations.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalKillmails.cs" />
     <Compile Include="Internal classes\Interfaces\IInternalFleets.cs" />
@@ -81,6 +85,7 @@
     <Compile Include="Internal classes\Interfaces\IInternalAuthentication.cs" />
     <Compile Include="Internal classes\InternalAuthentication.cs" />
     <Compile Include="Internal classes\Interfaces\IWebClient.cs" />
+    <Compile Include="Internal classes\InternalInsurance.cs" />
     <Compile Include="Internal classes\InternalKillmails.cs" />
     <Compile Include="Internal classes\InternalSkills.cs" />
     <Compile Include="Internal classes\PollyPolicies.cs" />
@@ -89,6 +94,7 @@
     <Compile Include="Public classes\AuthenticationEndpoints.cs" />
     <Compile Include="Public classes\CorporationsEndpoints.cs" />
     <Compile Include="Public classes\FleetsEndpoints.cs" />
+    <Compile Include="Public classes\Interfaces\ICorporationsEndpoints.cs" />
     <Compile Include="Public classes\Interfaces\IKillmailsEndpoints.cs" />
     <Compile Include="Public classes\Interfaces\IFleetsEndpoints.cs" />
     <Compile Include="Public classes\Interfaces\IIndustryEndpoints.cs" />
@@ -103,6 +109,8 @@
     <Compile Include="PublicModels\GetFleet.cs" />
     <Compile Include="PublicModels\GetSingleKillmail.cs" />
     <Compile Include="PublicModels\IndustryJobStatus.cs" />
+    <Compile Include="PublicModels\InsuranceShipPriceLevels.cs" />
+    <Compile Include="PublicModels\InsuranceShipPrices.cs" />
     <Compile Include="PublicModels\Scopes.cs" />
     <Compile Include="PublicModels\SkillQueueSkill.cs" />
     <Compile Include="PublicModels\Skills.cs" />

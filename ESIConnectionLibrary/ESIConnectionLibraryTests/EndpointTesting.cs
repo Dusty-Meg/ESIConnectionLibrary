@@ -80,5 +80,12 @@ namespace ESIConnectionLibraryTests
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
         }
+
+        [Theory]
+        [InlineData("InsuranceGetPricesRaw")]
+        public void InsuranceEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
     }
 }

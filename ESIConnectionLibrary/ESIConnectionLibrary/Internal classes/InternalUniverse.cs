@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
@@ -23,13 +24,27 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
+        private int SecondsToDT()
+        {
+            DateTime now = DateTime.Now;
+
+            DateTime todaysDT = new DateTime(now.Year, now.Month, now.Day, 11, 5, 0);
+
+            if ((todaysDT - now).TotalSeconds < 0)
+            {
+                return (int)(todaysDT.AddDays(1) - now).TotalSeconds;
+            }
+
+            return (int) (todaysDT - now).TotalSeconds;
+        }
+
         public IList<UniverseNames> GetNames(IList<int> ids)
         {
             string url = StaticConnectionStrings.UniverseNames();
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
             IList<EsiUniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiUniverseNames>>(esiRaw);
 

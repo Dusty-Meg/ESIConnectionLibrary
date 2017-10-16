@@ -17,5 +17,10 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return _internalUniverse.GetNames(ids);
         }
+
+        public UniverseGetType GetType(long id)
+        {
+            return _internalUniverse.GetType(id);
+        }
     }
 }

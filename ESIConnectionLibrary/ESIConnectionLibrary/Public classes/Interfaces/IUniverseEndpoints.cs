@@ -6,5 +6,6 @@ namespace ESIConnectionLibrary.Public_classes
     public interface IUniverseEndpoints
     {
         IList<UniverseNames> GetNames(IList<int> ids);
+        UniverseGetType GetType(long id);
     }
 }

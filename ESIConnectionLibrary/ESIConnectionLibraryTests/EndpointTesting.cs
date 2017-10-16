@@ -87,5 +87,13 @@ namespace ESIConnectionLibraryTests
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
         }
+
+        [Theory]
+        [InlineData("UniverseNamesRaw")]
+        [InlineData("UniverseGetTypeRaw")]
+        public void UniverseEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
     }
 }

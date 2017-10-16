@@ -28,5 +28,23 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(95465499, universeNames.First().Id);
             Assert.Equal("CCP Bartender", universeNames.First().Name);
         }
+
+        [Fact]
+        public void GetType_successfully_returns_a_item_type()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            string universeTypeJson = "{\"description\": \"The Rifter is a...\",\"group_id\": 25,\"name\": \"Rifter\",\"published\": true,\"type_id\": 587}";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(universeTypeJson);
+
+            InternalUniverse internalUniverse = new InternalUniverse(mockedWebClient.Object, string.Empty);
+
+            UniverseGetType universeType = internalUniverse.GetType(long.MinValue);
+
+            Assert.NotNull(universeType);
+            Assert.Equal("The Rifter is a...", universeType.Description);
+            Assert.Equal("Rifter", universeType.Name);
+        }
     }
 }

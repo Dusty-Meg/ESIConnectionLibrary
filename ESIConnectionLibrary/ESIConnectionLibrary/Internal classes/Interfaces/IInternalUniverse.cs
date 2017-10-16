@@ -6,5 +6,6 @@ namespace ESIConnectionLibrary.Internal_classes
     internal interface IInternalUniverse
     {
         IList<UniverseNames> GetNames(IList<int> ids);
+        UniverseGetType GetType(long id);
     }
 }

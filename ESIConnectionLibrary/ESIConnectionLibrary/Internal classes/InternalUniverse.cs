@@ -18,6 +18,9 @@ namespace ESIConnectionLibrary.Internal_classes
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<UniverseNamesMappings>();
+                cfg.AddProfile<UniverseGetTypeMappings>();
+                cfg.AddProfile<UniverseGetTypeDogmaAttributeMappings>();
+                cfg.AddProfile<UniverseGetTypeDogmaEffectMappings>();
             });
 
             _webClient = webClient ?? new WebClient(userAgent);
@@ -49,6 +52,17 @@ namespace ESIConnectionLibrary.Internal_classes
             IList<EsiUniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiUniverseNames>>(esiRaw);
 
             return _mapper.Map<IList<EsiUniverseNames>, IList<UniverseNames>>(esiUniverseNames);
+        }
+
+        public UniverseGetType GetType(long id)
+        {
+            string url = StaticConnectionStrings.UniverseGetType(id);
+
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+
+            EsiUniverseGetType esiUniverseGetType = JsonConvert.DeserializeObject<EsiUniverseGetType>(esiRaw);
+
+            return _mapper.Map<EsiUniverseGetType, UniverseGetType>(esiUniverseGetType);
         }
     }
 }

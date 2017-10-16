@@ -136,10 +136,16 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Universe
 
         private static string UniverseNamesRaw => "/v2/universe/names/";
+        private static string UniverseGetTypeRaw => "/v3/universe/types/{type_id}/";
 
         public static string UniverseNames()
         {
             return UrlBuilder(UniverseNamesRaw);
+        }
+
+        public static string UniverseGetType(long typeId)
+        {
+            return UrlBuilder(UniverseGetTypeRaw, "{type_id}", typeId.ToString());
         }
 
         #endregion

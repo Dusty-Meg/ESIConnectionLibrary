@@ -70,6 +70,9 @@
     <Compile Include="ESIModels\EsiSkillQueueSkill.cs" />
     <Compile Include="ESIModels\EsiSkills.cs" />
     <Compile Include="ESIModels\EsiSkillsSkill.cs" />
+    <Compile Include="ESIModels\EsiUniverseGetType.cs" />
+    <Compile Include="ESIModels\EsiUniverseGetTypeDogmaAttribute.cs" />
+    <Compile Include="ESIModels\EsiUniverseGetTypeDogmaEffect.cs" />
     <Compile Include="ESIModels\OauthToken.cs" />
     <Compile Include="ESIModels\OauthVerify.cs" />
     <Compile Include="ESIModels\EsiUniverseNames.cs" />
@@ -124,6 +127,9 @@
     <Compile Include="PublicModels\SsoToken.cs" />
     <Compile Include="PublicModels\TokenType.cs" />
     <Compile Include="Internal classes\WebClient.cs" />
+    <Compile Include="PublicModels\UniverseGetType.cs" />
+    <Compile Include="PublicModels\UniverseGetTypeDogmaAttribute.cs" />
+    <Compile Include="PublicModels\UniverseGetTypeDogmaEffect.cs" />
     <Compile Include="PublicModels\UniverseNames.cs" />
   </ItemGroup>
   <ItemGroup>

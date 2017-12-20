@@ -33,7 +33,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationsGetRoles(corporationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() =>_webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
             IList<EsiCorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiCorporationsRoles>>(esiRaw);
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
@@ -30,6 +31,19 @@ namespace ESIConnectionLibrary.Internal_classes
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
+
+            IList<EsiCharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiCharacterIndustryJob>>(esiRaw);
+
+            return _mapper.Map<IList<EsiCharacterIndustryJob>, IList<CharacterIndustryJob>>(esiSkillQueue);
+        }
+
+        public async Task<IList<CharacterIndustryJob>> GetCharactersIndustryJobsAsync(SsoToken token, bool includeCompletedJobs)
+        {
+            StaticMethods.CheckToken(token, Scopes.esi_industry_read_character_jobs_v1);
+
+            string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
             IList<EsiCharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiCharacterIndustryJob>>(esiRaw);
 

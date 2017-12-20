@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Cache;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
 using LazyCache;
 
@@ -47,6 +48,37 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
+        public async Task<string> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            Uri url = new Uri(address);
+
+            try
+            {
+                return await _cache.GetOrAddAsync($"{address}{data}",async () => await client.UploadStringTaskAsync(url, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
+        }
+
         public string Put(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
@@ -60,6 +92,35 @@ namespace ESIConnectionLibrary.Internal_classes
             try
             {
                 return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
+        }
+
+        public async Task<string> PutAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            try
+            {
+                return await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
             }
             catch (WebException e)
             {
@@ -104,6 +165,34 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
+        public async Task<string> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            try
+            {
+                return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
+        }
+
         public string Get(string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
@@ -128,6 +217,32 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 throw;
             } 
+        }
+
+        public async Task<string> GetAsync(string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = { ["UserAgent"] = _userAgent }
+            };
+
+            try
+            {
+                return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                        throw new ESIException(e.Message, e);
+                }
+
+                throw;
+            }
         }
     }
 }

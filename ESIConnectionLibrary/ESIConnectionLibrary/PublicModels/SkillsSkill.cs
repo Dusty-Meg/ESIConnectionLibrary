@@ -2,8 +2,9 @@
 {
     public class SkillsSkill
     {
-        public int? CurrentSkillLevel { get; set; }
-        public int? SkillId { get; set; }
+        public long? SkillId { get; set; }
         public int? SkillpointsInSkill { get; set; }
+        public int? TrainedSkillLevel { get; set; }
+        public int? ActiveSkillLevel { get; set; }
     }
 }

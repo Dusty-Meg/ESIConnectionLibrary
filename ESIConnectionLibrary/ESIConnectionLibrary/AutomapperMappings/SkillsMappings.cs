@@ -28,6 +28,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
             CreateMap<EsiSkills, Skills>()
                 .ForMember(x => x.TotalSp, m => m.MapFrom(a => a.total_sp))
                 .ForMember(x => x.skills, m => m.MapFrom(a => a.skills))
+                .ForMember(x => x.UnallocatedSp, m => m.MapFrom(a => a.unallocated_sp))
                 ;
         }
     }
@@ -39,7 +40,8 @@ namespace ESIConnectionLibrary.AutomapperMappings
             CreateMap<EsiSkillsSkill, SkillsSkill>()
                 .ForMember(x => x.SkillId, m => m.MapFrom(a => a.skill_id))
                 .ForMember(x => x.SkillpointsInSkill, m => m.MapFrom(a => a.skillpoints_in_skill))
-                .ForMember(x => x.CurrentSkillLevel, m => m.MapFrom(a => a.current_skill_level))
+                .ForMember(x => x.TrainedSkillLevel, m => m.MapFrom(a => a.trained_skill_level))
+                .ForMember(x => x.ActiveSkillLevel, m => m.MapFrom(a => a.active_skill_level))
                 ;
         }
     }

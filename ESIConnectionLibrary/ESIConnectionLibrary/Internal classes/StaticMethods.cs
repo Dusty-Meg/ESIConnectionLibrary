@@ -57,7 +57,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Skills
 
-        private static string SkillsSkillsRaw => "/v3/characters/{character_id}/skills/";
+        private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";
         private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
         private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
 

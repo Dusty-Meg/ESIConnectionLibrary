@@ -1,8 +1,13 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using Newtonsoft.Json;
+
+namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiUniverseGetTypeDogmaEffect
     {
-        public long effect_id { get; set; }
-        public bool is_default { get; set; }
+        [JsonProperty(PropertyName = "effect_id")]
+        public long EffectId { get; set; }
+
+        [JsonProperty(PropertyName = "is_default")]
+        public bool IsDefault { get; set; }
     }
 }

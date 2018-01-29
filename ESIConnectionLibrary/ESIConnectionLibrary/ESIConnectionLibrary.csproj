@@ -63,6 +63,11 @@
     <Compile Include="ESIModels\EsiCharacterIndustryJob.cs" />
     <Compile Include="ESIModels\EsiCorporationsRoles.cs" />
     <Compile Include="ESIModels\EsiGetFleet.cs" />
+    <Compile Include="ESIModels\EsiGetPublicAlliance.cs" />
+    <Compile Include="ESIModels\EsiGetSingleKillmailAttacker.cs" />
+    <Compile Include="ESIModels\EsiGetSingleKillmailItem.cs" />
+    <Compile Include="ESIModels\EsiGetSingleKillmailPosition.cs" />
+    <Compile Include="ESIModels\EsiGetSingleKillmailVictim.cs" />
     <Compile Include="ESIModels\EsiInsuranceShipPriceLevels.cs" />
     <Compile Include="ESIModels\EsiInsuranceShipPrices.cs" />
     <Compile Include="ESIModels\EsiKillmail.cs" />

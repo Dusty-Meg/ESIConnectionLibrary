@@ -1,10 +1,19 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using Newtonsoft.Json;
+
+namespace ESIConnectionLibrary.ESIModels
 {
     internal class OauthToken
     {
-        public string access_token { get; set; }
-        public string token_type { get; set; }
-        public int expires_in { get; set; }
-        public string refresh_token { get; set; }
+        [JsonProperty(PropertyName = "access_token")]
+        public string AccessToken { get; set; }
+
+        [JsonProperty(PropertyName = "token_type")]
+        public string TokenType { get; set; }
+
+        [JsonProperty(PropertyName = "expires_in")]
+        public int ExpiresIn { get; set; }
+
+        [JsonProperty(PropertyName = "refresh_token")]
+        public string RefreshToken { get; set; }
     }
 }

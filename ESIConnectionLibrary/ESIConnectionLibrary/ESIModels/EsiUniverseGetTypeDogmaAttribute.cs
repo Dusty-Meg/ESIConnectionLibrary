@@ -1,8 +1,13 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using Newtonsoft.Json;
+
+namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiUniverseGetTypeDogmaAttribute
     {
-        public long attribute_id { get; set; }
-        public long value { get; set; }
+        [JsonProperty(PropertyName = "attribute_id")]
+        public long AttributeId { get; set; }
+
+        [JsonProperty(PropertyName = "value")]
+        public long Value { get; set; }
     }
 }

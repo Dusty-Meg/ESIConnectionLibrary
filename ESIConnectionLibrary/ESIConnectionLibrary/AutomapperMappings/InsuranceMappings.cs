@@ -8,10 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPricesMappings()
         {
-            CreateMap<EsiInsuranceShipPrices, InsuranceShipPrices>()
-                .ForMember(x => x.TypeId, m => m.MapFrom(a => a.type_id))
-                .ForMember(x => x.Levels, m => m.MapFrom(a => a.levels))
-                ;
+            CreateMap<EsiInsuranceShipPrices, InsuranceShipPrices>();
         }
     }
 
@@ -19,11 +16,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPriceLevelsMappings()
         {
-            CreateMap<EsiInsuranceShipPriceLevels, InsuranceShipPriceLevels>()
-                .ForMember(x => x.Cost, m => m.MapFrom(a => a.cost))
-                .ForMember(x => x.Name, m => m.MapFrom(a => a.name))
-                .ForMember(x => x.Payout, m => m.MapFrom(a => a.payout))
-                ;
+            CreateMap<EsiInsuranceShipPriceLevels, InsuranceShipPriceLevels>();
         }
     }
 }

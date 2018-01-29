@@ -1,14 +1,31 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using Newtonsoft.Json;
+
+namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiAttributes
     {
-        public string accrued_remap_cooldown_date { get; set; }
-        public int? bonus_remaps { get; set; }
-        public int charisma { get; set; }
-        public int intelligence { get; set; }
-        public int? last_remap_date { get; set; }
-        public int memory { get; set; }
-        public int perception { get; set; }
-        public int willpower { get; set; }
+        [JsonProperty(PropertyName = "accrued_remap_cooldown_date")]
+        public string AccruedRemapCooldownDate { get; set; }
+
+        [JsonProperty(PropertyName = "bonus_remaps")]
+        public int? BonusRemaps { get; set; }
+
+        [JsonProperty(PropertyName = "charisma")]
+        public int Charisma { get; set; }
+
+        [JsonProperty(PropertyName = "intelligence")]
+        public int Intelligence { get; set; }
+
+        [JsonProperty(PropertyName = "last_remap_date")]
+        public int? LastRemapDate { get; set; }
+
+        [JsonProperty(PropertyName = "memory")]
+        public int Memory { get; set; }
+
+        [JsonProperty(PropertyName = "perception")]
+        public int Perception { get; set; }
+
+        [JsonProperty(PropertyName = "willpower")]
+        public int Willpower { get; set; }
     }
 }

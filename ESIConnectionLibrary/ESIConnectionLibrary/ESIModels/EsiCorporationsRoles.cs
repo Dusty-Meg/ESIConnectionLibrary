@@ -1,17 +1,35 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiCorporationsRoles
     {
-        public int character_id { get; set; }
-        public IList<string> grantable_roles { get; set; }
-        public IList<string> grantable_roles_at_base { get; set; }
-        public IList<string> grantable_roles_at_hq { get; set; }
-        public IList<string> grantable_roles_at_other { get; set; }
-        public IList<string> roles { get; set; }
-        public IList<string> roles_at_base { get; set; }
-        public IList<string> roles_at_hq { get; set; }
-        public IList<string> roles_at_other { get; set; }
+        [JsonProperty(PropertyName = "character_id")]
+        public int CharacterId { get; set; }
+
+        [JsonProperty(PropertyName = "grantable_roles")]
+        public IList<string> GrantableRoles { get; set; }
+
+        [JsonProperty(PropertyName = "grantable_roles_at_base")]
+        public IList<string> GrantableRolesAtBase { get; set; }
+
+        [JsonProperty(PropertyName = "grantable_roles_at_hq")]
+        public IList<string> GrantableRolesAtHq { get; set; }
+
+        [JsonProperty(PropertyName = "grantable_roles_at_other")]
+        public IList<string> GrantableRolesAtOther { get; set; }
+
+        [JsonProperty(PropertyName = "roles")]
+        public IList<string> Roles { get; set; }
+
+        [JsonProperty(PropertyName = "roles_at_base")]
+        public IList<string> RolesAtBase { get; set; }
+
+        [JsonProperty(PropertyName = "roles_at_hq")]
+        public IList<string> RolesAtHq { get; set; }
+
+        [JsonProperty(PropertyName = "roles_at_other")]
+        public IList<string> RolesAtOther { get; set; }
     }
 }

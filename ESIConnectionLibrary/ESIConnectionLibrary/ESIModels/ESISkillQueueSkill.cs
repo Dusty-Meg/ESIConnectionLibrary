@@ -1,16 +1,32 @@
 using System;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiSkillQueueSkill
     {
-        public DateTime finish_date { get; set; }
-        public int finished_level { get; set; }
-        public int? level_end_sp { get; set; }
-        public int? level_start_sp { get; set; }
-        public int queue_position { get; set; }
-        public int skill_id { get; set; }
-        public DateTime? start_date { get; set; }
-        public string training_start_sp { get; set; }
+        [JsonProperty(PropertyName = "finish_date")]
+        public DateTime FinishDate { get; set; }
+
+        [JsonProperty(PropertyName = "finished_level")]
+        public int FinishedLevel { get; set; }
+
+        [JsonProperty(PropertyName = "level_end_sp")]
+        public int? LevelEndSp { get; set; }
+
+        [JsonProperty(PropertyName = "level_start_sp")]
+        public int? LevelStartSp { get; set; }
+
+        [JsonProperty(PropertyName = "queue_position")]
+        public int QueuePosition { get; set; }
+
+        [JsonProperty(PropertyName = "skill_id")]
+        public int SkillId { get; set; }
+
+        [JsonProperty(PropertyName = "start_date")]
+        public DateTime? StartDate { get; set; }
+
+        [JsonProperty(PropertyName = "training_start_sp")]
+        public string TrainingStartSp { get; set; }
     }
 }

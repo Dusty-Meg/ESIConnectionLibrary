@@ -27,15 +27,15 @@ namespace ESIConnectionLibrary.Internal_classes
             string ssoData = "grant_type=authorization_code&code=" + code;
 
             OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
-            OauthVerify oauthVerify = GetOauthVerify(oauthToken.access_token);
+            OauthVerify oauthVerify = GetOauthVerify(oauthToken.AccessToken);
 
             return new SsoToken
             {
                 UserId = userId,
-                AccessToken = oauthToken.access_token,
-                ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.expires_in),
-                RefreshToken = oauthToken.refresh_token,
-                CharacterId = oauthVerify.CharacterID,
+                AccessToken = oauthToken.AccessToken,
+                ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn),
+                RefreshToken = oauthToken.RefreshToken,
+                CharacterId = oauthVerify.CharacterId,
                 CharacterName = oauthVerify.CharacterName,
                 ScopesFlags = CreateScopesFlags(oauthVerify.Scopes),
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
@@ -52,15 +52,15 @@ namespace ESIConnectionLibrary.Internal_classes
             string ssoData = "grant_type=authorization_code&code=" + code;
 
             OauthToken oauthToken = await GetOauthTokenAsync(evessokey, ssoData);
-            OauthVerify oauthVerify = await GetOauthVerifyAsync(oauthToken.access_token);
+            OauthVerify oauthVerify = await GetOauthVerifyAsync(oauthToken.AccessToken);
 
             return new SsoToken
             {
                 UserId = userId,
-                AccessToken = oauthToken.access_token,
-                ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.expires_in),
-                RefreshToken = oauthToken.refresh_token,
-                CharacterId = oauthVerify.CharacterID,
+                AccessToken = oauthToken.AccessToken,
+                ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn),
+                RefreshToken = oauthToken.RefreshToken,
+                CharacterId = oauthVerify.CharacterId,
                 CharacterName = oauthVerify.CharacterName,
                 ScopesFlags = CreateScopesFlags(oauthVerify.Scopes),
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
@@ -78,9 +78,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
 
-            token.AccessToken = oauthToken.access_token;
-            token.ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.expires_in);
-            token.RefreshToken = oauthToken.refresh_token;
+            token.AccessToken = oauthToken.AccessToken;
+            token.ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn);
+            token.RefreshToken = oauthToken.RefreshToken;
 
             return token;
         }
@@ -96,9 +96,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             OauthToken oauthToken = await GetOauthTokenAsync(evessokey, ssoData);
 
-            token.AccessToken = oauthToken.access_token;
-            token.ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.expires_in);
-            token.RefreshToken = oauthToken.refresh_token;
+            token.AccessToken = oauthToken.AccessToken;
+            token.ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn);
+            token.RefreshToken = oauthToken.RefreshToken;
 
             return token;
         }

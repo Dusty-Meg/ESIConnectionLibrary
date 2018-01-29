@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiInsuranceShipPrices
     {
-        public IList<EsiInsuranceShipPriceLevels> levels { get; set; }
-        public int type_id { get; set; }
+        [JsonProperty(PropertyName = "levels")]
+        public IList<EsiInsuranceShipPriceLevels> Levels { get; set; }
+
+        [JsonProperty(PropertyName = "type_id")]
+        public int TypeId { get; set; }
     }
 }

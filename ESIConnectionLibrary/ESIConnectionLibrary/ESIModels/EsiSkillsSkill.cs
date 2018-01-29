@@ -1,10 +1,19 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using Newtonsoft.Json;
+
+namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiSkillsSkill
     {
-        public int? skill_id { get; set; }
-        public long? skillpoints_in_skill { get; set; }
-        public int? trained_skill_level { get; set; }
-        public int? active_skill_level { get; set; }
+        [JsonProperty(PropertyName = "skill_id")]
+        public int? SkillId { get; set; }
+
+        [JsonProperty(PropertyName = "skillpoints_in_skill")]
+        public long? SkillpointsInSkill { get; set; }
+
+        [JsonProperty(PropertyName = "trained_skill_level")]
+        public int? TrainedSkillLevel { get; set; }
+
+        [JsonProperty(PropertyName = "active_skill_level")]
+        public int? ActiveSkillLevel { get; set; }
     }
 }

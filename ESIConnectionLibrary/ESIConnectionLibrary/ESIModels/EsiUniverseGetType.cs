@@ -1,24 +1,56 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
     internal class EsiUniverseGetType
     {
-        public long? capacity { get; set; }
-        public string description { get; set; }
-        public IList<EsiUniverseGetTypeDogmaAttribute> dogma_attributes { get; set; }
-        public IList<EsiUniverseGetTypeDogmaEffect> dogma_effects { get; set; }
-        public long? graphic_id { get; set; }
-        public int group_id { get; set; }
-        public long? icon_id { get; set; }
-        public long? market_group_id { get; set; }
-        public long? mass { get; set; }
-        public string name { get; set; }
-        public long? packaged_volume { get; set; }
-        public long? portion_size { get; set; }
-        public bool published { get; set; }
-        public long? radius { get; set; }
-        public long type_id { get; set; }
-        public long? volume { get; set; }
+        [JsonProperty(PropertyName = "capacity")]
+        public long? Capacity { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "dogma_attributes")]
+        public IList<EsiUniverseGetTypeDogmaAttribute> DogmaAttributes { get; set; }
+
+        [JsonProperty(PropertyName = "dogma_effects")]
+        public IList<EsiUniverseGetTypeDogmaEffect> DogmaEffects { get; set; }
+
+        [JsonProperty(PropertyName = "graphic_id")]
+        public long? GraphicId { get; set; }
+
+        [JsonProperty(PropertyName = "group_id")]
+        public int GroupId { get; set; }
+
+        [JsonProperty(PropertyName = "icon_id")]
+        public long? IconId { get; set; }
+
+        [JsonProperty(PropertyName = "market_group_id")]
+        public long? MarketGroupId { get; set; }
+
+        [JsonProperty(PropertyName = "mass")]
+        public long? Mass { get; set; }
+
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "packaged_volume")]
+        public long? PackagedVolume { get; set; }
+
+        [JsonProperty(PropertyName = "portion_size")]
+        public long? PortionSize { get; set; }
+
+        [JsonProperty(PropertyName = "published")]
+        public bool Published { get; set; }
+
+        [JsonProperty(PropertyName = "radius")]
+        public long? Radius { get; set; }
+
+        [JsonProperty(PropertyName = "type_id")]
+        public long TypeId { get; set; }
+
+        [JsonProperty(PropertyName = "volume")]
+        public long? Volume { get; set; }
     }
 }

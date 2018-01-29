@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public SkillsQueueMappings()
         {
-            CreateMap<EsiSkillQueueSkill, SkillQueueSkill>();
+            CreateMap<EsiV2SkillQueueSkill, V2SkillQueueSkill>();
         }
     }
 
@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public SkillsMappings()
         {
-            CreateMap<EsiSkills, Skills>();
+            CreateMap<EsiV4Skills, V4Skills>();
         }
     }
 
@@ -24,7 +24,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public SkillsSkillMappings()
         {
-            CreateMap<EsiSkillsSkill, SkillsSkill>();
+            CreateMap<EsiV4SkillsSkill, V4SkillsSkill>();
         }
     }
 
@@ -32,7 +32,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public AttributesMappings()
         {
-            CreateMap<EsiAttributes, Attributes>();
+            CreateMap<EsiV1Attributes, V1Attributes>();
         }
     }
 }

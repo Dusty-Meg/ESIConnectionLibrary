@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetFleetMappings()
         {
-            CreateMap<EsiGetFleet, GetFleet>();
+            CreateMap<EsiV1GetFleet, V1GetFleet>();
         }
     }
 }

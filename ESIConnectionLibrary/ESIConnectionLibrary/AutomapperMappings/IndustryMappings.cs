@@ -9,7 +9,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public CharacterIndustryJobsMappings()
         {
-            CreateMap<EsiCharacterIndustryJob, CharacterIndustryJob>();
+            CreateMap<EsiV1CharacterIndustryJob, V1CharacterIndustryJob>();
         }
     }
 }

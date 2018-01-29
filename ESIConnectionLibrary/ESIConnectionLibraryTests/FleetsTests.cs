@@ -28,13 +28,13 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getFleetsJson);
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
+            InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
 
-            GetFleet getFleet = internalFleets.GetFleet(inputToken, long.MinValue);
+            V1GetFleet v1GetFleet = internalLatestFleets.GetFleet(inputToken, long.MinValue);
 
-            Assert.False(getFleet.IsFreeMove);
-            Assert.False(getFleet.IsRegistered);
-            Assert.False(getFleet.IsVoiceEnabled);
+            Assert.False(v1GetFleet.IsFreeMove);
+            Assert.False(v1GetFleet.IsRegistered);
+            Assert.False(v1GetFleet.IsVoiceEnabled);
         }
 
         [Fact]
@@ -42,9 +42,9 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
+            InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalFleets.GetFleet(null, long.MinValue));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestFleets.GetFleet(null, long.MinValue));
 
             Assert.Equal("Token can not be null", ex.Message);
             Assert.Null(ex.InnerException);
@@ -57,9 +57,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalFleets internalFleets = new InternalFleets(mockedWebClient.Object, string.Empty);
+            InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalFleets.GetFleet(inputToken, long.MinValue));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestFleets.GetFleet(inputToken, long.MinValue));
 
             Assert.Equal("This token does not have esi_fleets_read_fleet_v1 None", ex.Message);
             Assert.Null(ex.InnerException);

@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public UniverseNamesMappings()
         {
-            CreateMap<EsiUniverseNames, UniverseNames>();
+            CreateMap<EsiV2UniverseNames, V2UniverseNames>();
         }
     }
 
@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public UniverseGetTypeMappings()
         {
-            CreateMap<EsiUniverseGetType, UniverseGetType>();
+            CreateMap<EsiV3UniverseGetType, V3UniverseGetType>();
         }
     }
 
@@ -24,7 +24,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public UniverseGetTypeDogmaAttributeMappings()
         {
-            CreateMap<EsiUniverseGetTypeDogmaAttribute, UniverseGetTypeDogmaAttribute>();
+            CreateMap<EsiV3UniverseGetTypeDogmaAttribute, V3UniverseGetTypeDogmaAttribute>();
         }
     }
 
@@ -32,7 +32,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public UniverseGetTypeDogmaEffectMappings()
         {
-            CreateMap<EsiUniverseGetTypeDogmaEffect, UniverseGetTypeDogmaEffect>();
+            CreateMap<EsiV3UniverseGetTypeDogmaEffect, V3UniverseGetTypeDogmaEffect>();
         }
     }
 }

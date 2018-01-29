@@ -20,9 +20,9 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(killmailJson);
 
-            InternalKillmails internalKillmails = new InternalKillmails(mockedWebClient.Object, string.Empty);
+            InternalLatestKillmails internalLatestKillmails = new InternalLatestKillmails(mockedWebClient.Object, string.Empty);
 
-            GetSingleKillmail killmail = internalKillmails.GetSingleKillmail(killmailId, killmailHash);
+            V1GetSingleKillmail killmail = internalLatestKillmails.GetSingleKillmail(killmailId, killmailHash);
 
             Assert.Equal(1, killmail.Attackers.Count);
             Assert.Equal(95810944, killmail.Attackers.First().CharacterId);

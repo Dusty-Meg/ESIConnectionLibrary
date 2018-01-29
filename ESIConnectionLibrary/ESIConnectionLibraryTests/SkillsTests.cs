@@ -26,9 +26,9 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillQueueJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            IList<SkillQueueSkill> skillQueue = internalSkills.GetSkillQueue(inputToken);
+            IList<V2SkillQueueSkill> skillQueue = internalLatestSkills.GetSkillQueue(inputToken);
 
             Assert.Equal(3, skillQueue.Count);
             Assert.NotNull(skillQueue.First().SkillId);
@@ -39,9 +39,9 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(null));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetSkillQueue(null));
 
             Assert.Equal("Token can not be null", ex.Message);
             Assert.Null(ex.InnerException);
@@ -54,9 +54,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkillQueue(inputToken));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetSkillQueue(inputToken));
 
             Assert.Equal("This token does not have esi_skills_read_skillqueue_v1 None", ex.Message);
             Assert.Null(ex.InnerException);
@@ -77,14 +77,14 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(skillJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Skills skills = internalSkills.GetSkills(inputToken);
+            V4Skills v4Skills = internalLatestSkills.GetSkills(inputToken);
 
-            Assert.NotNull(skills.skills);
-            Assert.Equal(20000, skills.TotalSp);
-            Assert.Equal(2, skills.skills.Length);
-            Assert.Equal(10000, skills.skills.First().SkillpointsInSkill);
+            Assert.NotNull(v4Skills.Skills);
+            Assert.Equal(20000, v4Skills.TotalSp);
+            Assert.Equal(2, v4Skills.Skills.Length);
+            Assert.Equal(10000, v4Skills.Skills.First().SkillpointsInSkill);
         }
 
         [Fact]
@@ -92,9 +92,9 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(null));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetSkills(null));
 
             Assert.Equal("Token can not be null", ex.Message);
             Assert.Null(ex.InnerException);
@@ -107,9 +107,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetSkills(inputToken));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetSkills(inputToken));
 
             Assert.Equal("This token does not have esi_skills_read_skills_v1 None", ex.Message);
             Assert.Null(ex.InnerException);
@@ -130,11 +130,11 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(attributesJson);
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Attributes attributes = internalSkills.GetAttributes(inputToken);
+            V1Attributes v1Attributes = internalLatestSkills.GetAttributes(inputToken);
 
-            Assert.Equal(20, attributes.Charisma);
+            Assert.Equal(20, v1Attributes.Charisma);
         }
 
         [Fact]
@@ -142,9 +142,9 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(null));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetAttributes(null));
 
             Assert.Equal("Token can not be null", ex.Message);
             Assert.Null(ex.InnerException);
@@ -157,9 +157,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken();
 
-            InternalSkills internalSkills = new InternalSkills(mockedWebClient.Object, string.Empty);
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalSkills.GetAttributes(inputToken));
+            Exception ex = Assert.Throws<ESIException>(() => internalLatestSkills.GetAttributes(inputToken));
 
             Assert.Equal("This token does not have esi_skills_read_skills_v1 None", ex.Message);
             Assert.Null(ex.InnerException);

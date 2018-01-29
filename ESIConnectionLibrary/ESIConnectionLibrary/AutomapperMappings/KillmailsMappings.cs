@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetSingleKillmailMappings()
         {
-            CreateMap<EsiKillmail, GetSingleKillmail>();
+            CreateMap<EsiV1Killmail, V1GetSingleKillmail>();
         }
     }
 
@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetSingleKillmailVictimMappings()
         {
-            CreateMap<EsiGetSingleKillmailVictim, GetSingleKillmailVictim>();
+            CreateMap<EsiV1GetSingleKillmailVictim, V1GetSingleKillmailVictim>();
         }
     }
 
@@ -24,7 +24,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetSingleKillmailPositionMappings()
         {
-            CreateMap<EsiGetSingleKillmailPosition, GetSingleKillmailPosition>();
+            CreateMap<EsiV1GetSingleKillmailPosition, V1GetSingleKillmailPosition>();
         }
     }
 
@@ -32,7 +32,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetSingleKillmailItemMappings()
         {
-            CreateMap<EsiGetSingleKillmailItem, GetSingleKillmailItem>();
+            CreateMap<EsiV1GetSingleKillmailItem, V1GetSingleKillmailItem>();
         }
     }
 
@@ -40,7 +40,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public GetSingleKillmailAttackerMappings()
         {
-            CreateMap<EsiGetSingleKillmailAttacker, GetSingleKillmailAttacker>();
+            CreateMap<EsiV1GetSingleKillmailAttacker, V1GetSingleKillmailAttacker>();
         }
     }
 }

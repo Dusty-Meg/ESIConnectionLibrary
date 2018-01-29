@@ -27,9 +27,9 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corporationRolesJson);
 
-            InternalCorporations internalCorporations = new InternalCorporations(mockedWebClient.Object, string.Empty);
+            InternalLatestCorporations internalLatestLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<CorporationsRoles> corporationRoles = internalCorporations.GetCorporationRoles(inputToken, 18888888);
+            IList<V1CorporationsRoles> corporationRoles = internalLatestLatestCorporations.GetCorporationRoles(inputToken, 18888888);
 
             Assert.Equal(1, corporationRoles.Count);
             Assert.Equal(2, corporationRoles.First().Roles.Count);

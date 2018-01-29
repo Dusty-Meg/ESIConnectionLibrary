@@ -19,9 +19,9 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(universeNamesJson);
 
-            InternalUniverse internalUniverse = new InternalUniverse(mockedWebClient.Object, string.Empty);
+            InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<UniverseNames> universeNames = internalUniverse.GetNames(new List<int>());
+            IList<V2UniverseNames> universeNames = internalLatestUniverse.GetNames(new List<int>());
 
             Assert.Equal(2, universeNames.Count);
             Assert.Equal("character", universeNames.First().Category);
@@ -38,13 +38,13 @@ namespace ESIConnectionLibraryTests
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(universeTypeJson);
 
-            InternalUniverse internalUniverse = new InternalUniverse(mockedWebClient.Object, string.Empty);
+            InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            UniverseGetType universeType = internalUniverse.GetType(long.MinValue);
+            V3UniverseGetType v3UniverseType = internalLatestUniverse.GetType(long.MinValue);
 
-            Assert.NotNull(universeType);
-            Assert.Equal("The Rifter is a...", universeType.Description);
-            Assert.Equal("Rifter", universeType.Name);
+            Assert.NotNull(v3UniverseType);
+            Assert.Equal("The Rifter is a...", v3UniverseType.Description);
+            Assert.Equal("Rifter", v3UniverseType.Name);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPricesMappings()
         {
-            CreateMap<EsiInsuranceShipPrices, InsuranceShipPrices>();
+            CreateMap<EsiV1InsuranceShipPrices, V1InsuranceShipPrices>();
         }
     }
 
@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public InsuranceShipPriceLevelsMappings()
         {
-            CreateMap<EsiInsuranceShipPriceLevels, InsuranceShipPriceLevels>();
+            CreateMap<EsiV1InsuranceShipPriceLevels, V1InsuranceShipPriceLevels>();
         }
     }
 }

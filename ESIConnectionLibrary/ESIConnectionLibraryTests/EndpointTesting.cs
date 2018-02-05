@@ -37,6 +37,17 @@ namespace ESIConnectionLibraryTests
             return info.GetValue(null) as string;
         }
 
+        [Theory]
+        [InlineData("AllianceV1GetActiveAllianceRaw")]
+        [InlineData("AllianceV3GetAlliancePublicInfoRaw")]
+        [InlineData("AllianceV1GetAllianceCorporationsRaw")]
+        [InlineData("AllianceV1GetAllianceIconsRaw")]
+        [InlineData("AllianceV2IdsToNamesRaw")]
+        public void AllianceEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
+
         [Fact]
         public void SkillsSkillsEndpoint()
         {

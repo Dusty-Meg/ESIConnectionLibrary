@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ESIConnectionLibrary.PublicModels
+{
+    public class V1AllianceIcons
+    {
+        public string Px64X64 { get; set; }
+        public string Px128X128 { get; set; }
+    }
+}

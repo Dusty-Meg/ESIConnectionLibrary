@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
@@ -53,7 +55,59 @@ namespace ESIConnectionLibrary.Internal_classes
             return EsiBaseUrl + urlBuilder;
         }
 
+        private static string UrlBuilder(string rawUrl, string prefix, IList<string> variables)
+        {
+            string urlBuilder = rawUrl + "?" + prefix + "=";
+
+            for (int i = 0; i < variables.Count; i++)
+            {
+                if (i != 0)
+                {
+                    urlBuilder = urlBuilder + ",";
+                }
+
+                urlBuilder = urlBuilder + variables[i];
+            }
+
+            return urlBuilder;
+        }
+
         private static string EsiBaseUrl => "https://esi.tech.ccp.is";
+
+        #region Alliances
+
+        private static string AllianceV1GetActiveAllianceRaw => "/v1/alliances/";
+        private static string AllianceV3GetAlliancePublicInfoRaw => "/v3/alliances/{alliance_id}/";
+        private static string AllianceV1GetAllianceCorporationsRaw => "/v1/alliances/{alliance_id}/corporations/";
+        private static string AllianceV1GetAllianceIconsRaw => "/v1/alliances/{alliance_id}/icons/";
+        private static string AllianceV2IdsToNamesRaw => "/v2/alliances/names/";
+
+        public static string AlianceV1GetActiveAlliance()
+        {
+            return UrlBuilder(AllianceV1GetActiveAllianceRaw);
+        }
+
+        public static string AllianceV3GetAlliancePublicInfo(int allianceId)
+        {
+            return UrlBuilder(AllianceV3GetAlliancePublicInfoRaw, "{alliance_id}", allianceId.ToString());
+        }
+
+        public static string AllianceV1GetAllianceCorporations(int allianceId)
+        {
+            return UrlBuilder(AllianceV1GetAllianceCorporationsRaw, "{alliance_id}", allianceId.ToString());
+        }
+
+        public static string AllianceV1GetAllianceIcons(int allianceId)
+        {
+            return UrlBuilder(AllianceV1GetAllianceIconsRaw, "{alliance_id}", allianceId.ToString());
+        }
+
+        public static string AllianceV2IdsToNames(IList<int> allianceIds)
+        {
+            return UrlBuilder(AllianceV2IdsToNamesRaw, "alliance_ids", allianceIds.Select(x => x.ToString()).ToList());
+        }
+
+        #endregion
 
         #region Skills
 

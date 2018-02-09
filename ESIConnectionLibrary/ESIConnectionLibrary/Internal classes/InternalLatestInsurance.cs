@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
@@ -29,6 +30,17 @@ namespace ESIConnectionLibrary.Internal_classes
             string url = StaticConnectionStrings.InsuranceGetPrices();
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+
+            IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw);
+
+            return _mapper.Map<IList<EsiV1InsuranceShipPrices>, IList<V1InsuranceShipPrices>>(esiInsuranceShips);
+        }
+
+        public async Task<IList<V1InsuranceShipPrices>> GetInsurancePricesAsync()
+        {
+            string url = StaticConnectionStrings.InsuranceGetPrices();
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
             IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw);
 

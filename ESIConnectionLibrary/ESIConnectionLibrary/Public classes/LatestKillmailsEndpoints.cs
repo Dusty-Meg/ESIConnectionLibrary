@@ -1,4 +1,5 @@
-﻿using ESIConnectionLibrary.Internal_classes;
+﻿using System.Threading.Tasks;
+using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
@@ -15,6 +16,11 @@ namespace ESIConnectionLibrary.Public_classes
         public V1GetSingleKillmail GetSingleKillmail(int killmailId, string killmailHash)
         {
             return _internalLatestKillmails.GetSingleKillmail(killmailId, killmailHash);
+        }
+
+        public async Task<V1GetSingleKillmail> GetSingleKillmailAsync(int killmailId, string killmailHash)
+        {
+            return await _internalLatestKillmails.GetSingleKillmailAsync(killmailId, killmailHash);
         }
     }
 }

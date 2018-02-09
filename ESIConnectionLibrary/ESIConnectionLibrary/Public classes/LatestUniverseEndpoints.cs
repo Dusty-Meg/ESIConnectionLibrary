@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 
@@ -18,9 +19,19 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestUniverse.GetNames(ids);
         }
 
+        public async Task<IList<V2UniverseNames>> GetNamesAsync(IList<int> ids)
+        {
+            return await _internalLatestUniverse.GetNamesAsync(ids);
+        }
+
         public V3UniverseGetType GetType(long id)
         {
             return _internalLatestUniverse.GetType(id);
+        }
+
+        public async Task<V3UniverseGetType> GetTypeAsync(long id)
+        {
+            return await _internalLatestUniverse.GetTypeAsync(id);
         }
     }
 }

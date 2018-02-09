@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
@@ -29,6 +30,19 @@ namespace ESIConnectionLibrary.Internal_classes
             string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
+
+            EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw);
+
+            return _mapper.Map<EsiV1GetFleet, V1GetFleet>(esiV1GetFleet);
+        }
+
+        public async Task<V1GetFleet> GetFleetAsync(SsoToken token, long fleetId)
+        {
+            StaticMethods.CheckToken(token, Scopes.esi_fleets_read_fleet_v1);
+
+            string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
             EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw);
 

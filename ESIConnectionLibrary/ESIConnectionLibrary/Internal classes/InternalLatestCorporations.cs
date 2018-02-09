@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
@@ -34,6 +31,19 @@ namespace ESIConnectionLibrary.Internal_classes
             string url = StaticConnectionStrings.CorporationsGetRoles(corporationId);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() =>_webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+
+            IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw);
+
+            return _mapper.Map<IList<EsiV1CorporationsRoles>, IList<V1CorporationsRoles>>(esiCorporationsRoles);
+        }
+
+        public async Task<IList<V1CorporationsRoles>> GetCorporationRolesAsync(SsoToken token, long corporationId)
+        {
+            StaticMethods.CheckToken(token, Scopes.esi_corporations_read_corporation_membership_v1);
+
+            string url = StaticConnectionStrings.CorporationsGetRoles(corporationId);
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
             IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw);
 

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
@@ -31,6 +32,17 @@ namespace ESIConnectionLibrary.Internal_classes
             string url = StaticConnectionStrings.KillmailsGetSingleKillmail(killmailId, killmailHash);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+
+            EsiV1Killmail esiV1GetSingleKillmail = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw);
+
+            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiV1GetSingleKillmail);
+        }
+
+        public async Task<V1GetSingleKillmail> GetSingleKillmailAsync(int killmailId, string killmailHash)
+        {
+            string url = StaticConnectionStrings.KillmailsGetSingleKillmail(killmailId, killmailHash);
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
             EsiV1Killmail esiV1GetSingleKillmail = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw);
 

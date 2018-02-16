@@ -41,7 +41,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -72,7 +73,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -101,7 +103,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -130,7 +133,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -158,7 +162,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -186,7 +191,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -212,7 +218,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;
@@ -238,7 +245,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 {
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
-                        throw new ESIException(e.Message, e);
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
                 }
 
                 throw;

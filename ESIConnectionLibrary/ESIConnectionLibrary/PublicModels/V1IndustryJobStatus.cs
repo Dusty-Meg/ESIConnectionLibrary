@@ -3,10 +3,10 @@
     public enum V1IndustryJobStatus
     {
         Active,
+        Cancelled,
+        Delivered,
         Paused,
         Ready,
-        Delivered,
-        Cancelled,
         Reverted
     }
 }

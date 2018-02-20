@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ESIConnectionLibrary.ESIModels
 {
@@ -12,7 +13,7 @@ namespace ESIConnectionLibrary.ESIModels
         public long BlueprintId { get; set; }
 
         [JsonProperty(PropertyName = "blueprint_location_id")]
-        public int BlueprintLocationId { get; set; }
+        public long BlueprintLocationId { get; set; }
 
         [JsonProperty(PropertyName = "blueprint_type_id")]
         public int BlueprintTypeId { get; set; }
@@ -21,10 +22,10 @@ namespace ESIConnectionLibrary.ESIModels
         public int? CompletedCharacterId { get; set; }
 
         [JsonProperty(PropertyName = "completed_date")]
-        public int? CompletedDate { get; set; }
+        public DateTime? CompletedDate { get; set; }
 
         [JsonProperty(PropertyName = "cost")]
-        public int? Cost { get; set; }
+        public double? Cost { get; set; }
 
         [JsonProperty(PropertyName = "duration")]
         public int Duration { get; set; }
@@ -33,7 +34,7 @@ namespace ESIConnectionLibrary.ESIModels
         public DateTime EndDate { get; set; }
 
         [JsonProperty(PropertyName = "facility_id")]
-        public int FacilityId { get; set; }
+        public long FacilityId { get; set; }
 
         [JsonProperty(PropertyName = "installer_id")]
         public int InstallerId { get; set; }
@@ -45,13 +46,13 @@ namespace ESIConnectionLibrary.ESIModels
         public int? LicensedRuns { get; set; }
 
         [JsonProperty(PropertyName = "output_location_id")]
-        public int OutputLocationId { get; set; }
+        public long OutputLocationId { get; set; }
 
         [JsonProperty(PropertyName = "pause_date")]
         public DateTime? PauseDate { get; set; }
 
         [JsonProperty(PropertyName = "probability")]
-        public double? Probability { get; set; }
+        public float? Probability { get; set; }
 
         [JsonProperty(PropertyName = "product_type_id")]
         public int? ProductTypeId { get; set; }
@@ -63,10 +64,11 @@ namespace ESIConnectionLibrary.ESIModels
         public DateTime StartDate { get; set; }
 
         [JsonProperty(PropertyName = "station_id")]
-        public int StationId { get; set; }
+        public long StationId { get; set; }
 
         [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public EsiV1CharacterIndustryJobsStatus Status { get; set; }
 
         [JsonProperty(PropertyName = "successful_runs")]
         public int? SuccessfulRuns { get; set; }

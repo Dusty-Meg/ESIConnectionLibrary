@@ -74,6 +74,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
         private static string EsiBaseUrl => "https://esi.tech.ccp.is";
 
+        #region Authentication
+
+        private static string AuthenticationVerifyRaw => "/verify/";
+
+        public static string AuthenticationVerify()
+        {
+            return UrlBuilder(AuthenticationVerifyRaw);
+        }
+
+        #endregion
+
         #region Alliances
 
         private static string AllianceV1GetActiveAllianceRaw => "/v1/alliances/";

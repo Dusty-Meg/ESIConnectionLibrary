@@ -114,7 +114,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            string ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login-tq.eveonline.com/oauth/token/", data));
+            string ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
         }
 
@@ -129,7 +129,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            string ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login-tq.eveonline.com/oauth/token/", data));
+            string ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
         }
 
@@ -141,7 +141,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login
             };
 
-            string clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(headers2, @"https://login.eveonline.com/oauth/verify"));
+            string clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(headers2, StaticConnectionStrings.AuthenticationVerify()));
             return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw);
         }
 
@@ -153,7 +153,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login
             };
 
-            string clientStringRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(headers2, @"https://login.eveonline.com/oauth/verify"));
+            string clientStringRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(headers2, StaticConnectionStrings.AuthenticationVerify()));
             return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw);
         }
 

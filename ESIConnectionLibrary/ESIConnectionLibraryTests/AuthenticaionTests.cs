@@ -23,8 +23,8 @@ namespace ESIConnectionLibraryTests
             string verifyJson = "{\"CharacterID\":" + characterId + ",\"CharacterName\": \"" + characterName + "\",\"ExpiresOn\": \"2014-05-23T15:01:15.182864Z\",\"Scopes\": \" \",\"TokenType\": \"Character\",\"CharacterOwnerHash\": \"ThisIsAHash = \"}";
             Guid userId = Guid.NewGuid();
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/verify", It.IsAny<int>())).Returns(verifyJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://esi.tech.ccp.is/verify/", It.IsAny<int>())).Returns(verifyJson);
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
@@ -62,7 +62,7 @@ namespace ESIConnectionLibraryTests
             string characterName = "ThisIsACharacter";
             string tokenJson = "{\"access_token\":\"" + accessToken + "\",\"token_type\":\"Bearer\",\"expires_in\":1200,\"refresh_token\":\"" + refreshToken + "\"}";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login-tq.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 

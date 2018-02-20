@@ -308,6 +308,9 @@ namespace ESIConnectionLibrary.Internal_classes
                     case "esi-wallet.read_corporation_wallets.v1":
                         scopeCollection |= Scopes.esi_wallet_read_corporation_wallets_v1;
                         break;
+                    case "esi-assets.read_corporation_assets.v1":
+                        scopeCollection |= Scopes.esi_assets_read_corporation_assets_v1;
+                        break;
                 }
             }
 

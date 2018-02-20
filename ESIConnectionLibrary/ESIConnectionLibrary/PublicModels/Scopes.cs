@@ -52,6 +52,7 @@ namespace ESIConnectionLibrary.PublicModels
         esi_ui_write_waypoint_v1 = 1L << 43,
         esi_corporations_track_members_v1 = 1L << 44,
         esi_wallet_read_corporation_wallet_v1 = 1L << 45,
-        esi_wallet_read_corporation_wallets_v1 = 1L << 46
+        esi_wallet_read_corporation_wallets_v1 = 1L << 46,
+        esi_assets_read_corporation_assets_v1 = 1L << 47
     }
 }

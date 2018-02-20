@@ -120,6 +120,47 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Assets
+
+        private static string AssetsV3GetCharactersAssetsRaw => "/v3/characters/{character_id}/assets/";
+        private static string AssetsV2GetCharactersAssetsLocationsRaw => "/v2/characters/{character_id}/assets/locations/";
+        private static string AssetsV1GetCharactersAssetsNamesRaw => "/v1/characters/{character_id}/assets/names/";
+        private static string AssetsV2GetCorporationsAssetsRaw => "/v2/corporations/{corporation_id}/assets/";
+        private static string AssetsV2GetCorporationsAssetsLocationsRaw => "/v2/corporations/{corporation_id}/assets/locations/";
+        private static string AssetsV1GetCorporationsAssetsNamesRaw => "/v1/corporations/{corporation_id}/assets/names/";
+
+        public static string AssetsV3GetCharactersAssets(int characterId, int page)
+        {
+            return UrlBuilder(AssetsV3GetCharactersAssetsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string AssetsV2GetCharactersAssetsLocations(int characterId)
+        {
+            return UrlBuilder(AssetsV2GetCharactersAssetsLocationsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string AssetsV1GetCharactersAssetsNames(int characterId)
+        {
+            return UrlBuilder(AssetsV1GetCharactersAssetsNamesRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string AssetsV2GetCorporationsAssets(int corporationId, int page)
+        {
+            return UrlBuilder(AssetsV2GetCorporationsAssetsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string AssetsV2GetCorporationsAssetsLocations(int corporationId)
+        {
+            return UrlBuilder(AssetsV2GetCorporationsAssetsLocationsRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string AssetsV1GetCorporationsAssetsNames(int corporationId)
+        {
+            return UrlBuilder(AssetsV1GetCorporationsAssetsNamesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        #endregion
+
         #region Skills
 
         private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";

@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Cache;
 using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
+using ESIConnectionLibrary.PublicModels;
 using LazyCache;
 
 namespace ESIConnectionLibrary.Internal_classes
@@ -170,6 +171,48 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
+        public PagedJson GetPaged(WebHeaderCollection headers, string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers
+            };
+
+            try
+            {
+                PagedJson pagedJson = new PagedJson
+                {
+                    Response = _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
+                };
+
+                WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                for (int i = 0; i < responseHeaders.Count; i++)
+                {
+                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    {
+                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                    }
+                }
+
+                return pagedJson;
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
+                }
+
+                throw;
+            }
+        }
+
         public async Task<string> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
@@ -182,6 +225,48 @@ namespace ESIConnectionLibrary.Internal_classes
             try
             {
                 return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
+                }
+
+                throw;
+            }
+        }
+
+        public async Task<PagedJson> GetPagedAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers
+            };
+
+            try
+            {
+                PagedJson pagedJson = new PagedJson
+                {
+                    Response = await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
+                };
+
+                WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                for (int i = 0; i < responseHeaders.Count; i++)
+                {
+                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    {
+                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                    }
+                }
+
+                return pagedJson;
             }
             catch (WebException e)
             {
@@ -226,6 +311,48 @@ namespace ESIConnectionLibrary.Internal_classes
             } 
         }
 
+        public PagedJson GetPaged(string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = { ["UserAgent"] = _userAgent }
+            };
+
+            try
+            {
+                PagedJson pagedJson = new PagedJson
+                {
+                    Response = _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
+                };
+
+                WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                for (int i = 0; i < responseHeaders.Count; i++)
+                {
+                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    {
+                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                    }
+                }
+
+                return pagedJson;
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
+                }
+
+                throw;
+            }
+        }
+
         public async Task<string> GetAsync(string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
@@ -236,6 +363,48 @@ namespace ESIConnectionLibrary.Internal_classes
             try
             {
                 return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+                switch (webResponse?.StatusCode)
+                {
+                    case HttpStatusCode.Forbidden:
+                    case HttpStatusCode.InternalServerError:
+                    case HttpStatusCode.NotFound:
+                        throw new ESIException($"{e.Message} Url: {address}", e);
+                }
+
+                throw;
+            }
+        }
+
+        public async Task<PagedJson> GetPagedAsync(string address, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = { ["UserAgent"] = _userAgent }
+            };
+
+            try
+            {
+                PagedJson pagedJson = new PagedJson
+                {
+                    Response = await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
+                };
+
+                WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                for (int i = 0; i < responseHeaders.Count; i++)
+                {
+                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    {
+                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                    }
+                }
+
+                return pagedJson;
             }
             catch (WebException e)
             {

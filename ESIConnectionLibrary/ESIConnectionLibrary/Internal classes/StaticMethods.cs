@@ -161,6 +161,113 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Character
+
+        private static string EsiV4CharactersPublicInfoRaw => "/v4/characters/{character_id}/";
+        private static string EsiV1CharactersResearchAgentsRaw => "/v1/characters/{character_id}/agents_research/";
+        private static string EsiV2CharactersBlueprintsRaw => "/v2/characters/{character_id}/blueprints/";
+        private static string EsiV1CharactersChatChannelsRaw => "/v1/characters/{character_id}/chat_channels/";
+        private static string EsiV1CharactersCorporationHistoryRaw => "/v1/characters/{character_id}/corporationhistory/";
+        private static string EsiV4CharactersCspaRaw => "/v4/characters/{character_id}/cspa/";
+        private static string EsiV1CharactersFatigueRaw => "/v1/characters/{character_id}/fatigue/";
+        private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
+        private static string EsiV2CharactersNotificationsRaw => "/v2/characters/{character_id}/notifications/";
+        private static string EsiV1CharactersNotificationsContactsRaw => "/v1/characters/{character_id}/notifications/contacts/";
+        private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
+        private static string EsiV2CharacterRolesRaw => "/v2/characters/{character_id}/roles/";
+        private static string EsiV2CharactersStandingsRaw => "/v1/characters/{character_id}/standings/";
+        private static string EsiV2CharactersStatsRaw => "/v2/characters/{character_id}/stats/";
+        private static string EsiV1CharacterTitlesRaw => "/v1/characters/{character_id}/titles/";
+        private static string EsiV1CharacterAffiliationsRaw => "/v1/characters/affiliation/";
+        private static string EsiV1CharactersNamesRaw => "/v1/characters/names/";
+
+        public static string EsiV4CharactersPublicInfo(int characterId)
+        {
+            return UrlBuilder(EsiV4CharactersPublicInfoRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersResearchAgents(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersResearchAgentsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharactersBlueprints(int characterId)
+        {
+            return UrlBuilder(EsiV2CharactersBlueprintsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersChatChannels(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersChatChannelsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersCorporationHistory(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersCorporationHistoryRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV4CharactersCspa(int characterId)
+        {
+            return UrlBuilder(EsiV4CharactersCspaRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersFatigue(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersFatigueRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersMedals(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersMedalsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharactersNotifications(int characterId)
+        {
+            return UrlBuilder(EsiV2CharactersNotificationsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharactersNotificationsContacts(int characterId)
+        {
+            return UrlBuilder(EsiV1CharactersNotificationsContactsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharactersPortrait(int characterId)
+        {
+            return UrlBuilder(EsiV2CharactersPortraitRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharacterRoles(int characterId)
+        {
+            return UrlBuilder(EsiV2CharacterRolesRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharactersStandings(int characterId)
+        {
+            return UrlBuilder(EsiV2CharactersStandingsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV2CharactersStats(int characterId)
+        {
+            return UrlBuilder(EsiV2CharactersStatsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharacterTitles(int characterId)
+        {
+            return UrlBuilder(EsiV1CharacterTitlesRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string EsiV1CharacterAffiliations()
+        {
+            return UrlBuilder(EsiV1CharacterAffiliationsRaw);
+        }
+
+        public static string EsiV1CharactersNames(IList<int> characterIds)
+        {
+            return UrlBuilder(EsiV1CharactersNamesRaw, "character_ids", characterIds.Select(x => x.ToString()).ToList());
+        }
+
+        #endregion
+
         #region Skills
 
         private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";

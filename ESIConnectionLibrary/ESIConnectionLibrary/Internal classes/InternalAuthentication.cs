@@ -311,6 +311,75 @@ namespace ESIConnectionLibrary.Internal_classes
                     case "esi-assets.read_corporation_assets.v1":
                         scopeCollection |= Scopes.esi_assets_read_corporation_assets_v1;
                         break;
+                    case "esi-alliances.read_contacts.v1":
+                        scopeCollection |= Scopes.esi_alliances_read_contacts_v1;
+                        break;
+                    case "esi-bookmarks.read_corporation_bookmarks.v1":
+                        scopeCollection |= Scopes.esi_bookmarks_read_corporation_bookmarks_v1;
+                        break;
+                    case "esi-characters.read_fw_stats.v1":
+                        scopeCollection |= Scopes.esi_characters_read_fw_stats_v1;
+                        break;
+                    case "esi-characters.read_notifications.v1":
+                        scopeCollection |= Scopes.esi_characters_read_notifications_v1;
+                        break;
+                    case "esi-characters.read_titles.v1":
+                        scopeCollection |= Scopes.esi_characters_read_titles_v1;
+                        break;
+                    case "esi-characterstats.read.v1":
+                        scopeCollection |= Scopes.esi_characterstats_read_v1;
+                        break;
+                    case "esi-contracts.read_corporation_contracts.v1":
+                        scopeCollection |= Scopes.esi_contracts_read_corporation_contracts_v1;
+                        break;
+                    case "esi-corporations.read_blueprints.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_blueprints_v1;
+                        break;
+                    case "esi-corporations.read_contacts.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_contacts_v1;
+                        break;
+                    case "esi-corporations.read_container_logs.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_container_logs_v1;
+                        break;
+                    case "esi-corporations.read_divisions.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_divisions_v1;
+                        break;
+                    case "esi-corporations.read_facilities.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_facilities_v1;
+                        break;
+                    case "esi-corporations.read_fw_stats.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_fw_stats_v1;
+                        break;
+                    case "esi-corporations.read_medals.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_medals_v1;
+                        break;
+                    case "esi-corporations.read_outposts.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_outposts_v1;
+                        break;
+                    case "esi-corporations.read_standings.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_standings_v1;
+                        break;
+                    case "esi-corporations.read_starbases.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_starbases_v1;
+                        break;
+                    case "esi-corporations.read_titles.v1":
+                        scopeCollection |= Scopes.esi_corporations_read_titles_v1;
+                        break;
+                    case "esi-industry.read_character_mining.v1":
+                        scopeCollection |= Scopes.esi_industry_read_character_mining_v1;
+                        break;
+                    case "esi-industry.read_corporation_jobs.v1":
+                        scopeCollection |= Scopes.esi_industry_read_corporation_jobs_v1;
+                        break;
+                    case "esi-industry.read_corporation_mining.v1":
+                        scopeCollection |= Scopes.esi_industry_read_corporation_mining_v1;
+                        break;
+                    case "esi-markets.read_corporation_orders.v1":
+                        scopeCollection |= Scopes.esi_markets_read_corporation_orders_v1;
+                        break;
+                    case "esi-planets.read_customs_offices.v1":
+                        scopeCollection |= Scopes.esi_planets_read_customs_offices_v1;
+                        break;
                 }
             }
 

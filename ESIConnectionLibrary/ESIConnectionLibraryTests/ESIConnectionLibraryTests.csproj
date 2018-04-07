@@ -66,6 +66,7 @@
     <Compile Include="AllianceTests.cs" />
     <Compile Include="AssetsTests.cs" />
     <Compile Include="AuthenticaionTests.cs" />
+    <Compile Include="CharacterTests.cs" />
     <Compile Include="CorporationTests.cs" />
     <Compile Include="EndpointTesting.cs" />
     <Compile Include="FleetsTests.cs" />

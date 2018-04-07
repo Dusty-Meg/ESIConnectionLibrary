@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using ESIConnectionLibrary.Exceptions;
-using Moq;
-using Xunit;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
+using Moq;
+using Xunit;
 
 namespace ESIConnectionLibraryTests
 {
@@ -66,7 +66,7 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
-            SsoToken inputToken = new SsoToken {AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName};
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName };
 
             SsoToken token = internalAuthentication.RefreshToken(inputToken, "Blah");
 

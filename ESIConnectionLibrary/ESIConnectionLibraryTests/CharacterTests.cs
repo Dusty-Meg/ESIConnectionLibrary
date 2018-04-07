@@ -71,7 +71,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);
-            Assert.Equal(new DateTime(2017,03,23,14,47,00), getCharactersResearchAgents.First().StartedAt);
+            Assert.Equal(new DateTime(2017, 03, 23, 14, 47, 00), getCharactersResearchAgents.First().StartedAt);
         }
 
         [Fact]
@@ -759,7 +759,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            IList<int> characterIds = new List<int> {23, 34};
+            IList<int> characterIds = new List<int> { 23, 34 };
 
             string getCharactersNamesJson = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
 

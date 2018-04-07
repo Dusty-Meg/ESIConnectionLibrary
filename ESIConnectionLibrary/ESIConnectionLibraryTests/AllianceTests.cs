@@ -83,7 +83,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
-        
+
         [Fact]
         public void GetAllianceNamesFromIds_successfully_returns_a_list_of_allianceIdsToNames()
         {
@@ -91,7 +91,7 @@ namespace ESIConnectionLibraryTests
 
             string allianceIdsJson = "[{\"alliance_id\": 1000171,\"alliance_name\": \"Republic University\"}]";
 
-            IList<int> allianceIds = new List<int>{ 8762 };
+            IList<int> allianceIds = new List<int> { 8762 };
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(allianceIdsJson);
 

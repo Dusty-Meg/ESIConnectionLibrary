@@ -83,34 +83,27 @@ namespace ESIConnectionLibraryTests
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
 
-        [Fact]
-        public void SkillsSkillsEndpoint()
+        [Theory]
+        [InlineData("SkillsSkillsRaw")]
+        [InlineData("SkillsAttributesRaw")]
+        [InlineData("SkillsSkillQueueRaw")]
+        public void SkillsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString("SkillsSkillsRaw"), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
 
-        [Fact]
-        public void SkillsAttributesEndpoint()
+        [Theory]
+        [InlineData("IndustryCharacterJobsRaw")]
+        public void IndustryEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString("SkillsAttributesRaw"), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
 
-        [Fact]
-        public void SkillsSkillQueueEndpoint()
+        [Theory]
+        [InlineData("FleetsGetFleetRaw")]
+        public void FleetEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString("SkillsSkillQueueRaw"), SwaggerSpec);
-        }
-
-        [Fact]
-        public void IndustryCharacterJobs()
-        {
-            Assert.Contains(GetPrivateString("IndustryCharacterJobsRaw"), SwaggerSpec);
-        }
-
-        [Fact]
-        public void FleetsGetFleet()
-        {
-            Assert.Contains(GetPrivateString("FleetsGetFleetRaw"), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
 
         [Theory]

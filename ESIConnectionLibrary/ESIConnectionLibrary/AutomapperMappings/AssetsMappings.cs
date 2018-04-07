@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public AssetsMappings()
         {
-            CreateMap<EsiV1GetCharactersAssetsNames, V1GetCharactersAssetsNames>();
+            CreateMap<EsiV1CharactersAssetsNames, V1GetCharactersAssetsNames>();
             CreateMap<EsiV1GetCorporationsAssetsNames, V1GetCorporationsAssetsNames>();
             CreateMap<EsiV2GetCharactersAssetsLocations, V2GetCharactersAssetsLocations>();
             CreateMap<EsiV2GetCorporationsAssets, V2GetCorporationsAssets>();

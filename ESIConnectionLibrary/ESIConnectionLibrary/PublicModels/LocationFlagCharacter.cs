@@ -79,6 +79,7 @@
         SubSystemSlot6,
         SubSystemSlot7,
         Unlocked,
-        Wardrobe
+        Wardrobe,
+        Module
     }
 }

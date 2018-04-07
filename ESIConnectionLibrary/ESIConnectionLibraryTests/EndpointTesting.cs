@@ -47,6 +47,7 @@ namespace ESIConnectionLibraryTests
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
         }
+
         [Theory]
         [InlineData("AssetsV3GetCharactersAssetsRaw")]
         [InlineData("AssetsV2GetCharactersAssetsLocationsRaw")]
@@ -55,6 +56,29 @@ namespace ESIConnectionLibraryTests
         [InlineData("AssetsV2GetCorporationsAssetsLocationsRaw")]
         [InlineData("AssetsV1GetCorporationsAssetsNamesRaw")]
         public void AssetsEndpoints(string endpoint)
+        {
+            Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
+        }
+
+        [Theory]
+        [InlineData("EsiV4CharactersPublicInfoRaw")]
+        [InlineData("EsiV1CharactersResearchAgentsRaw")]
+        [InlineData("EsiV2CharactersBlueprintsRaw")]
+        [InlineData("EsiV1CharactersChatChannelsRaw")]
+        [InlineData("EsiV1CharactersCorporationHistoryRaw")]
+        [InlineData("EsiV4CharactersCspaRaw")]
+        [InlineData("EsiV1CharactersFatigueRaw")]
+        [InlineData("EsiV1CharactersMedalsRaw")]
+        [InlineData("EsiV2CharactersNotificationsRaw")]
+        [InlineData("EsiV1CharactersNotificationsContactsRaw")]
+        [InlineData("EsiV2CharactersPortraitRaw")]
+        [InlineData("EsiV2CharacterRolesRaw")]
+        [InlineData("EsiV2CharactersStandingsRaw")]
+        [InlineData("EsiV2CharactersStatsRaw")]
+        [InlineData("EsiV1CharacterTitlesRaw")]
+        [InlineData("EsiV1CharacterAffiliationsRaw")]
+        [InlineData("EsiV1CharactersNamesRaw")]
+        public void CharacterEndpoints(string endpoint)
         {
             Assert.True(SwaggerSpec.Contains(GetPrivateString(endpoint)));
         }

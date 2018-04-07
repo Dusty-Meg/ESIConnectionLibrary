@@ -29,7 +29,7 @@ namespace ESIConnectionLibraryTests
             IList<V1CharacterIndustryJob> characterIndustryJob = internalLatestIndustry.GetCharactersIndustryJobs(inputToken, false);
 
             Assert.Equal(1, characterIndustryJob.Count);
-            Assert.NotNull(characterIndustryJob.First().ActivityId);
+            Assert.Equal(1, characterIndustryJob.First().ActivityId);
             Assert.Equal(V1IndustryJobStatus.Ready, characterIndustryJob.First().Status);
         }
     }

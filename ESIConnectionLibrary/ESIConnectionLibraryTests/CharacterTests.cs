@@ -161,7 +161,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharactersChatChannels.Count);
             Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.Equal(false, getCharactersChatChannels.First().HasPassword);
+            Assert.False(getCharactersChatChannels.First().HasPassword);
             Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
             Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
             Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
@@ -187,7 +187,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharactersChatChannels.Count);
             Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.Equal(false, getCharactersChatChannels.First().HasPassword);
+            Assert.False(getCharactersChatChannels.First().HasPassword);
             Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
             Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
             Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
@@ -211,7 +211,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(2, getCharactersCorporationHistory.Count);
             Assert.Equal(90000001, getCharactersCorporationHistory.First().CorporationId);
-            Assert.Equal(true, getCharactersCorporationHistory.First().IsDeleted);
+            Assert.True(getCharactersCorporationHistory.First().IsDeleted);
             Assert.Equal(new DateTime(2016, 06, 26, 20, 00, 00), getCharactersCorporationHistory.First().StartDate);
         }
 
@@ -232,7 +232,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(2, getCharactersCorporationHistory.Count);
             Assert.Equal(90000001, getCharactersCorporationHistory.First().CorporationId);
-            Assert.Equal(true, getCharactersCorporationHistory.First().IsDeleted);
+            Assert.True(getCharactersCorporationHistory.First().IsDeleted);
             Assert.Equal(new DateTime(2016, 06, 26, 20, 00, 00), getCharactersCorporationHistory.First().StartDate);
         }
 
@@ -400,7 +400,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
-            Assert.Equal(true, getCharactersNotifications.First().IsRead);
+            Assert.True(getCharactersNotifications.First().IsRead);
         }
 
         [Fact]
@@ -425,7 +425,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
-            Assert.Equal(true, getCharactersNotifications.First().IsRead);
+            Assert.True(getCharactersNotifications.First().IsRead);
         }
 
         [Fact]

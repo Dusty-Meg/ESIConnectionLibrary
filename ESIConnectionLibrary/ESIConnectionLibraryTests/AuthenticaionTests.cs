@@ -86,13 +86,5 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("Token or EVESSOKey is null or empty", ex.Message);
             Assert.Null(ex.InnerException);
         }
-
-        //[Fact]
-        public void Test()
-        {
-            InternalAuthentication internalAuthentication = new InternalAuthentication(null, string.Empty);
-
-            internalAuthentication.MakeToken("test", "test", Guid.Empty);
-        }
     }
 }

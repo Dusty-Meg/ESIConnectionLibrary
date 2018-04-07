@@ -31,7 +31,7 @@ namespace ESIConnectionLibraryTests
             IList<V2SkillQueueSkill> skillQueue = internalLatestSkills.GetSkillQueue(inputToken);
 
             Assert.Equal(3, skillQueue.Count);
-            Assert.NotNull(skillQueue.First().SkillId);
+            Assert.Equal(1, skillQueue.First().SkillId);
         }
 
         [Fact]

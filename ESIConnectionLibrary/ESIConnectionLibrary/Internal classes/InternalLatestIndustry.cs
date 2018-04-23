@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CharacterIndustryJob> GetCharactersIndustryJobs(SsoToken token, bool includeCompletedJobs)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_industry_read_character_jobs_v1);
+            StaticMethods.CheckToken(token, IndustryScopes.esi_industry_read_character_jobs_v1);
 
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CharacterIndustryJob>> GetCharactersIndustryJobsAsync(SsoToken token, bool includeCompletedJobs)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_industry_read_character_jobs_v1);
+            StaticMethods.CheckToken(token, IndustryScopes.esi_industry_read_character_jobs_v1);
 
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 

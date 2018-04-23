@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CorporationsRoles> GetCorporationRoles(SsoToken token, long corporationId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_corporations_read_corporation_membership_v1);
+            StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
             string url = StaticConnectionStrings.CorporationsGetRoles(corporationId);
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CorporationsRoles>> GetCorporationRolesAsync(SsoToken token, long corporationId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_corporations_read_corporation_membership_v1);
+            StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
             string url = StaticConnectionStrings.CorporationsGetRoles(corporationId);
 

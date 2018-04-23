@@ -17,9 +17,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
             int page = 1;
-            Scopes scopes = Scopes.esi_assets_read_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCharacterAssetsJson = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
 
             PagedJson pagedJson = new PagedJson { Response = getCharacterAssetsJson, MaxPages = 2 };
@@ -43,9 +43,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
-            Scopes scopes = Scopes.esi_assets_read_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCharactersAssetsLocationsJson = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAssetsLocationsJson);
@@ -65,9 +65,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
-            Scopes scopes = Scopes.esi_assets_read_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCharactersAssetsNamesJson = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAssetsNamesJson);
@@ -89,9 +89,9 @@ namespace ESIConnectionLibraryTests
             int characterId = 88823;
             int corporationId = 888233;
             int page = 1;
-            Scopes scopes = Scopes.esi_assets_read_corporation_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCorporationAssetsJson = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
 
             PagedJson pagedJson = new PagedJson { Response = getCorporationAssetsJson, MaxPages = 2 };
@@ -115,9 +115,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
-            Scopes scopes = Scopes.esi_assets_read_corporation_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCorporationAssetsLocationsJson = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationAssetsLocationsJson);
@@ -129,6 +129,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCorporationAssetsLocations.Count);
             Assert.Equal(12345, getCorporationAssetsLocations.First().ItemId);
         }
+
         [Fact]
         public void GetCorporationsAssetsNames_successfully_returns_a_ListV1GetCorporationsAssetsNames()
         {
@@ -136,9 +137,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
-            Scopes scopes = Scopes.esi_assets_read_corporation_assets_v1;
+            AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             string getCorporationsAssetsNamesJson = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationsAssetsNamesJson);

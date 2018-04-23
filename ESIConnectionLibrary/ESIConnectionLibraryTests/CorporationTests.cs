@@ -17,9 +17,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
-            Scopes scopes = Scopes.esi_corporations_read_corporation_membership_v1;
+            CorporationScopes scopes = CorporationScopes.esi_corporations_read_corporation_membership_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
             string corporationRolesJson = "[{\"character_id\": 1000171,\"roles\": [\"Director\",\"Station_Manager\"]}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corporationRolesJson);

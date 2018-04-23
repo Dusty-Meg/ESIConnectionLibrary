@@ -1,10 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Cache;
 using System.Threading.Tasks;
+using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
 using LazyCache;
+using Microsoft.CSharp.RuntimeBinder;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
@@ -43,7 +47,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -75,7 +91,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) {}
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -105,7 +133,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -135,7 +175,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -164,7 +216,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -187,11 +251,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 WebHeaderCollection responseHeaders = client.ResponseHeaders;
 
-                for (int i = 0; i < responseHeaders.Count; i++)
+                if (client.ResponseHeaders != null)
                 {
-                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    for (int i = 0; i < responseHeaders.Count; i++)
                     {
-                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        if (responseHeaders.GetKey(i) == "X-Pages")
+                        {
+                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        }
                     }
                 }
 
@@ -206,7 +273,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -235,7 +314,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -256,13 +347,16 @@ namespace ESIConnectionLibrary.Internal_classes
                     Response = await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
                 };
 
-                WebHeaderCollection responseHeaders = client.ResponseHeaders;
-
-                for (int i = 0; i < responseHeaders.Count; i++)
+                if (client.ResponseHeaders != null)
                 {
-                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    for (int i = 0; i < responseHeaders.Count; i++)
                     {
-                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        if (responseHeaders.GetKey(i) == "X-Pages")
+                        {
+                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        }
                     }
                 }
 
@@ -277,7 +371,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -304,7 +410,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -327,11 +445,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 WebHeaderCollection responseHeaders = client.ResponseHeaders;
 
-                for (int i = 0; i < responseHeaders.Count; i++)
+                if (client.ResponseHeaders != null)
                 {
-                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    for (int i = 0; i < responseHeaders.Count; i++)
                     {
-                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        if (responseHeaders.GetKey(i) == "X-Pages")
+                        {
+                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        }
                     }
                 }
 
@@ -346,7 +467,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -373,7 +506,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;
@@ -396,11 +541,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 WebHeaderCollection responseHeaders = client.ResponseHeaders;
 
-                for (int i = 0; i < responseHeaders.Count; i++)
+                if (client.ResponseHeaders != null)
                 {
-                    if (responseHeaders.GetKey(i) == "X-Pages")
+                    for (int i = 0; i < responseHeaders.Count; i++)
                     {
-                        pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        if (responseHeaders.GetKey(i) == "X-Pages")
+                        {
+                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                        }
                     }
                 }
 
@@ -415,7 +563,19 @@ namespace ESIConnectionLibrary.Internal_classes
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
-                        throw new ESIException($"{e.Message} Url: {address}", e);
+                    case HttpStatusCode.BadRequest:
+                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
+                        string errorMessage = string.Empty;
+
+                        try
+                        {
+                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                            errorMessage = error.Error;
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
                 }
 
                 throw;

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
@@ -17,7 +18,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int Intelligence { get; set; }
 
         [JsonProperty(PropertyName = "last_remap_date")]
-        public int? LastRemapDate { get; set; }
+        public DateTime? LastRemapDate { get; set; }
 
         [JsonProperty(PropertyName = "memory")]
         public int Memory { get; set; }

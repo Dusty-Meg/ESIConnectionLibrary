@@ -84,6 +84,13 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("MarketV1GetMarketGroupInformationRaw")]
+        public void MarketEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("SkillsSkillsRaw")]
         [InlineData("SkillsAttributesRaw")]
         [InlineData("SkillsSkillQueueRaw")]

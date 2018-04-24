@@ -530,6 +530,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Market
+
+        private static string MarketV1GetMarketGroupInformationRaw => "/v1/markets/groups/{market_group_id}/";
+
+        public static string MarketV1GetMarketGroupInformation(int marketGroupId)
+        {
+            return UrlBuilder(MarketV1GetMarketGroupInformationRaw, "{market_group_id}", marketGroupId.ToString());
+        }
+
+        #endregion
+
         #region Skills
 
         private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";

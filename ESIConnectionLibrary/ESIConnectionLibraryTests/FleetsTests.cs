@@ -57,7 +57,7 @@ namespace ESIConnectionLibraryTests
 
             Exception ex = Assert.Throws<ESIException>(() => internalLatestFleets.GetFleet(inputToken, long.MinValue));
 
-            Assert.Equal("This token does not have esi_fleets_read_fleet_v1 None", ex.Message);
+            Assert.Equal("This token does not have esi_fleets_read_fleet_v1 it has: None", ex.Message);
             Assert.Null(ex.InnerException);
         }
     }

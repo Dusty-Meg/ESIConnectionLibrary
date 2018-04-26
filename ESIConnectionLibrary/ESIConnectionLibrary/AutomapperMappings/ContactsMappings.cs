@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ESIConnectionLibrary.ESIModels;
+using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.AutomapperMappings
 {
@@ -7,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public ContactsMappings()
         {
-            CreateMap<EsiV1ContactsGetContacts, EsiV1ContactsGetContacts>();
+            CreateMap<EsiV1ContactsGetContacts, V1ContactsGetContacts>();
         }
     }
 }

@@ -534,9 +534,26 @@ namespace ESIConnectionLibrary.Internal_classes
 
         private static string ContactsV1GetCharactersContactsRaw => "/v1/characters/{character_id}/contacts/";
 
-        public static string ContactsV1GetCharactersContacts(int characterId)
+        public static string ContactsV1GetCharactersContacts(int characterId, int page)
         {
-            return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        #endregion 
+
+        #region Mail
+
+        private static string MailV1MailGetCharactersMailRaw => "/v1/characters/{character_id}/mail/";
+        private static string MailV1MailGetMailRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
+
+        public static string MailV1MailGetCharactersMail(int characterId, int lastMailId)
+        {
+            return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
+        }
+
+        public static string MailV1MailGetMail(int characterId, int mailId)
+        {
+            return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
         }
 
         #endregion 

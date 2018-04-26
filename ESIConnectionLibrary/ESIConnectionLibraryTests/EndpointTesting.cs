@@ -91,6 +91,14 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("MailV1MailGetCharactersMailRaw")]
+        [InlineData("MailV1MailGetMailRaw")]
+        public void MailEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("MarketV1GetMarketGroupInformationRaw")]
         public void MarketEndpoints(string endpoint)
         {

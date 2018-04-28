@@ -539,6 +539,17 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
+        #endregion
+
+        #region Contracts
+
+        private static string ContractsV1GetCharactersContractsRaw => "/v1/characters/{character_id}/contracts/";
+
+        public static string ContractsV1GetCharactersContracts(int characterId, int page)
+        {
+            return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
         #endregion 
 
         #region Mail

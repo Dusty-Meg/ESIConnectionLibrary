@@ -51,15 +51,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -80,7 +97,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return await _cache.GetOrAddAsync($"{address}{data}",async () => await client.UploadStringTaskAsync(url, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                string reply = await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(url, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+
+                return reply;
             }
             catch (WebException e)
             {
@@ -95,15 +114,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
-                        }
-                        catch (Exception) {}
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception) { }
+
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -137,15 +173,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -179,15 +232,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -220,15 +290,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -277,15 +364,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -318,15 +422,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -375,15 +496,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -414,15 +552,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -471,15 +626,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -510,15 +682,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;
@@ -567,15 +756,32 @@ namespace ESIConnectionLibrary.Internal_classes
                         string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
                         string errorMessage = string.Empty;
 
+                        string abTest = string.Empty;
+
+                        WebHeaderCollection returnHeaders = webResponse.Headers;
+
                         try
                         {
                             EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
 
                             errorMessage = error.Error;
+
+                            if (returnHeaders != null)
+                            {
+                                for (int i = 0; i < returnHeaders.Count; i++)
+                                {
+                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+
+                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
+                                    {
+                                        abTest = returnHeaders.Get(i);
+                                    }
+                                }
+                            }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
                 }
 
                 throw;

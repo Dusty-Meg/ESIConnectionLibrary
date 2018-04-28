@@ -548,12 +548,16 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string MailV1MailGetCharactersMail(int characterId, int lastMailId)
         {
+            if (lastMailId == 0)
+            {
+                return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString());
+            }
             return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
         }
 
         public static string MailV1MailGetMail(int characterId, int mailId)
         {
-            return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+            return UrlBuilder(MailV1MailGetMailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
         }
 
         #endregion 

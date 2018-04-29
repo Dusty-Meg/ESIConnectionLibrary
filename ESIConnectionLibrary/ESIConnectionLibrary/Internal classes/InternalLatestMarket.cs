@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
@@ -38,6 +37,62 @@ namespace ESIConnectionLibrary.Internal_classes
             }
 
             return (int)(todaysDT - now).TotalSeconds;
+        }
+
+        public IList<V2MarketCharactersOrders> GetCharactersMarketOrders(SsoToken token, int characterId)
+        {
+            StaticMethods.CheckToken(token, MarketScopes.esi_markets_read_character_orders_v1);
+
+            string url = StaticConnectionStrings.MarketV2MarketCharactersOrders(characterId);
+
+            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 1200));
+
+            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw);
+
+            return _mapper.Map<IList<EsiV2MarketCharactersOrders>, IList<V2MarketCharactersOrders>>(esiV2MarketCharactersOrders);
+        }
+
+        public async Task<IList<V2MarketCharactersOrders>> GetCharactersMarketOrdersAsync(SsoToken token, int characterId)
+        {
+            StaticMethods.CheckToken(token, MarketScopes.esi_markets_read_character_orders_v1);
+
+            string url = StaticConnectionStrings.MarketV2MarketCharactersOrders(characterId);
+
+            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 1200));
+
+            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw);
+
+            return _mapper.Map<IList<EsiV2MarketCharactersOrders>, IList<V2MarketCharactersOrders>>(esiV2MarketCharactersOrders);
+        }
+
+        public PagedModel<V1MarketCharacterHistoricOrders> GetCharactersMarketHistoricOrders(SsoToken token, int characterId, int page)
+        {
+            StaticMethods.CheckToken(token, MarketScopes.esi_markets_read_character_orders_v1);
+
+            string url = StaticConnectionStrings.MarketV1MarketCharactersHistoricOrders(characterId, page);
+
+            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 1200));
+
+            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Response);
+
+            IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
+
+            return new PagedModel<V1MarketCharacterHistoricOrders>{ Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+        }
+
+        public async Task<PagedModel<V1MarketCharacterHistoricOrders>> GetCharactersMarketHistoricOrdersAsync(SsoToken token, int characterId, int page)
+        {
+            StaticMethods.CheckToken(token, MarketScopes.esi_markets_read_character_orders_v1);
+
+            string url = StaticConnectionStrings.MarketV1MarketCharactersHistoricOrders(characterId, page);
+
+            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 1200));
+
+            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Response);
+
+            IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
+
+            return new PagedModel<V1MarketCharacterHistoricOrders> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
         }
 
         public V1MarketGroupInformation GetMarketGroupInformation(int marketGroupId)

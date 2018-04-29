@@ -106,6 +106,8 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("MarketV2MarketCharactersOrdersRaw")]
+        [InlineData("MarketV1MarketCharactersHistoricOrdersRaw")]
         [InlineData("MarketV1GetMarketGroupInformationRaw")]
         public void MarketEndpoints(string endpoint)
         {

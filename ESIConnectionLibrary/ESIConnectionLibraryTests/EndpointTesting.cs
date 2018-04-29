@@ -163,5 +163,12 @@ namespace ESIConnectionLibraryTests
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
+
+        [Theory]
+        [InlineData("WalletV4CharactersWalletJournalRaw")]
+        public void WalletEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
     }
 }

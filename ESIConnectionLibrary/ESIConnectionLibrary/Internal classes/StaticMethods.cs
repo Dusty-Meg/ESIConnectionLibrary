@@ -547,7 +547,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string ContractsV1GetCharactersContracts(int characterId, int page)
         {
-            return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(ContractsV1GetCharactersContractsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         #endregion 
@@ -678,5 +678,16 @@ namespace ESIConnectionLibrary.Internal_classes
         }
 
         #endregion
+
+        #region Wallet
+
+        private static string WalletV4CharactersWalletJournalRaw => "/v4/characters/{character_id}/wallet/journal/";
+
+        public static string WalletV4CharactersWalletJournal(int characterId, int page)
+        {
+            return UrlBuilder(WalletV4CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        #endregion 
     }
 }

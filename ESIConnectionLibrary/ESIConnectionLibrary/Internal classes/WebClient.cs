@@ -5,9 +5,7 @@ using System.Net.Cache;
 using System.Threading.Tasks;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
-using ESIConnectionLibrary.PublicModels;
 using LazyCache;
-using Microsoft.CSharp.RuntimeBinder;
 using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.Internal_classes
@@ -66,17 +64,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -129,17 +122,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -188,17 +176,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -247,17 +230,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest} . Data: {data}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
                 }
 
                 throw;
@@ -305,17 +283,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -379,17 +352,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -437,17 +405,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -511,17 +474,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -567,17 +525,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -641,17 +594,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -697,17 +645,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;
@@ -771,17 +714,12 @@ namespace ESIConnectionLibrary.Internal_classes
                                 for (int i = 0; i < returnHeaders.Count; i++)
                                 {
                                     abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-
-                                    if (returnHeaders.GetKey(i) == "X-Esi-Ab-Test")
-                                    {
-                                        abTest = returnHeaders.Get(i);
-                                    }
                                 }
                             }
                         }
                         catch (Exception) { }
 
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : AB test = {abTest}", e);
+                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
                 }
 
                 throw;

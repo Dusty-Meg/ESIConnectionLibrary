@@ -22,5 +22,15 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return await _internalLatestWallet.GetCharactersWalletJournalAsync(token, characterId, page);
         }
+
+        public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int characterId, int lastTransactionId)
+        {
+            return _internalLatestWallet.GetCharactersWalletTransaction(token, characterId, lastTransactionId);
+        }
+
+        public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int characterId, int lastTransactionId)
+        {
+            return await _internalLatestWallet.GetCharactersWalletTransactionAsync(token, characterId, lastTransactionId);
+        }
     }
 }

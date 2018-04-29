@@ -682,10 +682,20 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Wallet
 
         private static string WalletV4CharactersWalletJournalRaw => "/v4/characters/{character_id}/wallet/journal/";
+        private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
 
         public static string WalletV4CharactersWalletJournal(int characterId, int page)
         {
             return UrlBuilder(WalletV4CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string WalletV4CharactersWalletTransaction(int characterId, int lastTransactionId)
+        {
+            if (lastTransactionId == 0)
+            {
+                return UrlBuilder(WalletV4CharactersWalletTransactionRaw, "{character_id}", characterId.ToString());
+            }
+            return UrlBuilder(WalletV4CharactersWalletTransactionRaw, "{character_id}", characterId.ToString()) + $"?from_id={lastTransactionId}";
         }
 
         #endregion 

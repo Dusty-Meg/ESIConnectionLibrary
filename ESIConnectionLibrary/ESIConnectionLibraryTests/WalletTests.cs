@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 using Moq;
@@ -64,6 +66,74 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(WalletContextIdType.contract_id, getCharactersWalletJournal.Model[0].ContextIdType);
             Assert.Equal(-100000, getCharactersWalletJournal.Model[0].Amount);
             Assert.Equal(500000.4316, getCharactersWalletJournal.Model[0].Balance);
+        }
+
+        [Fact]
+        public void GetCharactersWalletTransaction_successfully_returns_a_pagedModelWalletCharacterTransaction()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            int lastId = 1;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getWalletTransactionJson = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
+
+            PagedJson pagedJson = new PagedJson { Response = getWalletTransactionJson };
+
+            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = internalLatestWallet.GetCharactersWalletTransaction(inputToken, characterId, lastId);
+
+            Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
+            Assert.Equal(1, getCharactersWalletTransactions.Model.Count);
+            Assert.Equal(54321, getCharactersWalletTransactions.Model[0].ClientId);
+            Assert.Equal(new DateTime(2016,10,24,09,00,00), getCharactersWalletTransactions.Model[0].Date);
+            Assert.True(getCharactersWalletTransactions.Model[0].IsBuy);
+            Assert.True(getCharactersWalletTransactions.Model[0].IsPersonal);
+            Assert.Equal(67890, getCharactersWalletTransactions.Model[0].JournalRefId);
+            Assert.Equal(60014719, getCharactersWalletTransactions.Model[0].LocationId);
+            Assert.Equal(1, getCharactersWalletTransactions.Model[0].Quantity);
+            Assert.Equal(1234567890, getCharactersWalletTransactions.Model[0].TransactionId);
+            Assert.Equal(587, getCharactersWalletTransactions.Model[0].TypeId);
+            Assert.Equal(1, getCharactersWalletTransactions.Model[0].UnitPrice);
+        }
+
+        [Fact]
+        public async Task GetCharactersWalletTransactionAsync_successfully_returns_a_pagedModelWalletCharacterTransaction()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            int lastId = 1;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getWalletTransactionJson = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
+
+            PagedJson pagedJson = new PagedJson { Response = getWalletTransactionJson };
+
+            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = await internalLatestWallet.GetCharactersWalletTransactionAsync(inputToken, characterId, lastId);
+
+            Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
+            Assert.Equal(1, getCharactersWalletTransactions.Model.Count);
+            Assert.Equal(54321, getCharactersWalletTransactions.Model[0].ClientId);
+            Assert.Equal(new DateTime(2016, 10, 24, 09, 00, 00), getCharactersWalletTransactions.Model[0].Date);
+            Assert.True(getCharactersWalletTransactions.Model[0].IsBuy);
+            Assert.True(getCharactersWalletTransactions.Model[0].IsPersonal);
+            Assert.Equal(67890, getCharactersWalletTransactions.Model[0].JournalRefId);
+            Assert.Equal(60014719, getCharactersWalletTransactions.Model[0].LocationId);
+            Assert.Equal(1, getCharactersWalletTransactions.Model[0].Quantity);
+            Assert.Equal(1234567890, getCharactersWalletTransactions.Model[0].TransactionId);
+            Assert.Equal(587, getCharactersWalletTransactions.Model[0].TypeId);
+            Assert.Equal(1, getCharactersWalletTransactions.Model[0].UnitPrice);
         }
     }
 }

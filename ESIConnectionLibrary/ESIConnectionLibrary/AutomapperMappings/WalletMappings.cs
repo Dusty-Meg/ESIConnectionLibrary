@@ -9,6 +9,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
         public WalletMappings()
         {
             CreateMap<EsiV4WalletCharacterJournal, V4WalletCharacterJournal>();
+            CreateMap<EsiV1WalletCharacterTransactions, V1WalletCharacterTransactions>();
         }
     }
 }

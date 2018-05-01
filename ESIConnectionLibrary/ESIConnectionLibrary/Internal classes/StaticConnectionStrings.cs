@@ -355,11 +355,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Corporations
 
-        private static string CorporationsGetRolesRaw => "/v1/corporations/{corporation_id}/roles/";
+        private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
+        private static string CorporationV1CorporationRolesRaw => "/v1/corporations/{corporation_id}/roles/";
+        private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
 
-        public static string CorporationsGetRoles(long corporationId)
+        public static string CorporationV1CorporationMemberTitles(long corporationId)
         {
-            return UrlBuilder(CorporationsGetRolesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV1CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string CorporationV1CorporationRoles(long corporationId)
+        {
+            return UrlBuilder(CorporationV1CorporationRolesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string CorporationV1CorporationTitles(long corporationId)
+        {
+            return UrlBuilder(CorporationV1CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
         }
 
         #endregion

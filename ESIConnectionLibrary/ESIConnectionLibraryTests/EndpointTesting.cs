@@ -145,7 +145,9 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("CorporationsGetRolesRaw")]
+        [InlineData("CorporationV1CorporationMemberTitlesRaw")]
+        [InlineData("CorporationV1CorporationRolesRaw")]
+        [InlineData("CorporationV1CorporationTitlesRaw")]
         public void CorporationsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);

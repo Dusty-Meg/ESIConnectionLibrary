@@ -11,6 +11,48 @@ namespace ESIConnectionLibraryTests
     public class WalletTests
     {
         [Fact]
+        public void GetCharactersWallet_successfully_returns_a_double()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            int page = 1;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getWalletJournalJson = "29500.01";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getWalletJournalJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            double getCharactersWallet = internalLatestWallet.GetCharactersWallet(inputToken, characterId);
+
+            Assert.Equal(29500.01, getCharactersWallet);
+        }
+
+        [Fact]
+        public async Task GetCharactersWalletAsync_successfully_returns_a_double()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            int page = 1;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getWalletJournalJson = "29500.01";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getWalletJournalJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            double getCharactersWallet = await internalLatestWallet.GetCharactersWalletAsync(inputToken, characterId);
+
+            Assert.Equal(29500.01, getCharactersWallet);
+        }
+
+        [Fact]
         public void GetCharactersWalletJournal_successfully_returns_a_pagedModelWalletCharacterJournal()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();

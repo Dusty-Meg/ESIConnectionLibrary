@@ -24,6 +24,28 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
+        public double GetCharactersWallet(SsoToken token, int characterId)
+        {
+            StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
+
+            string url = StaticConnectionStrings.WalletV1CharactersWallet(characterId);
+
+            string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+
+            return JsonConvert.DeserializeObject<double>(raw);
+        }
+
+        public async Task<double> GetCharactersWalletAsync(SsoToken token, int characterId)
+        {
+            StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
+
+            string url = StaticConnectionStrings.WalletV1CharactersWallet(characterId);
+
+            string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+
+            return JsonConvert.DeserializeObject<double>(raw);
+        }
+
         public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int characterId, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);

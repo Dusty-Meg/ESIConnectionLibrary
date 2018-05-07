@@ -429,8 +429,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Wallet
 
+        private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";
         private static string WalletV4CharactersWalletJournalRaw => "/v4/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
+
+        public static string WalletV1CharactersWallet(int characterId)
+        {
+            return UrlBuilder(WalletV1CharactersWalletRaw, "{character_id}", characterId.ToString());
+        }
 
         public static string WalletV4CharactersWalletJournal(int characterId, int page)
         {

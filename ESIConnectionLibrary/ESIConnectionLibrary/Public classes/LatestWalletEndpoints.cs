@@ -13,6 +13,16 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWallet = new InternalLatestWallet(null, userAgent);
         }
 
+        public double GetCharactersWallet(SsoToken token, int characterId)
+        {
+            return _internalLatestWallet.GetCharactersWallet(token, characterId);
+        }
+
+        public async Task<double> GetCharactersWalletAsync(SsoToken token, int characterId)
+        {
+            return await _internalLatestWallet.GetCharactersWalletAsync(token, characterId);
+        }
+
         public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int characterId, int page)
         {
             return _internalLatestWallet.GetCharactersWalletJournal(token, characterId, page);

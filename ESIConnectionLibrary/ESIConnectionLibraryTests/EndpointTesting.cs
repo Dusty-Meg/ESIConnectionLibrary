@@ -178,6 +178,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("WalletV1CharactersWalletRaw")]
         [InlineData("WalletV4CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
         public void WalletEndpoints(string endpoint)

@@ -145,6 +145,15 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("LocationV1LocationCharacterLocationRaw")]
+        [InlineData("LocationV2LocationCharacterOnlineRaw")]
+        [InlineData("LocationV1LocationCharacterShipRaw")]
+        public void LocationEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("CorporationV1CorporationMemberTitlesRaw")]
         [InlineData("CorporationV1CorporationRolesRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]

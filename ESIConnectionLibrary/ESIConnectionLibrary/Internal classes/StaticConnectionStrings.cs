@@ -353,6 +353,29 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region location
+
+        private static string LocationV1LocationCharacterLocationRaw => "/v1/characters/{character_id}/location/";
+        private static string LocationV2LocationCharacterOnlineRaw => "/v2/characters/{character_id}/online/";
+        private static string LocationV1LocationCharacterShipRaw => "/v1/characters/{character_id}/ship/";
+
+        public static string LocationV1LocationCharacterLocation(int characterId)
+        {
+            return UrlBuilder(LocationV1LocationCharacterLocationRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string LocationV2LocationCharacterOnline(int characterId)
+        {
+            return UrlBuilder(LocationV2LocationCharacterOnlineRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string LocationV1LocationCharacterShip(int characterId)
+        {
+            return UrlBuilder(LocationV1LocationCharacterShipRaw, "{character_id}", characterId.ToString());
+        }
+
+        #endregion
+
         #region Corporations
 
         private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";

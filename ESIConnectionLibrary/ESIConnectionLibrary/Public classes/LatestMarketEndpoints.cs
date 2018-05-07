@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 
@@ -26,11 +27,21 @@ namespace ESIConnectionLibrary.Public_classes
 
         public PagedModel<V1MarketCharacterHistoricOrders> GetCharactersMarketHistoricOrders(SsoToken token, int characterId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return _internalLatestMarket.GetCharactersMarketHistoricOrders(token, characterId, page);
         }
 
         public async Task<PagedModel<V1MarketCharacterHistoricOrders>> GetCharactersMarketHistoricOrdersAsync(SsoToken token, int characterId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return await _internalLatestMarket.GetCharactersMarketHistoricOrdersAsync(token, characterId, page);
         }
 

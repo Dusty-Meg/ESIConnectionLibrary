@@ -29,7 +29,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2SkillQueueSkill> GetSkillQueue(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skillqueue_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skillqueue_v1);
 
             string url = StaticConnectionStrings.SkillsSkillQueue(token.CharacterId);
 
@@ -42,7 +42,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2SkillQueueSkill>> GetSkillQueueAsync(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skillqueue_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skillqueue_v1);
 
             string url = StaticConnectionStrings.SkillsSkillQueue(token.CharacterId);
 
@@ -55,7 +55,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V4Skills GetSkills(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skills_v1);
 
             string url = StaticConnectionStrings.SkillsSkills(token.CharacterId);
 
@@ -68,7 +68,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V4Skills> GetSkillsAsync(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skills_v1);
 
             string url = StaticConnectionStrings.SkillsSkills(token.CharacterId);
 
@@ -81,7 +81,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1Attributes GetAttributes(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skills_v1);
 
             string url = StaticConnectionStrings.SkillsAttributes(token.CharacterId);
 
@@ -94,7 +94,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1Attributes> GetAttributesAsync(SsoToken token)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_skills_read_skills_v1);
+            StaticMethods.CheckToken(token, SkillScopes.esi_skills_read_skills_v1);
 
             string url = StaticConnectionStrings.SkillsAttributes(token.CharacterId);
 

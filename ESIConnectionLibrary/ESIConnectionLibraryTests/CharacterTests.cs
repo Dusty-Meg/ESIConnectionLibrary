@@ -58,9 +58,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_agents_research_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersResearchAgentsJson = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersResearchAgentsJson);
@@ -80,9 +80,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_agents_research_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersResearchAgentsJson = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersResearchAgentsJson);
@@ -102,9 +102,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_blueprints_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_blueprints_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersBlueprintJson = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersBlueprintJson);
@@ -125,9 +125,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_blueprints_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_blueprints_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersBlueprintJson = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersBlueprintJson);
@@ -140,58 +140,6 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1000000010495, getCharactersBlueprint.First().ItemId);
             Assert.Equal(LocationFlagCharacter.Hangar, getCharactersBlueprint.First().LocationFlag);
             Assert.Equal(-1, getCharactersBlueprint.First().Runs);
-        }
-
-        [Fact]
-        public void GetCharactersChatChannels_successfully_returns_a_list_of_charactersChatChannels()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_chat_channels_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
-            string getCharactersChatChannelsJson = "[{\"channel_id\": -69329950,\"name\": \"Players\' Haven\",\"owner_id\": 95578451,\"comparison_key\": \"players\'haven\",\"has_password\": false,\"motd\": \"<b>Feed pineapples to the cats!</b>\",\"allowed\": [],\"operators\": [],\"blocked\": [],\"muted\": []}]";
-
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersChatChannelsJson);
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersChatChannels> getCharactersChatChannels = internalLatestCharacter.GetCharactersChatChannels(inputToken, characterId);
-
-            Assert.Equal(1, getCharactersChatChannels.Count);
-            Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.False(getCharactersChatChannels.First().HasPassword);
-            Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Muted.Count);
-        }
-
-        [Fact]
-        public async Task GetCharactersChatChannelsAsync_successfully_returns_a_list_of_charactersChatChannels()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_chat_channels_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
-            string getCharactersChatChannelsJson = "[{\"channel_id\": -69329950,\"name\": \"Players\' Haven\",\"owner_id\": 95578451,\"comparison_key\": \"players\'haven\",\"has_password\": false,\"motd\": \"<b>Feed pineapples to the cats!</b>\",\"allowed\": [],\"operators\": [],\"blocked\": [],\"muted\": []}]";
-
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersChatChannelsJson);
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersChatChannels> getCharactersChatChannels = await internalLatestCharacter.GetCharactersChatChannelsAsync(inputToken, characterId);
-
-            Assert.Equal(1, getCharactersChatChannels.Count);
-            Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.False(getCharactersChatChannels.First().HasPassword);
-            Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Muted.Count);
         }
 
         [Fact]
@@ -242,10 +190,10 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_contacts_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_contacts_v1;
             IList<int> characters = new List<int>(2);
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersCspaCostJson = "2950";
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersCspaCostJson);
@@ -263,10 +211,10 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_contacts_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_contacts_v1;
             IList<int> characters = new List<int>(2);
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersCspaCostJson = "2950";
 
             mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersCspaCostJson);
@@ -284,9 +232,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_fatigue_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersFatigueJson = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersFatigueJson);
@@ -306,9 +254,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_fatigue_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersFatigueJson = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersFatigueJson);
@@ -328,9 +276,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_medals_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersMedalsJson = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersMedalsJson);
@@ -356,9 +304,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_medals_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersMedalsJson = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersMedalsJson);
@@ -384,9 +332,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_notifications_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersNotificationsJson = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersNotificationsJson);
@@ -409,9 +357,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_notifications_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersNotificationsJson = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersNotificationsJson);
@@ -434,9 +382,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_notifications_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersNotificationsContactsJson = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersNotificationsContactsJson);
@@ -458,9 +406,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_notifications_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersNotificationsContactsJson = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersNotificationsContactsJson);
@@ -524,9 +472,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_corporation_roles_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersRolesJson = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersRolesJson);
@@ -549,9 +497,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_corporation_roles_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersRolesJson = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersRolesJson);
@@ -574,9 +522,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_standings_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_standings_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersStandingsJson = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersStandingsJson);
@@ -599,9 +547,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_standings_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_standings_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersStandingsJson = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersStandingsJson);
@@ -624,9 +572,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characterstats_read_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersStatsJson = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersStatsJson);
@@ -649,9 +597,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characterstats_read_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersStatsJson = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersStatsJson);
@@ -674,9 +622,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_titles_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersTitlesJson = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersTitlesJson);
@@ -696,9 +644,9 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 88823;
-            Scopes scopes = Scopes.esi_characters_read_titles_v1;
+            CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
 
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, ScopesFlags = scopes };
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
             string getCharactersTitlesJson = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersTitlesJson);

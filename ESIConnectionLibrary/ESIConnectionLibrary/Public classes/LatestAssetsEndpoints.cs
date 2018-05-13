@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 
@@ -16,11 +17,21 @@ namespace ESIConnectionLibrary.Public_classes
 
         public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int characterId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return _internalLatestAssets.GetCharactersAssets(token, characterId, page);
         }
 
         public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int characterId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return await _internalLatestAssets.GetCharactersAssetsAsync(token, characterId, page);
         }
 
@@ -46,11 +57,21 @@ namespace ESIConnectionLibrary.Public_classes
 
         public PagedModel<V2GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return _internalLatestAssets.GetCorporationsAssets(token, corporationId, page);
         }
 
         public async Task<PagedModel<V2GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
         {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
             return await _internalLatestAssets.GetCorporationsAssetsAsync(token, corporationId, page);
         }
 

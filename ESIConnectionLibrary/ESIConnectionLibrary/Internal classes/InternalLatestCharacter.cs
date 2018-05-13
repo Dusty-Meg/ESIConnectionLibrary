@@ -49,7 +49,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CharactersResearchAgents> GetCharactersResearchAgents(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_agents_research_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersResearchAgents(characterId);
 
@@ -62,7 +62,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CharactersResearchAgents>> GetCharactersResearchAgentsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_agents_research_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersResearchAgents(characterId);
 
@@ -75,7 +75,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2CharactersBlueprints> GetCharactersBlueprint(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_blueprints_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersBlueprints(characterId);
 
@@ -88,7 +88,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2CharactersBlueprints>> GetCharactersBlueprintAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_blueprints_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersBlueprints(characterId);
 
@@ -97,32 +97,6 @@ namespace ESIConnectionLibrary.Internal_classes
             IList<EsiV2CharactersBlueprints> esiv2CharactersBlueprints = JsonConvert.DeserializeObject<IList<EsiV2CharactersBlueprints>>(esiRaw);
 
             return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
-        }
-
-        public IList<V1CharactersChatChannels> GetCharactersChatChannels(SsoToken token, int characterId)
-        {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_chat_channels_v1);
-
-            string url = StaticConnectionStrings.EsiV1CharactersChatChannels(characterId);
-
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
-
-            IList<EsiV1CharactersChatChannels> esiV1ChatChannels = JsonConvert.DeserializeObject<IList<EsiV1CharactersChatChannels>>(esiRaw);
-
-            return _mapper.Map<IList<EsiV1CharactersChatChannels>, IList<V1CharactersChatChannels>>(esiV1ChatChannels);
-        }
-
-        public async Task<IList<V1CharactersChatChannels>> GetCharactersChatChannelsAsync(SsoToken token, int characterId)
-        {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_chat_channels_v1);
-
-            string url = StaticConnectionStrings.EsiV1CharactersChatChannels(characterId);
-
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
-
-            IList<EsiV1CharactersChatChannels> esiV1ChatChannels = JsonConvert.DeserializeObject<IList<EsiV1CharactersChatChannels>>(esiRaw);
-
-            return _mapper.Map<IList<EsiV1CharactersChatChannels>, IList<V1CharactersChatChannels>>(esiV1ChatChannels);
         }
 
         public IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId)
@@ -149,7 +123,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public float GetCharactersCspaCost(SsoToken token, int characterId, IList<int> characters)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_contacts_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
             string url = StaticConnectionStrings.EsiV4CharactersCspa(characterId);
 
@@ -164,7 +138,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<float> GetCharactersCspaCostAsync(SsoToken token, int characterId, IList<int> characters)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_contacts_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
             string url = StaticConnectionStrings.EsiV4CharactersCspa(characterId);
 
@@ -179,7 +153,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1CharactersFatigue GetCharactersFatigue(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_fatigue_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersFatigue(characterId);
 
@@ -192,7 +166,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1CharactersFatigue> GetCharactersFatigueAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_fatigue_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersFatigue(characterId);
 
@@ -205,7 +179,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CharactersMedals> GetCharactersMedals(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_medals_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersMedals(characterId);
 
@@ -218,7 +192,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CharactersMedals>> GetCharactersMedalsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_medals_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersMedals(characterId);
 
@@ -231,7 +205,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2CharactersNotifications> GetCharactersNotifications(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_notifications_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersNotifications(characterId);
 
@@ -244,7 +218,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_notifications_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersNotifications(characterId);
 
@@ -257,7 +231,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CharactersNotificationsContacts> GetCharactersNotificationsContacts(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_notifications_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersNotificationsContacts(characterId);
 
@@ -270,7 +244,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CharactersNotificationsContacts>> GetCharactersNotificationsContactsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_notifications_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
             string url = StaticConnectionStrings.EsiV1CharactersNotificationsContacts(characterId);
 
@@ -305,7 +279,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V2CharacterRoles GetCharactersRoles(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_corporation_roles_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
             string url = StaticConnectionStrings.EsiV2CharacterRoles(characterId);
 
@@ -318,7 +292,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V2CharacterRoles> GetCharactersRolesAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_corporation_roles_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
             string url = StaticConnectionStrings.EsiV2CharacterRoles(characterId);
 
@@ -331,7 +305,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2CharactersStandings> GetCharactersStandings(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_standings_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_standings_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersStandings(characterId);
 
@@ -344,7 +318,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2CharactersStandings>> GetCharactersStandingsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_standings_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_standings_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersStandings(characterId);
 
@@ -357,7 +331,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2CharactersStats> GetCharactersStats(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characterstats_read_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characterstats_read_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersStats(characterId);
 
@@ -370,7 +344,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2CharactersStats>> GetCharactersStatsAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characterstats_read_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characterstats_read_v1);
 
             string url = StaticConnectionStrings.EsiV2CharactersStats(characterId);
 
@@ -383,7 +357,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1CharacterTitles> GetCharactersTitles(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_titles_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
             string url = StaticConnectionStrings.EsiV1CharacterTitles(characterId);
 
@@ -396,7 +370,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1CharacterTitles>> GetCharactersTitlesAsync(SsoToken token, int characterId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_characters_read_titles_v1);
+            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
             string url = StaticConnectionStrings.EsiV1CharacterTitles(characterId);
 

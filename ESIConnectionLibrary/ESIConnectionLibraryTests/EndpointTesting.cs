@@ -64,7 +64,6 @@ namespace ESIConnectionLibraryTests
         [InlineData("EsiV4CharactersPublicInfoRaw")]
         [InlineData("EsiV1CharactersResearchAgentsRaw")]
         [InlineData("EsiV2CharactersBlueprintsRaw")]
-        [InlineData("EsiV1CharactersChatChannelsRaw")]
         [InlineData("EsiV1CharactersCorporationHistoryRaw")]
         [InlineData("EsiV4CharactersCspaRaw")]
         [InlineData("EsiV1CharactersFatigueRaw")]
@@ -79,6 +78,37 @@ namespace ESIConnectionLibraryTests
         [InlineData("EsiV1CharacterAffiliationsRaw")]
         [InlineData("EsiV1CharactersNamesRaw")]
         public void CharacterEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("ContactsV1GetCharactersContactsRaw")]
+        public void ContactsEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("ContractsV1GetCharactersContractsRaw")]
+        public void ContractsEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("MailV1MailGetCharactersMailRaw")]
+        [InlineData("MailV1MailGetMailRaw")]
+        public void MailEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("MarketV2MarketCharactersOrdersRaw")]
+        [InlineData("MarketV1MarketCharactersHistoricOrdersRaw")]
+        [InlineData("MarketV1GetMarketGroupInformationRaw")]
+        public void MarketEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
@@ -114,7 +144,18 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("CorporationsGetRolesRaw")]
+        [InlineData("LocationV1LocationCharacterLocationRaw")]
+        [InlineData("LocationV2LocationCharacterOnlineRaw")]
+        [InlineData("LocationV1LocationCharacterShipRaw")]
+        public void LocationEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("CorporationV1CorporationMemberTitlesRaw")]
+        [InlineData("CorporationV1CorporationRolesRaw")]
+        [InlineData("CorporationV1CorporationTitlesRaw")]
         public void CorporationsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
@@ -131,6 +172,15 @@ namespace ESIConnectionLibraryTests
         [InlineData("UniverseNamesRaw")]
         [InlineData("UniverseGetTypeRaw")]
         public void UniverseEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("WalletV1CharactersWalletRaw")]
+        [InlineData("WalletV4CharactersWalletJournalRaw")]
+        [InlineData("WalletV4CharactersWalletTransactionRaw")]
+        public void WalletEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }

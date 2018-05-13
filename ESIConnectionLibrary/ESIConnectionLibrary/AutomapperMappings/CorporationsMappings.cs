@@ -9,6 +9,8 @@ namespace ESIConnectionLibrary.AutomapperMappings
         public CorporationRolesMappings()
         {
             CreateMap<EsiV1CorporationsRoles, V1CorporationsRoles>();
+            CreateMap<EsiV1CorporationTitles, V1CorporationTitles>();
+            CreateMap<EsiV1CorporationMemberTitle, V1CorporationMemberTitle>();
         }
     }
 }

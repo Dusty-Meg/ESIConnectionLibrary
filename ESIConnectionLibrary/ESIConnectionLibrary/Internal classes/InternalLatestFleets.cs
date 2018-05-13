@@ -25,7 +25,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1GetFleet GetFleet(SsoToken token, long fleetId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_fleets_read_fleet_v1);
+            StaticMethods.CheckToken(token, FleetScopes.esi_fleets_read_fleet_v1);
 
             string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 
@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1GetFleet> GetFleetAsync(SsoToken token, long fleetId)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_fleets_read_fleet_v1);
+            StaticMethods.CheckToken(token, FleetScopes.esi_fleets_read_fleet_v1);
 
             string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 

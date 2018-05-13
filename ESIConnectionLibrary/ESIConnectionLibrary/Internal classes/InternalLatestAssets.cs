@@ -28,7 +28,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int characterId, int page)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(characterId, page);
 
@@ -43,7 +43,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int characterId, int page)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(characterId, page);
 
@@ -58,7 +58,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, int characterId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(characterId);
 
@@ -73,7 +73,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, int characterId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(characterId);
 
@@ -88,7 +88,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, int characterId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(characterId);
 
@@ -103,7 +103,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, int characterId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(characterId);
 
@@ -118,7 +118,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public PagedModel<V2GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCorporationsAssets(corporationId, page);
 
@@ -133,7 +133,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<PagedModel<V2GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCorporationsAssets(corporationId, page);
 
@@ -148,7 +148,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2GetCorporationsAssetsLocations> GetCorporationsAssetsLocations(SsoToken token, int corporationId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId);
 
@@ -163,7 +163,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2GetCorporationsAssetsLocations>> GetCorporationsAssetsLocationsAsync(SsoToken token, int corporationId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId);
 
@@ -178,7 +178,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1GetCorporationsAssetsNames> GetCorporationsAssetsNames(SsoToken token, int corporationId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId);
 
@@ -193,7 +193,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1GetCorporationsAssetsNames>> GetCorporationsAssetsNamesAsync(SsoToken token, int corporationId, IList<long> ids)
         {
-            StaticMethods.CheckToken(token, Scopes.esi_assets_read_corporation_assets_v1);
+            StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
             string url = StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId);
 

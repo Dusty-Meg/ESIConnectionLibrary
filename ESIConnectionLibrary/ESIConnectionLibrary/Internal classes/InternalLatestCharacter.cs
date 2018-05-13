@@ -99,32 +99,6 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
         }
 
-        public IList<V1CharactersChatChannels> GetCharactersChatChannels(SsoToken token, int characterId)
-        {
-            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_chat_channels_v1);
-
-            string url = StaticConnectionStrings.EsiV1CharactersChatChannels(characterId);
-
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
-
-            IList<EsiV1CharactersChatChannels> esiV1ChatChannels = JsonConvert.DeserializeObject<IList<EsiV1CharactersChatChannels>>(esiRaw);
-
-            return _mapper.Map<IList<EsiV1CharactersChatChannels>, IList<V1CharactersChatChannels>>(esiV1ChatChannels);
-        }
-
-        public async Task<IList<V1CharactersChatChannels>> GetCharactersChatChannelsAsync(SsoToken token, int characterId)
-        {
-            StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_chat_channels_v1);
-
-            string url = StaticConnectionStrings.EsiV1CharactersChatChannels(characterId);
-
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
-
-            IList<EsiV1CharactersChatChannels> esiV1ChatChannels = JsonConvert.DeserializeObject<IList<EsiV1CharactersChatChannels>>(esiRaw);
-
-            return _mapper.Map<IList<EsiV1CharactersChatChannels>, IList<V1CharactersChatChannels>>(esiV1ChatChannels);
-        }
-
         public IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId)
         {
             string url = StaticConnectionStrings.EsiV1CharactersCorporationHistory(characterId);

@@ -143,58 +143,6 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetCharactersChatChannels_successfully_returns_a_list_of_charactersChatChannels()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characters_read_chat_channels_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersChatChannelsJson = "[{\"channel_id\": -69329950,\"name\": \"Players\' Haven\",\"owner_id\": 95578451,\"comparison_key\": \"players\'haven\",\"has_password\": false,\"motd\": \"<b>Feed pineapples to the cats!</b>\",\"allowed\": [],\"operators\": [],\"blocked\": [],\"muted\": []}]";
-
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersChatChannelsJson);
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersChatChannels> getCharactersChatChannels = internalLatestCharacter.GetCharactersChatChannels(inputToken, characterId);
-
-            Assert.Equal(1, getCharactersChatChannels.Count);
-            Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.False(getCharactersChatChannels.First().HasPassword);
-            Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Muted.Count);
-        }
-
-        [Fact]
-        public async Task GetCharactersChatChannelsAsync_successfully_returns_a_list_of_charactersChatChannels()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characters_read_chat_channels_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersChatChannelsJson = "[{\"channel_id\": -69329950,\"name\": \"Players\' Haven\",\"owner_id\": 95578451,\"comparison_key\": \"players\'haven\",\"has_password\": false,\"motd\": \"<b>Feed pineapples to the cats!</b>\",\"allowed\": [],\"operators\": [],\"blocked\": [],\"muted\": []}]";
-
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersChatChannelsJson);
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersChatChannels> getCharactersChatChannels = await internalLatestCharacter.GetCharactersChatChannelsAsync(inputToken, characterId);
-
-            Assert.Equal(1, getCharactersChatChannels.Count);
-            Assert.Equal(-69329950, getCharactersChatChannels.First().ChannelId);
-            Assert.False(getCharactersChatChannels.First().HasPassword);
-            Assert.Equal(0, getCharactersChatChannels.First().Allowed.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Operators.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Blocked.Count);
-            Assert.Equal(0, getCharactersChatChannels.First().Muted.Count);
-        }
-
-        [Fact]
         public void GetCharactersCorporationHistory_successfully_returns_a_list_of_charactersCorporationHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();

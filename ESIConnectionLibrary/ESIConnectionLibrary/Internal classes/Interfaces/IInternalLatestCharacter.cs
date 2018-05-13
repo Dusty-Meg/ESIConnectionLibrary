@@ -10,8 +10,6 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<IList<V1CharacterAffiliations>> GetCharactersAffiliationAsync(IList<int> characters);
         IList<V2CharactersBlueprints> GetCharactersBlueprint(SsoToken token, int characterId);
         Task<IList<V2CharactersBlueprints>> GetCharactersBlueprintAsync(SsoToken token, int characterId);
-        IList<V1CharactersChatChannels> GetCharactersChatChannels(SsoToken token, int characterId);
-        Task<IList<V1CharactersChatChannels>> GetCharactersChatChannelsAsync(SsoToken token, int characterId);
         IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId);
         Task<IList<V1CharactersCorporationHistory>> GetCharactersCorporationHistoryAsync(int characterId);
         float GetCharactersCspaCost(SsoToken token, int characterId, IList<int> characters);

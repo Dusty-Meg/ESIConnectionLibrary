@@ -44,16 +44,6 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.GetCharactersBlueprintAsync(token, characterId);
         }
 
-        public IList<V1CharactersChatChannels> GetCharactersChatChannels(SsoToken token, int characterId)
-        {
-            return _internalLatestCharacter.GetCharactersChatChannels(token, characterId);
-        }
-
-        public async Task<IList<V1CharactersChatChannels>> GetCharactersChatChannelsAsync(SsoToken token, int characterId)
-        {
-            return await _internalLatestCharacter.GetCharactersChatChannelsAsync(token, characterId);
-        }
-
         public IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId)
         {
             return _internalLatestCharacter.GetCharactersCorporationHistory(characterId);

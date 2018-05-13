@@ -10,11 +10,6 @@ namespace ESIConnectionLibrary.AutomapperMappings
         {
             CreateMap<EsiV1CharacterAffiliations, V1CharacterAffiliations>();
             CreateMap<EsiV1CharactersAssetsNames, V1CharactersAssetsNames>();
-            CreateMap<EsiV1CharactersChatChannels, V1CharactersChatChannels>();
-            CreateMap<EsiV1CharactersChatChannelsAllowed, V1CharactersChatChannelsAllowed>();
-            CreateMap<EsiV1CharactersChatChannelsBlocked, V1CharactersChatChannelsBlocked>();
-            CreateMap<EsiV1CharactersChatChannelsMuted, V1CharactersChatChannelsMuted>();
-            CreateMap<EsiV1CharactersChatChannelsOperators, V1CharactersChatChannelsOperators>();
             CreateMap<EsiV1CharactersCorporationHistory, V1CharactersCorporationHistory>();
             CreateMap<EsiV1CharactersFatigue, V1CharactersFatigue>();
             CreateMap<EsiV1CharactersMedals, V1CharactersMedals>();

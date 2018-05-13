@@ -5,11 +5,11 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class LatestCharacter : ILatestCharacter
+    public class LatestCharacterEndpoints : ILatestCharacterEndpoints
     {
         private readonly IInternalLatestCharacter _internalLatestCharacter;
 
-        public LatestCharacter(string userAgent)
+        public LatestCharacterEndpoints(string userAgent)
         {
             _internalLatestCharacter = new InternalLatestCharacter(null, userAgent);
         }

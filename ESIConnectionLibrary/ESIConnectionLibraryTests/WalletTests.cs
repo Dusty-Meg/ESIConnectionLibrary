@@ -16,7 +16,6 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 98772;
-            int page = 1;
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
@@ -37,7 +36,6 @@ namespace ESIConnectionLibraryTests
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
             int characterId = 98772;
-            int page = 1;
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };

@@ -4,7 +4,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public interface ILatestCharacter
+    public interface ILatestCharacterEndpoints
     {
         IList<V1CharacterAffiliations> GetCharactersAffiliation(IList<int> characters);
         Task<IList<V1CharacterAffiliations>> GetCharactersAffiliationAsync(IList<int> characters);

@@ -303,17 +303,17 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
         private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
 
-        public static string SkillsSkills(long characterId)
+        public static string SkillsSkills(int characterId)
         {
             return UrlBuilder(SkillsSkillsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string SkillsAttributes(long characterId)
+        public static string SkillsAttributes(int characterId)
         {
             return UrlBuilder(SkillsAttributesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string SkillsSkillQueue(long characterId)
+        public static string SkillsSkillQueue(int characterId)
         {
             return UrlBuilder(SkillsSkillQueueRaw, "{character_id}", characterId.ToString());
         }
@@ -324,7 +324,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
 
-        public static string IndustryCharacterJobs(long characterId, bool includeCompletedJobs)
+        public static string IndustryCharacterJobs(int characterId, bool includeCompletedJobs)
         {
             return $"{UrlBuilder(IndustryCharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
         }

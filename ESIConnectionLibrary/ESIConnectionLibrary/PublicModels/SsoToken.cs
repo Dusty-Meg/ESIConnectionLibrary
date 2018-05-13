@@ -9,7 +9,7 @@ namespace ESIConnectionLibrary.PublicModels
         public DateTime ExpiresIn { get; set; }
         public string RefreshToken { get; set; }
 
-        public long CharacterId { get; set; }
+        public int CharacterId { get; set; }
         public string CharacterName { get; set; }
         public TokenType TokenType { get; set; }
 

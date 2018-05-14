@@ -67,7 +67,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.GetCharactersResearchAgents(inputToken, characterId);
+            IList<V1CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.GetCharactersResearchAgents(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);
@@ -89,7 +89,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.GetCharactersResearchAgentsAsync(inputToken, characterId);
+            IList<V1CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.GetCharactersResearchAgentsAsync(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);
@@ -111,7 +111,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersBlueprints> getCharactersBlueprint = internalLatestCharacter.GetCharactersBlueprint(inputToken, characterId);
+            IList<V2CharactersBlueprints> getCharactersBlueprint = internalLatestCharacter.GetCharactersBlueprint(inputToken);
 
             Assert.Equal(1, getCharactersBlueprint.Count);
             Assert.Equal(1000000010495, getCharactersBlueprint.First().ItemId);
@@ -134,7 +134,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersBlueprints> getCharactersBlueprint = await internalLatestCharacter.GetCharactersBlueprintAsync(inputToken, characterId);
+            IList<V2CharactersBlueprints> getCharactersBlueprint = await internalLatestCharacter.GetCharactersBlueprintAsync(inputToken);
 
             Assert.Equal(1, getCharactersBlueprint.Count);
             Assert.Equal(1000000010495, getCharactersBlueprint.First().ItemId);
@@ -200,7 +200,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            float getCharactersCspaCost = internalLatestCharacter.GetCharactersCspaCost(inputToken, characterId, characters);
+            float getCharactersCspaCost = internalLatestCharacter.GetCharactersCspaCost(inputToken, characters);
 
             Assert.Equal(2950, getCharactersCspaCost);
         }
@@ -221,7 +221,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            float getCharactersCspaCost = await internalLatestCharacter.GetCharactersCspaCostAsync(inputToken, characterId, characters);
+            float getCharactersCspaCost = await internalLatestCharacter.GetCharactersCspaCostAsync(inputToken, characters);
 
             Assert.Equal(2950, getCharactersCspaCost);
         }
@@ -241,7 +241,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V1CharactersFatigue getCharactersFatigue = internalLatestCharacter.GetCharactersFatigue(inputToken, characterId);
+            V1CharactersFatigue getCharactersFatigue = internalLatestCharacter.GetCharactersFatigue(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);
@@ -263,7 +263,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V1CharactersFatigue getCharactersFatigue = await internalLatestCharacter.GetCharactersFatigueAsync(inputToken, characterId);
+            V1CharactersFatigue getCharactersFatigue = await internalLatestCharacter.GetCharactersFatigueAsync(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);
@@ -285,7 +285,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersMedals> getCharactersMedals = internalLatestCharacter.GetCharactersMedals(inputToken, characterId);
+            IList<V1CharactersMedals> getCharactersMedals = internalLatestCharacter.GetCharactersMedals(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
@@ -313,7 +313,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersMedals> getCharactersMedals = await internalLatestCharacter.GetCharactersMedalsAsync(inputToken, characterId);
+            IList<V1CharactersMedals> getCharactersMedals = await internalLatestCharacter.GetCharactersMedalsAsync(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
@@ -341,7 +341,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersNotifications> getCharactersNotifications = internalLatestCharacter.GetCharactersNotifications(inputToken, characterId);
+            IList<V2CharactersNotifications> getCharactersNotifications = internalLatestCharacter.GetCharactersNotifications(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
@@ -366,7 +366,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.GetCharactersNotificationsAsync(inputToken, characterId);
+            IList<V2CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.GetCharactersNotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
@@ -391,7 +391,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.GetCharactersNotificationsContacts(inputToken, characterId);
+            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.GetCharactersNotificationsContacts(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);
@@ -415,7 +415,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.GetCharactersNotificationsContactsAsync(inputToken, characterId);
+            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.GetCharactersNotificationsContactsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);
@@ -481,7 +481,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V2CharacterRoles getCharactersRoles = internalLatestCharacter.GetCharactersRoles(inputToken, characterId);
+            V2CharacterRoles getCharactersRoles = internalLatestCharacter.GetCharactersRoles(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
@@ -506,7 +506,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V2CharacterRoles getCharactersRoles = await internalLatestCharacter.GetCharactersRolesAsync(inputToken, characterId);
+            V2CharacterRoles getCharactersRoles = await internalLatestCharacter.GetCharactersRolesAsync(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
@@ -531,7 +531,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersStandings> getCharactersStandings = internalLatestCharacter.GetCharactersStandings(inputToken, characterId);
+            IList<V2CharactersStandings> getCharactersStandings = internalLatestCharacter.GetCharactersStandings(inputToken);
 
             Assert.Equal(3, getCharactersStandings.Count);
             Assert.Equal(3009841, getCharactersStandings.First().FromId);
@@ -556,7 +556,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersStandings> getCharactersStandings = await internalLatestCharacter.GetCharactersStandingsAsync(inputToken, characterId);
+            IList<V2CharactersStandings> getCharactersStandings = await internalLatestCharacter.GetCharactersStandingsAsync(inputToken);
 
             Assert.Equal(3, getCharactersStandings.Count);
             Assert.Equal(3009841, getCharactersStandings.First().FromId);
@@ -581,7 +581,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersStats> getCharactersStats = internalLatestCharacter.GetCharactersStats(inputToken, characterId);
+            IList<V2CharactersStats> getCharactersStats = internalLatestCharacter.GetCharactersStats(inputToken);
 
             Assert.Equal(2, getCharactersStats.Count);
             Assert.Equal(2014, getCharactersStats.First().Year);
@@ -606,7 +606,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersStats> getCharactersStats = await internalLatestCharacter.GetCharactersStatsAsync(inputToken, characterId);
+            IList<V2CharactersStats> getCharactersStats = await internalLatestCharacter.GetCharactersStatsAsync(inputToken);
 
             Assert.Equal(2, getCharactersStats.Count);
             Assert.Equal(2014, getCharactersStats.First().Year);
@@ -631,7 +631,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharacterTitles> getCharactersTitles = internalLatestCharacter.GetCharactersTitles(inputToken, characterId);
+            IList<V1CharacterTitles> getCharactersTitles = internalLatestCharacter.GetCharactersTitles(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);
@@ -653,7 +653,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharacterTitles> getCharactersTitles = await internalLatestCharacter.GetCharactersTitlesAsync(inputToken, characterId);
+            IList<V1CharacterTitles> getCharactersTitles = await internalLatestCharacter.GetCharactersTitlesAsync(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);

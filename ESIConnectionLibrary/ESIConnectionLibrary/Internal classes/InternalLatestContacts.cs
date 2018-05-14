@@ -24,11 +24,11 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
-        public PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int characterId, int page)
+        public PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(characterId, page);
+            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
 
             PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -39,11 +39,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1ContactsGetContacts>{Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
         }
 
-        public async Task<PagedModel<V1ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V1ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(characterId, page);
+            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
 
             PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 300));
 

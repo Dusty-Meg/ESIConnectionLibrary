@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMail internalLatestMail = new InternalLatestMail(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1MailGetCharactersMail> getCharacterMail = internalLatestMail.GetCharactersMail(inputToken, characterId, lastId);
+            PagedModel<V1MailGetCharactersMail> getCharacterMail = internalLatestMail.GetCharactersMail(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
             Assert.Equal(MailRecipientType.character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
@@ -52,7 +52,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMail internalLatestMail = new InternalLatestMail(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1MailGetCharactersMail> getCharacterMail = await internalLatestMail.GetCharactersMailAsync(inputToken, characterId, lastId);
+            PagedModel<V1MailGetCharactersMail> getCharacterMail = await internalLatestMail.GetCharactersMailAsync(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
             Assert.Equal(MailRecipientType.character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
@@ -75,7 +75,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMail internalLatestMail = new InternalLatestMail(mockedWebClient.Object, string.Empty);
 
-            V1MailGetMail getMail = internalLatestMail.GetMail(inputToken, characterId, mailId);
+            V1MailGetMail getMail = internalLatestMail.GetMail(inputToken, mailId);
 
             Assert.Equal(90000001, getMail.From);
             Assert.Equal(2, getMail.Labels.Count);
@@ -98,7 +98,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMail internalLatestMail = new InternalLatestMail(mockedWebClient.Object, string.Empty);
 
-            V1MailGetMail getMail = await internalLatestMail.GetMailAsync(inputToken, characterId, mailId);
+            V1MailGetMail getMail = await internalLatestMail.GetMailAsync(inputToken, mailId);
 
             Assert.Equal(90000001, getMail.From);
             Assert.Equal(2, getMail.Labels.Count);

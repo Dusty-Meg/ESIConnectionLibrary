@@ -24,11 +24,11 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
-        public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int characterId, int lastMailId)
+        public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId)
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(characterId, lastMailId);
+            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
 
             PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -39,11 +39,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1MailGetCharactersMail> {Model = mapped, CurrentPage = lastMailId};
         }
 
-        public async Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int characterId, int lastMailId)
+        public async Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int lastMailId)
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(characterId, lastMailId);
+            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
 
             PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -54,11 +54,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1MailGetCharactersMail> { Model = mapped, CurrentPage = lastMailId };
         }
 
-        public V1MailGetMail GetMail(SsoToken token, int characterId, int mailId)
+        public V1MailGetMail GetMail(SsoToken token, int mailId)
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetMail(characterId, mailId);
+            string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
 
             string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -67,11 +67,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1MailGetMail, V1MailGetMail>(esiGetMail);
         }
 
-        public async Task<V1MailGetMail> GetMailAsync(SsoToken token, int characterId, int mailId)
+        public async Task<V1MailGetMail> GetMailAsync(SsoToken token, int mailId)
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetMail(characterId, mailId);
+            string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
 
             string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
 

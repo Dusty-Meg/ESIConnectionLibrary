@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3GetCharacterAssets> getCharacterAssets = internalLatestAssets.GetCharactersAssets(inputToken, characterId, page);
+            PagedModel<V3GetCharacterAssets> getCharacterAssets = internalLatestAssets.GetCharactersAssets(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -52,7 +52,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = internalLatestAssets.GetCharactersAssetsLocations(inputToken, characterId, ids);
+            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = internalLatestAssets.GetCharactersAssetsLocations(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsLocations.Count);
             Assert.Equal(12345, getCharactersAssetsLocations.First().ItemId);
@@ -74,7 +74,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = internalLatestAssets.GetCharactersAssetsNames(inputToken, characterId, ids);
+            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = internalLatestAssets.GetCharactersAssetsNames(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsNames.Count);
             Assert.Equal(12345, getCharactersAssetsNames.First().ItemId);

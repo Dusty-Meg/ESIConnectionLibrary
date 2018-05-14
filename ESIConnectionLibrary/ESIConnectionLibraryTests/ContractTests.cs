@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContracts internalLatestContracts = new InternalLatestContracts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContractsCharacterContracts> getCharactersContracts = internalLatestContracts.GetCharactersContracts(inputToken, characterId, page);
+            PagedModel<V1ContractsCharacterContracts> getCharactersContracts = internalLatestContracts.GetCharactersContracts(inputToken, page);
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
             Assert.Equal(2, getCharactersContracts.MaxPages);
@@ -58,7 +58,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContracts internalLatestContracts = new InternalLatestContracts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContractsCharacterContracts> getCharactersContracts = await internalLatestContracts.GetCharactersContractsAsync(inputToken, characterId, page);
+            PagedModel<V1ContractsCharacterContracts> getCharactersContracts = await internalLatestContracts.GetCharactersContractsAsync(inputToken, page);
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
             Assert.Equal(2, getCharactersContracts.MaxPages);

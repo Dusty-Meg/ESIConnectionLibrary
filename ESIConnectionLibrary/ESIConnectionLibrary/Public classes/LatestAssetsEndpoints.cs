@@ -15,44 +15,44 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAssets = new InternalLatestAssets(null, userAgent);
         }
 
-        public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int characterId, int page)
+        public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestAssets.GetCharactersAssets(token, characterId, page);
+            return _internalLatestAssets.GetCharactersAssets(token, page);
         }
 
-        public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestAssets.GetCharactersAssetsAsync(token, characterId, page);
+            return await _internalLatestAssets.GetCharactersAssetsAsync(token, page);
         }
 
-        public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, int characterId, IList<long> ids)
+        public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, IList<long> ids)
         {
-            return _internalLatestAssets.GetCharactersAssetsLocations(token, characterId, ids);
+            return _internalLatestAssets.GetCharactersAssetsLocations(token, ids);
         }
 
-        public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, int characterId, IList<long> ids)
+        public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCharactersAssetsLocationsAsync(token, characterId, ids);
+            return await _internalLatestAssets.GetCharactersAssetsLocationsAsync(token, ids);
         }
 
-        public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, int characterId, IList<long> ids)
+        public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, IList<long> ids)
         {
-            return _internalLatestAssets.GetCharactersAssetsNames(token, characterId, ids);
+            return _internalLatestAssets.GetCharactersAssetsNames(token, ids);
         }
 
-        public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, int characterId, IList<long> ids)
+        public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCharactersAssetsNamesAsync(token, characterId, ids);
+            return await _internalLatestAssets.GetCharactersAssetsNamesAsync(token, ids);
         }
 
         public PagedModel<V2GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)

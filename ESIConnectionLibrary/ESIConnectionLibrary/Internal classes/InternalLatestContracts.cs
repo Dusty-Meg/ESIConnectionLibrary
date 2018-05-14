@@ -26,11 +26,11 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
-        public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int characterId, int page)
+        public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, ContractScopes.esi_contracts_read_character_contracts_v1);
 
-            string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(characterId, page);
+            string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
             PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -41,11 +41,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1ContractsCharacterContracts> {Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
         }
 
-        public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, ContractScopes.esi_contracts_read_character_contracts_v1);
 
-            string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(characterId, page);
+            string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
             PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 300));
 

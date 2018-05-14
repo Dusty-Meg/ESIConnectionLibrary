@@ -5,7 +5,7 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestContractEndpoints
     {
-        PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int characterId, int page);
-        Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int characterId, int page);
+        PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page);
+        Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page);
     }
 }

@@ -23,11 +23,11 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
-        public V1LocationCharacterLocation GetCharacterLocation(SsoToken token, int characterId)
+        public V1LocationCharacterLocation GetCharacterLocation(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_location_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(characterId);
+            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
 
             string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -36,11 +36,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1LocationCharacterLocation, V1LocationCharacterLocation>(esiLocation);
         }
 
-        public async Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token, int characterId)
+        public async Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_location_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(characterId);
+            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
 
             string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -49,11 +49,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1LocationCharacterLocation, V1LocationCharacterLocation>(esiLocation);
         }
 
-        public V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token, int characterId)
+        public V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_online_v1);
 
-            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(characterId);
+            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
 
             string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 60));
 
@@ -62,11 +62,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2LocationCharacterOnline, V2LocationCharacterOnline>(esiLocation);
         }
 
-        public async Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token, int characterId)
+        public async Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_online_v1);
 
-            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(characterId);
+            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
 
             string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 60));
 
@@ -75,11 +75,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2LocationCharacterOnline, V2LocationCharacterOnline>(esiLocation);
         }
 
-        public V1LocationCharacterShip GetCharacterShip(SsoToken token, int characterId)
+        public V1LocationCharacterShip GetCharacterShip(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_ship_type_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(characterId);
+            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
 
             string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -88,11 +88,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1LocationCharacterShip, V1LocationCharacterShip>(esiLocation);
         }
 
-        public async Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token, int characterId)
+        public async Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_ship_type_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(characterId);
+            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
 
             string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 

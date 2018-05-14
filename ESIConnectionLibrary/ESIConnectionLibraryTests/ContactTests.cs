@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, characterId, page);
+            PagedModel<V1ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);
@@ -55,7 +55,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, characterId, page);
+            PagedModel<V1ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);

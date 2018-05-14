@@ -25,7 +25,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            double getCharactersWallet = internalLatestWallet.GetCharactersWallet(inputToken, characterId);
+            double getCharactersWallet = internalLatestWallet.GetCharactersWallet(inputToken);
 
             Assert.Equal(29500.01, getCharactersWallet);
         }
@@ -45,7 +45,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            double getCharactersWallet = await internalLatestWallet.GetCharactersWalletAsync(inputToken, characterId);
+            double getCharactersWallet = await internalLatestWallet.GetCharactersWalletAsync(inputToken);
 
             Assert.Equal(29500.01, getCharactersWallet);
         }
@@ -68,7 +68,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.GetCharactersWalletJournal(inputToken, characterId, page);
+            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.GetCharactersWalletJournal(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
@@ -97,7 +97,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.GetCharactersWalletJournalAsync(inputToken, characterId, page);
+            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.GetCharactersWalletJournalAsync(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
@@ -126,7 +126,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = internalLatestWallet.GetCharactersWalletTransaction(inputToken, characterId, lastId);
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = internalLatestWallet.GetCharactersWalletTransaction(inputToken, lastId);
 
             Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
             Assert.Equal(1, getCharactersWalletTransactions.Model.Count);
@@ -160,7 +160,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = await internalLatestWallet.GetCharactersWalletTransactionAsync(inputToken, characterId, lastId);
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = await internalLatestWallet.GetCharactersWalletTransactionAsync(inputToken, lastId);
 
             Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
             Assert.Equal(1, getCharactersWalletTransactions.Model.Count);

@@ -13,34 +13,34 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestLocation = new InternalLatestLocation(null, userAgent);
         }
 
-        public V1LocationCharacterLocation GetCharacterLocation(SsoToken token, int characterId)
+        public V1LocationCharacterLocation GetCharacterLocation(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterLocation(token, characterId);
+            return _internalLatestLocation.GetCharacterLocation(token);
         }
 
-        public async Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token, int characterId)
+        public async Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterLocationAsync(token, characterId);
+            return await _internalLatestLocation.GetCharacterLocationAsync(token);
         }
 
-        public V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token, int characterId)
+        public V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterOnlineStatus(token, characterId);
+            return _internalLatestLocation.GetCharacterOnlineStatus(token);
         }
 
-        public async Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token, int characterId)
+        public async Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterOnlineStatusAsync(token, characterId);
+            return await _internalLatestLocation.GetCharacterOnlineStatusAsync(token);
         }
 
-        public V1LocationCharacterShip GetCharacterShip(SsoToken token, int characterId)
+        public V1LocationCharacterShip GetCharacterShip(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterShip(token, characterId);
+            return _internalLatestLocation.GetCharacterShip(token);
         }
 
-        public async Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token, int characterId)
+        public async Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterShipAsync(token, characterId);
+            return await _internalLatestLocation.GetCharacterShipAsync(token);
         }
     }
 }

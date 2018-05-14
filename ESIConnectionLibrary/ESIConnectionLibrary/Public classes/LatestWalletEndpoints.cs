@@ -14,44 +14,44 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWallet = new InternalLatestWallet(null, userAgent);
         }
 
-        public double GetCharactersWallet(SsoToken token, int characterId)
+        public double GetCharactersWallet(SsoToken token)
         {
-            return _internalLatestWallet.GetCharactersWallet(token, characterId);
+            return _internalLatestWallet.GetCharactersWallet(token);
         }
 
-        public async Task<double> GetCharactersWalletAsync(SsoToken token, int characterId)
+        public async Task<double> GetCharactersWalletAsync(SsoToken token)
         {
-            return await _internalLatestWallet.GetCharactersWalletAsync(token, characterId);
+            return await _internalLatestWallet.GetCharactersWalletAsync(token);
         }
 
-        public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int characterId, int page)
+        public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestWallet.GetCharactersWalletJournal(token, characterId, page);
+            return _internalLatestWallet.GetCharactersWalletJournal(token, page);
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestWallet.GetCharactersWalletJournalAsync(token, characterId, page);
+            return await _internalLatestWallet.GetCharactersWalletJournalAsync(token, page);
         }
 
-        public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int characterId, int lastTransactionId)
+        public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int lastTransactionId)
         {
-            return _internalLatestWallet.GetCharactersWalletTransaction(token, characterId, lastTransactionId);
+            return _internalLatestWallet.GetCharactersWalletTransaction(token, lastTransactionId);
         }
 
-        public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int characterId, int lastTransactionId)
+        public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId)
         {
-            return await _internalLatestWallet.GetCharactersWalletTransactionAsync(token, characterId, lastTransactionId);
+            return await _internalLatestWallet.GetCharactersWalletTransactionAsync(token, lastTransactionId);
         }
     }
 }

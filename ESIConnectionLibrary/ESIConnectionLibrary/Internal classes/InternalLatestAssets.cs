@@ -26,11 +26,11 @@ namespace ESIConnectionLibrary.Internal_classes
             _mapper = new Mapper(provider);
         }
 
-        public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int characterId, int page)
+        public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(characterId, page);
+            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
 
             PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -41,11 +41,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V3GetCharacterAssets>{Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
         }
 
-        public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(characterId, page);
+            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
 
             PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -56,11 +56,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V3GetCharacterAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
         }
 
-        public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, int characterId, IList<long> ids)
+        public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, IList<long> ids)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(characterId);
+            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -71,11 +71,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2GetCharactersAssetsLocations>, IList<V2GetCharactersAssetsLocations>>(esiAssetsLocations);
         }
 
-        public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, int characterId, IList<long> ids)
+        public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, IList<long> ids)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(characterId);
+            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -86,11 +86,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2GetCharactersAssetsLocations>, IList<V2GetCharactersAssetsLocations>>(esiAssetsLocations);
         }
 
-        public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, int characterId, IList<long> ids)
+        public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, IList<long> ids)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(characterId);
+            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -101,11 +101,11 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersAssetsNames>, IList<V1GetCharactersAssetsNames>>(esiAssetsNames);
         }
 
-        public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, int characterId, IList<long> ids)
+        public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, IList<long> ids)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(characterId);
+            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 

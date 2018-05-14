@@ -70,7 +70,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
-            IList<V2MarketCharactersOrders> getCharactersMarketOrders = internalLatestMarket.GetCharactersMarketOrders(inputToken, characterId);
+            IList<V2MarketCharactersOrders> getCharactersMarketOrders = internalLatestMarket.GetCharactersMarketOrders(inputToken);
 
             Assert.Equal(1, getCharactersMarketOrders.Count);
             Assert.Equal(30, getCharactersMarketOrders[0].Duration);
@@ -104,7 +104,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
-            IList<V2MarketCharactersOrders> getCharactersMarketOrders = await internalLatestMarket.GetCharactersMarketOrdersAsync(inputToken, characterId);
+            IList<V2MarketCharactersOrders> getCharactersMarketOrders = await internalLatestMarket.GetCharactersMarketOrdersAsync(inputToken);
 
             Assert.Equal(1, getCharactersMarketOrders.Count);
             Assert.Equal(30, getCharactersMarketOrders[0].Duration);
@@ -141,7 +141,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1MarketCharacterHistoricOrders> getCharacterHistoricOrders = internalLatestMarket.GetCharactersMarketHistoricOrders(inputToken, characterId, page);
+            PagedModel<V1MarketCharacterHistoricOrders> getCharacterHistoricOrders = internalLatestMarket.GetCharactersMarketHistoricOrders(inputToken, page);
 
             Assert.Equal(2, getCharacterHistoricOrders.MaxPages);
             Assert.Equal(1, getCharacterHistoricOrders.CurrentPage);
@@ -181,7 +181,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1MarketCharacterHistoricOrders> getCharacterHistoricOrders = await internalLatestMarket.GetCharactersMarketHistoricOrdersAsync(inputToken, characterId, page);
+            PagedModel<V1MarketCharacterHistoricOrders> getCharacterHistoricOrders = await internalLatestMarket.GetCharactersMarketHistoricOrdersAsync(inputToken, page);
 
             Assert.Equal(2, getCharacterHistoricOrders.MaxPages);
             Assert.Equal(1, getCharacterHistoricOrders.CurrentPage);

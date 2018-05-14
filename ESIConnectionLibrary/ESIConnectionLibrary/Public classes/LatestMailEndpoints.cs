@@ -13,24 +13,24 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestMail = new InternalLatestMail(null, userAgent);
         }
 
-        public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int characterId, int lastMailId)
+        public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId)
         {
-            return _internalLatestMail.GetCharactersMail(token, characterId, lastMailId);
+            return _internalLatestMail.GetCharactersMail(token, lastMailId);
         }
 
-        public async Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int characterId, int lastMailId)
+        public async Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int lastMailId)
         {
-            return await _internalLatestMail.GetCharactersMailAsync(token, characterId, lastMailId);
+            return await _internalLatestMail.GetCharactersMailAsync(token, lastMailId);
         }
 
-        public V1MailGetMail GetMail(SsoToken token, int characterId, int mailId)
+        public V1MailGetMail GetMail(SsoToken token, int mailId)
         {
-            return _internalLatestMail.GetMail(token, characterId, mailId);
+            return _internalLatestMail.GetMail(token, mailId);
         }
 
-        public async Task<V1MailGetMail> GetMailAsync(SsoToken token, int characterId, int mailId)
+        public async Task<V1MailGetMail> GetMailAsync(SsoToken token, int mailId)
         {
-            return await _internalLatestMail.GetMailAsync(token, characterId, mailId);
+            return await _internalLatestMail.GetMailAsync(token, mailId);
         }
     }
 }

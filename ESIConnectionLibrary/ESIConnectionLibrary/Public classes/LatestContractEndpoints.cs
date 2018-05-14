@@ -14,24 +14,24 @@ namespace ESIConnectionLibrary.Public_classes
          _internalLatestContracts = new InternalLatestContracts(null, userAgent);   
         }
 
-        public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int characterId, int page)
+        public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestContracts.GetCharactersContracts(token, characterId, page);
+            return _internalLatestContracts.GetCharactersContracts(token, page);
         }
 
-        public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestContracts.GetCharactersContractsAsync(token, characterId, page);
+            return await _internalLatestContracts.GetCharactersContractsAsync(token, page);
         }
     }
 }

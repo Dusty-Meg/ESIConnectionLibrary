@@ -15,34 +15,34 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestMarket = new InternalLatestMarket(null, userAgent);
         }
 
-        public IList<V2MarketCharactersOrders> GetCharactersMarketOrders(SsoToken token, int characterId)
+        public IList<V2MarketCharactersOrders> GetCharactersMarketOrders(SsoToken token)
         {
-            return _internalLatestMarket.GetCharactersMarketOrders(token, characterId);
+            return _internalLatestMarket.GetCharactersMarketOrders(token);
         }
 
-        public async Task<IList<V2MarketCharactersOrders>> GetCharactersMarketOrdersAsync(SsoToken token, int characterId)
+        public async Task<IList<V2MarketCharactersOrders>> GetCharactersMarketOrdersAsync(SsoToken token)
         {
-            return await _internalLatestMarket.GetCharactersMarketOrdersAsync(token, characterId);
+            return await _internalLatestMarket.GetCharactersMarketOrdersAsync(token);
         }
 
-        public PagedModel<V1MarketCharacterHistoricOrders> GetCharactersMarketHistoricOrders(SsoToken token, int characterId, int page)
+        public PagedModel<V1MarketCharacterHistoricOrders> GetCharactersMarketHistoricOrders(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestMarket.GetCharactersMarketHistoricOrders(token, characterId, page);
+            return _internalLatestMarket.GetCharactersMarketHistoricOrders(token, page);
         }
 
-        public async Task<PagedModel<V1MarketCharacterHistoricOrders>> GetCharactersMarketHistoricOrdersAsync(SsoToken token, int characterId, int page)
+        public async Task<PagedModel<V1MarketCharacterHistoricOrders>> GetCharactersMarketHistoricOrdersAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestMarket.GetCharactersMarketHistoricOrdersAsync(token, characterId, page);
+            return await _internalLatestMarket.GetCharactersMarketHistoricOrdersAsync(token, page);
         }
 
         public V1MarketGroupInformation GetMarketGroupInformation(int marketGroupId)

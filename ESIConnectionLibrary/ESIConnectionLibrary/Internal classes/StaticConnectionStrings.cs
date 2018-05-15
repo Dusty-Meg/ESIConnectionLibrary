@@ -499,5 +499,33 @@ namespace ESIConnectionLibrary.Internal_classes
         }
 
         #endregion 
+
+        #region Wars
+
+        private static string WarsV1WarsRaw => "/v1/wars/";
+        private static string WarsV1WarRaw => "/v1/wars/{war_id}/";
+        private static string WarsV1WarKillmailsRaw => "/v1/wars/{war_id}/killmails/";
+
+        public static string WarsV1Wars(int maxWarId)
+        {
+            if (maxWarId == 0)
+            {
+                return UrlBuilder(WarsV1WarsRaw);
+            }
+
+            return UrlBuilder(WarsV1WarsRaw) + $"?max_war_id={maxWarId}";
+        }
+
+        public static string WarsV1War(int warId)
+        {
+            return UrlBuilder(WarsV1WarRaw, "{war_id}", warId.ToString());
+        }
+
+        public static string WarsV1WarKillmails(int warId)
+        {
+            return UrlBuilder(WarsV1WarKillmailsRaw, "{war_id}", warId.ToString());
+        }
+
+        #endregion 
     }
 }

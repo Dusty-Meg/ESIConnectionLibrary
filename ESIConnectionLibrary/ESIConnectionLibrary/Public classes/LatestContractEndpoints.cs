@@ -11,7 +11,7 @@ namespace ESIConnectionLibrary.Public_classes
 
         public LatestContractEndpoints(string userAgent)
         {
-         _internalLatestContracts = new InternalLatestContracts(null, userAgent);   
+            _internalLatestContracts = new InternalLatestContracts(null, userAgent);   
         }
 
         public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page)

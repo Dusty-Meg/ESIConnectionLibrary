@@ -393,6 +393,35 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Clones
+
+        private static string PlanetaryInteractionV1CharactersPlanetsRaw => "/v1/characters/{character_id}/planets/";
+        private static string PlanetaryInteractionV3CharactersPlanetRaw => "/v3/characters/{character_id}/planets/{planet_id}/";
+        private static string PlanetaryInteractionV1CorporationsCustomsOfficesRaw => "/v1/corporations/{corporation_id}/customs_offices/";
+        private static string PlanetaryInteractionV1SchematicsRaw => "/v1/universe/schematics/{schematic_id}/";
+
+        public static string PlanetaryInteractionV1CharactersPlanets(int characterId)
+        {
+            return UrlBuilder(PlanetaryInteractionV1CharactersPlanetsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string PlanetaryInteractionV3CharactersPlanet(int characterId, int planetId)
+        {
+            return UrlBuilder(PlanetaryInteractionV3CharactersPlanetRaw, "{character_id}", characterId.ToString(), "{planet_id}", planetId.ToString());
+        }
+
+        public static string PlanetaryInteractionV1CorporationsCustomsOffices(int corporationId, int page)
+        {
+            return UrlBuilder(PlanetaryInteractionV1CorporationsCustomsOfficesRaw, "{corporation_id}", corporationId + $"?page={page}");
+        }
+
+        public static string PlanetaryInteractionV1Schematics(int schematicId)
+        {
+            return UrlBuilder(PlanetaryInteractionV1SchematicsRaw, "{schematic_id}", schematicId.ToString());
+        }
+
+        #endregion 
+
         #region Corporations
 
         private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";

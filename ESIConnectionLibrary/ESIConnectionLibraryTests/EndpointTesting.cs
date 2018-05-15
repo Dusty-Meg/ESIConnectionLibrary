@@ -161,6 +161,16 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("PlanetaryInteractionV1CharactersPlanetsRaw")]
+        [InlineData("PlanetaryInteractionV3CharactersPlanetRaw")]
+        [InlineData("PlanetaryInteractionV1CorporationsCustomsOfficesRaw")]
+        [InlineData("PlanetaryInteractionV1SchematicsRaw")]
+        public void PlanetaryInteractionEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("CorporationV1CorporationMemberTitlesRaw")]
         [InlineData("CorporationV1CorporationRolesRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]

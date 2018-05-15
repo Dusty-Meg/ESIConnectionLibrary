@@ -205,5 +205,14 @@ namespace ESIConnectionLibraryTests
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
         }
+
+        [Theory]
+        [InlineData("WarsV1WarsRaw")]
+        [InlineData("WarsV1WarRaw")]
+        [InlineData("WarsV1WarKillmailsRaw")]
+        public void WarsEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
     }
 }

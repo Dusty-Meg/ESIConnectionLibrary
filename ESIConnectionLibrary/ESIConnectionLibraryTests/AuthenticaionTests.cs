@@ -24,7 +24,7 @@ namespace ESIConnectionLibraryTests
             Guid userId = Guid.NewGuid();
 
             mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), "https://login.eveonline.com/oauth/token/", It.IsAny<string>(), It.IsAny<int>())).Returns(tokenJson);
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://esi.tech.ccp.is/verify/", It.IsAny<int>())).Returns(verifyJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), "https://esi.evetech.net/verify/", It.IsAny<int>())).Returns(verifyJson);
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 

@@ -35,7 +35,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return urlBuilder;
         }
 
-        private static string EsiBaseUrl => "https://esi.tech.ccp.is";
+        private static string EsiBaseUrl => "https://esi.evetech.net";
 
         #region Authentication
 
@@ -268,7 +268,97 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(ContractsV1GetCharactersContractsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
-        #endregion 
+        #endregion
+
+        #region Corporations
+
+        private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
+        private static string CorporationV1CorporationRolesRaw => "/v1/corporations/{corporation_id}/roles/";
+        private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
+
+        public static string CorporationV1CorporationMemberTitles(long corporationId)
+        {
+            return UrlBuilder(CorporationV1CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string CorporationV1CorporationRoles(long corporationId)
+        {
+            return UrlBuilder(CorporationV1CorporationRolesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string CorporationV1CorporationTitles(long corporationId)
+        {
+            return UrlBuilder(CorporationV1CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        #endregion
+
+        #region Fleets
+
+        private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";
+
+        public static string FleetsGetFleet(long fleetId)
+        {
+            return UrlBuilder(FleetsGetFleetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        #endregion
+
+        #region Industry
+
+        private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
+
+        public static string IndustryCharacterJobs(int characterId, bool includeCompletedJobs)
+        {
+            return $"{UrlBuilder(IndustryCharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
+        }
+
+        #endregion
+
+        #region Insurance
+
+        private static string InsuranceGetPricesRaw => "/v1/insurance/prices/";
+
+        public static string InsuranceGetPrices()
+        {
+            return UrlBuilder(InsuranceGetPricesRaw);
+        }
+
+        #endregion
+
+        #region Killmails
+
+        private static string KillmailsGetSingleKillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
+
+        public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
+        {
+            return UrlBuilder(KillmailsGetSingleKillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
+        }
+
+        #endregion
+
+        #region location
+
+        private static string LocationV1LocationCharacterLocationRaw => "/v1/characters/{character_id}/location/";
+        private static string LocationV2LocationCharacterOnlineRaw => "/v2/characters/{character_id}/online/";
+        private static string LocationV1LocationCharacterShipRaw => "/v1/characters/{character_id}/ship/";
+
+        public static string LocationV1LocationCharacterLocation(int characterId)
+        {
+            return UrlBuilder(LocationV1LocationCharacterLocationRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string LocationV2LocationCharacterOnline(int characterId)
+        {
+            return UrlBuilder(LocationV2LocationCharacterOnlineRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string LocationV1LocationCharacterShip(int characterId)
+        {
+            return UrlBuilder(LocationV1LocationCharacterShipRaw, "{character_id}", characterId.ToString());
+        }
+
+        #endregion
 
         #region Mail
 
@@ -314,86 +404,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
-        #region Skills
-
-        private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";
-        private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
-        private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
-
-        public static string SkillsSkills(int characterId)
-        {
-            return UrlBuilder(SkillsSkillsRaw, "{character_id}", characterId.ToString());
-        }
-
-        public static string SkillsAttributes(int characterId)
-        {
-            return UrlBuilder(SkillsAttributesRaw, "{character_id}", characterId.ToString());
-        }
-
-        public static string SkillsSkillQueue(int characterId)
-        {
-            return UrlBuilder(SkillsSkillQueueRaw, "{character_id}", characterId.ToString());
-        }
-
-        #endregion
-
-        #region Industry
-
-        private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
-
-        public static string IndustryCharacterJobs(int characterId, bool includeCompletedJobs)
-        {
-            return $"{UrlBuilder(IndustryCharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
-        }
-
-        #endregion
-
-        #region Fleets
-
-        private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";
-
-        public static string FleetsGetFleet(long fleetId)
-        {
-            return UrlBuilder(FleetsGetFleetRaw, "{fleet_id}", fleetId.ToString());
-        }
-
-        #endregion
-
-        #region Killmails
-
-        private static string KillmailsGetSingleKillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
-
-        public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
-        {
-            return UrlBuilder(KillmailsGetSingleKillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
-        }
-
-        #endregion
-
-        #region location
-
-        private static string LocationV1LocationCharacterLocationRaw => "/v1/characters/{character_id}/location/";
-        private static string LocationV2LocationCharacterOnlineRaw => "/v2/characters/{character_id}/online/";
-        private static string LocationV1LocationCharacterShipRaw => "/v1/characters/{character_id}/ship/";
-
-        public static string LocationV1LocationCharacterLocation(int characterId)
-        {
-            return UrlBuilder(LocationV1LocationCharacterLocationRaw, "{character_id}", characterId.ToString());
-        }
-
-        public static string LocationV2LocationCharacterOnline(int characterId)
-        {
-            return UrlBuilder(LocationV2LocationCharacterOnlineRaw, "{character_id}", characterId.ToString());
-        }
-
-        public static string LocationV1LocationCharacterShip(int characterId)
-        {
-            return UrlBuilder(LocationV1LocationCharacterShipRaw, "{character_id}", characterId.ToString());
-        }
-
-        #endregion
-
-        #region Clones
+        #region PlanetaryInteraction
 
         private static string PlanetaryInteractionV1CharactersPlanetsRaw => "/v1/characters/{character_id}/planets/";
         private static string PlanetaryInteractionV3CharactersPlanetRaw => "/v3/characters/{character_id}/planets/{planet_id}/";
@@ -420,38 +431,27 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(PlanetaryInteractionV1SchematicsRaw, "{schematic_id}", schematicId.ToString());
         }
 
-        #endregion 
-
-        #region Corporations
-
-        private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
-        private static string CorporationV1CorporationRolesRaw => "/v1/corporations/{corporation_id}/roles/";
-        private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
-
-        public static string CorporationV1CorporationMemberTitles(long corporationId)
-        {
-            return UrlBuilder(CorporationV1CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
-        }
-
-        public static string CorporationV1CorporationRoles(long corporationId)
-        {
-            return UrlBuilder(CorporationV1CorporationRolesRaw, "{corporation_id}", corporationId.ToString());
-        }
-
-        public static string CorporationV1CorporationTitles(long corporationId)
-        {
-            return UrlBuilder(CorporationV1CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
-        }
-
         #endregion
 
-        #region Insurance
+        #region Skills
 
-        private static string InsuranceGetPricesRaw => "/v1/insurance/prices/";
+        private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";
+        private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
+        private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
 
-        public static string InsuranceGetPrices()
+        public static string SkillsSkills(int characterId)
         {
-            return UrlBuilder(InsuranceGetPricesRaw);
+            return UrlBuilder(SkillsSkillsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string SkillsAttributes(int characterId)
+        {
+            return UrlBuilder(SkillsAttributesRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string SkillsSkillQueue(int characterId)
+        {
+            return UrlBuilder(SkillsSkillQueueRaw, "{character_id}", characterId.ToString());
         }
 
         #endregion

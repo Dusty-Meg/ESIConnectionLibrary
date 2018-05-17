@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
+using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
@@ -11,10 +13,69 @@ namespace ESIConnectionLibrary.Internal_classes
     internal class InternalAuthentication : IInternalAuthentication
     {
         private readonly IWebClient _webClient;
+        private readonly IMapper _mapper;
 
         public InternalAuthentication(IWebClient webClient, string userAgent)
         {
+            IConfigurationProvider provider = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AuthenticationMappings>();
+            });
+
             _webClient = webClient ?? new WebClient(userAgent);
+            _mapper = new Mapper(provider);
+        }
+
+        public void RevokeToken(string evessokey, string token, RevokeTokenType type)
+        {
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(evessokey))
+            {
+                throw new ESIException("Code or EVESSOKey is null or empty");
+            }
+
+            EsiRevokeTokenType mapperType = _mapper.Map<EsiRevokeTokenType>(type);
+
+            string ssoData = string.Empty;
+
+            switch (mapperType)
+            {
+                case EsiRevokeTokenType.accessToken:
+                    ssoData = "token_type_hint=access_token&token=";
+                    break;
+                case EsiRevokeTokenType.refreshToken:
+                    ssoData = "token_type_hint=refresh_token&token=";
+                    break;
+            }
+
+            ssoData += token;
+
+            RevokeOauthToken(evessokey, ssoData);
+        }
+
+        public async Task RevokeTokenAsync(string evessokey, string token, RevokeTokenType type)
+        {
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(evessokey))
+            {
+                throw new ESIException("Code or EVESSOKey is null or empty");
+            }
+
+            EsiRevokeTokenType mapperType = _mapper.Map<EsiRevokeTokenType>(type);
+
+            string ssoData = string.Empty;
+
+            switch (mapperType)
+            {
+                case EsiRevokeTokenType.accessToken:
+                    ssoData = "token_type_hint=access_token&token=";
+                    break;
+                case EsiRevokeTokenType.refreshToken:
+                    ssoData = "token_type_hint=refresh_token&token=";
+                    break;
+            }
+
+            ssoData += token;
+
+            await RevokeOauthTokenAsync(evessokey, ssoData);
         }
 
         public SsoToken MakeToken(string code, string evessokey, Guid userId)
@@ -133,6 +194,34 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
+        }
+
+        private void RevokeOauthToken(string eveSsoKey, string data)
+        {
+            string encodeString = Base64Encode(eveSsoKey);
+
+            WebHeaderCollection headers = new WebHeaderCollection()
+            {
+                [HttpRequestHeader.Authorization] = "Basic " + encodeString,
+                [HttpRequestHeader.ContentType] = StaticContentTypeHeader.ContentType,
+                [HttpRequestHeader.Host] = StaticHostHeader.Login,
+            };
+
+            PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/revoke", data));
+        }
+
+        private async Task RevokeOauthTokenAsync(string eveSsoKey, string data)
+        {
+            string encodeString = Base64Encode(eveSsoKey);
+
+            WebHeaderCollection headers = new WebHeaderCollection()
+            {
+                [HttpRequestHeader.Authorization] = "Basic " + encodeString,
+                [HttpRequestHeader.ContentType] = StaticContentTypeHeader.ContentType,
+                [HttpRequestHeader.Host] = StaticHostHeader.Login,
+            };
+
+            await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/revoke", data));
         }
 
         private OauthVerify GetOauthVerify(string accessToken)

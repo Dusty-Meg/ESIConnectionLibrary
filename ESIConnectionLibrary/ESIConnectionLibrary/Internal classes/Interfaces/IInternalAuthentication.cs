@@ -10,5 +10,7 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<SsoToken> MakeTokenAsync(string code, string evessokey, Guid userId);
         SsoToken RefreshToken(SsoToken token, string evessokey);
         Task<SsoToken> RefreshTokenAsync(SsoToken token, string evessokey);
+        void RevokeToken(string evessokey, string token, RevokeTokenType type);
+        Task RevokeTokenAsync(string evessokey, string token, RevokeTokenType type);
     }
 }

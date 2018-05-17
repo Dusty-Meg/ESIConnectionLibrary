@@ -43,5 +43,15 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return await _internalAuthentication.MakeTokenAsync(code, evessokey, userId);
         }
+
+        public void RevokeToken(string evessokey, string token, RevokeTokenType type)
+        {
+            _internalAuthentication.RevokeToken(evessokey, token, type);
+        }
+
+        public async Task RevokeTokenAsync(string evessokey, string token, RevokeTokenType type)
+        {
+            await _internalAuthentication.RevokeTokenAsync(evessokey, token, type);
+        }
     }
 }

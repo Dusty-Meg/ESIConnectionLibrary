@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using ESIConnectionLibrary.Internal_classes;
@@ -174,6 +175,176 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1234567890, getCharactersWalletTransactions.Model[0].TransactionId);
             Assert.Equal(587, getCharactersWalletTransactions.Model[0].TypeId);
             Assert.Equal(1, getCharactersWalletTransactions.Model[0].UnitPrice);
+        }
+
+        [Fact]
+        public void GetCorporationWallets_successfully_returns_a_listV1WalletCorporationWallet()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationWallets = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationWallets);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            IList<V1WalletCorporationWallet> getCorporationsWallets = internalLatestWallet.GetCorporationWallets(inputToken, 999);
+
+            Assert.Equal(7, getCorporationsWallets.Count);
+            Assert.Equal(123.45, getCorporationsWallets[0].Balance);
+            Assert.Equal(1, getCorporationsWallets[0].Division);
+            Assert.Equal(123.45, getCorporationsWallets[6].Balance);
+            Assert.Equal(7, getCorporationsWallets[6].Division);
+        }
+
+        [Fact]
+        public async Task GetCorporationWalletsAsync_successfully_returns_a_listV1WalletCorporationWallet()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationWallets = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCorporationWallets);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            IList<V1WalletCorporationWallet> getCorporationsWallets = await internalLatestWallet.GetCorporationWalletsAsync(inputToken, 999);
+
+            Assert.Equal(7, getCorporationsWallets.Count);
+            Assert.Equal(123.45, getCorporationsWallets[0].Balance);
+            Assert.Equal(1, getCorporationsWallets[0].Division);
+            Assert.Equal(123.45, getCorporationsWallets[6].Balance);
+            Assert.Equal(7, getCorporationsWallets[6].Division);
+        }
+
+        [Fact]
+        public void GetCorporationJournal_successfully_returns_a_listV3WalletCorporationJournal()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationJournal = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
+
+            PagedJson pagedJson = new PagedJson { Response = getCorporationJournal };
+
+            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            PagedModel<V3WalletCorporationJournal> getCorporationJournals = internalLatestWallet.GetCorporationJournal(inputToken, 999, 1, 1);
+
+            Assert.Equal(1, getCorporationJournals.Model.Count);
+            Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
+            Assert.Equal(100000, getCorporationJournals.Model[0].Balance);
+            Assert.Equal(2112625428, getCorporationJournals.Model[0].ContextId);
+            Assert.Equal(WalletContextIdType.character_id, getCorporationJournals.Model[0].ContextIdType);
+            Assert.Equal(new DateTime(2016,10,24,09,00,00), getCorporationJournals.Model[0].Date);
+            Assert.Equal("CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account", getCorporationJournals.Model[0].Description);
+            Assert.Equal(109299958, getCorporationJournals.Model[0].FirstPartyId);
+            Assert.Equal(1234567890, getCorporationJournals.Model[0].Id);
+            Assert.Equal(WalletRefType.corporation_account_withdrawal, getCorporationJournals.Model[0].RefType);
+            Assert.Equal(95538921, getCorporationJournals.Model[0].SecondPartyId);
+        }
+
+        [Fact]
+        public async Task GetCorporationJournalAsync_successfully_returns_a_listV3WalletCorporationJournal()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationJournal = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
+
+            PagedJson pagedJson = new PagedJson { Response = getCorporationJournal };
+
+            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            PagedModel<V3WalletCorporationJournal> getCorporationJournals = await internalLatestWallet.GetCorporationJournalAsync(inputToken, 999, 1, 1);
+
+            Assert.Equal(1, getCorporationJournals.Model.Count);
+            Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
+            Assert.Equal(100000, getCorporationJournals.Model[0].Balance);
+            Assert.Equal(2112625428, getCorporationJournals.Model[0].ContextId);
+            Assert.Equal(WalletContextIdType.character_id, getCorporationJournals.Model[0].ContextIdType);
+            Assert.Equal(new DateTime(2016, 10, 24, 09, 00, 00), getCorporationJournals.Model[0].Date);
+            Assert.Equal("CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account", getCorporationJournals.Model[0].Description);
+            Assert.Equal(109299958, getCorporationJournals.Model[0].FirstPartyId);
+            Assert.Equal(1234567890, getCorporationJournals.Model[0].Id);
+            Assert.Equal(WalletRefType.corporation_account_withdrawal, getCorporationJournals.Model[0].RefType);
+            Assert.Equal(95538921, getCorporationJournals.Model[0].SecondPartyId);
+        }
+
+        [Fact]
+        public void GetCorporationTransactions_successfully_returns_a_listV1WalletCharacterTransactions()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationTransactions = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
+
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationTransactions);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            IList<V1WalletCorporationTransactions> getCorporationJournals = internalLatestWallet.GetCorporationTransactions(inputToken, 999, 1, 1);
+
+            Assert.Equal(1, getCorporationJournals.Count);
+            Assert.Equal(54321, getCorporationJournals[0].ClientId);
+            Assert.Equal(new DateTime(2016, 10, 24, 09, 00, 00), getCorporationJournals[0].Date);
+            Assert.True(getCorporationJournals[0].IsBuy);
+            Assert.Equal(67890, getCorporationJournals[0].JournalRefId);
+            Assert.Equal(60014719, getCorporationJournals[0].LocationId);
+            Assert.Equal(1, getCorporationJournals[0].Quantity);
+            Assert.Equal(1234567890, getCorporationJournals[0].TransactionId);
+            Assert.Equal(587, getCorporationJournals[0].TypeId);
+            Assert.Equal(1, getCorporationJournals[0].UnitPrice);
+        }
+
+        [Fact]
+        public async Task GetCorporationTransactionsAsync_successfully_returns_a_listV1WalletCharacterTransactions()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 98772;
+            WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
+            string getCorporationTransactions = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCorporationTransactions);
+
+            InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
+
+            IList<V1WalletCorporationTransactions> getCorporationJournals = await internalLatestWallet.GetCorporationTransactionsAsync(inputToken, 999, 1, 1);
+
+            Assert.Equal(1, getCorporationJournals.Count);
+            Assert.Equal(54321, getCorporationJournals[0].ClientId);
+            Assert.Equal(new DateTime(2016, 10, 24, 09, 00, 00), getCorporationJournals[0].Date);
+            Assert.True(getCorporationJournals[0].IsBuy);
+            Assert.Equal(67890, getCorporationJournals[0].JournalRefId);
+            Assert.Equal(60014719, getCorporationJournals[0].LocationId);
+            Assert.Equal(1, getCorporationJournals[0].Quantity);
+            Assert.Equal(1234567890, getCorporationJournals[0].TransactionId);
+            Assert.Equal(587, getCorporationJournals[0].TypeId);
+            Assert.Equal(1, getCorporationJournals[0].UnitPrice);
         }
     }
 }

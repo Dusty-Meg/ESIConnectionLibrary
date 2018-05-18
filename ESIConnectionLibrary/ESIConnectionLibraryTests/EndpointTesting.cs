@@ -201,6 +201,9 @@ namespace ESIConnectionLibraryTests
         [InlineData("WalletV1CharactersWalletRaw")]
         [InlineData("WalletV4CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
+        [InlineData("WalletV1CorporationWalletsRaw")]
+        [InlineData("WalletV3CorporationDivisionsJournalRaw")]
+        [InlineData("WalletV1CorporationDivisionsTransactionsRaw")]
         public void WalletEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);

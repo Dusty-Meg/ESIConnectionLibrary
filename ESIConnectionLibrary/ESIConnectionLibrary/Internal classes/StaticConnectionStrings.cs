@@ -478,6 +478,9 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";
         private static string WalletV4CharactersWalletJournalRaw => "/v4/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
+        private static string WalletV1CorporationWalletsRaw => "/v1/corporations/{corporation_id}/wallets/";
+        private static string WalletV3CorporationDivisionsJournalRaw => "/v3/corporations/{corporation_id}/wallets/{division}/journal/";
+        private static string WalletV1CorporationDivisionsTransactionsRaw => "/v1/corporations/{corporation_id}/wallets/{division}/transactions/";
 
         public static string WalletV1CharactersWallet(int characterId)
         {
@@ -496,6 +499,25 @@ namespace ESIConnectionLibrary.Internal_classes
                 return UrlBuilder(WalletV4CharactersWalletTransactionRaw, "{character_id}", characterId.ToString());
             }
             return UrlBuilder(WalletV4CharactersWalletTransactionRaw, "{character_id}", characterId.ToString()) + $"?from_id={lastTransactionId}";
+        }
+
+        public static string WalletV1CorporationWallets(int corporationId)
+        {
+            return UrlBuilder(WalletV1CorporationWalletsRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string WalletV3CorporationDivisionsJournal(int corporationId, int division, int page)
+        {
+            return UrlBuilder(WalletV3CorporationDivisionsJournalRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?page={page}";
+        }
+
+        public static string WalletV1CorporationDivisionsTransactions(int corporationId, int division, int lastTransactionId)
+        {
+            if (lastTransactionId == 0)
+            {
+                return UrlBuilder(WalletV1CorporationDivisionsTransactionsRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString());
+            }
+            return UrlBuilder(WalletV1CorporationDivisionsTransactionsRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?from_id={lastTransactionId}";
         }
 
         #endregion 

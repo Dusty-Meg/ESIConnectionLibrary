@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
@@ -52,6 +53,36 @@ namespace ESIConnectionLibrary.Public_classes
         public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId)
         {
             return await _internalLatestWallet.GetCharactersWalletTransactionAsync(token, lastTransactionId);
+        }
+
+        public IList<V1WalletCorporationWallet> GetCorporationWallets(SsoToken token, int corporationId)
+        {
+            return _internalLatestWallet.GetCorporationWallets(token, corporationId);
+        }
+
+        public async Task<IList<V1WalletCorporationWallet>> GetCorporationWalletsAsync(SsoToken token, int corporationId)
+        {
+            return await _internalLatestWallet.GetCorporationWalletsAsync(token, corporationId);
+        }
+
+        public PagedModel<V3WalletCorporationJournal> GetCorporationJournal(SsoToken token, int corporationId, int division, int page)
+        {
+            return _internalLatestWallet.GetCorporationJournal(token, corporationId, division, page);
+        }
+
+        public async Task<PagedModel<V3WalletCorporationJournal>> GetCorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
+        {
+            return await _internalLatestWallet.GetCorporationJournalAsync(token, corporationId, division, page);
+        }
+
+        public IList<V1WalletCorporationTransactions> GetCorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)
+        {
+            return _internalLatestWallet.GetCorporationTransactions(token, corporationId, division, lastTransactionId);
+        }
+
+        public async Task<IList<V1WalletCorporationTransactions>> GetCorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId)
+        {
+            return await _internalLatestWallet.GetCorporationTransactionsAsync(token, corporationId, division, lastTransactionId);
         }
     }
 }

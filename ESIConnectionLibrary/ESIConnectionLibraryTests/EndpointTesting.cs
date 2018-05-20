@@ -198,6 +198,17 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("UiV2AddWaypointRaw")]
+        [InlineData("UiV1OpenContractWindowRaw")]
+        [InlineData("UiV1OpenInformationWindowRaw")]
+        [InlineData("UiV1OpenMarketDataWindowRaw")]
+        [InlineData("UiV1OpenNewMailWindowRaw")]
+        public void UiEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("WalletV1CharactersWalletRaw")]
         [InlineData("WalletV4CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]

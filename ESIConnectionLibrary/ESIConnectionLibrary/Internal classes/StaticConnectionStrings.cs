@@ -473,6 +473,41 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Ui
+
+        private static string UiV2AddWaypointRaw => "/v2/ui/autopilot/waypoint/";
+        private static string UiV1OpenContractWindowRaw => "/v1/ui/openwindow/contract/";
+        private static string UiV1OpenInformationWindowRaw => "/v1/ui/openwindow/information/";
+        private static string UiV1OpenMarketDataWindowRaw => "/v1/ui/openwindow/marketdetails/";
+        private static string UiV1OpenNewMailWindowRaw => "/v1/ui/openwindow/newmail/";
+
+        public static string UiV2AddWaypoint(bool addToBeginning, bool clearOtherWaypoints, int destinationId)
+        {
+            return UrlBuilder(UiV2AddWaypointRaw) + $"?add_to_beginning={addToBeginning}&clear_other_waypoints={clearOtherWaypoints}&destination_id={destinationId}";
+        }
+
+        public static string UiV1OpenContractWindow(int contractId)
+        {
+            return UrlBuilder(UiV1OpenContractWindowRaw) + $"?contract_id={contractId}";
+        }
+
+        public static string UiV1OpenInformationWindow(int targetId)
+        {
+            return UrlBuilder(UiV1OpenInformationWindowRaw) + $"?target_id={targetId}";
+        }
+
+        public static string UiV1OpenMarketDataWindow(int typeId)
+        {
+            return UrlBuilder(UiV1OpenMarketDataWindowRaw) + $"?type_id={typeId}";
+        }
+
+        public static string UiV1OpenNewMailWindow()
+        {
+            return UrlBuilder(UiV1OpenNewMailWindowRaw);
+        }
+
+        #endregion 
+
         #region Wallet
 
         private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";

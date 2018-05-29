@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3UniverseGetType
+    internal class EsiV3UniverseType
     {
         [JsonProperty(PropertyName = "capacity")]
         public long? Capacity { get; set; }
@@ -12,10 +12,10 @@ namespace ESIConnectionLibrary.ESIModels
         public string Description { get; set; }
 
         [JsonProperty(PropertyName = "dogma_attributes")]
-        public IList<EsiV3UniverseGetTypeDogmaAttribute> DogmaAttributes { get; set; }
+        public IList<EsiV3UniverseTypeDogmaAttribute> DogmaAttributes { get; set; }
 
         [JsonProperty(PropertyName = "dogma_effects")]
-        public IList<EsiV3UniverseGetTypeDogmaEffect> DogmaEffects { get; set; }
+        public IList<EsiV3UniverseTypeDogmaEffect> DogmaEffects { get; set; }
 
         [JsonProperty(PropertyName = "graphic_id")]
         public long? GraphicId { get; set; }

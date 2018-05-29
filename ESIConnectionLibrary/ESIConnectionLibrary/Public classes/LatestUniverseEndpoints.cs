@@ -24,12 +24,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestUniverse.GetNamesAsync(ids);
         }
 
-        public V3UniverseGetType GetType(long id)
+        public V3UniverseType GetType(int id)
         {
             return _internalLatestUniverse.GetType(id);
         }
 
-        public async Task<V3UniverseGetType> GetTypeAsync(long id)
+        public async Task<V3UniverseType> GetTypeAsync(int id)
         {
             return await _internalLatestUniverse.GetTypeAsync(id);
         }

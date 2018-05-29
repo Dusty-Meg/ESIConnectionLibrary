@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3UniverseGetTypeDogmaEffect
+    internal class EsiV3UniverseTypeDogmaEffect
     {
         [JsonProperty(PropertyName = "effect_id")]
         public long EffectId { get; set; }

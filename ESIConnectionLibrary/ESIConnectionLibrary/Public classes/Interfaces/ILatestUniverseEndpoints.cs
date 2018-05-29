@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.Public_classes
     {
         IList<V2UniverseNames> GetNames(IList<int> ids);
         Task<IList<V2UniverseNames>> GetNamesAsync(IList<int> ids);
-        V3UniverseGetType GetType(long id);
-        Task<V3UniverseGetType> GetTypeAsync(long id);
+        V3UniverseType GetType(int id);
+        Task<V3UniverseType> GetTypeAsync(int id);
     }
 }

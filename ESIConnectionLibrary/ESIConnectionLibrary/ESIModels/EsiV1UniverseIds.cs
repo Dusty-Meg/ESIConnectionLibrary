@@ -2,13 +2,10 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2UniverseNames
+    internal class EsiV1UniverseIds
     {
-        [JsonProperty(PropertyName = "category")]
-        public EsiV2UniverseNamesCategory Category { get; set; }
-
         [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

@@ -2,12 +2,12 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3UniverseGetType
+    public class V3UniverseType
     {
         public long? Capacity { get; set; }
         public string Description { get; set; }
-        public IList<V3UniverseGetTypeDogmaAttribute> DogmaAttributes { get; set; }
-        public IList<V3UniverseGetTypeDogmaEffect> DogmaEffects { get; set; }
+        public IList<V3UniverseTypeDogmaAttribute> DogmaAttributes { get; set; }
+        public IList<V3UniverseTypeDogmaEffect> DogmaEffects { get; set; }
         public long? GraphicId { get; set; }
         public int GroupId { get; set; }
         public long? IconId { get; set; }

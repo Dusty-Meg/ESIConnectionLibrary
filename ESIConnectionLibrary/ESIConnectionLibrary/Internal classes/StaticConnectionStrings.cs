@@ -456,6 +456,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Status
+
+        private static string StatusV1StatusRaw => "/v1/status/";
+
+        public static string StatusV1Status()
+        {
+            return UrlBuilder(StatusV1StatusRaw);
+        }
+
+        #endregion 
+
         #region Universe
 
         private static string UniverseV1AncestriesRaw => "/v1/universe/ancestries/";

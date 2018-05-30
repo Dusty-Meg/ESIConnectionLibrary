@@ -174,6 +174,13 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("StatusV1StatusRaw")]
+        public void StatusEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("UniverseV1AncestriesRaw")]
         [InlineData("UniverseV1AsteroidBeltRaw")]
         [InlineData("UniverseV1BloodlinesRaw")]

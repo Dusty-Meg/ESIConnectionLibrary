@@ -100,7 +100,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2GetCorporationsAssets> getCorporationAssets = internalLatestAssets.GetCorporationsAssets(inputToken, corporationId, page);
+            PagedModel<V3GetCorporationsAssets> getCorporationAssets = internalLatestAssets.GetCorporationsAssets(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);

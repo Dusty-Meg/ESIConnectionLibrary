@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.AutomapperMappings;
@@ -116,34 +115,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersAssetsNames>, IList<V1GetCharactersAssetsNames>>(esiAssetsNames);
         }
 
-        public PagedModel<V2GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
+        public PagedModel<V3GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCorporationsAssets(corporationId, page);
+            string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
 
             PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV2GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssets>>(raw.Response);
+            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Response);
 
-            IList<V2GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV2GetCorporationsAssets>, IList<V2GetCorporationsAssets>>(esiCorporationAssets);
+            IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 
-            return new PagedModel<V2GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
         }
 
-        public async Task<PagedModel<V2GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V3GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCorporationsAssets(corporationId, page);
+            string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
 
             PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV2GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssets>>(raw.Response);
+            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Response);
 
-            IList<V2GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV2GetCorporationsAssets>, IList<V2GetCorporationsAssets>>(esiCorporationAssets);
+            IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 
-            return new PagedModel<V2GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
         }
 
         public IList<V2GetCorporationsAssetsLocations> GetCorporationsAssetsLocations(SsoToken token, int corporationId, IList<long> ids)

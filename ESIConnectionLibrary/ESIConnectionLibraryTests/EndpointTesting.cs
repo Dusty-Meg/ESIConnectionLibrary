@@ -55,7 +55,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("AssetsV3GetCharactersAssetsRaw")]
         [InlineData("AssetsV2GetCharactersAssetsLocationsRaw")]
         [InlineData("AssetsV1GetCharactersAssetsNamesRaw")]
-        [InlineData("AssetsV2GetCorporationsAssetsRaw")]
+        [InlineData("AssetsV3GetCorporationsAssetsRaw")]
         [InlineData("AssetsV2GetCorporationsAssetsLocationsRaw")]
         [InlineData("AssetsV1GetCorporationsAssetsNamesRaw")]
         public void AssetsEndpoints(string endpoint)

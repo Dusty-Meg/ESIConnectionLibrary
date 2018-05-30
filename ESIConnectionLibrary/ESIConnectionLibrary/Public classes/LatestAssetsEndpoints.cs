@@ -55,7 +55,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestAssets.GetCharactersAssetsNamesAsync(token, ids);
         }
 
-        public PagedModel<V2GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
+        public PagedModel<V3GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
         {
             if (page < 1)
             {
@@ -65,7 +65,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestAssets.GetCorporationsAssets(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V2GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V3GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
         {
             if (page < 1)
             {

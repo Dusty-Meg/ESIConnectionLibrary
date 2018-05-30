@@ -21,7 +21,7 @@ namespace ESIConnectionLibraryTests
 
             PropertyInfo info = type.GetProperty(privateMethodName, BindingFlags.NonPublic | BindingFlags.Static);
 
-            return info.GetValue(null) as string;
+            return $"`{info.GetValue(null) as string}`";
         }
 
         [Theory]
@@ -174,8 +174,36 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("UniverseNamesRaw")]
-        [InlineData("UniverseGetTypeRaw")]
+        [InlineData("UniverseV1AncestriesRaw")]
+        [InlineData("UniverseV1AsteroidBeltRaw")]
+        [InlineData("UniverseV1BloodlinesRaw")]
+        [InlineData("UniverseV1CategoriesRaw")]
+        [InlineData("UniverseV1CategoryRaw")]
+        [InlineData("UniverseV1ConstellationsRaw")]
+        [InlineData("UniverseV1ConstellationRaw")]
+        [InlineData("UniverseV2FactionsRaw")]
+        [InlineData("UniverseV1GraphicsRaw")]
+        [InlineData("UniverseV1GraphicRaw")]
+        [InlineData("UniverseV1GroupsRaw")]
+        [InlineData("UniverseV1GroupRaw")]
+        [InlineData("UniverseV1IdsRaw")]
+        [InlineData("UniverseV1MoonRaw")]
+        [InlineData("UniverseV2NamesRaw")]
+        [InlineData("UniverseV1PlanetRaw")]
+        [InlineData("UniverseV1RacesRaw")]
+        [InlineData("UniverseV1RegionsRaw")]
+        [InlineData("UniverseV1RegionRaw")]
+        [InlineData("UniverseV1StargateRaw")]
+        [InlineData("UniverseV1StarRaw")]
+        [InlineData("UniverseV2StationRaw")]
+        [InlineData("UniverseV1StructuresRaw")]
+        [InlineData("UniverseV1StructureRaw")]
+        [InlineData("UniverseV1SystemJumpsRaw")]
+        [InlineData("UniverseV2SystemKillsRaw")]
+        [InlineData("UniverseV1SystemsRaw")]
+        [InlineData("UniverseV3SystemRaw")]
+        [InlineData("UniverseV1TypesRaw")]
+        [InlineData("UniverseV3TypeRaw")]
         public void UniverseEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3UniverseGetTypeDogmaAttribute
+    internal class EsiV3UniverseTypeDogmaAttribute
     {
         [JsonProperty(PropertyName = "attribute_id")]
         public long AttributeId { get; set; }

@@ -458,17 +458,185 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Universe
 
-        private static string UniverseNamesRaw => "/v2/universe/names/";
-        private static string UniverseGetTypeRaw => "/v3/universe/types/{type_id}/";
+        private static string UniverseV1AncestriesRaw => "/v1/universe/ancestries/";
+        private static string UniverseV1AsteroidBeltRaw => "/v1/universe/asteroid_belts/{asteroid_belt_id}/";
+        private static string UniverseV1BloodlinesRaw => "/v1/universe/bloodlines/";
+        private static string UniverseV1CategoriesRaw => "/v1/universe/categories/";
+        private static string UniverseV1CategoryRaw => "/v1/universe/categories/{category_id}/";
+        private static string UniverseV1ConstellationsRaw => "/v1/universe/constellations/";
+        private static string UniverseV1ConstellationRaw => "/v1/universe/constellations/{constellation_id}/";
+        private static string UniverseV2FactionsRaw => "/v2/universe/factions/";
+        private static string UniverseV1GraphicsRaw => "/v1/universe/graphics/";
+        private static string UniverseV1GraphicRaw => "/v1/universe/graphics/{graphic_id}/";
+        private static string UniverseV1GroupsRaw => "/v1/universe/groups/";
+        private static string UniverseV1GroupRaw => "/v1/universe/groups/{group_id}/";
+        private static string UniverseV1IdsRaw => "/v1/universe/ids/";
+        private static string UniverseV1MoonRaw => "/v1/universe/moons/{moon_id}/";
+        private static string UniverseV2NamesRaw => "/v2/universe/names/";
+        private static string UniverseV1PlanetRaw => "/v1/universe/planets/{planet_id}/";
+        private static string UniverseV1RacesRaw => "/v1/universe/races/";
+        private static string UniverseV1RegionsRaw => "/v1/universe/regions/";
+        private static string UniverseV1RegionRaw => "/v1/universe/regions/{region_id}/";
+        private static string UniverseV1StargateRaw => "/v1/universe/stargates/{stargate_id}/";
+        private static string UniverseV1StarRaw => "/v1/universe/stars/{star_id}/";
+        private static string UniverseV2StationRaw => "/v2/universe/stations/{station_id}/";
+        private static string UniverseV1StructuresRaw => "/v1/universe/structures/";
+        private static string UniverseV1StructureRaw => "/v1/universe/structures/{structure_id}/";
+        private static string UniverseV1SystemJumpsRaw => "/v1/universe/system_jumps/";
+        private static string UniverseV2SystemKillsRaw => "/v2/universe/system_kills/";
+        private static string UniverseV1SystemsRaw => "/v1/universe/systems/";
+        private static string UniverseV3SystemRaw => "/v3/universe/systems/{system_id}/";
+        private static string UniverseV1TypesRaw => "/v1/universe/types/";
+        private static string UniverseV3TypeRaw => "/v3/universe/types/{type_id}/";
 
-        public static string UniverseNames()
+        public static string UniverseV1Ancestries()
         {
-            return UrlBuilder(UniverseNamesRaw);
+            return UrlBuilder(UniverseV1AncestriesRaw);
         }
 
-        public static string UniverseGetType(long typeId)
+        public static string UniverseV1AsteroidBelt(int asteroidBeltId)
         {
-            return UrlBuilder(UniverseGetTypeRaw, "{type_id}", typeId.ToString());
+            return UrlBuilder(UniverseV1AsteroidBeltRaw, "{asteroid_belt_id}", asteroidBeltId.ToString());
+        }
+
+        public static string UniverseV1Bloodlines()
+        {
+            return UrlBuilder(UniverseV1BloodlinesRaw);
+        }
+
+        public static string UniverseV1Categories()
+        {
+            return UrlBuilder(UniverseV1CategoriesRaw);
+        }
+
+        public static string UniverseV1Category(int categoryId)
+        {
+            return UrlBuilder(UniverseV1CategoryRaw, "{category_id}", categoryId.ToString());
+        }
+
+        public static string UniverseV1Constellations()
+        {
+            return UrlBuilder(UniverseV1ConstellationsRaw);
+        }
+
+        public static string UniverseV1Constellation(int constellationId)
+        {
+            return UrlBuilder(UniverseV1ConstellationRaw, "{constellation_id}", constellationId.ToString());
+        }
+
+        public static string UniverseV2Factions()
+        {
+            return UrlBuilder(UniverseV2FactionsRaw);
+        }
+
+        public static string UniverseV1Graphics()
+        {
+            return UrlBuilder(UniverseV1GraphicsRaw);
+        }
+
+        public static string UniverseV1Graphic(int graphicId)
+        {
+            return UrlBuilder(UniverseV1GraphicRaw, "{graphic_id}", graphicId.ToString());
+        }
+
+        public static string UniverseV1Groups(int page)
+        {
+            return UrlBuilder(UniverseV1GroupsRaw) + $"?page={page}";
+        }
+
+        public static string UniverseV1Group(int groupId)
+        {
+            return UrlBuilder(UniverseV1GroupRaw, "{group_id}", groupId.ToString());
+        }
+
+        public static string UniverseV1Ids()
+        {
+            return UrlBuilder(UniverseV1IdsRaw);
+        }
+
+        public static string UniverseV1Moon(int moonId)
+        {
+            return UrlBuilder(UniverseV1MoonRaw, "{moon_id}", moonId.ToString());
+        }
+
+        public static string UniverseV2Names()
+        {
+            return UrlBuilder(UniverseV2NamesRaw);
+        }
+
+        public static string UniverseV1Planet(int planetId)
+        {
+            return UrlBuilder(UniverseV1PlanetRaw, "{planet_id}", planetId.ToString());
+        }
+
+        public static string UniverseV1Races()
+        {
+            return UrlBuilder(UniverseV1RacesRaw);
+        }
+
+        public static string UniverseV1Regions()
+        {
+            return UrlBuilder(UniverseV1RegionsRaw);
+        }
+
+        public static string UniverseV1Region(int regionId)
+        {
+            return UrlBuilder(UniverseV1RegionRaw, "{region_id}", regionId.ToString());
+        }
+
+        public static string UniverseV1Stargate(int stargateId)
+        {
+            return UrlBuilder(UniverseV1StargateRaw, "{stargate_id}", stargateId.ToString());
+        }
+
+        public static string UniverseV1Star(int starId)
+        {
+            return UrlBuilder(UniverseV1StarRaw, "{star_id}", starId.ToString());
+        }
+
+        public static string UniverseV2Station(int stationId)
+        {
+            return UrlBuilder(UniverseV2StationRaw, "{station_id}", stationId.ToString());
+        }
+
+        public static string UniverseV1Structures()
+        {
+            return UrlBuilder(UniverseV1StructuresRaw);
+        }
+
+        public static string UniverseV1Structure(long structureId)
+        {
+            return UrlBuilder(UniverseV1StructureRaw, "{structure_id}", structureId.ToString());
+        }
+
+        public static string UniverseV1SystemJumps()
+        {
+            return UrlBuilder(UniverseV1SystemJumpsRaw);
+        }
+
+        public static string UniverseV2SystemKills()
+        {
+            return UrlBuilder(UniverseV2SystemKillsRaw);
+        }
+
+        public static string UniverseV1Systems()
+        {
+            return UrlBuilder(UniverseV1SystemsRaw);
+        }
+
+        public static string UniverseV3System(int systemId)
+        {
+            return UrlBuilder(UniverseV3SystemRaw, "{system_id}", systemId.ToString());
+        }
+
+        public static string UniverseV1Types(int page)
+        {
+            return UrlBuilder(UniverseV1TypesRaw) + $"?page={page}";
+        }
+
+        public static string UniverseV3Type(int typeId)
+        {
+            return UrlBuilder(UniverseV3TypeRaw, "{type_id}", typeId.ToString());
         }
 
         #endregion

@@ -174,6 +174,15 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("SovereigntyV1CampaignsRaw")]
+        [InlineData("SovereigntyV1MapRaw")]
+        [InlineData("SovereigntyV1StructuresRaw")]
+        public void SovereigntyEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("StatusV1StatusRaw")]
         public void StatusEndpoints(string endpoint)
         {

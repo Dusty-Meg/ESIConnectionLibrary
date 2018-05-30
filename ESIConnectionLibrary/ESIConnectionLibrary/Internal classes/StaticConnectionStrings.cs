@@ -456,6 +456,29 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Sovereignty
+
+        private static string SovereigntyV1CampaignsRaw => "/v1/sovereignty/campaigns/";
+        private static string SovereigntyV1MapRaw => "/v1/sovereignty/map/";
+        private static string SovereigntyV1StructuresRaw => "/v1/sovereignty/structures/";
+
+        public static string SovereigntyV1Campaigns()
+        {
+            return UrlBuilder(SovereigntyV1CampaignsRaw);
+        }
+
+        public static string SovereigntyV1Map()
+        {
+            return UrlBuilder(SovereigntyV1MapRaw);
+        }
+
+        public static string SovereigntyV1Structures()
+        {
+            return UrlBuilder(SovereigntyV1StructuresRaw);
+        }
+
+        #endregion 
+
         #region Status
 
         private static string StatusV1StatusRaw => "/v1/status/";

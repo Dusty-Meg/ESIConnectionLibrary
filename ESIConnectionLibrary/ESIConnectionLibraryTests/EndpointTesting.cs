@@ -2,33 +2,17 @@
 using System.Reflection;
 using ESIConnectionLibrary.Internal_classes;
 using Xunit;
-using WebClient = System.Net.WebClient;
 
 namespace ESIConnectionLibraryTests
 {
     [Collection("Swagger Tests")]
-    public class EndpointTesting
+    public class EndpointTesting : IClassFixture<SwaggerSpecFixture>
     {
-        private string _swaggerSpec;
+        private SwaggerSpecFixture SwaggerSpec;
 
-        private string SwaggerSpec
+        public EndpointTesting(SwaggerSpecFixture swaggerSpec)
         {
-            get
-            {
-                if (_swaggerSpec != null)
-                {
-                    return _swaggerSpec;
-                }
-
-                WebClient client = new WebClient
-                {
-                    Headers = { ["UserAgent"] = "Dusty Meg Tests" }
-                };
-
-                _swaggerSpec = client.DownloadString("https://esi.evetech.net/latest/swagger.json?datasource=tranquility");
-
-                return _swaggerSpec;
-            }
+            SwaggerSpec = swaggerSpec;
         }
 
         private static string GetPrivateString(string privateMethodName)
@@ -48,7 +32,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("AllianceV2IdsToNamesRaw")]
         public void AllianceEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -60,7 +44,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("AssetsV1GetCorporationsAssetsNamesRaw")]
         public void AssetsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -82,7 +66,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("EsiV1CharactersNamesRaw")]
         public void CharacterEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -90,21 +74,21 @@ namespace ESIConnectionLibraryTests
         [InlineData("ClonesV3GetCharactersActiveImplantsRaw")]
         public void CloneEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("ContactsV1GetCharactersContactsRaw")]
         public void ContactsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("ContractsV1GetCharactersContractsRaw")]
         public void ContractsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -113,35 +97,35 @@ namespace ESIConnectionLibraryTests
         [InlineData("CorporationV1CorporationTitlesRaw")]
         public void CorporationsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("FleetsGetFleetRaw")]
         public void FleetEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("IndustryCharacterJobsRaw")]
         public void IndustryEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("InsuranceGetPricesRaw")]
         public void InsuranceEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
         [InlineData("KillmailsGetSingleKillmailRaw")]
         public void KillmailsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -150,7 +134,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("LocationV1LocationCharacterShipRaw")]
         public void LocationEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -158,7 +142,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("MailV1MailGetMailRaw")]
         public void MailEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -167,7 +151,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("MarketV1GetMarketGroupInformationRaw")]
         public void MarketEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -177,7 +161,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("PlanetaryInteractionV1SchematicsRaw")]
         public void PlanetaryInteractionEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -186,7 +170,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("SkillsSkillQueueRaw")]
         public void SkillsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -194,7 +178,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("UniverseGetTypeRaw")]
         public void UniverseEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -205,7 +189,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("UiV1OpenNewMailWindowRaw")]
         public void UiEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -217,7 +201,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("WalletV1CorporationDivisionsTransactionsRaw")]
         public void WalletEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
 
         [Theory]
@@ -226,7 +210,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("WarsV1WarKillmailsRaw")]
         public void WarsEndpoints(string endpoint)
         {
-            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec);
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
         }
     }
 }

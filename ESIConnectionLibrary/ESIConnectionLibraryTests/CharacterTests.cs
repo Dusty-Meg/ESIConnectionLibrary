@@ -194,9 +194,9 @@ namespace ESIConnectionLibraryTests
             IList<int> characters = new List<int>(2);
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersCspaCostJson = "2950";
+            string json = "2950";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersCspaCostJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -215,9 +215,9 @@ namespace ESIConnectionLibraryTests
             IList<int> characters = new List<int>(2);
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersCspaCostJson = "2950";
+            string json = "2950";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersCspaCostJson);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -667,9 +667,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int>(23);
 
-            string getCharactersAffiliationJson = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
+            string json = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAffiliationJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -688,9 +688,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int>(23);
 
-            string getCharactersAffiliationJson = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
+            string json = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersAffiliationJson);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 

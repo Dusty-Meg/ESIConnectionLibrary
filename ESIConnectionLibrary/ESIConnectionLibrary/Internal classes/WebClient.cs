@@ -23,7 +23,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _userAgent = userAgent;
         }
 
-        public string Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public EsiModel Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -33,9 +33,149 @@ namespace ESIConnectionLibrary.Internal_classes
 
             client.Headers["UserAgent"] = _userAgent;
 
+            CacheModel cachedItem = _cache.Get<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
+
             try
             {
-                return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = client.UploadString(address, data);
+
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    return esiModel;
+                }
+
+                if (cachedItem != null)
+                {
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    {
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = client.DownloadString(address);
+
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = client.DownloadString(address);
+
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
             }
             catch (WebException e)
             {
@@ -43,6 +183,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 switch (webResponse?.StatusCode)
                 {
+                    case HttpStatusCode.NotModified:
+                        if (cachedItem == null)
+                        {
+                            return null;
+                        }
+
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:
@@ -77,7 +228,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public async Task<string> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public async Task<EsiModel> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -87,13 +238,149 @@ namespace ESIConnectionLibrary.Internal_classes
 
             client.Headers["UserAgent"] = _userAgent;
 
-            Uri url = new Uri(address);
+            CacheModel cachedItem = await _cache.GetAsync<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
 
             try
             {
-                string reply = await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(url, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = await client.UploadStringTaskAsync(address, data);
 
-                return reply;
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    return esiModel;
+                }
+
+                if (cachedItem != null)
+                {
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    {
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
+
+                    if (client.ResponseHeaders != null)
+                    {
+                        for (int i = 0; i < responseHeaders.Count; i++)
+                        {
+                            switch (responseHeaders.GetKey(i))
+                            {
+                                case "ETag":
+                                    esiModel.Etag = responseHeaders.Get(i);
+                                    break;
+                                case "X-Pages":
+                                    int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                                    esiModel.MaxPages = maxPages;
+                                    break;
+                                case "Expires":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                                    esiModel.Expires = expires;
+                                    break;
+                                case "Last-Modified":
+                                    DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                                    esiModel.LastModified = lastModified;
+                                    break;
+                            }
+
+                            esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+                        }
+                    }
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
             }
             catch (WebException e)
             {
@@ -101,6 +388,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 switch (webResponse?.StatusCode)
                 {
+                    case HttpStatusCode.NotModified:
+                        if (cachedItem == null)
+                        {
+                            return null;
+                        }
+
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
                     case HttpStatusCode.Forbidden:
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.NotFound:

@@ -6,7 +6,7 @@ namespace ESIConnectionLibrary.Internal_classes
     internal class EsiModel
     {
         public string Model { get; set; }
-        public int? MaxPages { get; set; }
+        public int MaxPages { get; set; }
         public string Etag { get; set; }
         public DateTime Expires { get; set; }
         public DateTime LastModified { get; set; }

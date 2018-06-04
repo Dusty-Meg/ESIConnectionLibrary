@@ -538,7 +538,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "{\r\n  \"characters\": [\r\n    {\r\n      \"id\": 95465499,\r\n      \"name\": \"CCP Bartender\"\r\n    },\r\n    {\r\n      \"id\": 2112625428,\r\n      \"name\": \"CCP Zoetrope\"\r\n    }\r\n  ],\r\n  \"systems\": [\r\n    {\r\n      \"id\": 30000142,\r\n      \"name\": \"Jita\"\r\n    }\r\n  ]\r\n}";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
@@ -561,7 +561,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "{\r\n  \"characters\": [\r\n    {\r\n      \"id\": 95465499,\r\n      \"name\": \"CCP Bartender\"\r\n    },\r\n    {\r\n      \"id\": 2112625428,\r\n      \"name\": \"CCP Zoetrope\"\r\n    }\r\n  ],\r\n  \"systems\": [\r\n    {\r\n      \"id\": 30000142,\r\n      \"name\": \"Jita\"\r\n    }\r\n  ]\r\n}";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
@@ -628,7 +628,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[{\"category\": \"character\",\"id\": 95465499,\"name\": \"CCP Bartender\"},{\"category\": \"solar_system\",\"id\": 30000142,\"name\": \"Jita\"}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
@@ -650,7 +650,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[{\"category\": \"character\",\"id\": 95465499,\"name\": \"CCP Bartender\"},{\"category\": \"solar_system\",\"id\": 30000142,\"name\": \"Jita\"}]";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 

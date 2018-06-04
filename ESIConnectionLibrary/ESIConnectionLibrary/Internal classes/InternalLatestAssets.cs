@@ -63,9 +63,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV2GetCharactersAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCharactersAssetsLocations>>(esiRaw);
+            IList<EsiV2GetCharactersAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCharactersAssetsLocations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2GetCharactersAssetsLocations>, IList<V2GetCharactersAssetsLocations>>(esiAssetsLocations);
         }
@@ -78,9 +78,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV2GetCharactersAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCharactersAssetsLocations>>(esiRaw);
+            IList<EsiV2GetCharactersAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCharactersAssetsLocations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2GetCharactersAssetsLocations>, IList<V2GetCharactersAssetsLocations>>(esiAssetsLocations);
         }
@@ -93,9 +93,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV1CharactersAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersAssetsNames>>(esiRaw);
+            IList<EsiV1CharactersAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersAssetsNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharactersAssetsNames>, IList<V1GetCharactersAssetsNames>>(esiAssetsNames);
         }
@@ -108,9 +108,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV1CharactersAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersAssetsNames>>(esiRaw);
+            IList<EsiV1CharactersAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersAssetsNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharactersAssetsNames>, IList<V1GetCharactersAssetsNames>>(esiAssetsNames);
         }
@@ -153,9 +153,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV2GetCorporationsAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssetsLocations>>(esiRaw);
+            IList<EsiV2GetCorporationsAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssetsLocations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2GetCorporationsAssetsLocations>, IList<V2GetCorporationsAssetsLocations>>(esiAssetsLocations);
         }
@@ -168,9 +168,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV2GetCorporationsAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssetsLocations>>(esiRaw);
+            IList<EsiV2GetCorporationsAssetsLocations> esiAssetsLocations = JsonConvert.DeserializeObject<IList<EsiV2GetCorporationsAssetsLocations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2GetCorporationsAssetsLocations>, IList<V2GetCorporationsAssetsLocations>>(esiAssetsLocations);
         }
@@ -183,9 +183,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV1GetCorporationsAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1GetCorporationsAssetsNames>>(esiRaw);
+            IList<EsiV1GetCorporationsAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1GetCorporationsAssetsNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1GetCorporationsAssetsNames>, IList<V1GetCorporationsAssetsNames>>(esiAssetsNames);
         }
@@ -198,9 +198,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            IList<EsiV1GetCorporationsAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1GetCorporationsAssetsNames>>(esiRaw);
+            IList<EsiV1GetCorporationsAssetsNames> esiAssetsNames = JsonConvert.DeserializeObject<IList<EsiV1GetCorporationsAssetsNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1GetCorporationsAssetsNames>, IList<V1GetCorporationsAssetsNames>>(esiAssetsNames);
         }

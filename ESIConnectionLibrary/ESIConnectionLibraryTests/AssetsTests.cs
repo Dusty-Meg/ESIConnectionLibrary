@@ -44,9 +44,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCharactersAssetsLocationsJson = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
+            string json = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAssetsLocationsJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
@@ -66,9 +66,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCharactersAssetsNamesJson = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
+            string json = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAssetsNamesJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
@@ -114,9 +114,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCorporationAssetsLocationsJson = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
+            string json = "[{\"item_id\": 12345,\"position\": {\"x\": 1.2,\"y\": 2.3,\"z\": -3.4}}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationAssetsLocationsJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
@@ -136,9 +136,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCorporationsAssetsNamesJson = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
+            string json = "[{\"item_id\": 12345,\"name\": \"Awesome Name\"}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationsAssetsNamesJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 

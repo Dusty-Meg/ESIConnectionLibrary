@@ -7,9 +7,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         EsiModel Get(WebHeaderCollection headers, string address, int cacheSeconds = 0);
         Task<EsiModel> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0);
-        string Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
-        Task<string> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
         string Put(WebHeaderCollection headers, string address, string data);
         Task<string> PutAsync(WebHeaderCollection headers, string address, string data);
+        EsiModel Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
+        Task<EsiModel> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
     }
 }

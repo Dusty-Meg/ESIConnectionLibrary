@@ -129,9 +129,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw);
+            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
 
             return esiV4CharactersCspa;
         }
@@ -144,9 +144,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw);
+            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
 
             return esiV4CharactersCspa;
         }
@@ -387,9 +387,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
 
-            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw);
+            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
         }
@@ -400,9 +400,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
 
-            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw);
+            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
         }

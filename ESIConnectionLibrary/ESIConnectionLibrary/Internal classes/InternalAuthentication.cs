@@ -177,8 +177,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            string ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/token/", data));
-            return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
+            EsiModel ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/token/", data));
+            return JsonConvert.DeserializeObject<OauthToken>(ssoRaw.Model);
         }
 
         private async Task<OauthToken> GetOauthTokenAsync(string eveSsoKey, string data)
@@ -192,8 +192,8 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            string ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/token/", data));
-            return JsonConvert.DeserializeObject<OauthToken>(ssoRaw);
+            EsiModel ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/token/", data));
+            return JsonConvert.DeserializeObject<OauthToken>(ssoRaw.Model);
         }
 
         private void RevokeOauthToken(string eveSsoKey, string data)

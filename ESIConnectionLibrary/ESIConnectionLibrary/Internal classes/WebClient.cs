@@ -135,7 +135,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public string Put(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public string Put(WebHeaderCollection headers, string address, string data)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -147,7 +147,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return client.UploadString(address, "PUT", data);
             }
             catch (WebException e)
             {
@@ -189,7 +189,7 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
-        public async Task<string> PutAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public async Task<string> PutAsync(WebHeaderCollection headers, string address, string data)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -201,7 +201,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return await client.UploadStringTaskAsync(address, "PUT", data);
             }
             catch (WebException e)
             {

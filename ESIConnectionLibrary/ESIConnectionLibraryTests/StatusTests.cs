@@ -17,7 +17,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "{\r\n  \"players\": 12345,\r\n  \"server_version\": \"1132976\",\r\n  \"start_time\": \"2017-01-02T12:34:56Z\"\r\n}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestStatus internalLatestStatus = new InternalLatestStatus(mockedWebClient.Object, string.Empty);
 
@@ -35,7 +35,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "{\r\n  \"players\": 12345,\r\n  \"server_version\": \"1132976\",\r\n  \"start_time\": \"2017-01-02T12:34:56Z\"\r\n}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestStatus internalLatestStatus = new InternalLatestStatus(mockedWebClient.Object, string.Empty);
 

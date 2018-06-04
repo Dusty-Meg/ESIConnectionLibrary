@@ -22,9 +22,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterLocationJson = "{\r\n  \"solar_system_id\": 30002505,\r\n  \"structure_id\": 1000000016989\r\n}";
+            string json = "{\r\n  \"solar_system_id\": 30002505,\r\n  \"structure_id\": 1000000016989\r\n}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharacterLocationJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
@@ -44,9 +44,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterLocationJson = "{\r\n  \"solar_system_id\": 30002505,\r\n  \"structure_id\": 1000000016989\r\n}";
+            string json = "{\r\n  \"solar_system_id\": 30002505,\r\n  \"structure_id\": 1000000016989\r\n}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharacterLocationJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
@@ -66,9 +66,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterOnlineStatusJson = "{\r\n  \"last_login\": \"2017-01-02T03:04:05Z\",\r\n  \"last_logout\": \"2017-01-02T04:05:06Z\",\r\n  \"logins\": 9001,\r\n  \"online\": true\r\n}";
+            string json = "{\r\n  \"last_login\": \"2017-01-02T03:04:05Z\",\r\n  \"last_logout\": \"2017-01-02T04:05:06Z\",\r\n  \"logins\": 9001,\r\n  \"online\": true\r\n}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharacterOnlineStatusJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
@@ -90,9 +90,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterOnlineStatusJson = "{\r\n  \"last_login\": \"2017-01-02T03:04:05Z\",\r\n  \"last_logout\": \"2017-01-02T04:05:06Z\",\r\n  \"logins\": 9001,\r\n  \"online\": true\r\n}";
+            string json = "{\r\n  \"last_login\": \"2017-01-02T03:04:05Z\",\r\n  \"last_logout\": \"2017-01-02T04:05:06Z\",\r\n  \"logins\": 9001,\r\n  \"online\": true\r\n}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharacterOnlineStatusJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
@@ -114,9 +114,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterShipJson = "{\r\n  \"ship_item_id\": 1000000016991,\r\n  \"ship_name\": \"SPACESHIPS!!!\",\r\n  \"ship_type_id\": 1233\r\n}";
+            string json = "{\r\n  \"ship_item_id\": 1000000016991,\r\n  \"ship_name\": \"SPACESHIPS!!!\",\r\n  \"ship_type_id\": 1233\r\n}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharacterShipJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
@@ -137,9 +137,9 @@ namespace ESIConnectionLibraryTests
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, LocationScopesFlags = scopes };
 
-            string getCharacterShipJson = "{\r\n  \"ship_item_id\": 1000000016991,\r\n  \"ship_name\": \"SPACESHIPS!!!\",\r\n  \"ship_type_id\": 1233\r\n}";
+            string json = "{\r\n  \"ship_item_id\": 1000000016991,\r\n  \"ship_name\": \"SPACESHIPS!!!\",\r\n  \"ship_type_id\": 1233\r\n}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharacterShipJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 

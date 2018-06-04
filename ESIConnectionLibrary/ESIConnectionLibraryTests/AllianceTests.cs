@@ -16,9 +16,9 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string allianceIdsJson = "[99000001,99000002]";
+            string json = "[99000001,99000002]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(allianceIdsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel{Model = json});
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
@@ -32,11 +32,11 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string allianceIdsJson = "{\"name\": \"C C P Alliance\",\"ticker\": \"<C C P>\",\"creator_id\": 12345,\"creator_corporation_id\": 45678,\"executor_corporation_id\": 98356193,\"date_founded\": \"2016-06-26T21:00:00Z\"}";
+            string json = "{\"name\": \"C C P Alliance\",\"ticker\": \"<C C P>\",\"creator_id\": 12345,\"creator_corporation_id\": 45678,\"executor_corporation_id\": 98356193,\"date_founded\": \"2016-06-26T21:00:00Z\"}";
 
             int allianceId = 8762;
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(allianceIdsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
@@ -51,11 +51,11 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string corpIdsJson = "[98000001]";
+            string json = "[98000001]";
 
             int allianceId = 8762;
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corpIdsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
@@ -70,11 +70,11 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string allianceIconJson = "{\"px64x64\": \"https://imageserver.eveonline.com/Alliance/503818424_64.png\",\"px128x128\": \"https://imageserver.eveonline.com/Alliance/503818424_128.png\"}";
+            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Alliance/503818424_64.png\",\"px128x128\": \"https://imageserver.eveonline.com/Alliance/503818424_128.png\"}";
 
             int allianceId = 8762;
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(allianceIconJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
@@ -89,11 +89,11 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string allianceIdsJson = "[{\"alliance_id\": 1000171,\"alliance_name\": \"Republic University\"}]";
+            string json = "[{\"alliance_id\": 1000171,\"alliance_name\": \"Republic University\"}]";
 
             IList<int> allianceIds = new List<int> { 8762 };
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(allianceIdsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 

@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 30));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
 
-            IList<EsiV1MailGetCharactersMail> esiMail = JsonConvert.DeserializeObject<IList<EsiV1MailGetCharactersMail>>(raw.Response);
+            IList<EsiV1MailGetCharactersMail> esiMail = JsonConvert.DeserializeObject<IList<EsiV1MailGetCharactersMail>>(raw.Model);
 
             IList<V1MailGetCharactersMail> mapped = _mapper.Map<IList<EsiV1MailGetCharactersMail>, IList<V1MailGetCharactersMail>>(esiMail);
 
@@ -45,9 +45,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 30));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
 
-            IList<EsiV1MailGetCharactersMail> esiMail = JsonConvert.DeserializeObject<IList<EsiV1MailGetCharactersMail>>(raw.Response);
+            IList<EsiV1MailGetCharactersMail> esiMail = JsonConvert.DeserializeObject<IList<EsiV1MailGetCharactersMail>>(raw.Model);
 
             IList<V1MailGetCharactersMail> mapped = _mapper.Map<IList<EsiV1MailGetCharactersMail>, IList<V1MailGetCharactersMail>>(esiMail);
 
@@ -60,9 +60,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
 
-            EsiV1MailGetMail esiGetMail = JsonConvert.DeserializeObject<EsiV1MailGetMail>(esiRaw);
+            EsiV1MailGetMail esiGetMail = JsonConvert.DeserializeObject<EsiV1MailGetMail>(esiRaw.Model);
 
             return _mapper.Map<EsiV1MailGetMail, V1MailGetMail>(esiGetMail);
         }
@@ -73,9 +73,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
 
-            EsiV1MailGetMail esiGetMail = JsonConvert.DeserializeObject<EsiV1MailGetMail>(esiRaw);
+            EsiV1MailGetMail esiGetMail = JsonConvert.DeserializeObject<EsiV1MailGetMail>(esiRaw.Model);
 
             return _mapper.Map<EsiV1MailGetMail, V1MailGetMail>(esiGetMail);
         }

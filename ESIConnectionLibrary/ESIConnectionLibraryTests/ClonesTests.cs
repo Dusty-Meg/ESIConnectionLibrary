@@ -21,9 +21,9 @@ namespace ESIConnectionLibraryTests
             CloneScopes scopes = CloneScopes.esi_clones_read_clones_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = 828658, CharacterName = "ThisIsACharacter", CloneScopesFlags = scopes };
-            string getCloneJson = "{\r\n  \"home_location\": {\r\n    \"location_id\": 1021348135816,\r\n    \"location_type\": \"structure\"\r\n  },\r\n  \"jump_clones\": [\r\n    {\r\n      \"implants\": [\r\n        22118\r\n      ],\r\n      \"jump_clone_id\": 12345,\r\n      \"location_id\": 60003463,\r\n      \"location_type\": \"station\"\r\n    }\r\n  ]\r\n}";
+            string json = "{\r\n  \"home_location\": {\r\n    \"location_id\": 1021348135816,\r\n    \"location_type\": \"structure\"\r\n  },\r\n  \"jump_clones\": [\r\n    {\r\n      \"implants\": [\r\n        22118\r\n      ],\r\n      \"jump_clone_id\": 12345,\r\n      \"location_id\": 60003463,\r\n      \"location_type\": \"station\"\r\n    }\r\n  ]\r\n}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCloneJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestClones internalLatestClones = new InternalLatestClones(mockedWebClient.Object, string.Empty);
 
@@ -45,9 +45,9 @@ namespace ESIConnectionLibraryTests
             CloneScopes scopes = CloneScopes.esi_clones_read_clones_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = 828658, CharacterName = "ThisIsACharacter", CloneScopesFlags = scopes };
-            string getCloneJson = "{\"home_location\": {\"location_id\": 1021348135816,\"location_type\": \"structure\"},\"jump_clones\": [{\"implants\": [22118],\"jump_clone_id\": 12345,\"location_id\": 60003463,\"location_type\": \"station\"}]}";
+            string json = "{\"home_location\": {\"location_id\": 1021348135816,\"location_type\": \"structure\"},\"jump_clones\": [{\"implants\": [22118],\"jump_clone_id\": 12345,\"location_id\": 60003463,\"location_type\": \"station\"}]}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCloneJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestClones internalLatestClones = new InternalLatestClones(mockedWebClient.Object, string.Empty);
 
@@ -69,9 +69,9 @@ namespace ESIConnectionLibraryTests
             CloneScopes scopes = CloneScopes.esi_clones_read_implants_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = 828658, CharacterName = "ThisIsACharacter", CloneScopesFlags = scopes };
-            string getImplantsJson = "[\r\n  1,\r\n  2,\r\n  3\r\n]";
+            string json = "[\r\n  1,\r\n  2,\r\n  3\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getImplantsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestClones internalLatestClones = new InternalLatestClones(mockedWebClient.Object, string.Empty);
 
@@ -90,9 +90,9 @@ namespace ESIConnectionLibraryTests
             CloneScopes scopes = CloneScopes.esi_clones_read_implants_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = 828658, CharacterName = "ThisIsACharacter", CloneScopesFlags = scopes };
-            string getImplantsJson = "[\r\n  1,\r\n  2,\r\n  3\r\n]";
+            string json = "[\r\n  1,\r\n  2,\r\n  3\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getImplantsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestClones internalLatestClones = new InternalLatestClones(mockedWebClient.Object, string.Empty);
 

@@ -29,9 +29,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.InsuranceGetPrices();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw);
+            IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1InsuranceShipPrices>, IList<V1InsuranceShipPrices>>(esiInsuranceShips);
         }
@@ -40,9 +40,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.InsuranceGetPrices();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw);
+            IList<EsiV1InsuranceShipPrices> esiInsuranceShips = JsonConvert.DeserializeObject<IList<EsiV1InsuranceShipPrices>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1InsuranceShipPrices>, IList<V1InsuranceShipPrices>>(esiInsuranceShips);
         }

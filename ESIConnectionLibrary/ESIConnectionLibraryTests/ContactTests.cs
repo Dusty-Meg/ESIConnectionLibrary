@@ -19,11 +19,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_contacts_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersContactsJson = "[{\"standing\": 9.9,\"contact_type\": \"corporation\",\"contact_id\": 123,\"is_watched\": true,\"is_blocked\": true}]";
+            string json = "[{\"standing\": 9.9,\"contact_type\": \"corporation\",\"contact_id\": 123,\"is_watched\": true,\"is_blocked\": true}]";
 
-            PagedJson pagedJson = new PagedJson{ Response = getCharactersContactsJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 
@@ -47,11 +45,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_contacts_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersContactsJson = "[{\"standing\": 9.9,\"contact_type\": \"corporation\",\"contact_id\": 123,\"is_watched\": true,\"is_blocked\": true}]";
+            string json = "[{\"standing\": 9.9,\"contact_type\": \"corporation\",\"contact_id\": 123,\"is_watched\": true,\"is_blocked\": true}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCharactersContactsJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 

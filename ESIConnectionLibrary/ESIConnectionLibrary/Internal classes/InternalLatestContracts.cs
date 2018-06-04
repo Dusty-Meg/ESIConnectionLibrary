@@ -32,13 +32,13 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Response);
+            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Model);
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 
-            return new PagedModel<V1ContractsCharacterContracts> {Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<V1ContractsCharacterContracts> {Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page)
@@ -47,13 +47,13 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Response);
+            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Model);
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 
-            return new PagedModel<V1ContractsCharacterContracts> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1ContractsCharacterContracts> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
     }
 }

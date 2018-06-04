@@ -19,9 +19,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 8976562;
 
-            string getCharactersPublicInfoJson = "{\"corporation_id\": 109299958,\"birthday\": \"2015-03-24T11:37:00Z\",\"name\": \"CCP Bartender\",\"gender\": \"male\",\"race_id\": 2,\"description\": \"\",\"bloodline_id\": 3,\"ancestry_id\": 19}";
+            string json = "{\"corporation_id\": 109299958,\"birthday\": \"2015-03-24T11:37:00Z\",\"name\": \"CCP Bartender\",\"gender\": \"male\",\"race_id\": 2,\"description\": \"\",\"bloodline_id\": 3,\"ancestry_id\": 19}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersPublicInfoJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -39,9 +39,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 8976562;
 
-            string getCharactersPublicInfoJson = "{\"corporation_id\": 109299958,\"birthday\": \"2015-03-24T11:37:00Z\",\"name\": \"CCP Bartender\",\"gender\": \"male\",\"race_id\": 2,\"description\": \"\",\"bloodline_id\": 3,\"ancestry_id\": 19}";
+            string json = "{\"corporation_id\": 109299958,\"birthday\": \"2015-03-24T11:37:00Z\",\"name\": \"CCP Bartender\",\"gender\": \"male\",\"race_id\": 2,\"description\": \"\",\"bloodline_id\": 3,\"ancestry_id\": 19}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersPublicInfoJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -61,9 +61,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersResearchAgentsJson = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
+            string json = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersResearchAgentsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -83,9 +83,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersResearchAgentsJson = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
+            string json = "[{\"agent_id\": 3009358,\"skill_type_id\": 11450,\"started_at\": \"2017-03-23T14:47:00Z\",\"points_per_day\": 53.5346162146776,\"remainder_points\": 53604.0634303189}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersResearchAgentsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -105,9 +105,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_blueprints_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersBlueprintJson = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
+            string json = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersBlueprintJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -128,9 +128,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_blueprints_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersBlueprintJson = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
+            string json = "[{\"item_id\": 1000000010495,\"type_id\": 691,\"location_id\": 60014719,\"location_flag\": \"Hangar\",\"quantity\": 1,\"time_efficiency\": 0,\"material_efficiency\": 0,\"runs\": -1}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersBlueprintJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -149,9 +149,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
 
-            string getCharactersCorporationHistoryJson = "[{\"start_date\": \"2016-06-26T20:00:00Z\",\"corporation_id\": 90000001,\"is_deleted\": true,\"record_id\": 500},{\"start_date\": \"2016-07-26T20:00:00Z\",\"corporation_id\": 90000002,\"record_id\": 501}]";
+            string json = "[{\"start_date\": \"2016-06-26T20:00:00Z\",\"corporation_id\": 90000001,\"is_deleted\": true,\"record_id\": 500},{\"start_date\": \"2016-07-26T20:00:00Z\",\"corporation_id\": 90000002,\"record_id\": 501}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersCorporationHistoryJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -170,9 +170,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
 
-            string getCharactersCorporationHistoryJson = "[{\"start_date\": \"2016-06-26T20:00:00Z\",\"corporation_id\": 90000001,\"is_deleted\": true,\"record_id\": 500},{\"start_date\": \"2016-07-26T20:00:00Z\",\"corporation_id\": 90000002,\"record_id\": 501}]";
+            string json = "[{\"start_date\": \"2016-06-26T20:00:00Z\",\"corporation_id\": 90000001,\"is_deleted\": true,\"record_id\": 500},{\"start_date\": \"2016-07-26T20:00:00Z\",\"corporation_id\": 90000002,\"record_id\": 501}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersCorporationHistoryJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -194,9 +194,9 @@ namespace ESIConnectionLibraryTests
             IList<int> characters = new List<int>(2);
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersCspaCostJson = "2950";
+            string json = "2950";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersCspaCostJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -215,9 +215,9 @@ namespace ESIConnectionLibraryTests
             IList<int> characters = new List<int>(2);
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersCspaCostJson = "2950";
+            string json = "2950";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersCspaCostJson);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -235,9 +235,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersFatigueJson = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
+            string json = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersFatigueJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -257,9 +257,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersFatigueJson = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
+            string json = "{\"last_jump_date\": \"2017-07-05T15:47:00Z\",\"jump_fatigue_expire_date\": \"2017-07-06T15:47:00Z\",\"last_update_date\": \"2017-07-05T15:42:00Z\"}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersFatigueJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -279,9 +279,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersMedalsJson = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
+            string json = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersMedalsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -307,9 +307,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersMedalsJson = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
+            string json = "[{\"medal_id\": 3,\"title\": \"33 tester medal\",\"description\": \"For 33 corp!\",\"corporation_id\": 98000001,\"issuer_id\": 2112000002,\"date\": \"2017-03-16T15:01:45Z\",\"reason\": \"Thanks!\",\"status\": \"private\",\"graphics\": [{\"part\": 1,\"layer\": 0,\"graphic\": \"caldari.1_1\",\"color\": -1},{\"part\": 1,\"layer\": 1,\"graphic\": \"caldari.1_2\",\"color\": -330271},{\"part\": 2,\"layer\": 0,\"graphic\": \"compass.1_2\",\"color\": -1}]}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersMedalsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -335,9 +335,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersNotificationsJson = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
+            string json = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersNotificationsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -360,9 +360,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersNotificationsJson = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
+            string json = "[{\"notification_id\": 1,\"type\": \"InsurancePayoutMsg\",\"sender_id\": 1000132,\"sender_type\": \"corporation\",\"timestamp\": \"2017-08-16T10:08:00Z\",\"is_read\": true,\"text\": \"amount: 3731016.4000000004\\\\nitemID: 1024881021663\\\\npayout: 1\\\\n\"}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersNotificationsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -385,9 +385,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersNotificationsContactsJson = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
+            string json = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersNotificationsContactsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -409,9 +409,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersNotificationsContactsJson = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
+            string json = "[{\"notification_id\": 1,\"sender_character_id\": 95465499,\"send_date\": \"2017-08-16T10:08:00Z\",\"standing_level\": 1.5,\"message\": \"hello friend :3\"}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersNotificationsContactsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -431,9 +431,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
 
-            string getCharactersPortraitJson = "{\"px64x64\": \"https://imageserver.eveonline.com/Character/95465499_64.jpg\",\"px128x128\": \"https://imageserver.eveonline.com/Character/95465499_128.jpg\",\"px256x256\": \"https://imageserver.eveonline.com/Character/95465499_256.jpg\",\"px512x512\": \"https://imageserver.eveonline.com/Character/95465499_512.jpg\"}";
+            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Character/95465499_64.jpg\",\"px128x128\": \"https://imageserver.eveonline.com/Character/95465499_128.jpg\",\"px256x256\": \"https://imageserver.eveonline.com/Character/95465499_256.jpg\",\"px512x512\": \"https://imageserver.eveonline.com/Character/95465499_512.jpg\"}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersPortraitJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel{Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -452,9 +452,9 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
 
-            string getCharactersPortraitJson = "{\"px64x64\": \"https://imageserver.eveonline.com/Character/95465499_64.jpg\",\"px128x128\": \"https://imageserver.eveonline.com/Character/95465499_128.jpg\",\"px256x256\": \"https://imageserver.eveonline.com/Character/95465499_256.jpg\",\"px512x512\": \"https://imageserver.eveonline.com/Character/95465499_512.jpg\"}";
+            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Character/95465499_64.jpg\",\"px128x128\": \"https://imageserver.eveonline.com/Character/95465499_128.jpg\",\"px256x256\": \"https://imageserver.eveonline.com/Character/95465499_256.jpg\",\"px512x512\": \"https://imageserver.eveonline.com/Character/95465499_512.jpg\"}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersPortraitJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -475,9 +475,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersRolesJson = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
+            string json = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersRolesJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -500,9 +500,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersRolesJson = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
+            string json = "{\"roles\": [\"Director\",\"Station_Manager\"]}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersRolesJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -525,9 +525,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_standings_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersStandingsJson = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
+            string json = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersStandingsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -550,9 +550,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_standings_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersStandingsJson = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
+            string json = "[{\"from_id\": 3009841,\"from_type\": \"agent\",\"standing\": 0.1},{\"from_id\": 1000061,\"from_type\": \"npc_corp\",\"standing\": 0},{\"from_id\": 500003,\"from_type\": \"faction\",\"standing\": -1}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersStandingsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -575,9 +575,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersStatsJson = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
+            string json = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersStatsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -600,9 +600,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersStatsJson = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
+            string json = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersStatsJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -625,9 +625,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersTitlesJson = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
+            string json = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersTitlesJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -647,9 +647,9 @@ namespace ESIConnectionLibraryTests
             CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string getCharactersTitlesJson = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
+            string json = "[{\"title_id\": 1,\"name\": \"Awesome Title\"}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersTitlesJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -667,9 +667,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int>(23);
 
-            string getCharactersAffiliationJson = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
+            string json = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
 
-            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersAffiliationJson);
+            mockedWebClient.Setup(x => x.Post(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -688,9 +688,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int>(23);
 
-            string getCharactersAffiliationJson = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
+            string json = "[{\"character_id\": 95538921,\"corporation_id\": 109299958,\"alliance_id\": 434243723}]";
 
-            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersAffiliationJson);
+            mockedWebClient.Setup(x => x.PostAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -709,9 +709,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int> { 23, 34 };
 
-            string getCharactersNamesJson = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
+            string json = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersNamesJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
@@ -729,9 +729,9 @@ namespace ESIConnectionLibraryTests
 
             IList<int> characterIds = new List<int>(23);
 
-            string getCharactersNamesJson = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
+            string json = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersNamesJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 

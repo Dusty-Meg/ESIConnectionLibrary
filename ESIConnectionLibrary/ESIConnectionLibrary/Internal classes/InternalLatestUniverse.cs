@@ -44,9 +44,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Ancestries();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseAncestries> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseAncestries>>(esiRaw);
+            IList<EsiV1UniverseAncestries> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseAncestries>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseAncestries>, IList<V1UniverseAncestries>>(esiUniverseNames);
         }
@@ -55,9 +55,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Ancestries();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseAncestries> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseAncestries>>(esiRaw);
+            IList<EsiV1UniverseAncestries> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseAncestries>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseAncestries>, IList<V1UniverseAncestries>>(esiUniverseNames);
         }
@@ -66,9 +66,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseAsteroidBelt esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseAsteroidBelt>(esiRaw);
+            EsiV1UniverseAsteroidBelt esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseAsteroidBelt>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseAsteroidBelt>(esiUniverseNames);
         }
@@ -77,9 +77,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseAsteroidBelt esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseAsteroidBelt>(esiRaw);
+            EsiV1UniverseAsteroidBelt esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseAsteroidBelt>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseAsteroidBelt>(esiUniverseNames);
         }
@@ -88,9 +88,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Bloodlines();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseBloodlines> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseBloodlines>>(esiRaw);
+            IList<EsiV1UniverseBloodlines> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseBloodlines>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseBloodlines>, IList<V1UniverseBloodlines>>(esiUniverseNames);
         }
@@ -99,9 +99,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Bloodlines();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseBloodlines> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseBloodlines>>(esiRaw);
+            IList<EsiV1UniverseBloodlines> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseBloodlines>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseBloodlines>, IList<V1UniverseBloodlines>>(esiUniverseNames);
         }
@@ -110,27 +110,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Categories();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetCategoriesAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Categories();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V1UniverseCategory GetCategory(int categoryId)
         {
             string url = StaticConnectionStrings.UniverseV1Category(categoryId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseCategory esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseCategory>(esiRaw);
+            EsiV1UniverseCategory esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseCategory>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseCategory>(esiUniverseNames);
         }
@@ -139,9 +139,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Category(categoryId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseCategory esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseCategory>(esiRaw);
+            EsiV1UniverseCategory esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseCategory>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseCategory>(esiUniverseNames);
         }
@@ -150,27 +150,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Constellations();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetConstellationsAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Constellations();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V1UniverseConstellation GetConstellation(int constellationId)
         {
             string url = StaticConnectionStrings.UniverseV1Constellation(constellationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseConstellation esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseConstellation>(esiRaw);
+            EsiV1UniverseConstellation esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseConstellation>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseConstellation>(esiUniverseNames);
         }
@@ -179,9 +179,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Constellation(constellationId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseConstellation esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseConstellation>(esiRaw);
+            EsiV1UniverseConstellation esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseConstellation>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseConstellation>(esiUniverseNames);
         }
@@ -190,9 +190,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2Factions();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV2UniverseFactions> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseFactions>>(esiRaw);
+            IList<EsiV2UniverseFactions> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseFactions>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseFactions>, IList<V2UniverseFactions>>(esiUniverseNames);
         }
@@ -201,9 +201,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2Factions();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV2UniverseFactions> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseFactions>>(esiRaw);
+            IList<EsiV2UniverseFactions> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseFactions>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseFactions>, IList<V2UniverseFactions>>(esiUniverseNames);
         }
@@ -212,27 +212,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Graphics();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetGraphicsAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Graphics();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V1UniverseGraphic GetGraphic(int graphicId)
         {
             string url = StaticConnectionStrings.UniverseV1Graphic(graphicId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseGraphic esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGraphic>(esiRaw);
+            EsiV1UniverseGraphic esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGraphic>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseGraphic>(esiUniverseNames);
         }
@@ -241,9 +241,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Graphic(graphicId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseGraphic esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGraphic>(esiRaw);
+            EsiV1UniverseGraphic esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGraphic>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseGraphic>(esiUniverseNames);
         }
@@ -252,31 +252,31 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Groups(page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Response);
+            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int>{Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<int>{Model = esi, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<int>> GetGroupsAsync(int page)
         {
             string url = StaticConnectionStrings.UniverseV1Groups(page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Response);
+            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public V1UniverseGroup GetGroup(int groupId)
         {
             string url = StaticConnectionStrings.UniverseV1Group(groupId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseGroup esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGroup>(esiRaw);
+            EsiV1UniverseGroup esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGroup>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseGroup>(esiUniverseNames);
         }
@@ -285,9 +285,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Group(groupId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseGroup esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGroup>(esiRaw);
+            EsiV1UniverseGroup esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseGroup>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseGroup>(esiUniverseNames);
         }
@@ -298,9 +298,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(names);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            EsiV1UniverseNamesToIds esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseNamesToIds>(esiRaw);
+            EsiV1UniverseNamesToIds esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseNamesToIds>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseNamesToIds>(esiUniverseNames);
         }
@@ -311,9 +311,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(names);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            EsiV1UniverseNamesToIds esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseNamesToIds>(esiRaw);
+            EsiV1UniverseNamesToIds esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseNamesToIds>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseNamesToIds>(esiUniverseNames);
         }
@@ -322,9 +322,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Moon(moonId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseMoon esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseMoon>(esiRaw);
+            EsiV1UniverseMoon esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseMoon>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseMoon>(esiUniverseNames);
         }
@@ -333,9 +333,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Moon(moonId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseMoon esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseMoon>(esiRaw);
+            EsiV1UniverseMoon esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseMoon>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseMoon>(esiUniverseNames);
         }
@@ -346,9 +346,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            IList<EsiV2UniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw);
+            IList<EsiV2UniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseNames>, IList<V2UniverseNames>>(esiUniverseNames);
         }
@@ -359,9 +359,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            IList<EsiV2UniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw);
+            IList<EsiV2UniverseNames> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseNames>, IList<V2UniverseNames>>(esiUniverseNames);
         }
@@ -370,9 +370,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Planet(planetId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniversePlanet esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniversePlanet>(esiRaw);
+            EsiV1UniversePlanet esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniversePlanet>(esiRaw.Model);
 
             return _mapper.Map<V1UniversePlanet>(esiUniverseNames);
         }
@@ -381,9 +381,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Planet(planetId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniversePlanet esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniversePlanet>(esiRaw);
+            EsiV1UniversePlanet esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniversePlanet>(esiRaw.Model);
 
             return _mapper.Map<V1UniversePlanet>(esiUniverseNames);
         }
@@ -392,9 +392,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Races();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseRaces> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseRaces>>(esiRaw);
+            IList<EsiV1UniverseRaces> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseRaces>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseRaces>, IList<V1UniverseRaces>>(esiUniverseNames);
         }
@@ -403,9 +403,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Races();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<EsiV1UniverseRaces> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseRaces>>(esiRaw);
+            IList<EsiV1UniverseRaces> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseRaces>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseRaces>, IList<V1UniverseRaces>>(esiUniverseNames);
         }
@@ -414,27 +414,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Regions();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetRegionsAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Regions();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V1UniverseRegion GetRegion(int regionId)
         {
             string url = StaticConnectionStrings.UniverseV1Region(regionId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseRegion esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseRegion>(esiRaw);
+            EsiV1UniverseRegion esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseRegion>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseRegion>(esiUniverseNames);
         }
@@ -443,9 +443,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Region(planetId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseRegion esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseRegion>(esiRaw);
+            EsiV1UniverseRegion esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseRegion>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseRegion>(esiUniverseNames);
         }
@@ -454,9 +454,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Stargate(stargateId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseStargate esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStargate>(esiRaw);
+            EsiV1UniverseStargate esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStargate>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseStargate>(esiUniverseNames);
         }
@@ -465,9 +465,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Stargate(stargateId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseStargate esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStargate>(esiRaw);
+            EsiV1UniverseStargate esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStargate>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseStargate>(esiUniverseNames);
         }
@@ -476,9 +476,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Star(starId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseStar esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStar>(esiRaw);
+            EsiV1UniverseStar esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStar>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseStar>(esiUniverseNames);
         }
@@ -487,9 +487,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Star(starId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1UniverseStar esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStar>(esiRaw);
+            EsiV1UniverseStar esiUniverseNames = JsonConvert.DeserializeObject<EsiV1UniverseStar>(esiRaw.Model);
 
             return _mapper.Map<V1UniverseStar>(esiUniverseNames);
         }
@@ -498,9 +498,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2Station(stationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV2UniverseStation esiUniverseNames = JsonConvert.DeserializeObject<EsiV2UniverseStation>(esiRaw);
+            EsiV2UniverseStation esiUniverseNames = JsonConvert.DeserializeObject<EsiV2UniverseStation>(esiRaw.Model);
 
             return _mapper.Map<V2UniverseStation>(esiUniverseNames);
         }
@@ -509,9 +509,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2Station(stationId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV2UniverseStation esiUniverseNames = JsonConvert.DeserializeObject<EsiV2UniverseStation>(esiRaw);
+            EsiV2UniverseStation esiUniverseNames = JsonConvert.DeserializeObject<EsiV2UniverseStation>(esiRaw.Model);
 
             return _mapper.Map<V2UniverseStation>(esiUniverseNames);
         }
@@ -520,18 +520,18 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Structures();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            return JsonConvert.DeserializeObject<IList<long>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<long>>(esiRaw.Model);
         }
 
         public async Task<IList<long>> GetStructuresAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Structures();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            return JsonConvert.DeserializeObject<IList<long>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<long>>(esiRaw.Model);
         }
 
         public V1UniverseStructure GetStructure(SsoToken token, long structureId)
@@ -540,9 +540,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.UniverseV1Structure(structureId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw);
+            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw.Model);
 
             return _mapper.Map<EsiV1UniverseStructure, V1UniverseStructure>(esiV1GetFleet);
         }
@@ -553,9 +553,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.UniverseV1Structure(structureId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw);
+            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw.Model);
 
             return _mapper.Map<EsiV1UniverseStructure, V1UniverseStructure>(esiV1GetFleet);
         }
@@ -564,9 +564,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1SystemJumps();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1UniverseSystemJumps> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseSystemJumps>>(esiRaw);
+            IList<EsiV1UniverseSystemJumps> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseSystemJumps>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseSystemJumps>, IList<V1UniverseSystemJumps>>(esiUniverseNames);
         }
@@ -575,9 +575,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1SystemJumps();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1UniverseSystemJumps> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseSystemJumps>>(esiRaw);
+            IList<EsiV1UniverseSystemJumps> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV1UniverseSystemJumps>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1UniverseSystemJumps>, IList<V1UniverseSystemJumps>>(esiUniverseNames);
         }
@@ -586,9 +586,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2SystemKills();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2UniverseSystemKills> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseSystemKills>>(esiRaw);
+            IList<EsiV2UniverseSystemKills> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseSystemKills>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseSystemKills>, IList<V2UniverseSystemKills>>(esiUniverseNames);
         }
@@ -597,9 +597,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV2SystemKills();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2UniverseSystemKills> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseSystemKills>>(esiRaw);
+            IList<EsiV2UniverseSystemKills> esiUniverseNames = JsonConvert.DeserializeObject<IList<EsiV2UniverseSystemKills>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2UniverseSystemKills>, IList<V2UniverseSystemKills>>(esiUniverseNames);
         }
@@ -608,27 +608,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Systems();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetSystemsAsync()
         {
             string url = StaticConnectionStrings.UniverseV1Systems();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V3UniverseSystem GetSystem(int systemId)
         {
             string url = StaticConnectionStrings.UniverseV3System(systemId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw);
+            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw.Model);
 
             return _mapper.Map<EsiV3UniverseSystem, V3UniverseSystem>(esiV3UniverseGetType);
         }
@@ -637,9 +637,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV3System(systemId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw);
+            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw.Model);
 
             return _mapper.Map<EsiV3UniverseSystem, V3UniverseSystem>(esiV3UniverseGetType);
         }
@@ -648,31 +648,31 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV1Types(page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Response);
+            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<int>> GetTypesAsync(int page)
         {
             string url = StaticConnectionStrings.UniverseV1Types(page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Response);
+            IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public V3UniverseType GetType(int typeId)
         {
             string url = StaticConnectionStrings.UniverseV3Type(typeId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseType esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseType>(esiRaw);
+            EsiV3UniverseType esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseType>(esiRaw.Model);
 
             return _mapper.Map<EsiV3UniverseType, V3UniverseType>(esiV3UniverseGetType);
         }
@@ -681,9 +681,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.UniverseV3Type(typeId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseType esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseType>(esiRaw);
+            EsiV3UniverseType esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseType>(esiRaw.Model);
 
             return _mapper.Map<EsiV3UniverseType, V3UniverseType>(esiV3UniverseGetType);
         }

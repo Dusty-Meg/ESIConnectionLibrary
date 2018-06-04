@@ -21,9 +21,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_corporation_membership_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationRolesJson = "[{\"character_id\": 1000171,\"roles\": [\"Director\",\"Station_Manager\"]}]";
+            string json = "[{\"character_id\": 1000171,\"roles\": [\"Director\",\"Station_Manager\"]}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corporationRolesJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
@@ -43,9 +43,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_corporation_membership_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationRolesJson = "[{\"character_id\": 1000171,\"roles\": [\"Director\",\"Station_Manager\"]}]";
+            string json = "[{\"character_id\": 1000171,\"roles\": [\"Director\",\"Station_Manager\"]}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(corporationRolesJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
@@ -65,9 +65,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationMemberTitleJson = "[{\"character_id\": 12345,\"titles\": []}]";
+            string json = "[{\"character_id\": 12345,\"titles\": []}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corporationMemberTitleJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
@@ -88,9 +88,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationMemberTitleJson = "[{\"character_id\": 12345,\"titles\": []}]";
+            string json = "[{\"character_id\": 12345,\"titles\": []}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(corporationMemberTitleJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
@@ -111,9 +111,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationTitlesJson = "[{\"name\": \"Awesome Title\",\"roles\": [\"Hangar_Take_6\",\"Hangar_Query_2\"],\"title_id\": 1}]";
+            string json = "[{\"name\": \"Awesome Title\",\"roles\": [\"Hangar_Take_6\",\"Hangar_Query_2\"],\"title_id\": 1}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(corporationTitlesJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
@@ -136,9 +136,9 @@ namespace ESIConnectionLibraryTests
             CorporationScopes scopes = CorporationScopes.esi_corporations_read_titles_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, CorporationScopesFlags = scopes };
-            string corporationTitlesJson = "[{\"name\": \"Awesome Title\",\"roles\": [\"Hangar_Take_6\",\"Hangar_Query_2\"],\"title_id\": 1}]";
+            string json = "[{\"name\": \"Awesome Title\",\"roles\": [\"Hangar_Take_6\",\"Hangar_Query_2\"],\"title_id\": 1}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(corporationTitlesJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 

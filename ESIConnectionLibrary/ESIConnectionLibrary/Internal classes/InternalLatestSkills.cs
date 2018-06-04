@@ -33,9 +33,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsSkillQueue(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            IList<EsiV2SkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV2SkillQueueSkill>>(esiRaw);
+            IList<EsiV2SkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV2SkillQueueSkill>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2SkillQueueSkill>, IList<V2SkillQueueSkill>>(esiSkillQueue);
         }
@@ -46,9 +46,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsSkillQueue(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
-            IList<EsiV2SkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV2SkillQueueSkill>>(esiRaw);
+            IList<EsiV2SkillQueueSkill> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV2SkillQueueSkill>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2SkillQueueSkill>, IList<V2SkillQueueSkill>>(esiSkillQueue);
         }
@@ -59,9 +59,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsSkills(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV4Skills esiV4Skills = JsonConvert.DeserializeObject<EsiV4Skills>(esiRaw);
+            EsiV4Skills esiV4Skills = JsonConvert.DeserializeObject<EsiV4Skills>(esiRaw.Model);
 
             return _mapper.Map<EsiV4Skills, V4Skills>(esiV4Skills);
         }
@@ -72,9 +72,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsSkills(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV4Skills esiV4Skills = JsonConvert.DeserializeObject<EsiV4Skills>(esiRaw);
+            EsiV4Skills esiV4Skills = JsonConvert.DeserializeObject<EsiV4Skills>(esiRaw.Model);
 
             return _mapper.Map<EsiV4Skills, V4Skills>(esiV4Skills);
         }
@@ -85,9 +85,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsAttributes(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV1Attributes esiV1Attributes = JsonConvert.DeserializeObject<EsiV1Attributes>(esiRaw);
+            EsiV1Attributes esiV1Attributes = JsonConvert.DeserializeObject<EsiV1Attributes>(esiRaw.Model);
 
             return _mapper.Map<EsiV1Attributes, V1Attributes>(esiV1Attributes);
         }
@@ -98,9 +98,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.SkillsAttributes(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV1Attributes esiV1Attributes = JsonConvert.DeserializeObject<EsiV1Attributes>(esiRaw);
+            EsiV1Attributes esiV1Attributes = JsonConvert.DeserializeObject<EsiV1Attributes>(esiRaw.Model);
 
             return _mapper.Map<EsiV1Attributes, V1Attributes>(esiV1Attributes);
         }

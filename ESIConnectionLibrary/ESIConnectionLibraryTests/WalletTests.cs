@@ -20,9 +20,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletJournalJson = "29500.01";
+            string json = "29500.01";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getWalletJournalJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -40,9 +40,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletJournalJson = "29500.01";
+            string json = "29500.01";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getWalletJournalJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -61,11 +61,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletJournalJson = "[{\"amount\": -100000,\"balance\": 500000.4316,\"context_id\": 4,\"context_id_type\": \"contract_id\",\"date\": \"2018-02-23T14:31:32Z\",\"description\": \"Contract Deposit\",\"first_party_id\": 2112625428,\"id\": 89,\"ref_type\": \"contract_deposit\",\"second_party_id\": 1000132}]";
+            string json = "[{\"amount\": -100000,\"balance\": 500000.4316,\"context_id\": 4,\"context_id_type\": \"contract_id\",\"date\": \"2018-02-23T14:31:32Z\",\"description\": \"Contract Deposit\",\"first_party_id\": 2112625428,\"id\": 89,\"ref_type\": \"contract_deposit\",\"second_party_id\": 1000132}]";
 
-            PagedJson pagedJson = new PagedJson{ Response = getWalletJournalJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -90,11 +88,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletJournalJson = "[{\"amount\": -100000,\"balance\": 500000.4316,\"context_id\": 4,\"context_id_type\": \"contract_id\",\"date\": \"2018-02-23T14:31:32Z\",\"description\": \"Contract Deposit\",\"first_party_id\": 2112625428,\"id\": 89,\"ref_type\": \"contract_deposit\",\"second_party_id\": 1000132}]";
+            string json = "[{\"amount\": -100000,\"balance\": 500000.4316,\"context_id\": 4,\"context_id_type\": \"contract_id\",\"date\": \"2018-02-23T14:31:32Z\",\"description\": \"Contract Deposit\",\"first_party_id\": 2112625428,\"id\": 89,\"ref_type\": \"contract_deposit\",\"second_party_id\": 1000132}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getWalletJournalJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -119,11 +115,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletTransactionJson = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
+            string json = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getWalletTransactionJson };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -153,11 +147,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getWalletTransactionJson = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
+            string json = "[{\"client_id\": 54321,\"date\": \"2016-10-24T09:00:00Z\",\"is_buy\": true,\"is_personal\": true,\"journal_ref_id\": 67890,\"location_id\": 60014719,\"quantity\": 1,\"transaction_id\": 1234567890,\"type_id\": 587,\"unit_price\": 1}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getWalletTransactionJson };
-
-            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -186,9 +178,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationWallets = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationWallets);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -210,9 +202,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationWallets = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 1\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 2\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 3\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 4\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 5\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 6\r\n  },\r\n  {\r\n    \"balance\": 123.45,\r\n    \"division\": 7\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCorporationWallets);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -234,11 +226,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationJournal = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCorporationJournal };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -266,11 +256,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationJournal = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"amount\": -1000,\r\n    \"balance\": 100000,\r\n    \"context_id\": 2112625428,\r\n    \"context_id_type\": \"character_id\",\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"description\": \"CCP Zoetrope transferred cash from C C P\'s corporate account to CCP SnowedIn\'s account\",\r\n    \"first_party_id\": 109299958,\r\n    \"id\": 1234567890,\r\n    \"ref_type\": \"corporation_account_withdrawal\",\r\n    \"second_party_id\": 95538921\r\n  }\r\n]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCorporationJournal };
-
-            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json, MaxPages = 2});
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -298,9 +286,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationTransactions = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCorporationTransactions);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
@@ -327,9 +315,9 @@ namespace ESIConnectionLibraryTests
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, WalletScopesFlags = scopes };
-            string getCorporationTransactions = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"client_id\": 54321,\r\n    \"date\": \"2016-10-24T09:00:00Z\",\r\n    \"is_buy\": true,\r\n    \"journal_ref_id\": 67890,\r\n    \"location_id\": 60014719,\r\n    \"quantity\": 1,\r\n    \"transaction_id\": 1234567890,\r\n    \"type_id\": 587,\r\n    \"unit_price\": 1\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCorporationTransactions);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 

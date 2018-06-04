@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Cache;
@@ -22,7 +23,161 @@ namespace ESIConnectionLibrary.Internal_classes
             _userAgent = userAgent;
         }
 
-        public string Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public EsiModel Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            CacheModel cachedItem = _cache.Get<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
+
+            try
+            {
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = client.UploadString(address, data);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    return esiModel;
+                }
+
+                if (cachedItem != null)
+                {
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    {
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = client.DownloadString(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = client.DownloadString(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
+            }
+            catch (WebException e)
+            {
+                EsiModel returned = BuildException(e, cachedItem, esiModel, address, data);
+
+                if (returned != null)
+                {
+                    return returned;
+                }
+
+                throw;
+            }
+        }
+
+        public async Task<EsiModel> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            CacheModel cachedItem = await _cache.GetAsync<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
+
+            try
+            {
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = await client.UploadStringTaskAsync(address, data);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    return esiModel;
+                }
+
+                if (cachedItem != null)
+                {
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    {
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
+            }
+            catch (WebException e)
+            {
+                EsiModel returned = BuildException(e, cachedItem, esiModel, address, data);
+
+                if (returned != null)
+                {
+                    return returned;
+                }
+
+                throw;
+            }
+        }
+
+        public string Put(WebHeaderCollection headers, string address, string data)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -34,107 +189,22 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return client.UploadString(address, "PUT", data);
             }
             catch (WebException e)
             {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+                EsiModel returned = BuildException(e, null, null, address, data);
 
-                switch (webResponse?.StatusCode)
+                if (returned != null)
                 {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
+                    return string.Empty;
                 }
 
                 throw;
             }
         }
 
-        public async Task<string> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers,
-                CachePolicy = new HttpRequestCachePolicy()
-            };
-
-            client.Headers["UserAgent"] = _userAgent;
-
-            Uri url = new Uri(address);
-
-            try
-            {
-                string reply = await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(url, data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
-
-                return reply;
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public string Put(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
+        public async Task<string> PutAsync(WebHeaderCollection headers, string address, string data)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
@@ -146,584 +216,257 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
-                return _cache.GetOrAdd($"{address}{data}", () => client.UploadString(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                return await client.UploadStringTaskAsync(address, "PUT", data);
             }
             catch (WebException e)
             {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+                EsiModel returned = BuildException(e, null, null, address, data);
 
-                switch (webResponse?.StatusCode)
+                if (returned != null)
                 {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
+                    return string.Empty;
                 }
 
                 throw;
             }
         }
 
-        public async Task<string> PutAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers,
-                CachePolicy = new HttpRequestCachePolicy()
-            };
-
-            client.Headers["UserAgent"] = _userAgent;
-
-            try
-            {
-                return await _cache.GetOrAddAsync($"{address}{data}", async () => await client.UploadStringTaskAsync(address, "PUT", data), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest} . Data: {data}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public string Get(WebHeaderCollection headers, string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers
-            };
-
-            client.Headers["UserAgent"] = _userAgent;
-
-            try
-            {
-                return _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public PagedJson GetPaged(WebHeaderCollection headers, string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers
-            };
-
-            try
-            {
-                PagedJson pagedJson = new PagedJson
-                {
-                    Response = _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
-                };
-
-                WebHeaderCollection responseHeaders = client.ResponseHeaders;
-
-                if (client.ResponseHeaders != null)
-                {
-                    for (int i = 0; i < responseHeaders.Count; i++)
-                    {
-                        if (responseHeaders.GetKey(i) == "X-Pages")
-                        {
-                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
-                        }
-                    }
-                }
-
-                return pagedJson;
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public async Task<string> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers
-            };
-
-            client.Headers["UserAgent"] = _userAgent;
-
-            try
-            {
-                return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public async Task<PagedJson> GetPagedAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = headers
-            };
-
-            try
-            {
-                PagedJson pagedJson = new PagedJson
-                {
-                    Response = await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
-                };
-
-                if (client.ResponseHeaders != null)
-                {
-                    WebHeaderCollection responseHeaders = client.ResponseHeaders;
-
-                    for (int i = 0; i < responseHeaders.Count; i++)
-                    {
-                        if (responseHeaders.GetKey(i) == "X-Pages")
-                        {
-                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
-                        }
-                    }
-                }
-
-                return pagedJson;
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public string Get(string address, int cacheSeconds = 0)
+        public async Task<EsiModel> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
                 Headers = { ["UserAgent"] = _userAgent }
             };
 
+            if (headers != null)
+            {
+                client.Headers = headers;
+                client.Headers["UserAgent"] = _userAgent;
+            }
+
+            CacheModel cachedItem = await _cache.GetAsync<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
+
             try
             {
-                return _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
+                if (cachedItem != null)
+                {
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    {
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = await client.DownloadStringTaskAsync(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
             }
             catch (WebException e)
             {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
+                EsiModel returned = BuildException(e, cachedItem, esiModel, address, string.Empty);
 
-                switch (webResponse?.StatusCode)
+                if (returned != null)
                 {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
+                    return returned;
                 }
 
                 throw;
-            } 
+            }
         }
 
-        public PagedJson GetPaged(string address, int cacheSeconds = 0)
+        public EsiModel Get(WebHeaderCollection headers, string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient
             {
                 Headers = { ["UserAgent"] = _userAgent }
             };
 
+            if (headers != null)
+            {
+                client.Headers = headers;
+                client.Headers["UserAgent"] = _userAgent;
+            }
+
+            CacheModel cachedItem = _cache.Get<CacheModel>(address);
+            EsiModel esiModel = new EsiModel();
+
             try
             {
-                PagedJson pagedJson = new PagedJson
+                if (cachedItem != null)
                 {
-                    Response = _cache.GetOrAdd(address, () => client.DownloadString(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
-                };
-
-                WebHeaderCollection responseHeaders = client.ResponseHeaders;
-
-                if (client.ResponseHeaders != null)
-                {
-                    for (int i = 0; i < responseHeaders.Count; i++)
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
                     {
-                        if (responseHeaders.GetKey(i) == "X-Pages")
+                        esiModel.Model = cachedItem.Item;
+                        esiModel.Etag = cachedItem.Etag;
+                        esiModel.MaxPages = cachedItem.Page;
+
+                        return esiModel;
+                    }
+
+                    if (!string.IsNullOrEmpty(cachedItem.Etag))
+                    {
+                        client.Headers["If-None-Match"] = cachedItem.Etag;
+                    }
+
+                    string esiResponse = client.DownloadString(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Remove(address);
+                    _cache.Add(address, cachedItem);
+                }
+                else
+                {
+                    string esiResponse = client.DownloadString(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    cachedItem = new CacheModel(esiResponse, esiModel.Etag, cacheSeconds, esiModel.MaxPages);
+
+                    _cache.Add(address, cachedItem);
+                }
+
+                esiModel.Model = cachedItem.Item;
+
+                return esiModel;
+            }
+            catch (WebException e)
+            {
+                EsiModel returned = BuildException(e, cachedItem, esiModel, address, string.Empty);
+
+                if (returned != null)
+                {
+                    return returned;
+                }
+
+                throw;
+            }
+        }
+
+        private EsiModel BuildHeaders(WebHeaderCollection responseHeaders, EsiModel esiModel)
+        {
+            if (responseHeaders == null)
+            {
+                return esiModel;
+            }
+
+            for (int i = 0; i < responseHeaders.Count; i++)
+            {
+                switch (responseHeaders.GetKey(i))
+                {
+                    case "ETag":
+                        esiModel.Etag = responseHeaders.Get(i);
+                        break;
+                    case "X-Pages":
+                        int.TryParse(responseHeaders.Get(i), out int maxPages);
+
+                        esiModel.MaxPages = maxPages;
+                        break;
+                    case "Expires":
+                        DateTime.TryParse(responseHeaders.Get(i), out DateTime expires);
+
+                        esiModel.Expires = expires;
+                        break;
+                    case "Last-Modified":
+                        DateTime.TryParse(responseHeaders.Get(i), out DateTime lastModified);
+
+                        esiModel.LastModified = lastModified;
+                        break;
+                }
+
+                esiModel.ResponseHeaders.Add(responseHeaders.GetKey(i), responseHeaders.Get(i));
+            }
+
+            return esiModel;
+        }
+
+        private EsiModel BuildException(WebException e, CacheModel cachedItem, EsiModel esiModel, string address, string data)
+        {
+            HttpWebResponse webResponse = e.Response as HttpWebResponse;
+
+            switch (webResponse?.StatusCode)
+            {
+                case HttpStatusCode.NotModified:
+                    if (cachedItem == null)
+                    {
+                        return null;
+                    }
+
+                    esiModel.Model = cachedItem.Item;
+                    esiModel.Etag = cachedItem.Etag;
+                    esiModel.MaxPages = cachedItem.Page;
+
+                    return esiModel;
+                case HttpStatusCode.Forbidden:
+                case HttpStatusCode.InternalServerError:
+                case HttpStatusCode.NotFound:
+                case HttpStatusCode.BadRequest:
+                    Stream responseStream = webResponse.GetResponseStream();
+
+                    if (responseStream == null)
+                    {
+                        throw new ESIException($"{e.Message} Url: {address}");
+                    }
+
+                    string resp = new StreamReader(responseStream).ReadToEnd();
+                    string errorMessage = string.Empty;
+
+                    string returnHeadersString = string.Empty;
+
+                    WebHeaderCollection returnHeaders = webResponse.Headers;
+
+                    try
+                    {
+                        EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
+
+                        errorMessage = error.Error;
+
+                        if (returnHeaders != null)
                         {
-                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
+                            for (int i = 0; i < returnHeaders.Count; i++)
+                            {
+                                returnHeadersString += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
+                            }
                         }
                     }
-                }
-
-                return pagedJson;
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public async Task<string> GetAsync(string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = { ["UserAgent"] = _userAgent }
-            };
-
-            try
-            {
-                return await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds));
-            }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
-
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
-        }
-
-        public async Task<PagedJson> GetPagedAsync(string address, int cacheSeconds = 0)
-        {
-            System.Net.WebClient client = new System.Net.WebClient
-            {
-                Headers = { ["UserAgent"] = _userAgent }
-            };
-
-            try
-            {
-                PagedJson pagedJson = new PagedJson
-                {
-                    Response = await _cache.GetOrAddAsync(address, async () => await client.DownloadStringTaskAsync(address), DateTimeOffset.UtcNow.AddSeconds(cacheSeconds))
-                };
-
-                WebHeaderCollection responseHeaders = client.ResponseHeaders;
-
-                if (client.ResponseHeaders != null)
-                {
-                    for (int i = 0; i < responseHeaders.Count; i++)
+                    catch (Exception)
                     {
-                        if (responseHeaders.GetKey(i) == "X-Pages")
-                        {
-                            pagedJson.MaxPages = int.Parse(responseHeaders.Get(i));
-                        }
                     }
-                }
 
-                return pagedJson;
+                    throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {returnHeadersString} . Data: {data}", e);
             }
-            catch (WebException e)
-            {
-                HttpWebResponse webResponse = e.Response as HttpWebResponse;
 
-                switch (webResponse?.StatusCode)
-                {
-                    case HttpStatusCode.Forbidden:
-                    case HttpStatusCode.InternalServerError:
-                    case HttpStatusCode.NotFound:
-                    case HttpStatusCode.BadRequest:
-                        string resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
-                        string errorMessage = string.Empty;
-
-                        string abTest = string.Empty;
-
-                        WebHeaderCollection returnHeaders = webResponse.Headers;
-
-                        try
-                        {
-                            EsiError error = JsonConvert.DeserializeObject<EsiError>(resp);
-
-                            errorMessage = error.Error;
-
-                            if (returnHeaders != null)
-                            {
-                                for (int i = 0; i < returnHeaders.Count; i++)
-                                {
-                                    abTest += $"{returnHeaders.GetKey(i)}: {returnHeaders.Get(i)} | ";
-                                }
-                            }
-                        }
-                        catch (Exception) { }
-
-                        throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {abTest}", e);
-                }
-
-                throw;
-            }
+            return null;
         }
     }
 }

@@ -28,9 +28,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AlianceV1GetActiveAlliance();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<int> esiActiveAlliances = JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            IList<int> esiActiveAlliances = JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
 
             return esiActiveAlliances;
         }
@@ -39,9 +39,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AlianceV1GetActiveAlliance();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<int> esiActiveAlliances = JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            IList<int> esiActiveAlliances = JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
 
             return esiActiveAlliances;
         }
@@ -50,9 +50,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV3GetPublicAlliance esiPublicAlliance = JsonConvert.DeserializeObject<EsiV3GetPublicAlliance>(esiRaw);
+            EsiV3GetPublicAlliance esiPublicAlliance = JsonConvert.DeserializeObject<EsiV3GetPublicAlliance>(esiRaw.Model);
 
             return _mapper.Map<EsiV3GetPublicAlliance, V3GetPublicAlliance>(esiPublicAlliance);
         }
@@ -61,9 +61,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV3GetPublicAlliance esiPublicAlliance = JsonConvert.DeserializeObject<EsiV3GetPublicAlliance>(esiRaw);
+            EsiV3GetPublicAlliance esiPublicAlliance = JsonConvert.DeserializeObject<EsiV3GetPublicAlliance>(esiRaw.Model);
 
             return _mapper.Map<EsiV3GetPublicAlliance, V3GetPublicAlliance>(esiPublicAlliance);
         }
@@ -72,9 +72,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<int> esiAllianceCorporations = JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            IList<int> esiAllianceCorporations = JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
 
             return esiAllianceCorporations;
         }
@@ -83,9 +83,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<int> esiAllianceCorporations = JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            IList<int> esiAllianceCorporations = JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
 
             return esiAllianceCorporations;
         }
@@ -94,9 +94,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1AllianceIcons esiAllianceIcons = JsonConvert.DeserializeObject<EsiV1AllianceIcons>(esiRaw);
+            EsiV1AllianceIcons esiAllianceIcons = JsonConvert.DeserializeObject<EsiV1AllianceIcons>(esiRaw.Model);
 
             return _mapper.Map<EsiV1AllianceIcons, V1AllianceIcons>(esiAllianceIcons);
         }
@@ -105,9 +105,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1AllianceIcons esiAllianceIcons = JsonConvert.DeserializeObject<EsiV1AllianceIcons>(esiRaw);
+            EsiV1AllianceIcons esiAllianceIcons = JsonConvert.DeserializeObject<EsiV1AllianceIcons>(esiRaw.Model);
 
             return _mapper.Map<EsiV1AllianceIcons, V1AllianceIcons>(esiAllianceIcons);
         }
@@ -116,9 +116,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV2IdsToNames(allianceIds);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw);
+            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2AllianceIdsToNames>, IList<V2AllianceIdsToNames>>(esiAllianceNames);
         }
@@ -127,9 +127,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.AllianceV2IdsToNames(allianceIds);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw);
+            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2AllianceIdsToNames>, IList<V2AllianceIdsToNames>>(esiAllianceNames);
         }

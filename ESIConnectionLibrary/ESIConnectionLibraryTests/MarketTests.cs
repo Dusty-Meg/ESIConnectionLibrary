@@ -20,9 +20,9 @@ namespace ESIConnectionLibraryTests
 
             int marketGroupId = 8976562;
 
-            string getMarketGroupInformationJson = "{\"market_group_id\": 5,\"name\": \"Standard Frigates\",\"description\": \"Small, fast vessels suited to a variety of purposes.\",\"types\": [582, 583],\"parent_group_id\": 1361}";
+            string json = "{\"market_group_id\": 5,\"name\": \"Standard Frigates\",\"description\": \"Small, fast vessels suited to a variety of purposes.\",\"types\": [582, 583],\"parent_group_id\": 1361}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getMarketGroupInformationJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
@@ -41,9 +41,9 @@ namespace ESIConnectionLibraryTests
 
             int marketGroupId = 8976562;
 
-            string getMarketGroupInformationJson = "{\"market_group_id\": 5,\"name\": \"Standard Frigates\",\"description\": \"Small, fast vessels suited to a variety of purposes.\",\"types\": [582, 583],\"parent_group_id\": 1361}";
+            string json = "{\"market_group_id\": 5,\"name\": \"Standard Frigates\",\"description\": \"Small, fast vessels suited to a variety of purposes.\",\"types\": [582, 583],\"parent_group_id\": 1361}";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getMarketGroupInformationJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
@@ -64,9 +64,9 @@ namespace ESIConnectionLibraryTests
             MarketScopes scopes = MarketScopes.esi_markets_read_character_orders_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MarketScopesFlags = scopes };
-            string getCharactersMarketOrderJson = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
+            string json = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getCharactersMarketOrderJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
@@ -98,9 +98,9 @@ namespace ESIConnectionLibraryTests
             MarketScopes scopes = MarketScopes.esi_markets_read_character_orders_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MarketScopesFlags = scopes };
-            string getCharactersMarketOrderJson = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
+            string json = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(getCharactersMarketOrderJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
@@ -133,11 +133,9 @@ namespace ESIConnectionLibraryTests
             MarketScopes scopes = MarketScopes.esi_markets_read_character_orders_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MarketScopesFlags = scopes };
-            string getCharactersHistoricMarketOrderJson = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"state\": \"expired\",\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
+            string json = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"state\": \"expired\",\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
 
-            PagedJson pagedJson = new PagedJson{ Response = getCharactersHistoricMarketOrderJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 
@@ -173,11 +171,9 @@ namespace ESIConnectionLibraryTests
             MarketScopes scopes = MarketScopes.esi_markets_read_character_orders_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MarketScopesFlags = scopes };
-            string getCharactersHistoricMarketOrderJson = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"state\": \"expired\",\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
+            string json = "[{\"duration\": 30,\"escrow\": 45.6,\"is_buy_order\": true,\"is_corporation\": false,\"issued\": \"2016-09-03T05:12:25Z\",\"location_id\": 456,\"min_volume\": 1,\"order_id\": 123,\"price\": 33.3,\"range\": \"1\",\"region_id\": 123,\"state\": \"expired\",\"type_id\": 456,\"volume_remain\": 4422,\"volume_total\": 123456}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCharactersHistoricMarketOrderJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPagedAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(pagedJson);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestMarket internalLatestMarket = new InternalLatestMarket(mockedWebClient.Object, string.Empty);
 

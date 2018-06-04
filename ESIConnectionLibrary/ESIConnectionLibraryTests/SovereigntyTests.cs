@@ -19,7 +19,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"attackers_score\": 0.4,\r\n    \"campaign_id\": 32833,\r\n    \"constellation_id\": 20000125,\r\n    \"defender_id\": 1695357456,\r\n    \"defender_score\": 0.6,\r\n    \"event_type\": \"station_defense\",\r\n    \"solar_system_id\": 30000856,\r\n    \"start_time\": \"2016-10-29T14:34:40Z\",\r\n    \"structure_id\": 61001096\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 
@@ -43,7 +43,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"attackers_score\": 0.4,\r\n    \"campaign_id\": 32833,\r\n    \"constellation_id\": 20000125,\r\n    \"defender_id\": 1695357456,\r\n    \"defender_score\": 0.6,\r\n    \"event_type\": \"station_defense\",\r\n    \"solar_system_id\": 30000856,\r\n    \"start_time\": \"2016-10-29T14:34:40Z\",\r\n    \"structure_id\": 61001096\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 
@@ -67,7 +67,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"faction_id\": 500001,\r\n    \"system_id\": 30045334\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 
@@ -85,7 +85,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"faction_id\": 500001,\r\n    \"system_id\": 30045334\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 
@@ -103,7 +103,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"alliance_id\": 498125261,\r\n    \"solar_system_id\": 30000570,\r\n    \"structure_id\": 1018253388776,\r\n    \"structure_type_id\": 32226,\r\n    \"vulnerability_occupancy_level\": 2,\r\n    \"vulnerable_end_time\": \"2016-10-29T05:30:00Z\",\r\n    \"vulnerable_start_time\": \"2016-10-28T20:30:00Z\"\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(json);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 
@@ -126,7 +126,7 @@ namespace ESIConnectionLibraryTests
 
             string json = "[\r\n  {\r\n    \"alliance_id\": 498125261,\r\n    \"solar_system_id\": 30000570,\r\n    \"structure_id\": 1018253388776,\r\n    \"structure_type_id\": 32226,\r\n    \"vulnerability_occupancy_level\": 2,\r\n    \"vulnerable_end_time\": \"2016-10-29T05:30:00Z\",\r\n    \"vulnerable_start_time\": \"2016-10-28T20:30:00Z\"\r\n  }\r\n]";
 
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(json);
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestSovereignty internalLatestSovereignty = new InternalLatestSovereignty(mockedWebClient.Object, string.Empty);
 

@@ -29,9 +29,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw);
+            EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw.Model);
 
             return _mapper.Map<EsiV1GetFleet, V1GetFleet>(esiV1GetFleet);
         }
@@ -42,9 +42,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.FleetsGetFleet(fleetId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw);
+            EsiV1GetFleet esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1GetFleet>(esiRaw.Model);
 
             return _mapper.Map<EsiV1GetFleet, V1GetFleet>(esiV1GetFleet);
         }

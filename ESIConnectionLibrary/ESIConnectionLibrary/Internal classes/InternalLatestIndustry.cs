@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1CharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV1CharacterIndustryJob>>(esiRaw);
+            IList<EsiV1CharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV1CharacterIndustryJob>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharacterIndustryJob>, IList<V1CharacterIndustryJob>>(esiSkillQueue);
         }
@@ -43,9 +43,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.IndustryCharacterJobs(token.CharacterId, includeCompletedJobs);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1CharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV1CharacterIndustryJob>>(esiRaw);
+            IList<EsiV1CharacterIndustryJob> esiSkillQueue = JsonConvert.DeserializeObject<IList<EsiV1CharacterIndustryJob>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CharacterIndustryJob>, IList<V1CharacterIndustryJob>>(esiSkillQueue);
         }

@@ -5,7 +5,7 @@
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="6.2.2" />
-      <PackageReference Include="LazyCache" Version="2.0.0-beta02" />
+      <PackageReference Include="LazyCache" Version="2.0.0-beta03" />
       <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
       <PackageReference Include="Polly" Version="5.8.0" />
     </ItemGroup>

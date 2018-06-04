@@ -20,9 +20,9 @@ namespace ESIConnectionLibraryTests
             FleetScopes scopes = FleetScopes.esi_fleets_read_fleet_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, FleetScopesFlags = scopes };
-            string getFleetsJson = "{\"is_free_move\": false,\"is_registered\": false,\"is_voice_enabled\": false,\"motd\": \"This is an <b>awesome</b> fleet!\"}";
+            string json = "{\"is_free_move\": false,\"is_registered\": false,\"is_voice_enabled\": false,\"motd\": \"This is an <b>awesome</b> fleet!\"}";
 
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(getFleetsJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
 

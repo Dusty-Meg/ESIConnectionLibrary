@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContactsGetContacts> esiCharacterContacts = JsonConvert.DeserializeObject<IList<EsiV1ContactsGetContacts>>(raw.Response);
+            IList<EsiV1ContactsGetContacts> esiCharacterContacts = JsonConvert.DeserializeObject<IList<EsiV1ContactsGetContacts>>(raw.Model);
 
             IList<V1ContactsGetContacts> mapped = _mapper.Map<IList<EsiV1ContactsGetContacts>, IList<V1ContactsGetContacts>>(esiCharacterContacts);
 
@@ -45,9 +45,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContactsGetContacts> esiCharacterContacts = JsonConvert.DeserializeObject<IList<EsiV1ContactsGetContacts>>(raw.Response);
+            IList<EsiV1ContactsGetContacts> esiCharacterContacts = JsonConvert.DeserializeObject<IList<EsiV1ContactsGetContacts>>(raw.Model);
 
             IList<V1ContactsGetContacts> mapped = _mapper.Map<IList<EsiV1ContactsGetContacts>, IList<V1ContactsGetContacts>>(esiCharacterContacts);
 

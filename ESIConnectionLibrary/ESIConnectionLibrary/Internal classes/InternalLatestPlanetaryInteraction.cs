@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV1PlanetaryInteractionCharactersPlanets> esiPlanets = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCharactersPlanets>>(esiRaw);
+            IList<EsiV1PlanetaryInteractionCharactersPlanets> esiPlanets = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCharactersPlanets>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1PlanetaryInteractionCharactersPlanets>, IList<V1PlanetaryInteractionCharactersPlanets>>(esiPlanets);
         }
@@ -43,9 +43,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV1PlanetaryInteractionCharactersPlanets> esiPlanets = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCharactersPlanets>>(esiRaw);
+            IList<EsiV1PlanetaryInteractionCharactersPlanets> esiPlanets = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCharactersPlanets>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1PlanetaryInteractionCharactersPlanets>, IList<V1PlanetaryInteractionCharactersPlanets>>(esiPlanets);
         }
@@ -56,9 +56,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
-            EsiV3PlanetaryInteractionCharactersPlanet esiPlanet = JsonConvert.DeserializeObject<EsiV3PlanetaryInteractionCharactersPlanet>(esiRaw);
+            EsiV3PlanetaryInteractionCharactersPlanet esiPlanet = JsonConvert.DeserializeObject<EsiV3PlanetaryInteractionCharactersPlanet>(esiRaw.Model);
 
             return _mapper.Map<V3PlanetaryInteractionCharactersPlanet>(esiPlanet);
         }
@@ -69,9 +69,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
-            EsiV3PlanetaryInteractionCharactersPlanet esiPlanet = JsonConvert.DeserializeObject<EsiV3PlanetaryInteractionCharactersPlanet>(esiRaw);
+            EsiV3PlanetaryInteractionCharactersPlanet esiPlanet = JsonConvert.DeserializeObject<EsiV3PlanetaryInteractionCharactersPlanet>(esiRaw.Model);
 
             return _mapper.Map<V3PlanetaryInteractionCharactersPlanet>(esiPlanet);
         }
@@ -82,9 +82,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page);
 
-            PagedJson esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1PlanetaryInteractionCorporationCustomsOffice> esiCustomOffices = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>>(esiRaw.Response);
+            IList<EsiV1PlanetaryInteractionCorporationCustomsOffice> esiCustomOffices = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>>(esiRaw.Model);
 
             IList<V1PlanetaryInteractionCorporationCustomsOffice> mapped = _mapper.Map<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>, IList<V1PlanetaryInteractionCorporationCustomsOffice>>(esiCustomOffices);
 
@@ -97,9 +97,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page);
 
-            PagedJson esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1PlanetaryInteractionCorporationCustomsOffice> esiCustomOffices = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>>(esiRaw.Response);
+            IList<EsiV1PlanetaryInteractionCorporationCustomsOffice> esiCustomOffices = JsonConvert.DeserializeObject<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>>(esiRaw.Model);
 
             IList<V1PlanetaryInteractionCorporationCustomsOffice> mapped = _mapper.Map<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>, IList<V1PlanetaryInteractionCorporationCustomsOffice>>(esiCustomOffices);
 
@@ -110,9 +110,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1PlanetaryInteractionSchematic esiSchematic = JsonConvert.DeserializeObject<EsiV1PlanetaryInteractionSchematic>(esiRaw);
+            EsiV1PlanetaryInteractionSchematic esiSchematic = JsonConvert.DeserializeObject<EsiV1PlanetaryInteractionSchematic>(esiRaw.Model);
 
             return _mapper.Map<V1PlanetaryInteractionSchematic>(esiSchematic);
         }
@@ -121,9 +121,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1PlanetaryInteractionSchematic esiSchematic = JsonConvert.DeserializeObject<EsiV1PlanetaryInteractionSchematic>(esiRaw);
+            EsiV1PlanetaryInteractionSchematic esiSchematic = JsonConvert.DeserializeObject<EsiV1PlanetaryInteractionSchematic>(esiRaw.Model);
 
             return _mapper.Map<V1PlanetaryInteractionSchematic>(esiSchematic);
         }

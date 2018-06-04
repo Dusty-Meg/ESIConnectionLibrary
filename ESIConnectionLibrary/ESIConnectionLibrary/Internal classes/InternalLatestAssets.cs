@@ -31,9 +31,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3GetCharacterAssets> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCharacterAssets>>(raw.Response);
+            IList<EsiV3GetCharacterAssets> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCharacterAssets>>(raw.Model);
 
             IList<V3GetCharacterAssets> mapped = _mapper.Map<IList<EsiV3GetCharacterAssets>, IList<V3GetCharacterAssets>>(esiCharacterAssets);
 
@@ -46,9 +46,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3GetCharacterAssets> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCharacterAssets>>(raw.Response);
+            IList<EsiV3GetCharacterAssets> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCharacterAssets>>(raw.Model);
 
             IList<V3GetCharacterAssets> mapped = _mapper.Map<IList<EsiV3GetCharacterAssets>, IList<V3GetCharacterAssets>>(esiCharacterAssets);
 
@@ -121,9 +121,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Response);
+            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Model);
 
             IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 
@@ -136,9 +136,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Response);
+            IList<EsiV3GetCorporationsAssets> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV3GetCorporationsAssets>>(raw.Model);
 
             IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 

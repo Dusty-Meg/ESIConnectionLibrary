@@ -226,26 +226,24 @@ namespace ESIConnectionLibrary.Internal_classes
 
         private OauthVerify GetOauthVerify(string accessToken)
         {
-            WebHeaderCollection headers2 = new WebHeaderCollection
+            WebHeaderCollection headers = new WebHeaderCollection
             {
                 [HttpRequestHeader.Authorization] = "Bearer " + accessToken,
-                //[HttpRequestHeader.Host] = StaticHostHeader.Login
             };
 
-            string clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(headers2, StaticConnectionStrings.AuthenticationVerify()));
-            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw);
+            EsiModel clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(headers, StaticConnectionStrings.AuthenticationVerify()));
+            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw.Model);
         }
 
         private async Task<OauthVerify> GetOauthVerifyAsync(string accessToken)
         {
-            WebHeaderCollection headers2 = new WebHeaderCollection
+            WebHeaderCollection headers = new WebHeaderCollection
             {
                 [HttpRequestHeader.Authorization] = "Bearer " + accessToken,
-                //[HttpRequestHeader.Host] = StaticHostHeader.Login
             };
 
-            string clientStringRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(headers2, StaticConnectionStrings.AuthenticationVerify()));
-            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw);
+            EsiModel clientStringRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(headers, StaticConnectionStrings.AuthenticationVerify()));
+            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw.Model);
         }
 
         private SsoToken CreateScopesFlags(SsoToken token, string scopes)

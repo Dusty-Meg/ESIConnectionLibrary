@@ -45,9 +45,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MarketV2MarketCharactersOrders(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 1200));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 1200));
 
-            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw);
+            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2MarketCharactersOrders>, IList<V2MarketCharactersOrders>>(esiV2MarketCharactersOrders);
         }
@@ -58,9 +58,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MarketV2MarketCharactersOrders(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 1200));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 1200));
 
-            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw);
+            IList<EsiV2MarketCharactersOrders> esiV2MarketCharactersOrders = JsonConvert.DeserializeObject<IList<EsiV2MarketCharactersOrders>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV2MarketCharactersOrders>, IList<V2MarketCharactersOrders>>(esiV2MarketCharactersOrders);
         }
@@ -71,9 +71,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MarketV1MarketCharactersHistoricOrders(token.CharacterId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 1200));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 1200));
 
-            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Response);
+            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Model);
 
             IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
 
@@ -86,9 +86,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.MarketV1MarketCharactersHistoricOrders(token.CharacterId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 1200));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 1200));
 
-            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Response);
+            IList<EsiV1MarketCharacterHistoricOrders> esiV1MarketCharacterHistoricOrders = JsonConvert.DeserializeObject<IList<EsiV1MarketCharacterHistoricOrders>>(raw.Model);
 
             IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
 
@@ -99,9 +99,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.MarketV1GetMarketGroupInformation(marketGroupId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw);
+            EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw.Model);
 
             return _mapper.Map<EsiV1MarketGroupInformation, V1MarketGroupInformation>(esiMarketGroup);
         }
@@ -110,9 +110,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.MarketV1GetMarketGroupInformation(marketGroupId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw);
+            EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw.Model);
 
             return _mapper.Map<EsiV1MarketGroupInformation, V1MarketGroupInformation>(esiMarketGroup);
         }

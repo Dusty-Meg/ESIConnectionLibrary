@@ -32,9 +32,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
-            PagedJson raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.GetPaged(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Response);
+            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Model);
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 
@@ -47,9 +47,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ContractsV1GetCharactersContracts(token.CharacterId, page);
 
-            PagedJson raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetPagedAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Response);
+            IList<EsiV1ContractsCharacterContracts> esiV1ContractsCharacter = JsonConvert.DeserializeObject<IList<EsiV1ContractsCharacterContracts>>(raw.Model);
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 

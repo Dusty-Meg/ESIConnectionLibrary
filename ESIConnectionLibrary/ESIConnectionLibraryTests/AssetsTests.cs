@@ -20,11 +20,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCharacterAssetsJson = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
+            string json = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCharacterAssetsJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
@@ -92,11 +90,9 @@ namespace ESIConnectionLibraryTests
             AssetScopes scopes = AssetScopes.esi_assets_read_corporation_assets_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
-            string getCorporationAssetsJson = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
+            string json = "[{\"location_flag\": \"Hangar\",\"location_id\": 60002959,\"is_singleton\": true,\"type_id\": 3516,\"item_id\": 1000000016835,\"location_type\": \"station\",\"quantity\": 1}]";
 
-            PagedJson pagedJson = new PagedJson { Response = getCorporationAssetsJson, MaxPages = 2 };
-
-            mockedWebClient.Setup(x => x.GetPaged(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(pagedJson);
+            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json, MaxPages = 2 });
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 

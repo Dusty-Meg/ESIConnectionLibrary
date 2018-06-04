@@ -27,9 +27,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.StatusV1Status();
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 30));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 30));
 
-            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw);
+            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
 
             return _mapper.Map<V1Status>(esiStatus);
         }
@@ -38,9 +38,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.StatusV1Status();
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 30));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 30));
 
-            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw);
+            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
 
             return _mapper.Map<V1Status>(esiStatus);
         }

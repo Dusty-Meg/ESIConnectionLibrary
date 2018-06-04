@@ -29,9 +29,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
 
-            string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1LocationCharacterLocation esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterLocation>(raw);
+            EsiV1LocationCharacterLocation esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterLocation>(raw.Model);
 
             return _mapper.Map<EsiV1LocationCharacterLocation, V1LocationCharacterLocation>(esiLocation);
         }
@@ -42,9 +42,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
 
-            string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1LocationCharacterLocation esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterLocation>(raw);
+            EsiV1LocationCharacterLocation esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterLocation>(raw.Model);
 
             return _mapper.Map<EsiV1LocationCharacterLocation, V1LocationCharacterLocation>(esiLocation);
         }
@@ -55,9 +55,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
 
-            string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 60));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 60));
 
-            EsiV2LocationCharacterOnline esiLocation = JsonConvert.DeserializeObject<EsiV2LocationCharacterOnline>(raw);
+            EsiV2LocationCharacterOnline esiLocation = JsonConvert.DeserializeObject<EsiV2LocationCharacterOnline>(raw.Model);
 
             return _mapper.Map<EsiV2LocationCharacterOnline, V2LocationCharacterOnline>(esiLocation);
         }
@@ -68,9 +68,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
 
-            string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 60));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 60));
 
-            EsiV2LocationCharacterOnline esiLocation = JsonConvert.DeserializeObject<EsiV2LocationCharacterOnline>(raw);
+            EsiV2LocationCharacterOnline esiLocation = JsonConvert.DeserializeObject<EsiV2LocationCharacterOnline>(raw.Model);
 
             return _mapper.Map<EsiV2LocationCharacterOnline, V2LocationCharacterOnline>(esiLocation);
         }
@@ -81,9 +81,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
 
-            string raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1LocationCharacterShip esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterShip>(raw);
+            EsiV1LocationCharacterShip esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterShip>(raw.Model);
 
             return _mapper.Map<EsiV1LocationCharacterShip, V1LocationCharacterShip>(esiLocation);
         }
@@ -94,9 +94,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
 
-            string raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
+            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
-            EsiV1LocationCharacterShip esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterShip>(raw);
+            EsiV1LocationCharacterShip esiLocation = JsonConvert.DeserializeObject<EsiV1LocationCharacterShip>(raw.Model);
 
             return _mapper.Map<EsiV1LocationCharacterShip, V1LocationCharacterShip>(esiLocation);
         }

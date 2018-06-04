@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ClonesV3GetCharactersClones(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV3CharactersClones esiClones = JsonConvert.DeserializeObject<EsiV3CharactersClones>(esiRaw);
+            EsiV3CharactersClones esiClones = JsonConvert.DeserializeObject<EsiV3CharactersClones>(esiRaw.Model);
 
             return _mapper.Map<V3CharactersClones>(esiClones);
         }
@@ -43,9 +43,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ClonesV3GetCharactersClones(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
-            EsiV3CharactersClones esiClones = JsonConvert.DeserializeObject<EsiV3CharactersClones>(esiRaw);
+            EsiV3CharactersClones esiClones = JsonConvert.DeserializeObject<EsiV3CharactersClones>(esiRaw.Model);
 
             return _mapper.Map<V3CharactersClones>(esiClones);
         }
@@ -56,9 +56,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ClonesV3GetCharactersActiveImplants(token.CharacterId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetCharactersActiveImplantsAsync(SsoToken token)
@@ -67,9 +67,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.ClonesV3GetCharactersActiveImplants(token.CharacterId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
     }
 }

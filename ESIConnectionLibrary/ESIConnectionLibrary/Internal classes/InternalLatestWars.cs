@@ -28,27 +28,27 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.WarsV1Wars(maxWarId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public async Task<IList<int>> GetWarsAsync(int maxWarId)
         {
             string url = StaticConnectionStrings.WarsV1Wars(maxWarId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            return JsonConvert.DeserializeObject<IList<int>>(esiRaw);
+            return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
         public V1WarsIndividualWar GetIndividualWar(int warId)
         {
             string url = StaticConnectionStrings.WarsV1War(warId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw);
+            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw.Model);
 
             return _mapper.Map<V1WarsIndividualWar>(esiWar);
         }
@@ -57,9 +57,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.WarsV1War(warId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw);
+            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw.Model);
 
             return _mapper.Map<V1WarsIndividualWar>(esiWar);
         }
@@ -68,9 +68,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.WarsV1WarKillmails(warId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw);
+            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1WarsWarKillmails>, IList<V1WarsWarKillmails>>(esiWar);
         }
@@ -79,9 +79,9 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.WarsV1WarKillmails(warId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw);
+            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1WarsWarKillmails>, IList<V1WarsWarKillmails>>(esiWar);
         }

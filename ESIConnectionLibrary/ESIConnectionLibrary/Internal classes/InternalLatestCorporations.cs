@@ -30,9 +30,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationRoles(corporationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() =>_webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() =>_webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw);
+            IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationsRoles>, IList<V1CorporationsRoles>>(esiCorporationsRoles);
         }
@@ -43,9 +43,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationRoles(corporationId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw);
+            IList<EsiV1CorporationsRoles> esiCorporationsRoles = JsonConvert.DeserializeObject<IList<EsiV1CorporationsRoles>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationsRoles>, IList<V1CorporationsRoles>>(esiCorporationsRoles);
         }
@@ -56,9 +56,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationMemberTitles(corporationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMemberTitle> esiV1CorporationMemberTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTitle>>(esiRaw);
+            IList<EsiV1CorporationMemberTitle> esiV1CorporationMemberTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTitle>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationMemberTitle>, IList<V1CorporationMemberTitle>>(esiV1CorporationMemberTitles);
         }
@@ -69,9 +69,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationMemberTitles(corporationId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMemberTitle> esiV1CorporationMemberTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTitle>>(esiRaw);
+            IList<EsiV1CorporationMemberTitle> esiV1CorporationMemberTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTitle>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationMemberTitle>, IList<V1CorporationMemberTitle>>(esiV1CorporationMemberTitles);
         }
@@ -82,9 +82,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationTitles(corporationId);
 
-            string esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationTitles> esiV1CorporationTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationTitles>>(esiRaw);
+            IList<EsiV1CorporationTitles> esiV1CorporationTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationTitles>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationTitles>, IList<V1CorporationTitles>>(esiV1CorporationTitles);
         }
@@ -95,9 +95,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CorporationV1CorporationTitles(corporationId);
 
-            string esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationTitles> esiV1CorporationTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationTitles>>(esiRaw);
+            IList<EsiV1CorporationTitles> esiV1CorporationTitles = JsonConvert.DeserializeObject<IList<EsiV1CorporationTitles>>(esiRaw.Model);
 
             return _mapper.Map<IList<EsiV1CorporationTitles>, IList<V1CorporationTitles>>(esiV1CorporationTitles);
         }

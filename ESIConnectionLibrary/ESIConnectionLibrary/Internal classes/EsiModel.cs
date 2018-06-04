@@ -5,6 +5,11 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal class EsiModel
     {
+        public EsiModel()
+        {
+            ResponseHeaders = new Dictionary<string, string>();
+        }
+
         public string Model { get; set; }
         public int MaxPages { get; set; }
         public string Etag { get; set; }

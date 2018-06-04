@@ -256,7 +256,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int>{Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<int>{Model = esi, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<int>> GetGroupsAsync(int page)
@@ -267,7 +267,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public V1UniverseGroup GetGroup(int groupId)
@@ -652,7 +652,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<int>> GetTypesAsync(int page)
@@ -663,7 +663,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<int> esi = JsonConvert.DeserializeObject<IList<int>>(raw.Model);
 
-            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<int> { Model = esi, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public V3UniverseType GetType(int typeId)

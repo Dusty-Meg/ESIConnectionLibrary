@@ -77,7 +77,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
 
-            return new PagedModel<V1MarketCharacterHistoricOrders>{ Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1MarketCharacterHistoricOrders>{ Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<V1MarketCharacterHistoricOrders>> GetCharactersMarketHistoricOrdersAsync(SsoToken token, int page)
@@ -92,7 +92,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1MarketCharacterHistoricOrders> mapped = _mapper.Map<IList<EsiV1MarketCharacterHistoricOrders>, IList<V1MarketCharacterHistoricOrders>>(esiV1MarketCharacterHistoricOrders);
 
-            return new PagedModel<V1MarketCharacterHistoricOrders> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1MarketCharacterHistoricOrders> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public V1MarketGroupInformation GetMarketGroupInformation(int marketGroupId)

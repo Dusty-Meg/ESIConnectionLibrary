@@ -58,7 +58,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiWalletJournal);
 
-            return new PagedModel<V4WalletCharacterJournal>{ Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V4WalletCharacterJournal>{ Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int page)
@@ -73,7 +73,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiWalletJournal);
 
-            return new PagedModel<V4WalletCharacterJournal> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V4WalletCharacterJournal> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int lastTransactionId)
@@ -88,7 +88,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiWalletTransactions);
 
-            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages.GetValueOrDefault()};
+            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages};
         }
 
         public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId)
@@ -103,7 +103,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiWalletTransactions);
 
-            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages.GetValueOrDefault()};
+            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages};
         }
 
         public IList<V1WalletCorporationWallet> GetCorporationWallets(SsoToken token, int corporationId)
@@ -144,7 +144,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiJournal);
 
-            return new PagedModel<V3WalletCorporationJournal>{ Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3WalletCorporationJournal>{ Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<V3WalletCorporationJournal>> GetCorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
@@ -159,7 +159,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiJournal);
 
-            return new PagedModel<V3WalletCorporationJournal> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3WalletCorporationJournal> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V1WalletCorporationTransactions> GetCorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)

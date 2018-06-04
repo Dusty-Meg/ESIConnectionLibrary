@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 
-            return new PagedModel<V1ContractsCharacterContracts> {Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<V1ContractsCharacterContracts> {Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page)
@@ -53,7 +53,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1ContractsCharacterContracts> mapped = _mapper.Map<IList<EsiV1ContractsCharacterContracts>, IList<V1ContractsCharacterContracts>>(esiV1ContractsCharacter);
 
-            return new PagedModel<V1ContractsCharacterContracts> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1ContractsCharacterContracts> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
     }
 }

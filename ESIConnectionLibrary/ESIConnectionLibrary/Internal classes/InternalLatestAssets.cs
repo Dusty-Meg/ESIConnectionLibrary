@@ -37,7 +37,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3GetCharacterAssets> mapped = _mapper.Map<IList<EsiV3GetCharacterAssets>, IList<V3GetCharacterAssets>>(esiCharacterAssets);
 
-            return new PagedModel<V3GetCharacterAssets>{Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<V3GetCharacterAssets>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int page)
@@ -52,7 +52,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3GetCharacterAssets> mapped = _mapper.Map<IList<EsiV3GetCharacterAssets>, IList<V3GetCharacterAssets>>(esiCharacterAssets);
 
-            return new PagedModel<V3GetCharacterAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3GetCharacterAssets> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, IList<long> ids)
@@ -127,7 +127,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 
-            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<V3GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
@@ -142,7 +142,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V3GetCorporationsAssets> mapped = _mapper.Map<IList<EsiV3GetCorporationsAssets>, IList<V3GetCorporationsAssets>>(esiCorporationAssets);
 
-            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V3GetCorporationsAssets> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V2GetCorporationsAssetsLocations> GetCorporationsAssetsLocations(SsoToken token, int corporationId, IList<long> ids)

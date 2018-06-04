@@ -36,7 +36,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1ContactsGetContacts> mapped = _mapper.Map<IList<EsiV1ContactsGetContacts>, IList<V1ContactsGetContacts>>(esiCharacterContacts);
 
-            return new PagedModel<V1ContactsGetContacts>{Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page};
+            return new PagedModel<V1ContactsGetContacts>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
         public async Task<PagedModel<V1ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page)
@@ -51,7 +51,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1ContactsGetContacts> mapped = _mapper.Map<IList<EsiV1ContactsGetContacts>, IList<V1ContactsGetContacts>>(esiCharacterContacts);
 
-            return new PagedModel<V1ContactsGetContacts> { Model = mapped, MaxPages = raw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1ContactsGetContacts> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
     }
 }

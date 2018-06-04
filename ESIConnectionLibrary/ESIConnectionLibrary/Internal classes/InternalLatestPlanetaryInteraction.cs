@@ -88,7 +88,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1PlanetaryInteractionCorporationCustomsOffice> mapped = _mapper.Map<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>, IList<V1PlanetaryInteractionCorporationCustomsOffice>>(esiCustomOffices);
 
-            return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>{ Model = mapped, MaxPages = esiRaw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
         public async Task<PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>> GetCorporationsCustomsOfficesAsync(SsoToken token, int corporationId, int page)
@@ -103,7 +103,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             IList<V1PlanetaryInteractionCorporationCustomsOffice> mapped = _mapper.Map<IList<EsiV1PlanetaryInteractionCorporationCustomsOffice>, IList<V1PlanetaryInteractionCorporationCustomsOffice>>(esiCustomOffices);
 
-            return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> { Model = mapped, MaxPages = esiRaw.MaxPages.GetValueOrDefault(), CurrentPage = page };
+            return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
         public V1PlanetaryInteractionSchematic GetSchematic(int schematicId)

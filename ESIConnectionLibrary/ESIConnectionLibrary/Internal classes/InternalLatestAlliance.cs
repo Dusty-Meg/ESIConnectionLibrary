@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestAlliance(IWebClient webClient, string userAgent)
+        public InternalLatestAlliance(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,11 +23,12 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public IList<int> GetActiveAlliances()
         {
-            string url = StaticConnectionStrings.AlianceV1GetActiveAlliance();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AlianceV1GetActiveAlliance(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -37,7 +39,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetActiveAlliancesAsync()
         {
-            string url = StaticConnectionStrings.AlianceV1GetActiveAlliance();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AlianceV1GetActiveAlliance(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -48,7 +50,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V3GetPublicAlliance GetPublicAllianceInfo(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -59,7 +61,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V3GetPublicAlliance> GetPublicAllianceInfoAsync(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV3GetAlliancePublicInfo(allianceId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -70,7 +72,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetAllianceCorporation(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -81,7 +83,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetAllianceCorporationAsync(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV1GetAllianceCorporations(allianceId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -92,7 +94,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1AllianceIcons GetAllianceIcons(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -103,7 +105,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1AllianceIcons> GetAllianceIconsAsync(int allianceId)
         {
-            string url = StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV1GetAllianceIcons(allianceId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -114,7 +116,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2AllianceIdsToNames> GetAllianceNamesFromIds(IList<int> allianceIds)
         {
-            string url = StaticConnectionStrings.AllianceV2IdsToNames(allianceIds);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV2IdsToNames(allianceIds), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -125,7 +127,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2AllianceIdsToNames>> GetAllianceNamesFromIdsAsync(IList<int> allianceIds)
         {
-            string url = StaticConnectionStrings.AllianceV2IdsToNames(allianceIds);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV2IdsToNames(allianceIds), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 

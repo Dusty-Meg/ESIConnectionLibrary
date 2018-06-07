@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestCharacter _internalLatestCharacter;
 
-        public LatestCharacterEndpoints(string userAgent)
+        public LatestCharacterEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestCharacter = new InternalLatestCharacter(null, userAgent);
+            _internalLatestCharacter = new InternalLatestCharacter(null, userAgent, testing);
         }
 
         public V4CharactersPublicInfo GetCharactersPublicInfo(int characterId)

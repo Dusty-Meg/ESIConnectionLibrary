@@ -32,10 +32,16 @@ namespace ESIConnectionLibrary.Internal_classes
                 urlBuilder = urlBuilder + variables[i];
             }
 
-            return urlBuilder;
+            return EsiBaseUrl + urlBuilder;
+        }
+
+        public static string CheckTestingUrl(string url, bool testing)
+        {
+            return testing ? url.Replace(EsiBaseUrl, TestEsiBaseUrl) : url;
         }
 
         private static string EsiBaseUrl => "https://esi.evetech.net";
+        private static string TestEsiBaseUrl => "http://127.0.0.1:8080";
 
         #region Authentication
 

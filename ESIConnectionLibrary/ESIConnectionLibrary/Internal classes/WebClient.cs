@@ -63,7 +63,7 @@ namespace ESIConnectionLibrary.Internal_classes
                         client.Headers["If-None-Match"] = cachedItem.Etag;
                     }
 
-                    string esiResponse = client.DownloadString(address);
+                    string esiResponse = client.UploadString(address, data);
 
                     esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
 
@@ -74,7 +74,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 }
                 else
                 {
-                    string esiResponse = client.DownloadString(address);
+                    string esiResponse = client.UploadString(address, data);
 
                     esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
 
@@ -140,7 +140,7 @@ namespace ESIConnectionLibrary.Internal_classes
                         client.Headers["If-None-Match"] = cachedItem.Etag;
                     }
 
-                    string esiResponse = await client.DownloadStringTaskAsync(address);
+                    string esiResponse = await client.UploadStringTaskAsync(address, data);
 
                     esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
 
@@ -151,7 +151,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 }
                 else
                 {
-                    string esiResponse = await client.DownloadStringTaskAsync(address);
+                    string esiResponse = await client.UploadStringTaskAsync(address, data);
 
                     esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
 

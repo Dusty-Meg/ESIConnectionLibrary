@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
@@ -29,6 +30,28 @@ namespace ESIConnectionLibraryTests
             InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
             IList<V2SkillQueueSkill> skillQueue = internalLatestSkills.GetSkillQueue(inputToken);
+
+            Assert.Equal(3, skillQueue.Count);
+            Assert.Equal(1, skillQueue.First().SkillId);
+        }
+
+        [Fact]
+        public async Task GetSkillQueueAsync_successfully_returns_a_SkillQueue()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            SkillScopes scopes = SkillScopes.esi_skills_read_skillqueue_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, SkillScopesFlags = scopes };
+            string json = "[{\"finish_date\": \"2016-06-29T10:47:00Z\",\"finished_level\": 3,\"queue_position\": 0,\"skill_id\": 1,\"start_date\": \"2016-06-29T10:46:00Z\"},{\"finish_date\": \"2016-07-15T10:47:00Z\", \"finished_level\": 4,\"queue_position\": 1,\"skill_id\": 1,\"start_date\": \"2016-06-29T10:47:00Z\"},{\"finish_date\": \"2016-08-30T10:47:00Z\",\"finished_level\": 2,\"queue_position\": 2,\"skill_id\": 2,\"start_date\": \"2016-07-15T10:47:00Z\"}]";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
+
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
+
+            IList<V2SkillQueueSkill> skillQueue = await internalLatestSkills.GetSkillQueueAsync(inputToken);
 
             Assert.Equal(3, skillQueue.Count);
             Assert.Equal(1, skillQueue.First().SkillId);
@@ -88,6 +111,30 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
+        public async Task GetSkillsAsync_successfully_returns_a_Skills()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            SkillScopes scopes = SkillScopes.esi_skills_read_skills_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, SkillScopesFlags = scopes };
+            string json = "{\"skills\": [{\"current_skill_level\": 1,\"skill_id\": 1,\"skillpoints_in_skill\": 10000},{\"current_skill_level\": 1,\"skill_id\": 2,\"skillpoints_in_skill\": 10000}],\"total_sp\": 20000}";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
+
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
+
+            V4Skills v4Skills = await internalLatestSkills.GetSkillsAsync(inputToken);
+
+            Assert.NotNull(v4Skills.Skills);
+            Assert.Equal(20000, v4Skills.TotalSp);
+            Assert.Equal(2, v4Skills.Skills.Length);
+            Assert.Equal(10000, v4Skills.Skills.First().SkillpointsInSkill);
+        }
+
+        [Fact]
         public void Passing_in_a_null_as_token_to_GetSkills_will_be_handled_correctly()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
@@ -133,6 +180,27 @@ namespace ESIConnectionLibraryTests
             InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
 
             V1Attributes v1Attributes = internalLatestSkills.GetAttributes(inputToken);
+
+            Assert.Equal(20, v1Attributes.Charisma);
+        }
+
+        [Fact]
+        public async Task GetAttributesAsync_successfully_returns_a_Attributes()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            SkillScopes scopes = SkillScopes.esi_skills_read_skills_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, SkillScopesFlags = scopes };
+            string json = "{\"charisma\": 20,\"intelligence\": 20,\"memory\": 20,\"perception\": 20,\"willpower\": 20}";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
+
+            InternalLatestSkills internalLatestSkills = new InternalLatestSkills(mockedWebClient.Object, string.Empty);
+
+            V1Attributes v1Attributes = await internalLatestSkills.GetAttributesAsync(inputToken);
 
             Assert.Equal(20, v1Attributes.Charisma);
         }

@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestAssets(IWebClient webClient, string userAgent)
+        public InternalLatestAssets(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -23,13 +24,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -44,7 +46,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV3GetCharactersAssets(token.CharacterId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -59,7 +61,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -74,7 +76,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV2GetCharactersAssetsLocations(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -89,7 +91,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -104,7 +106,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV1GetCharactersAssetsNames(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -119,7 +121,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -134,7 +136,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV3GetCorporationsAssets(corporationId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -149,7 +151,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -164,7 +166,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV2GetCorporationsAssetsLocations(corporationId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -179,7 +181,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -194,7 +196,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV1GetCorporationsAssetsNames(corporationId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 

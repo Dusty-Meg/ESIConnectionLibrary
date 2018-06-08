@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestAlliance _internalLatestAlliance;
 
-        public LatestAllianceEndpoints(string userAgent)
+        public LatestAllianceEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestAlliance = new InternalLatestAlliance(null, userAgent);
+            _internalLatestAlliance = new InternalLatestAlliance(null, userAgent, testing);
         }
 
         public IList<int> GetActiveAlliances()

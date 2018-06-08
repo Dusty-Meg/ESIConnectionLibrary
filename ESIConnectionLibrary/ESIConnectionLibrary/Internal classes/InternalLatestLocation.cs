@@ -11,8 +11,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestLocation(IWebClient webClient, string userAgent)
+        public InternalLatestLocation(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -21,13 +22,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public V1LocationCharacterLocation GetCharacterLocation(SsoToken token)
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_location_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -40,7 +42,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_location_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV1LocationCharacterLocation(token.CharacterId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -53,7 +55,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_online_v1);
 
-            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 60));
 
@@ -66,7 +68,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_online_v1);
 
-            string url = StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV2LocationCharacterOnline(token.CharacterId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 60));
 
@@ -79,7 +81,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_ship_type_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 5));
 
@@ -92,7 +94,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, LocationScopes.esi_location_read_ship_type_v1);
 
-            string url = StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.LocationV1LocationCharacterShip(token.CharacterId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 5));
 

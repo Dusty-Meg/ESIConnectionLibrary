@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestLocation _internalLatestLocation;
 
-        public LatestLocationEndpoints(string userAgent)
+        public LatestLocationEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestLocation = new InternalLatestLocation(null, userAgent);
+            _internalLatestLocation = new InternalLatestLocation(null, userAgent, testing);
         }
 
         public V1LocationCharacterLocation GetCharacterLocation(SsoToken token)

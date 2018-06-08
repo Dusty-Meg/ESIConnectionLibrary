@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestPlanetaryInteraction _internalLatestPlanetaryInteraction;
 
-        public LatestPlanetaryInteractionEndpoints(string userAgent)
+        public LatestPlanetaryInteractionEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(null, userAgent);
+            _internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(null, userAgent, testing);
         }
 
         public IList<V1PlanetaryInteractionCharactersPlanets> GetCharactersPlanets(SsoToken token)

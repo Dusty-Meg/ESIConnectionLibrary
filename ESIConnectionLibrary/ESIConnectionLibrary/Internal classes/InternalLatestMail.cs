@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestMail(IWebClient webClient, string userAgent)
+        public InternalLatestMail(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,13 +23,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId)
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -43,7 +45,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MailV1MailGetCharactersMail(token.CharacterId, lastMailId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -58,7 +60,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 30));
 
@@ -71,7 +73,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, MailScopes.esi_mail_read_mail_v1);
 
-            string url = StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MailV1MailGetMail(token.CharacterId, mailId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 30));
 

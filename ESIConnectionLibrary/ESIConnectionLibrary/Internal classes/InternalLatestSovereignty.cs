@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestSovereignty(IWebClient webClient, string userAgent)
+        public InternalLatestSovereignty(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,11 +23,12 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public IList<V1SovereigntyCampaigns> GetCampaigns()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Campaigns();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Campaigns(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 5));
 
@@ -37,7 +39,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1SovereigntyCampaigns>> GetCampaignsAsync()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Campaigns();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Campaigns(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 5));
 
@@ -48,7 +50,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1SovereigntyMap> GetMap()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Map();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Map(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -59,7 +61,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1SovereigntyMap>> GetMapAsync()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Map();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Map(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -70,7 +72,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1SovereigntyStructures> GetStructures()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Map();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Structures(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 120));
 
@@ -81,7 +83,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1SovereigntyStructures>> GetStructuresAsync()
         {
-            string url = StaticConnectionStrings.SovereigntyV1Map();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Structures(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 120));
 

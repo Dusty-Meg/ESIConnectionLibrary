@@ -10,9 +10,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestMarket _internalLatestMarket;
 
-        public LatestMarketEndpoints(string userAgent)
+        public LatestMarketEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestMarket = new InternalLatestMarket(null, userAgent);
+            _internalLatestMarket = new InternalLatestMarket(null, userAgent, testing);
         }
 
         public IList<V2MarketCharactersOrders> GetCharactersMarketOrders(SsoToken token)

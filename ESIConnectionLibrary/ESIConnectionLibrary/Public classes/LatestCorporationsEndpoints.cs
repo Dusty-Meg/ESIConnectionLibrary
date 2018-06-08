@@ -9,17 +9,17 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestCorporations _internalLatestCorporations;
 
-        public LatestCorporationsEndpoints(string userAgent)
+        public LatestCorporationsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestCorporations = new InternalLatestCorporations(null, userAgent);
+            _internalLatestCorporations = new InternalLatestCorporations(null, userAgent, testing);
         }
 
-        public IList<V1CorporationsRoles> GetCorporationsRoles(SsoToken token, long corporationId)
+        public IList<V1CorporationsRoles> GetCorporationRoles(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.GetCorporationRoles(token, corporationId);
         }
 
-        public async Task<IList<V1CorporationsRoles>> GetCorporationsRolesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V1CorporationsRoles>> GetCorporationRolesAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.GetCorporationRolesAsync(token, corporationId);
         }

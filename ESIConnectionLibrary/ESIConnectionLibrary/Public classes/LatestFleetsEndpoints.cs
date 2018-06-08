@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestFleets _internalLatestFleets;
 
-        public LatestFleetsEndpoints(string userAgent)
+        public LatestFleetsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestFleets = new InternalLatestFleets(null, userAgent);
+            _internalLatestFleets = new InternalLatestFleets(null, userAgent, testing);
         }
 
         public V1GetFleet GetFleet(SsoToken token, long fleetId)

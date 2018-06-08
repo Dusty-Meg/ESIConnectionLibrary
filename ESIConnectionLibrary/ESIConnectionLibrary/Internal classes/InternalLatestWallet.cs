@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestWallet(IWebClient webClient, string userAgent)
+        public InternalLatestWallet(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,13 +23,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public double GetCharactersWallet(SsoToken token)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
@@ -39,7 +41,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
@@ -50,7 +52,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -65,7 +67,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -80,7 +82,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -95,7 +97,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -110,7 +112,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV1CorporationWallets(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationWallets(corporationId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -123,7 +125,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV1CorporationWallets(corporationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationWallets(corporationId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -136,7 +138,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -151,7 +153,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -166,7 +168,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -179,7 +181,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
-            string url = StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 

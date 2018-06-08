@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestClones _internalLatestClones;
 
-        public LatestCloneEndpoints(string userAgent)
+        public LatestCloneEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestClones = new InternalLatestClones(null, userAgent);
+            _internalLatestClones = new InternalLatestClones(null, userAgent, testing);
         }
 
         public V3CharactersClones GetCharactersClones(SsoToken token)

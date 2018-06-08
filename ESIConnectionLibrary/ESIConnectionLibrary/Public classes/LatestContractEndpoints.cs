@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestContracts _internalLatestContracts;
 
-        public LatestContractEndpoints(string userAgent)
+        public LatestContractEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestContracts = new InternalLatestContracts(null, userAgent);   
+            _internalLatestContracts = new InternalLatestContracts(null, userAgent, testing);   
         }
 
         public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page)

@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestSkills _internalLatestSkills;
 
-        public LatestSkillsEndpoints(string userAgent)
+        public LatestSkillsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestSkills = new InternalLatestSkills(null, userAgent);
+            _internalLatestSkills = new InternalLatestSkills(null, userAgent, testing);
         }
 
         public IList<V2SkillQueueSkill> GetSkillQueue(SsoToken token)

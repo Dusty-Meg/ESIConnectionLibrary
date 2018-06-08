@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestSovereignty _internalLatestSovereignty;
 
-        public LatestSovereigntyEndpoints(string userAgent)
+        public LatestSovereigntyEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestSovereignty = new InternalLatestSovereignty(null, userAgent);
+            _internalLatestSovereignty = new InternalLatestSovereignty(null, userAgent, testing);
         }
 
         public IList<V1SovereigntyCampaigns> GetCampaigns()

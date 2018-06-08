@@ -28,6 +28,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<int>> GetGraphicsAsync();
         PagedModel<int> GetGroups(int page);
         Task<PagedModel<int>> GetGroupsAsync(int page);
+        V1UniverseGroup GetGroup(int groupId);
+        Task<V1UniverseGroup> GetGroupAsync(int groupId);
         V1UniverseNamesToIds GetIds(IList<string> names);
         Task<V1UniverseNamesToIds> GetIdsAsync(IList<string> names);
         V1UniverseMoon GetMoon(int moonId);

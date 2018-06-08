@@ -10,9 +10,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestAssets _internalLatestAssets;
 
-        public LatestAssetsEndpoints(string userAgent)
+        public LatestAssetsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestAssets = new InternalLatestAssets(null, userAgent);
+            _internalLatestAssets = new InternalLatestAssets(null, userAgent, testing);
         }
 
         public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int page)

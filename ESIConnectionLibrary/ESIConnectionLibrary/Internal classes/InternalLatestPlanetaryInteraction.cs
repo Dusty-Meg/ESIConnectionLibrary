@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestPlanetaryInteraction(IWebClient webClient, string userAgent)
+        public InternalLatestPlanetaryInteraction(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,13 +23,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public IList<V1PlanetaryInteractionCharactersPlanets> GetCharactersPlanets(SsoToken token)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
@@ -41,7 +43,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1CharactersPlanets(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
@@ -54,7 +56,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
@@ -67,7 +69,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV3CharactersPlanet(token.CharacterId, planetId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
@@ -80,7 +82,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_read_customs_offices_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -95,7 +97,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_read_customs_offices_v1);
 
-            string url = StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1CorporationsCustomsOffices(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -108,7 +110,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1PlanetaryInteractionSchematic GetSchematic(int schematicId)
         {
-            string url = StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -119,7 +121,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1PlanetaryInteractionSchematic> GetSchematicAsync(int schematicId)
         {
-            string url = StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 

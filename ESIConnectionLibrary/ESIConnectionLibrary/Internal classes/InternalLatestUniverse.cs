@@ -13,8 +13,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestUniverse(IWebClient webClient, string userAgent)
+        public InternalLatestUniverse(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -24,6 +25,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         private int SecondsToDT()
@@ -42,7 +44,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1UniverseAncestries> GetAncestries()
         {
-            string url = StaticConnectionStrings.UniverseV1Ancestries();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Ancestries(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -53,7 +55,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1UniverseAncestries>> GetAncestriesAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Ancestries();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Ancestries(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -64,7 +66,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseAsteroidBelt GetAsteroidBelt(int asteroidBelId)
         {
-            string url = StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -75,7 +77,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseAsteroidBelt> GetAsteroidBeltAsync(int asteroidBelId)
         {
-            string url = StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1AsteroidBelt(asteroidBelId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -86,7 +88,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1UniverseBloodlines> GetBloodlines()
         {
-            string url = StaticConnectionStrings.UniverseV1Bloodlines();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Bloodlines(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -97,7 +99,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1UniverseBloodlines>> GetBloodlinesAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Bloodlines();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Bloodlines(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -108,7 +110,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetCategories()
         {
-            string url = StaticConnectionStrings.UniverseV1Categories();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Categories(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -117,7 +119,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetCategoriesAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Categories();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Categories(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -126,7 +128,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseCategory GetCategory(int categoryId)
         {
-            string url = StaticConnectionStrings.UniverseV1Category(categoryId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Category(categoryId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -137,7 +139,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseCategory> GetCategoryAsync(int categoryId)
         {
-            string url = StaticConnectionStrings.UniverseV1Category(categoryId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Category(categoryId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -148,7 +150,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetConstellations()
         {
-            string url = StaticConnectionStrings.UniverseV1Constellations();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Constellations(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -157,7 +159,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetConstellationsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Constellations();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Constellations(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -166,7 +168,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseConstellation GetConstellation(int constellationId)
         {
-            string url = StaticConnectionStrings.UniverseV1Constellation(constellationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Constellation(constellationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -177,7 +179,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseConstellation> GetConstellationAsync(int constellationId)
         {
-            string url = StaticConnectionStrings.UniverseV1Constellation(constellationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Constellation(constellationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -188,7 +190,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2UniverseFactions> GetFactions()
         {
-            string url = StaticConnectionStrings.UniverseV2Factions();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Factions(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -199,7 +201,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2UniverseFactions>> GetFactionsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV2Factions();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Factions(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -210,7 +212,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetGraphics()
         {
-            string url = StaticConnectionStrings.UniverseV1Graphics();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Graphics(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -219,7 +221,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetGraphicsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Graphics();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Graphics(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -228,7 +230,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseGraphic GetGraphic(int graphicId)
         {
-            string url = StaticConnectionStrings.UniverseV1Graphic(graphicId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Graphic(graphicId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -239,7 +241,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseGraphic> GetGraphicAsync(int graphicId)
         {
-            string url = StaticConnectionStrings.UniverseV1Graphic(graphicId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Graphic(graphicId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -250,7 +252,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public PagedModel<int> GetGroups(int page)
         {
-            string url = StaticConnectionStrings.UniverseV1Groups(page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Groups(page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -261,7 +263,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<PagedModel<int>> GetGroupsAsync(int page)
         {
-            string url = StaticConnectionStrings.UniverseV1Groups(page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Groups(page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -272,7 +274,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseGroup GetGroup(int groupId)
         {
-            string url = StaticConnectionStrings.UniverseV1Group(groupId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Group(groupId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -283,7 +285,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseGroup> GetGroupAsync(int groupId)
         {
-            string url = StaticConnectionStrings.UniverseV1Group(groupId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Group(groupId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -294,7 +296,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseNamesToIds GetIds(IList<string> names)
         {
-            string url = StaticConnectionStrings.UniverseV1Ids();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Ids(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(names);
 
@@ -307,7 +309,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseNamesToIds> GetIdsAsync(IList<string> names)
         {
-            string url = StaticConnectionStrings.UniverseV1Ids();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Ids(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(names);
 
@@ -320,7 +322,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseMoon GetMoon(int moonId)
         {
-            string url = StaticConnectionStrings.UniverseV1Moon(moonId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Moon(moonId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -331,7 +333,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseMoon> GetMoonAsync(int moonId)
         {
-            string url = StaticConnectionStrings.UniverseV1Moon(moonId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Moon(moonId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -342,7 +344,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2UniverseNames> GetNames(IList<int> ids)
         {
-            string url = StaticConnectionStrings.UniverseV2Names();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Names(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -355,7 +357,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2UniverseNames>> GetNamesAsync(IList<int> ids)
         {
-            string url = StaticConnectionStrings.UniverseV2Names();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Names(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
@@ -368,7 +370,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniversePlanet GetPlanet(int planetId)
         {
-            string url = StaticConnectionStrings.UniverseV1Planet(planetId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Planet(planetId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -379,7 +381,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniversePlanet> GetPlanetAsync(int planetId)
         {
-            string url = StaticConnectionStrings.UniverseV1Planet(planetId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Planet(planetId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -390,7 +392,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1UniverseRaces> GetRaces()
         {
-            string url = StaticConnectionStrings.UniverseV1Races();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Races(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -401,7 +403,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1UniverseRaces>> GetRacesAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Races();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Races(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -412,7 +414,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetRegions()
         {
-            string url = StaticConnectionStrings.UniverseV1Regions();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Regions(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -421,7 +423,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetRegionsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Regions();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Regions(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -430,7 +432,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseRegion GetRegion(int regionId)
         {
-            string url = StaticConnectionStrings.UniverseV1Region(regionId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Region(regionId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -441,7 +443,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseRegion> GetRegionAsync(int planetId)
         {
-            string url = StaticConnectionStrings.UniverseV1Region(planetId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Region(planetId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -452,7 +454,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseStargate GetStargate(int stargateId)
         {
-            string url = StaticConnectionStrings.UniverseV1Stargate(stargateId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Stargate(stargateId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -463,7 +465,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseStargate> GetStargateAsync(int stargateId)
         {
-            string url = StaticConnectionStrings.UniverseV1Stargate(stargateId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Stargate(stargateId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -474,7 +476,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V1UniverseStar GetStar(int starId)
         {
-            string url = StaticConnectionStrings.UniverseV1Star(starId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Star(starId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -485,7 +487,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1UniverseStar> GetStarAsync(int starId)
         {
-            string url = StaticConnectionStrings.UniverseV1Star(starId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Star(starId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -496,7 +498,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V2UniverseStation GetStation(int stationId)
         {
-            string url = StaticConnectionStrings.UniverseV2Station(stationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Station(stationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -507,7 +509,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V2UniverseStation> GetStationAsync(int stationId)
         {
-            string url = StaticConnectionStrings.UniverseV2Station(stationId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Station(stationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -518,7 +520,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<long> GetStructures()
         {
-            string url = StaticConnectionStrings.UniverseV1Structures();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structures(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -527,7 +529,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<long>> GetStructuresAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Structures();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structures(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -538,7 +540,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, UniverseScopes.esi_universe_read_structures_v1);
 
-            string url = StaticConnectionStrings.UniverseV1Structure(structureId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structure(structureId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -551,7 +553,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, UniverseScopes.esi_universe_read_structures_v1);
 
-            string url = StaticConnectionStrings.UniverseV1Structure(structureId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structure(structureId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
@@ -562,7 +564,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V1UniverseSystemJumps> GetSystemJumps()
         {
-            string url = StaticConnectionStrings.UniverseV1SystemJumps();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1SystemJumps(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -573,7 +575,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V1UniverseSystemJumps>> GetSystemJumpsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1SystemJumps();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1SystemJumps(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -584,7 +586,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<V2UniverseSystemKills> GetSystemKills()
         {
-            string url = StaticConnectionStrings.UniverseV2SystemKills();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2SystemKills(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -595,7 +597,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2UniverseSystemKills>> GetSystemKillsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV2SystemKills();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2SystemKills(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -606,7 +608,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> GetSystems()
         {
-            string url = StaticConnectionStrings.UniverseV1Systems();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Systems(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -615,7 +617,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> GetSystemsAsync()
         {
-            string url = StaticConnectionStrings.UniverseV1Systems();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Systems(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -624,7 +626,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V3UniverseSystem GetSystem(int systemId)
         {
-            string url = StaticConnectionStrings.UniverseV3System(systemId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3System(systemId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -635,7 +637,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V3UniverseSystem> GetSystemAsync(int systemId)
         {
-            string url = StaticConnectionStrings.UniverseV3System(systemId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3System(systemId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -646,7 +648,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public PagedModel<int> GetTypes(int page)
         {
-            string url = StaticConnectionStrings.UniverseV1Types(page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Types(page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -657,7 +659,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<PagedModel<int>> GetTypesAsync(int page)
         {
-            string url = StaticConnectionStrings.UniverseV1Types(page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Types(page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -668,7 +670,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public V3UniverseType GetType(int typeId)
         {
-            string url = StaticConnectionStrings.UniverseV3Type(typeId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3Type(typeId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -679,7 +681,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V3UniverseType> GetTypeAsync(int typeId)
         {
-            string url = StaticConnectionStrings.UniverseV3Type(typeId);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3Type(typeId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 

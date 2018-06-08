@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestStatus _internalLatestStatus;
 
-        public LatestStatusEndpoints(string userAgent)
+        public LatestStatusEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestStatus = new InternalLatestStatus(null, userAgent);
+            _internalLatestStatus = new InternalLatestStatus(null, userAgent, testing);
         }
 
         public V1Status GetStatus()

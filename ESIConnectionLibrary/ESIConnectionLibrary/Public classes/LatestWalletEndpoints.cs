@@ -10,9 +10,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestWallet _internalLatestWallet;
 
-        public LatestWalletEndpoints(string userAgent)
+        public LatestWalletEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestWallet = new InternalLatestWallet(null, userAgent);
+            _internalLatestWallet = new InternalLatestWallet(null, userAgent, testing);
         }
 
         public double GetCharactersWallet(SsoToken token)

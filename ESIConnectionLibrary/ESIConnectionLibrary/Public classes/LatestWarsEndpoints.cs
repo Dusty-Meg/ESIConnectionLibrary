@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestWars _internalLatestWars;
 
-        public LatestWarsEndpoints(string userAgent)
+        public LatestWarsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestWars = new InternalLatestWars(null, userAgent);
+            _internalLatestWars = new InternalLatestWars(null, userAgent, testing);
         }
 
         public IList<int> GetWars(int maxWarId = 0)

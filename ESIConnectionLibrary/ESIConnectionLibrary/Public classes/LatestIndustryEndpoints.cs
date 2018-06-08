@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestIndustry _internalLatestIndustry;
 
-        public LatestIndustryEndpoints(string userAgent)
+        public LatestIndustryEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestIndustry = new InternalLatestIndustry(null, userAgent);
+            _internalLatestIndustry = new InternalLatestIndustry(null, userAgent, testing);
         }
 
         public IList<V1CharacterIndustryJob> GetCharacterIndustryJobs(SsoToken token, bool includeCompletedJobs)

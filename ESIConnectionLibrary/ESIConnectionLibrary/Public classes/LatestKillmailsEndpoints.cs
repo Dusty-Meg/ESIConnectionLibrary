@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestKillmails _internalLatestKillmails;
 
-        public LatestKillmailsEndpoints(string userAgent)
+        public LatestKillmailsEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestKillmails = new InternalLatestKillmails(null, userAgent);
+            _internalLatestKillmails = new InternalLatestKillmails(null, userAgent, testing);
         }
 
         public V1GetSingleKillmail GetSingleKillmail(int killmailId, string killmailHash)

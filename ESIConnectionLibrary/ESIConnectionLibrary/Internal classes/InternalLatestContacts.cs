@@ -12,8 +12,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestContacts(IWebClient webClient, string userAgent)
+        public InternalLatestContacts(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -22,13 +23,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -43,7 +45,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContactsV1GetCharactersContacts(token.CharacterId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 

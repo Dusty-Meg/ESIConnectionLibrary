@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
 using ESIConnectionLibrary.Public_classes;
-using Moq;
 using Xunit;
 
 namespace ESIConnectionLibraryTests.IntegrationTests
 {
-    public class CloneIntergrationTests
+    public class CloneIntegrationTests
     {
         [Fact]
         public void GetCharactersClones_successfully_returns_a_charactersClones()

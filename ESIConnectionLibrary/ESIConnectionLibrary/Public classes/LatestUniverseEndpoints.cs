@@ -10,9 +10,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestUniverse _internalLatestUniverse;
 
-        public LatestUniverseEndpoints(string userAgent)
+        public LatestUniverseEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestUniverse = new InternalLatestUniverse(null, userAgent);
+            _internalLatestUniverse = new InternalLatestUniverse(null, userAgent, testing);
         }
 
         public IList<V1UniverseAncestries> GetAncestries()
@@ -113,6 +113,16 @@ namespace ESIConnectionLibrary.Public_classes
         public async Task<V1UniverseGraphic> GetGraphicAsync(int graphicId)
         {
             return await _internalLatestUniverse.GetGraphicAsync(graphicId);
+        }
+
+        public V1UniverseGroup GetGroup(int groupId)
+        {
+            return _internalLatestUniverse.GetGroup(groupId);
+        }
+
+        public async Task<V1UniverseGroup> GetGroupAsync(int groupId)
+        {
+            return await _internalLatestUniverse.GetGroupAsync(groupId);
         }
 
         public PagedModel<int> GetGroups(int page)

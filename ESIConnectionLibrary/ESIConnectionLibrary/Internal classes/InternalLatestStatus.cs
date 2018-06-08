@@ -11,8 +11,9 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         private readonly IWebClient _webClient;
         private readonly IMapper _mapper;
+        private readonly bool _testing;
 
-        public InternalLatestStatus(IWebClient webClient, string userAgent)
+        public InternalLatestStatus(IWebClient webClient, string userAgent, bool testing = false)
         {
             IConfigurationProvider provider = new MapperConfiguration(cfg =>
             {
@@ -21,11 +22,12 @@ namespace ESIConnectionLibrary.Internal_classes
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
+            _testing = testing;
         }
 
         public V1Status GetStatus()
         {
-            string url = StaticConnectionStrings.StatusV1Status();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.StatusV1Status(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 30));
 
@@ -36,7 +38,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<V1Status> GetStatusAsync()
         {
-            string url = StaticConnectionStrings.StatusV1Status();
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.StatusV1Status(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 30));
 

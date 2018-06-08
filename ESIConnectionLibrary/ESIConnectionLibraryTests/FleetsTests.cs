@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
@@ -27,6 +28,29 @@ namespace ESIConnectionLibraryTests
             InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
 
             V1GetFleet v1GetFleet = internalLatestFleets.GetFleet(inputToken, long.MinValue);
+
+            Assert.False(v1GetFleet.IsFreeMove);
+            Assert.False(v1GetFleet.IsRegistered);
+            Assert.False(v1GetFleet.IsVoiceEnabled);
+        }
+
+        [Fact]
+        public async Task GetFleetAsync_successfully_returns_a_Fleet()
+        {
+            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
+
+            int characterId = 828658;
+            string characterName = "ThisIsACharacter";
+            FleetScopes scopes = FleetScopes.esi_fleets_read_fleet_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, FleetScopesFlags = scopes };
+            string json = "{\"is_free_move\": false,\"is_registered\": false,\"is_voice_enabled\": false,\"motd\": \"This is an <b>awesome</b> fleet!\"}";
+
+            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
+
+            InternalLatestFleets internalLatestFleets = new InternalLatestFleets(mockedWebClient.Object, string.Empty);
+
+            V1GetFleet v1GetFleet = await internalLatestFleets.GetFleetAsync(inputToken, long.MinValue);
 
             Assert.False(v1GetFleet.IsFreeMove);
             Assert.False(v1GetFleet.IsRegistered);

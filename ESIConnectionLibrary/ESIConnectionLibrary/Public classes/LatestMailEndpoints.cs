@@ -8,9 +8,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestMail _internalLatestMail;
 
-        public LatestMailEndpoints(string userAgent)
+        public LatestMailEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestMail = new InternalLatestMail(null, userAgent);
+            _internalLatestMail = new InternalLatestMail(null, userAgent, testing);
         }
 
         public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId)

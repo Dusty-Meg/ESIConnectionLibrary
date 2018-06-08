@@ -429,7 +429,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string PlanetaryInteractionV1CorporationsCustomsOffices(int corporationId, int page)
         {
-            return UrlBuilder(PlanetaryInteractionV1CorporationsCustomsOfficesRaw, "{corporation_id}", corporationId + $"?page={page}");
+            return UrlBuilder(PlanetaryInteractionV1CorporationsCustomsOfficesRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string PlanetaryInteractionV1Schematics(int schematicId)

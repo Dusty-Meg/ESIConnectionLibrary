@@ -9,9 +9,9 @@ namespace ESIConnectionLibrary.Public_classes
     {
         private readonly IInternalLatestContacts _internalLatestContacts;
 
-        public LatestContactEndpoints(string userAgent)
+        public LatestContactEndpoints(string userAgent, bool testing = false)
         {
-            _internalLatestContacts = new InternalLatestContacts(null, userAgent);
+            _internalLatestContacts = new InternalLatestContacts(null, userAgent, testing);
         }
 
         public PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int page)

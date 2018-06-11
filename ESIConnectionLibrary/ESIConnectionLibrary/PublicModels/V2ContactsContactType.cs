@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1ContactsContactType
+    public enum V2ContactsContactType
     {
         character,
         corporation,

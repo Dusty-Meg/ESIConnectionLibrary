@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.AutomapperMappings
     {
         public ContactsMappings()
         {
-            CreateMap<EsiV1ContactsGetContacts, V1ContactsGetContacts>();
+            CreateMap<EsiV2ContactsGetContacts, V2ContactsGetContacts>();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ESIConnectionLibraryTests
     public class ContactTests
     {
         [Fact]
-        public void GetCharactersContacts_successfully_returns_a_pagedModelV1ContactsGetContacts()
+        public void GetCharactersContacts_successfully_returns_a_pagedModelV2ContactsGetContacts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -25,18 +25,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
+            PagedModel<V2ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);
-            Assert.Equal(V1ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);
         }
 
         [Fact]
-        public async Task GetCharactersContactsAsync_successfully_returns_a_pagedModelV1ContactsGetContacts()
+        public async Task GetCharactersContactsAsync_successfully_returns_a_pagedModelV2ContactsGetContacts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -51,11 +51,11 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestContacts internalLatestContacts = new InternalLatestContacts(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
+            PagedModel<V2ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);
-            Assert.Equal(V1ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);

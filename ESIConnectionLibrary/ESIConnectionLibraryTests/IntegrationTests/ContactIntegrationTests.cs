@@ -8,7 +8,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class ContactIntegrationTests
     {
         [Fact]
-        public void GetCharactersContacts_successfully_returns_a_pagedModelV1ContactsGetContacts()
+        public void GetCharactersContacts_successfully_returns_a_pagedModelV2ContactsGetContacts()
         {
             int characterId = 88823;
             int page = 1;
@@ -18,17 +18,17 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestContactEndpoints internalLatestContacts = new LatestContactEndpoints(string.Empty, true);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
+            PagedModel<V2ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
-            Assert.Equal(V1ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);
         }
 
         [Fact]
-        public async Task GetCharactersContactsAsync_successfully_returns_a_pagedModelV1ContactsGetContacts()
+        public async Task GetCharactersContactsAsync_successfully_returns_a_pagedModelV2ContactsGetContacts()
         {
             int characterId = 88823;
             int page = 1;
@@ -38,10 +38,10 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestContactEndpoints internalLatestContacts = new LatestContactEndpoints(string.Empty, true);
 
-            PagedModel<V1ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
+            PagedModel<V2ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
-            Assert.Equal(V1ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);

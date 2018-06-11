@@ -14,7 +14,7 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestContacts = new InternalLatestContacts(null, userAgent, testing);
         }
 
-        public PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int page)
+        public PagedModel<V2ContactsGetContacts> GetCharactersContacts(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -24,7 +24,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestContacts.GetCharactersContacts(token, page);
         }
 
-        public async Task<PagedModel<V1ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page)
+        public async Task<PagedModel<V2ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page)
         {
             if (page < 1)
             {

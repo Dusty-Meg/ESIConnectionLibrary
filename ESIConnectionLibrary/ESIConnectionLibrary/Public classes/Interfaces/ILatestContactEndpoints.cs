@@ -5,7 +5,7 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestContactEndpoints
     {
-        PagedModel<V1ContactsGetContacts> GetCharactersContacts(SsoToken token, int page);
-        Task<PagedModel<V1ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page);
+        PagedModel<V2ContactsGetContacts> GetCharactersContacts(SsoToken token, int page);
+        Task<PagedModel<V2ContactsGetContacts>> GetCharactersContactsAsync(SsoToken token, int page);
     }
 }

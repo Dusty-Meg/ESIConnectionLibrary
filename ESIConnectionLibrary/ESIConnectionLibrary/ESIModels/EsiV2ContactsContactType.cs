@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.ESIModels
 {
-    internal enum EsiV1ContactsContactType
+    internal enum EsiV2ContactsContactType
     {
         character,
         corporation,

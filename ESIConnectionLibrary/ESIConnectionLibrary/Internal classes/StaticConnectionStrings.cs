@@ -256,11 +256,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Contacts
 
-        private static string ContactsV1GetCharactersContactsRaw => "/v1/characters/{character_id}/contacts/";
+        private static string ContactsV2GetCharactersContactsRaw => "/v2/characters/{character_id}/contacts/";
 
-        public static string ContactsV1GetCharactersContacts(int characterId, int page)
+        public static string ContactsV2GetCharactersContacts(int characterId, int page)
         {
-            return UrlBuilder(ContactsV1GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(ContactsV2GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         #endregion

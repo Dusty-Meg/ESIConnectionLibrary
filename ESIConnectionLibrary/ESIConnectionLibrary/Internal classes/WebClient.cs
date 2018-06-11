@@ -249,6 +249,15 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = await client.DownloadStringTaskAsync(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    return esiModel;
+                }
+
                 if (cachedItem != null)
                 {
                     if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
@@ -320,6 +329,15 @@ namespace ESIConnectionLibrary.Internal_classes
 
             try
             {
+                if (cacheSeconds == 0)
+                {
+                    esiModel.Model = client.DownloadString(address);
+
+                    esiModel = BuildHeaders(client.ResponseHeaders, esiModel);
+
+                    return esiModel;
+                }
+
                 if (cachedItem != null)
                 {
                     if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)

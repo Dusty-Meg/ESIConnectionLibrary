@@ -29,7 +29,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);
-            Assert.Equal(V2ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.Corporation, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);
@@ -55,7 +55,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
             Assert.Equal(2, getCharacterContacts.MaxPages);
-            Assert.Equal(V2ContactsContactType.corporation, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.Corporation, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);

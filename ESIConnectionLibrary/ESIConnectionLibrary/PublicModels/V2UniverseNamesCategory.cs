@@ -2,13 +2,13 @@
 {
     public enum V2UniverseNamesCategory
     {
-        alliance,
-        character,
-        constellation,
-        corporation,
-        inventory_type,
-        region,
-        solar_system,
-        station
+        Alliance,
+        Character,
+        Constellation,
+        Corporation,
+        InventoryType,
+        Region,
+        SolarSystem,
+        Station
     }
 }

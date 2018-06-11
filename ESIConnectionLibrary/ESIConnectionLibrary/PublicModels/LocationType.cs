@@ -2,8 +2,8 @@
 {
     public enum LocationType
     {
-        station,
-        solar_system,
-        other
+        Station,
+        SolarSystem,
+        Other
     }
 }

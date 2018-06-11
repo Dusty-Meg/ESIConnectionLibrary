@@ -1,5 +1,10 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     internal enum EsiLocationFlagCorporation
     {
         AssetSafety,
@@ -10,13 +15,27 @@
         Capsule,
         Cargo,
         CorpDeliveries,
-        CorpSAG1,
-        CorpSAG2,
-        CorpSAG3,
-        CorpSAG4,
-        CorpSAG5,
-        CorpSAG6,
-        CorpSAG7,
+
+        [EnumMember(Value = "CorpSAG1")]
+        CorpSag1,
+
+        [EnumMember(Value = "CorpSAG2")]
+        CorpSag2,
+
+        [EnumMember(Value = "CorpSAG3")]
+        CorpSag3,
+
+        [EnumMember(Value = "CorpSAG4")]
+        CorpSag4,
+
+        [EnumMember(Value = "CorpSAG5")]
+        CorpSag5,
+
+        [EnumMember(Value = "CorpSAG6")]
+        CorpSag6,
+
+        [EnumMember(Value = "CorpSAG7")]
+        CorpSag7,
         CrateLoot,
         Deliveries,
         DroneBay,

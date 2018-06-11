@@ -1,5 +1,10 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     internal enum EsiNotificationType
     {
         AcceptedAlly,
@@ -22,8 +27,12 @@
         BillOutOfMoneyMsg,
         BillPaidCorpAllMsg,
         BountyClaimMsg,
-        BountyESSShared,
-        BountyESSTaken,
+
+        [EnumMember(Value = "BountyESSShared")]
+        BountyEssShared,
+
+        [EnumMember(Value = "BountyESSTaken")]
+        BountyEssTaken,
         BountyPlacedAlliance,
         BountyPlacedChar,
         BountyPlacedCorp,
@@ -56,12 +65,16 @@
         CorpFriendlyFireEnableTimerStarted,
         CorpKicked,
         CorpLiquidationMsg,
-        CorpNewCEOMsg,
+
+        [EnumMember(Value = "CorpNewCEOMsg")]
+        CorpNewCeoMsg,
         CorpNewsMsg,
         CorpOfficeExpirationMsg,
         CorpStructLostMsg,
         CorpTaxChangeMsg,
-        CorpVoteCEORevokedMsg,
+
+        [EnumMember(Value = "CorpVoteCEORevokedMsg")]
+        CorpVoteCeoRevokedMsg,
         CorpVoteMsg,
         CorpWarDeclaredMsg,
         CorpWarFightingLegalMsg,
@@ -73,29 +86,59 @@
         DistrictAttacked,
         DustAppAcceptedMsg,
         EntosisCaptureStarted,
-        FWAllianceKickMsg,
-        FWAllianceWarningMsg,
-        FWCharKickMsg,
-        FWCharRankGainMsg,
-        FWCharRankLossMsg,
-        FWCharWarningMsg,
-        FWCorpJoinMsg,
-        FWCorpKickMsg,
-        FWCorpLeaveMsg,
-        FWCorpWarningMsg,
+
+        [EnumMember(Value = "FWAllianceKickMsg")]
+        FwAllianceKickMsg,
+
+        [EnumMember(Value = "FWAllianceWarningMsg")]
+        FwAllianceWarningMsg,
+
+        [EnumMember(Value = "FWCharKickMsg")]
+        FwCharKickMsg,
+
+        [EnumMember(Value = "FWCharRankGainMsg")]
+        FwCharRankGainMsg,
+
+        [EnumMember(Value = "FWCharRankLossMsg")]
+        FwCharRankLossMsg,
+
+        [EnumMember(Value = "FWCharWarningMsg")]
+        FwCharWarningMsg,
+
+        [EnumMember(Value = "FWCorpJoinMsg")]
+        FwCorpJoinMsg,
+
+        [EnumMember(Value = "FWCorpKickMsg")]
+        FwCorpKickMsg,
+
+        [EnumMember(Value = "FWCorpLeaveMsg")]
+        FwCorpLeaveMsg,
+
+        [EnumMember(Value = "FWCorpWarningMsg")]
+        FwCorpWarningMsg,
         FacWarCorpJoinRequestMsg,
         FacWarCorpJoinWithdrawMsg,
         FacWarCorpLeaveRequestMsg,
         FacWarCorpLeaveWithdrawMsg,
-        FacWarLPDisqualifiedEvent,
-        FacWarLPDisqualifiedKill,
-        FacWarLPPayoutEvent,
-        FacWarLPPayoutKill,
+
+        [EnumMember(Value = "FacWarLPDisqualifiedEvent")]
+        FacWarLpDisqualifiedEvent,
+
+        [EnumMember(Value = "FacWarLPDisqualifiedKill")]
+        FacWarLpDisqualifiedKill,
+
+        [EnumMember(Value = "FacWarLPPayoutEvent")]
+        FacWarLpPayoutEvent,
+
+        [EnumMember(Value = "FacWarLPPayoutKill")]
+        FacWarLpPayoutKill,
         GameTimeAdded,
         GameTimeReceived,
         GameTimeSent,
         GiftReceived,
-        IHubDestroyedByBillFailure,
+
+        [EnumMember(Value = "IHubDestroyedByBillFailure")]
+        HubDestroyedByBillFailure,
         IncursionCompletedMsg,
         IndustryTeamAuctionLost,
         IndustryTeamAuctionWon,
@@ -124,8 +167,12 @@
         MoonminingExtractionCancelled,
         MoonminingExtractionFinished,
         MoonminingLaserFired,
-        NPCStandingsGained,
-        NPCStandingsLost,
+
+        [EnumMember(Value = "NPCStandingsGained")]
+        NpcStandingsGained,
+
+        [EnumMember(Value = "NPCStandingsLost")]
+        NpcStandingsLost,
         OfferedSurrender,
         OfferedToAlly,
         OldLscMessages,
@@ -149,9 +196,15 @@
         SovStructureSelfDestructCancel,
         SovStructureSelfDestructFinished,
         SovStructureSelfDestructRequested,
-        SovereigntyIHDamageMsg,
-        SovereigntySBUDamageMsg,
-        SovereigntyTCUDamageMsg,
+
+        [EnumMember(Value = "SovereigntyIHDamageMsg")]
+        SovereigntyIhDamageMsg,
+
+        [EnumMember(Value = "SovereigntySBUDamageMsg")]
+        SovereigntySbuDamageMsg,
+
+        [EnumMember(Value = "SovereigntyTCUDamageMsg")]
+        SovereigntyTcuDamageMsg,
         StationAggressionMsg1,
         StationAggressionMsg2,
         StationConquerMsg,
@@ -177,6 +230,8 @@
         WarAllyOfferDeclinedMsg,
         WarSurrenderDeclinedMsg,
         WarSurrenderOfferMsg,
-        notificationTypeMoonminingExtractionStarted
+
+        [EnumMember(Value = "notificationTypeMoonminingExtractionStarted")]
+        NotificationTypeMoonminingExtractionStarted
     }
 }

@@ -1,9 +1,19 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     internal enum EsiLocationType
     {
-        station,
-        solar_system,
-        other
+        [EnumMember(Value = "station")]
+        Station,
+
+        [EnumMember(Value = "solar_system")]
+        SolarSystem,
+
+        [EnumMember(Value = "other")]
+        Other
     }
 }

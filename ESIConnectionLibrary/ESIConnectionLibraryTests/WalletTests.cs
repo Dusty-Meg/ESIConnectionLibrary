@@ -72,14 +72,14 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
-            Assert.Equal(WalletRefType.contract_deposit, getCharactersWalletJournal.Model[0].RefType);
-            Assert.Equal(WalletContextIdType.contract_id, getCharactersWalletJournal.Model[0].ContextIdType);
+            Assert.Equal(WalletRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
+            Assert.Equal(WalletContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
             Assert.Equal(-100000, getCharactersWalletJournal.Model[0].Amount);
             Assert.Equal(500000.4316, getCharactersWalletJournal.Model[0].Balance);
         }
 
         [Fact]
-        public async System.Threading.Tasks.Task GetCharactersWalletJournalAsync_successfully_returns_a_pagedModelWalletCharacterJournalAsync()
+        public async Task GetCharactersWalletJournalAsync_successfully_returns_a_pagedModelWalletCharacterJournalAsync()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -99,8 +99,8 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
-            Assert.Equal(WalletRefType.contract_deposit, getCharactersWalletJournal.Model[0].RefType);
-            Assert.Equal(WalletContextIdType.contract_id, getCharactersWalletJournal.Model[0].ContextIdType);
+            Assert.Equal(WalletRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
+            Assert.Equal(WalletContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
             Assert.Equal(-100000, getCharactersWalletJournal.Model[0].Amount);
             Assert.Equal(500000.4316, getCharactersWalletJournal.Model[0].Balance);
         }
@@ -238,12 +238,12 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
             Assert.Equal(100000, getCorporationJournals.Model[0].Balance);
             Assert.Equal(2112625428, getCorporationJournals.Model[0].ContextId);
-            Assert.Equal(WalletContextIdType.character_id, getCorporationJournals.Model[0].ContextIdType);
+            Assert.Equal(WalletContextIdType.CharacterId, getCorporationJournals.Model[0].ContextIdType);
             Assert.Equal(new DateTime(2016,10,24,09,00,00), getCorporationJournals.Model[0].Date);
             Assert.Equal("CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account", getCorporationJournals.Model[0].Description);
             Assert.Equal(109299958, getCorporationJournals.Model[0].FirstPartyId);
             Assert.Equal(1234567890, getCorporationJournals.Model[0].Id);
-            Assert.Equal(WalletRefType.corporation_account_withdrawal, getCorporationJournals.Model[0].RefType);
+            Assert.Equal(WalletRefType.CorporationAccountWithdrawal, getCorporationJournals.Model[0].RefType);
             Assert.Equal(95538921, getCorporationJournals.Model[0].SecondPartyId);
         }
 
@@ -268,12 +268,12 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
             Assert.Equal(100000, getCorporationJournals.Model[0].Balance);
             Assert.Equal(2112625428, getCorporationJournals.Model[0].ContextId);
-            Assert.Equal(WalletContextIdType.character_id, getCorporationJournals.Model[0].ContextIdType);
+            Assert.Equal(WalletContextIdType.CharacterId, getCorporationJournals.Model[0].ContextIdType);
             Assert.Equal(new DateTime(2016, 10, 24, 09, 00, 00), getCorporationJournals.Model[0].Date);
             Assert.Equal("CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account", getCorporationJournals.Model[0].Description);
             Assert.Equal(109299958, getCorporationJournals.Model[0].FirstPartyId);
             Assert.Equal(1234567890, getCorporationJournals.Model[0].Id);
-            Assert.Equal(WalletRefType.corporation_account_withdrawal, getCorporationJournals.Model[0].RefType);
+            Assert.Equal(WalletRefType.CorporationAccountWithdrawal, getCorporationJournals.Model[0].RefType);
             Assert.Equal(95538921, getCorporationJournals.Model[0].SecondPartyId);
         }
 

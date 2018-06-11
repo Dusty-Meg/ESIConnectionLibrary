@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             V4CharactersPublicInfo v4CharactersPublicInfo = internalLatestCharacter.GetCharactersPublicInfo(characterId);
 
-            Assert.Equal(Gender.male, v4CharactersPublicInfo.Gender);
+            Assert.Equal(Gender.Male, v4CharactersPublicInfo.Gender);
             Assert.Equal(109299958, v4CharactersPublicInfo.CorporationId);
             Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v4CharactersPublicInfo.Birthday);
         }
@@ -47,7 +47,7 @@ namespace ESIConnectionLibraryTests
 
             V4CharactersPublicInfo v4CharactersPublicInfo = await internalLatestCharacter.GetCharactersPublicInfoAsync(characterId);
 
-            Assert.Equal(Gender.male, v4CharactersPublicInfo.Gender);
+            Assert.Equal(Gender.Male, v4CharactersPublicInfo.Gender);
             Assert.Equal(109299958, v4CharactersPublicInfo.CorporationId);
             Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v4CharactersPublicInfo.Birthday);
         }
@@ -290,7 +290,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
             Assert.Equal(new DateTime(2017, 03, 16, 15, 01, 45), getCharactersMedals.First().Date);
-            Assert.Equal(MedalsStatus.@private, getCharactersMedals.First().Status);
+            Assert.Equal(MedalsStatus.Private, getCharactersMedals.First().Status);
             Assert.Equal(3, getCharactersMedals.First().Graphics.Count);
             Assert.Equal(1, getCharactersMedals.First().Graphics.First().Part);
             Assert.Equal(0, getCharactersMedals.First().Graphics.First().Layer);
@@ -318,7 +318,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
             Assert.Equal(new DateTime(2017, 03, 16, 15, 01, 45), getCharactersMedals.First().Date);
-            Assert.Equal(MedalsStatus.@private, getCharactersMedals.First().Status);
+            Assert.Equal(MedalsStatus.Private, getCharactersMedals.First().Status);
             Assert.Equal(3, getCharactersMedals.First().Graphics.Count);
             Assert.Equal(1, getCharactersMedals.First().Graphics.First().Part);
             Assert.Equal(0, getCharactersMedals.First().Graphics.First().Layer);
@@ -346,7 +346,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
             Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
-            Assert.Equal(SenderType.corporation, getCharactersNotifications.First().SenderType);
+            Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);
         }
@@ -371,7 +371,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
             Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
-            Assert.Equal(SenderType.corporation, getCharactersNotifications.First().SenderType);
+            Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);
         }
@@ -485,7 +485,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
-            Assert.Equal(CharacterRoles.Station_Manager, getCharactersRoles.Roles[1]);
+            Assert.Equal(CharacterRoles.StationManager, getCharactersRoles.Roles[1]);
             Assert.Equal(0, getCharactersRoles.RolesAtHq.Count);
             Assert.Equal(0, getCharactersRoles.RolesAtBase.Count);
             Assert.Equal(0, getCharactersRoles.RolesAtOther.Count);
@@ -510,7 +510,7 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
-            Assert.Equal(CharacterRoles.Station_Manager, getCharactersRoles.Roles[1]);
+            Assert.Equal(CharacterRoles.StationManager, getCharactersRoles.Roles[1]);
             Assert.Equal(0, getCharactersRoles.RolesAtHq.Count);
             Assert.Equal(0, getCharactersRoles.RolesAtBase.Count);
             Assert.Equal(0, getCharactersRoles.RolesAtOther.Count);
@@ -535,10 +535,10 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(3, getCharactersStandings.Count);
             Assert.Equal(3009841, getCharactersStandings.First().FromId);
-            Assert.Equal(StandingFromType.agent, getCharactersStandings.First().FromType);
+            Assert.Equal(StandingFromType.Agent, getCharactersStandings.First().FromType);
             Assert.Equal(0.1f, getCharactersStandings.First().Standing);
-            Assert.Equal(StandingFromType.npc_corp, getCharactersStandings[1].FromType);
-            Assert.Equal(StandingFromType.faction, getCharactersStandings[2].FromType);
+            Assert.Equal(StandingFromType.NpcCorp, getCharactersStandings[1].FromType);
+            Assert.Equal(StandingFromType.Faction, getCharactersStandings[2].FromType);
         }
 
         [Fact]
@@ -560,10 +560,10 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(3, getCharactersStandings.Count);
             Assert.Equal(3009841, getCharactersStandings.First().FromId);
-            Assert.Equal(StandingFromType.agent, getCharactersStandings.First().FromType);
+            Assert.Equal(StandingFromType.Agent, getCharactersStandings.First().FromType);
             Assert.Equal(0.1f, getCharactersStandings.First().Standing);
-            Assert.Equal(StandingFromType.npc_corp, getCharactersStandings[1].FromType);
-            Assert.Equal(StandingFromType.faction, getCharactersStandings[2].FromType);
+            Assert.Equal(StandingFromType.NpcCorp, getCharactersStandings[1].FromType);
+            Assert.Equal(StandingFromType.Faction, getCharactersStandings[2].FromType);
         }
 
         [Fact]

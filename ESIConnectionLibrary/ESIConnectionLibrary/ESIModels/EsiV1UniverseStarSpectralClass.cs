@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "G6 V")]
         G6V,
         [EnumMember(Value = "G4 VI")]
-        G4VI,
+        G4Vi,
         [EnumMember(Value = "G4 V")]
         G4V,
         [EnumMember(Value = "F8 V")]
@@ -60,11 +60,11 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "K3 V")]
         K3V,
         [EnumMember(Value = "F0 VI")]
-        F0VI,
+        F0Vi,
         [EnumMember(Value = "G1 VI")]
-        G1VI,
+        G1Vi,
         [EnumMember(Value = "G0 VI")]
-        G0VI,
+        G0Vi,
         [EnumMember(Value = "K1 V")]
         K1V,
         [EnumMember(Value = "M4 V")]
@@ -76,114 +76,114 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "M0 V")]
         M0V,
         [EnumMember(Value = "K2 IV")]
-        K2IV,
+        K2Iv,
         [EnumMember(Value = "G2 VI")]
-        G2VI,
+        G2Vi,
         [EnumMember(Value = "K0 V")]
         K0V,
         [EnumMember(Value = "K5 IV")]
-        K5IV,
+        K5Iv,
         [EnumMember(Value = "F5 VI")]
-        F5VI,
+        F5Vi,
         [EnumMember(Value = "G6 VI")]
-        G6VI,
+        G6Vi,
         [EnumMember(Value = "F6 VI")]
-        F6VI,
+        F6Vi,
         [EnumMember(Value = "F2 IV")]
-        F2IV,
+        F2Iv,
         [EnumMember(Value = "G3 VI")]
-        G3VI,
+        G3Vi,
         [EnumMember(Value = "M8 V")]
         M8V,
         [EnumMember(Value = "F1 VI")]
-        F1VI,
+        F1Vi,
         [EnumMember(Value = "K1 IV")]
-        K1IV,
+        K1Iv,
         [EnumMember(Value = "F7 V")]
         F7V,
         [EnumMember(Value = "G5 VI")]
-        G5VI,
+        G5Vi,
         [EnumMember(Value = "M5 V")]
         M5V,
         [EnumMember(Value = "G7 VI")]
-        G7VI,
+        G7Vi,
         [EnumMember(Value = "F5 V")]
         F5V,
         [EnumMember(Value = "F4 VI")]
-        F4VI,
+        F4Vi,
         [EnumMember(Value = "F8 VI")]
-        F8VI,
+        F8Vi,
         [EnumMember(Value = "K3 IV")]
-        K3IV,
+        K3Iv,
         [EnumMember(Value = "F4 IV")]
-        F4IV,
+        F4Iv,
         [EnumMember(Value = "F0 V")]
         F0V,
         [EnumMember(Value = "G7 IV")]
-        G7IV,
+        G7Iv,
         [EnumMember(Value = "G8 VI")]
-        G8VI,
+        G8Vi,
         [EnumMember(Value = "F2 VI")]
-        F2VI,
+        F2Vi,
         [EnumMember(Value = "F4 V")]
         F4V,
         [EnumMember(Value = "F7 VI")]
-        F7VI,
+        F7Vi,
         [EnumMember(Value = "F3 V")]
         F3V,
         [EnumMember(Value = "G1 V")]
         G1V,
         [EnumMember(Value = "G9 VI")]
-        G9VI,
+        G9Vi,
         [EnumMember(Value = "F3 IV")]
-        F3IV,
+        F3Iv,
         [EnumMember(Value = "F9 VI")]
-        F9VI,
+        F9Vi,
         [EnumMember(Value = "M9 V")]
         M9V,
         [EnumMember(Value = "K0 IV")]
-        K0IV,
+        K0Iv,
         [EnumMember(Value = "F1 IV")]
-        F1IV,
+        F1Iv,
         [EnumMember(Value = "G4 IV")]
-        G4IV,
+        G4Iv,
         [EnumMember(Value = "F3 VI")]
-        F3VI,
+        F3Vi,
         [EnumMember(Value = "K4 IV")]
-        K4IV,
+        K4Iv,
         [EnumMember(Value = "G5 IV")]
-        G5IV,
+        G5Iv,
         [EnumMember(Value = "G3 IV")]
-        G3IV,
+        G3Iv,
         [EnumMember(Value = "G1 IV")]
-        G1IV,
+        G1Iv,
         [EnumMember(Value = "K7 IV")]
-        K7IV,
+        K7Iv,
         [EnumMember(Value = "G0 IV")]
-        G0IV,
+        G0Iv,
         [EnumMember(Value = "K6 IV")]
-        K6IV,
+        K6Iv,
         [EnumMember(Value = "K9 IV")]
-        K9IV,
+        K9Iv,
         [EnumMember(Value = "G2 IV")]
-        G2IV,
+        G2Iv,
         [EnumMember(Value = "F9 IV")]
-        F9IV,
+        F9Iv,
         [EnumMember(Value = "F0 IV")]
-        F0IV,
+        F0Iv,
         [EnumMember(Value = "K8 IV")]
-        K8IV,
+        K8Iv,
         [EnumMember(Value = "G8 IV")]
-        G8IV,
+        G8Iv,
         [EnumMember(Value = "F6 IV")]
-        F6IV,
+        F6Iv,
         [EnumMember(Value = "F5 IV")]
-        F5IV,
+        F5Iv,
         [EnumMember(Value = "A0")]
         A0,
         [EnumMember(Value = "A0IV")]
-        A0IV,
+        A0Iv,
         [EnumMember(Value = "A0IV2")]
-        A0IV2
+        A0Iv2
     }
 }

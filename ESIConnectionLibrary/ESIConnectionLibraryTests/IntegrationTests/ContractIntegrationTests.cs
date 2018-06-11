@@ -22,9 +22,9 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V1ContractsCharacterContracts> getCharactersContracts = internalLatestContracts.GetCharactersContracts(inputToken, page);
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
-            Assert.Equal(ContractsAvailability.@public, getCharactersContracts.Model[0].Availability);
-            Assert.Equal(ContractsStatus.outstanding, getCharactersContracts.Model[0].Status);
-            Assert.Equal(ContractsType.auction, getCharactersContracts.Model[0].Type);
+            Assert.Equal(ContractsAvailability.Public, getCharactersContracts.Model[0].Availability);
+            Assert.Equal(ContractsStatus.Outstanding, getCharactersContracts.Model[0].Status);
+            Assert.Equal(ContractsType.Auction, getCharactersContracts.Model[0].Type);
             Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), getCharactersContracts.Model[0].DateAccepted);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Reward);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Volume);
@@ -44,9 +44,9 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V1ContractsCharacterContracts> getCharactersContracts = await internalLatestContracts.GetCharactersContractsAsync(inputToken, page);
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
-            Assert.Equal(ContractsAvailability.@public, getCharactersContracts.Model[0].Availability);
-            Assert.Equal(ContractsStatus.outstanding, getCharactersContracts.Model[0].Status);
-            Assert.Equal(ContractsType.auction, getCharactersContracts.Model[0].Type);
+            Assert.Equal(ContractsAvailability.Public, getCharactersContracts.Model[0].Availability);
+            Assert.Equal(ContractsStatus.Outstanding, getCharactersContracts.Model[0].Status);
+            Assert.Equal(ContractsType.Auction, getCharactersContracts.Model[0].Type);
             Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), getCharactersContracts.Model[0].DateAccepted);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Reward);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Volume);

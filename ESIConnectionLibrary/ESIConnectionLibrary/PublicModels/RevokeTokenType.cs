@@ -2,7 +2,7 @@
 {
     public enum RevokeTokenType
     {
-        accessToken,
-        refreshToken
+        AccessToken,
+        RefreshToken
     }
 }

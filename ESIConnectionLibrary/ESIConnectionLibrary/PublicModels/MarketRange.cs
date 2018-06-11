@@ -2,17 +2,17 @@
 {
     public enum MarketRange
     {
-        one,
-        ten,
-        two,
-        twenty,
-        three,
-        thirty,
-        four,
-        forty,
-        five,
-        region,
-        solarsystem,
-        station
+        One,
+        Ten,
+        Two,
+        Twenty,
+        Three,
+        Thirty,
+        Four,
+        Forty,
+        Five,
+        Region,
+        Solarsystem,
+        Station
     }
 }

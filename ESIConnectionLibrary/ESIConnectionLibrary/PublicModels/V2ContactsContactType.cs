@@ -2,9 +2,9 @@
 {
     public enum V2ContactsContactType
     {
-        character,
-        corporation,
-        alliance,
-        faction
+        Character,
+        Corporation,
+        Alliance,
+        Faction
     }
 }

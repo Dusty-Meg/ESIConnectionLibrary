@@ -2,8 +2,8 @@
 {
     public enum ChatAccessorType
     {
-        character,
-        corporation,
-        alliance
+        Character,
+        Corporation,
+        Alliance
     }
 }

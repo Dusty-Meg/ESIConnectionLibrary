@@ -81,7 +81,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersMarketOrders[0].MinVolume);
             Assert.Equal(123, getCharactersMarketOrders[0].OrderId);
             Assert.Equal(33.3, getCharactersMarketOrders[0].Price);
-            Assert.Equal(MarketRange.one, getCharactersMarketOrders[0].Range);
+            Assert.Equal(MarketRange.One, getCharactersMarketOrders[0].Range);
             Assert.Equal(123, getCharactersMarketOrders[0].RegionId);
             Assert.Equal(456, getCharactersMarketOrders[0].TypeId);
             Assert.Equal(4422, getCharactersMarketOrders[0].VolumeRemain);
@@ -115,7 +115,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharactersMarketOrders[0].MinVolume);
             Assert.Equal(123, getCharactersMarketOrders[0].OrderId);
             Assert.Equal(33.3, getCharactersMarketOrders[0].Price);
-            Assert.Equal(MarketRange.one, getCharactersMarketOrders[0].Range);
+            Assert.Equal(MarketRange.One, getCharactersMarketOrders[0].Range);
             Assert.Equal(123, getCharactersMarketOrders[0].RegionId);
             Assert.Equal(456, getCharactersMarketOrders[0].TypeId);
             Assert.Equal(4422, getCharactersMarketOrders[0].VolumeRemain);
@@ -152,9 +152,9 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharacterHistoricOrders.Model[0].MinVolume);
             Assert.Equal(123, getCharacterHistoricOrders.Model[0].OrderId);
             Assert.Equal(33.3, getCharacterHistoricOrders.Model[0].Price);
-            Assert.Equal(MarketRange.one, getCharacterHistoricOrders.Model[0].Range);
+            Assert.Equal(MarketRange.One, getCharacterHistoricOrders.Model[0].Range);
             Assert.Equal(123, getCharacterHistoricOrders.Model[0].RegionId);
-            Assert.Equal(MarketState.expired, getCharacterHistoricOrders.Model[0].State);
+            Assert.Equal(MarketState.Expired, getCharacterHistoricOrders.Model[0].State);
             Assert.Equal(456, getCharacterHistoricOrders.Model[0].TypeId);
             Assert.Equal(4422, getCharacterHistoricOrders.Model[0].VolumeRemain);
             Assert.Equal(123456, getCharacterHistoricOrders.Model[0].VolumeTotal);
@@ -190,9 +190,9 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(1, getCharacterHistoricOrders.Model[0].MinVolume);
             Assert.Equal(123, getCharacterHistoricOrders.Model[0].OrderId);
             Assert.Equal(33.3, getCharacterHistoricOrders.Model[0].Price);
-            Assert.Equal(MarketRange.one, getCharacterHistoricOrders.Model[0].Range);
+            Assert.Equal(MarketRange.One, getCharacterHistoricOrders.Model[0].Range);
             Assert.Equal(123, getCharacterHistoricOrders.Model[0].RegionId);
-            Assert.Equal(MarketState.expired, getCharacterHistoricOrders.Model[0].State);
+            Assert.Equal(MarketState.Expired, getCharacterHistoricOrders.Model[0].State);
             Assert.Equal(456, getCharacterHistoricOrders.Model[0].TypeId);
             Assert.Equal(4422, getCharacterHistoricOrders.Model[0].VolumeRemain);
             Assert.Equal(123456, getCharacterHistoricOrders.Model[0].VolumeTotal);

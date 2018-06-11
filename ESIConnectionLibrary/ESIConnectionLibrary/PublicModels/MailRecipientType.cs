@@ -2,9 +2,9 @@
 {
     public enum MailRecipientType
     {
-        alliance,
-        character,
-        corporation,
-        mailing_list
+        Alliance,
+        Character,
+        Corporation,
+        MailingList
     }
 }

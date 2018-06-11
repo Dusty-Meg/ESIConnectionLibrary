@@ -27,18 +27,18 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        private int SecondsToDT()
+        private int SecondsToDt()
         {
             DateTime now = DateTime.Now;
 
-            DateTime todaysDT = new DateTime(now.Year, now.Month, now.Day, 11, 5, 0);
+            DateTime todaysDt = new DateTime(now.Year, now.Month, now.Day, 11, 5, 0);
 
-            if ((todaysDT - now).TotalSeconds < 0)
+            if ((todaysDt - now).TotalSeconds < 0)
             {
-                return (int)(todaysDT.AddDays(1) - now).TotalSeconds;
+                return (int)(todaysDt.AddDays(1) - now).TotalSeconds;
             }
 
-            return (int)(todaysDT - now).TotalSeconds;
+            return (int)(todaysDt - now).TotalSeconds;
         }
 
         public IList<V2MarketCharactersOrders> GetCharactersMarketOrders(SsoToken token)
@@ -101,7 +101,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MarketV1GetMarketGroupInformation(marketGroupId), _testing);
 
-            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDt()));
 
             EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw.Model);
 
@@ -112,7 +112,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.MarketV1GetMarketGroupInformation(marketGroupId), _testing);
 
-            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDt()));
 
             EsiV1MarketGroupInformation esiMarketGroup = JsonConvert.DeserializeObject<EsiV1MarketGroupInformation>(esiRaw.Model);
 

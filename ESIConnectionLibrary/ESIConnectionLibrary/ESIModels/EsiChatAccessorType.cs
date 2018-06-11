@@ -1,9 +1,19 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     internal enum EsiChatAccessorType
     {
-        character,
-        corporation,
-        alliance
+        [EnumMember(Value = "character")]
+        Character,
+
+        [EnumMember(Value = "corporation")]
+        Corporation,
+
+        [EnumMember(Value = "alliance")]
+        Alliance
     }
 }

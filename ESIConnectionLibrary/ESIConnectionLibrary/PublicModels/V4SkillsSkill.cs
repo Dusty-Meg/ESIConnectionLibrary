@@ -1,6 +1,4 @@
-﻿using ESIConnectionLibrary.ESIModels;
-
-namespace ESIConnectionLibrary.PublicModels
+﻿namespace ESIConnectionLibrary.PublicModels
 {
     public class V4SkillsSkill
     {

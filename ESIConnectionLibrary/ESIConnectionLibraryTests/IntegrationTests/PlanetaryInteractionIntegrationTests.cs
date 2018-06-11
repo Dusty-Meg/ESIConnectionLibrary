@@ -26,7 +26,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             Assert.Equal(1, getPlanets[1].NumPins);
             Assert.Equal(90000001, getPlanets[0].OwnerId);
             Assert.Equal(40023697, getPlanets[1].PlanetId);
-            Assert.Equal(V1PlanetaryInteractionPlanetType.plasma, getPlanets[0].PlanetType);
+            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, getPlanets[0].PlanetType);
             Assert.Equal(30000379, getPlanets[1].SolarSystemId);
             Assert.Equal(0, getPlanets[0].UpgradeLevel);
         }
@@ -48,7 +48,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             Assert.Equal(1, getPlanets[1].NumPins);
             Assert.Equal(90000001, getPlanets[0].OwnerId);
             Assert.Equal(40023697, getPlanets[1].PlanetId);
-            Assert.Equal(V1PlanetaryInteractionPlanetType.plasma, getPlanets[0].PlanetType);
+            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, getPlanets[0].PlanetType);
             Assert.Equal(30000379, getPlanets[1].SolarSystemId);
             Assert.Equal(0, getPlanets[0].UpgradeLevel);
         }

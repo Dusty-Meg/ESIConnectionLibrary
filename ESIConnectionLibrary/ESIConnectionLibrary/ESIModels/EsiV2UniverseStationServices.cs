@@ -8,58 +8,58 @@ namespace ESIConnectionLibrary.ESIModels
     internal enum EsiV2UniverseStationServices
     {
         [EnumMember(Value = "bounty-missions")]
-        bountyMissions,
+        BountyMissions,
         [EnumMember(Value = "assasination-missions")]
-        assasinationMissions,
+        AssasinationMissions,
         [EnumMember(Value = "courier-missions")]
-        courierMissions,
+        CourierMissions,
         [EnumMember(Value = "interbus")]
-        interbus,
+        Interbus,
         [EnumMember(Value = "reprocessing-plant")]
-        reprocessingPlant,
+        ReprocessingPlant,
         [EnumMember(Value = "refinery")]
-        refinery,
+        Refinery,
         [EnumMember(Value = "market")]
-        market,
+        Market,
         [EnumMember(Value = "black-market")]
-        blackMarket,
+        BlackMarket,
         [EnumMember(Value = "stock-exchange")]
-        stockExchange,
+        StockExchange,
         [EnumMember(Value = "cloning")]
-        cloning,
+        Cloning,
         [EnumMember(Value = "surgery")]
-        surgery,
+        Surgery,
         [EnumMember(Value = "dna-therapy")]
-        dnaTherapy,
+        DnaTherapy,
         [EnumMember(Value = "repair-facilities")]
-        repairFacilities,
+        RepairFacilities,
         [EnumMember(Value = "factory")]
-        factory,
+        Factory,
         [EnumMember(Value = "labratory")]
-        labratory,
+        Labratory,
         [EnumMember(Value = "gambling")]
-        gambling,
+        Gambling,
         [EnumMember(Value = "fitting")]
-        fitting,
+        Fitting,
         [EnumMember(Value = "paintshop")]
-        paintshop,
+        Paintshop,
         [EnumMember(Value = "news")]
-        news,
+        News,
         [EnumMember(Value = "storage")]
-        storage,
+        Storage,
         [EnumMember(Value = "insurance")]
-        insurance,
+        Insurance,
         [EnumMember(Value = "docking")]
-        docking,
+        Docking,
         [EnumMember(Value = "office-rental")]
-        officeRental,
+        OfficeRental,
         [EnumMember(Value = "jump-clone-facility")]
-        jumpCloneFacility,
+        JumpCloneFacility,
         [EnumMember(Value = "loyalty-point-store")]
-        loyaltyPointStore,
+        LoyaltyPointStore,
         [EnumMember(Value = "navy-offices")]
-        navyOffices,
+        NavyOffices,
         [EnumMember(Value = "security-offices")]
-        securityOffices
+        SecurityOffices
     }
 }

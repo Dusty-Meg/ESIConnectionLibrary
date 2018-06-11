@@ -123,7 +123,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("Awesome Title", corporationRoles.First().Name);
             Assert.Equal(1, corporationRoles.First().TitleId);
             Assert.Equal(2, corporationRoles.First().Roles.Count);
-            Assert.Equal(CorporationRoles.Hangar_Take_6, corporationRoles.First().Roles.First());
+            Assert.Equal(CorporationRoles.HangarTake6, corporationRoles.First().Roles.First());
         }
 
         [Fact]
@@ -148,7 +148,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("Awesome Title", corporationRoles.First().Name);
             Assert.Equal(1, corporationRoles.First().TitleId);
             Assert.Equal(2, corporationRoles.First().Roles.Count);
-            Assert.Equal(CorporationRoles.Hangar_Take_6, corporationRoles.First().Roles.First());
+            Assert.Equal(CorporationRoles.HangarTake6, corporationRoles.First().Roles.First());
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     public enum ContractsAvailability
     {
-        @public,
-        personal,
-        corporation,
-        alliance
+        Public,
+        Personal,
+        Corporation,
+        Alliance
     }
 }

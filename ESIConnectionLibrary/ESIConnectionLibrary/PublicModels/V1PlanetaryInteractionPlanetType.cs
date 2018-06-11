@@ -2,13 +2,13 @@
 {
     public enum V1PlanetaryInteractionPlanetType
     {
-        temperate,
-        barren,
-        oceanic,
-        ice,
-        gas,
-        lava,
-        storm,
-        plasma
+        Temperate,
+        Barren,
+        Oceanic,
+        Ice,
+        Gas,
+        Lava,
+        Storm,
+        Plasma
     }
 }

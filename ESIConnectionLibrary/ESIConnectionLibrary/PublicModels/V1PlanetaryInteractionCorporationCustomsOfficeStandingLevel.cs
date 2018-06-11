@@ -2,10 +2,10 @@
 {
     public enum V1PlanetaryInteractionCorporationCustomsOfficeStandingLevel
     {
-        bad,
-        excellent,
-        good,
-        neutral,
-        terrible
+        Bad,
+        Excellent,
+        Good,
+        Neutral,
+        Terrible
     }
 }

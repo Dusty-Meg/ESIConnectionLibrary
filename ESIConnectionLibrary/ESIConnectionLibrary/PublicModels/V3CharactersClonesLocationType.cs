@@ -2,7 +2,7 @@
 {
     public enum V3CharactersClonesLocationType
     {
-        station,
-        structure
+        Station,
+        Structure
     }
 }

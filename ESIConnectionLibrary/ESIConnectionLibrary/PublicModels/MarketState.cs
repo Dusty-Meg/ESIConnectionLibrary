@@ -2,7 +2,7 @@
 {
     public enum MarketState
     {
-        cancelled,
-        expired
+        Cancelled,
+        Expired
     }
 }

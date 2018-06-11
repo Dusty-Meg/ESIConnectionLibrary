@@ -1,8 +1,16 @@
-﻿namespace ESIConnectionLibrary.ESIModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     internal enum EsiMarketState
     {
-        cancelled,
-        expired
+        [EnumMember(Value = "cancelled")]
+        Cancelled,
+
+        [EnumMember(Value = "expired")]
+        Expired
     }
 }

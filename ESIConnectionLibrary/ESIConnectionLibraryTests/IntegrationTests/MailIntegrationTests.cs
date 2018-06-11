@@ -21,7 +21,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V1MailGetCharactersMail> getCharacterMail = internalLatestMail.GetCharactersMail(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
-            Assert.Equal(MailRecipientType.character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
+            Assert.Equal(MailRecipientType.Character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
             Assert.Equal(90000001, getCharacterMail.Model[0].From);
         }
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V1MailGetCharactersMail> getCharacterMail = await internalLatestMail.GetCharactersMailAsync(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
-            Assert.Equal(MailRecipientType.character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
+            Assert.Equal(MailRecipientType.Character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
             Assert.Equal(90000001, getCharacterMail.Model[0].From);
         }
 

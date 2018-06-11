@@ -2,7 +2,7 @@
 {
     public enum MedalsStatus
     {
-        @public,
-        @private
+        Public,
+        Private
     }
 }

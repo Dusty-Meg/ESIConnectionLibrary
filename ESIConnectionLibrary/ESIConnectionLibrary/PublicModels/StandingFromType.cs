@@ -2,8 +2,8 @@
 {
     public enum StandingFromType
     {
-        agent,
-        npc_corp,
-        faction
+        Agent,
+        NpcCorp,
+        Faction
     }
 }

@@ -30,7 +30,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(20000125, response.First().ConstellationId);
             Assert.Equal(1695357456, response.First().DefenderId);
             Assert.Equal(0.6f, response.First().DefenderScore);
-            Assert.Equal(V1SovereigntyCampaignsEventType.station_defense, response.First().EventType);
+            Assert.Equal(V1SovereigntyCampaignsEventType.StationDefense, response.First().EventType);
             Assert.Equal(30000856, response.First().SolarSystemId);
             Assert.Equal(new DateTime(2016,10,29,14,34,40), response.First().StartTime);
             Assert.Equal(61001096, response.First().StructureId);
@@ -54,7 +54,7 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(20000125, response.First().ConstellationId);
             Assert.Equal(1695357456, response.First().DefenderId);
             Assert.Equal(0.6f, response.First().DefenderScore);
-            Assert.Equal(V1SovereigntyCampaignsEventType.station_defense, response.First().EventType);
+            Assert.Equal(V1SovereigntyCampaignsEventType.StationDefense, response.First().EventType);
             Assert.Equal(30000856, response.First().SolarSystemId);
             Assert.Equal(new DateTime(2016, 10, 29, 14, 34, 40), response.First().StartTime);
             Assert.Equal(61001096, response.First().StructureId);

@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ESIConnectionLibrary.PublicModels
+﻿namespace ESIConnectionLibrary.PublicModels
 {
     public class V1AllianceIcons
     {

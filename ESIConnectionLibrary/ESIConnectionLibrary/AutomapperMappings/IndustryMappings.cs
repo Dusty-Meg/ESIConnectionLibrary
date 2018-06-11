@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 

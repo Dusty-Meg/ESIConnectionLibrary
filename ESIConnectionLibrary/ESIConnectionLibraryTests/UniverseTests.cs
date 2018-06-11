@@ -635,10 +635,10 @@ namespace ESIConnectionLibraryTests
             IList<V2UniverseNames> response = internalLatestUniverse.GetNames(new List<int>());
 
             Assert.Equal(2, response.Count);
-            Assert.Equal(V2UniverseNamesCategory.character, response[0].Category);
+            Assert.Equal(V2UniverseNamesCategory.Character, response[0].Category);
             Assert.Equal(95465499, response[0].Id);
             Assert.Equal("CCP Bartender", response[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.solar_system, response[1].Category);
+            Assert.Equal(V2UniverseNamesCategory.SolarSystem, response[1].Category);
             Assert.Equal(30000142, response[1].Id);
             Assert.Equal("Jita", response[1].Name);
         }
@@ -657,10 +657,10 @@ namespace ESIConnectionLibraryTests
             IList<V2UniverseNames> response = await internalLatestUniverse.GetNamesAsync(new List<int>());
 
             Assert.Equal(2, response.Count);
-            Assert.Equal(V2UniverseNamesCategory.character, response[0].Category);
+            Assert.Equal(V2UniverseNamesCategory.Character, response[0].Category);
             Assert.Equal(95465499, response[0].Id);
             Assert.Equal("CCP Bartender", response[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.solar_system, response[1].Category);
+            Assert.Equal(V2UniverseNamesCategory.SolarSystem, response[1].Category);
             Assert.Equal(30000142, response[1].Id);
             Assert.Equal("Jita", response[1].Name);
         }
@@ -954,18 +954,18 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(0.5f, response.ReprocessingEfficiency);
             Assert.Equal(0.05f, response.ReprocessingStationsTake);
             Assert.Equal(12, response.Services.Count);
-            Assert.Contains(V2UniverseStationServices.courierMissions, response.Services);
-            Assert.Contains(V2UniverseStationServices.reprocessingPlant, response.Services);
-            Assert.Contains(V2UniverseStationServices.market, response.Services);
-            Assert.Contains(V2UniverseStationServices.repairFacilities, response.Services);
-            Assert.Contains(V2UniverseStationServices.fitting, response.Services);
-            Assert.Contains(V2UniverseStationServices.news, response.Services);
-            Assert.Contains(V2UniverseStationServices.storage, response.Services);
-            Assert.Contains(V2UniverseStationServices.insurance, response.Services);
-            Assert.Contains(V2UniverseStationServices.docking, response.Services);
-            Assert.Contains(V2UniverseStationServices.officeRental, response.Services);
-            Assert.Contains(V2UniverseStationServices.loyaltyPointStore, response.Services);
-            Assert.Contains(V2UniverseStationServices.navyOffices, response.Services);
+            Assert.Contains(V2UniverseStationServices.CourierMissions, response.Services);
+            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, response.Services);
+            Assert.Contains(V2UniverseStationServices.Market, response.Services);
+            Assert.Contains(V2UniverseStationServices.RepairFacilities, response.Services);
+            Assert.Contains(V2UniverseStationServices.Fitting, response.Services);
+            Assert.Contains(V2UniverseStationServices.News, response.Services);
+            Assert.Contains(V2UniverseStationServices.Storage, response.Services);
+            Assert.Contains(V2UniverseStationServices.Insurance, response.Services);
+            Assert.Contains(V2UniverseStationServices.Docking, response.Services);
+            Assert.Contains(V2UniverseStationServices.OfficeRental, response.Services);
+            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, response.Services);
+            Assert.Contains(V2UniverseStationServices.NavyOffices, response.Services);
             Assert.Equal(60000277, response.StationId);
             Assert.Equal(30000148, response.SystemId);
             Assert.Equal(1531, response.TypeId);
@@ -996,18 +996,18 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(0.5f, response.ReprocessingEfficiency);
             Assert.Equal(0.05f, response.ReprocessingStationsTake);
             Assert.Equal(12, response.Services.Count);
-            Assert.Contains(V2UniverseStationServices.courierMissions, response.Services);
-            Assert.Contains(V2UniverseStationServices.reprocessingPlant, response.Services);
-            Assert.Contains(V2UniverseStationServices.market, response.Services);
-            Assert.Contains(V2UniverseStationServices.repairFacilities, response.Services);
-            Assert.Contains(V2UniverseStationServices.fitting, response.Services);
-            Assert.Contains(V2UniverseStationServices.news, response.Services);
-            Assert.Contains(V2UniverseStationServices.storage, response.Services);
-            Assert.Contains(V2UniverseStationServices.insurance, response.Services);
-            Assert.Contains(V2UniverseStationServices.docking, response.Services);
-            Assert.Contains(V2UniverseStationServices.officeRental, response.Services);
-            Assert.Contains(V2UniverseStationServices.loyaltyPointStore, response.Services);
-            Assert.Contains(V2UniverseStationServices.navyOffices, response.Services);
+            Assert.Contains(V2UniverseStationServices.CourierMissions, response.Services);
+            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, response.Services);
+            Assert.Contains(V2UniverseStationServices.Market, response.Services);
+            Assert.Contains(V2UniverseStationServices.RepairFacilities, response.Services);
+            Assert.Contains(V2UniverseStationServices.Fitting, response.Services);
+            Assert.Contains(V2UniverseStationServices.News, response.Services);
+            Assert.Contains(V2UniverseStationServices.Storage, response.Services);
+            Assert.Contains(V2UniverseStationServices.Insurance, response.Services);
+            Assert.Contains(V2UniverseStationServices.Docking, response.Services);
+            Assert.Contains(V2UniverseStationServices.OfficeRental, response.Services);
+            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, response.Services);
+            Assert.Contains(V2UniverseStationServices.NavyOffices, response.Services);
             Assert.Equal(60000277, response.StationId);
             Assert.Equal(30000148, response.SystemId);
             Assert.Equal(1531, response.TypeId);

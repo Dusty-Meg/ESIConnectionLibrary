@@ -21,11 +21,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             V3CharactersClones getClones = internalLatestClones.GetCharactersClones(inputToken);
 
             Assert.Equal(1021348135816, getClones.HomeLocation.LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.structure, getClones.HomeLocation.LocationType);
+            Assert.Equal(V3CharactersClonesLocationType.Structure, getClones.HomeLocation.LocationType);
             Assert.Equal(22118, getClones.JumpClones.First().Implants.First());
             Assert.Equal(12345, getClones.JumpClones.First().JumpCloneId);
             Assert.Equal(60003463, getClones.JumpClones.First().LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.station, getClones.JumpClones.First().LocationType);
+            Assert.Equal(V3CharactersClonesLocationType.Station, getClones.JumpClones.First().LocationType);
         }
 
         [Fact]
@@ -40,11 +40,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             V3CharactersClones getClones = await internalLatestClones.GetCharactersClonesAsync(inputToken);
 
             Assert.Equal(1021348135816, getClones.HomeLocation.LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.structure, getClones.HomeLocation.LocationType);
+            Assert.Equal(V3CharactersClonesLocationType.Structure, getClones.HomeLocation.LocationType);
             Assert.Equal(22118, getClones.JumpClones.First().Implants.First());
             Assert.Equal(12345, getClones.JumpClones.First().JumpCloneId);
             Assert.Equal(60003463, getClones.JumpClones.First().LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.station, getClones.JumpClones.First().LocationType);
+            Assert.Equal(V3CharactersClonesLocationType.Station, getClones.JumpClones.First().LocationType);
         }
 
         [Fact]

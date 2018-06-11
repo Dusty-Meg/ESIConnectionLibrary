@@ -2,15 +2,15 @@
 {
     public enum ContractsStatus
     {
-        outstanding,
-        in_progress,
-        finished_issuer,
-        finished_contractor,
-        finished,
-        cancelled,
-        rejected,
-        failed,
-        deleted,
-        reversed
+        Outstanding,
+        InProgress,
+        FinishedIssuer,
+        FinishedContractor,
+        Finished,
+        Cancelled,
+        Rejected,
+        Failed,
+        Deleted,
+        Reversed
     }
 }

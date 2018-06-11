@@ -2,10 +2,10 @@
 {
     public enum SenderType
     {
-        character,
-        corporation,
-        alliance,
-        faction,
-        other
+        Character,
+        Corporation,
+        Alliance,
+        Faction,
+        Other
     }
 }

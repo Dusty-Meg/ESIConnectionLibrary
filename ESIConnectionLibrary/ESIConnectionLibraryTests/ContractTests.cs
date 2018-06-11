@@ -30,9 +30,9 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
             Assert.Equal(2, getCharactersContracts.MaxPages);
-            Assert.Equal(ContractsAvailability.alliance, getCharactersContracts.Model[0].Availability);
-            Assert.Equal(ContractsStatus.in_progress, getCharactersContracts.Model[0].Status);
-            Assert.Equal(ContractsType.auction, getCharactersContracts.Model[0].Type);
+            Assert.Equal(ContractsAvailability.Alliance, getCharactersContracts.Model[0].Availability);
+            Assert.Equal(ContractsStatus.InProgress, getCharactersContracts.Model[0].Status);
+            Assert.Equal(ContractsType.Auction, getCharactersContracts.Model[0].Type);
             Assert.Equal(new DateTime(2017,06,06,13,12,32), getCharactersContracts.Model[0].DateAccepted);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Reward);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Volume);
@@ -58,9 +58,9 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1, getCharactersContracts.Model.Count);
             Assert.Equal(2, getCharactersContracts.MaxPages);
-            Assert.Equal(ContractsAvailability.alliance, getCharactersContracts.Model[0].Availability);
-            Assert.Equal(ContractsStatus.in_progress, getCharactersContracts.Model[0].Status);
-            Assert.Equal(ContractsType.auction, getCharactersContracts.Model[0].Type);
+            Assert.Equal(ContractsAvailability.Alliance, getCharactersContracts.Model[0].Availability);
+            Assert.Equal(ContractsStatus.InProgress, getCharactersContracts.Model[0].Status);
+            Assert.Equal(ContractsType.Auction, getCharactersContracts.Model[0].Type);
             Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), getCharactersContracts.Model[0].DateAccepted);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Reward);
             Assert.Equal(0.01, getCharactersContracts.Model[0].Volume);

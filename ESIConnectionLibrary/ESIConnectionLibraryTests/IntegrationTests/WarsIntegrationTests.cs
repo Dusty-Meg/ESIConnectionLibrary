@@ -14,7 +14,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         {
             LatestWarsEndpoints internalLatestWars = new LatestWarsEndpoints(string.Empty, true);
 
-            IList<int> getWars = internalLatestWars.GetWars(0);
+            IList<int> getWars = internalLatestWars.GetWars();
 
             Assert.Equal(3, getWars.Count);
             Assert.Equal(3, getWars[0]);
@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         {
             LatestWarsEndpoints internalLatestWars = new LatestWarsEndpoints(string.Empty, true);
 
-            IList<int> getWars = await internalLatestWars.GetWarsAsync(0);
+            IList<int> getWars = await internalLatestWars.GetWarsAsync();
 
             Assert.Equal(3, getWars.Count);
             Assert.Equal(3, getWars[0]);

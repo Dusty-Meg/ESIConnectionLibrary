@@ -18,29 +18,29 @@ namespace ESIConnectionLibrary.Internal_classes
             switch (value)
             {
                 case "1":
-                    return EsiMarketRange.one;
+                    return EsiMarketRange.One;
                 case "10":
-                    return EsiMarketRange.ten;
+                    return EsiMarketRange.Ten;
                 case "2":
-                    return EsiMarketRange.two;
+                    return EsiMarketRange.Two;
                 case "20":
-                    return EsiMarketRange.twenty;
+                    return EsiMarketRange.Twenty;
                 case "3":
-                    return EsiMarketRange.three;
+                    return EsiMarketRange.Three;
                 case "30":
-                    return EsiMarketRange.thirty;
+                    return EsiMarketRange.Thirty;
                 case "4":
-                    return EsiMarketRange.four;
+                    return EsiMarketRange.Four;
                 case "40":
-                    return EsiMarketRange.forty;
+                    return EsiMarketRange.Forty;
                 case "5":
-                    return EsiMarketRange.five;
+                    return EsiMarketRange.Five;
                 case "region":
-                    return EsiMarketRange.region;
+                    return EsiMarketRange.Region;
                 case "solarsystem":
-                    return EsiMarketRange.solarsystem;
+                    return EsiMarketRange.Solarsystem;
                 default:
-                    return EsiMarketRange.station;
+                    return EsiMarketRange.Station;
             }
         }
 

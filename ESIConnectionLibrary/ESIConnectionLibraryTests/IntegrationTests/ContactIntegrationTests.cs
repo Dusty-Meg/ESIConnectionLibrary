@@ -21,7 +21,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V2ContactsGetContacts> getCharacterContacts = internalLatestContacts.GetCharactersContacts(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
-            Assert.Equal(V2ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.Character, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);
@@ -41,7 +41,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             PagedModel<V2ContactsGetContacts> getCharacterContacts = await internalLatestContacts.GetCharactersContactsAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterContacts.Model.Count);
-            Assert.Equal(V2ContactsContactType.character, getCharacterContacts.Model[0].ContactType);
+            Assert.Equal(V2ContactsContactType.Character, getCharacterContacts.Model[0].ContactType);
             Assert.Equal(9.9f, getCharacterContacts.Model[0].Standing);
             Assert.True(getCharacterContacts.Model[0].IsWatched);
             Assert.True(getCharacterContacts.Model[0].IsBlocked);

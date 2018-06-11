@@ -39,10 +39,10 @@ namespace ESIConnectionLibrary.Internal_classes
 
             switch (mapperType)
             {
-                case EsiRevokeTokenType.accessToken:
+                case EsiRevokeTokenType.AccessToken:
                     ssoData = "token_type_hint=access_token&token=";
                     break;
-                case EsiRevokeTokenType.refreshToken:
+                case EsiRevokeTokenType.RefreshToken:
                     ssoData = "token_type_hint=refresh_token&token=";
                     break;
             }
@@ -65,10 +65,10 @@ namespace ESIConnectionLibrary.Internal_classes
 
             switch (mapperType)
             {
-                case EsiRevokeTokenType.accessToken:
+                case EsiRevokeTokenType.AccessToken:
                     ssoData = "token_type_hint=access_token&token=";
                     break;
-                case EsiRevokeTokenType.refreshToken:
+                case EsiRevokeTokenType.RefreshToken:
                     ssoData = "token_type_hint=refresh_token&token=";
                     break;
             }

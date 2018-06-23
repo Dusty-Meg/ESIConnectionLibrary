@@ -18,8 +18,6 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<V1CharactersFatigue> GetCharactersFatigueAsync(SsoToken token);
         IList<V1CharactersMedals> GetCharactersMedals(SsoToken token);
         Task<IList<V1CharactersMedals>> GetCharactersMedalsAsync(SsoToken token);
-        IList<V1CharactersNames> GetCharactersNames(IList<int> characters);
-        Task<IList<V1CharactersNames>> GetCharactersNamesAsync(IList<int> characters);
         IList<V2CharactersNotifications> GetCharactersNotifications(SsoToken token);
         Task<IList<V2CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token);
         IList<V1CharactersNotificationsContacts> GetCharactersNotificationsContacts(SsoToken token);

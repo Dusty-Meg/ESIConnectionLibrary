@@ -541,33 +541,5 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             Assert.Equal(109299958, getCharactersAffiliation.First().CorporationId);
             Assert.Equal(434243723, getCharactersAffiliation.First().AllianceId);
         }
-
-        [Fact]
-        public void GetCharactersNames_successfully_returns_a_list_of_charactersNames()
-        {
-            IList<int> characterIds = new List<int> { 23, 34 };
-
-            LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
-
-            IList<V1CharactersNames> getCharactersNames = internalLatestCharacter.GetCharactersNames(characterIds);
-
-            Assert.Equal(1, getCharactersNames.Count);
-            Assert.Equal(95465499, getCharactersNames.First().CharacterId);
-            Assert.Equal("CCP Bartender", getCharactersNames.First().CharacterName);
-        }
-
-        [Fact]
-        public async Task GetCharactersNamesAsync_successfully_returns_a_list_of_charactersNames()
-        {
-            IList<int> characterIds = new List<int>(23);
-
-            LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
-
-            IList<V1CharactersNames> getCharactersNames = await internalLatestCharacter.GetCharactersNamesAsync(characterIds);
-
-            Assert.Equal(1, getCharactersNames.Count);
-            Assert.Equal(95465499, getCharactersNames.First().CharacterId);
-            Assert.Equal("CCP Bartender", getCharactersNames.First().CharacterName);
-        }
     }
 }

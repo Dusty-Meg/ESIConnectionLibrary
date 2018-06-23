@@ -408,27 +408,5 @@ namespace ESIConnectionLibrary.Internal_classes
 
             return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
         }
-
-        public IList<V1CharactersNames> GetCharactersNames(IList<int> characters)
-        {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersNames(characters), _testing);
-
-            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
-
-            IList<EsiV1CharactersNames> esiV1CharactersNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersNames>>(esiRaw.Model);
-
-            return _mapper.Map<IList<EsiV1CharactersNames>, IList<V1CharactersNames>>(esiV1CharactersNames);
-        }
-
-        public async Task<IList<V1CharactersNames>> GetCharactersNamesAsync(IList<int> characters)
-        {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersNames(characters), _testing);
-
-            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
-
-            IList<EsiV1CharactersNames> esiV1CharactersNames = JsonConvert.DeserializeObject<IList<EsiV1CharactersNames>>(esiRaw.Model);
-
-            return _mapper.Map<IList<EsiV1CharactersNames>, IList<V1CharactersNames>>(esiV1CharactersNames);
-        }
     }
 }

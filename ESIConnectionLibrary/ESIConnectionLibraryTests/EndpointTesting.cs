@@ -29,7 +29,6 @@ namespace ESIConnectionLibraryTests
         [InlineData("AllianceV3GetAlliancePublicInfoRaw")]
         [InlineData("AllianceV1GetAllianceCorporationsRaw")]
         [InlineData("AllianceV1GetAllianceIconsRaw")]
-        [InlineData("AllianceV2IdsToNamesRaw")]
         public void AllianceEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
@@ -63,7 +62,6 @@ namespace ESIConnectionLibraryTests
         [InlineData("EsiV2CharactersStatsRaw")]
         [InlineData("EsiV1CharacterTitlesRaw")]
         [InlineData("EsiV1CharacterAffiliationsRaw")]
-        [InlineData("EsiV1CharactersNamesRaw")]
         public void CharacterEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

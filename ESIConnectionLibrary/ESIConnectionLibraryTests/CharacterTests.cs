@@ -701,45 +701,5 @@ namespace ESIConnectionLibraryTests
             Assert.Equal(109299958, getCharactersAffiliation.First().CorporationId);
             Assert.Equal(434243723, getCharactersAffiliation.First().AllianceId);
         }
-
-        [Fact]
-        public void GetCharactersNames_successfully_returns_a_list_of_charactersNames()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            IList<int> characterIds = new List<int> { 23, 34 };
-
-            string json = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
-
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersNames> getCharactersNames = internalLatestCharacter.GetCharactersNames(characterIds);
-
-            Assert.Equal(1, getCharactersNames.Count);
-            Assert.Equal(95465499, getCharactersNames.First().CharacterId);
-            Assert.Equal("CCP Bartender", getCharactersNames.First().CharacterName);
-        }
-
-        [Fact]
-        public async Task GetCharactersNamesAsync_successfully_returns_a_list_of_charactersNames()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            IList<int> characterIds = new List<int>(23);
-
-            string json = "[{\"character_id\": 95465499,\"character_name\": \"CCP Bartender\"}]";
-
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V1CharactersNames> getCharactersNames = await internalLatestCharacter.GetCharactersNamesAsync(characterIds);
-
-            Assert.Equal(1, getCharactersNames.Count);
-            Assert.Equal(95465499, getCharactersNames.First().CharacterId);
-            Assert.Equal("CCP Bartender", getCharactersNames.First().CharacterName);
-        }
     }
 }

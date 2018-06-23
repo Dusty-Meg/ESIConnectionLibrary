@@ -9,7 +9,6 @@ namespace ESIConnectionLibrary.AutomapperMappings
         public AllianceMappings()
         {
             CreateMap<EsiV1AllianceIcons, V1AllianceIcons>();
-            CreateMap<EsiV2AllianceIdsToNames, V2AllianceIdsToNames>();
             CreateMap<EsiV3GetPublicAlliance, V3GetPublicAlliance>();
         }
     }

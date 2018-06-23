@@ -163,16 +163,5 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return await _internalLatestCharacter.GetCharactersAffiliationAsync(characters);
         }
-
-        public IList<V1CharactersNames> GetCharactersNames(IList<int> characters)
-        {
-            return _internalLatestCharacter.GetCharactersNames(characters);
-        }
-
-        public async Task<IList<V1CharactersNames>> GetCharactersNamesAsync(IList<int> characters)
-        {
-            return await _internalLatestCharacter.GetCharactersNamesAsync(characters);
-        }
-
     }
 }

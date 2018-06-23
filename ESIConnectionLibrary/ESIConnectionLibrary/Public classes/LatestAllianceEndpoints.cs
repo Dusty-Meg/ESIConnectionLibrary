@@ -53,15 +53,5 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return await _internalLatestAlliance.GetAllianceIconsAsync(allianceId);
         }
-
-        public IList<V2AllianceIdsToNames> GetAllianceNamesFromIds(IList<int> allianceIds)
-        {
-            return _internalLatestAlliance.GetAllianceNamesFromIds(allianceIds);
-        }
-
-        public async Task<IList<V2AllianceIdsToNames>> GetAllianceNamesFromIdsAsync(IList<int> allianceIds)
-        {
-            return await _internalLatestAlliance.GetAllianceNamesFromIdsAsync(allianceIds);
-        }
     }
 }

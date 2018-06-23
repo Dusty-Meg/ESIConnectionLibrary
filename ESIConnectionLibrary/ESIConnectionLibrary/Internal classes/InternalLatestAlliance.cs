@@ -113,27 +113,5 @@ namespace ESIConnectionLibrary.Internal_classes
 
             return _mapper.Map<EsiV1AllianceIcons, V1AllianceIcons>(esiAllianceIcons);
         }
-
-        public IList<V2AllianceIdsToNames> GetAllianceNamesFromIds(IList<int> allianceIds)
-        {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV2IdsToNames(allianceIds), _testing);
-
-            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
-
-            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw.Model);
-
-            return _mapper.Map<IList<EsiV2AllianceIdsToNames>, IList<V2AllianceIdsToNames>>(esiAllianceNames);
-        }
-
-        public async Task<IList<V2AllianceIdsToNames>> GetAllianceNamesFromIdsAsync(IList<int> allianceIds)
-        {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AllianceV2IdsToNames(allianceIds), _testing);
-
-            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
-
-            IList<EsiV2AllianceIdsToNames> esiAllianceNames = JsonConvert.DeserializeObject<IList<EsiV2AllianceIdsToNames>>(esiRaw.Model);
-
-            return _mapper.Map<IList<EsiV2AllianceIdsToNames>, IList<V2AllianceIdsToNames>>(esiAllianceNames);
-        }
     }
 }

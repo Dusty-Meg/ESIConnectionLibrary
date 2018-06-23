@@ -157,45 +157,5 @@ namespace ESIConnectionLibraryTests
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
-
-        [Fact]
-        public void GetAllianceNamesFromIds_successfully_returns_a_list_of_allianceIdsToNames()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            string json = "[{\"alliance_id\": 1000171,\"alliance_name\": \"Republic University\"}]";
-
-            IList<int> allianceIds = new List<int> { 8762 };
-
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
-
-            InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
-
-            IList<V2AllianceIdsToNames> allianceNames = internalLatestAlliance.GetAllianceNamesFromIds(allianceIds);
-
-            Assert.Single(allianceNames);
-            Assert.Equal("Republic University", allianceNames.First().AllianceName);
-            Assert.Equal(1000171, allianceNames.First().AllianceId);
-        }
-
-        [Fact]
-        public async Task GetAllianceNamesFromIdsAsync_successfully_returns_a_list_of_allianceIdsToNames()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            string json = "[{\"alliance_id\": 1000171,\"alliance_name\": \"Republic University\"}]";
-
-            IList<int> allianceIds = new List<int> { 8762 };
-
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
-
-            InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
-
-            IList<V2AllianceIdsToNames> allianceNames = await internalLatestAlliance.GetAllianceNamesFromIdsAsync(allianceIds);
-
-            Assert.Single(allianceNames);
-            Assert.Equal("Republic University", allianceNames.First().AllianceName);
-            Assert.Equal(1000171, allianceNames.First().AllianceId);
-        }
     }
 }

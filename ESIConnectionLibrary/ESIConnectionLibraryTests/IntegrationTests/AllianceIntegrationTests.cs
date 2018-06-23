@@ -107,33 +107,5 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
-
-        [Fact(Skip = "Waiting for mock-esi fix")]
-        public void GetAllianceNamesFromIds_successfully_returns_a_list_of_allianceIdsToNames()
-        {
-            IList<int> allianceIds = new List<int> { 1354830081, 88888 };
-
-            LatestAllianceEndpoints latestAlliance = new LatestAllianceEndpoints(string.Empty, true);
-
-            IList<V2AllianceIdsToNames> allianceNames = latestAlliance.GetAllianceNamesFromIds(allianceIds);
-
-            Assert.Single(allianceNames);
-            Assert.Equal("Republic University", allianceNames.First().AllianceName);
-            Assert.Equal(1000171, allianceNames.First().AllianceId);
-        }
-
-        [Fact(Skip = "Waiting for mock-esi fix")]
-        public async Task GetAllianceNamesFromIdsAsync_successfully_returns_a_list_of_allianceIdsToNames()
-        {
-            IList<int> allianceIds = new List<int> { 8762 };
-
-            LatestAllianceEndpoints latestAlliance = new LatestAllianceEndpoints(string.Empty, true);
-
-            IList<V2AllianceIdsToNames> allianceNames = await latestAlliance.GetAllianceNamesFromIdsAsync(allianceIds);
-
-            Assert.Single(allianceNames);
-            Assert.Equal("Republic University", allianceNames.First().AllianceName);
-            Assert.Equal(1000171, allianceNames.First().AllianceId);
-        }
     }
 }

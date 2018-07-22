@@ -153,6 +153,40 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Calendar
+
+        private static string CalendarV1SummariesRaw => "/v1/characters/{character_id}/calendar/";
+        private static string CalendarV3EventRaw => "/v3/characters/{character_id}/calendar/{event_id}/";
+        private static string CalendarV3EventResponseRaw => "/v3/characters/{character_id}/calendar/{event_id}/";
+        private static string CalendarV1EventAttendeesRaw => "/v1/characters/{character_id}/calendar/{event_id}/attendees/";
+
+        public static string CalendarV1Summaries(int characterId, int fromEvent)
+        {
+            if (fromEvent == 0)
+            {
+                return UrlBuilder(CalendarV1SummariesRaw, "{character_id}", characterId.ToString());
+            }
+
+            return UrlBuilder(CalendarV1SummariesRaw, "{character_id}", characterId.ToString()) + $"?from_event={fromEvent}";
+        }
+
+        public static string CalendarV3Event(int characterId, int eventId)
+        {
+            return UrlBuilder(CalendarV3EventRaw, "{character_id}", characterId.ToString(), "{event_id}", eventId.ToString());
+        }
+
+        public static string CalendarV3EventResponse(int characterId, int eventId)
+        {
+            return UrlBuilder(CalendarV3EventResponseRaw, "{character_id}", characterId.ToString(), "{event_id}", eventId.ToString());
+        }
+
+        public static string CalendarV1EventAttendees(int characterId, int eventId)
+        {
+            return UrlBuilder(CalendarV1EventAttendeesRaw, "{character_id}", characterId.ToString(), "{event_id}", eventId.ToString());
+        }
+
+        #endregion
+
         #region Character
 
         private static string EsiV4CharactersPublicInfoRaw => "/v4/characters/{character_id}/";
@@ -502,6 +536,7 @@ namespace ESIConnectionLibrary.Internal_classes
             {
                 return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString());
             }
+
             return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
         }
 

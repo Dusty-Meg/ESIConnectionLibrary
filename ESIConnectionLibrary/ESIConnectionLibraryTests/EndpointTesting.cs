@@ -90,9 +90,28 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("CorporationV4PublicInfoRaw")]
+        [InlineData("CorporationV2AllianceHistoryRaw")]
+        [InlineData("CorporationV2BluepintsRaw")]
+        [InlineData("CorporationV2ContainersLogsRaw")]
+        [InlineData("CorporationV1DivisionsRaw")]
+        [InlineData("CorporationV1FacilitiesRaw")]
+        [InlineData("CorporationV1IconsRaw")]
+        [InlineData("CorporationV1MedalsRaw")]
+        [InlineData("CorporationV1MedalsIssuedRaw")]
+        [InlineData("CorporationV3MembersRaw")]
+        [InlineData("CorporationV1MembersLimitRaw")]
         [InlineData("CorporationV1CorporationMemberTitlesRaw")]
-        [InlineData("CorporationV1CorporationRolesRaw")]
+        [InlineData("CorporationV1MemberTrackingRaw")]
+        [InlineData("CorporationV1RolesRaw")]
+        [InlineData("CorporationV1RolesHistoryRaw")]
+        [InlineData("CorporationV1ShareHoldersRaw")]
+        [InlineData("CorporationV1StandingsRaw")]
+        [InlineData("CorporationV1StarbasesRaw")]
+        [InlineData("CorporationV1StarbaseRaw")]
+        [InlineData("CorporationV2StructuresRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]
+        [InlineData("CorporationV1NpcCorpsRaw")]
         public void CorporationsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

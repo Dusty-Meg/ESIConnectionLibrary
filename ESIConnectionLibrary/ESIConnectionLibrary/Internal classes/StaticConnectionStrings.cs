@@ -617,11 +617,11 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string UniverseV1StarRaw => "/v1/universe/stars/{star_id}/";
         private static string UniverseV2StationRaw => "/v2/universe/stations/{station_id}/";
         private static string UniverseV1StructuresRaw => "/v1/universe/structures/";
-        private static string UniverseV1StructureRaw => "/v1/universe/structures/{structure_id}/";
+        private static string UniverseV2StructureRaw => "/v2/universe/structures/{structure_id}/";
         private static string UniverseV1SystemJumpsRaw => "/v1/universe/system_jumps/";
         private static string UniverseV2SystemKillsRaw => "/v2/universe/system_kills/";
         private static string UniverseV1SystemsRaw => "/v1/universe/systems/";
-        private static string UniverseV3SystemRaw => "/v3/universe/systems/{system_id}/";
+        private static string UniverseV4SystemRaw => "/v4/universe/systems/{system_id}/";
         private static string UniverseV1TypesRaw => "/v1/universe/types/";
         private static string UniverseV3TypeRaw => "/v3/universe/types/{type_id}/";
 
@@ -740,9 +740,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(UniverseV1StructuresRaw);
         }
 
-        public static string UniverseV1Structure(long structureId)
+        public static string UniverseV2Structure(long structureId)
         {
-            return UrlBuilder(UniverseV1StructureRaw, "{structure_id}", structureId.ToString());
+            return UrlBuilder(UniverseV2StructureRaw, "{structure_id}", structureId.ToString());
         }
 
         public static string UniverseV1SystemJumps()
@@ -760,9 +760,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(UniverseV1SystemsRaw);
         }
 
-        public static string UniverseV3System(int systemId)
+        public static string UniverseV4System(int systemId)
         {
-            return UrlBuilder(UniverseV3SystemRaw, "{system_id}", systemId.ToString());
+            return UrlBuilder(UniverseV4SystemRaw, "{system_id}", systemId.ToString());
         }
 
         public static string UniverseV1Types(int page)

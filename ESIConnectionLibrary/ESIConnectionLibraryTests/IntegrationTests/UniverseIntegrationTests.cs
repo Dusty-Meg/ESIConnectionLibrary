@@ -778,7 +778,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestUniverseEndpoints internalLatestUniverse = new LatestUniverseEndpoints(string.Empty, true);
 
-            V1UniverseStructure response = internalLatestUniverse.GetStructure(inputToken, int.MinValue);
+            V2UniverseStructure response = internalLatestUniverse.GetStructure(inputToken, int.MinValue);
 
             Assert.NotNull(response);
             Assert.Equal("V-3YG7 VI - The Capital", response.Name);
@@ -794,7 +794,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestUniverseEndpoints internalLatestUniverse = new LatestUniverseEndpoints(string.Empty, true);
 
-            V1UniverseStructure response = await internalLatestUniverse.GetStructureAsync(inputToken, int.MinValue);
+            V2UniverseStructure response = await internalLatestUniverse.GetStructureAsync(inputToken, int.MinValue);
 
             Assert.NotNull(response);
             Assert.Equal("V-3YG7 VI - The Capital", response.Name);
@@ -882,7 +882,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         {
             LatestUniverseEndpoints internalLatestUniverse = new LatestUniverseEndpoints(string.Empty, true);
 
-            V3UniverseSystem response = internalLatestUniverse.GetSystem(int.MinValue);
+            V4UniverseSystem response = internalLatestUniverse.GetSystem(int.MinValue);
 
             Assert.NotNull(response);
             Assert.Equal(20000001, response.ConstellationId);
@@ -908,7 +908,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         {
             LatestUniverseEndpoints internalLatestUniverse = new LatestUniverseEndpoints(string.Empty, true);
 
-            V3UniverseSystem response = await internalLatestUniverse.GetSystemAsync(int.MinValue);
+            V4UniverseSystem response = await internalLatestUniverse.GetSystemAsync(int.MinValue);
 
             Assert.NotNull(response);
             Assert.Equal(20000001, response.ConstellationId);

@@ -230,11 +230,11 @@ namespace ESIConnectionLibraryTests
         [InlineData("UniverseV1StarRaw")]
         [InlineData("UniverseV2StationRaw")]
         [InlineData("UniverseV1StructuresRaw")]
-        [InlineData("UniverseV1StructureRaw")]
+        [InlineData("UniverseV2StructureRaw")]
         [InlineData("UniverseV1SystemJumpsRaw")]
         [InlineData("UniverseV2SystemKillsRaw")]
         [InlineData("UniverseV1SystemsRaw")]
-        [InlineData("UniverseV3SystemRaw")]
+        [InlineData("UniverseV4SystemRaw")]
         [InlineData("UniverseV1TypesRaw")]
         [InlineData("UniverseV3TypeRaw")]
         public void UniverseEndpoints(string endpoint)

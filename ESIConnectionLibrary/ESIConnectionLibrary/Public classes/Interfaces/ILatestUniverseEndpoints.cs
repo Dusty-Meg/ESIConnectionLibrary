@@ -50,12 +50,12 @@ namespace ESIConnectionLibrary.Public_classes
         Task<V1UniverseStargate> GetStargateAsync(int stargateId);
         V2UniverseStation GetStation(int stationId);
         Task<V2UniverseStation> GetStationAsync(int stationId);
-        V1UniverseStructure GetStructure(SsoToken token, long structureId);
-        Task<V1UniverseStructure> GetStructureAsync(SsoToken token, long structureId);
+        V2UniverseStructure GetStructure(SsoToken token, long structureId);
+        Task<V2UniverseStructure> GetStructureAsync(SsoToken token, long structureId);
         IList<long> GetStructures();
         Task<IList<long>> GetStructuresAsync();
-        V3UniverseSystem GetSystem(int systemId);
-        Task<V3UniverseSystem> GetSystemAsync(int systemId);
+        V4UniverseSystem GetSystem(int systemId);
+        Task<V4UniverseSystem> GetSystemAsync(int systemId);
         IList<V1UniverseSystemJumps> GetSystemJumps();
         Task<IList<V1UniverseSystemJumps>> GetSystemJumpsAsync();
         IList<V2UniverseSystemKills> GetSystemKills();

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3UniverseSystem
+    internal class EsiV4UniverseSystem
     {
         [JsonProperty(PropertyName = "constellation_id")]
         public int ConstellationId { get; set; }
@@ -24,7 +24,7 @@ namespace ESIConnectionLibrary.ESIModels
         public float SecurityStatus { get; set; }
 
         [JsonProperty(PropertyName = "star_id")]
-        public int StarId { get; set; }
+        public int? StarId { get; set; }
 
         [JsonProperty(PropertyName = "stargates")]
         public IList<int> Stargates { get; set; }

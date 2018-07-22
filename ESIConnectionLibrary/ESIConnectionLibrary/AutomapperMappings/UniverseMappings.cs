@@ -14,12 +14,12 @@ namespace ESIConnectionLibrary.AutomapperMappings
             CreateMap<EsiV3UniverseTypeDogmaAttribute, V3UniverseTypeDogmaAttribute>();
             CreateMap<EsiV3UniverseTypeDogmaEffect, V3UniverseTypeDogmaEffect>();
             CreateMap<EsiV3UniverseSystemPlanets, V3UniverseSystemPlanets>();
-            CreateMap<EsiV3UniverseSystem, V3UniverseSystem>();
+            CreateMap<EsiV4UniverseSystem, V4UniverseSystem>();
             CreateMap<EsiV2UniverseSystemKills, V2UniverseSystemKills>();
             CreateMap<EsiV2UniverseStation, V2UniverseStation>();
             CreateMap<EsiV2UniverseFactions, V2UniverseFactions>();
             CreateMap<EsiV1UniverseSystemJumps, V1UniverseSystemJumps>();
-            CreateMap<EsiV1UniverseStructure, V1UniverseStructure>();
+            CreateMap<EsiV2UniverseStructure, V2UniverseStructure>();
             CreateMap<EsiV1UniverseStargateDestination, V1UniverseStargateDestination>();
             CreateMap<EsiV1UniverseStargate, V1UniverseStargate>();
             CreateMap<EsiV1UniverseStar, V1UniverseStar>();

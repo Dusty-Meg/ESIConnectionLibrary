@@ -255,12 +255,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestUniverse.GetStructuresAsync();
         }
 
-        public V1UniverseStructure GetStructure(SsoToken token, long structureId)
+        public V2UniverseStructure GetStructure(SsoToken token, long structureId)
         {
             return _internalLatestUniverse.GetStructure(token, structureId);
         }
 
-        public async Task<V1UniverseStructure> GetStructureAsync(SsoToken token, long structureId)
+        public async Task<V2UniverseStructure> GetStructureAsync(SsoToken token, long structureId)
         {
             return await _internalLatestUniverse.GetStructureAsync(token, structureId);
         }
@@ -295,12 +295,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestUniverse.GetSystemsAsync();
         }
 
-        public V3UniverseSystem GetSystem(int systemId)
+        public V4UniverseSystem GetSystem(int systemId)
         {
             return _internalLatestUniverse.GetSystem(systemId);
         }
 
-        public async Task<V3UniverseSystem> GetSystemAsync(int systemId)
+        public async Task<V4UniverseSystem> GetSystemAsync(int systemId)
         {
             return await _internalLatestUniverse.GetSystemAsync(systemId);
         }

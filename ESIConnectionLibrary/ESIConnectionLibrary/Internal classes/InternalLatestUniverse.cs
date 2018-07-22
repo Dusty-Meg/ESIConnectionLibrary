@@ -536,30 +536,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return JsonConvert.DeserializeObject<IList<long>>(esiRaw.Model);
         }
 
-        public V1UniverseStructure GetStructure(SsoToken token, long structureId)
+        public V2UniverseStructure GetStructure(SsoToken token, long structureId)
         {
             StaticMethods.CheckToken(token, UniverseScopes.esi_universe_read_structures_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structure(structureId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Structure(structureId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw.Model);
+            EsiV2UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV2UniverseStructure>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1UniverseStructure, V1UniverseStructure>(esiV1GetFleet);
+            return _mapper.Map<EsiV2UniverseStructure, V2UniverseStructure>(esiV1GetFleet);
         }
 
-        public async Task<V1UniverseStructure> GetStructureAsync(SsoToken token, long structureId)
+        public async Task<V2UniverseStructure> GetStructureAsync(SsoToken token, long structureId)
         {
             StaticMethods.CheckToken(token, UniverseScopes.esi_universe_read_structures_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV1Structure(structureId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Structure(structureId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV1UniverseStructure>(esiRaw.Model);
+            EsiV2UniverseStructure esiV1GetFleet = JsonConvert.DeserializeObject<EsiV2UniverseStructure>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1UniverseStructure, V1UniverseStructure>(esiV1GetFleet);
+            return _mapper.Map<EsiV2UniverseStructure, V2UniverseStructure>(esiV1GetFleet);
         }
 
         public IList<V1UniverseSystemJumps> GetSystemJumps()
@@ -624,26 +624,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
-        public V3UniverseSystem GetSystem(int systemId)
+        public V4UniverseSystem GetSystem(int systemId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3System(systemId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV4System(systemId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw.Model);
+            EsiV4UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV4UniverseSystem>(esiRaw.Model);
 
-            return _mapper.Map<EsiV3UniverseSystem, V3UniverseSystem>(esiV3UniverseGetType);
+            return _mapper.Map<EsiV4UniverseSystem, V4UniverseSystem>(esiV3UniverseGetType);
         }
 
-        public async Task<V3UniverseSystem> GetSystemAsync(int systemId)
+        public async Task<V4UniverseSystem> GetSystemAsync(int systemId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3System(systemId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV4System(systemId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
-            EsiV3UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV3UniverseSystem>(esiRaw.Model);
+            EsiV4UniverseSystem esiV3UniverseGetType = JsonConvert.DeserializeObject<EsiV4UniverseSystem>(esiRaw.Model);
 
-            return _mapper.Map<EsiV3UniverseSystem, V3UniverseSystem>(esiV3UniverseGetType);
+            return _mapper.Map<EsiV4UniverseSystem, V4UniverseSystem>(esiV3UniverseGetType);
         }
 
         public PagedModel<int> GetTypes(int page)

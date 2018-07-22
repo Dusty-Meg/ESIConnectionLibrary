@@ -47,6 +47,16 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("BookmarksV2CharactersRaw")]
+        [InlineData("BookmarksV2CharactersFoldersRaw")]
+        [InlineData("BookmarksV1CorporationsRaw")]
+        [InlineData("BookmarksV1CorporationsFoldersRaw")]
+        public void BookmarksEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("EsiV4CharactersPublicInfoRaw")]
         [InlineData("EsiV1CharactersResearchAgentsRaw")]
         [InlineData("EsiV2CharactersBlueprintsRaw")]

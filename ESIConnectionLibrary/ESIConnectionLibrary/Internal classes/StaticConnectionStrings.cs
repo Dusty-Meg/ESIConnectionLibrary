@@ -124,6 +124,35 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Bookmarks
+
+        private static string BookmarksV2CharactersRaw => "/v2/characters/{character_id}/bookmarks/";
+        private static string BookmarksV2CharactersFoldersRaw => "/v2/characters/{character_id}/bookmarks/folders/";
+        private static string BookmarksV1CorporationsRaw => "/v1/corporations/{corporation_id}/bookmarks/";
+        private static string BookmarksV1CorporationsFoldersRaw => "/v1/corporations/{corporation_id}/bookmarks/folders/";
+
+        public static string BookmarksV2Characters(int characterId, int page)
+        {
+            return UrlBuilder(BookmarksV2CharactersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string BookmarksV2CharactersFolders(int characterId, int page)
+        {
+            return UrlBuilder(BookmarksV2CharactersFoldersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string BookmarksV1Corporations(int corporationId, int page)
+        {
+            return UrlBuilder(BookmarksV1CorporationsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string BookmarksV1CorporationsFolders(int corporationId, int page)
+        {
+            return UrlBuilder(BookmarksV1CorporationsFoldersRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        #endregion
+
         #region Character
 
         private static string EsiV4CharactersPublicInfoRaw => "/v4/characters/{character_id}/";

@@ -57,6 +57,16 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("CalendarV1SummariesRaw")]
+        [InlineData("CalendarV3EventRaw")]
+        [InlineData("CalendarV3EventResponseRaw")]
+        [InlineData("CalendarV1EventAttendeesRaw")]
+        public void CalendarEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("EsiV4CharactersPublicInfoRaw")]
         [InlineData("EsiV1CharactersResearchAgentsRaw")]
         [InlineData("EsiV2CharactersBlueprintsRaw")]

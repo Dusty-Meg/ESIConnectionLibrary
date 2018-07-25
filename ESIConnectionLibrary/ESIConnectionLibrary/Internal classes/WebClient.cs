@@ -230,6 +230,60 @@ namespace ESIConnectionLibrary.Internal_classes
             }
         }
 
+        public string Delete(WebHeaderCollection headers, string address, string data)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            try
+            {
+                return client.UploadString(address, "DELETE", data);
+            }
+            catch (WebException e)
+            {
+                EsiModel returned = BuildException(e, null, null, address, data);
+
+                if (returned != null)
+                {
+                    return string.Empty;
+                }
+
+                throw;
+            }
+        }
+
+        public async Task<string> DeleteAsync(WebHeaderCollection headers, string address, string data)
+        {
+            System.Net.WebClient client = new System.Net.WebClient
+            {
+                Headers = headers,
+                CachePolicy = new HttpRequestCachePolicy()
+            };
+
+            client.Headers["UserAgent"] = _userAgent;
+
+            try
+            {
+                return await client.UploadStringTaskAsync(address, "DELETE", data);
+            }
+            catch (WebException e)
+            {
+                EsiModel returned = BuildException(e, null, null, address, data);
+
+                if (returned != null)
+                {
+                    return string.Empty;
+                }
+
+                throw;
+            }
+        }
+
         public async Task<EsiModel> GetAsync(WebHeaderCollection headers, string address, int cacheSeconds = 0)
         {
             System.Net.WebClient client = new System.Net.WebClient

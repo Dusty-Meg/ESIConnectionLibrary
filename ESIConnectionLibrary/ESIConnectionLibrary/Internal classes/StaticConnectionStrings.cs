@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ESIConnectionLibrary.PublicModels;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
@@ -301,11 +303,83 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Contacts
 
-        private static string ContactsV2GetCharactersContactsRaw => "/v2/characters/{character_id}/contacts/";
+        private static string ContactsV2AllianceRaw => "/v2/alliances/{alliance_id}/contacts/";
+        private static string ContactsV1AllianceLabelsRaw => "/v1/alliances/{alliance_id}/contacts/labels/";
+        private static string ContactsV2CharacterDeleteRaw => "/v2/characters/{character_id}/contacts/";
+        private static string ContactsV2CharacterRaw => "/v2/characters/{character_id}/contacts/";
+        private static string ContactsV2CharacterAddRaw => "/v2/characters/{character_id}/contacts/";
+        private static string ContactsV2CharacterEditRaw => "/v2/characters/{character_id}/contacts/";
+        private static string ContactsV1CharacterLabelsRaw => "/v1/characters/{character_id}/contacts/labels/";
+        private static string ContactsV2CorporationRaw => "/v2/corporations/{corporation_id}/contacts/";
+        private static string ContactsV1CorporationLabelsRaw => "/v1/corporations/{corporation_id}/contacts/labels/";
 
-        public static string ContactsV2GetCharactersContacts(int characterId, int page)
+        public static string ContactsV2Alliance(int allianceId, int page)
         {
-            return UrlBuilder(ContactsV2GetCharactersContactsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(ContactsV2AllianceRaw, "{alliance_id}", allianceId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContactsV1AllianceLabels(int allianceId)
+        {
+            return UrlBuilder(ContactsV1AllianceLabelsRaw, "{alliance_id}", allianceId.ToString());
+        }
+
+        public static string ContactsV2CharacterDelete(int characterId)
+        {
+            return UrlBuilder(ContactsV2CharacterDeleteRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string ContactsV2Character(int characterId, int page)
+        {
+            return UrlBuilder(ContactsV2CharacterRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContactsV2CharacterAdd(int characterId, V2ContactCharacterAdd model)
+        {
+            string url = UrlBuilder(ContactsV2CharacterAddRaw, "{character_id}", characterId.ToString()) + $"?standing={model.Standing}";
+
+            if (model.LabelIds != null && model.LabelIds.Any())
+            {
+                url = url + $"&label_ids={JsonConvert.SerializeObject(model.LabelIds)}";
+            }
+
+            if (model.Watched.HasValue)
+            {
+                url = url + $"&watched={model.Watched}";
+            }
+
+            return url;
+        }
+
+        public static string ContactsV2CharacterEdit(int characterId, V2ContactCharacterEdit model)
+        {
+            string url = UrlBuilder(ContactsV2CharacterAddRaw, "{character_id}", characterId.ToString()) + $"?standing={model.Standing}";
+
+            if (model.LabelIds != null && model.LabelIds.Any())
+            {
+                url = url + $"&label_ids={JsonConvert.SerializeObject(model.LabelIds)}";
+            }
+
+            if (model.Watched.HasValue)
+            {
+                url = url + $"&watched={model.Watched}";
+            }
+
+            return url;
+        }
+
+        public static string ContactsV1CharacterLabels(int characterId)
+        {
+            return UrlBuilder(ContactsV1CharacterLabelsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string ContactsV2Corporation(int corporationId, int page)
+        {
+            return UrlBuilder(ContactsV2CorporationRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContactsV1CorporationLabels(int corporationId)
+        {
+            return UrlBuilder(ContactsV1CorporationLabelsRaw, "{corporation_id}", corporationId.ToString());
         }
 
         #endregion

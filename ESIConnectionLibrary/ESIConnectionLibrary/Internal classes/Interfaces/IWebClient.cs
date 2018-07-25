@@ -11,5 +11,7 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<string> PutAsync(WebHeaderCollection headers, string address, string data);
         EsiModel Post(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
         Task<EsiModel> PostAsync(WebHeaderCollection headers, string address, string data, int cacheSeconds = 0);
+        string Delete(WebHeaderCollection headers, string address, string data);
+        Task<string> DeleteAsync(WebHeaderCollection headers, string address, string data);
     }
 }

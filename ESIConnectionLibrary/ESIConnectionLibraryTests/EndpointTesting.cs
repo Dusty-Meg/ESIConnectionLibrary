@@ -96,7 +96,15 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("ContactsV2GetCharactersContactsRaw")]
+        [InlineData("ContactsV2AllianceRaw")]
+        [InlineData("ContactsV1AllianceLabelsRaw")]
+        [InlineData("ContactsV2CharacterDeleteRaw")]
+        [InlineData("ContactsV2CharacterRaw")]
+        [InlineData("ContactsV2CharacterAddRaw")]
+        [InlineData("ContactsV2CharacterEditRaw")]
+        [InlineData("ContactsV1CharacterLabelsRaw")]
+        [InlineData("ContactsV2CorporationRaw")]
+        [InlineData("ContactsV1CorporationLabelsRaw")]
         public void ContactsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum ContractsAvailability
+    public enum V1ContractsCorporationAvailability
     {
         Public,
         Personal,

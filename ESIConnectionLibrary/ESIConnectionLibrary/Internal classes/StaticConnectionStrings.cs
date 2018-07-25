@@ -386,11 +386,41 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Contracts
 
-        private static string ContractsV1GetCharactersContractsRaw => "/v1/characters/{character_id}/contracts/";
+        private static string ContractsV1CharacterRaw => "/v1/characters/{character_id}/contracts/";
+        private static string ContractsV1CharacterBidsRaw => "/v1/characters/{character_id}/contracts/{contract_id}/bids/";
+        private static string ContractsV1CharacterItemsRaw => "/v1/characters/{character_id}/contracts/{contract_id}/items/";
+        private static string ContractsV1CorporationRaw => "/v1/corporations/{corporation_id}/contracts/";
+        private static string ContractsV1CorporationBidsRaw => "/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/";
+        private static string ContractsV1CorporationItemsRaw => "/v1/corporations/{corporation_id}/contracts/{contract_id}/items/";
 
-        public static string ContractsV1GetCharactersContracts(int characterId, int page)
+        public static string ContractsV1Character(int characterId, int page)
         {
-            return UrlBuilder(ContractsV1GetCharactersContractsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(ContractsV1CharacterRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContractsV1CharacterBids(int characterId, int contractId)
+        {
+            return UrlBuilder(ContractsV1CharacterBidsRaw, "{character_id}", characterId.ToString(), "{contract_id}", contractId.ToString());
+        }
+
+        public static string ContractsV1CharacterItems(int characterId, int contractId)
+        {
+            return UrlBuilder(ContractsV1CharacterItemsRaw, "{character_id}", characterId.ToString(), "{contract_id}", contractId.ToString());
+        }
+
+        public static string ContractsV1Corporation(int corporationId, int page)
+        {
+            return UrlBuilder(ContractsV1CorporationRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContractsV1CorporationBids(int corporationId, int contractId)
+        {
+            return UrlBuilder(ContractsV1CorporationBidsRaw, "{corporation_id}", corporationId.ToString(), "{contract_id}", contractId.ToString());
+        }
+
+        public static string ContractsV1CorporationItems(int corporationId, int contractId)
+        {
+            return UrlBuilder(ContractsV1CorporationItemsRaw, "{corporation_id}", corporationId.ToString(), "{contract_id}", contractId.ToString());
         }
 
         #endregion

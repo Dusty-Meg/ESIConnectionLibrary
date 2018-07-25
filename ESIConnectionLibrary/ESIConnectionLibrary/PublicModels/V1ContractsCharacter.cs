@@ -2,11 +2,11 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1ContractsCharacterContracts
+    public class V1ContractsCharacter
     {
         public int AcceptorId { get; set; }
         public int AssigneeId { get; set; }
-        public ContractsAvailability Availability { get; set; }
+        public V1ContractsCharacterAvailability Availability { get; set; }
         public double? Buyout { get; set; }
         public double? Collateral { get; set; }
         public int ContractId { get; set; }
@@ -22,9 +22,9 @@ namespace ESIConnectionLibrary.PublicModels
         public double? Price { get; set; }
         public double? Reward { get; set; }
         public long? StartLocationId { get; set; }
-        public ContractsStatus Status { get; set; }
+        public V1ContractsCharacterStatus Status { get; set; }
         public string Title { get; set; }
-        public ContractsType Type { get; set; }
+        public V1ContractsCharacterType Type { get; set; }
         public double? Volume { get; set; }
     }
 }

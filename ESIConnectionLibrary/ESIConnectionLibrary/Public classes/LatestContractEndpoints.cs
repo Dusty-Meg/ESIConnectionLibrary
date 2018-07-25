@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
@@ -14,24 +15,84 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestContracts = new InternalLatestContracts(null, userAgent, testing);   
         }
 
-        public PagedModel<V1ContractsCharacterContracts> GetCharactersContracts(SsoToken token, int page)
+        public PagedModel<V1ContractsCharacter> Character(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestContracts.GetCharactersContracts(token, page);
+            return _internalLatestContracts.Character(token, page);
         }
 
-        public async Task<PagedModel<V1ContractsCharacterContracts>> GetCharactersContractsAsync(SsoToken token, int page)
+        public async Task<PagedModel<V1ContractsCharacter>> CharacterAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestContracts.GetCharactersContractsAsync(token, page);
+            return await _internalLatestContracts.CharacterAsync(token, page);
+        }
+
+        public IList<V1ContractsCharacterBids> CharacterBids(SsoToken token, int contractId)
+        {
+            return _internalLatestContracts.CharacterBids(token, contractId);
+        }
+
+        public async Task<IList<V1ContractsCharacterBids>> CharacterBidsAsync(SsoToken token, int contractId)
+        {
+            return await _internalLatestContracts.CharacterBidsAsync(token, contractId);
+        }
+
+        public IList<V1ContractsCharacterItems> CharacterItems(SsoToken token, int contractId)
+        {
+            return _internalLatestContracts.CharacterItems(token, contractId);
+        }
+
+        public async Task<IList<V1ContractsCharacterItems>> CharacterItemsAsync(SsoToken token, int contractId)
+        {
+            return await _internalLatestContracts.CharacterItemsAsync(token, contractId);
+        }
+
+        public PagedModel<V1ContractsCorporation> Corporation(SsoToken token, int corporationId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return _internalLatestContracts.Corporation(token, corporationId, page);
+        }
+
+        public async Task<PagedModel<V1ContractsCorporation>> CorporationAsync(SsoToken token, int corporationId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestContracts.CorporationAsync(token, corporationId, page);
+        }
+
+        public IList<V1ContractsCorporationBids> CorporationBids(SsoToken token, int corporationId, int contractId)
+        {
+            return _internalLatestContracts.CorporationBids(token, corporationId, contractId);
+        }
+
+        public async Task<IList<V1ContractsCorporationBids>> CorporationBidsAsync(SsoToken token, int corporationId, int contractId)
+        {
+            return await _internalLatestContracts.CorporationBidsAsync(token, corporationId, contractId);
+        }
+
+        public IList<V1ContractsCorporationItems> CorporationItems(SsoToken token, int corporationId, int contractId)
+        {
+            return _internalLatestContracts.CorporationItems(token, corporationId, contractId);
+        }
+
+        public async Task<IList<V1ContractsCorporationItems>> CorporationItemsAsync(SsoToken token, int corporationId, int contractId)
+        {
+            return await _internalLatestContracts.CorporationItemsAsync(token, corporationId, contractId);
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiContractsType
+    internal enum EsiV1ContractsCharacterType
     {
         [EnumMember(Value = "unknown")]
         Unknown,

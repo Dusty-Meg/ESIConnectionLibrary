@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1ContractsCharacterContracts
+    internal class EsiV1ContractsCorporation
     {
         [JsonProperty(PropertyName = "acceptor_id")]
         public int AcceptorId { get; set; }
@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int AssigneeId { get; set; }
 
         [JsonProperty(PropertyName = "availability")]
-        public EsiContractsAvailability Availability { get; set; }
+        public EsiV1ContractsCorporationAvailability Availability { get; set; }
 
         [JsonProperty(PropertyName = "buyout")]
         public double? Buyout { get; set; }
@@ -60,13 +60,13 @@ namespace ESIConnectionLibrary.ESIModels
         public long? StartLocationId { get; set; }
 
         [JsonProperty(PropertyName = "status")]
-        public EsiContractsStatus Status { get; set; }
+        public EsiV1ContractsCorporationStatus Status { get; set; }
 
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
         [JsonProperty(PropertyName = "type")]
-        public EsiContractsType Type { get; set; }
+        public EsiV1ContractsCharacterType Type { get; set; }
 
         [JsonProperty(PropertyName = "volume")]
         public double? Volume { get; set; }

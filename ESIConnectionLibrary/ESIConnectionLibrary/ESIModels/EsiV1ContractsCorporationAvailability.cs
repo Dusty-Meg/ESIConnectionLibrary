@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiContractsAvailability
+    internal enum EsiV1ContractsCorporationAvailability
     {
         [EnumMember(Value = "public")]
         Public,

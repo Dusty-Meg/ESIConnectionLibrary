@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum ContractsStatus
+    public enum V1ContractsCharacterStatus
     {
         Outstanding,
         InProgress,

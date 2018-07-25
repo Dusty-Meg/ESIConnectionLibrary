@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum ContractsType
+    public enum V1ContractsCorporationType
     {
         Unknown,
         ItemExchange,

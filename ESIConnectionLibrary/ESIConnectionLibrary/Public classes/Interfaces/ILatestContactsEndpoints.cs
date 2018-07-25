@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using ESIConnectionLibrary.PublicModels;
 
-namespace ESIConnectionLibrary.Internal_classes
+namespace ESIConnectionLibrary.Public_classes
 {
-    internal interface IInternalLatestContacts
+    public interface ILatestContactsEndpoints
     {
         PagedModel<V2ContactAlliance> Alliance(SsoToken token, int allianceId, int page);
         Task<PagedModel<V2ContactAlliance>> AllianceAsync(SsoToken token, int allianceId, int page);

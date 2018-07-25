@@ -3,16 +3,13 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2ContactsGetContacts
+    internal class EsiV2ContactCorporation
     {
         [JsonProperty(PropertyName = "contact_id")]
         public int ContactId { get; set; }
 
         [JsonProperty(PropertyName = "contact_type")]
-        public EsiV2ContactsContactType ContactType { get; set; }
-
-        [JsonProperty(PropertyName = "is_blocked")]
-        public bool? IsBlocked { get; set; }
+        public EsiV2ContactCorporationContactTypes ContactType { get; set; }
 
         [JsonProperty(PropertyName = "is_watched")]
         public bool? IsWatched { get; set; }

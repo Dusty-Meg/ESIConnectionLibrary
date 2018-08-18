@@ -162,6 +162,20 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("FactionWarfareV1CharacterStatsRaw")]
+        [InlineData("FactionWarfareV1CorporationStatsRaw")]
+        [InlineData("FactionWarfareV1FactionLeaderboardRaw")]
+        [InlineData("FactionWarfareV1CharacterLeaderboardRaw")]
+        [InlineData("FactionWarfareV1CorporationLeaderboardRaw")]
+        [InlineData("FactionWarfareV1FactionStatsRaw")]
+        [InlineData("FactionWarfareV2SystemsRaw")]
+        [InlineData("FactionWarfareV1WarsRaw")]
+        public void FactionWarfareEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("FleetsGetFleetRaw")]
         public void FleetEndpoints(string endpoint)
         {

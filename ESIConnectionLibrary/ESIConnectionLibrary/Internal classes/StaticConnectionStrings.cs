@@ -597,6 +597,59 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region FactionWarfare
+
+        private static string FactionWarfareV1CharacterStatsRaw => "/v1/characters/{character_id}/fw/stats/";
+        private static string FactionWarfareV1CorporationStatsRaw => "/v1/corporations/{corporation_id}/fw/stats/";
+        private static string FactionWarfareV1FactionLeaderboardRaw => "/v1/fw/leaderboards/";
+        private static string FactionWarfareV1CharacterLeaderboardRaw => "/v1/fw/leaderboards/characters/";
+        private static string FactionWarfareV1CorporationLeaderboardRaw => "/v1/fw/leaderboards/corporations/";
+        private static string FactionWarfareV1FactionStatsRaw => "/v1/fw/stats/";
+        private static string FactionWarfareV2SystemsRaw => "/v2/fw/systems/";
+        private static string FactionWarfareV1WarsRaw => "/v1/fw/wars/";
+
+        public static string FactionWarfareV1CharacterStats(int characterId)
+        {
+            return UrlBuilder(FactionWarfareV1CharacterStatsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string FactionWarfareV1CorporationStats(int corporationId)
+        {
+            return UrlBuilder(FactionWarfareV1CorporationStatsRaw, "{corporation_id}", corporationId.ToString());
+        }
+
+        public static string FactionWarfareV1FactionLeaderboard()
+        {
+            return UrlBuilder(FactionWarfareV1FactionLeaderboardRaw);
+        }
+
+        public static string FactionWarfareV1CharacterLeaderboard()
+        {
+            return UrlBuilder(FactionWarfareV1CharacterLeaderboardRaw);
+        }
+
+        public static string FactionWarfareV1CorporationLeaderboard()
+        {
+            return UrlBuilder(FactionWarfareV1CorporationLeaderboardRaw);
+        }
+
+        public static string FactionWarfareV1FactionStats()
+        {
+            return UrlBuilder(FactionWarfareV1FactionStatsRaw);
+        }
+
+        public static string FactionWarfareV2Systems()
+        {
+            return UrlBuilder(FactionWarfareV2SystemsRaw);
+        }
+
+        public static string FactionWarfareV1Wars()
+        {
+            return UrlBuilder(FactionWarfareV1WarsRaw);
+        }
+
+        #endregion
+
         #region Fleets
 
         private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";

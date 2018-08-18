@@ -313,7 +313,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 if (cachedItem != null)
                 {
-                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) >= 0)
                     {
                         esiModel.Model = cachedItem.Item;
                         esiModel.Etag = cachedItem.Etag;
@@ -393,7 +393,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
                 if (cachedItem != null)
                 {
-                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) <= 0)
+                    if (DateTime.Compare(cachedItem.Expires, DateTime.UtcNow) >= 0)
                     {
                         esiModel.Model = cachedItem.Item;
                         esiModel.Etag = cachedItem.Etag;

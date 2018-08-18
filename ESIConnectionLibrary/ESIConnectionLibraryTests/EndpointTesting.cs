@@ -151,6 +151,17 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("DogmaV1AttributesRaw")]
+        [InlineData("DogmaV1AttributeRaw")]
+        [InlineData("DogmaV1DynamicItemRaw")]
+        [InlineData("DogmaV1EffectsRaw")]
+        [InlineData("DogmaV2EffectRaw")]
+        public void DogmaEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("FleetsGetFleetRaw")]
         public void FleetEndpoints(string endpoint)
         {

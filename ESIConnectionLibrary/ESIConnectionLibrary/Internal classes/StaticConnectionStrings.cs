@@ -562,6 +562,41 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Dogma
+
+        private static string DogmaV1AttributesRaw => "/v1/dogma/attributes/";
+        private static string DogmaV1AttributeRaw => "/v1/dogma/attributes/{attribute_id}/";
+        private static string DogmaV1DynamicItemRaw => "/v1/dogma/dynamic/items/{type_id}/{item_id}/";
+        private static string DogmaV1EffectsRaw => "/v1/dogma/effects/";
+        private static string DogmaV2EffectRaw => "/v2/dogma/effects/{effect_id}/";
+
+        public static string DogmaV1Attributes()
+        {
+            return UrlBuilder(DogmaV1AttributesRaw);
+        }
+
+        public static string DogmaV1Attribute(int attributeId)
+        {
+            return UrlBuilder(DogmaV1AttributeRaw, "{attribute_id}", attributeId.ToString());
+        }
+
+        public static string DogmaV1DynamicItem(int typeId, long itemId)
+        {
+            return UrlBuilder(DogmaV1DynamicItemRaw, "{type_id}", typeId.ToString(), "{item_id}", itemId.ToString());
+        }
+
+        public static string DogmaV1Effects()
+        {
+            return UrlBuilder(DogmaV1EffectsRaw);
+        }
+
+        public static string DogmaV2Effect(int effectId)
+        {
+            return UrlBuilder(DogmaV2EffectRaw, "{effect_id}", effectId.ToString());
+        }
+
+        #endregion
+
         #region Fleets
 
         private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";

@@ -16,7 +16,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public InternalLatestFactionWarfare(IWebClient webClient, string userAgent, bool testing = false)
         {
-            IConfigurationProvider provider = new MapperConfiguration(cfg => {});
+            IConfigurationProvider provider = new MapperConfiguration(cfg => { });
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);

@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
@@ -15,10 +14,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public InternalLatestLocation(IWebClient webClient, string userAgent, bool testing = false)
         {
-            IConfigurationProvider provider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<LocationMappings>();
-            });
+            IConfigurationProvider provider = new MapperConfiguration(cfg => { });
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);

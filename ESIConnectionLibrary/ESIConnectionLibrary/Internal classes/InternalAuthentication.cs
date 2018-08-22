@@ -2,7 +2,6 @@
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
-using ESIConnectionLibrary.AutomapperMappings;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.PublicModels;
@@ -17,10 +16,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public InternalAuthentication(IWebClient webClient, string userAgent)
         {
-            IConfigurationProvider provider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<AuthenticationMappings>();
-            });
+            IConfigurationProvider provider = new MapperConfiguration(cfg => { });
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);

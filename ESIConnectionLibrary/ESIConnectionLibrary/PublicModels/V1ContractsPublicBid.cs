@@ -4,9 +4,9 @@ namespace ESIConnectionLibrary.PublicModels
 {
     public class V1ContractsPublicBid
     {
-        public float amount { get; set; }
-        public int bid_id { get; set; }
-        public int bidder_id { get; set; }
-        public DateTime date_bid { get; set; }
+        public float Amount { get; set; }
+        public int BidId { get; set; }
+        public int BidderId { get; set; }
+        public DateTime DateBid { get; set; }
     }
 }

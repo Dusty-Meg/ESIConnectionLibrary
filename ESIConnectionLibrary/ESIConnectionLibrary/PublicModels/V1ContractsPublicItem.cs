@@ -2,14 +2,14 @@
 {
     public class V1ContractsPublicItem
     {
-        public bool? is_blueprint_copy { get; set; }
-        public bool is_included { get; set; }
-        public long? item_id { get; set; }
-        public int? material_efficiency { get; set; }
-        public int quantity { get; set; }
-        public long record_id { get; set; }
-        public int? runs { get; set; }
-        public int? time_efficiency { get; set; }
-        public int type_id { get; set; }
+        public bool? IsBlueprintCopy { get; set; }
+        public bool IsIncluded { get; set; }
+        public long? ItemId { get; set; }
+        public int? MaterialEfficiency { get; set; }
+        public int Quantity { get; set; }
+        public long RecordId { get; set; }
+        public int? Runs { get; set; }
+        public int? TimeEfficiency { get; set; }
+        public int TypeId { get; set; }
     }
 }

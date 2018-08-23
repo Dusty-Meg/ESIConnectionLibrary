@@ -305,20 +305,20 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublic> esiModel = internalLatestContracts.Public(33, 1);
 
-            Assert.Equal(10000000000.01, esiModel.Model[0].buyout);
-            Assert.Equal(1, esiModel.Model[0].contract_id);
-            Assert.Equal(new DateTime(2017, 06, 13, 13, 12, 32), esiModel.Model[0].date_expired);
-            Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), esiModel.Model[0].date_issued);
-            Assert.Equal(0, esiModel.Model[0].days_to_complete);
-            Assert.Equal(60014719, esiModel.Model[0].end_location_id);
-            Assert.True(esiModel.Model[0].for_corporation);
-            Assert.Equal(456, esiModel.Model[0].issuer_corporation_id);
-            Assert.Equal(123, esiModel.Model[0].issuer_id);
-            Assert.Equal(1000000.01, esiModel.Model[0].price);
-            Assert.Equal(0.01, esiModel.Model[0].reward);
-            Assert.Equal(60014719, esiModel.Model[0].start_location_id);
-            Assert.Equal(V1ContractsPublicType.auction, esiModel.Model[0].type);
-            Assert.Equal(0.01, esiModel.Model[0].volume);
+            Assert.Equal(10000000000.01, esiModel.Model[0].Buyout);
+            Assert.Equal(1, esiModel.Model[0].ContractId);
+            Assert.Equal(new DateTime(2017, 06, 13, 13, 12, 32), esiModel.Model[0].DateExpired);
+            Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), esiModel.Model[0].DateIssued);
+            Assert.Equal(0, esiModel.Model[0].DaysToComplete);
+            Assert.Equal(60014719, esiModel.Model[0].EndLocationId);
+            Assert.True(esiModel.Model[0].ForCorporation);
+            Assert.Equal(456, esiModel.Model[0].IssuerCorporationId);
+            Assert.Equal(123, esiModel.Model[0].IssuerId);
+            Assert.Equal(1000000.01, esiModel.Model[0].Price);
+            Assert.Equal(0.01, esiModel.Model[0].Reward);
+            Assert.Equal(60014719, esiModel.Model[0].StartLocationId);
+            Assert.Equal(V1ContractsPublicType.Auction, esiModel.Model[0].Type);
+            Assert.Equal(0.01, esiModel.Model[0].Volume);
         }
 
         [Fact]
@@ -328,20 +328,20 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublic> esiModel = await internalLatestContracts.PublicAsync(33, 1);
 
-            Assert.Equal(10000000000.01, esiModel.Model[0].buyout);
-            Assert.Equal(1, esiModel.Model[0].contract_id);
-            Assert.Equal(new DateTime(2017, 06, 13, 13, 12, 32), esiModel.Model[0].date_expired);
-            Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), esiModel.Model[0].date_issued);
-            Assert.Equal(0, esiModel.Model[0].days_to_complete);
-            Assert.Equal(60014719, esiModel.Model[0].end_location_id);
-            Assert.True(esiModel.Model[0].for_corporation);
-            Assert.Equal(456, esiModel.Model[0].issuer_corporation_id);
-            Assert.Equal(123, esiModel.Model[0].issuer_id);
-            Assert.Equal(1000000.01, esiModel.Model[0].price);
-            Assert.Equal(0.01, esiModel.Model[0].reward);
-            Assert.Equal(60014719, esiModel.Model[0].start_location_id);
-            Assert.Equal(V1ContractsPublicType.auction, esiModel.Model[0].type);
-            Assert.Equal(0.01, esiModel.Model[0].volume);
+            Assert.Equal(10000000000.01, esiModel.Model[0].Buyout);
+            Assert.Equal(1, esiModel.Model[0].ContractId);
+            Assert.Equal(new DateTime(2017, 06, 13, 13, 12, 32), esiModel.Model[0].DateExpired);
+            Assert.Equal(new DateTime(2017, 06, 06, 13, 12, 32), esiModel.Model[0].DateIssued);
+            Assert.Equal(0, esiModel.Model[0].DaysToComplete);
+            Assert.Equal(60014719, esiModel.Model[0].EndLocationId);
+            Assert.True(esiModel.Model[0].ForCorporation);
+            Assert.Equal(456, esiModel.Model[0].IssuerCorporationId);
+            Assert.Equal(123, esiModel.Model[0].IssuerId);
+            Assert.Equal(1000000.01, esiModel.Model[0].Price);
+            Assert.Equal(0.01, esiModel.Model[0].Reward);
+            Assert.Equal(60014719, esiModel.Model[0].StartLocationId);
+            Assert.Equal(V1ContractsPublicType.Auction, esiModel.Model[0].Type);
+            Assert.Equal(0.01, esiModel.Model[0].Volume);
         }
 
         [Fact]
@@ -351,10 +351,10 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublicBid> esiModel = internalLatestContracts.PublicBids(33, 1);
 
-            Assert.Equal(1.23f, esiModel.Model[0].amount);
-            Assert.Equal(1, esiModel.Model[0].bid_id);
-            Assert.Equal(123, esiModel.Model[0].bidder_id);
-            Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].date_bid);
+            Assert.Equal(1.23f, esiModel.Model[0].Amount);
+            Assert.Equal(1, esiModel.Model[0].BidId);
+            Assert.Equal(123, esiModel.Model[0].BidderId);
+            Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 
         [Fact]
@@ -364,10 +364,10 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublicBid> esiModel = await internalLatestContracts.PublicBidsAsync(33, 1);
 
-            Assert.Equal(1.23f, esiModel.Model[0].amount);
-            Assert.Equal(1, esiModel.Model[0].bid_id);
-            Assert.Equal(123, esiModel.Model[0].bidder_id);
-            Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].date_bid);
+            Assert.Equal(1.23f, esiModel.Model[0].Amount);
+            Assert.Equal(1, esiModel.Model[0].BidId);
+            Assert.Equal(123, esiModel.Model[0].BidderId);
+            Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 
         [Fact]
@@ -377,11 +377,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublicItem> esiModel = internalLatestContracts.PublicItems(33, 1);
 
-            Assert.True(esiModel.Model[0].is_included);
-            Assert.Equal(123456, esiModel.Model[0].item_id);
-            Assert.Equal(1, esiModel.Model[0].quantity);
-            Assert.Equal(123456, esiModel.Model[0].record_id);
-            Assert.Equal(587, esiModel.Model[0].type_id);
+            Assert.True(esiModel.Model[0].IsIncluded);
+            Assert.Equal(123456, esiModel.Model[0].ItemId);
+            Assert.Equal(1, esiModel.Model[0].Quantity);
+            Assert.Equal(123456, esiModel.Model[0].RecordId);
+            Assert.Equal(587, esiModel.Model[0].TypeId);
         }
 
         [Fact]
@@ -391,11 +391,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             PagedModel<V1ContractsPublicItem> esiModel = await internalLatestContracts.PublicItemsAsync(33, 1);
 
-            Assert.True(esiModel.Model[0].is_included);
-            Assert.Equal(123456, esiModel.Model[0].item_id);
-            Assert.Equal(1, esiModel.Model[0].quantity);
-            Assert.Equal(123456, esiModel.Model[0].record_id);
-            Assert.Equal(587, esiModel.Model[0].type_id);
+            Assert.True(esiModel.Model[0].IsIncluded);
+            Assert.Equal(123456, esiModel.Model[0].ItemId);
+            Assert.Equal(1, esiModel.Model[0].Quantity);
+            Assert.Equal(123456, esiModel.Model[0].RecordId);
+            Assert.Equal(587, esiModel.Model[0].TypeId);
         }
     }
 }

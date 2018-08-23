@@ -185,5 +185,83 @@ namespace ESIConnectionLibrary.Internal_classes
 
             return _mapper.Map<IList<EsiV1ContractsCorporationItems>, IList<V1ContractsCorporationItems>>(esiModel);
         }
+
+        public PagedModel<V1ContractsPublic> Public(int regionId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1Public(regionId, page), _testing);
+
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 1800));
+
+            IList<EsiV1ContractsPublic> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublic>>(esiRaw.Model);
+
+            IList<V1ContractsPublic> mapped = _mapper.Map<IList<EsiV1ContractsPublic>, IList<V1ContractsPublic>>(esiModel);
+
+            return new PagedModel<V1ContractsPublic> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
+
+        public async Task<PagedModel<V1ContractsPublic>> PublicAsync(int regionId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1Public(regionId, page), _testing);
+
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 1800));
+
+            IList<EsiV1ContractsPublic> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublic>>(esiRaw.Model);
+
+            IList<V1ContractsPublic> mapped = _mapper.Map<IList<EsiV1ContractsPublic>, IList<V1ContractsPublic>>(esiModel);
+
+            return new PagedModel<V1ContractsPublic> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
+
+        public PagedModel<V1ContractsPublicBid> PublicBids(int contractId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1PublicBids(contractId, page), _testing);
+
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 300));
+
+            IList<EsiV1ContractsPublicBid> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublicBid>>(esiRaw.Model);
+
+            IList<V1ContractsPublicBid> mapped = _mapper.Map<IList<EsiV1ContractsPublicBid>, IList<V1ContractsPublicBid>>(esiModel);
+
+            return new PagedModel<V1ContractsPublicBid> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
+
+        public async Task<PagedModel<V1ContractsPublicBid>> PublicBidsAsync(int contractId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1PublicBids(contractId, page), _testing);
+
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 300));
+
+            IList<EsiV1ContractsPublicBid> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublicBid>>(esiRaw.Model);
+
+            IList<V1ContractsPublicBid> mapped = _mapper.Map<IList<EsiV1ContractsPublicBid>, IList<V1ContractsPublicBid>>(esiModel);
+
+            return new PagedModel<V1ContractsPublicBid> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
+
+        public PagedModel<V1ContractsPublicItem> PublicItems(int contractId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1PublicItems(contractId, page), _testing);
+
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+
+            IList<EsiV1ContractsPublicItem> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublicItem>>(esiRaw.Model);
+
+            IList<V1ContractsPublicItem> mapped = _mapper.Map<IList<EsiV1ContractsPublicItem>, IList<V1ContractsPublicItem>>(esiModel);
+
+            return new PagedModel<V1ContractsPublicItem> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
+
+        public async Task<PagedModel<V1ContractsPublicItem>> PublicItemsAsync(int contractId, int page)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.ContractsV1PublicItems(contractId, page), _testing);
+
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+
+            IList<EsiV1ContractsPublicItem> esiModel = JsonConvert.DeserializeObject<IList<EsiV1ContractsPublicItem>>(esiRaw.Model);
+
+            IList<V1ContractsPublicItem> mapped = _mapper.Map<IList<EsiV1ContractsPublicItem>, IList<V1ContractsPublicItem>>(esiModel);
+
+            return new PagedModel<V1ContractsPublicItem> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+        }
     }
 }

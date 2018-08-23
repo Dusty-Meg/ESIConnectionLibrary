@@ -94,5 +94,65 @@ namespace ESIConnectionLibrary.Public_classes
         {
             return await _internalLatestContracts.CorporationItemsAsync(token, corporationId, contractId);
         }
+
+        public PagedModel<V1ContractsPublic> Public(int regionId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return _internalLatestContracts.Public(regionId, page);
+        }
+
+        public async Task<PagedModel<V1ContractsPublic>> PublicAsync(int regionId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestContracts.PublicAsync(regionId, page);
+        }
+
+        public PagedModel<V1ContractsPublicBid> PublicBids(int contractId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return _internalLatestContracts.PublicBids(contractId, page);
+        }
+
+        public async Task<PagedModel<V1ContractsPublicBid>> PublicBidsAsync(int contractId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestContracts.PublicBidsAsync(contractId, page);
+        }
+
+        public PagedModel<V1ContractsPublicItem> PublicItems(int contractId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return _internalLatestContracts.PublicItems(contractId, page);
+        }
+
+        public async Task<PagedModel<V1ContractsPublicItem>> PublicItemsAsync(int contractId, int page)
+        {
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestContracts.PublicItemsAsync(contractId, page);
+        }
     }
 }

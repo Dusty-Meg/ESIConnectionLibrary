@@ -392,6 +392,9 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string ContractsV1CorporationRaw => "/v1/corporations/{corporation_id}/contracts/";
         private static string ContractsV1CorporationBidsRaw => "/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/";
         private static string ContractsV1CorporationItemsRaw => "/v1/corporations/{corporation_id}/contracts/{contract_id}/items/";
+        private static string ContractsV1PublicRaw => "/v1/contracts/public/{region_id}/";
+        private static string ContractsV1PublicBidsRaw => "/v1/contracts/public/bids/{contract_id}/";
+        private static string ContractsV1PublicItemsRaw => "/v1/contracts/public/items/{contract_id}/";
 
         public static string ContractsV1Character(int characterId, int page)
         {
@@ -421,6 +424,21 @@ namespace ESIConnectionLibrary.Internal_classes
         public static string ContractsV1CorporationItems(int corporationId, int contractId)
         {
             return UrlBuilder(ContractsV1CorporationItemsRaw, "{corporation_id}", corporationId.ToString(), "{contract_id}", contractId.ToString());
+        }
+
+        public static string ContractsV1Public(int regionId, int page)
+        {
+            return UrlBuilder(ContractsV1PublicRaw, "{region_id}", regionId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContractsV1PublicBids(int contractId, int page)
+        {
+            return UrlBuilder(ContractsV1PublicBidsRaw, "{contract_id}", contractId.ToString()) + $"?page={page}";
+        }
+
+        public static string ContractsV1PublicItems(int contractId, int page)
+        {
+            return UrlBuilder(ContractsV1PublicItemsRaw, "{contract_id}", contractId.ToString()) + $"?page={page}";
         }
 
         #endregion

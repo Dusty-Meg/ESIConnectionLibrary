@@ -117,6 +117,9 @@ namespace ESIConnectionLibraryTests
         [InlineData("ContractsV1CorporationRaw")]
         [InlineData("ContractsV1CorporationBidsRaw")]
         [InlineData("ContractsV1CorporationItemsRaw")]
+        [InlineData("ContractsV1PublicRaw")]
+        [InlineData("ContractsV1PublicBidsRaw")]
+        [InlineData("ContractsV1PublicItemsRaw")]
         public void ContractsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

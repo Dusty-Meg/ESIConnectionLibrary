@@ -18,5 +18,11 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<IList<V1ContractsCorporationBids>> CorporationBidsAsync(SsoToken token, int corporationId, int contractId);
         IList<V1ContractsCorporationItems> CorporationItems(SsoToken token, int corporationId, int contractId);
         Task<IList<V1ContractsCorporationItems>> CorporationItemsAsync(SsoToken token, int corporationId, int contractId);
+        PagedModel<V1ContractsPublic> Public(int regionId, int page);
+        Task<PagedModel<V1ContractsPublic>> PublicAsync(int regionId, int page);
+        PagedModel<V1ContractsPublicBid> PublicBids(int contractId, int page);
+        Task<PagedModel<V1ContractsPublicBid>> PublicBidsAsync(int contractId, int page);
+        PagedModel<V1ContractsPublicItem> PublicItems(int contractId, int page);
+        Task<PagedModel<V1ContractsPublicItem>> PublicItemsAsync(int contractId, int page);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
 
@@ -759,23 +760,78 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Market
 
-        private static string MarketV2MarketCharactersOrdersRaw => "/v2/characters/{character_id}/orders/";
-        private static string MarketV1MarketCharactersHistoricOrdersRaw => "/v1/characters/{character_id}/orders/history/";
-        private static string MarketV1GetMarketGroupInformationRaw => "/v1/markets/groups/{market_group_id}/";
+        private static string MarketV2CharacterOrdersRaw => "/v2/characters/{character_id}/orders/";
+        private static string MarketV1CharacterOrdersHistoricRaw => "/v1/characters/{character_id}/orders/history/";
+        private static string MarketV3CorporationOrdersRaw => "/v3/corporations/{corporation_id}/orders/";
+        private static string MarketV2CorporationOrdersHistoricRaw => "/v2/corporations/{corporation_id}/orders/history/";
+        private static string MarketV1HistoryRaw => "/v1/markets/{region_id}/history/";
+        private static string MarketV1OrdersRaw => "/v1/markets/{region_id}/orders/";
+        private static string MarketV1TypesRaw => "/v1/markets/{region_id}/types/";
+        private static string MarketV1GroupsRaw => "/v1/markets/groups/";
+        private static string MarketV1GroupRaw => "/v1/markets/groups/{market_group_id}/";
+        private static string MarketV1PricesRaw => "/v1/markets/prices/";
+        private static string MarketV1StructureRaw => "/v1/markets/structures/{structure_id}/";
 
-        public static string MarketV2MarketCharactersOrders(int characterId)
+        public static string MarketV2CharacterOrders(int characterId)
         {
-            return UrlBuilder(MarketV2MarketCharactersOrdersRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(MarketV2CharacterOrdersRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string MarketV1MarketCharactersHistoricOrders(int characterId, int page)
+        public static string MarketV1CharacterOrdersHistoric(int characterId, int page)
         {
-            return UrlBuilder(MarketV1MarketCharactersHistoricOrdersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(MarketV1CharacterOrdersHistoricRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
-        public static string MarketV1GetMarketGroupInformation(int marketGroupId)
+        public static string MarketV3CorporationOrders(int corporationId, int page)
         {
-            return UrlBuilder(MarketV1GetMarketGroupInformationRaw, "{market_group_id}", marketGroupId.ToString());
+            return UrlBuilder(MarketV3CorporationOrdersRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string MarketV2CorporationOrdersHistoric(int corporationId, int page)
+        {
+            return UrlBuilder(MarketV2CorporationOrdersHistoricRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string MarketV1History(int regionId, int typeId)
+        {
+            return UrlBuilder(MarketV1HistoryRaw, "{region_id}", regionId.ToString()) + $"?type_id={typeId}";
+        }
+
+        public static string MarketV1Orders(int regionId, OrderType type, int page, int? typeId)
+        {
+            string url = UrlBuilder(MarketV1OrdersRaw, "{region_id}", regionId.ToString()) + $"?order_type={type.ToString()}&page={page}";
+
+            if (typeId.HasValue)
+            {
+                url = url + $"&type_id={typeId}";
+            }
+
+            return url;
+        }
+
+        public static string MarketV1Types(int regionId, int page)
+        {
+            return UrlBuilder(MarketV1TypesRaw, "{region_id}", regionId.ToString()) + $"?page={page}";
+        }
+
+        public static string MarketV1Groups()
+        {
+            return UrlBuilder(MarketV1GroupsRaw);
+        }
+
+        public static string MarketV1Group(int marketGroupId)
+        {
+            return UrlBuilder(MarketV1GroupRaw, "{market_group_id}", marketGroupId.ToString());
+        }
+
+        public static string MarketV1Prices()
+        {
+            return UrlBuilder(MarketV1PricesRaw);
+        }
+
+        public static string MarketV1Structure(long structureId, int page)
+        {
+            return UrlBuilder(MarketV1StructureRaw, "{structure_id}", structureId.ToString()) + $"?page={page}";
         }
 
         #endregion

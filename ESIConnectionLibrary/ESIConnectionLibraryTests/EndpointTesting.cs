@@ -224,9 +224,17 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("MarketV2MarketCharactersOrdersRaw")]
-        [InlineData("MarketV1MarketCharactersHistoricOrdersRaw")]
-        [InlineData("MarketV1GetMarketGroupInformationRaw")]
+        [InlineData("MarketV2CharacterOrdersRaw")]
+        [InlineData("MarketV1CharacterOrdersHistoricRaw")]
+        [InlineData("MarketV3CorporationOrdersRaw")]
+        [InlineData("MarketV2CorporationOrdersHistoricRaw")]
+        [InlineData("MarketV1HistoryRaw")]
+        [InlineData("MarketV1OrdersRaw")]
+        [InlineData("MarketV1TypesRaw")]
+        [InlineData("MarketV1GroupsRaw")]
+        [InlineData("MarketV1GroupRaw")]
+        [InlineData("MarketV1PricesRaw")]
+        [InlineData("MarketV1StructureRaw")]
         public void MarketEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

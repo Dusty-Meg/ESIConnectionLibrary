@@ -353,7 +353,6 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             Assert.Equal(1.23f, esiModel.Model[0].Amount);
             Assert.Equal(1, esiModel.Model[0].BidId);
-            Assert.Equal(123, esiModel.Model[0].BidderId);
             Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 
@@ -366,7 +365,6 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             Assert.Equal(1.23f, esiModel.Model[0].Amount);
             Assert.Equal(1, esiModel.Model[0].BidId);
-            Assert.Equal(123, esiModel.Model[0].BidderId);
             Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 

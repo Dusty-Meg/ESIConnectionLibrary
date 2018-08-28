@@ -422,7 +422,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "[\r\n  {\r\n    \"amount\": 1.23,\r\n    \"bid_id\": 1,\r\n    \"bidder_id\": 123,\r\n    \"date_bid\": \"2017-01-01T10:10:10Z\"\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"amount\": 1.23,\r\n    \"bid_id\": 1,\r\n    \"date_bid\": \"2017-01-01T10:10:10Z\"\r\n  }\r\n]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
@@ -432,7 +432,6 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1.23f, esiModel.Model[0].Amount);
             Assert.Equal(1, esiModel.Model[0].BidId);
-            Assert.Equal(123, esiModel.Model[0].BidderId);
             Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 
@@ -441,7 +440,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "[\r\n  {\r\n    \"amount\": 1.23,\r\n    \"bid_id\": 1,\r\n    \"bidder_id\": 123,\r\n    \"date_bid\": \"2017-01-01T10:10:10Z\"\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"amount\": 1.23,\r\n    \"bid_id\": 1,\r\n    \"date_bid\": \"2017-01-01T10:10:10Z\"\r\n  }\r\n]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
@@ -451,7 +450,6 @@ namespace ESIConnectionLibraryTests
 
             Assert.Equal(1.23f, esiModel.Model[0].Amount);
             Assert.Equal(1, esiModel.Model[0].BidId);
-            Assert.Equal(123, esiModel.Model[0].BidderId);
             Assert.Equal(new DateTime(2017, 01, 01, 10, 10, 10), esiModel.Model[0].DateBid);
         }
 

@@ -782,6 +782,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Fittings
+
+        private static string IncursionsV1IncursionsRaw => "/v1/incursions/";
+
+        public static string IncursionsV1Incursions()
+        {
+            return UrlBuilder(IncursionsV1IncursionsRaw);
+        }
+
+        #endregion 
+
         #region Industry
 
         private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";

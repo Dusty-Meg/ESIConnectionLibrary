@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1GetFleet
+    internal class EsiV1Fleet
     {
         [JsonProperty(PropertyName = "is_free_move")]
         public bool IsFreeMove { get; set; }

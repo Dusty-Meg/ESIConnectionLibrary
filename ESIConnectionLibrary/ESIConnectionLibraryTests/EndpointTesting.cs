@@ -188,7 +188,20 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("FleetsGetFleetRaw")]
+        [InlineData("FleetsV1CharacterFleetRaw")]
+        [InlineData("FleetsV1FleetGetRaw")]
+        [InlineData("FleetsV1FleetUpdateRaw")]
+        [InlineData("FleetsV1MembersGetRaw")]
+        [InlineData("FleetsV1MembersInviteRaw")]
+        [InlineData("FleetsV1MemberKickRaw")]
+        [InlineData("FleetsV1MemberMoveRaw")]
+        [InlineData("FleetsV1SquadDeleteRaw")]
+        [InlineData("FleetsV1SquadRenameRaw")]
+        [InlineData("FleetsV1WingsGetRaw")]
+        [InlineData("FleetsV1WingsCreateRaw")]
+        [InlineData("FleetsV1WingsDeleteRaw")]
+        [InlineData("FleetsV1WingsRenameRaw")]
+        [InlineData("FleetsV1SquadCreateRaw")]
         public void FleetEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

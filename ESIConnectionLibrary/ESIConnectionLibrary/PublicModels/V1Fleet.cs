@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1GetFleet
+    public class V1Fleet
     {
         public bool IsFreeMove { get; set; }
         public bool IsRegistered { get; set; }

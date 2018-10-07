@@ -695,11 +695,89 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Fleets
 
-        private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";
+        private static string FleetsV1CharacterFleetRaw => "/v1/characters/{character_id}/fleet/";
+        private static string FleetsV1FleetGetRaw => "/v1/fleets/{fleet_id}/";
+        private static string FleetsV1FleetUpdateRaw => "/v1/fleets/{fleet_id}/";
+        private static string FleetsV1MembersGetRaw => "/v1/fleets/{fleet_id}/members/";
+        private static string FleetsV1MembersInviteRaw => "/v1/fleets/{fleet_id}/members/";
+        private static string FleetsV1MemberKickRaw => "/v1/fleets/{fleet_id}/members/{member_id}/";
+        private static string FleetsV1MemberMoveRaw => "/v1/fleets/{fleet_id}/members/{member_id}/";
+        private static string FleetsV1SquadDeleteRaw => "/v1/fleets/{fleet_id}/squads/{squad_id}/";
+        private static string FleetsV1SquadRenameRaw => "/v1/fleets/{fleet_id}/squads/{squad_id}/";
+        private static string FleetsV1WingsGetRaw => "/v1/fleets/{fleet_id}/wings/";
+        private static string FleetsV1WingsCreateRaw => "/v1/fleets/{fleet_id}/wings/";
+        private static string FleetsV1WingsDeleteRaw => "/v1/fleets/{fleet_id}/wings/{wing_id}/";
+        private static string FleetsV1WingsRenameRaw => "/v1/fleets/{fleet_id}/wings/{wing_id}/";
+        private static string FleetsV1SquadCreateRaw => "/v1/fleets/{fleet_id}/wings/{wing_id}/squads/";
 
-        public static string FleetsGetFleet(long fleetId)
+        public static string FleetsV1CharacterFleet(int characterId)
         {
-            return UrlBuilder(FleetsGetFleetRaw, "{fleet_id}", fleetId.ToString());
+            return UrlBuilder(FleetsV1CharacterFleetRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string FleetsV1FleetGet(long fleetId)
+        {
+            return UrlBuilder(FleetsV1FleetGetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1FleetUpdate(long fleetId)
+        {
+            return UrlBuilder(FleetsV1FleetUpdateRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1MembersGet(long fleetId)
+        {
+            return UrlBuilder(FleetsV1MembersGetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1MembersInvite(long fleetId)
+        {
+            return UrlBuilder(FleetsV1MembersInviteRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1MemberKick(long fleetId, int characterId)
+        {
+            return UrlBuilder(FleetsV1MemberKickRaw, "{fleet_id}", fleetId.ToString(), "{member_id}", characterId.ToString());
+        }
+
+        public static string FleetsV1MemberMove(long fleetId, int characterId)
+        {
+            return UrlBuilder(FleetsV1MemberMoveRaw, "{fleet_id}", fleetId.ToString(), "{member_id}", characterId.ToString());
+        }
+
+        public static string FleetsV1SquadDelete(long fleetId, long squadId)
+        {
+            return UrlBuilder(FleetsV1SquadDeleteRaw, "{fleet_id}", fleetId.ToString(), "{squad_id}", squadId.ToString());
+        }
+
+        public static string FleetsV1SquadRename(long fleetId, long squadId)
+        {
+            return UrlBuilder(FleetsV1SquadRenameRaw, "{fleet_id}", fleetId.ToString(), "{squad_id}", squadId.ToString());
+        }
+
+        public static string FleetsV1WingsGet(long fleetId)
+        {
+            return UrlBuilder(FleetsV1WingsGetRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1WingsCreate(long fleetId)
+        {
+            return UrlBuilder(FleetsV1WingsCreateRaw, "{fleet_id}", fleetId.ToString());
+        }
+
+        public static string FleetsV1WingsDelete(long fleetId, long wingId)
+        {
+            return UrlBuilder(FleetsV1WingsDeleteRaw, "{fleet_id}", fleetId.ToString(), "{wing_id}", wingId.ToString());
+        }
+
+        public static string FleetsV1WingsRename(long fleetId, long wingId)
+        {
+            return UrlBuilder(FleetsV1WingsRenameRaw, "{fleet_id}", fleetId.ToString(), "{wing_id}", wingId.ToString());
+        }
+
+        public static string FleetsV1SquadCreate(long fleetId, long wingId)
+        {
+            return UrlBuilder(FleetsV1SquadCreateRaw, "{fleet_id}", fleetId.ToString(), "{wing_id}", wingId.ToString());
         }
 
         #endregion

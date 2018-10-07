@@ -670,6 +670,29 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Fittings
+
+        private static string FittingsV1CharacterGetRaw => "/v1/characters/{character_id}/fittings/";
+        private static string FittingsV1CharacterUpdateRaw => "/v1/characters/{character_id}/fittings/";
+        private static string FittingsV1CharacterDeleteRaw => "/v1/characters/{character_id}/fittings/{fitting_id}/";
+
+        public static string FittingsV1CharacterGet(int characterId)
+        {
+            return UrlBuilder(FittingsV1CharacterGetRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string FittingsV1CharacterUpdate(int characterId)
+        {
+            return UrlBuilder(FittingsV1CharacterUpdateRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string FittingsV1CharacterDelete(int characterId, int fittingId)
+        {
+            return UrlBuilder(FittingsV1CharacterDeleteRaw, "{character_id}", characterId.ToString(), "{fitting_id}", fittingId.ToString());
+        }
+
+        #endregion 
+
         #region Fleets
 
         private static string FleetsGetFleetRaw => "/v1/fleets/{fleet_id}/";

@@ -166,6 +166,7 @@ namespace ESIConnectionLibrary.ESIModels
         MoonminingAutomaticFracture,
         MoonminingExtractionCancelled,
         MoonminingExtractionFinished,
+        MoonminingExtractionStarted,
         MoonminingLaserFired,
 
         [EnumMember(Value = "NPCStandingsGained")]
@@ -217,21 +218,24 @@ namespace ESIConnectionLibrary.ESIModels
         StructureDestroyed,
         StructureFuelAlert,
         StructureItemsDelivered,
+        StructureItemsMovedToSafety,
         StructureLostArmor,
         StructureLostShields,
         StructureOnline,
         StructureServicesOffline,
         StructureUnanchoring,
         StructureUnderAttack,
+        StructureWentHighPower,
+        StructureWentLowPower,
+        StructuresJobsCancelled,
+        StructuresJobsPaused,
+        StructuresReinforcementChanged,
         TowerAlertMsg,
         TowerResourceAlertMsg,
         TransactionReversalMsg,
         TutorialMsg,
         WarAllyOfferDeclinedMsg,
         WarSurrenderDeclinedMsg,
-        WarSurrenderOfferMsg,
-
-        [EnumMember(Value = "notificationTypeMoonminingExtractionStarted")]
-        NotificationTypeMoonminingExtractionStarted
+        WarSurrenderOfferMsg
     }
 }

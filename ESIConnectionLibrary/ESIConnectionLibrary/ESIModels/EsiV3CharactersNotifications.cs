@@ -3,8 +3,11 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2CharactersNotifications
+    internal class EsiV3CharactersNotifications
     {
+        [JsonProperty(PropertyName = "is_read")]
+        public bool? IsRead { get; set; }
+
         [JsonProperty(PropertyName = "notification_id")]
         public long NotificationId { get; set; }
 
@@ -14,14 +17,11 @@ namespace ESIConnectionLibrary.ESIModels
         [JsonProperty(PropertyName = "sender_type")]
         public EsiSenderType SenderType { get; set; }
 
-        [JsonProperty(PropertyName = "timestamp")]
-        public DateTime Timestamp { get; set; }
-
-        [JsonProperty(PropertyName = "is_read")]
-        public bool? IsRead { get; set; }
-
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+        [JsonProperty(PropertyName = "timestamp")]
+        public DateTime Timestamp { get; set; }
 
         [JsonProperty(PropertyName = "type")]
         public EsiNotificationType Type { get; set; }

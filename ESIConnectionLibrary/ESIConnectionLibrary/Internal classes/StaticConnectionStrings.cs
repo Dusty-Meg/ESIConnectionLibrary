@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
@@ -199,7 +200,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV4CharactersCspaRaw => "/v4/characters/{character_id}/cspa/";
         private static string EsiV1CharactersFatigueRaw => "/v1/characters/{character_id}/fatigue/";
         private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
-        private static string EsiV2CharactersNotificationsRaw => "/v2/characters/{character_id}/notifications/";
+        private static string EsiV3CharactersNotificationsRaw => "/v3/characters/{character_id}/notifications/";
         private static string EsiV1CharactersNotificationsContactsRaw => "/v1/characters/{character_id}/notifications/contacts/";
         private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
         private static string EsiV2CharacterRolesRaw => "/v2/characters/{character_id}/roles/";
@@ -243,9 +244,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV1CharactersMedalsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV2CharactersNotifications(int characterId)
+        public static string EsiV3CharactersNotifications(int characterId)
         {
-            return UrlBuilder(EsiV2CharactersNotificationsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV3CharactersNotificationsRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV1CharactersNotificationsContacts(int characterId)
@@ -799,7 +800,24 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string MarketV1Orders(int regionId, OrderType type, int page, int? typeId)
         {
-            string url = UrlBuilder(MarketV1OrdersRaw, "{region_id}", regionId.ToString()) + $"?order_type={type.ToString()}&page={page}";
+            string typeString;
+
+            switch (type)
+            {
+                case OrderType.All:
+                    typeString = "all";
+                    break;
+                case OrderType.Buy:
+                    typeString = "buy";
+                    break;
+                case OrderType.Sell:
+                    typeString = "sell";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+
+            string url = UrlBuilder(MarketV1OrdersRaw, "{region_id}", regionId.ToString()) + $"?order_type={typeString}&page={page}";
 
             if (typeId.HasValue)
             {

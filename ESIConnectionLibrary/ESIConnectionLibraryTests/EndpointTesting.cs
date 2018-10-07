@@ -208,6 +208,13 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("IncursionsV1IncursionsRaw")]
+        public void IncursionsEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("IndustryCharacterJobsRaw")]
         public void IndustryEndpoints(string endpoint)
         {

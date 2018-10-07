@@ -179,6 +179,15 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("FittingsV1CharacterGetRaw")]
+        [InlineData("FittingsV1CharacterUpdateRaw")]
+        [InlineData("FittingsV1CharacterDeleteRaw")]
+        public void FittingsEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("FleetsGetFleetRaw")]
         public void FleetEndpoints(string endpoint)
         {

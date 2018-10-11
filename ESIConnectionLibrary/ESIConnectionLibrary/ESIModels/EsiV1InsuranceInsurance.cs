@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1InsuranceShipPrices
+    internal class EsiV1InsuranceInsurance
     {
         [JsonProperty(PropertyName = "levels")]
-        public IList<EsiV1InsuranceShipPriceLevels> Levels { get; set; }
+        public IList<EsiV1InsuranceInsuranceLevels> Levels { get; set; }
 
         [JsonProperty(PropertyName = "type_id")]
         public int TypeId { get; set; }

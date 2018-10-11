@@ -229,7 +229,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("InsuranceGetPricesRaw")]
+        [InlineData("InsuranceV1InsuranceRaw")]
         public void InsuranceEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

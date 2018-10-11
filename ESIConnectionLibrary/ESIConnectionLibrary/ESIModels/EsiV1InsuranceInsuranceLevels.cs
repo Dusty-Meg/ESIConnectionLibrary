@@ -2,15 +2,15 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1InsuranceShipPriceLevels
+    internal class EsiV1InsuranceInsuranceLevels
     {
         [JsonProperty(PropertyName = "cost")]
-        public int Cost { get; set; }
+        public float Cost { get; set; }
 
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "payout")]
-        public int Payout { get; set; }
+        public float Payout { get; set; }
     }
 }

@@ -847,11 +847,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Insurance
 
-        private static string InsuranceGetPricesRaw => "/v1/insurance/prices/";
+        private static string InsuranceV1InsuranceRaw => "/v1/insurance/prices/";
 
-        public static string InsuranceGetPrices()
+        public static string InsuranceV1Insurance()
         {
-            return UrlBuilder(InsuranceGetPricesRaw);
+            return UrlBuilder(InsuranceV1InsuranceRaw);
         }
 
         #endregion

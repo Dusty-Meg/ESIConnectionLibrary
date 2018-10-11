@@ -27,9 +27,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1Killmail esiV1GetSingleKillmail = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
+            EsiV1Killmail esiModel = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiV1GetSingleKillmail);
+            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiModel);
         }
 
         public async Task<V1GetSingleKillmail> GetSingleKillmailAsync(int killmailId, string killmailHash)
@@ -38,9 +38,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1Killmail esiV1GetSingleKillmail = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
+            EsiV1Killmail esiModel = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiV1GetSingleKillmail);
+            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiModel);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1GetSingleKillmailPosition
+    internal class EsiV1KillmailKillmailVictimPosition
     {
         [JsonProperty(PropertyName = "x")]
         public float X { get; set; }

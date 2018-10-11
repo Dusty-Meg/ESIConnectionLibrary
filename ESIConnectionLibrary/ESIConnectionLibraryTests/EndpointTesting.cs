@@ -236,7 +236,9 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("KillmailsGetSingleKillmailRaw")]
+        [InlineData("KillmailsV1CharacterRaw")]
+        [InlineData("KillmailsV1CorporationRaw")]
+        [InlineData("KillmailsV1KillmailRaw")]
         public void KillmailsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

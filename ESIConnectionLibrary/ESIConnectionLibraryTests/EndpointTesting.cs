@@ -215,7 +215,14 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("IndustryCharacterJobsRaw")]
+        [InlineData("IndustryV1CharacterJobsRaw")]
+        [InlineData("IndustryV1CharacterMiningRaw")]
+        [InlineData("IndustryV1CorporationExtractionsRaw")]
+        [InlineData("IndustryV1CorporationObserversRaw")]
+        [InlineData("IndustryV1CorporationObserverRaw")]
+        [InlineData("IndustryV1CorporationJobsRaw")]
+        [InlineData("IndustryV1FacilitiesRaw")]
+        [InlineData("IndustryV1SystemsRaw")]
         public void IndustryEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

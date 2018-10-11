@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
 
@@ -795,11 +794,53 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Industry
 
-        private static string IndustryCharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
+        private static string IndustryV1CharacterJobsRaw => "/v1/characters/{character_id}/industry/jobs/";
+        private static string IndustryV1CharacterMiningRaw => "/v1/characters/{character_id}/mining/";
+        private static string IndustryV1CorporationExtractionsRaw => "/v1/corporation/{corporation_id}/mining/extractions/";
+        private static string IndustryV1CorporationObserversRaw => "/v1/corporation/{corporation_id}/mining/observers/";
+        private static string IndustryV1CorporationObserverRaw => "/v1/corporation/{corporation_id}/mining/observers/{observer_id}/";
+        private static string IndustryV1CorporationJobsRaw => "/v1/corporations/{corporation_id}/industry/jobs/";
+        private static string IndustryV1FacilitiesRaw => "/v1/industry/facilities/";
+        private static string IndustryV1SystemsRaw => "/v1/industry/systems/";
 
-        public static string IndustryCharacterJobs(int characterId, bool includeCompletedJobs)
+        public static string IndustryV1CharacterJobs(int characterId, bool includeCompletedJobs)
         {
-            return $"{UrlBuilder(IndustryCharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
+            return $"{UrlBuilder(IndustryV1CharacterJobsRaw, "{character_id}", characterId.ToString())}?include_completed={includeCompletedJobs}";
+        }
+
+        public static string IndustryV1CharacterMining(int characterId, int page)
+        {
+            return UrlBuilder(IndustryV1CharacterMiningRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string IndustryV1CorporationExtractions(int corporationId, int page)
+        {
+            return UrlBuilder(IndustryV1CorporationExtractionsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string IndustryV1CorporationObservers(int corporationId, int page)
+        {
+            return UrlBuilder(IndustryV1CorporationObserversRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+        }
+
+        public static string IndustryV1CorporationObserver(int corporationId, long observerId, int page)
+        {
+            return UrlBuilder(IndustryV1CorporationObserverRaw, "{corporation_id}", corporationId.ToString(), "{observer_id}", observerId.ToString()) + $"?page={page}";
+        }
+
+        public static string IndustryV1CorporationJobs(int corporationId, bool includeCompletedJobs, int page)
+        {
+            return UrlBuilder(IndustryV1CorporationJobsRaw, "{corporation_id}", corporationId.ToString()) + $"?include_completed={includeCompletedJobs}&page={page}";
+        }
+
+        public static string IndustryV1Facilities()
+        {
+            return UrlBuilder(IndustryV1FacilitiesRaw);
+        }
+
+        public static string IndustryV1Systems()
+        {
+            return UrlBuilder(IndustryV1SystemsRaw);
         }
 
         #endregion

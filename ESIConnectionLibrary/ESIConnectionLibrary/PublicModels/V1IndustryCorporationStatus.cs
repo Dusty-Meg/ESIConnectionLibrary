@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1IndustryJobStatus
+    public enum V1IndustryCorporationStatus
     {
         Active,
         Cancelled,

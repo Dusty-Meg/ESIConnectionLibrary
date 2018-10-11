@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharacterIndustryJob
+    internal class EsiV1IndustryCorporation
     {
         [JsonProperty(PropertyName = "activity_id")]
         public int ActivityId { get; set; }
@@ -45,6 +45,9 @@ namespace ESIConnectionLibrary.ESIModels
         [JsonProperty(PropertyName = "licensed_runs")]
         public int? LicensedRuns { get; set; }
 
+        [JsonProperty(PropertyName = "location_id")]
+        public long LocationId { get; set; }
+
         [JsonProperty(PropertyName = "output_location_id")]
         public long OutputLocationId { get; set; }
 
@@ -63,16 +66,11 @@ namespace ESIConnectionLibrary.ESIModels
         [JsonProperty(PropertyName = "start_date")]
         public DateTime StartDate { get; set; }
 
-        [JsonProperty(PropertyName = "station_id")]
-        public long StationId { get; set; }
-
         [JsonProperty(PropertyName = "status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public EsiV1CharacterIndustryJobsStatus Status { get; set; }
+        public EsiV1IndustryCorporationStatus Status { get; set; }
 
         [JsonProperty(PropertyName = "successful_runs")]
         public int? SuccessfulRuns { get; set; }
     }
-
-
 }

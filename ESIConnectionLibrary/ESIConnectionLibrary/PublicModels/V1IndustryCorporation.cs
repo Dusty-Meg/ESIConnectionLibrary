@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharacterIndustryJob
+    public class V1IndustryCorporation
     {
         public int ActivityId { get; set; }
         public long BlueprintId { get; set; }
@@ -17,14 +17,14 @@ namespace ESIConnectionLibrary.PublicModels
         public int InstallerId { get; set; }
         public int JobId { get; set; }
         public int? LicensedRuns { get; set; }
+        public long LocationId { get; set; }
         public long OutputLocationId { get; set; }
         public DateTime? PauseDate { get; set; }
         public float? Probability { get; set; }
         public int? ProductTypeId { get; set; }
         public int Runs { get; set; }
         public DateTime StartDate { get; set; }
-        public long StationId { get; set; }
-        public V1IndustryJobStatus Status { get; set; }
+        public V1IndustryCorporationStatus Status { get; set; }
         public int? SuccessfulRuns { get; set; }
     }
 }

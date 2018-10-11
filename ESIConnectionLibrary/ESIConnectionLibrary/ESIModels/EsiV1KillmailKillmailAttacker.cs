@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1GetSingleKillmailAttacker
+    internal class EsiV1KillmailKillmailAttacker
     {
         [JsonProperty(PropertyName = "alliance_id")]
         public int? AllianceId { get; set; }

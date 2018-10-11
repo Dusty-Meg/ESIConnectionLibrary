@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1GetSingleKillmailItem
+    internal class EsiV1KillmailKillmailVictimItem
     {
         [JsonProperty(PropertyName = "flag")]
         public int Flag { get; set; }
@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int ItemTypeId { get; set; }
 
         [JsonProperty(PropertyName = "items")]
-        public IList<EsiV1GetSingleKillmailItem> Items { get; set; }
+        public IList<EsiV1KillmailKillmailVictimItem> Items { get; set; }
 
         [JsonProperty(PropertyName = "quantity_destroyed")]
         public int? QuantityDestroyed { get; set; }

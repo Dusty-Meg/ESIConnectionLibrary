@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
@@ -21,26 +22,78 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public V1GetSingleKillmail GetSingleKillmail(int killmailId, string killmailHash)
+        public IList<V1KillmailCharacter> Character(SsoToken token, int page)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsGetSingleKillmail(killmailId, killmailHash), _testing);
+            StaticMethods.CheckToken(token, KillmailScopes.esi_killmails_read_killmails_v1);
 
-            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Character(token.CharacterId, page), _testing);
 
-            EsiV1Killmail esiModel = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 300));
 
-            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiModel);
+            IList<EsiV1KillmailCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV1KillmailCharacter>>(esiRaw.Model);
+
+            return _mapper.Map<IList<EsiV1KillmailCharacter>, IList<V1KillmailCharacter>>(esiModel);
         }
 
-        public async Task<V1GetSingleKillmail> GetSingleKillmailAsync(int killmailId, string killmailHash)
+        public async Task<IList<V1KillmailCharacter>> CharacterAsync(SsoToken token, int page)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsGetSingleKillmail(killmailId, killmailHash), _testing);
+            StaticMethods.CheckToken(token, KillmailScopes.esi_killmails_read_killmails_v1);
 
-            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Character(token.CharacterId, page), _testing);
 
-            EsiV1Killmail esiModel = JsonConvert.DeserializeObject<EsiV1Killmail>(esiRaw.Model);
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 300));
 
-            return _mapper.Map<EsiV1Killmail, V1GetSingleKillmail>(esiModel);
+            IList<EsiV1KillmailCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV1KillmailCharacter>>(esiRaw.Model);
+
+            return _mapper.Map<IList<EsiV1KillmailCharacter>, IList<V1KillmailCharacter>>(esiModel);
+        }
+
+        public IList<V1KillmailCorporation> Corporation(SsoToken token, int corporationId, int page)
+        {
+            StaticMethods.CheckToken(token, KillmailScopes.esi_killmails_read_corporation_killmails_v1);
+
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Corporation(corporationId, page), _testing);
+
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 300));
+
+            IList<EsiV1KillmailCorporation> esiModel = JsonConvert.DeserializeObject<IList<EsiV1KillmailCorporation>>(esiRaw.Model);
+
+            return _mapper.Map<IList<EsiV1KillmailCorporation>, IList<V1KillmailCorporation>>(esiModel);
+        }
+
+        public async Task<IList<V1KillmailCorporation>> CorporationAsync(SsoToken token, int corporationId, int page)
+        {
+            StaticMethods.CheckToken(token, KillmailScopes.esi_killmails_read_corporation_killmails_v1);
+
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Corporation(corporationId, page), _testing);
+
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 300));
+
+            IList<EsiV1KillmailCorporation> esiModel = JsonConvert.DeserializeObject<IList<EsiV1KillmailCorporation>>(esiRaw.Model);
+
+            return _mapper.Map<IList<EsiV1KillmailCorporation>, IList<V1KillmailCorporation>>(esiModel);
+        }
+
+        public V1KillmailKillmail Killmail(int killmailId, string killmailHash)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Killmail(killmailId, killmailHash), _testing);
+
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 1209600));
+
+            EsiV1KillmailKillmail esiModel = JsonConvert.DeserializeObject<EsiV1KillmailKillmail>(esiRaw.Model);
+
+            return _mapper.Map<EsiV1KillmailKillmail, V1KillmailKillmail>(esiModel);
+        }
+
+        public async Task<V1KillmailKillmail> KillmailAsync(int killmailId, string killmailHash)
+        {
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.KillmailsV1Killmail(killmailId, killmailHash), _testing);
+
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 1209600));
+
+            EsiV1KillmailKillmail esiModel = JsonConvert.DeserializeObject<EsiV1KillmailKillmail>(esiRaw.Model);
+
+            return _mapper.Map<EsiV1KillmailKillmail, V1KillmailKillmail>(esiModel);
         }
     }
 }

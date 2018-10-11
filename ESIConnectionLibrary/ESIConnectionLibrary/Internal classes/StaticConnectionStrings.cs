@@ -858,11 +858,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Killmails
 
-        private static string KillmailsGetSingleKillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
+        private static string KillmailsV1CharacterRaw => "/v1/characters/{character_id}/killmails/recent/";
+        private static string KillmailsV1CorporationRaw => "/v1/corporations/{corporation_id}/killmails/recent/";
+        private static string KillmailsV1KillmailRaw => "/v1/killmails/{killmail_id}/{killmail_hash}/";
 
-        public static string KillmailsGetSingleKillmail(int killmailId, string killmailHash)
+        public static string KillmailsV1Character(int characterId, int page)
         {
-            return UrlBuilder(KillmailsGetSingleKillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
+            return UrlBuilder(KillmailsV1CharacterRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+        }
+
+        public static string KillmailsV1Corporation(int killmailId, int page)
+        {
+            return UrlBuilder(KillmailsV1CorporationRaw, "{corporation_id}", killmailId.ToString()) + $"?page={page}";
+        }
+
+        public static string KillmailsV1Killmail(int killmailId, string killmailHash)
+        {
+            return UrlBuilder(KillmailsV1KillmailRaw, "{killmail_id}", killmailId.ToString(), "{killmail_hash}", killmailHash);
         }
 
         #endregion

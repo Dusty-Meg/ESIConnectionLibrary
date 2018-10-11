@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1Killmail
+    internal class EsiV1KillmailKillmail
     {
         [JsonProperty(PropertyName = "attackers")]
-        public IList<EsiV1GetSingleKillmailAttacker> Attackers { get; set; }
+        public IList<EsiV1KillmailKillmailAttacker> Attackers { get; set; }
 
         [JsonProperty(PropertyName = "killmail_id")]
         public int KillmailId { get; set; }
@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int SolarSystemId { get; set; }
 
         [JsonProperty(PropertyName = "victim")]
-        public EsiV1GetSingleKillmailVictim Victim { get; set; }
+        public EsiV1KillmailKillmailVictim Victim { get; set; }
 
         [JsonProperty(PropertyName = "war_id")]
         public int? WarId { get; set; }

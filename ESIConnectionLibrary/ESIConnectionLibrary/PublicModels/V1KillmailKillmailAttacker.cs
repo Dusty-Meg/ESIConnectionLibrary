@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1GetSingleKillmailAttacker
+    public class V1KillmailKillmailAttacker
     {
         public int? AllianceId { get; set; }
         public int? CharacterId { get; set; }

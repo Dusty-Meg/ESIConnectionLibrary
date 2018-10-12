@@ -22,168 +22,168 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public double GetCharactersWallet(SsoToken token)
+        public double Character(SsoToken token)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 120));
 
-            return JsonConvert.DeserializeObject<double>(raw.Model);
+            return JsonConvert.DeserializeObject<double>(esiRaw.Model);
         }
 
-        public async Task<double> GetCharactersWalletAsync(SsoToken token)
+        public async Task<double> CharacterAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CharactersWallet(token.CharacterId), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 120));
 
-            return JsonConvert.DeserializeObject<double>(raw.Model);
+            return JsonConvert.DeserializeObject<double>(esiRaw.Model);
         }
 
-        public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int page)
+        public PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4WalletCharacterJournal> esiWalletJournal = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(raw.Model);
+            IList<EsiV4WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(esiRaw.Model);
 
-            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiWalletJournal);
+            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiModel);
 
-            return new PagedModel<V4WalletCharacterJournal>{ Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V4WalletCharacterJournal>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4WalletCharacterJournal> esiWalletJournal = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(raw.Model);
+            IList<EsiV4WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(esiRaw.Model);
 
-            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiWalletJournal);
+            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiModel);
 
-            return new PagedModel<V4WalletCharacterJournal> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V4WalletCharacterJournal> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int lastTransactionId)
+        public PagedModel<V1WalletCharacterTransactions> CharacterTransactions(SsoToken token, int lastTransactionId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1WalletCharacterTransactions> esiWalletTransactions = JsonConvert.DeserializeObject<IList<EsiV1WalletCharacterTransactions>>(raw.Model);
+            IList<EsiV1WalletCharacterTransactions> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCharacterTransactions>>(esiRaw.Model);
 
-            IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiWalletTransactions);
+            IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiModel);
 
-            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages};
+            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = esiRaw.MaxPages};
         }
 
-        public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId)
+        public async Task<PagedModel<V1WalletCharacterTransactions>> CharacterTransactionsAsync(SsoToken token, int lastTransactionId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletTransaction(token.CharacterId, lastTransactionId), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1WalletCharacterTransactions> esiWalletTransactions = JsonConvert.DeserializeObject<IList<EsiV1WalletCharacterTransactions>>(raw.Model);
+            IList<EsiV1WalletCharacterTransactions> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCharacterTransactions>>(esiRaw.Model);
 
-            IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiWalletTransactions);
+            IList<V1WalletCharacterTransactions> mapped = _mapper.Map<IList<EsiV1WalletCharacterTransactions>, IList<V1WalletCharacterTransactions>>(esiModel);
 
-            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = raw.MaxPages};
+            return new PagedModel<V1WalletCharacterTransactions> { Model = mapped, CurrentPage = lastTransactionId, MaxPages = esiRaw.MaxPages};
         }
 
-        public IList<V1WalletCorporationWallet> GetCorporationWallets(SsoToken token, int corporationId)
+        public IList<V1WalletCorporationWallet> Corporation(SsoToken token, int corporationId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationWallets(corporationId), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1WalletCorporationWallet> esiWallet = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationWallet>>(raw.Model);
+            IList<EsiV1WalletCorporationWallet> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationWallet>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WalletCorporationWallet>, IList<V1WalletCorporationWallet>>(esiWallet);
+            return _mapper.Map<IList<EsiV1WalletCorporationWallet>, IList<V1WalletCorporationWallet>>(esiModel);
         }
 
-        public async Task<IList<V1WalletCorporationWallet>> GetCorporationWalletsAsync(SsoToken token, int corporationId)
+        public async Task<IList<V1WalletCorporationWallet>> CorporationAsync(SsoToken token, int corporationId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationWallets(corporationId), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1WalletCorporationWallet> esiWallet = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationWallet>>(raw.Model);
+            IList<EsiV1WalletCorporationWallet> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationWallet>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WalletCorporationWallet>, IList<V1WalletCorporationWallet>>(esiWallet);
+            return _mapper.Map<IList<EsiV1WalletCorporationWallet>, IList<V1WalletCorporationWallet>>(esiModel);
         }
 
-        public PagedModel<V3WalletCorporationJournal> GetCorporationJournal(SsoToken token, int corporationId, int division, int page)
+        public PagedModel<V3WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3WalletCorporationJournal> esiJournal = JsonConvert.DeserializeObject<IList<EsiV3WalletCorporationJournal>>(raw.Model);
+            IList<EsiV3WalletCorporationJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV3WalletCorporationJournal>>(esiRaw.Model);
 
-            IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiJournal);
+            IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiModel);
 
-            return new PagedModel<V3WalletCorporationJournal>{ Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V3WalletCorporationJournal>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V3WalletCorporationJournal>> GetCorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
+        public async Task<PagedModel<V3WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV3CorporationDivisionsJournal(corporationId, division, page), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3WalletCorporationJournal> esiJournal = JsonConvert.DeserializeObject<IList<EsiV3WalletCorporationJournal>>(raw.Model);
+            IList<EsiV3WalletCorporationJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV3WalletCorporationJournal>>(esiRaw.Model);
 
-            IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiJournal);
+            IList<V3WalletCorporationJournal> mapped = _mapper.Map<IList<EsiV3WalletCorporationJournal>, IList<V3WalletCorporationJournal>>(esiModel);
 
-            return new PagedModel<V3WalletCorporationJournal> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V3WalletCorporationJournal> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public IList<V1WalletCorporationTransactions> GetCorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)
+        public IList<V1WalletCorporationTransactions> CorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId), _testing);
 
-            EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1WalletCorporationTransactions> esiTransactions = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationTransactions>>(raw.Model);
+            IList<EsiV1WalletCorporationTransactions> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationTransactions>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WalletCorporationTransactions>, IList<V1WalletCorporationTransactions>>(esiTransactions);
+            return _mapper.Map<IList<EsiV1WalletCorporationTransactions>, IList<V1WalletCorporationTransactions>>(esiModel);
         }
 
-        public async Task<IList<V1WalletCorporationTransactions>> GetCorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId)
+        public async Task<IList<V1WalletCorporationTransactions>> CorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_corporation_wallets_v1);
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV1CorporationDivisionsTransactions(corporationId, division, lastTransactionId), _testing);
 
-            EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
+            EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1WalletCorporationTransactions> esiTransactions = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationTransactions>>(raw.Model);
+            IList<EsiV1WalletCorporationTransactions> esiModel = JsonConvert.DeserializeObject<IList<EsiV1WalletCorporationTransactions>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WalletCorporationTransactions>, IList<V1WalletCorporationTransactions>>(esiTransactions);
+            return _mapper.Map<IList<EsiV1WalletCorporationTransactions>, IList<V1WalletCorporationTransactions>>(esiModel);
         }
     }
 }

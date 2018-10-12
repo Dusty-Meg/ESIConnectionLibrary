@@ -6,17 +6,17 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestWalletEndpoints
     {
-        double GetCharactersWallet(SsoToken token);
-        Task<double> GetCharactersWalletAsync(SsoToken token);
-        PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int page);
-        Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int page);
-        PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int lastTransactionId);
-        Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId);
-        PagedModel<V3WalletCorporationJournal> GetCorporationJournal(SsoToken token, int corporationId, int division, int page);
-        Task<PagedModel<V3WalletCorporationJournal>> GetCorporationJournalAsync(SsoToken token, int corporationId, int division, int page);
-        IList<V1WalletCorporationTransactions> GetCorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId);
-        Task<IList<V1WalletCorporationTransactions>> GetCorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId);
-        IList<V1WalletCorporationWallet> GetCorporationWallets(SsoToken token, int corporationId);
-        Task<IList<V1WalletCorporationWallet>> GetCorporationWalletsAsync(SsoToken token, int corporationId);
+        double Character(SsoToken token);
+        Task<double> CharacterAsync(SsoToken token);
+        PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page);
+        Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page);
+        PagedModel<V1WalletCharacterTransactions> CharacterTransactions(SsoToken token, int lastTransactionId);
+        Task<PagedModel<V1WalletCharacterTransactions>> CharacterTransactionsAsync(SsoToken token, int lastTransactionId);
+        PagedModel<V3WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page);
+        Task<PagedModel<V3WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page);
+        IList<V1WalletCorporationTransactions> CorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId);
+        Task<IList<V1WalletCorporationTransactions>> CorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId);
+        IList<V1WalletCorporationWallet> Corporation(SsoToken token, int corporationId);
+        Task<IList<V1WalletCorporationWallet>> CorporationAsync(SsoToken token, int corporationId);
     }
 }

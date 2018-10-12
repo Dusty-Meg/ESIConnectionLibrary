@@ -254,6 +254,14 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("LoyaltyV1PointsRaw")]
+        [InlineData("LoyaltyV1OffersRaw")]
+        public void LoyaltyEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("MailV1MailGetCharactersMailRaw")]
         [InlineData("MailV1MailGetMailRaw")]
         public void MailEndpoints(string endpoint)

@@ -13,34 +13,34 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestLocation = new InternalLatestLocation(null, userAgent, testing);
         }
 
-        public V1LocationCharacterLocation GetCharacterLocation(SsoToken token)
+        public V1LocationLocation Location(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterLocation(token);
+            return _internalLatestLocation.Location(token);
         }
 
-        public async Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token)
+        public async Task<V1LocationLocation> LocationAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterLocationAsync(token);
+            return await _internalLatestLocation.LocationAsync(token);
         }
 
-        public V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token)
+        public V2LocationOnline Online(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterOnlineStatus(token);
+            return _internalLatestLocation.Online(token);
         }
 
-        public async Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token)
+        public async Task<V2LocationOnline> OnlineAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterOnlineStatusAsync(token);
+            return await _internalLatestLocation.OnlineAsync(token);
         }
 
-        public V1LocationCharacterShip GetCharacterShip(SsoToken token)
+        public V1LocationShip Ship(SsoToken token)
         {
-            return _internalLatestLocation.GetCharacterShip(token);
+            return _internalLatestLocation.Ship(token);
         }
 
-        public async Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token)
+        public async Task<V1LocationShip> ShipAsync(SsoToken token)
         {
-            return await _internalLatestLocation.GetCharacterShipAsync(token);
+            return await _internalLatestLocation.ShipAsync(token);
         }
     }
 }

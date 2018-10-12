@@ -881,23 +881,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region location
 
-        private static string LocationV1LocationCharacterLocationRaw => "/v1/characters/{character_id}/location/";
-        private static string LocationV2LocationCharacterOnlineRaw => "/v2/characters/{character_id}/online/";
-        private static string LocationV1LocationCharacterShipRaw => "/v1/characters/{character_id}/ship/";
+        private static string LocationV1LocationRaw => "/v1/characters/{character_id}/location/";
+        private static string LocationV2LocationOnlineRaw => "/v2/characters/{character_id}/online/";
+        private static string LocationV1LocationShipRaw => "/v1/characters/{character_id}/ship/";
 
-        public static string LocationV1LocationCharacterLocation(int characterId)
+        public static string LocationV1Location(int characterId)
         {
-            return UrlBuilder(LocationV1LocationCharacterLocationRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(LocationV1LocationRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string LocationV2LocationCharacterOnline(int characterId)
+        public static string LocationV2LocationOnline(int characterId)
         {
-            return UrlBuilder(LocationV2LocationCharacterOnlineRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(LocationV2LocationOnlineRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string LocationV1LocationCharacterShip(int characterId)
+        public static string LocationV1LocationShip(int characterId)
         {
-            return UrlBuilder(LocationV1LocationCharacterShipRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(LocationV1LocationShipRaw, "{character_id}", characterId.ToString());
         }
 
         #endregion

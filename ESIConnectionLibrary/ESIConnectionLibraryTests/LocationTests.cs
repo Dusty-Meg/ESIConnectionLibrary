@@ -11,7 +11,7 @@ namespace ESIConnectionLibraryTests
     public class LocationTests
     {
         [Fact]
-        public void GetCharacterLocation_Successfully_returns_a_V1LocationCharacterLocation()
+        public void Location_Successfully_returns_a_V1LocationLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -26,14 +26,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V1LocationCharacterLocation v1LocationCharacterLocation = internalLatestLocation.GetCharacterLocation(inputToken);
+            V1LocationLocation returnModel = internalLatestLocation.Location(inputToken);
 
-            Assert.Equal(30002505, v1LocationCharacterLocation.SolarSystemId);
-            Assert.Equal(1000000016989, v1LocationCharacterLocation.StructureId);
+            Assert.Equal(30002505, returnModel.SolarSystemId);
+            Assert.Equal(1000000016989, returnModel.StructureId);
         }
 
         [Fact]
-        public async Task GetCharacterLocationAsync_Successfully_returns_a_V1LocationCharacterLocation()
+        public async Task LocationAsync_Successfully_returns_a_V1LocationLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -48,14 +48,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V1LocationCharacterLocation v1LocationCharacterLocation = await internalLatestLocation.GetCharacterLocationAsync(inputToken);
+            V1LocationLocation returnModel = await internalLatestLocation.LocationAsync(inputToken);
 
-            Assert.Equal(30002505, v1LocationCharacterLocation.SolarSystemId);
-            Assert.Equal(1000000016989, v1LocationCharacterLocation.StructureId);
+            Assert.Equal(30002505, returnModel.SolarSystemId);
+            Assert.Equal(1000000016989, returnModel.StructureId);
         }
 
         [Fact]
-        public void GetCharacterOnlineStatus_Successfully_returns_a_V2LocationCharacterOnline()
+        public void Online_Successfully_returns_a_V2LocationOnline()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -70,16 +70,16 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V2LocationCharacterOnline v2LocationCharacterOnline = internalLatestLocation.GetCharacterOnlineStatus(inputToken);
+            V2LocationOnline returnModel = internalLatestLocation.Online(inputToken);
 
-            Assert.Equal(new DateTime(2017,01,02,03,04,05), v2LocationCharacterOnline.LastLogin);
-            Assert.Equal(new DateTime(2017, 01, 02, 04, 05, 06), v2LocationCharacterOnline.LastLogout);
-            Assert.Equal(9001, v2LocationCharacterOnline.Logins);
-            Assert.True(v2LocationCharacterOnline.Online);
+            Assert.Equal(new DateTime(2017,01,02,03,04,05), returnModel.LastLogin);
+            Assert.Equal(new DateTime(2017, 01, 02, 04, 05, 06), returnModel.LastLogout);
+            Assert.Equal(9001, returnModel.Logins);
+            Assert.True(returnModel.Online);
         }
 
         [Fact]
-        public async Task GetCharacterOnlineStatusAsync_Successfully_returns_a_V2LocationCharacterOnline()
+        public async Task OnlineAsync_Successfully_returns_a_V2LocationOnline()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -94,16 +94,16 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V2LocationCharacterOnline v2LocationCharacterOnline = await internalLatestLocation.GetCharacterOnlineStatusAsync(inputToken);
+            V2LocationOnline returnModel = await internalLatestLocation.OnlineAsync(inputToken);
 
-            Assert.Equal(new DateTime(2017, 01, 02, 03, 04, 05), v2LocationCharacterOnline.LastLogin);
-            Assert.Equal(new DateTime(2017, 01, 02, 04, 05, 06), v2LocationCharacterOnline.LastLogout);
-            Assert.Equal(9001, v2LocationCharacterOnline.Logins);
-            Assert.True(v2LocationCharacterOnline.Online);
+            Assert.Equal(new DateTime(2017, 01, 02, 03, 04, 05), returnModel.LastLogin);
+            Assert.Equal(new DateTime(2017, 01, 02, 04, 05, 06), returnModel.LastLogout);
+            Assert.Equal(9001, returnModel.Logins);
+            Assert.True(returnModel.Online);
         }
 
         [Fact]
-        public void GetCharacterShip_Successfully_returns_a_V1LocationCharacterShip()
+        public void Ship_Successfully_returns_a_V1LocationShip()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -118,15 +118,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V1LocationCharacterShip v1LocationCharacterShip = internalLatestLocation.GetCharacterShip(inputToken);
+            V1LocationShip returnModel = internalLatestLocation.Ship(inputToken);
 
-            Assert.Equal(1000000016991, v1LocationCharacterShip.ShipItemId);
-            Assert.Equal("SPACESHIPS!!!", v1LocationCharacterShip.ShipName);
-            Assert.Equal(1233, v1LocationCharacterShip.ShipTypeId);
+            Assert.Equal(1000000016991, returnModel.ShipItemId);
+            Assert.Equal("SPACESHIPS!!!", returnModel.ShipName);
+            Assert.Equal(1233, returnModel.ShipTypeId);
         }
 
         [Fact]
-        public async Task GetCharacterShipAsync_Successfully_returns_a_V1LocationCharacterShip()
+        public async Task ShipAsync_Successfully_returns_a_V1LocationShip()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -141,11 +141,11 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestLocation internalLatestLocation = new InternalLatestLocation(mockedWebClient.Object, string.Empty);
 
-            V1LocationCharacterShip v1LocationCharacterShip = await internalLatestLocation.GetCharacterShipAsync(inputToken);
+            V1LocationShip returnModel = await internalLatestLocation.ShipAsync(inputToken);
 
-            Assert.Equal(1000000016991, v1LocationCharacterShip.ShipItemId);
-            Assert.Equal("SPACESHIPS!!!", v1LocationCharacterShip.ShipName);
-            Assert.Equal(1233, v1LocationCharacterShip.ShipTypeId);
+            Assert.Equal(1000000016991, returnModel.ShipItemId);
+            Assert.Equal("SPACESHIPS!!!", returnModel.ShipName);
+            Assert.Equal(1233, returnModel.ShipTypeId);
         }
     }
 }

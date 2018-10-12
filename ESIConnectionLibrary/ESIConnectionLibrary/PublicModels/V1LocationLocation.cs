@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1LocationCharacterLocation
+    public class V1LocationLocation
     {
         public int SolarSystemId { get; set; }
         public int? StationId { get; set; }

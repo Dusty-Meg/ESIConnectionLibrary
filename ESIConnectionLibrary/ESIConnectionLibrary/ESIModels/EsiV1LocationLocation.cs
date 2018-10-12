@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1LocationCharacterLocation
+    internal class EsiV1LocationLocation
     {
         [JsonProperty(PropertyName = "solar_system_id")]
         public int SolarSystemId { get; set; }

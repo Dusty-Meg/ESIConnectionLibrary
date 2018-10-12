@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2LocationCharacterOnline
+    public class V2LocationOnline
     {
         public DateTime? LastLogin { get; set; }
         public DateTime? LastLogout { get; set; }

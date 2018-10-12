@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2LocationCharacterOnline
+    internal class EsiV2LocationOnline
     {
         [JsonProperty(PropertyName = "last_login")]
         public DateTime? LastLogin { get; set; }

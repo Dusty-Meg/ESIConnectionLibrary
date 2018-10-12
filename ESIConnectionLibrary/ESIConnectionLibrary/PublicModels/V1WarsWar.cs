@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1WarsIndividualWar
+    public class V1WarsWar
     {
-        public V1WarsIndividualWarAggressor Aggressor { get; set; }
-        public IList<V1WarsIndividualWarAllies> Allies { get; set; }
+        public V1WarsWarAggressor Aggressor { get; set; }
+        public IList<V1WarsWarAllies> Allies { get; set; }
         public DateTime Declared { get; set; }
-        public V1WarsIndividualWarDefender Defender { get; set; }
+        public V1WarsWarDefender Defender { get; set; }
         public DateTime? Finished { get; set; }
         public int Id { get; set; }
         public bool Mutual { get; set; }

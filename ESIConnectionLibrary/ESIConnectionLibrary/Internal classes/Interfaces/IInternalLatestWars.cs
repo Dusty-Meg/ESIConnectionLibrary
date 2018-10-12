@@ -6,11 +6,11 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalLatestWars
     {
-        V1WarsIndividualWar GetIndividualWar(int warId);
-        Task<V1WarsIndividualWar> GetIndividualWarAsync(int warId);
-        IList<V1WarsWarKillmails> GetIndividualWarsKillmails(int warId);
-        Task<IList<V1WarsWarKillmails>> GetIndividualWarsKillmailsAsync(int warId);
-        IList<int> GetWars(int maxWarId);
-        Task<IList<int>> GetWarsAsync(int maxWarId);
+        V1WarsWar War(int warId);
+        Task<V1WarsWar> WarAsync(int warId);
+        IList<V1WarsKillmail> Killmails(int warId);
+        Task<IList<V1WarsKillmail>> KillmailsAsync(int warId);
+        IList<int> Wars(int maxWarId);
+        Task<IList<int>> WarsAsync(int maxWarId);
     }
 }

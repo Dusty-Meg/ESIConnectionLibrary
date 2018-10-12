@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1WarsIndividualWar
+    internal class EsiV1WarsWar
     {
         [JsonProperty(PropertyName = "aggressor")]
-        public EsiV1WarsIndividualWarAggressor Aggressor { get; set; }
+        public EsiV1WarsWarAggressor Aggressor { get; set; }
 
         [JsonProperty(PropertyName = "allies")]
-        public IList<EsiV1WarsIndividualWarAllies> Allies { get; set; }
+        public IList<EsiV1WarsWarAllies> Allies { get; set; }
 
         [JsonProperty(PropertyName = "declared")]
         public DateTime Declared { get; set; }
 
         [JsonProperty(PropertyName = "defender")]
-        public EsiV1WarsIndividualWarDefender Defender { get; set; }
+        public EsiV1WarsWarDefender Defender { get; set; }
 
         [JsonProperty(PropertyName = "finished")]
         public DateTime? Finished { get; set; }

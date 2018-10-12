@@ -14,34 +14,34 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWars = new InternalLatestWars(null, userAgent, testing);
         }
 
-        public IList<int> GetWars(int maxWarId = 0)
+        public IList<int> Wars(int maxWarId = 0)
         {
-            return _internalLatestWars.GetWars(maxWarId);
+            return _internalLatestWars.Wars(maxWarId);
         }
 
-        public async Task<IList<int>> GetWarsAsync(int maxWarId = 0)
+        public async Task<IList<int>> WarsAsync(int maxWarId = 0)
         {
-            return await _internalLatestWars.GetWarsAsync(maxWarId);
+            return await _internalLatestWars.WarsAsync(maxWarId);
         }
 
-        public V1WarsIndividualWar GetIndividualWar(int warId)
+        public V1WarsWar War(int warId)
         {
-            return _internalLatestWars.GetIndividualWar(warId);
+            return _internalLatestWars.War(warId);
         }
 
-        public async Task<V1WarsIndividualWar> GetIndividualWarAsync(int warId)
+        public async Task<V1WarsWar> WarAsync(int warId)
         {
-            return await _internalLatestWars.GetIndividualWarAsync(warId);
+            return await _internalLatestWars.WarAsync(warId);
         }
 
-        public IList<V1WarsWarKillmails> GetIndividualWarsKillmails(int warId)
+        public IList<V1WarsKillmail> Killmails(int warId)
         {
-            return _internalLatestWars.GetIndividualWarsKillmails(warId);
+            return _internalLatestWars.Killmails(warId);
         }
 
-        public async Task<IList<V1WarsWarKillmails>> GetIndividualWarsKillmailsAsync(int warId)
+        public async Task<IList<V1WarsKillmail>> KillmailsAsync(int warId)
         {
-            return await _internalLatestWars.GetIndividualWarsKillmailsAsync(warId);
+            return await _internalLatestWars.KillmailsAsync(warId);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public IList<int> GetWars(int maxWarId)
+        public IList<int> Wars(int maxWarId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1Wars(maxWarId), _testing);
 
@@ -31,7 +31,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
-        public async Task<IList<int>> GetWarsAsync(int maxWarId)
+        public async Task<IList<int>> WarsAsync(int maxWarId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1Wars(maxWarId), _testing);
 
@@ -40,48 +40,48 @@ namespace ESIConnectionLibrary.Internal_classes
             return JsonConvert.DeserializeObject<IList<int>>(esiRaw.Model);
         }
 
-        public V1WarsIndividualWar GetIndividualWar(int warId)
+        public V1WarsWar War(int warId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1War(warId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw.Model);
+            EsiV1WarsWar war = JsonConvert.DeserializeObject<EsiV1WarsWar>(esiRaw.Model);
 
-            return _mapper.Map<V1WarsIndividualWar>(esiWar);
+            return _mapper.Map<V1WarsWar>(war);
         }
 
-        public async Task<V1WarsIndividualWar> GetIndividualWarAsync(int warId)
+        public async Task<V1WarsWar> WarAsync(int warId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1War(warId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1WarsIndividualWar esiWar = JsonConvert.DeserializeObject<EsiV1WarsIndividualWar>(esiRaw.Model);
+            EsiV1WarsWar war = JsonConvert.DeserializeObject<EsiV1WarsWar>(esiRaw.Model);
 
-            return _mapper.Map<V1WarsIndividualWar>(esiWar);
+            return _mapper.Map<V1WarsWar>(war);
         }
 
-        public IList<V1WarsWarKillmails> GetIndividualWarsKillmails(int warId)
+        public IList<V1WarsKillmail> Killmails(int warId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1WarKillmails(warId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw.Model);
+            IList<EsiV1WarsKillmail> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsKillmail>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WarsWarKillmails>, IList<V1WarsWarKillmails>>(esiWar);
+            return _mapper.Map<IList<EsiV1WarsKillmail>, IList<V1WarsKillmail>>(esiWar);
         }
 
-        public async Task<IList<V1WarsWarKillmails>> GetIndividualWarsKillmailsAsync(int warId)
+        public async Task<IList<V1WarsKillmail>> KillmailsAsync(int warId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WarsV1WarKillmails(warId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1WarsWarKillmails> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsWarKillmails>>(esiRaw.Model);
+            IList<EsiV1WarsKillmail> esiWar = JsonConvert.DeserializeObject<IList<EsiV1WarsKillmail>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1WarsWarKillmails>, IList<V1WarsWarKillmails>>(esiWar);
+            return _mapper.Map<IList<EsiV1WarsKillmail>, IList<V1WarsKillmail>>(esiWar);
         }
     }
 }

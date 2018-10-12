@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1WarsWarKillmails
+    internal class EsiV1WarsKillmail
     {
         [JsonProperty(PropertyName = "killmail_hash")]
         public string KillmailHash { get; set; }

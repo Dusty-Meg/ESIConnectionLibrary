@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1WarsIndividualWarAggressor
+    internal class EsiV1WarsWarAggressor
     {
         [JsonProperty(PropertyName = "alliance_id")]
         public int? AllianceId { get; set; }

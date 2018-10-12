@@ -12,7 +12,7 @@ namespace ESIConnectionLibraryTests
     public class WarsTests
     {
         [Fact]
-        public void GetWars_successfully_returns_a_listInts()
+        public void Wars_successfully_returns_a_listInts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -22,7 +22,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            IList<int> getWars = internalLatestWars.GetWars(0);
+            IList<int> getWars = internalLatestWars.Wars(0);
 
             Assert.Equal(3, getWars.Count);
             Assert.Equal(3, getWars[0]);
@@ -31,7 +31,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetWarsAsync_successfully_returns_a_listInts()
+        public async Task WarsAsync_successfully_returns_a_listInts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -41,7 +41,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            IList<int> getWars = await internalLatestWars.GetWarsAsync(0);
+            IList<int> getWars = await internalLatestWars.WarsAsync(0);
 
             Assert.Equal(3, getWars.Count);
             Assert.Equal(3, getWars[0]);
@@ -50,7 +50,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetIndividualWar_successfully_returns_a_V1WarsIndividualWar()
+        public void War_successfully_returns_a_V1WarsWar()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -60,7 +60,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            V1WarsIndividualWar getWar = internalLatestWars.GetIndividualWar(0);
+            V1WarsWar getWar = internalLatestWars.War(0);
 
             Assert.Equal(986665792, getWar.Aggressor.CorporationId);
             Assert.Equal(0, getWar.Aggressor.IskDestroyed);
@@ -75,7 +75,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetIndividualWarAsync_successfully_returns_a_V1WarsIndividualWar()
+        public async Task WarAsync_successfully_returns_a_V1WarsWar()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -85,7 +85,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            V1WarsIndividualWar getWar = await internalLatestWars.GetIndividualWarAsync(0);
+            V1WarsWar getWar = await internalLatestWars.WarAsync(0);
 
             Assert.Equal(986665792, getWar.Aggressor.CorporationId);
             Assert.Equal(0, getWar.Aggressor.IskDestroyed);
@@ -100,7 +100,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetIndividualWarsKillmails_successfully_returns_a_listV1WarsWarKillmails()
+        public void Killmails_successfully_returns_a_listV1WarsKillmail()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -110,7 +110,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            IList<V1WarsWarKillmails> getWars = internalLatestWars.GetIndividualWarsKillmails(0);
+            IList<V1WarsKillmail> getWars = internalLatestWars.Killmails(0);
 
             Assert.Equal(2, getWars.Count);
             Assert.Equal("8eef5e8fb6b88fe3407c489df33822b2e3b57a5e", getWars[0].KillmailHash);
@@ -120,7 +120,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetIndividualWarsKillmailsAsync_successfully_returns_a_listV1WarsWarKillmails()
+        public async Task KillmailsAsync_successfully_returns_a_listV1WarsKillmail()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -130,7 +130,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWars internalLatestWars = new InternalLatestWars(mockedWebClient.Object, string.Empty);
 
-            IList<V1WarsWarKillmails> getWars = await internalLatestWars.GetIndividualWarsKillmailsAsync(0);
+            IList<V1WarsKillmail> getWars = await internalLatestWars.KillmailsAsync(0);
 
             Assert.Equal(2, getWars.Count);
             Assert.Equal("8eef5e8fb6b88fe3407c489df33822b2e3b57a5e", getWars[0].KillmailHash);

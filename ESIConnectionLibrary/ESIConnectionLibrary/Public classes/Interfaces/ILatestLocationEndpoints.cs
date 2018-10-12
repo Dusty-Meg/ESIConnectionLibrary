@@ -5,11 +5,11 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestLocationEndpoints
     {
-        V1LocationCharacterLocation GetCharacterLocation(SsoToken token);
-        Task<V1LocationCharacterLocation> GetCharacterLocationAsync(SsoToken token);
-        V2LocationCharacterOnline GetCharacterOnlineStatus(SsoToken token);
-        Task<V2LocationCharacterOnline> GetCharacterOnlineStatusAsync(SsoToken token);
-        V1LocationCharacterShip GetCharacterShip(SsoToken token);
-        Task<V1LocationCharacterShip> GetCharacterShipAsync(SsoToken token);
+        V1LocationLocation Location(SsoToken token);
+        Task<V1LocationLocation> LocationAsync(SsoToken token);
+        V2LocationOnline Online(SsoToken token);
+        Task<V2LocationOnline> OnlineAsync(SsoToken token);
+        V1LocationShip Ship(SsoToken token);
+        Task<V1LocationShip> ShipAsync(SsoToken token);
     }
 }

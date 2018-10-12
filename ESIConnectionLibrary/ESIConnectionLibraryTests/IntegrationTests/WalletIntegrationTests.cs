@@ -10,7 +10,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class WalletIntegrationTests
     {
         [Fact]
-        public void GetCharactersWallet_successfully_returns_a_double()
+        public void Character_successfully_returns_a_double()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
@@ -19,13 +19,13 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            double getCharactersWallet = internalLatestWallet.GetCharactersWallet(inputToken);
+            double getCharactersWallet = internalLatestWallet.Character(inputToken);
 
             Assert.Equal(29500.01, getCharactersWallet);
         }
 
         [Fact]
-        public async Task GetCharactersWalletAsync_successfully_returns_a_double()
+        public async Task CharacterAsync_successfully_returns_a_double()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_character_wallet_v1;
@@ -34,13 +34,13 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            double getCharactersWallet = await internalLatestWallet.GetCharactersWalletAsync(inputToken);
+            double getCharactersWallet = await internalLatestWallet.CharacterAsync(inputToken);
 
             Assert.Equal(29500.01, getCharactersWallet);
         }
 
         [Fact]
-        public void GetCharactersWalletJournal_successfully_returns_a_pagedModelWalletCharacterJournal()
+        public void CharacterJournal_successfully_returns_a_pagedModelWalletCharacterJournal()
         {
             int characterId = 98772;
             int page = 1;
@@ -50,7 +50,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.GetCharactersWalletJournal(inputToken, page);
+            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
 
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
@@ -61,7 +61,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharactersWalletJournalAsync_successfully_returns_a_pagedModelWalletCharacterJournalAsync()
+        public async Task CharacterJournalAsync_successfully_returns_a_pagedModelWalletCharacterJournalAsync()
         {
             int characterId = 98772;
             int page = 1;
@@ -71,7 +71,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.GetCharactersWalletJournalAsync(inputToken, page);
+            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
 
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
@@ -82,7 +82,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCharactersWalletTransaction_successfully_returns_a_pagedModelWalletCharacterTransaction()
+        public void CharacterTransactions_successfully_returns_a_pagedModelWalletCharacterTransaction()
         {
             int characterId = 98772;
             int lastId = 1;
@@ -92,7 +92,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = internalLatestWallet.GetCharactersWalletTransaction(inputToken, lastId);
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = internalLatestWallet.CharacterTransactions(inputToken, lastId);
 
             Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
             Assert.Equal(1, getCharactersWalletTransactions.Model.Count);
@@ -109,7 +109,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharactersWalletTransactionAsync_successfully_returns_a_pagedModelWalletCharacterTransaction()
+        public async Task CharacterTransactionsAsync_successfully_returns_a_pagedModelWalletCharacterTransaction()
         {
             int characterId = 98772;
             int lastId = 1;
@@ -119,7 +119,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = await internalLatestWallet.GetCharactersWalletTransactionAsync(inputToken, lastId);
+            PagedModel<V1WalletCharacterTransactions> getCharactersWalletTransactions = await internalLatestWallet.CharacterTransactionsAsync(inputToken, lastId);
 
             Assert.Equal(1, getCharactersWalletTransactions.CurrentPage);
             Assert.Equal(1, getCharactersWalletTransactions.Model.Count);
@@ -136,7 +136,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCorporationWallets_successfully_returns_a_listV1WalletCorporationWallet()
+        public void Corporation_successfully_returns_a_listV1WalletCorporationWallet()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -145,7 +145,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            IList<V1WalletCorporationWallet> getCorporationsWallets = internalLatestWallet.GetCorporationWallets(inputToken, 999);
+            IList<V1WalletCorporationWallet> getCorporationsWallets = internalLatestWallet.Corporation(inputToken, 999);
 
             Assert.Equal(7, getCorporationsWallets.Count);
             Assert.Equal(123.45, getCorporationsWallets[0].Balance);
@@ -155,7 +155,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCorporationWalletsAsync_successfully_returns_a_listV1WalletCorporationWallet()
+        public async Task CorporationAsync_successfully_returns_a_listV1WalletCorporationWallet()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -164,7 +164,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            IList<V1WalletCorporationWallet> getCorporationsWallets = await internalLatestWallet.GetCorporationWalletsAsync(inputToken, 999);
+            IList<V1WalletCorporationWallet> getCorporationsWallets = await internalLatestWallet.CorporationAsync(inputToken, 999);
 
             Assert.Equal(7, getCorporationsWallets.Count);
             Assert.Equal(123.45, getCorporationsWallets[0].Balance);
@@ -174,7 +174,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCorporationJournal_successfully_returns_a_listV3WalletCorporationJournal()
+        public void CorporationJournal_successfully_returns_a_listV3WalletCorporationJournal()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -183,7 +183,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V3WalletCorporationJournal> getCorporationJournals = internalLatestWallet.GetCorporationJournal(inputToken, 999, 1, 1);
+            PagedModel<V3WalletCorporationJournal> getCorporationJournals = internalLatestWallet.CorporationJournal(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Model.Count);
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
@@ -199,7 +199,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCorporationJournalAsync_successfully_returns_a_listV3WalletCorporationJournal()
+        public async Task CorporationJournalAsync_successfully_returns_a_listV3WalletCorporationJournal()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -208,7 +208,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V3WalletCorporationJournal> getCorporationJournals = await internalLatestWallet.GetCorporationJournalAsync(inputToken, 999, 1, 1);
+            PagedModel<V3WalletCorporationJournal> getCorporationJournals = await internalLatestWallet.CorporationJournalAsync(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Model.Count);
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
@@ -224,7 +224,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCorporationTransactions_successfully_returns_a_listV1WalletCharacterTransactions()
+        public void CorporationTransactions_successfully_returns_a_listV1WalletCharacterTransactions()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -233,7 +233,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            IList<V1WalletCorporationTransactions> getCorporationJournals = internalLatestWallet.GetCorporationTransactions(inputToken, 999, 1, 1);
+            IList<V1WalletCorporationTransactions> getCorporationJournals = internalLatestWallet.CorporationTransactions(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Count);
             Assert.Equal(54321, getCorporationJournals[0].ClientId);
@@ -248,7 +248,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCorporationTransactionsAsync_successfully_returns_a_listV1WalletCharacterTransactions()
+        public async Task CorporationTransactionsAsync_successfully_returns_a_listV1WalletCharacterTransactions()
         {
             int characterId = 98772;
             WalletScopes scopes = WalletScopes.esi_wallet_read_corporation_wallets_v1;
@@ -257,7 +257,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            IList<V1WalletCorporationTransactions> getCorporationJournals = await internalLatestWallet.GetCorporationTransactionsAsync(inputToken, 999, 1, 1);
+            IList<V1WalletCorporationTransactions> getCorporationJournals = await internalLatestWallet.CorporationTransactionsAsync(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Count);
             Assert.Equal(54321, getCorporationJournals[0].ClientId);

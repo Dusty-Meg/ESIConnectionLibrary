@@ -15,74 +15,74 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWallet = new InternalLatestWallet(null, userAgent, testing);
         }
 
-        public double GetCharactersWallet(SsoToken token)
+        public double Character(SsoToken token)
         {
-            return _internalLatestWallet.GetCharactersWallet(token);
+            return _internalLatestWallet.Character(token);
         }
 
-        public async Task<double> GetCharactersWalletAsync(SsoToken token)
+        public async Task<double> CharacterAsync(SsoToken token)
         {
-            return await _internalLatestWallet.GetCharactersWalletAsync(token);
+            return await _internalLatestWallet.CharacterAsync(token);
         }
 
-        public PagedModel<V4WalletCharacterJournal> GetCharactersWalletJournal(SsoToken token, int page)
+        public PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestWallet.GetCharactersWalletJournal(token, page);
+            return _internalLatestWallet.CharacterJournal(token, page);
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> GetCharactersWalletJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestWallet.GetCharactersWalletJournalAsync(token, page);
+            return await _internalLatestWallet.CharacterJournalAsync(token, page);
         }
 
-        public PagedModel<V1WalletCharacterTransactions> GetCharactersWalletTransaction(SsoToken token, int lastTransactionId)
+        public PagedModel<V1WalletCharacterTransactions> CharacterTransactions(SsoToken token, int lastTransactionId)
         {
-            return _internalLatestWallet.GetCharactersWalletTransaction(token, lastTransactionId);
+            return _internalLatestWallet.CharacterTransactions(token, lastTransactionId);
         }
 
-        public async Task<PagedModel<V1WalletCharacterTransactions>> GetCharactersWalletTransactionAsync(SsoToken token, int lastTransactionId)
+        public async Task<PagedModel<V1WalletCharacterTransactions>> CharacterTransactionsAsync(SsoToken token, int lastTransactionId)
         {
-            return await _internalLatestWallet.GetCharactersWalletTransactionAsync(token, lastTransactionId);
+            return await _internalLatestWallet.CharacterTransactionsAsync(token, lastTransactionId);
         }
 
-        public IList<V1WalletCorporationWallet> GetCorporationWallets(SsoToken token, int corporationId)
+        public IList<V1WalletCorporationWallet> Corporation(SsoToken token, int corporationId)
         {
-            return _internalLatestWallet.GetCorporationWallets(token, corporationId);
+            return _internalLatestWallet.Corporation(token, corporationId);
         }
 
-        public async Task<IList<V1WalletCorporationWallet>> GetCorporationWalletsAsync(SsoToken token, int corporationId)
+        public async Task<IList<V1WalletCorporationWallet>> CorporationAsync(SsoToken token, int corporationId)
         {
-            return await _internalLatestWallet.GetCorporationWalletsAsync(token, corporationId);
+            return await _internalLatestWallet.CorporationAsync(token, corporationId);
         }
 
-        public PagedModel<V3WalletCorporationJournal> GetCorporationJournal(SsoToken token, int corporationId, int division, int page)
+        public PagedModel<V3WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
         {
-            return _internalLatestWallet.GetCorporationJournal(token, corporationId, division, page);
+            return _internalLatestWallet.CorporationJournal(token, corporationId, division, page);
         }
 
-        public async Task<PagedModel<V3WalletCorporationJournal>> GetCorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
+        public async Task<PagedModel<V3WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
         {
-            return await _internalLatestWallet.GetCorporationJournalAsync(token, corporationId, division, page);
+            return await _internalLatestWallet.CorporationJournalAsync(token, corporationId, division, page);
         }
 
-        public IList<V1WalletCorporationTransactions> GetCorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)
+        public IList<V1WalletCorporationTransactions> CorporationTransactions(SsoToken token, int corporationId, int division, int lastTransactionId)
         {
-            return _internalLatestWallet.GetCorporationTransactions(token, corporationId, division, lastTransactionId);
+            return _internalLatestWallet.CorporationTransactions(token, corporationId, division, lastTransactionId);
         }
 
-        public async Task<IList<V1WalletCorporationTransactions>> GetCorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId)
+        public async Task<IList<V1WalletCorporationTransactions>> CorporationTransactionsAsync(SsoToken token, int corporationId, int division, int lastTransactionId)
         {
-            return await _internalLatestWallet.GetCorporationTransactionsAsync(token, corporationId, division, lastTransactionId);
+            return await _internalLatestWallet.CorporationTransactionsAsync(token, corporationId, division, lastTransactionId);
         }
     }
 }

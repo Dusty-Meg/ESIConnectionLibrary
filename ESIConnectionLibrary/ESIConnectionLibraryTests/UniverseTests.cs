@@ -12,7 +12,7 @@ namespace ESIConnectionLibraryTests
     public class UniverseTests
     {
         [Fact]
-        public void GetAncestries_successfully_returns_a_list_of_Ancestries()
+        public void Ancestries_successfully_returns_a_list_of_Ancestries()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -22,18 +22,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseAncestries> response = internalLatestUniverse.GetAncestries();
+            IList<V1UniverseAncestries> returnModel = internalLatestUniverse.Ancestries();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(1, response.First().BloodlineId);
-            Assert.Equal("Acutely aware of the small population...", response.First().Description);
-            Assert.Equal(12, response.First().Id);
-            Assert.Equal("Tube Child", response.First().Name);
-            Assert.Equal("Manufactured citizens of the State.", response.First().ShortDescription);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(1, returnModel.First().BloodlineId);
+            Assert.Equal("Acutely aware of the small population...", returnModel.First().Description);
+            Assert.Equal(12, returnModel.First().Id);
+            Assert.Equal("Tube Child", returnModel.First().Name);
+            Assert.Equal("Manufactured citizens of the State.", returnModel.First().ShortDescription);
         }
 
         [Fact]
-        public async Task GetAncestriesAsync_successfully_returns_a_list_of_Ancestries()
+        public async Task AncestriesAsync_successfully_returns_a_list_of_Ancestries()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -43,18 +43,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseAncestries> response = await internalLatestUniverse.GetAncestriesAsync();
+            IList<V1UniverseAncestries> returnModel = await internalLatestUniverse.AncestriesAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(1, response.First().BloodlineId);
-            Assert.Equal("Acutely aware of the small population...", response.First().Description);
-            Assert.Equal(12, response.First().Id);
-            Assert.Equal("Tube Child", response.First().Name);
-            Assert.Equal("Manufactured citizens of the State.", response.First().ShortDescription);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(1, returnModel.First().BloodlineId);
+            Assert.Equal("Acutely aware of the small population...", returnModel.First().Description);
+            Assert.Equal(12, returnModel.First().Id);
+            Assert.Equal("Tube Child", returnModel.First().Name);
+            Assert.Equal("Manufactured citizens of the State.", returnModel.First().ShortDescription);
         }
 
         [Fact]
-        public void GetAsteroidBelt_successfully_returns_a_asteroid_belt()
+        public void AsteroidBelt_successfully_returns_a_asteroid_belt()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -64,18 +64,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseAsteroidBelt response = internalLatestUniverse.GetAsteroidBelt(int.MinValue);
+            V1UniverseAsteroidBelt returnModel = internalLatestUniverse.AsteroidBelt(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("Tanoo I - Asteroid Belt 1", response.Name);
-            Assert.Equal(161967513600, response.Position.X);
-            Assert.Equal(21288837120, response.Position.Y);
-            Assert.Equal(-73505464320, response.Position.Z);
-            Assert.Equal(30000001, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("Tanoo I - Asteroid Belt 1", returnModel.Name);
+            Assert.Equal(161967513600, returnModel.Position.X);
+            Assert.Equal(21288837120, returnModel.Position.Y);
+            Assert.Equal(-73505464320, returnModel.Position.Z);
+            Assert.Equal(30000001, returnModel.SystemId);
         }
 
         [Fact]
-        public async Task GetAsteroidBeltAsync_successfully_returns_a_asteroid_belt()
+        public async Task AsteroidBeltAsync_successfully_returns_a_asteroid_belt()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -85,18 +85,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseAsteroidBelt response = await internalLatestUniverse.GetAsteroidBeltAsync(int.MinValue);
+            V1UniverseAsteroidBelt returnModel = await internalLatestUniverse.AsteroidBeltAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("Tanoo I - Asteroid Belt 1", response.Name);
-            Assert.Equal(161967513600, response.Position.X);
-            Assert.Equal(21288837120, response.Position.Y);
-            Assert.Equal(-73505464320, response.Position.Z);
-            Assert.Equal(30000001, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("Tanoo I - Asteroid Belt 1", returnModel.Name);
+            Assert.Equal(161967513600, returnModel.Position.X);
+            Assert.Equal(21288837120, returnModel.Position.Y);
+            Assert.Equal(-73505464320, returnModel.Position.Z);
+            Assert.Equal(30000001, returnModel.SystemId);
         }
 
         [Fact]
-        public void GetBloodlines_successfully_returns_a_list_of_Bloodlines()
+        public void Bloodlines_successfully_returns_a_list_of_Bloodlines()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -106,24 +106,24 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseBloodlines> response = internalLatestUniverse.GetBloodlines();
+            IList<V1UniverseBloodlines> returnModel = internalLatestUniverse.Bloodlines();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(1, response.First().BloodlineId);
-            Assert.Equal(6, response.First().Charisma);
-            Assert.Equal(1000006, response.First().CorporationId);
-            Assert.Equal("The Deteis are regarded as ...", response.First().Description);
-            Assert.Equal(7, response.First().Intelligence);
-            Assert.Equal(7, response.First().Memory);
-            Assert.Equal("Deteis", response.First().Name);
-            Assert.Equal(5, response.First().Perception);
-            Assert.Equal(1, response.First().RaceId);
-            Assert.Equal(601, response.First().ShipTypeId);
-            Assert.Equal(5, response.First().Willpower);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(1, returnModel.First().BloodlineId);
+            Assert.Equal(6, returnModel.First().Charisma);
+            Assert.Equal(1000006, returnModel.First().CorporationId);
+            Assert.Equal("The Deteis are regarded as ...", returnModel.First().Description);
+            Assert.Equal(7, returnModel.First().Intelligence);
+            Assert.Equal(7, returnModel.First().Memory);
+            Assert.Equal("Deteis", returnModel.First().Name);
+            Assert.Equal(5, returnModel.First().Perception);
+            Assert.Equal(1, returnModel.First().RaceId);
+            Assert.Equal(601, returnModel.First().ShipTypeId);
+            Assert.Equal(5, returnModel.First().Willpower);
         }
 
         [Fact]
-        public async Task GetBloodlinesAsync_successfully_returns_a_list_of_Bloodlines()
+        public async Task BloodlinesAsync_successfully_returns_a_list_of_Bloodlines()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -133,24 +133,24 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseBloodlines> response = await internalLatestUniverse.GetBloodlinesAsync();
+            IList<V1UniverseBloodlines> returnModel = await internalLatestUniverse.BloodlinesAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(1, response.First().BloodlineId);
-            Assert.Equal(6, response.First().Charisma);
-            Assert.Equal(1000006, response.First().CorporationId);
-            Assert.Equal("The Deteis are regarded as ...", response.First().Description);
-            Assert.Equal(7, response.First().Intelligence);
-            Assert.Equal(7, response.First().Memory);
-            Assert.Equal("Deteis", response.First().Name);
-            Assert.Equal(5, response.First().Perception);
-            Assert.Equal(1, response.First().RaceId);
-            Assert.Equal(601, response.First().ShipTypeId);
-            Assert.Equal(5, response.First().Willpower);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(1, returnModel.First().BloodlineId);
+            Assert.Equal(6, returnModel.First().Charisma);
+            Assert.Equal(1000006, returnModel.First().CorporationId);
+            Assert.Equal("The Deteis are regarded as ...", returnModel.First().Description);
+            Assert.Equal(7, returnModel.First().Intelligence);
+            Assert.Equal(7, returnModel.First().Memory);
+            Assert.Equal("Deteis", returnModel.First().Name);
+            Assert.Equal(5, returnModel.First().Perception);
+            Assert.Equal(1, returnModel.First().RaceId);
+            Assert.Equal(601, returnModel.First().ShipTypeId);
+            Assert.Equal(5, returnModel.First().Willpower);
         }
 
         [Fact]
-        public void GetCategories_successfully_returns_a_list_of_ints()
+        public void Categories_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -160,16 +160,16 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = internalLatestUniverse.GetCategories();
+            IList<int> returnModel = internalLatestUniverse.Categories();
 
-            Assert.Equal(3, response.Count);
-            Assert.Equal(1, response[0]);
-            Assert.Equal(2, response[1]);
-            Assert.Equal(3, response[2]);
+            Assert.Equal(3, returnModel.Count);
+            Assert.Equal(1, returnModel[0]);
+            Assert.Equal(2, returnModel[1]);
+            Assert.Equal(3, returnModel[2]);
         }
 
         [Fact]
-        public async Task GetCategoriesAsync_successfully_returns_a_list_of_ints()
+        public async Task CategoriesAsync_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -179,16 +179,16 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = await internalLatestUniverse.GetCategoriesAsync();
+            IList<int> returnModel = await internalLatestUniverse.CategoriesAsync();
 
-            Assert.Equal(3, response.Count);
-            Assert.Equal(1, response[0]);
-            Assert.Equal(2, response[1]);
-            Assert.Equal(3, response[2]);
+            Assert.Equal(3, returnModel.Count);
+            Assert.Equal(1, returnModel[0]);
+            Assert.Equal(2, returnModel[1]);
+            Assert.Equal(3, returnModel[2]);
         }
 
         [Fact]
-        public void GetCategory_successfully_returns_a_category()
+        public void Category_successfully_returns_a_category()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -198,20 +198,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseCategory response = internalLatestUniverse.GetCategory(int.MinValue);
+            V1UniverseCategory returnModel = internalLatestUniverse.Category(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(6, response.CategoryId);
-            Assert.Equal(3, response.Groups.Count);
-            Assert.Equal(25, response.Groups[0]);
-            Assert.Equal(26, response.Groups[1]);
-            Assert.Equal(27, response.Groups[2]);
-            Assert.Equal("Ship", response.Name);
-            Assert.True(response.Published);
+            Assert.NotNull(returnModel);
+            Assert.Equal(6, returnModel.CategoryId);
+            Assert.Equal(3, returnModel.Groups.Count);
+            Assert.Equal(25, returnModel.Groups[0]);
+            Assert.Equal(26, returnModel.Groups[1]);
+            Assert.Equal(27, returnModel.Groups[2]);
+            Assert.Equal("Ship", returnModel.Name);
+            Assert.True(returnModel.Published);
         }
 
         [Fact]
-        public async Task GetCategoryAsync_successfully_returns_a_category()
+        public async Task CategoryAsync_successfully_returns_a_category()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -221,20 +221,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseCategory response = await internalLatestUniverse.GetCategoryAsync(int.MinValue);
+            V1UniverseCategory returnModel = await internalLatestUniverse.CategoryAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(6, response.CategoryId);
-            Assert.Equal(3, response.Groups.Count);
-            Assert.Equal(25, response.Groups[0]);
-            Assert.Equal(26, response.Groups[1]);
-            Assert.Equal(27, response.Groups[2]);
-            Assert.Equal("Ship", response.Name);
-            Assert.True(response.Published);
+            Assert.NotNull(returnModel);
+            Assert.Equal(6, returnModel.CategoryId);
+            Assert.Equal(3, returnModel.Groups.Count);
+            Assert.Equal(25, returnModel.Groups[0]);
+            Assert.Equal(26, returnModel.Groups[1]);
+            Assert.Equal(27, returnModel.Groups[2]);
+            Assert.Equal("Ship", returnModel.Name);
+            Assert.True(returnModel.Published);
         }
 
         [Fact]
-        public void GetConstellations_successfully_returns_a_list_of_ints()
+        public void Constellations_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -244,15 +244,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = internalLatestUniverse.GetConstellations();
+            IList<int> returnModel = internalLatestUniverse.Constellations();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(20000001, response[0]);
-            Assert.Equal(20000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(20000001, returnModel[0]);
+            Assert.Equal(20000002, returnModel[1]);
         }
 
         [Fact]
-        public async Task GetConstellationsAsync_successfully_returns_a_list_of_ints()
+        public async Task ConstellationsAsync_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -262,15 +262,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = await internalLatestUniverse.GetConstellationsAsync();
+            IList<int> returnModel = await internalLatestUniverse.ConstellationsAsync();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(20000001, response[0]);
-            Assert.Equal(20000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(20000001, returnModel[0]);
+            Assert.Equal(20000002, returnModel[1]);
         }
 
         [Fact]
-        public void GetConstellation_successfully_returns_a_constellation()
+        public void Constellation_successfully_returns_a_constellation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -280,22 +280,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseConstellation response = internalLatestUniverse.GetConstellation(int.MinValue);
+            V1UniverseConstellation returnModel = internalLatestUniverse.Constellation(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(20000009, response.ConstellationId);
-            Assert.Equal("Mekashtad", response.Name);
-            Assert.Equal(67796138757472320, response.Position.X);
-            Assert.Equal(-70591121348560960, response.Position.Y);
-            Assert.Equal(-59587016159270070, response.Position.Z);
-            Assert.Equal(10000001, response.RegionId);
-            Assert.Equal(2, response.Systems.Count);
-            Assert.Equal(20000302, response.Systems[0]);
-            Assert.Equal(20000303, response.Systems[1]);
+            Assert.NotNull(returnModel);
+            Assert.Equal(20000009, returnModel.ConstellationId);
+            Assert.Equal("Mekashtad", returnModel.Name);
+            Assert.Equal(67796138757472320, returnModel.Position.X);
+            Assert.Equal(-70591121348560960, returnModel.Position.Y);
+            Assert.Equal(-59587016159270070, returnModel.Position.Z);
+            Assert.Equal(10000001, returnModel.RegionId);
+            Assert.Equal(2, returnModel.Systems.Count);
+            Assert.Equal(20000302, returnModel.Systems[0]);
+            Assert.Equal(20000303, returnModel.Systems[1]);
         }
 
         [Fact]
-        public async Task GetConstellationAsync_successfully_returns_a_constellation()
+        public async Task ConstellationAsync_successfully_returns_a_constellation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -305,22 +305,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseConstellation response = await internalLatestUniverse.GetConstellationAsync(int.MinValue);
+            V1UniverseConstellation returnModel = await internalLatestUniverse.ConstellationAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(20000009, response.ConstellationId);
-            Assert.Equal("Mekashtad", response.Name);
-            Assert.Equal(67796138757472320, response.Position.X);
-            Assert.Equal(-70591121348560960, response.Position.Y);
-            Assert.Equal(-59587016159270070, response.Position.Z);
-            Assert.Equal(10000001, response.RegionId);
-            Assert.Equal(2, response.Systems.Count);
-            Assert.Equal(20000302, response.Systems[0]);
-            Assert.Equal(20000303, response.Systems[1]);
+            Assert.NotNull(returnModel);
+            Assert.Equal(20000009, returnModel.ConstellationId);
+            Assert.Equal("Mekashtad", returnModel.Name);
+            Assert.Equal(67796138757472320, returnModel.Position.X);
+            Assert.Equal(-70591121348560960, returnModel.Position.Y);
+            Assert.Equal(-59587016159270070, returnModel.Position.Z);
+            Assert.Equal(10000001, returnModel.RegionId);
+            Assert.Equal(2, returnModel.Systems.Count);
+            Assert.Equal(20000302, returnModel.Systems[0]);
+            Assert.Equal(20000303, returnModel.Systems[1]);
         }
 
         [Fact]
-        public void GetFactions_successfully_returns_a_list_of_Factions()
+        public void Factions_successfully_returns_a_list_of_Factions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -330,22 +330,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseFactions> response = internalLatestUniverse.GetFactions();
+            IList<V2UniverseFactions> returnModel = internalLatestUniverse.Factions();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(456, response.First().CorporationId);
-            Assert.Equal("blah blah", response.First().Description);
-            Assert.Equal(1, response.First().FactionId);
-            Assert.True(response.First().IsUnique);
-            Assert.Equal("Faction", response.First().Name);
-            Assert.Equal(1, response.First().SizeFactor);
-            Assert.Equal(123, response.First().SolarSystemId);
-            Assert.Equal(1000, response.First().StationCount);
-            Assert.Equal(100, response.First().StationSystemCount);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(456, returnModel.First().CorporationId);
+            Assert.Equal("blah blah", returnModel.First().Description);
+            Assert.Equal(1, returnModel.First().FactionId);
+            Assert.True(returnModel.First().IsUnique);
+            Assert.Equal("Faction", returnModel.First().Name);
+            Assert.Equal(1, returnModel.First().SizeFactor);
+            Assert.Equal(123, returnModel.First().SolarSystemId);
+            Assert.Equal(1000, returnModel.First().StationCount);
+            Assert.Equal(100, returnModel.First().StationSystemCount);
         }
 
         [Fact]
-        public async Task GetFactionsAsync_successfully_returns_a_list_of_Factions()
+        public async Task FactionsAsync_successfully_returns_a_list_of_Factions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -355,22 +355,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseFactions> response = await internalLatestUniverse.GetFactionsAsync();
+            IList<V2UniverseFactions> returnModel = await internalLatestUniverse.FactionsAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(456, response.First().CorporationId);
-            Assert.Equal("blah blah", response.First().Description);
-            Assert.Equal(1, response.First().FactionId);
-            Assert.True(response.First().IsUnique);
-            Assert.Equal("Faction", response.First().Name);
-            Assert.Equal(1, response.First().SizeFactor);
-            Assert.Equal(123, response.First().SolarSystemId);
-            Assert.Equal(1000, response.First().StationCount);
-            Assert.Equal(100, response.First().StationSystemCount);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(456, returnModel.First().CorporationId);
+            Assert.Equal("blah blah", returnModel.First().Description);
+            Assert.Equal(1, returnModel.First().FactionId);
+            Assert.True(returnModel.First().IsUnique);
+            Assert.Equal("Faction", returnModel.First().Name);
+            Assert.Equal(1, returnModel.First().SizeFactor);
+            Assert.Equal(123, returnModel.First().SolarSystemId);
+            Assert.Equal(1000, returnModel.First().StationCount);
+            Assert.Equal(100, returnModel.First().StationSystemCount);
         }
 
         [Fact]
-        public void GetGraphics_successfully_returns_a_list_of_ints()
+        public void Graphics_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -380,15 +380,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = internalLatestUniverse.GetGraphics();
+            IList<int> returnModel = internalLatestUniverse.Graphics();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(10, response[0]);
-            Assert.Equal(4106, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(10, returnModel[0]);
+            Assert.Equal(4106, returnModel[1]);
         }
 
         [Fact]
-        public async Task GetGraphicsAsync_successfully_returns_a_list_of_ints()
+        public async Task GraphicsAsync_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -398,15 +398,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = await internalLatestUniverse.GetGraphicsAsync();
+            IList<int> returnModel = await internalLatestUniverse.GraphicsAsync();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(10, response[0]);
-            Assert.Equal(4106, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(10, returnModel[0]);
+            Assert.Equal(4106, returnModel[1]);
         }
 
         [Fact]
-        public void GetGraphic_successfully_returns_a_graphic()
+        public void Graphic_successfully_returns_a_graphic()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -416,15 +416,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseGraphic response = internalLatestUniverse.GetGraphic(int.MinValue);
+            V1UniverseGraphic returnModel = internalLatestUniverse.Graphic(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("res:/dx9/model/worldobject/planet/moon.red", response.GraphicFile);
-            Assert.Equal(10, response.GraphicId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("res:/dx9/model/worldobject/planet/moon.red", returnModel.GraphicFile);
+            Assert.Equal(10, returnModel.GraphicId);
         }
 
         [Fact]
-        public async Task GetGraphicAsync_successfully_returns_a_graphic()
+        public async Task GraphicAsync_successfully_returns_a_graphic()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -434,15 +434,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseGraphic response = await internalLatestUniverse.GetGraphicAsync(int.MinValue);
+            V1UniverseGraphic returnModel = await internalLatestUniverse.GraphicAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("res:/dx9/model/worldobject/planet/moon.red", response.GraphicFile);
-            Assert.Equal(10, response.GraphicId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("res:/dx9/model/worldobject/planet/moon.red", returnModel.GraphicFile);
+            Assert.Equal(10, returnModel.GraphicId);
         }
 
         [Fact]
-        public void GetGroups_successfully_returns_a_PagedModel_of_ints()
+        public void Groups_successfully_returns_a_PagedModel_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -452,18 +452,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            PagedModel<int> response = internalLatestUniverse.GetGroups(1);
+            PagedModel<int> returnModel = internalLatestUniverse.Groups(1);
 
-            Assert.Equal(2, response.MaxPages);
-            Assert.Equal(1, response.CurrentPage);
-            Assert.Equal(3, response.Model.Count);
-            Assert.Equal(1, response.Model[0]);
-            Assert.Equal(2, response.Model[1]);
-            Assert.Equal(3, response.Model[2]);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(3, returnModel.Model.Count);
+            Assert.Equal(1, returnModel.Model[0]);
+            Assert.Equal(2, returnModel.Model[1]);
+            Assert.Equal(3, returnModel.Model[2]);
         }
 
         [Fact]
-        public async Task GetGroupsAsync_successfully_returns_a_PagedModel_of_ints()
+        public async Task GroupsAsync_successfully_returns_a_PagedModel_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -473,18 +473,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            PagedModel<int> response = await internalLatestUniverse.GetGroupsAsync(1);
+            PagedModel<int> returnModel = await internalLatestUniverse.GroupsAsync(1);
 
-            Assert.Equal(2, response.MaxPages);
-            Assert.Equal(1, response.CurrentPage);
-            Assert.Equal(3, response.Model.Count);
-            Assert.Equal(1, response.Model[0]);
-            Assert.Equal(2, response.Model[1]);
-            Assert.Equal(3, response.Model[2]);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(3, returnModel.Model.Count);
+            Assert.Equal(1, returnModel.Model[0]);
+            Assert.Equal(2, returnModel.Model[1]);
+            Assert.Equal(3, returnModel.Model[2]);
         }
 
         [Fact]
-        public void GetGroup_successfully_returns_a_group()
+        public void Group_successfully_returns_a_group()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -494,21 +494,21 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseGroup response = internalLatestUniverse.GetGroup(int.MinValue);
+            V1UniverseGroup returnModel = internalLatestUniverse.Group(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(6, response.CategoryId);
-            Assert.Equal(25, response.GroupId);
-            Assert.Equal("Frigate", response.Name);
-            Assert.True(response.Published);
-            Assert.Equal(3, response.Types.Count);
-            Assert.Equal(587, response.Types[0]);
-            Assert.Equal(586, response.Types[1]);
-            Assert.Equal(585, response.Types[2]);
+            Assert.NotNull(returnModel);
+            Assert.Equal(6, returnModel.CategoryId);
+            Assert.Equal(25, returnModel.GroupId);
+            Assert.Equal("Frigate", returnModel.Name);
+            Assert.True(returnModel.Published);
+            Assert.Equal(3, returnModel.Types.Count);
+            Assert.Equal(587, returnModel.Types[0]);
+            Assert.Equal(586, returnModel.Types[1]);
+            Assert.Equal(585, returnModel.Types[2]);
         }
 
         [Fact]
-        public async Task GetGroupAsync_successfully_returns_a_group()
+        public async Task GroupAsync_successfully_returns_a_group()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -518,21 +518,21 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseGroup response = await internalLatestUniverse.GetGroupAsync(int.MinValue);
+            V1UniverseGroup returnModel = await internalLatestUniverse.GroupAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(6, response.CategoryId);
-            Assert.Equal(25, response.GroupId);
-            Assert.Equal("Frigate", response.Name);
-            Assert.True(response.Published);
-            Assert.Equal(3, response.Types.Count);
-            Assert.Equal(587, response.Types[0]);
-            Assert.Equal(586, response.Types[1]);
-            Assert.Equal(585, response.Types[2]);
+            Assert.NotNull(returnModel);
+            Assert.Equal(6, returnModel.CategoryId);
+            Assert.Equal(25, returnModel.GroupId);
+            Assert.Equal("Frigate", returnModel.Name);
+            Assert.True(returnModel.Published);
+            Assert.Equal(3, returnModel.Types.Count);
+            Assert.Equal(587, returnModel.Types[0]);
+            Assert.Equal(586, returnModel.Types[1]);
+            Assert.Equal(585, returnModel.Types[2]);
         }
 
         [Fact]
-        public void GetIds_successfully_returns_a_list_of_strings()
+        public void Ids_successfully_returns_a_list_of_strings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -542,20 +542,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseNamesToIds response = internalLatestUniverse.GetIds(new List<string>());
+            V1UniverseNamesToIds returnModel = internalLatestUniverse.Ids(new List<string>());
 
-            Assert.Equal(2, response.Characters.Count);
-            Assert.Equal(95465499, response.Characters[0].Id);
-            Assert.Equal("CCP Bartender", response.Characters[0].Name);
-            Assert.Equal(2112625428, response.Characters[1].Id);
-            Assert.Equal("CCP Zoetrope", response.Characters[1].Name);
-            Assert.Equal(1, response.Systems.Count);
-            Assert.Equal(30000142, response.Systems[0].Id);
-            Assert.Equal("Jita", response.Systems[0].Name);
+            Assert.Equal(2, returnModel.Characters.Count);
+            Assert.Equal(95465499, returnModel.Characters[0].Id);
+            Assert.Equal("CCP Bartender", returnModel.Characters[0].Name);
+            Assert.Equal(2112625428, returnModel.Characters[1].Id);
+            Assert.Equal("CCP Zoetrope", returnModel.Characters[1].Name);
+            Assert.Equal(1, returnModel.Systems.Count);
+            Assert.Equal(30000142, returnModel.Systems[0].Id);
+            Assert.Equal("Jita", returnModel.Systems[0].Name);
         }
 
         [Fact]
-        public async Task GetIdsAsync_successfully_returns_a_list_of_strings()
+        public async Task IdsAsync_successfully_returns_a_list_of_strings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -565,20 +565,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseNamesToIds response = await internalLatestUniverse.GetIdsAsync(new List<string>());
+            V1UniverseNamesToIds returnModel = await internalLatestUniverse.IdsAsync(new List<string>());
 
-            Assert.Equal(2, response.Characters.Count);
-            Assert.Equal(95465499, response.Characters[0].Id);
-            Assert.Equal("CCP Bartender", response.Characters[0].Name);
-            Assert.Equal(2112625428, response.Characters[1].Id);
-            Assert.Equal("CCP Zoetrope", response.Characters[1].Name);
-            Assert.Equal(1, response.Systems.Count);
-            Assert.Equal(30000142, response.Systems[0].Id);
-            Assert.Equal("Jita", response.Systems[0].Name);
+            Assert.Equal(2, returnModel.Characters.Count);
+            Assert.Equal(95465499, returnModel.Characters[0].Id);
+            Assert.Equal("CCP Bartender", returnModel.Characters[0].Name);
+            Assert.Equal(2112625428, returnModel.Characters[1].Id);
+            Assert.Equal("CCP Zoetrope", returnModel.Characters[1].Name);
+            Assert.Equal(1, returnModel.Systems.Count);
+            Assert.Equal(30000142, returnModel.Systems[0].Id);
+            Assert.Equal("Jita", returnModel.Systems[0].Name);
         }
 
         [Fact]
-        public void GetMoon_successfully_returns_a_moon()
+        public void Moon_successfully_returns_a_moon()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -588,19 +588,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseMoon response = internalLatestUniverse.GetMoon(int.MinValue);
+            V1UniverseMoon returnModel = internalLatestUniverse.Moon(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(40000042, response.MoonId);
-            Assert.Equal("Akpivem I - Moon 1", response.Name);
-            Assert.Equal(58605102008, response.Position.X);
-            Assert.Equal(-3066616285, response.Position.Y);
-            Assert.Equal(-55193617920, response.Position.Z);
-            Assert.Equal(30000003, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(40000042, returnModel.MoonId);
+            Assert.Equal("Akpivem I - Moon 1", returnModel.Name);
+            Assert.Equal(58605102008, returnModel.Position.X);
+            Assert.Equal(-3066616285, returnModel.Position.Y);
+            Assert.Equal(-55193617920, returnModel.Position.Z);
+            Assert.Equal(30000003, returnModel.SystemId);
         }
 
         [Fact]
-        public async Task GetMoonAsync_successfully_returns_a_moon()
+        public async Task MoonAsync_successfully_returns_a_moon()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -610,19 +610,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseMoon response = await internalLatestUniverse.GetMoonAsync(int.MinValue);
+            V1UniverseMoon returnModel = await internalLatestUniverse.MoonAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(40000042, response.MoonId);
-            Assert.Equal("Akpivem I - Moon 1", response.Name);
-            Assert.Equal(58605102008, response.Position.X);
-            Assert.Equal(-3066616285, response.Position.Y);
-            Assert.Equal(-55193617920, response.Position.Z);
-            Assert.Equal(30000003, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(40000042, returnModel.MoonId);
+            Assert.Equal("Akpivem I - Moon 1", returnModel.Name);
+            Assert.Equal(58605102008, returnModel.Position.X);
+            Assert.Equal(-3066616285, returnModel.Position.Y);
+            Assert.Equal(-55193617920, returnModel.Position.Z);
+            Assert.Equal(30000003, returnModel.SystemId);
         }
 
         [Fact]
-        public void GetNames_successfully_returns_a_list_of_Names()
+        public void Names_successfully_returns_a_list_of_Names()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -632,19 +632,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseNames> response = internalLatestUniverse.GetNames(new List<int>());
+            IList<V2UniverseNames> returnModel = internalLatestUniverse.Names(new List<int>());
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(V2UniverseNamesCategory.Character, response[0].Category);
-            Assert.Equal(95465499, response[0].Id);
-            Assert.Equal("CCP Bartender", response[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.SolarSystem, response[1].Category);
-            Assert.Equal(30000142, response[1].Id);
-            Assert.Equal("Jita", response[1].Name);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(V2UniverseNamesCategory.Character, returnModel[0].Category);
+            Assert.Equal(95465499, returnModel[0].Id);
+            Assert.Equal("CCP Bartender", returnModel[0].Name);
+            Assert.Equal(V2UniverseNamesCategory.SolarSystem, returnModel[1].Category);
+            Assert.Equal(30000142, returnModel[1].Id);
+            Assert.Equal("Jita", returnModel[1].Name);
         }
 
         [Fact]
-        public async Task GetNames_successfully_returns_a_list_of_NamesAsync()
+        public async Task Names_successfully_returns_a_list_of_NamesAsync()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -654,19 +654,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseNames> response = await internalLatestUniverse.GetNamesAsync(new List<int>());
+            IList<V2UniverseNames> returnModel = await internalLatestUniverse.NamesAsync(new List<int>());
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(V2UniverseNamesCategory.Character, response[0].Category);
-            Assert.Equal(95465499, response[0].Id);
-            Assert.Equal("CCP Bartender", response[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.SolarSystem, response[1].Category);
-            Assert.Equal(30000142, response[1].Id);
-            Assert.Equal("Jita", response[1].Name);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(V2UniverseNamesCategory.Character, returnModel[0].Category);
+            Assert.Equal(95465499, returnModel[0].Id);
+            Assert.Equal("CCP Bartender", returnModel[0].Name);
+            Assert.Equal(V2UniverseNamesCategory.SolarSystem, returnModel[1].Category);
+            Assert.Equal(30000142, returnModel[1].Id);
+            Assert.Equal("Jita", returnModel[1].Name);
         }
 
         [Fact]
-        public void GetPlanet_successfully_returns_a_planet()
+        public void Planet_successfully_returns_a_planet()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -676,20 +676,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniversePlanet response = internalLatestUniverse.GetPlanet(int.MinValue);
+            V1UniversePlanet returnModel = internalLatestUniverse.Planet(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("Akpivem III", response.Name);
-            Assert.Equal(40000046, response.PlanetId);
-            Assert.Equal(-189226344497, response.Position.X);
-            Assert.Equal(9901605317, response.Position.Y);
-            Assert.Equal(-254852632979, response.Position.Z);
-            Assert.Equal(30000003, response.SystemId);
-            Assert.Equal(13, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("Akpivem III", returnModel.Name);
+            Assert.Equal(40000046, returnModel.PlanetId);
+            Assert.Equal(-189226344497, returnModel.Position.X);
+            Assert.Equal(9901605317, returnModel.Position.Y);
+            Assert.Equal(-254852632979, returnModel.Position.Z);
+            Assert.Equal(30000003, returnModel.SystemId);
+            Assert.Equal(13, returnModel.TypeId);
         }
 
         [Fact]
-        public async Task GetPlanetAsync_successfully_returns_a_planet()
+        public async Task PlanetAsync_successfully_returns_a_planet()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -699,20 +699,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniversePlanet response = await internalLatestUniverse.GetPlanetAsync(int.MinValue);
+            V1UniversePlanet returnModel = await internalLatestUniverse.PlanetAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("Akpivem III", response.Name);
-            Assert.Equal(40000046, response.PlanetId);
-            Assert.Equal(-189226344497, response.Position.X);
-            Assert.Equal(9901605317, response.Position.Y);
-            Assert.Equal(-254852632979, response.Position.Z);
-            Assert.Equal(30000003, response.SystemId);
-            Assert.Equal(13, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("Akpivem III", returnModel.Name);
+            Assert.Equal(40000046, returnModel.PlanetId);
+            Assert.Equal(-189226344497, returnModel.Position.X);
+            Assert.Equal(9901605317, returnModel.Position.Y);
+            Assert.Equal(-254852632979, returnModel.Position.Z);
+            Assert.Equal(30000003, returnModel.SystemId);
+            Assert.Equal(13, returnModel.TypeId);
         }
 
         [Fact]
-        public void GetRaces_successfully_returns_a_list_of_Races()
+        public void Races_successfully_returns_a_list_of_Races()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -722,13 +722,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseRaces> response = internalLatestUniverse.GetRaces();
+            IList<V1UniverseRaces> returnModel = internalLatestUniverse.Races();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(500001, response[0].AllianceId);
-            Assert.Equal("Founded on the tenets of patriotism and hard work...", response[0].Description);
-            Assert.Equal("Caldari", response[0].Name);
-            Assert.Equal(1, response[0].RaceId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(500001, returnModel[0].AllianceId);
+            Assert.Equal("Founded on the tenets of patriotism and hard work...", returnModel[0].Description);
+            Assert.Equal("Caldari", returnModel[0].Name);
+            Assert.Equal(1, returnModel[0].RaceId);
         }
 
         [Fact]
@@ -742,17 +742,17 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseRaces> response = await internalLatestUniverse.GetRacesAsync();
+            IList<V1UniverseRaces> returnModel = await internalLatestUniverse.RacesAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(500001, response[0].AllianceId);
-            Assert.Equal("Founded on the tenets of patriotism and hard work...", response[0].Description);
-            Assert.Equal("Caldari", response[0].Name);
-            Assert.Equal(1, response[0].RaceId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(500001, returnModel[0].AllianceId);
+            Assert.Equal("Founded on the tenets of patriotism and hard work...", returnModel[0].Description);
+            Assert.Equal("Caldari", returnModel[0].Name);
+            Assert.Equal(1, returnModel[0].RaceId);
         }
 
         [Fact]
-        public void GetRegions_successfully_returns_a_list_of_ints()
+        public void Regions_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -762,15 +762,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = internalLatestUniverse.GetRegions();
+            IList<int> returnModel = internalLatestUniverse.Regions();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(11000001, response[0]);
-            Assert.Equal(11000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(11000001, returnModel[0]);
+            Assert.Equal(11000002, returnModel[1]);
         }
 
         [Fact]
-        public async Task GetRegionsAsync_successfully_returns_a_list_of_ints()
+        public async Task RegionsAsync_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -780,15 +780,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = await internalLatestUniverse.GetRegionsAsync();
+            IList<int> returnModel = await internalLatestUniverse.RegionsAsync();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(11000001, response[0]);
-            Assert.Equal(11000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(11000001, returnModel[0]);
+            Assert.Equal(11000002, returnModel[1]);
         }
 
         [Fact]
-        public void GetRegion_successfully_returns_a_region()
+        public void Region_successfully_returns_a_region()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -798,19 +798,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseRegion response = internalLatestUniverse.GetRegion(int.MinValue);
+            V1UniverseRegion returnModel = internalLatestUniverse.Region(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(2, response.Constellations.Count);
-            Assert.Equal(20000302, response.Constellations[0]);
-            Assert.Equal(20000303, response.Constellations[1]);
-            Assert.Equal("It has long been an established fact of civilization...", response.Description);
-            Assert.Equal("Metropolis", response.Name);
-            Assert.Equal(10000042, response.RegionId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(2, returnModel.Constellations.Count);
+            Assert.Equal(20000302, returnModel.Constellations[0]);
+            Assert.Equal(20000303, returnModel.Constellations[1]);
+            Assert.Equal("It has long been an established fact of civilization...", returnModel.Description);
+            Assert.Equal("Metropolis", returnModel.Name);
+            Assert.Equal(10000042, returnModel.RegionId);
         }
 
         [Fact]
-        public async Task GetRegionAsync_successfully_returns_a_region()
+        public async Task RegionAsync_successfully_returns_a_region()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -820,19 +820,19 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseRegion response = await internalLatestUniverse.GetRegionAsync(int.MinValue);
+            V1UniverseRegion returnModel = await internalLatestUniverse.RegionAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(2, response.Constellations.Count);
-            Assert.Equal(20000302, response.Constellations[0]);
-            Assert.Equal(20000303, response.Constellations[1]);
-            Assert.Equal("It has long been an established fact of civilization...", response.Description);
-            Assert.Equal("Metropolis", response.Name);
-            Assert.Equal(10000042, response.RegionId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(2, returnModel.Constellations.Count);
+            Assert.Equal(20000302, returnModel.Constellations[0]);
+            Assert.Equal(20000303, returnModel.Constellations[1]);
+            Assert.Equal("It has long been an established fact of civilization...", returnModel.Description);
+            Assert.Equal("Metropolis", returnModel.Name);
+            Assert.Equal(10000042, returnModel.RegionId);
         }
 
         [Fact]
-        public void GetStargate_successfully_returns_a_stargate()
+        public void Stargate_successfully_returns_a_stargate()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -842,22 +842,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseStargate response = internalLatestUniverse.GetStargate(int.MinValue);
+            V1UniverseStargate returnModel = internalLatestUniverse.Stargate(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(50000056, response.Destination.StargateId);
-            Assert.Equal(30000001, response.Destination.SystemId);
-            Assert.Equal("Stargate (Tanoo)", response.Name);
-            Assert.Equal(-101092761600, response.Position.X);
-            Assert.Equal(5279539200, response.Position.Y);
-            Assert.Equal(1550503403520, response.Position.Z);
-            Assert.Equal(50000342, response.StargateId);
-            Assert.Equal(30000003, response.SystemId);
-            Assert.Equal(29624, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(50000056, returnModel.Destination.StargateId);
+            Assert.Equal(30000001, returnModel.Destination.SystemId);
+            Assert.Equal("Stargate (Tanoo)", returnModel.Name);
+            Assert.Equal(-101092761600, returnModel.Position.X);
+            Assert.Equal(5279539200, returnModel.Position.Y);
+            Assert.Equal(1550503403520, returnModel.Position.Z);
+            Assert.Equal(50000342, returnModel.StargateId);
+            Assert.Equal(30000003, returnModel.SystemId);
+            Assert.Equal(29624, returnModel.TypeId);
         }
 
         [Fact]
-        public async Task GetStargateAsync_successfully_returns_a_stargate()
+        public async Task StargateAsync_successfully_returns_a_stargate()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -867,22 +867,22 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseStargate response = await internalLatestUniverse.GetStargateAsync(int.MinValue);
+            V1UniverseStargate returnModel = await internalLatestUniverse.StargateAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(50000056, response.Destination.StargateId);
-            Assert.Equal(30000001, response.Destination.SystemId);
-            Assert.Equal("Stargate (Tanoo)", response.Name);
-            Assert.Equal(-101092761600, response.Position.X);
-            Assert.Equal(5279539200, response.Position.Y);
-            Assert.Equal(1550503403520, response.Position.Z);
-            Assert.Equal(50000342, response.StargateId);
-            Assert.Equal(30000003, response.SystemId);
-            Assert.Equal(29624, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(50000056, returnModel.Destination.StargateId);
+            Assert.Equal(30000001, returnModel.Destination.SystemId);
+            Assert.Equal("Stargate (Tanoo)", returnModel.Name);
+            Assert.Equal(-101092761600, returnModel.Position.X);
+            Assert.Equal(5279539200, returnModel.Position.Y);
+            Assert.Equal(1550503403520, returnModel.Position.Z);
+            Assert.Equal(50000342, returnModel.StargateId);
+            Assert.Equal(30000003, returnModel.SystemId);
+            Assert.Equal(29624, returnModel.TypeId);
         }
 
         [Fact]
-        public void GetStar_successfully_returns_a_star()
+        public void Star_successfully_returns_a_star()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -892,21 +892,21 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseStar response = internalLatestUniverse.GetStar(int.MinValue);
+            V1UniverseStar returnModel = internalLatestUniverse.Star(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(9398686722, response.Age);
-            Assert.Equal(0.0661500022f, response.Luminosity);
-            Assert.Equal("BKG-Q2 - Star", response.Name);
-            Assert.Equal(346600000, response.Radius);
-            Assert.Equal(30004333, response.SolarSystemId);
-            Assert.Equal(V1UniverseStarSpectralClass.K2V, response.SpectralClass);
-            Assert.Equal(3953, response.Temperature);
-            Assert.Equal(45033, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(9398686722, returnModel.Age);
+            Assert.Equal(0.0661500022f, returnModel.Luminosity);
+            Assert.Equal("BKG-Q2 - Star", returnModel.Name);
+            Assert.Equal(346600000, returnModel.Radius);
+            Assert.Equal(30004333, returnModel.SolarSystemId);
+            Assert.Equal(V1UniverseStarSpectralClass.K2V, returnModel.SpectralClass);
+            Assert.Equal(3953, returnModel.Temperature);
+            Assert.Equal(45033, returnModel.TypeId);
         }
 
         [Fact]
-        public async Task GetStarAsync_successfully_returns_a_star()
+        public async Task StarAsync_successfully_returns_a_star()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -916,21 +916,21 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V1UniverseStar response = await internalLatestUniverse.GetStarAsync(int.MinValue);
+            V1UniverseStar returnModel = await internalLatestUniverse.StarAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(9398686722, response.Age);
-            Assert.Equal(0.0661500022f, response.Luminosity);
-            Assert.Equal("BKG-Q2 - Star", response.Name);
-            Assert.Equal(346600000, response.Radius);
-            Assert.Equal(30004333, response.SolarSystemId);
-            Assert.Equal(V1UniverseStarSpectralClass.K2V, response.SpectralClass);
-            Assert.Equal(3953, response.Temperature);
-            Assert.Equal(45033, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(9398686722, returnModel.Age);
+            Assert.Equal(0.0661500022f, returnModel.Luminosity);
+            Assert.Equal("BKG-Q2 - Star", returnModel.Name);
+            Assert.Equal(346600000, returnModel.Radius);
+            Assert.Equal(30004333, returnModel.SolarSystemId);
+            Assert.Equal(V1UniverseStarSpectralClass.K2V, returnModel.SpectralClass);
+            Assert.Equal(3953, returnModel.Temperature);
+            Assert.Equal(45033, returnModel.TypeId);
         }
 
         [Fact]
-        public void GetStation_successfully_returns_a_station()
+        public void Station_successfully_returns_a_station()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -940,39 +940,39 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V2UniverseStation response = internalLatestUniverse.GetStation(int.MinValue);
+            V2UniverseStation returnModel = internalLatestUniverse.Station(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(50000000, response.MaxDockableShipVolume);
-            Assert.Equal("Jakanerva III - Moon 15 - Prompt Delivery Storage", response.Name);
-            Assert.Equal(10000, response.OfficeRentalCost);
-            Assert.Equal(1000003, response.Owner);
-            Assert.Equal(165632286720, response.Position.X);
-            Assert.Equal(2771804160, response.Position.Y);
-            Assert.Equal(-2455331266560, response.Position.Z);
-            Assert.Equal(1, response.RaceId);
-            Assert.Equal(0.5f, response.ReprocessingEfficiency);
-            Assert.Equal(0.05f, response.ReprocessingStationsTake);
-            Assert.Equal(12, response.Services.Count);
-            Assert.Contains(V2UniverseStationServices.CourierMissions, response.Services);
-            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, response.Services);
-            Assert.Contains(V2UniverseStationServices.Market, response.Services);
-            Assert.Contains(V2UniverseStationServices.RepairFacilities, response.Services);
-            Assert.Contains(V2UniverseStationServices.Fitting, response.Services);
-            Assert.Contains(V2UniverseStationServices.News, response.Services);
-            Assert.Contains(V2UniverseStationServices.Storage, response.Services);
-            Assert.Contains(V2UniverseStationServices.Insurance, response.Services);
-            Assert.Contains(V2UniverseStationServices.Docking, response.Services);
-            Assert.Contains(V2UniverseStationServices.OfficeRental, response.Services);
-            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, response.Services);
-            Assert.Contains(V2UniverseStationServices.NavyOffices, response.Services);
-            Assert.Equal(60000277, response.StationId);
-            Assert.Equal(30000148, response.SystemId);
-            Assert.Equal(1531, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(50000000, returnModel.MaxDockableShipVolume);
+            Assert.Equal("Jakanerva III - Moon 15 - Prompt Delivery Storage", returnModel.Name);
+            Assert.Equal(10000, returnModel.OfficeRentalCost);
+            Assert.Equal(1000003, returnModel.Owner);
+            Assert.Equal(165632286720, returnModel.Position.X);
+            Assert.Equal(2771804160, returnModel.Position.Y);
+            Assert.Equal(-2455331266560, returnModel.Position.Z);
+            Assert.Equal(1, returnModel.RaceId);
+            Assert.Equal(0.5f, returnModel.ReprocessingEfficiency);
+            Assert.Equal(0.05f, returnModel.ReprocessingStationsTake);
+            Assert.Equal(12, returnModel.Services.Count);
+            Assert.Contains(V2UniverseStationServices.CourierMissions, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Market, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.RepairFacilities, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Fitting, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.News, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Storage, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Insurance, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Docking, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.OfficeRental, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.NavyOffices, returnModel.Services);
+            Assert.Equal(60000277, returnModel.StationId);
+            Assert.Equal(30000148, returnModel.SystemId);
+            Assert.Equal(1531, returnModel.TypeId);
         }
 
         [Fact]
-        public async Task GetStationAsync_successfully_returns_a_station()
+        public async Task StationAsync_successfully_returns_a_station()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -982,39 +982,39 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V2UniverseStation response = await internalLatestUniverse.GetStationAsync(int.MinValue);
+            V2UniverseStation returnModel = await internalLatestUniverse.StationAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(50000000, response.MaxDockableShipVolume);
-            Assert.Equal("Jakanerva III - Moon 15 - Prompt Delivery Storage", response.Name);
-            Assert.Equal(10000, response.OfficeRentalCost);
-            Assert.Equal(1000003, response.Owner);
-            Assert.Equal(165632286720, response.Position.X);
-            Assert.Equal(2771804160, response.Position.Y);
-            Assert.Equal(-2455331266560, response.Position.Z);
-            Assert.Equal(1, response.RaceId);
-            Assert.Equal(0.5f, response.ReprocessingEfficiency);
-            Assert.Equal(0.05f, response.ReprocessingStationsTake);
-            Assert.Equal(12, response.Services.Count);
-            Assert.Contains(V2UniverseStationServices.CourierMissions, response.Services);
-            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, response.Services);
-            Assert.Contains(V2UniverseStationServices.Market, response.Services);
-            Assert.Contains(V2UniverseStationServices.RepairFacilities, response.Services);
-            Assert.Contains(V2UniverseStationServices.Fitting, response.Services);
-            Assert.Contains(V2UniverseStationServices.News, response.Services);
-            Assert.Contains(V2UniverseStationServices.Storage, response.Services);
-            Assert.Contains(V2UniverseStationServices.Insurance, response.Services);
-            Assert.Contains(V2UniverseStationServices.Docking, response.Services);
-            Assert.Contains(V2UniverseStationServices.OfficeRental, response.Services);
-            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, response.Services);
-            Assert.Contains(V2UniverseStationServices.NavyOffices, response.Services);
-            Assert.Equal(60000277, response.StationId);
-            Assert.Equal(30000148, response.SystemId);
-            Assert.Equal(1531, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(50000000, returnModel.MaxDockableShipVolume);
+            Assert.Equal("Jakanerva III - Moon 15 - Prompt Delivery Storage", returnModel.Name);
+            Assert.Equal(10000, returnModel.OfficeRentalCost);
+            Assert.Equal(1000003, returnModel.Owner);
+            Assert.Equal(165632286720, returnModel.Position.X);
+            Assert.Equal(2771804160, returnModel.Position.Y);
+            Assert.Equal(-2455331266560, returnModel.Position.Z);
+            Assert.Equal(1, returnModel.RaceId);
+            Assert.Equal(0.5f, returnModel.ReprocessingEfficiency);
+            Assert.Equal(0.05f, returnModel.ReprocessingStationsTake);
+            Assert.Equal(12, returnModel.Services.Count);
+            Assert.Contains(V2UniverseStationServices.CourierMissions, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.ReprocessingPlant, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Market, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.RepairFacilities, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Fitting, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.News, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Storage, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Insurance, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.Docking, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.OfficeRental, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.LoyaltyPointStore, returnModel.Services);
+            Assert.Contains(V2UniverseStationServices.NavyOffices, returnModel.Services);
+            Assert.Equal(60000277, returnModel.StationId);
+            Assert.Equal(30000148, returnModel.SystemId);
+            Assert.Equal(1531, returnModel.TypeId);
         }
 
         [Fact]
-        public void GetStructures_successfully_returns_a_list_of_longs()
+        public void Structures_successfully_returns_a_list_of_longs()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1024,15 +1024,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<long> response = internalLatestUniverse.GetStructures();
+            IList<long> returnModel = internalLatestUniverse.Structures();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(1020988381992, response[0]);
-            Assert.Equal(1020988381991, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(1020988381992, returnModel[0]);
+            Assert.Equal(1020988381991, returnModel[1]);
         }
 
         [Fact]
-        public async Task GetStructuresAsync_successfully_returns_a_list_of_longs()
+        public async Task StructuresAsync_successfully_returns_a_list_of_longs()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1042,15 +1042,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<long> response = await internalLatestUniverse.GetStructuresAsync();
+            IList<long> returnModel = await internalLatestUniverse.StructuresAsync();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(1020988381992, response[0]);
-            Assert.Equal(1020988381991, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(1020988381992, returnModel[0]);
+            Assert.Equal(1020988381991, returnModel[1]);
         }
 
         [Fact]
-        public void GetStructure_successfully_returns_a_structure()
+        public void Structure_successfully_returns_a_structure()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1063,15 +1063,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V2UniverseStructure response = internalLatestUniverse.GetStructure(inputToken, int.MinValue);
+            V2UniverseStructure returnModel = internalLatestUniverse.Structure(inputToken, int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("V-3YG7 VI - The Capital", response.Name);
-            Assert.Equal(30000142, response.SolarSystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("V-3YG7 VI - The Capital", returnModel.Name);
+            Assert.Equal(30000142, returnModel.SolarSystemId);
         }
 
         [Fact]
-        public async Task GetStructureAsync_successfully_returns_a_structure()
+        public async Task StructureAsync_successfully_returns_a_structure()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1084,15 +1084,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V2UniverseStructure response = await internalLatestUniverse.GetStructureAsync(inputToken, int.MinValue);
+            V2UniverseStructure returnModel = await internalLatestUniverse.StructureAsync(inputToken, int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("V-3YG7 VI - The Capital", response.Name);
-            Assert.Equal(30000142, response.SolarSystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("V-3YG7 VI - The Capital", returnModel.Name);
+            Assert.Equal(30000142, returnModel.SolarSystemId);
         }
 
         [Fact]
-        public void GetSystemJumps_successfully_returns_a_list_of_SystemJumps()
+        public void SystemJumps_successfully_returns_a_list_of_SystemJumps()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1102,15 +1102,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseSystemJumps> response = internalLatestUniverse.GetSystemJumps();
+            IList<V1UniverseSystemJumps> returnModel = internalLatestUniverse.SystemJumps();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(42, response[0].ShipJumps);
-            Assert.Equal(30002410, response[0].SystemId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(42, returnModel[0].ShipJumps);
+            Assert.Equal(30002410, returnModel[0].SystemId);
         }
 
         [Fact]
-        public async Task GetSystemJumpsAsync_successfully_returns_a_list_of_SystemJumps()
+        public async Task SystemJumpsAsync_successfully_returns_a_list_of_SystemJumps()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1120,15 +1120,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V1UniverseSystemJumps> response = await internalLatestUniverse.GetSystemJumpsAsync();
+            IList<V1UniverseSystemJumps> returnModel = await internalLatestUniverse.SystemJumpsAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(42, response[0].ShipJumps);
-            Assert.Equal(30002410, response[0].SystemId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(42, returnModel[0].ShipJumps);
+            Assert.Equal(30002410, returnModel[0].SystemId);
         }
 
         [Fact]
-        public void GetSystemKills_successfully_returns_a_list_of_SystemKills()
+        public void SystemKills_successfully_returns_a_list_of_SystemKills()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1138,17 +1138,17 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseSystemKills> response = internalLatestUniverse.GetSystemKills();
+            IList<V2UniverseSystemKills> returnModel = internalLatestUniverse.SystemKills();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(0, response[0].NpcKills);
-            Assert.Equal(24, response[0].PodKills);
-            Assert.Equal(42, response[0].ShipKills);
-            Assert.Equal(30002410, response[0].SystemId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(0, returnModel[0].NpcKills);
+            Assert.Equal(24, returnModel[0].PodKills);
+            Assert.Equal(42, returnModel[0].ShipKills);
+            Assert.Equal(30002410, returnModel[0].SystemId);
         }
 
         [Fact]
-        public async Task GetSystemKillsAsync_successfully_returns_a_list_of_SystemKills()
+        public async Task SystemKillsAsync_successfully_returns_a_list_of_SystemKills()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1158,17 +1158,17 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseSystemKills> response = await internalLatestUniverse.GetSystemKillsAsync();
+            IList<V2UniverseSystemKills> returnModel = await internalLatestUniverse.SystemKillsAsync();
 
-            Assert.Equal(1, response.Count);
-            Assert.Equal(0, response[0].NpcKills);
-            Assert.Equal(24, response[0].PodKills);
-            Assert.Equal(42, response[0].ShipKills);
-            Assert.Equal(30002410, response[0].SystemId);
+            Assert.Equal(1, returnModel.Count);
+            Assert.Equal(0, returnModel[0].NpcKills);
+            Assert.Equal(24, returnModel[0].PodKills);
+            Assert.Equal(42, returnModel[0].ShipKills);
+            Assert.Equal(30002410, returnModel[0].SystemId);
         }
 
         [Fact]
-        public void GetSystems_successfully_returns_a_list_of_ints()
+        public void Systems_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1178,15 +1178,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = internalLatestUniverse.GetSystems();
+            IList<int> returnModel = internalLatestUniverse.Systems();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(30000001, response[0]);
-            Assert.Equal(30000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(30000001, returnModel[0]);
+            Assert.Equal(30000002, returnModel[1]);
         }
 
         [Fact]
-        public async Task GetSystemsAsync_successfully_returns_a_list_of_ints()
+        public async Task SystemsAsync_successfully_returns_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1196,15 +1196,15 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<int> response = await internalLatestUniverse.GetSystemsAsync();
+            IList<int> returnModel = await internalLatestUniverse.SystemsAsync();
 
-            Assert.Equal(2, response.Count);
-            Assert.Equal(30000001, response[0]);
-            Assert.Equal(30000002, response[1]);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(30000001, returnModel[0]);
+            Assert.Equal(30000002, returnModel[1]);
         }
 
         [Fact]
-        public void GetSystem_successfully_returns_a_system()
+        public void System_successfully_returns_a_system()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1214,29 +1214,29 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V4UniverseSystem response = internalLatestUniverse.GetSystem(int.MinValue);
+            V4UniverseSystem returnModel = internalLatestUniverse.System(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(20000001, response.ConstellationId);
-            Assert.Equal("Akpivem", response.Name);
-            Assert.Equal(2, response.Planets.Count);
-            Assert.Equal(1, response.Planets[0].Moons.Count);
-            Assert.Equal(40000042, response.Planets[0].Moons[0]);
-            Assert.Equal(40000041, response.Planets[0].PlanetId);
-            Assert.Equal(40000043, response.Planets[1].PlanetId);
-            Assert.Equal(-91174141133075340, response.Position.X);
-            Assert.Equal(43938227486247170, response.Position.Y);
-            Assert.Equal(-56482824383339900, response.Position.Z);
-            Assert.Equal("B", response.SecurityClass);
-            Assert.Equal(0.8462923765f, response.SecurityStatus);
-            Assert.Equal(40000040, response.StarId);
-            Assert.Equal(1, response.Stargates.Count);
-            Assert.Equal(50000342, response.Stargates[0]);
-            Assert.Equal(30000003, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(20000001, returnModel.ConstellationId);
+            Assert.Equal("Akpivem", returnModel.Name);
+            Assert.Equal(2, returnModel.Planets.Count);
+            Assert.Equal(1, returnModel.Planets[0].Moons.Count);
+            Assert.Equal(40000042, returnModel.Planets[0].Moons[0]);
+            Assert.Equal(40000041, returnModel.Planets[0].PlanetId);
+            Assert.Equal(40000043, returnModel.Planets[1].PlanetId);
+            Assert.Equal(-91174141133075340, returnModel.Position.X);
+            Assert.Equal(43938227486247170, returnModel.Position.Y);
+            Assert.Equal(-56482824383339900, returnModel.Position.Z);
+            Assert.Equal("B", returnModel.SecurityClass);
+            Assert.Equal(0.8462923765f, returnModel.SecurityStatus);
+            Assert.Equal(40000040, returnModel.StarId);
+            Assert.Equal(1, returnModel.Stargates.Count);
+            Assert.Equal(50000342, returnModel.Stargates[0]);
+            Assert.Equal(30000003, returnModel.SystemId);
         }
 
         [Fact]
-        public async Task GetSystemAsync_successfully_returns_a_system()
+        public async Task SystemAsync_successfully_returns_a_system()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1246,29 +1246,29 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V4UniverseSystem response = await internalLatestUniverse.GetSystemAsync(int.MinValue);
+            V4UniverseSystem returnModel = await internalLatestUniverse.SystemAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal(20000001, response.ConstellationId);
-            Assert.Equal("Akpivem", response.Name);
-            Assert.Equal(2, response.Planets.Count);
-            Assert.Equal(1, response.Planets[0].Moons.Count);
-            Assert.Equal(40000042, response.Planets[0].Moons[0]);
-            Assert.Equal(40000041, response.Planets[0].PlanetId);
-            Assert.Equal(40000043, response.Planets[1].PlanetId);
-            Assert.Equal(-91174141133075340, response.Position.X);
-            Assert.Equal(43938227486247170, response.Position.Y);
-            Assert.Equal(-56482824383339900, response.Position.Z);
-            Assert.Equal("B", response.SecurityClass);
-            Assert.Equal(0.8462923765f, response.SecurityStatus);
-            Assert.Equal(40000040, response.StarId);
-            Assert.Equal(1, response.Stargates.Count);
-            Assert.Equal(50000342, response.Stargates[0]);
-            Assert.Equal(30000003, response.SystemId);
+            Assert.NotNull(returnModel);
+            Assert.Equal(20000001, returnModel.ConstellationId);
+            Assert.Equal("Akpivem", returnModel.Name);
+            Assert.Equal(2, returnModel.Planets.Count);
+            Assert.Equal(1, returnModel.Planets[0].Moons.Count);
+            Assert.Equal(40000042, returnModel.Planets[0].Moons[0]);
+            Assert.Equal(40000041, returnModel.Planets[0].PlanetId);
+            Assert.Equal(40000043, returnModel.Planets[1].PlanetId);
+            Assert.Equal(-91174141133075340, returnModel.Position.X);
+            Assert.Equal(43938227486247170, returnModel.Position.Y);
+            Assert.Equal(-56482824383339900, returnModel.Position.Z);
+            Assert.Equal("B", returnModel.SecurityClass);
+            Assert.Equal(0.8462923765f, returnModel.SecurityStatus);
+            Assert.Equal(40000040, returnModel.StarId);
+            Assert.Equal(1, returnModel.Stargates.Count);
+            Assert.Equal(50000342, returnModel.Stargates[0]);
+            Assert.Equal(30000003, returnModel.SystemId);
         }
 
         [Fact]
-        public void GetTypes_successfully_returns_a_PagedModel_of_ints()
+        public void Types_successfully_returns_a_PagedModel_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1278,18 +1278,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            PagedModel<int> response = internalLatestUniverse.GetTypes(1);
+            PagedModel<int> returnModel = internalLatestUniverse.Types(1);
 
-            Assert.Equal(2, response.MaxPages);
-            Assert.Equal(1, response.CurrentPage);
-            Assert.Equal(3, response.Model.Count);
-            Assert.Equal(1, response.Model[0]);
-            Assert.Equal(2, response.Model[1]);
-            Assert.Equal(3, response.Model[2]);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(3, returnModel.Model.Count);
+            Assert.Equal(1, returnModel.Model[0]);
+            Assert.Equal(2, returnModel.Model[1]);
+            Assert.Equal(3, returnModel.Model[2]);
         }
 
         [Fact]
-        public async Task GetTypesAsync_successfully_returns_a_PagedModel_of_ints()
+        public async Task TypesAsync_successfully_returns_a_PagedModel_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1299,18 +1299,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            PagedModel<int> response = await internalLatestUniverse.GetTypesAsync(1);
+            PagedModel<int> returnModel = await internalLatestUniverse.TypesAsync(1);
 
-            Assert.Equal(2, response.MaxPages);
-            Assert.Equal(1, response.CurrentPage);
-            Assert.Equal(3, response.Model.Count);
-            Assert.Equal(1, response.Model[0]);
-            Assert.Equal(2, response.Model[1]);
-            Assert.Equal(3, response.Model[2]);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(3, returnModel.Model.Count);
+            Assert.Equal(1, returnModel.Model[0]);
+            Assert.Equal(2, returnModel.Model[1]);
+            Assert.Equal(3, returnModel.Model[2]);
         }
 
         [Fact]
-        public void GetType_successfully_returns_a_item_type()
+        public void Type_successfully_returns_a_item_type()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1320,18 +1320,18 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V3UniverseType response = internalLatestUniverse.GetType(int.MinValue);
+            V3UniverseType returnModel = internalLatestUniverse.Type(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("The Rifter is a...", response.Description);
-            Assert.Equal(25, response.GroupId);
-            Assert.Equal("Rifter", response.Name);
-            Assert.True(response.Published);
-            Assert.Equal(587, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("The Rifter is a...", returnModel.Description);
+            Assert.Equal(25, returnModel.GroupId);
+            Assert.Equal("Rifter", returnModel.Name);
+            Assert.True(returnModel.Published);
+            Assert.Equal(587, returnModel.TypeId);
         }
 
         [Fact]
-        public async Task GetType_successfully_returns_a_item_typeAsync()
+        public async Task Type_successfully_returns_a_item_typeAsync()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1341,14 +1341,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            V3UniverseType response = await internalLatestUniverse.GetTypeAsync(int.MinValue);
+            V3UniverseType returnModel = await internalLatestUniverse.TypeAsync(int.MinValue);
 
-            Assert.NotNull(response);
-            Assert.Equal("The Rifter is a...", response.Description);
-            Assert.Equal(25, response.GroupId);
-            Assert.Equal("Rifter", response.Name);
-            Assert.True(response.Published);
-            Assert.Equal(587, response.TypeId);
+            Assert.NotNull(returnModel);
+            Assert.Equal("The Rifter is a...", returnModel.Description);
+            Assert.Equal(25, returnModel.GroupId);
+            Assert.Equal("Rifter", returnModel.Name);
+            Assert.True(returnModel.Published);
+            Assert.Equal(587, returnModel.TypeId);
         }
     }
 }

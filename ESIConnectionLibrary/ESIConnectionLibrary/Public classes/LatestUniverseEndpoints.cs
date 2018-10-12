@@ -15,324 +15,324 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestUniverse = new InternalLatestUniverse(null, userAgent, testing);
         }
 
-        public IList<V1UniverseAncestries> GetAncestries()
+        public IList<V1UniverseAncestries> Ancestries()
         {
-            return _internalLatestUniverse.GetAncestries();
+            return _internalLatestUniverse.Ancestries();
         }
 
-        public async Task<IList<V1UniverseAncestries>> GetAncestriesAsync()
+        public async Task<IList<V1UniverseAncestries>> AncestriesAsync()
         {
-            return await _internalLatestUniverse.GetAncestriesAsync();
+            return await _internalLatestUniverse.AncestriesAsync();
         }
 
-        public V1UniverseAsteroidBelt GetAsteroidBelt(int asteroidBelId)
+        public V1UniverseAsteroidBelt AsteroidBelt(int asteroidBelId)
         {
-            return _internalLatestUniverse.GetAsteroidBelt(asteroidBelId);
+            return _internalLatestUniverse.AsteroidBelt(asteroidBelId);
         }
 
-        public async Task<V1UniverseAsteroidBelt> GetAsteroidBeltAsync(int asteroidBelId)
+        public async Task<V1UniverseAsteroidBelt> AsteroidBeltAsync(int asteroidBelId)
         {
-            return await _internalLatestUniverse.GetAsteroidBeltAsync(asteroidBelId);
+            return await _internalLatestUniverse.AsteroidBeltAsync(asteroidBelId);
         }
 
-        public IList<V1UniverseBloodlines> GetBloodlines()
+        public IList<V1UniverseBloodlines> Bloodlines()
         {
-            return _internalLatestUniverse.GetBloodlines();
+            return _internalLatestUniverse.Bloodlines();
         }
 
-        public async Task<IList<V1UniverseBloodlines>> GetBloodlinesAsync()
+        public async Task<IList<V1UniverseBloodlines>> BloodlinesAsync()
         {
-            return await _internalLatestUniverse.GetBloodlinesAsync();
+            return await _internalLatestUniverse.BloodlinesAsync();
         }
 
-        public IList<int> GetCategories()
+        public IList<int> Categories()
         {
-            return _internalLatestUniverse.GetCategories();
+            return _internalLatestUniverse.Categories();
         }
 
-        public async Task<IList<int>> GetCategoriesAsync()
+        public async Task<IList<int>> CategoriesAsync()
         {
-            return await _internalLatestUniverse.GetCategoriesAsync();
+            return await _internalLatestUniverse.CategoriesAsync();
         }
 
-        public V1UniverseCategory GetCategory(int categoryId)
+        public V1UniverseCategory Category(int categoryId)
         {
-            return _internalLatestUniverse.GetCategory(categoryId);
+            return _internalLatestUniverse.Category(categoryId);
         }
 
-        public async Task<V1UniverseCategory> GetCategoryAsync(int categoryId)
+        public async Task<V1UniverseCategory> CategoryAsync(int categoryId)
         {
-            return await _internalLatestUniverse.GetCategoryAsync(categoryId);
+            return await _internalLatestUniverse.CategoryAsync(categoryId);
         }
 
-        public IList<int> GetConstellations()
+        public IList<int> Constellations()
         {
-            return _internalLatestUniverse.GetConstellations();
+            return _internalLatestUniverse.Constellations();
         }
 
-        public async Task<IList<int>> GetConstellationsAsync()
+        public async Task<IList<int>> ConstellationsAsync()
         {
-            return await _internalLatestUniverse.GetConstellationsAsync();
+            return await _internalLatestUniverse.ConstellationsAsync();
         }
 
-        public V1UniverseConstellation GetConstellation(int constellationId)
+        public V1UniverseConstellation Constellation(int constellationId)
         {
-            return _internalLatestUniverse.GetConstellation(constellationId);
+            return _internalLatestUniverse.Constellation(constellationId);
         }
 
-        public async Task<V1UniverseConstellation> GetConstellationAsync(int constellationId)
+        public async Task<V1UniverseConstellation> ConstellationAsync(int constellationId)
         {
-            return await _internalLatestUniverse.GetConstellationAsync(constellationId);
+            return await _internalLatestUniverse.ConstellationAsync(constellationId);
         }
 
-        public IList<V2UniverseFactions> GetFactions()
+        public IList<V2UniverseFactions> Factions()
         {
-            return _internalLatestUniverse.GetFactions();
+            return _internalLatestUniverse.Factions();
         }
 
-        public async Task<IList<V2UniverseFactions>> GetFactionsAsync()
+        public async Task<IList<V2UniverseFactions>> FactionsAsync()
         {
-            return await _internalLatestUniverse.GetFactionsAsync();
+            return await _internalLatestUniverse.FactionsAsync();
         }
 
-        public IList<int> GetGraphics()
+        public IList<int> Graphics()
         {
-            return _internalLatestUniverse.GetGraphics();
+            return _internalLatestUniverse.Graphics();
         }
 
-        public async Task<IList<int>> GetGraphicsAsync()
+        public async Task<IList<int>> GraphicsAsync()
         {
-            return await _internalLatestUniverse.GetGraphicsAsync();
+            return await _internalLatestUniverse.GraphicsAsync();
         }
 
-        public V1UniverseGraphic GetGraphic(int graphicId)
+        public V1UniverseGraphic Graphic(int graphicId)
         {
-            return _internalLatestUniverse.GetGraphic(graphicId);
+            return _internalLatestUniverse.Graphic(graphicId);
         }
 
-        public async Task<V1UniverseGraphic> GetGraphicAsync(int graphicId)
+        public async Task<V1UniverseGraphic> GraphicAsync(int graphicId)
         {
-            return await _internalLatestUniverse.GetGraphicAsync(graphicId);
+            return await _internalLatestUniverse.GraphicAsync(graphicId);
         }
 
-        public V1UniverseGroup GetGroup(int groupId)
+        public V1UniverseGroup Group(int groupId)
         {
-            return _internalLatestUniverse.GetGroup(groupId);
+            return _internalLatestUniverse.Group(groupId);
         }
 
-        public async Task<V1UniverseGroup> GetGroupAsync(int groupId)
+        public async Task<V1UniverseGroup> GroupAsync(int groupId)
         {
-            return await _internalLatestUniverse.GetGroupAsync(groupId);
+            return await _internalLatestUniverse.GroupAsync(groupId);
         }
 
-        public PagedModel<int> GetGroups(int page)
+        public PagedModel<int> Groups(int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestUniverse.GetGroups(page);
+            return _internalLatestUniverse.Groups(page);
         }
 
-        public async Task<PagedModel<int>> GetGroupsAsync(int page)
+        public async Task<PagedModel<int>> GroupsAsync(int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestUniverse.GetGroupsAsync(page);
+            return await _internalLatestUniverse.GroupsAsync(page);
         }
 
-        public V1UniverseNamesToIds GetIds(IList<string> names)
+        public V1UniverseNamesToIds Ids(IList<string> names)
         {
-            return _internalLatestUniverse.GetIds(names);
+            return _internalLatestUniverse.Ids(names);
         }
 
-        public async Task<V1UniverseNamesToIds> GetIdsAsync(IList<string> names)
+        public async Task<V1UniverseNamesToIds> IdsAsync(IList<string> names)
         {
-            return await _internalLatestUniverse.GetIdsAsync(names);
+            return await _internalLatestUniverse.IdsAsync(names);
         }
 
-        public V1UniverseMoon GetMoon(int moonId)
+        public V1UniverseMoon Moon(int moonId)
         {
-            return _internalLatestUniverse.GetMoon(moonId);
+            return _internalLatestUniverse.Moon(moonId);
         }
 
-        public async Task<V1UniverseMoon> GetMoonAsync(int moonId)
+        public async Task<V1UniverseMoon> MoonAsync(int moonId)
         {
-            return await _internalLatestUniverse.GetMoonAsync(moonId);
+            return await _internalLatestUniverse.MoonAsync(moonId);
         }
 
-        public IList<V2UniverseNames> GetNames(IList<int> ids)
+        public IList<V2UniverseNames> Names(IList<int> ids)
         {
-            return _internalLatestUniverse.GetNames(ids);
+            return _internalLatestUniverse.Names(ids);
         }
 
-        public async Task<IList<V2UniverseNames>> GetNamesAsync(IList<int> ids)
+        public async Task<IList<V2UniverseNames>> NamesAsync(IList<int> ids)
         {
-            return await _internalLatestUniverse.GetNamesAsync(ids);
+            return await _internalLatestUniverse.NamesAsync(ids);
         }
 
-        public V1UniversePlanet GetPlanet(int planetId)
+        public V1UniversePlanet Planet(int planetId)
         {
-            return _internalLatestUniverse.GetPlanet(planetId);
+            return _internalLatestUniverse.Planet(planetId);
         }
 
-        public async Task<V1UniversePlanet> GetPlanetAsync(int planetId)
+        public async Task<V1UniversePlanet> PlanetAsync(int planetId)
         {
-            return await _internalLatestUniverse.GetPlanetAsync(planetId);
+            return await _internalLatestUniverse.PlanetAsync(planetId);
         }
 
-        public IList<V1UniverseRaces> GetRaces()
+        public IList<V1UniverseRaces> Races()
         {
-            return _internalLatestUniverse.GetRaces();
+            return _internalLatestUniverse.Races();
         }
 
-        public async Task<IList<V1UniverseRaces>> GetRacesAsync()
+        public async Task<IList<V1UniverseRaces>> RacesAsync()
         {
-            return await _internalLatestUniverse.GetRacesAsync();
+            return await _internalLatestUniverse.RacesAsync();
         }
 
-        public IList<int> GetRegions()
+        public IList<int> Regions()
         {
-            return _internalLatestUniverse.GetRegions();
+            return _internalLatestUniverse.Regions();
         }
 
-        public async Task<IList<int>> GetRegionsAsync()
+        public async Task<IList<int>> RegionsAsync()
         {
-            return await _internalLatestUniverse.GetRegionsAsync();
+            return await _internalLatestUniverse.RegionsAsync();
         }
 
-        public V1UniverseRegion GetRegion(int regionId)
+        public V1UniverseRegion Region(int regionId)
         {
-            return _internalLatestUniverse.GetRegion(regionId);
+            return _internalLatestUniverse.Region(regionId);
         }
 
-        public async Task<V1UniverseRegion> GetRegionAsync(int planetId)
+        public async Task<V1UniverseRegion> RegionAsync(int planetId)
         {
-            return await _internalLatestUniverse.GetRegionAsync(planetId);
+            return await _internalLatestUniverse.RegionAsync(planetId);
         }
 
-        public V1UniverseStargate GetStargate(int stargateId)
+        public V1UniverseStargate Stargate(int stargateId)
         {
-            return _internalLatestUniverse.GetStargate(stargateId);
+            return _internalLatestUniverse.Stargate(stargateId);
         }
 
-        public async Task<V1UniverseStargate> GetStargateAsync(int stargateId)
+        public async Task<V1UniverseStargate> StargateAsync(int stargateId)
         {
-            return await _internalLatestUniverse.GetStargateAsync(stargateId);
+            return await _internalLatestUniverse.StargateAsync(stargateId);
         }
 
-        public V1UniverseStar GetStar(int starId)
+        public V1UniverseStar Star(int starId)
         {
-            return _internalLatestUniverse.GetStar(starId);
+            return _internalLatestUniverse.Star(starId);
         }
 
-        public async Task<V1UniverseStar> GetStarAsync(int starId)
+        public async Task<V1UniverseStar> StarAsync(int starId)
         {
-            return await _internalLatestUniverse.GetStarAsync(starId);
+            return await _internalLatestUniverse.StarAsync(starId);
         }
 
-        public V2UniverseStation GetStation(int stationId)
+        public V2UniverseStation Station(int stationId)
         {
-            return _internalLatestUniverse.GetStation(stationId);
+            return _internalLatestUniverse.Station(stationId);
         }
 
-        public async Task<V2UniverseStation> GetStationAsync(int stationId)
+        public async Task<V2UniverseStation> StationAsync(int stationId)
         {
-            return await _internalLatestUniverse.GetStationAsync(stationId);
+            return await _internalLatestUniverse.StationAsync(stationId);
         }
 
-        public IList<long> GetStructures()
+        public IList<long> Structures()
         {
-            return _internalLatestUniverse.GetStructures();
+            return _internalLatestUniverse.Structures();
         }
 
-        public async Task<IList<long>> GetStructuresAsync()
+        public async Task<IList<long>> StructuresAsync()
         {
-            return await _internalLatestUniverse.GetStructuresAsync();
+            return await _internalLatestUniverse.StructuresAsync();
         }
 
-        public V2UniverseStructure GetStructure(SsoToken token, long structureId)
+        public V2UniverseStructure Structure(SsoToken token, long structureId)
         {
-            return _internalLatestUniverse.GetStructure(token, structureId);
+            return _internalLatestUniverse.Structure(token, structureId);
         }
 
-        public async Task<V2UniverseStructure> GetStructureAsync(SsoToken token, long structureId)
+        public async Task<V2UniverseStructure> StructureAsync(SsoToken token, long structureId)
         {
-            return await _internalLatestUniverse.GetStructureAsync(token, structureId);
+            return await _internalLatestUniverse.StructureAsync(token, structureId);
         }
 
-        public IList<V1UniverseSystemJumps> GetSystemJumps()
+        public IList<V1UniverseSystemJumps> SystemJumps()
         {
-            return _internalLatestUniverse.GetSystemJumps();
+            return _internalLatestUniverse.SystemJumps();
         }
 
-        public async Task<IList<V1UniverseSystemJumps>> GetSystemJumpsAsync()
+        public async Task<IList<V1UniverseSystemJumps>> SystemJumpsAsync()
         {
-            return await _internalLatestUniverse.GetSystemJumpsAsync();
+            return await _internalLatestUniverse.SystemJumpsAsync();
         }
 
-        public IList<V2UniverseSystemKills> GetSystemKills()
+        public IList<V2UniverseSystemKills> SystemKills()
         {
-            return _internalLatestUniverse.GetSystemKills();
+            return _internalLatestUniverse.SystemKills();
         }
 
-        public async Task<IList<V2UniverseSystemKills>> GetSystemKillsAsync()
+        public async Task<IList<V2UniverseSystemKills>> SystemKillsAsync()
         {
-            return await _internalLatestUniverse.GetSystemKillsAsync();
+            return await _internalLatestUniverse.SystemKillsAsync();
         }
 
-        public IList<int> GetSystems()
+        public IList<int> Systems()
         {
-            return _internalLatestUniverse.GetSystems();
+            return _internalLatestUniverse.Systems();
         }
 
-        public async Task<IList<int>> GetSystemsAsync()
+        public async Task<IList<int>> SystemsAsync()
         {
-            return await _internalLatestUniverse.GetSystemsAsync();
+            return await _internalLatestUniverse.SystemsAsync();
         }
 
-        public V4UniverseSystem GetSystem(int systemId)
+        public V4UniverseSystem System(int systemId)
         {
-            return _internalLatestUniverse.GetSystem(systemId);
+            return _internalLatestUniverse.System(systemId);
         }
 
-        public async Task<V4UniverseSystem> GetSystemAsync(int systemId)
+        public async Task<V4UniverseSystem> SystemAsync(int systemId)
         {
-            return await _internalLatestUniverse.GetSystemAsync(systemId);
+            return await _internalLatestUniverse.SystemAsync(systemId);
         }
 
-        public PagedModel<int> GetTypes(int page)
-        {
-            if (page < 1)
-            {
-                throw new ESIException("Pages below 1 is not allowed!");
-            }
-
-            return _internalLatestUniverse.GetTypes(page);
-        }
-
-        public async Task<PagedModel<int>> GetTypesAsync(int page)
+        public PagedModel<int> Types(int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestUniverse.GetTypesAsync(page);
+            return _internalLatestUniverse.Types(page);
         }
 
-        public V3UniverseType GetType(int typeId)
+        public async Task<PagedModel<int>> TypesAsync(int page)
         {
-            return _internalLatestUniverse.GetType(typeId);
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestUniverse.TypesAsync(page);
         }
 
-        public async Task<V3UniverseType> GetTypeAsync(int typeId)
+        public V3UniverseType Type(int typeId)
         {
-            return await _internalLatestUniverse.GetTypeAsync(typeId);
+            return _internalLatestUniverse.Type(typeId);
+        }
+
+        public async Task<V3UniverseType> TypeAsync(int typeId)
+        {
+            return await _internalLatestUniverse.TypeAsync(typeId);
         }
     }
 }

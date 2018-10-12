@@ -867,9 +867,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(KillmailsV1CharacterRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
-        public static string KillmailsV1Corporation(int killmailId, int page)
+        public static string KillmailsV1Corporation(int corporationId, int page)
         {
-            return UrlBuilder(KillmailsV1CorporationRaw, "{corporation_id}", killmailId.ToString()) + $"?page={page}";
+            return UrlBuilder(KillmailsV1CorporationRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string KillmailsV1Killmail(int killmailId, string killmailHash)
@@ -898,6 +898,23 @@ namespace ESIConnectionLibrary.Internal_classes
         public static string LocationV1LocationShip(int characterId)
         {
             return UrlBuilder(LocationV1LocationShipRaw, "{character_id}", characterId.ToString());
+        }
+
+        #endregion
+
+        #region Loyalty
+
+        private static string LoyaltyV1PointsRaw => "/v1/characters/{character_id}/loyalty/points/";
+        private static string LoyaltyV1OffersRaw => "/v1/loyalty/stores/{corporation_id}/offers/";
+
+        public static string LoyaltyV1Points(int characterId)
+        {
+            return UrlBuilder(LoyaltyV1PointsRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string LoyaltyV1Offers(int corporationId)
+        {
+            return UrlBuilder(LoyaltyV1OffersRaw, "{corporation_id}", corporationId.ToString());
         }
 
         #endregion

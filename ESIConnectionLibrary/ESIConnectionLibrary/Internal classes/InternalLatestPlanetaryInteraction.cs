@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public IList<V1PlanetaryInteractionCharactersPlanets> GetCharactersPlanets(SsoToken token)
+        public IList<V1PlanetaryInteractionCharactersPlanets> CharactersPlanets(SsoToken token)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
@@ -35,7 +35,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1PlanetaryInteractionCharactersPlanets>, IList<V1PlanetaryInteractionCharactersPlanets>>(esiPlanets);
         }
 
-        public async Task<IList<V1PlanetaryInteractionCharactersPlanets>> GetCharactersPlanetsAsync(SsoToken token)
+        public async Task<IList<V1PlanetaryInteractionCharactersPlanets>> CharactersPlanetsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1PlanetaryInteractionCharactersPlanets>, IList<V1PlanetaryInteractionCharactersPlanets>>(esiPlanets);
         }
 
-        public V3PlanetaryInteractionCharactersPlanet GetCharacterPlanet(SsoToken token, int planetId)
+        public V3PlanetaryInteractionCharactersPlanet CharacterPlanet(SsoToken token, int planetId)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
@@ -61,7 +61,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V3PlanetaryInteractionCharactersPlanet>(esiPlanet);
         }
 
-        public async Task<V3PlanetaryInteractionCharactersPlanet> GetCharacterPlanetAsync(SsoToken token, int planetId)
+        public async Task<V3PlanetaryInteractionCharactersPlanet> CharacterPlanetAsync(SsoToken token, int planetId)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_manage_planets_v1);
 
@@ -74,7 +74,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V3PlanetaryInteractionCharactersPlanet>(esiPlanet);
         }
 
-        public PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> GetCorporationsCustomsOffices(SsoToken token, int corporationId, int page)
+        public PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> CorporationsCustomsOffices(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_read_customs_offices_v1);
 
@@ -89,7 +89,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>> GetCorporationsCustomsOfficesAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>> CorporationsCustomsOfficesAsync(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, PlanetScopes.esi_planets_read_customs_offices_v1);
 
@@ -104,7 +104,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public V1PlanetaryInteractionSchematic GetSchematic(int schematicId)
+        public V1PlanetaryInteractionSchematic Schematic(int schematicId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId), _testing);
 
@@ -115,7 +115,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V1PlanetaryInteractionSchematic>(esiSchematic);
         }
 
-        public async Task<V1PlanetaryInteractionSchematic> GetSchematicAsync(int schematicId)
+        public async Task<V1PlanetaryInteractionSchematic> SchematicAsync(int schematicId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.PlanetaryInteractionV1Schematics(schematicId), _testing);
 

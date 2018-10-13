@@ -14,44 +14,44 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(null, userAgent, testing);
         }
 
-        public IList<V1PlanetaryInteractionCharactersPlanets> GetCharactersPlanets(SsoToken token)
+        public IList<V1PlanetaryInteractionCharactersPlanets> CharactersPlanets(SsoToken token)
         {
-            return _internalLatestPlanetaryInteraction.GetCharactersPlanets(token);
+            return _internalLatestPlanetaryInteraction.CharactersPlanets(token);
         }
 
-        public async Task<IList<V1PlanetaryInteractionCharactersPlanets>> GetCharactersPlanetsAsync(SsoToken token)
+        public async Task<IList<V1PlanetaryInteractionCharactersPlanets>> CharactersPlanetsAsync(SsoToken token)
         {
-            return await _internalLatestPlanetaryInteraction.GetCharactersPlanetsAsync(token);
+            return await _internalLatestPlanetaryInteraction.CharactersPlanetsAsync(token);
         }
 
-        public V3PlanetaryInteractionCharactersPlanet GetCharacterPlanet(SsoToken token, int planetId)
+        public V3PlanetaryInteractionCharactersPlanet CharacterPlanet(SsoToken token, int planetId)
         {
-            return _internalLatestPlanetaryInteraction.GetCharacterPlanet(token, planetId);
+            return _internalLatestPlanetaryInteraction.CharacterPlanet(token, planetId);
         }
 
-        public async Task<V3PlanetaryInteractionCharactersPlanet> GetCharacterPlanetAsync(SsoToken token, int planetId)
+        public async Task<V3PlanetaryInteractionCharactersPlanet> CharacterPlanetAsync(SsoToken token, int planetId)
         {
-            return await _internalLatestPlanetaryInteraction.GetCharacterPlanetAsync(token, planetId);
+            return await _internalLatestPlanetaryInteraction.CharacterPlanetAsync(token, planetId);
         }
 
-        public PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> GetCorporationsCustomsOffices(SsoToken token, int corporationId, int page)
+        public PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> CorporationsCustomsOffices(SsoToken token, int corporationId, int page)
         {
-            return _internalLatestPlanetaryInteraction.GetCorporationsCustomsOffices(token, corporationId, page);
+            return _internalLatestPlanetaryInteraction.CorporationsCustomsOffices(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>> GetCorporationsCustomsOfficesAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V1PlanetaryInteractionCorporationCustomsOffice>> CorporationsCustomsOfficesAsync(SsoToken token, int corporationId, int page)
         {
-            return await _internalLatestPlanetaryInteraction.GetCorporationsCustomsOfficesAsync(token, corporationId, page);
+            return await _internalLatestPlanetaryInteraction.CorporationsCustomsOfficesAsync(token, corporationId, page);
         }
 
-        public V1PlanetaryInteractionSchematic GetSchematic(int schematicId)
+        public V1PlanetaryInteractionSchematic Schematic(int schematicId)
         {
-            return _internalLatestPlanetaryInteraction.GetSchematic(schematicId);
+            return _internalLatestPlanetaryInteraction.Schematic(schematicId);
         }
 
-        public async Task<V1PlanetaryInteractionSchematic> GetSchematicAsync(int schematicId)
+        public async Task<V1PlanetaryInteractionSchematic> SchematicAsync(int schematicId)
         {
-            return await _internalLatestPlanetaryInteraction.GetSchematicAsync(schematicId);
+            return await _internalLatestPlanetaryInteraction.SchematicAsync(schematicId);
         }
     }
 }

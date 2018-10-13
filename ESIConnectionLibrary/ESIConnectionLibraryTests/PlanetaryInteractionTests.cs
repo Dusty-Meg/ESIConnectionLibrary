@@ -12,7 +12,7 @@ namespace ESIConnectionLibraryTests
     public class PlanetaryInteractionTests
     {
         [Fact]
-        public void GetCharactersPlanets_successfully_returns_a_listV1PlanetaryInteractionCharactersPlanets()
+        public void CharactersPlanets_successfully_returns_a_listV1PlanetaryInteractionCharactersPlanets()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -26,20 +26,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            IList<V1PlanetaryInteractionCharactersPlanets> getPlanets = internalLatestPlanetaryInteraction.GetCharactersPlanets(inputToken);
+            IList<V1PlanetaryInteractionCharactersPlanets> returnModel = internalLatestPlanetaryInteraction.CharactersPlanets(inputToken);
 
-            Assert.Equal(2, getPlanets.Count);
-            Assert.Equal(new DateTime(2016, 11, 28, 16, 42, 51), getPlanets[0].LastUpdate);
-            Assert.Equal(1, getPlanets[1].NumPins);
-            Assert.Equal(90000001, getPlanets[0].OwnerId);
-            Assert.Equal(40023697, getPlanets[1].PlanetId);
-            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, getPlanets[0].PlanetType);
-            Assert.Equal(30000379, getPlanets[1].SolarSystemId);
-            Assert.Equal(0, getPlanets[0].UpgradeLevel);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(new DateTime(2016, 11, 28, 16, 42, 51), returnModel[0].LastUpdate);
+            Assert.Equal(1, returnModel[1].NumPins);
+            Assert.Equal(90000001, returnModel[0].OwnerId);
+            Assert.Equal(40023697, returnModel[1].PlanetId);
+            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, returnModel[0].PlanetType);
+            Assert.Equal(30000379, returnModel[1].SolarSystemId);
+            Assert.Equal(0, returnModel[0].UpgradeLevel);
         }
 
         [Fact]
-        public async Task GetCharactersPlanetsAsync_successfully_returns_a_listV1PlanetaryInteractionCharactersPlanets()
+        public async Task CharactersPlanetsAsync_successfully_returns_a_listV1PlanetaryInteractionCharactersPlanets()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -53,20 +53,20 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            IList<V1PlanetaryInteractionCharactersPlanets> getPlanets = await internalLatestPlanetaryInteraction.GetCharactersPlanetsAsync(inputToken);
+            IList<V1PlanetaryInteractionCharactersPlanets> returnModel = await internalLatestPlanetaryInteraction.CharactersPlanetsAsync(inputToken);
 
-            Assert.Equal(2, getPlanets.Count);
-            Assert.Equal(new DateTime(2016, 11, 28, 16, 42, 51), getPlanets[0].LastUpdate);
-            Assert.Equal(1, getPlanets[1].NumPins);
-            Assert.Equal(90000001, getPlanets[0].OwnerId);
-            Assert.Equal(40023697, getPlanets[1].PlanetId);
-            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, getPlanets[0].PlanetType);
-            Assert.Equal(30000379, getPlanets[1].SolarSystemId);
-            Assert.Equal(0, getPlanets[0].UpgradeLevel);
+            Assert.Equal(2, returnModel.Count);
+            Assert.Equal(new DateTime(2016, 11, 28, 16, 42, 51), returnModel[0].LastUpdate);
+            Assert.Equal(1, returnModel[1].NumPins);
+            Assert.Equal(90000001, returnModel[0].OwnerId);
+            Assert.Equal(40023697, returnModel[1].PlanetId);
+            Assert.Equal(V1PlanetaryInteractionPlanetType.Plasma, returnModel[0].PlanetType);
+            Assert.Equal(30000379, returnModel[1].SolarSystemId);
+            Assert.Equal(0, returnModel[0].UpgradeLevel);
         }
 
         [Fact]
-        public void GetCharacterPlanet_successfully_returns_a_V3PlanetaryInteractionCharactersPlanet()
+        public void CharacterPlanet_successfully_returns_a_V3PlanetaryInteractionCharactersPlanet()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -80,28 +80,28 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            V3PlanetaryInteractionCharactersPlanet getPlanet = internalLatestPlanetaryInteraction.GetCharacterPlanet(inputToken, 9222);
+            V3PlanetaryInteractionCharactersPlanet returnModel = internalLatestPlanetaryInteraction.CharacterPlanet(inputToken, 9222);
 
-            Assert.Equal(1000000017022, getPlanet.Links[0].DestinationPinId);
-            Assert.Equal(0, getPlanet.Links[0].LinkLevel);
-            Assert.Equal(1000000017021, getPlanet.Links[0].SourcePinId);
-            Assert.Equal(1.5508784497f, getPlanet.Pins[0].Latitude);
-            Assert.Equal(0.7171459333f, getPlanet.Pins[0].Longitude);
-            Assert.Equal(1000000017021, getPlanet.Pins[0].PinId);
-            Assert.Equal(2254, getPlanet.Pins[0].TypeId);
-            Assert.Equal(1.5336063994f, getPlanet.Pins[1].Latitude);
-            Assert.Equal(0.7097755844f, getPlanet.Pins[1].Longitude);
-            Assert.Equal(1000000017022, getPlanet.Pins[1].PinId);
-            Assert.Equal(2256, getPlanet.Pins[1].TypeId);
-            Assert.Equal(2393, getPlanet.Routes[0].ContentTypeId);
-            Assert.Equal(1000000017030, getPlanet.Routes[0].DestinationPinId);
-            Assert.Equal(20, getPlanet.Routes[0].Quantity);
-            Assert.Equal(4, getPlanet.Routes[0].RouteId);
-            Assert.Equal(1000000017029, getPlanet.Routes[0].SourcePinId);
+            Assert.Equal(1000000017022, returnModel.Links[0].DestinationPinId);
+            Assert.Equal(0, returnModel.Links[0].LinkLevel);
+            Assert.Equal(1000000017021, returnModel.Links[0].SourcePinId);
+            Assert.Equal(1.5508784497f, returnModel.Pins[0].Latitude);
+            Assert.Equal(0.7171459333f, returnModel.Pins[0].Longitude);
+            Assert.Equal(1000000017021, returnModel.Pins[0].PinId);
+            Assert.Equal(2254, returnModel.Pins[0].TypeId);
+            Assert.Equal(1.5336063994f, returnModel.Pins[1].Latitude);
+            Assert.Equal(0.7097755844f, returnModel.Pins[1].Longitude);
+            Assert.Equal(1000000017022, returnModel.Pins[1].PinId);
+            Assert.Equal(2256, returnModel.Pins[1].TypeId);
+            Assert.Equal(2393, returnModel.Routes[0].ContentTypeId);
+            Assert.Equal(1000000017030, returnModel.Routes[0].DestinationPinId);
+            Assert.Equal(20, returnModel.Routes[0].Quantity);
+            Assert.Equal(4, returnModel.Routes[0].RouteId);
+            Assert.Equal(1000000017029, returnModel.Routes[0].SourcePinId);
         }
 
         [Fact]
-        public async Task GetCharacterPlanetAsync_successfully_returns_a_V3PlanetaryInteractionCharactersPlanet()
+        public async Task CharacterPlanetAsync_successfully_returns_a_V3PlanetaryInteractionCharactersPlanet()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -115,28 +115,28 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            V3PlanetaryInteractionCharactersPlanet getPlanet = await internalLatestPlanetaryInteraction.GetCharacterPlanetAsync(inputToken, 9222);
+            V3PlanetaryInteractionCharactersPlanet returnModel = await internalLatestPlanetaryInteraction.CharacterPlanetAsync(inputToken, 9222);
 
-            Assert.Equal(1000000017022, getPlanet.Links[0].DestinationPinId);
-            Assert.Equal(0, getPlanet.Links[0].LinkLevel);
-            Assert.Equal(1000000017021, getPlanet.Links[0].SourcePinId);
-            Assert.Equal(1.5508784497f, getPlanet.Pins[0].Latitude);
-            Assert.Equal(0.7171459333f, getPlanet.Pins[0].Longitude);
-            Assert.Equal(1000000017021, getPlanet.Pins[0].PinId);
-            Assert.Equal(2254, getPlanet.Pins[0].TypeId);
-            Assert.Equal(1.5336063994f, getPlanet.Pins[1].Latitude);
-            Assert.Equal(0.7097755844f, getPlanet.Pins[1].Longitude);
-            Assert.Equal(1000000017022, getPlanet.Pins[1].PinId);
-            Assert.Equal(2256, getPlanet.Pins[1].TypeId);
-            Assert.Equal(2393, getPlanet.Routes[0].ContentTypeId);
-            Assert.Equal(1000000017030, getPlanet.Routes[0].DestinationPinId);
-            Assert.Equal(20, getPlanet.Routes[0].Quantity);
-            Assert.Equal(4, getPlanet.Routes[0].RouteId);
-            Assert.Equal(1000000017029, getPlanet.Routes[0].SourcePinId);
+            Assert.Equal(1000000017022, returnModel.Links[0].DestinationPinId);
+            Assert.Equal(0, returnModel.Links[0].LinkLevel);
+            Assert.Equal(1000000017021, returnModel.Links[0].SourcePinId);
+            Assert.Equal(1.5508784497f, returnModel.Pins[0].Latitude);
+            Assert.Equal(0.7171459333f, returnModel.Pins[0].Longitude);
+            Assert.Equal(1000000017021, returnModel.Pins[0].PinId);
+            Assert.Equal(2254, returnModel.Pins[0].TypeId);
+            Assert.Equal(1.5336063994f, returnModel.Pins[1].Latitude);
+            Assert.Equal(0.7097755844f, returnModel.Pins[1].Longitude);
+            Assert.Equal(1000000017022, returnModel.Pins[1].PinId);
+            Assert.Equal(2256, returnModel.Pins[1].TypeId);
+            Assert.Equal(2393, returnModel.Routes[0].ContentTypeId);
+            Assert.Equal(1000000017030, returnModel.Routes[0].DestinationPinId);
+            Assert.Equal(20, returnModel.Routes[0].Quantity);
+            Assert.Equal(4, returnModel.Routes[0].RouteId);
+            Assert.Equal(1000000017029, returnModel.Routes[0].SourcePinId);
         }
 
         [Fact]
-        public void GetCorporationsCustomsOffices_successfully_returns_a_pagedModelV1PlanetaryInteractionCorporationCustomsOffice()
+        public void CorporationsCustomsOffices_successfully_returns_a_pagedModelV1PlanetaryInteractionCorporationCustomsOffice()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -150,27 +150,27 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> getCustomsOffices = internalLatestPlanetaryInteraction.GetCorporationsCustomsOffices(inputToken, 2888, 1);
+            PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> returnModel = internalLatestPlanetaryInteraction.CorporationsCustomsOffices(inputToken, 2888, 1);
 
-            Assert.Equal(2, getCustomsOffices.MaxPages);
-            Assert.Equal(1, getCustomsOffices.CurrentPage);
-            Assert.Equal(1, getCustomsOffices.Model.Count);
-            Assert.Equal(0.1f, getCustomsOffices.Model[0].AllianceTaxRate);
-            Assert.True(getCustomsOffices.Model[0].AllowAccessWithStandings);
-            Assert.False(getCustomsOffices.Model[0].AllowAllianceAccess);
-            Assert.Equal(0.02f, getCustomsOffices.Model[0].CorporationTaxRate);
-            Assert.Equal(0.05f, getCustomsOffices.Model[0].ExcellentStandingTaxRate);
-            Assert.Equal(0.2f, getCustomsOffices.Model[0].GoodStandingTaxRate);
-            Assert.Equal(0.5f, getCustomsOffices.Model[0].NeutralStandingTaxRate);
-            Assert.Equal(1000000014530, getCustomsOffices.Model[0].OfficeId);
-            Assert.Equal(1, getCustomsOffices.Model[0].ReinforceExitEnd);
-            Assert.Equal(23, getCustomsOffices.Model[0].ReinforceExitStart);
-            Assert.Equal(23, getCustomsOffices.Model[0].ReinforceExitStart);
-            Assert.Equal(30003657, getCustomsOffices.Model[0].SystemId);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(1, returnModel.Model.Count);
+            Assert.Equal(0.1f, returnModel.Model[0].AllianceTaxRate);
+            Assert.True(returnModel.Model[0].AllowAccessWithStandings);
+            Assert.False(returnModel.Model[0].AllowAllianceAccess);
+            Assert.Equal(0.02f, returnModel.Model[0].CorporationTaxRate);
+            Assert.Equal(0.05f, returnModel.Model[0].ExcellentStandingTaxRate);
+            Assert.Equal(0.2f, returnModel.Model[0].GoodStandingTaxRate);
+            Assert.Equal(0.5f, returnModel.Model[0].NeutralStandingTaxRate);
+            Assert.Equal(1000000014530, returnModel.Model[0].OfficeId);
+            Assert.Equal(1, returnModel.Model[0].ReinforceExitEnd);
+            Assert.Equal(23, returnModel.Model[0].ReinforceExitStart);
+            Assert.Equal(23, returnModel.Model[0].ReinforceExitStart);
+            Assert.Equal(30003657, returnModel.Model[0].SystemId);
         }
 
         [Fact]
-        public async Task GetCorporationsCustomsOfficesAsync_successfully_returns_a_pagedModelV1PlanetaryInteractionCorporationCustomsOffice()
+        public async Task CorporationsCustomsOfficesAsync_successfully_returns_a_pagedModelV1PlanetaryInteractionCorporationCustomsOffice()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -184,27 +184,27 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> getCustomsOffices = await internalLatestPlanetaryInteraction.GetCorporationsCustomsOfficesAsync(inputToken, 2888, 1);
+            PagedModel<V1PlanetaryInteractionCorporationCustomsOffice> returnModel = await internalLatestPlanetaryInteraction.CorporationsCustomsOfficesAsync(inputToken, 2888, 1);
 
-            Assert.Equal(2, getCustomsOffices.MaxPages);
-            Assert.Equal(1, getCustomsOffices.CurrentPage);
-            Assert.Equal(1, getCustomsOffices.Model.Count);
-            Assert.Equal(0.1f, getCustomsOffices.Model[0].AllianceTaxRate);
-            Assert.True(getCustomsOffices.Model[0].AllowAccessWithStandings);
-            Assert.False(getCustomsOffices.Model[0].AllowAllianceAccess);
-            Assert.Equal(0.02f, getCustomsOffices.Model[0].CorporationTaxRate);
-            Assert.Equal(0.05f, getCustomsOffices.Model[0].ExcellentStandingTaxRate);
-            Assert.Equal(0.2f, getCustomsOffices.Model[0].GoodStandingTaxRate);
-            Assert.Equal(0.5f, getCustomsOffices.Model[0].NeutralStandingTaxRate);
-            Assert.Equal(1000000014530, getCustomsOffices.Model[0].OfficeId);
-            Assert.Equal(1, getCustomsOffices.Model[0].ReinforceExitEnd);
-            Assert.Equal(23, getCustomsOffices.Model[0].ReinforceExitStart);
-            Assert.Equal(23, getCustomsOffices.Model[0].ReinforceExitStart);
-            Assert.Equal(30003657, getCustomsOffices.Model[0].SystemId);
+            Assert.Equal(2, returnModel.MaxPages);
+            Assert.Equal(1, returnModel.CurrentPage);
+            Assert.Equal(1, returnModel.Model.Count);
+            Assert.Equal(0.1f, returnModel.Model[0].AllianceTaxRate);
+            Assert.True(returnModel.Model[0].AllowAccessWithStandings);
+            Assert.False(returnModel.Model[0].AllowAllianceAccess);
+            Assert.Equal(0.02f, returnModel.Model[0].CorporationTaxRate);
+            Assert.Equal(0.05f, returnModel.Model[0].ExcellentStandingTaxRate);
+            Assert.Equal(0.2f, returnModel.Model[0].GoodStandingTaxRate);
+            Assert.Equal(0.5f, returnModel.Model[0].NeutralStandingTaxRate);
+            Assert.Equal(1000000014530, returnModel.Model[0].OfficeId);
+            Assert.Equal(1, returnModel.Model[0].ReinforceExitEnd);
+            Assert.Equal(23, returnModel.Model[0].ReinforceExitStart);
+            Assert.Equal(23, returnModel.Model[0].ReinforceExitStart);
+            Assert.Equal(30003657, returnModel.Model[0].SystemId);
         }
 
         [Fact]
-        public void GetSchematic_successfully_returns_a_V1PlanetaryInteractionSchematic()
+        public void Schematic_successfully_returns_a_V1PlanetaryInteractionSchematic()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -214,14 +214,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            V1PlanetaryInteractionSchematic getSchematic = internalLatestPlanetaryInteraction.GetSchematic(3333);
+            V1PlanetaryInteractionSchematic returnModel = internalLatestPlanetaryInteraction.Schematic(3333);
 
-            Assert.Equal(1800, getSchematic.CycleTime);
-            Assert.Equal("Bacteria", getSchematic.SchematicName);
+            Assert.Equal(1800, returnModel.CycleTime);
+            Assert.Equal("Bacteria", returnModel.SchematicName);
         }
 
         [Fact]
-        public async Task GetSchematicAsync_successfully_returns_a_V1PlanetaryInteractionSchematic()
+        public async Task SchematicAsync_successfully_returns_a_V1PlanetaryInteractionSchematic()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -231,10 +231,10 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestPlanetaryInteraction internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(mockedWebClient.Object, string.Empty);
 
-            V1PlanetaryInteractionSchematic getSchematic = await internalLatestPlanetaryInteraction.GetSchematicAsync(3333);
+            V1PlanetaryInteractionSchematic returnModel = await internalLatestPlanetaryInteraction.SchematicAsync(3333);
 
-            Assert.Equal(1800, getSchematic.CycleTime);
-            Assert.Equal("Bacteria", getSchematic.SchematicName);
+            Assert.Equal(1800, returnModel.CycleTime);
+            Assert.Equal("Bacteria", returnModel.SchematicName);
         }
     }
 }

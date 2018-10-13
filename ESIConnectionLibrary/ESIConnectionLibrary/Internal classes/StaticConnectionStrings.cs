@@ -1065,6 +1065,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Search
+
+        private static string SearchV3AuthSearchRaw => "/v3/characters/{character_id}/search/";
+        private static string SearchV2SearchRaw => "/v2/search/";
+
+        public static string SearchV3AuthSearch(int characterId, string search, bool strict, string categories)
+        {
+            return UrlBuilder(SearchV3AuthSearchRaw, "{character_id}", characterId.ToString()) + $"?categories={categories}&search={search}&strict={strict}";
+        }
+
+        public static string SearchV2Search(string search, bool strict, string categories)
+        {
+            return UrlBuilder(SearchV2SearchRaw) + $"?categories={categories}&search={search}&strict={strict}";
+        }
+
+        #endregion 
+
         #region Skills
 
         private static string SkillsV4SkillsRaw => "/v4/characters/{character_id}/skills/";

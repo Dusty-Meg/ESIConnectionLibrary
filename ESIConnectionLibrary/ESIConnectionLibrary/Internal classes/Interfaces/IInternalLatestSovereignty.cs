@@ -6,11 +6,11 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalLatestSovereignty
     {
-        IList<V1SovereigntyCampaigns> GetCampaigns();
-        Task<IList<V1SovereigntyCampaigns>> GetCampaignsAsync();
-        IList<V1SovereigntyMap> GetMap();
-        Task<IList<V1SovereigntyMap>> GetMapAsync();
-        IList<V1SovereigntyStructures> GetStructures();
-        Task<IList<V1SovereigntyStructures>> GetStructuresAsync();
+        IList<V1SovereigntyCampaigns> Campaigns();
+        Task<IList<V1SovereigntyCampaigns>> CampaignsAsync();
+        IList<V1SovereigntyMap> Map();
+        Task<IList<V1SovereigntyMap>> MapAsync();
+        IList<V1SovereigntyStructures> Structures();
+        Task<IList<V1SovereigntyStructures>> StructuresAsync();
     }
 }

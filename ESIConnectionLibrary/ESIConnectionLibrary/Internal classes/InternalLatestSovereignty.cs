@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public IList<V1SovereigntyCampaigns> GetCampaigns()
+        public IList<V1SovereigntyCampaigns> Campaigns()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Campaigns(), _testing);
 
@@ -33,7 +33,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1SovereigntyCampaigns>, IList<V1SovereigntyCampaigns>>(esiModel);
         }
 
-        public async Task<IList<V1SovereigntyCampaigns>> GetCampaignsAsync()
+        public async Task<IList<V1SovereigntyCampaigns>> CampaignsAsync()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Campaigns(), _testing);
 
@@ -44,7 +44,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1SovereigntyCampaigns>, IList<V1SovereigntyCampaigns>>(esiModel);
         }
 
-        public IList<V1SovereigntyMap> GetMap()
+        public IList<V1SovereigntyMap> Map()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Map(), _testing);
 
@@ -55,7 +55,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1SovereigntyMap>, IList<V1SovereigntyMap>>(esiModel);
         }
 
-        public async Task<IList<V1SovereigntyMap>> GetMapAsync()
+        public async Task<IList<V1SovereigntyMap>> MapAsync()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Map(), _testing);
 
@@ -66,7 +66,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1SovereigntyMap>, IList<V1SovereigntyMap>>(esiModel);
         }
 
-        public IList<V1SovereigntyStructures> GetStructures()
+        public IList<V1SovereigntyStructures> Structures()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Structures(), _testing);
 
@@ -77,7 +77,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1SovereigntyStructures>, IList<V1SovereigntyStructures>>(esiModel);
         }
 
-        public async Task<IList<V1SovereigntyStructures>> GetStructuresAsync()
+        public async Task<IList<V1SovereigntyStructures>> StructuresAsync()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.SovereigntyV1Structures(), _testing);
 

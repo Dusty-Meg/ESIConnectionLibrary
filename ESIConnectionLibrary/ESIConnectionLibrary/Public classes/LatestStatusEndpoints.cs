@@ -13,14 +13,14 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestStatus = new InternalLatestStatus(null, userAgent, testing);
         }
 
-        public V1Status GetStatus()
+        public V1Status Status()
         {
-            return _internalLatestStatus.GetStatus();
+            return _internalLatestStatus.Status();
         }
 
-        public async Task<V1Status> GetStatusAsync()
+        public async Task<V1Status> StatusAsync()
         {
-            return await _internalLatestStatus.GetStatusAsync();
+            return await _internalLatestStatus.StatusAsync();
         }
     }
 }

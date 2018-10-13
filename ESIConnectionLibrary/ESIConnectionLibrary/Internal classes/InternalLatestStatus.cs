@@ -21,26 +21,26 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public V1Status GetStatus()
+        public V1Status Status()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.StatusV1Status(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 30));
 
-            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
+            EsiV1Status esiModel = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
 
-            return _mapper.Map<V1Status>(esiStatus);
+            return _mapper.Map<V1Status>(esiModel);
         }
 
-        public async Task<V1Status> GetStatusAsync()
+        public async Task<V1Status> StatusAsync()
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.StatusV1Status(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 30));
 
-            EsiV1Status esiStatus = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
+            EsiV1Status esiModel = JsonConvert.DeserializeObject<EsiV1Status>(esiRaw.Model);
 
-            return _mapper.Map<V1Status>(esiStatus);
+            return _mapper.Map<V1Status>(esiModel);
         }
     }
 }

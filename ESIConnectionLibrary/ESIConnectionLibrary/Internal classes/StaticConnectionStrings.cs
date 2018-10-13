@@ -1037,6 +1037,41 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
+        #region Opportunities
+
+        private static string OpportunitiesV1CharacterRaw => "/v1/characters/{character_id}/opportunities/";
+        private static string OpportunitiesV1GroupsRaw => "/v1/opportunities/groups/";
+        private static string OpportunitiesV1GroupRaw => "/v1/opportunities/groups/{group_id}/";
+        private static string OpportunitiesV1TasksRaw => "/v1/opportunities/tasks/";
+        private static string OpportunitiesV1TaskRaw => "/v1/opportunities/tasks/{task_id}/";
+
+        public static string OpportunitiesV1Character(int characterId)
+        {
+            return UrlBuilder(OpportunitiesV1CharacterRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string OpportunitiesV1Groups()
+        {
+            return UrlBuilder(OpportunitiesV1GroupsRaw);
+        }
+
+        public static string OpportunitiesV1Group(int groupId)
+        {
+            return UrlBuilder(OpportunitiesV1GroupRaw, "{group_id}", groupId.ToString());
+        }
+
+        public static string OpportunitiesV1Tasks()
+        {
+            return UrlBuilder(OpportunitiesV1TasksRaw);
+        }
+
+        public static string OpportunitiesV1Task(int taskId)
+        {
+            return UrlBuilder(OpportunitiesV1TaskRaw, "{task_id}", taskId.ToString());
+        }
+
+        #endregion 
+
         #region PlanetaryInteraction
 
         private static string PlanetaryInteractionV1CharactersPlanetsRaw => "/v1/characters/{character_id}/planets/";

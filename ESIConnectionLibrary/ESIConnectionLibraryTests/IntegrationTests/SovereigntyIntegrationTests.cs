@@ -11,11 +11,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class SovereigntyIntegrationTests
     {
         [Fact]
-        public void GetCampaigns_successfully_returns_a_list_of_Campaigns()
+        public void Campaigns_successfully_returns_a_list_of_Campaigns()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyCampaigns> response = internalLatestSovereignty.GetCampaigns();
+            IList<V1SovereigntyCampaigns> response = internalLatestSovereignty.Campaigns();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(0.4f, response.First().AttackersScore);
@@ -29,11 +29,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCampaignsAsync_successfully_returns_a_list_of_Campaigns()
+        public async Task CampaignsAsync_successfully_returns_a_list_of_Campaigns()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyCampaigns> response = await internalLatestSovereignty.GetCampaignsAsync();
+            IList<V1SovereigntyCampaigns> response = await internalLatestSovereignty.CampaignsAsync();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(0.4f, response.First().AttackersScore);
@@ -47,11 +47,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetMap_successfully_returns_a_list_of_Map()
+        public void Map_successfully_returns_a_list_of_Map()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyMap> response = internalLatestSovereignty.GetMap();
+            IList<V1SovereigntyMap> response = internalLatestSovereignty.Map();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(500001, response.First().FactionId);
@@ -59,11 +59,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetMapAsync_successfully_returns_a_list_of_Map()
+        public async Task MapAsync_successfully_returns_a_list_of_Map()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyMap> response = await internalLatestSovereignty.GetMapAsync();
+            IList<V1SovereigntyMap> response = await internalLatestSovereignty.MapAsync();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(500001, response.First().FactionId);
@@ -71,11 +71,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetStructures_successfully_returns_a_list_of_Structures()
+        public void Structures_successfully_returns_a_list_of_Structures()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyStructures> response = internalLatestSovereignty.GetStructures();
+            IList<V1SovereigntyStructures> response = internalLatestSovereignty.Structures();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(498125261, response.First().AllianceId);
@@ -88,11 +88,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetStructuresAsync_successfully_returns_a_list_of_Structures()
+        public async Task StructuresAsync_successfully_returns_a_list_of_Structures()
         {
             LatestSovereigntyEndpoints internalLatestSovereignty = new LatestSovereigntyEndpoints(string.Empty, true);
 
-            IList<V1SovereigntyStructures> response = await internalLatestSovereignty.GetStructuresAsync();
+            IList<V1SovereigntyStructures> response = await internalLatestSovereignty.StructuresAsync();
 
             Assert.Equal(1, response.Count);
             Assert.Equal(498125261, response.First().AllianceId);

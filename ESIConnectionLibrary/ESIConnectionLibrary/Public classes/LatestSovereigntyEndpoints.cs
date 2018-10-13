@@ -14,34 +14,34 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestSovereignty = new InternalLatestSovereignty(null, userAgent, testing);
         }
 
-        public IList<V1SovereigntyCampaigns> GetCampaigns()
+        public IList<V1SovereigntyCampaigns> Campaigns()
         {
-            return _internalLatestSovereignty.GetCampaigns();
+            return _internalLatestSovereignty.Campaigns();
         }
 
-        public async Task<IList<V1SovereigntyCampaigns>> GetCampaignsAsync()
+        public async Task<IList<V1SovereigntyCampaigns>> CampaignsAsync()
         {
-            return await _internalLatestSovereignty.GetCampaignsAsync();
+            return await _internalLatestSovereignty.CampaignsAsync();
         }
 
-        public IList<V1SovereigntyMap> GetMap()
+        public IList<V1SovereigntyMap> Map()
         {
-            return _internalLatestSovereignty.GetMap();
+            return _internalLatestSovereignty.Map();
         }
 
-        public async Task<IList<V1SovereigntyMap>> GetMapAsync()
+        public async Task<IList<V1SovereigntyMap>> MapAsync()
         {
-            return await _internalLatestSovereignty.GetMapAsync();
+            return await _internalLatestSovereignty.MapAsync();
         }
 
-        public IList<V1SovereigntyStructures> GetStructures()
+        public IList<V1SovereigntyStructures> Structures()
         {
-            return _internalLatestSovereignty.GetStructures();
+            return _internalLatestSovereignty.Structures();
         }
 
-        public async Task<IList<V1SovereigntyStructures>> GetStructuresAsync()
+        public async Task<IList<V1SovereigntyStructures>> StructuresAsync()
         {
-            return await _internalLatestSovereignty.GetStructuresAsync();
+            return await _internalLatestSovereignty.StructuresAsync();
         }
     }
 }

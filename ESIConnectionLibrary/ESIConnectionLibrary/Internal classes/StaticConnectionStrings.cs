@@ -1067,23 +1067,23 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Skills
 
-        private static string SkillsSkillsRaw => "/v4/characters/{character_id}/skills/";
-        private static string SkillsAttributesRaw => "/v1/characters/{character_id}/attributes/";
-        private static string SkillsSkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
+        private static string SkillsV4SkillsRaw => "/v4/characters/{character_id}/skills/";
+        private static string SkillsV1AttributesRaw => "/v1/characters/{character_id}/attributes/";
+        private static string SkillsV2SkillQueueRaw => "/v2/characters/{character_id}/skillqueue/";
 
-        public static string SkillsSkills(int characterId)
+        public static string SkillsV4Skills(int characterId)
         {
-            return UrlBuilder(SkillsSkillsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(SkillsV4SkillsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string SkillsAttributes(int characterId)
+        public static string SkillsV1Attributes(int characterId)
         {
-            return UrlBuilder(SkillsAttributesRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(SkillsV1AttributesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string SkillsSkillQueue(int characterId)
+        public static string SkillsV2SkillQueue(int characterId)
         {
-            return UrlBuilder(SkillsSkillQueueRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(SkillsV2SkillQueueRaw, "{character_id}", characterId.ToString());
         }
 
         #endregion

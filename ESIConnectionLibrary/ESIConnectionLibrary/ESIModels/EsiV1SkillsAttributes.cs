@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1Attributes
+    internal class EsiV1SkillsAttributes
     {
         [JsonProperty(PropertyName = "accrued_remap_cooldown_date")]
         public string AccruedRemapCooldownDate { get; set; }

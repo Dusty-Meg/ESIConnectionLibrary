@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4SkillsSkill
+    internal class EsiV4SkillsSkillsSkill
     {
         [JsonProperty(PropertyName = "skill_id")]
         public int? SkillId { get; set; }

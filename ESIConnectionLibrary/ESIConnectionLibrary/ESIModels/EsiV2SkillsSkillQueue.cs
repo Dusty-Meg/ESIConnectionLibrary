@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2SkillQueueSkill
+    internal class EsiV2SkillsSkillQueue
     {
         [JsonProperty(PropertyName = "finish_date")]
         public DateTime FinishDate { get; set; }

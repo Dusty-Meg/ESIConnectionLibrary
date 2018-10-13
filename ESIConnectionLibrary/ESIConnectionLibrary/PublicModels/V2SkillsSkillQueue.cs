@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2SkillQueueSkill
+    public class V2SkillsSkillQueue
     {
         public DateTime FinishDate { get; set; }
         public int FinishedLevel { get; set; }

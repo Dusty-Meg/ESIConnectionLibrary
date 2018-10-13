@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1Attributes
+    public class V1SkillsAttributes
     {
         public string AccruedRemapCooldownDate { get; set; }
         public int? BonusRemaps { get; set; }

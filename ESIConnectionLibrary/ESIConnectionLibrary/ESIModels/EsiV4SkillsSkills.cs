@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4Skills
+    internal class EsiV4SkillsSkills
     {
         [JsonProperty(PropertyName = "skills")]
-        public EsiV4SkillsSkill[] Skills { get; set; }
+        public IList<EsiV4SkillsSkillsSkill> Skills { get; set; }
 
         [JsonProperty(PropertyName = "total_sp")]
         public long? TotalSp { get; set; }

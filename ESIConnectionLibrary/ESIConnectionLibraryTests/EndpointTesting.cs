@@ -297,9 +297,9 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("SkillsSkillsRaw")]
-        [InlineData("SkillsAttributesRaw")]
-        [InlineData("SkillsSkillQueueRaw")]
+        [InlineData("SkillsV4SkillsRaw")]
+        [InlineData("SkillsV1AttributesRaw")]
+        [InlineData("SkillsV2SkillQueueRaw")]
         public void SkillsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

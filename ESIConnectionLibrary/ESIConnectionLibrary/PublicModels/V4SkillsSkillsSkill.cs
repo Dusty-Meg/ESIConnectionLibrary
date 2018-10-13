@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V4SkillsSkill
+    public class V4SkillsSkillsSkill
     {
         public long? SkillId { get; set; }
         public int? SkillpointsInSkill { get; set; }

@@ -20,10 +20,10 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            IList<V2SkillQueueSkill> skillQueue = internalLatestSkills.GetSkillQueue(inputToken);
+            IList<V2SkillsSkillQueue> returnModel = internalLatestSkills.SkillQueue(inputToken);
 
-            Assert.Equal(3, skillQueue.Count);
-            Assert.Equal(1, skillQueue.First().SkillId);
+            Assert.Equal(3, returnModel.Count);
+            Assert.Equal(1, returnModel.First().SkillId);
         }
 
         [Fact]
@@ -37,10 +37,10 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            IList<V2SkillQueueSkill> skillQueue = await internalLatestSkills.GetSkillQueueAsync(inputToken);
+            IList<V2SkillsSkillQueue> returnModel = await internalLatestSkills.SkillQueueAsync(inputToken);
 
-            Assert.Equal(3, skillQueue.Count);
-            Assert.Equal(1, skillQueue.First().SkillId);
+            Assert.Equal(3, returnModel.Count);
+            Assert.Equal(1, returnModel.First().SkillId);
         }
 
         [Fact]
@@ -54,12 +54,12 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            V4Skills v4Skills = internalLatestSkills.GetSkills(inputToken);
+            V4SkillsSkills returnModel = internalLatestSkills.Skills(inputToken);
 
-            Assert.NotNull(v4Skills.Skills);
-            Assert.Equal(20000, v4Skills.TotalSp);
-            Assert.Equal(2, v4Skills.Skills.Length);
-            Assert.Equal(10000, v4Skills.Skills.First().SkillpointsInSkill);
+            Assert.NotNull(returnModel.Skills);
+            Assert.Equal(20000, returnModel.TotalSp);
+            Assert.Equal(2, returnModel.Skills.Count);
+            Assert.Equal(10000, returnModel.Skills.First().SkillpointsInSkill);
         }
 
         [Fact]
@@ -73,12 +73,12 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            V4Skills v4Skills = await internalLatestSkills.GetSkillsAsync(inputToken);
+            V4SkillsSkills returnModel = await internalLatestSkills.SkillsAsync(inputToken);
 
-            Assert.NotNull(v4Skills.Skills);
-            Assert.Equal(20000, v4Skills.TotalSp);
-            Assert.Equal(2, v4Skills.Skills.Length);
-            Assert.Equal(10000, v4Skills.Skills.First().SkillpointsInSkill);
+            Assert.NotNull(returnModel.Skills);
+            Assert.Equal(20000, returnModel.TotalSp);
+            Assert.Equal(2, returnModel.Skills.Count);
+            Assert.Equal(10000, returnModel.Skills.First().SkillpointsInSkill);
         }
 
         [Fact]
@@ -92,9 +92,9 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            V1Attributes v1Attributes = internalLatestSkills.GetAttributes(inputToken);
+            V1SkillsAttributes returnModel = internalLatestSkills.Attributes(inputToken);
 
-            Assert.Equal(20, v1Attributes.Charisma);
+            Assert.Equal(20, returnModel.Charisma);
         }
 
         [Fact]
@@ -108,9 +108,9 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestSkillsEndpoints internalLatestSkills = new LatestSkillsEndpoints(string.Empty, true);
 
-            V1Attributes v1Attributes = await internalLatestSkills.GetAttributesAsync(inputToken);
+            V1SkillsAttributes returnModel = await internalLatestSkills.AttributesAsync(inputToken);
 
-            Assert.Equal(20, v1Attributes.Charisma);
+            Assert.Equal(20, returnModel.Charisma);
         }
     }
 }

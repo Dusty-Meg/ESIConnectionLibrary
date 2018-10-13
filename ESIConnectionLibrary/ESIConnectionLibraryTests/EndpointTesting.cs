@@ -297,6 +297,21 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("SearchV3AuthSearchRaw")]
+        [InlineData("SearchV2SearchRaw")]
+        public void RoutesEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
+        [InlineData("RoutesV1RouteRaw")]
+        public void SearchEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("SkillsV4SkillsRaw")]
         [InlineData("SkillsV1AttributesRaw")]
         [InlineData("SkillsV2SkillQueueRaw")]

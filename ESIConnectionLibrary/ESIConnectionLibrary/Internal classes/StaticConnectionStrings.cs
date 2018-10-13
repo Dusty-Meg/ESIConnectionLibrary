@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
 
@@ -1064,6 +1065,29 @@ namespace ESIConnectionLibrary.Internal_classes
         }
 
         #endregion
+
+        #region Routes
+
+        private static string RoutesV1RouteRaw => "/v1/route/{origin}/{destination}/";
+
+        public static string RoutesV1Route(int origin, int destination, EsiV1RoutesFlag flag, string avoid, string connections)
+        {
+            string extension = $"?flag={flag.ToString()}";
+
+            if (!string.IsNullOrEmpty(avoid) && avoid != "null")
+            {
+                extension = $"{extension}&avoid={avoid}";
+            }
+
+            if (!string.IsNullOrEmpty(connections) && connections != "null")
+            {
+                extension = $"{extension}&connections={connections}";
+            }
+
+            return UrlBuilder(RoutesV1RouteRaw, "{origin}", origin.ToString(), "{destination}", destination.ToString()) + extension;
+        }
+
+        #endregion 
 
         #region Search
 

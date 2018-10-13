@@ -5,7 +5,7 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestStatusEndpoints
     {
-        V1Status GetStatus();
-        Task<V1Status> GetStatusAsync();
+        V1Status Status();
+        Task<V1Status> StatusAsync();
     }
 }

@@ -11,7 +11,7 @@ namespace ESIConnectionLibraryTests
     public class StatusTests
     {
         [Fact]
-        public void GetStatus_successully_returns_a_status()
+        public void Status_successfully_returns_a_status()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -21,7 +21,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestStatus internalLatestStatus = new InternalLatestStatus(mockedWebClient.Object, string.Empty);
 
-            V1Status response = internalLatestStatus.GetStatus();
+            V1Status response = internalLatestStatus.Status();
 
             Assert.Equal(12345, response.Players);
             Assert.Equal("1132976", response.ServerVersion);
@@ -29,7 +29,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetStatusAsync_successully_returns_a_status()
+        public async Task StatusAsync_successfully_returns_a_status()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestStatus internalLatestStatus = new InternalLatestStatus(mockedWebClient.Object, string.Empty);
 
-            V1Status response = await internalLatestStatus.GetStatusAsync();
+            V1Status response = await internalLatestStatus.StatusAsync();
 
             Assert.Equal(12345, response.Players);
             Assert.Equal("1132976", response.ServerVersion);

@@ -287,6 +287,17 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
+        [InlineData("OpportunitiesV1CharacterRaw")]
+        [InlineData("OpportunitiesV1GroupsRaw")]
+        [InlineData("OpportunitiesV1GroupRaw")]
+        [InlineData("OpportunitiesV1TasksRaw")]
+        [InlineData("OpportunitiesV1TaskRaw")]
+        public void OpportunitiesEndpoints(string endpoint)
+        {
+            Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);
+        }
+
+        [Theory]
         [InlineData("PlanetaryInteractionV1CharactersPlanetsRaw")]
         [InlineData("PlanetaryInteractionV3CharactersPlanetRaw")]
         [InlineData("PlanetaryInteractionV1CorporationsCustomsOfficesRaw")]

@@ -65,12 +65,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestWallet.CorporationAsync(token, corporationId);
         }
 
-        public PagedModel<V3WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
+        public PagedModel<V4WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
         {
             return _internalLatestWallet.CorporationJournal(token, corporationId, division, page);
         }
 
-        public async Task<PagedModel<V3WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
+        public async Task<PagedModel<V4WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
         {
             return await _internalLatestWallet.CorporationJournalAsync(token, corporationId, division, page);
         }

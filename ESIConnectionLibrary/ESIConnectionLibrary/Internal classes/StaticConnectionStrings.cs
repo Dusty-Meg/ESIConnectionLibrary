@@ -1424,7 +1424,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string WalletV5CharactersWalletJournalRaw => "/v5/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
         private static string WalletV1CorporationWalletsRaw => "/v1/corporations/{corporation_id}/wallets/";
-        private static string WalletV3CorporationDivisionsJournalRaw => "/v3/corporations/{corporation_id}/wallets/{division}/journal/";
+        private static string WalletV4CorporationDivisionsJournalRaw => "/v4/corporations/{corporation_id}/wallets/{division}/journal/";
         private static string WalletV1CorporationDivisionsTransactionsRaw => "/v1/corporations/{corporation_id}/wallets/{division}/transactions/";
 
         public static string WalletV1CharactersWallet(int characterId)
@@ -1451,9 +1451,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(WalletV1CorporationWalletsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string WalletV3CorporationDivisionsJournal(int corporationId, int division, int page)
+        public static string WalletV4CorporationDivisionsJournal(int corporationId, int division, int page)
         {
-            return UrlBuilder(WalletV3CorporationDivisionsJournalRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?page={page}";
+            return UrlBuilder(WalletV4CorporationDivisionsJournalRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?page={page}";
         }
 
         public static string WalletV1CorporationDivisionsTransactions(int corporationId, int division, int lastTransactionId)

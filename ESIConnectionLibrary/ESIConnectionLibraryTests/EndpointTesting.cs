@@ -399,7 +399,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("WalletV5CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
         [InlineData("WalletV1CorporationWalletsRaw")]
-        [InlineData("WalletV3CorporationDivisionsJournalRaw")]
+        [InlineData("WalletV4CorporationDivisionsJournalRaw")]
         [InlineData("WalletV1CorporationDivisionsTransactionsRaw")]
         public void WalletEndpoints(string endpoint)
         {

@@ -782,7 +782,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
-        #region Fittings
+        #region Incursions
 
         private static string IncursionsV1IncursionsRaw => "/v1/incursions/";
 

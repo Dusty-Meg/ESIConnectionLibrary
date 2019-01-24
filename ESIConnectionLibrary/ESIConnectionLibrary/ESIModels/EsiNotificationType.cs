@@ -49,6 +49,7 @@ namespace ESIConnectionLibrary.ESIModels
         CloneMovedMsg,
         CloneRevokedMsg1,
         CloneRevokedMsg2,
+        CombatOperationFinished,
         ContactAdd,
         ContactEdit,
         ContainerPasswordMsg,
@@ -140,6 +141,7 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "IHubDestroyedByBillFailure")]
         HubDestroyedByBillFailure,
         IncursionCompletedMsg,
+        IndustryOperationFinished,
         IndustryTeamAuctionLost,
         IndustryTeamAuctionWon,
         InfrastructureHubBillAboutToExpire,

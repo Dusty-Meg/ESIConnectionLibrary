@@ -25,7 +25,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestWallet.CharacterAsync(token);
         }
 
-        public PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
+        public PagedModel<V5WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -35,7 +35,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestWallet.CharacterJournal(token, page);
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V5WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             if (page < 1)
             {

@@ -114,6 +114,7 @@
         SovereignityBill,
         StorePurchase,
         StorePurchaseRefund,
+        StructureGateJump,
         TransactionTax,
         UpkeepAdjustmentFee,
         WarAllyContract,

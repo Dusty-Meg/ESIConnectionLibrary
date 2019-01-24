@@ -67,7 +67,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
+            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
@@ -94,7 +94,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
+            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);

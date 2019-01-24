@@ -396,7 +396,7 @@ namespace ESIConnectionLibraryTests
 
         [Theory]
         [InlineData("WalletV1CharactersWalletRaw")]
-        [InlineData("WalletV4CharactersWalletJournalRaw")]
+        [InlineData("WalletV5CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
         [InlineData("WalletV1CorporationWalletsRaw")]
         [InlineData("WalletV3CorporationDivisionsJournalRaw")]

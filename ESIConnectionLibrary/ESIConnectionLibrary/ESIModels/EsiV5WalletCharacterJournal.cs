@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4WalletCharacterJournal
+    internal class EsiV5WalletCharacterJournal
     {
         [JsonProperty(PropertyName = "amount")]
         public double? Amount { get; set; }

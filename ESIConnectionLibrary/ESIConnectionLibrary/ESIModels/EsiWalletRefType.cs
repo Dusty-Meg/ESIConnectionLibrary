@@ -343,6 +343,9 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "store_purchase_refund")]
         StorePurchaseRefund,
 
+        [EnumMember(Value = "structure_gate_jump")]
+        StructureGateJump,
+
         [EnumMember(Value = "transaction_tax")]
         TransactionTax,
 

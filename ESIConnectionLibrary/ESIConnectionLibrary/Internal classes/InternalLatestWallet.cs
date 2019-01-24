@@ -44,34 +44,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return JsonConvert.DeserializeObject<double>(esiRaw.Model);
         }
 
-        public PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
+        public PagedModel<V5WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV5CharactersWalletJournal(token.CharacterId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(esiRaw.Model);
+            IList<EsiV5WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV5WalletCharacterJournal>>(esiRaw.Model);
 
-            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiModel);
+            IList<V5WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV5WalletCharacterJournal>, IList<V5WalletCharacterJournal>>(esiModel);
 
-            return new PagedModel<V4WalletCharacterJournal>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+            return new PagedModel<V5WalletCharacterJournal>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V5WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, WalletScopes.esi_wallet_read_character_wallet_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV4CharactersWalletJournal(token.CharacterId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.WalletV5CharactersWalletJournal(token.CharacterId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV4WalletCharacterJournal>>(esiRaw.Model);
+            IList<EsiV5WalletCharacterJournal> esiModel = JsonConvert.DeserializeObject<IList<EsiV5WalletCharacterJournal>>(esiRaw.Model);
 
-            IList<V4WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV4WalletCharacterJournal>, IList<V4WalletCharacterJournal>>(esiModel);
+            IList<V5WalletCharacterJournal> mapped = _mapper.Map<IList<EsiV5WalletCharacterJournal>, IList<V5WalletCharacterJournal>>(esiModel);
 
-            return new PagedModel<V4WalletCharacterJournal> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+            return new PagedModel<V5WalletCharacterJournal> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
         public PagedModel<V1WalletCharacterTransactions> CharacterTransactions(SsoToken token, int lastTransactionId)

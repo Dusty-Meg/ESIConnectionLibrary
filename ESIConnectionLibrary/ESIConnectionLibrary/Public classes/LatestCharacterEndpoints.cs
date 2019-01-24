@@ -84,12 +84,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.GetCharactersMedalsAsync(token);
         }
 
-        public IList<V3CharactersNotifications> GetCharactersNotifications(SsoToken token)
+        public IList<V4CharactersNotifications> GetCharactersNotifications(SsoToken token)
         {
             return _internalLatestCharacter.GetCharactersNotifications(token);
         }
 
-        public async Task<IList<V3CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token)
+        public async Task<IList<V4CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.GetCharactersNotificationsAsync(token);
         }

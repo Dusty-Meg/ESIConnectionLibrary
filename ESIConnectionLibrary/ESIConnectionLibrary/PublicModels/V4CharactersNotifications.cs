@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3CharactersNotifications
+    public class V4CharactersNotifications
     {
         public long NotificationId { get; set; }
 

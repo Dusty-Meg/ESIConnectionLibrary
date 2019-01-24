@@ -25,7 +25,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestWallet.CharacterAsync(token);
         }
 
-        public PagedModel<V4WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
+        public PagedModel<V5WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -35,7 +35,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestWallet.CharacterJournal(token, page);
         }
 
-        public async Task<PagedModel<V4WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V5WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -65,12 +65,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestWallet.CorporationAsync(token, corporationId);
         }
 
-        public PagedModel<V3WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
+        public PagedModel<V4WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page)
         {
             return _internalLatestWallet.CorporationJournal(token, corporationId, division, page);
         }
 
-        public async Task<PagedModel<V3WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
+        public async Task<PagedModel<V4WalletCorporationJournal>> CorporationJournalAsync(SsoToken token, int corporationId, int division, int page)
         {
             return await _internalLatestWallet.CorporationJournalAsync(token, corporationId, division, page);
         }

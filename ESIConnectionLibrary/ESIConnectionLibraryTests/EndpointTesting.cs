@@ -74,7 +74,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("EsiV4CharactersCspaRaw")]
         [InlineData("EsiV1CharactersFatigueRaw")]
         [InlineData("EsiV1CharactersMedalsRaw")]
-        [InlineData("EsiV3CharactersNotificationsRaw")]
+        [InlineData("EsiV4CharactersNotificationsRaw")]
         [InlineData("EsiV1CharactersNotificationsContactsRaw")]
         [InlineData("EsiV2CharactersPortraitRaw")]
         [InlineData("EsiV2CharacterRolesRaw")]
@@ -145,7 +145,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("CorporationV1StandingsRaw")]
         [InlineData("CorporationV1StarbasesRaw")]
         [InlineData("CorporationV1StarbaseRaw")]
-        [InlineData("CorporationV2StructuresRaw")]
+        [InlineData("CorporationV3StructuresRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]
         [InlineData("CorporationV1NpcCorpsRaw")]
         public void CorporationsEndpoints(string endpoint)
@@ -396,10 +396,10 @@ namespace ESIConnectionLibraryTests
 
         [Theory]
         [InlineData("WalletV1CharactersWalletRaw")]
-        [InlineData("WalletV4CharactersWalletJournalRaw")]
+        [InlineData("WalletV5CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
         [InlineData("WalletV1CorporationWalletsRaw")]
-        [InlineData("WalletV3CorporationDivisionsJournalRaw")]
+        [InlineData("WalletV4CorporationDivisionsJournalRaw")]
         [InlineData("WalletV1CorporationDivisionsTransactionsRaw")]
         public void WalletEndpoints(string endpoint)
         {

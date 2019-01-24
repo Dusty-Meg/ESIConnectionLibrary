@@ -277,7 +277,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.StarbaseAsync(token, corporationId, starbaseId);
         }
 
-        public PagedModel<V2CorporationStructures> Structures(SsoToken token, long corporationId, int page)
+        public PagedModel<V3CorporationStructures> Structures(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -287,7 +287,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.Structures(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V2CorporationStructures>> StructuresAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V3CorporationStructures>> StructuresAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {

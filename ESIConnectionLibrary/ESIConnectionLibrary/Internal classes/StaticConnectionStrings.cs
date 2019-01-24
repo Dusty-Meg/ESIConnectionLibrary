@@ -200,7 +200,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV4CharactersCspaRaw => "/v4/characters/{character_id}/cspa/";
         private static string EsiV1CharactersFatigueRaw => "/v1/characters/{character_id}/fatigue/";
         private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
-        private static string EsiV3CharactersNotificationsRaw => "/v3/characters/{character_id}/notifications/";
+        private static string EsiV4CharactersNotificationsRaw => "/v4/characters/{character_id}/notifications/";
         private static string EsiV1CharactersNotificationsContactsRaw => "/v1/characters/{character_id}/notifications/contacts/";
         private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
         private static string EsiV2CharacterRolesRaw => "/v2/characters/{character_id}/roles/";
@@ -244,9 +244,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV1CharactersMedalsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV3CharactersNotifications(int characterId)
+        public static string EsiV4CharactersNotifications(int characterId)
         {
-            return UrlBuilder(EsiV3CharactersNotificationsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV4CharactersNotificationsRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV1CharactersNotificationsContacts(int characterId)
@@ -466,7 +466,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV1StandingsRaw => "/v1/corporations/{corporation_id}/standings/";
         private static string CorporationV1StarbasesRaw => "/v1/corporations/{corporation_id}/starbases/";
         private static string CorporationV1StarbaseRaw => "/v1/corporations/{corporation_id}/starbases/{starbase_id}/";
-        private static string CorporationV2StructuresRaw => "/v2/corporations/{corporation_id}/structures/";
+        private static string CorporationV3StructuresRaw => "/v3/corporations/{corporation_id}/structures/";
         private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
         private static string CorporationV1NpcCorpsRaw => "/v1/corporations/npccorps/";
 
@@ -565,9 +565,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1StarbaseRaw, "{corporation_id}", corporationId.ToString(), "{starbase_id}", starbaseId.ToString());
         }
 
-        public static string CorporationV2Structures(long corporationId, int page)
+        public static string CorporationV3Structures(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV2StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV3StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string CorporationV1CorporationTitles(long corporationId)
@@ -880,7 +880,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #endregion
 
-        #region location
+        #region Location
 
         private static string LocationV1LocationRaw => "/v1/characters/{character_id}/location/";
         private static string LocationV2LocationOnlineRaw => "/v2/characters/{character_id}/online/";
@@ -1421,10 +1421,10 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Wallet
 
         private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";
-        private static string WalletV4CharactersWalletJournalRaw => "/v4/characters/{character_id}/wallet/journal/";
+        private static string WalletV5CharactersWalletJournalRaw => "/v5/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
         private static string WalletV1CorporationWalletsRaw => "/v1/corporations/{corporation_id}/wallets/";
-        private static string WalletV3CorporationDivisionsJournalRaw => "/v3/corporations/{corporation_id}/wallets/{division}/journal/";
+        private static string WalletV4CorporationDivisionsJournalRaw => "/v4/corporations/{corporation_id}/wallets/{division}/journal/";
         private static string WalletV1CorporationDivisionsTransactionsRaw => "/v1/corporations/{corporation_id}/wallets/{division}/transactions/";
 
         public static string WalletV1CharactersWallet(int characterId)
@@ -1432,9 +1432,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(WalletV1CharactersWalletRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string WalletV4CharactersWalletJournal(int characterId, int page)
+        public static string WalletV5CharactersWalletJournal(int characterId, int page)
         {
-            return UrlBuilder(WalletV4CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(WalletV5CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         public static string WalletV4CharactersWalletTransaction(int characterId, int lastTransactionId)
@@ -1451,9 +1451,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(WalletV1CorporationWalletsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string WalletV3CorporationDivisionsJournal(int corporationId, int division, int page)
+        public static string WalletV4CorporationDivisionsJournal(int corporationId, int division, int page)
         {
-            return UrlBuilder(WalletV3CorporationDivisionsJournalRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?page={page}";
+            return UrlBuilder(WalletV4CorporationDivisionsJournalRaw, "{corporation_id}", corporationId.ToString(), "{division}", division.ToString()) + $"?page={page}";
         }
 
         public static string WalletV1CorporationDivisionsTransactions(int corporationId, int division, int lastTransactionId)

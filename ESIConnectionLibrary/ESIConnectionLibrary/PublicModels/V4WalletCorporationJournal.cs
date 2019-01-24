@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V4WalletCharacterJournal
+    public class V4WalletCorporationJournal
     {
         public double? Amount { get; set; }
         public double? Balance { get; set; }

@@ -260,7 +260,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V3CharactersNotifications> getCharactersNotifications = internalLatestCharacter.GetCharactersNotifications(inputToken);
+            IList<V4CharactersNotifications> getCharactersNotifications = internalLatestCharacter.GetCharactersNotifications(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
@@ -280,7 +280,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V3CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.GetCharactersNotificationsAsync(inputToken);
+            IList<V4CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.GetCharactersNotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);

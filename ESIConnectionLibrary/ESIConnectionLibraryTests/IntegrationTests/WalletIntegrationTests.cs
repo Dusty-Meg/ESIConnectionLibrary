@@ -50,7 +50,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
+            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
 
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
@@ -71,7 +71,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V4WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
+            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
 
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
@@ -183,7 +183,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V3WalletCorporationJournal> getCorporationJournals = internalLatestWallet.CorporationJournal(inputToken, 999, 1, 1);
+            PagedModel<V4WalletCorporationJournal> getCorporationJournals = internalLatestWallet.CorporationJournal(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Model.Count);
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);
@@ -208,7 +208,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestWalletEndpoints internalLatestWallet = new LatestWalletEndpoints(string.Empty, true);
 
-            PagedModel<V3WalletCorporationJournal> getCorporationJournals = await internalLatestWallet.CorporationJournalAsync(inputToken, 999, 1, 1);
+            PagedModel<V4WalletCorporationJournal> getCorporationJournals = await internalLatestWallet.CorporationJournalAsync(inputToken, 999, 1, 1);
 
             Assert.Equal(1, getCorporationJournals.Model.Count);
             Assert.Equal(-1000, getCorporationJournals.Model[0].Amount);

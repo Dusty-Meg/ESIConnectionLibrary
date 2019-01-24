@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV2CorporationStructuresServicesState
+    internal enum EsiV3CorporationStructuresServicesState
     {
         [EnumMember(Value = "online")]
         Online,

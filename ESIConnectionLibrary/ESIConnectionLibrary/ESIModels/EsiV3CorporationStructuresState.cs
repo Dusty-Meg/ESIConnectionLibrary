@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV2CorporationStructuresState
+    internal enum EsiV3CorporationStructuresState
     {
         [EnumMember(Value = "anchor_vulnerable")]
         AnchorVulnerable,
@@ -18,6 +18,9 @@ namespace ESIConnectionLibrary.ESIModels
 
         [EnumMember(Value = "armor_vulnerable")]
         ArmorVulnerable,
+
+        [EnumMember(Value = "deploy_vulnerable")]
+        DeployVulnerable,
 
         [EnumMember(Value = "fitting_invulnerable")]
         FittingInvulnerable,

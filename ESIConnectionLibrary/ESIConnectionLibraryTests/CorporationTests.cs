@@ -1094,15 +1094,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationStructures> returnModel = internalLatestCorporations.Structures(inputToken, 123123, 1);
+            PagedModel<V3CorporationStructures> returnModel = internalLatestCorporations.Structures(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
             Assert.Equal(667531913, returnModel.Model[0].CorporationId);
             Assert.Equal(11237, returnModel.Model[0].ProfileId);
             Assert.Equal(22, returnModel.Model[0].ReinforceHour);
-            Assert.Equal(2, returnModel.Model[0].ReinforceWeekday);
-            Assert.Equal(V2CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
+            Assert.Equal(V3CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
             Assert.Equal(1021975535893, returnModel.Model[0].StructureId);
             Assert.Equal(30004763, returnModel.Model[0].SystemId);
             Assert.Equal(35833, returnModel.Model[0].TypeId);
@@ -1124,15 +1123,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationStructures> returnModel = await internalLatestCorporations.StructuresAsync(inputToken, 123123, 1);
+            PagedModel<V3CorporationStructures> returnModel = await internalLatestCorporations.StructuresAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
             Assert.Equal(667531913, returnModel.Model[0].CorporationId);
             Assert.Equal(11237, returnModel.Model[0].ProfileId);
             Assert.Equal(22, returnModel.Model[0].ReinforceHour);
-            Assert.Equal(2, returnModel.Model[0].ReinforceWeekday);
-            Assert.Equal(V2CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
+            Assert.Equal(V3CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
             Assert.Equal(1021975535893, returnModel.Model[0].StructureId);
             Assert.Equal(30004763, returnModel.Model[0].SystemId);
             Assert.Equal(35833, returnModel.Model[0].TypeId);

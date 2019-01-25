@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3CharactersClonesJumpClone
+    internal class EsiV3ClonesJumpClone
     {
         [JsonProperty(PropertyName = "implants")]
         public IList<int> Implants { get; set; }
@@ -17,7 +17,7 @@ namespace ESIConnectionLibrary.ESIModels
 
         [JsonProperty(PropertyName = "location_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public EsiV3CharactersClonesLocationType LocationType { get; set; }
+        public EsiV3ClonesLocationType LocationType { get; set; }
 
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

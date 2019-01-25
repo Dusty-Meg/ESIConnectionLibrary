@@ -14,24 +14,24 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestClones = new InternalLatestClones(null, userAgent, testing);
         }
 
-        public V3CharactersClones GetCharactersClones(SsoToken token)
+        public V3ClonesClone Clones(SsoToken token)
         {
-            return _internalLatestClones.GetCharactersClones(token);
+            return _internalLatestClones.Clones(token);
         }
 
-        public async Task<V3CharactersClones> GetCharactersClonesAsync(SsoToken token)
+        public async Task<V3ClonesClone> ClonesAsync(SsoToken token)
         {
-            return await _internalLatestClones.GetCharactersClonesAsync(token);
+            return await _internalLatestClones.ClonesAsync(token);
         }
 
-        public IList<int> GetCharactersActiveImplants(SsoToken token)
+        public IList<int> ActiveImplants(SsoToken token)
         {
-            return _internalLatestClones.GetCharactersActiveImplants(token);
+            return _internalLatestClones.ActiveImplants(token);
         }
 
-        public async Task<IList<int>> GetCharactersActiveImplantsAsync(SsoToken token)
+        public async Task<IList<int>> ActiveImplantsAsync(SsoToken token)
         {
-            return await _internalLatestClones.GetCharactersActiveImplantsAsync(token);
+            return await _internalLatestClones.ActiveImplantsAsync(token);
         }
     }
 }

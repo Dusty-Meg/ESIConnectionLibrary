@@ -288,17 +288,17 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Clones
 
-        private static string ClonesV3GetCharactersClonesRaw => "/v3/characters/{character_id}/clones/";
-        private static string ClonesV3GetCharactersActiveImplantsRaw => "/v1/characters/{character_id}/implants/";
+        private static string ClonesV3ClonesRaw => "/v3/characters/{character_id}/clones/";
+        private static string ClonesV3ActiveImplantsRaw => "/v1/characters/{character_id}/implants/";
 
-        public static string ClonesV3GetCharactersClones(int characterId)
+        public static string ClonesV3Clones(int characterId)
         {
-            return UrlBuilder(ClonesV3GetCharactersClonesRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(ClonesV3ClonesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string ClonesV3GetCharactersActiveImplants(int characterId)
+        public static string ClonesV3ActiveImplants(int characterId)
         {
-            return UrlBuilder(ClonesV3GetCharactersActiveImplantsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(ClonesV3ActiveImplantsRaw, "{character_id}", characterId.ToString());
         }
 
         #endregion 

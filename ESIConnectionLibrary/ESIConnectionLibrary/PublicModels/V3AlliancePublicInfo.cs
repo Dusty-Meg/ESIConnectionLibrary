@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3GetPublicAlliance
+    public class V3AlliancePublicInfo
     {
         public string Name { get; set; }
         public int CreatorId { get; set; }

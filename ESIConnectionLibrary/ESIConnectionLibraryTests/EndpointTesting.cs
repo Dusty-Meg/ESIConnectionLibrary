@@ -25,10 +25,10 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("AllianceV1GetActiveAllianceRaw")]
-        [InlineData("AllianceV3GetAlliancePublicInfoRaw")]
-        [InlineData("AllianceV1GetAllianceCorporationsRaw")]
-        [InlineData("AllianceV1GetAllianceIconsRaw")]
+        [InlineData("AllianceV1AlliancesRaw")]
+        [InlineData("AllianceV3PublicInfoRaw")]
+        [InlineData("AllianceV1CorporationsRaw")]
+        [InlineData("AllianceV1IconsRaw")]
         public void AllianceEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

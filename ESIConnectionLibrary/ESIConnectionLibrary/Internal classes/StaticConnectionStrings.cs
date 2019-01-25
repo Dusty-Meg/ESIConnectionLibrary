@@ -60,29 +60,29 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Alliances
 
-        private static string AllianceV1GetActiveAllianceRaw => "/v1/alliances/";
-        private static string AllianceV3GetAlliancePublicInfoRaw => "/v3/alliances/{alliance_id}/";
-        private static string AllianceV1GetAllianceCorporationsRaw => "/v1/alliances/{alliance_id}/corporations/";
-        private static string AllianceV1GetAllianceIconsRaw => "/v1/alliances/{alliance_id}/icons/";
+        private static string AllianceV1AlliancesRaw => "/v1/alliances/";
+        private static string AllianceV3PublicInfoRaw => "/v3/alliances/{alliance_id}/";
+        private static string AllianceV1CorporationsRaw => "/v1/alliances/{alliance_id}/corporations/";
+        private static string AllianceV1IconsRaw => "/v1/alliances/{alliance_id}/icons/";
 
-        public static string AlianceV1GetActiveAlliance()
+        public static string AllianceV1Alliance()
         {
-            return UrlBuilder(AllianceV1GetActiveAllianceRaw);
+            return UrlBuilder(AllianceV1AlliancesRaw);
         }
 
-        public static string AllianceV3GetAlliancePublicInfo(int allianceId)
+        public static string AllianceV3PublicInfo(int allianceId)
         {
-            return UrlBuilder(AllianceV3GetAlliancePublicInfoRaw, "{alliance_id}", allianceId.ToString());
+            return UrlBuilder(AllianceV3PublicInfoRaw, "{alliance_id}", allianceId.ToString());
         }
 
-        public static string AllianceV1GetAllianceCorporations(int allianceId)
+        public static string AllianceV1Corporations(int allianceId)
         {
-            return UrlBuilder(AllianceV1GetAllianceCorporationsRaw, "{alliance_id}", allianceId.ToString());
+            return UrlBuilder(AllianceV1CorporationsRaw, "{alliance_id}", allianceId.ToString());
         }
 
-        public static string AllianceV1GetAllianceIcons(int allianceId)
+        public static string AllianceV1Icons(int allianceId)
         {
-            return UrlBuilder(AllianceV1GetAllianceIconsRaw, "{alliance_id}", allianceId.ToString());
+            return UrlBuilder(AllianceV1IconsRaw, "{alliance_id}", allianceId.ToString());
         }
 
         #endregion

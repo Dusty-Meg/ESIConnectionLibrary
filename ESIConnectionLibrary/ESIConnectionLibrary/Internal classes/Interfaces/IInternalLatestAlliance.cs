@@ -6,13 +6,13 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalLatestAlliance
     {
-        IList<int> GetActiveAlliances();
-        Task<IList<int>> GetActiveAlliancesAsync();
-        IList<int> GetAllianceCorporation(int allianceId);
-        Task<IList<int>> GetAllianceCorporationAsync(int allianceId);
-        V1AllianceIcons GetAllianceIcons(int allianceId);
-        Task<V1AllianceIcons> GetAllianceIconsAsync(int allianceId);
-        V3GetPublicAlliance GetPublicAllianceInfo(int allianceId);
-        Task<V3GetPublicAlliance> GetPublicAllianceInfoAsync(int allianceId);
+        IList<int> Alliances();
+        Task<IList<int>> AlliancesAsync();
+        IList<int> Corporations(int allianceId);
+        Task<IList<int>> CorporationsAsync(int allianceId);
+        V1AllianceIcons Icons(int allianceId);
+        Task<V1AllianceIcons> IconsAsync(int allianceId);
+        V3AlliancePublicInfo PublicInfo(int allianceId);
+        Task<V3AlliancePublicInfo> PublicInfoAsync(int allianceId);
     }
 }

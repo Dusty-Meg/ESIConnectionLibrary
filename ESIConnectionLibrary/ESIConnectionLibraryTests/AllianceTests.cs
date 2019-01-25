@@ -13,7 +13,7 @@ namespace ESIConnectionLibraryTests
     public class AllianceTests
     {
         [Fact]
-        public void GetActiveAlliances_Successfully_returns_a_list_of_AllianceIds()
+        public void Alliances_Successfully_returns_a_list_of_AllianceIds()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -23,13 +23,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            IList<int> allianceIds = internalLatestAlliance.GetActiveAlliances();
+            IList<int> allianceIds = internalLatestAlliance.Alliances();
 
             Assert.Equal(2, allianceIds.Count);
         }
 
         [Fact]
-        public async Task GetActiveAlliancesAsync_Successfully_returns_a_list_of_AllianceIds()
+        public async Task AlliancesAsync_Successfully_returns_a_list_of_AllianceIds()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -39,13 +39,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            IList<int> allianceIds = await internalLatestAlliance.GetActiveAlliancesAsync();
+            IList<int> allianceIds = await internalLatestAlliance.AlliancesAsync();
 
             Assert.Equal(2, allianceIds.Count);
         }
 
         [Fact]
-        public void GetPublicAllianceInfo_Successfully_returns_a_GetPublicAlliance()
+        public void PublicInfo_Successfully_returns_a_GetPublicAlliance()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -57,14 +57,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            V3GetPublicAlliance allianceInfo = internalLatestAlliance.GetPublicAllianceInfo(allianceId);
+            V3AlliancePublicInfo infoInfo = internalLatestAlliance.PublicInfo(allianceId);
 
-            Assert.Equal("C C P Alliance", allianceInfo.Name);
-            Assert.Equal(DateTime.Parse("2016-06-26T21:00:00"), allianceInfo.DateFounded);
+            Assert.Equal("C C P Alliance", infoInfo.Name);
+            Assert.Equal(DateTime.Parse("2016-06-26T21:00:00"), infoInfo.DateFounded);
         }
 
         [Fact]
-        public async Task GetPublicAllianceInfoAsync_Successfully_returns_a_GetPublicAlliance()
+        public async Task PublicInfoAsync_Successfully_returns_a_GetPublicAlliance()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -76,14 +76,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            V3GetPublicAlliance allianceInfo = await internalLatestAlliance.GetPublicAllianceInfoAsync(allianceId);
+            V3AlliancePublicInfo infoInfo = await internalLatestAlliance.PublicInfoAsync(allianceId);
 
-            Assert.Equal("C C P Alliance", allianceInfo.Name);
-            Assert.Equal(DateTime.Parse("2016-06-26T21:00:00"), allianceInfo.DateFounded);
+            Assert.Equal("C C P Alliance", infoInfo.Name);
+            Assert.Equal(DateTime.Parse("2016-06-26T21:00:00"), infoInfo.DateFounded);
         }
 
         [Fact]
-        public void GetAllianceCorporations_successfully_return_a_list_of_ints()
+        public void Corporations_successfully_return_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -95,14 +95,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            IList<int> corporationIds = internalLatestAlliance.GetAllianceCorporation(allianceId);
+            IList<int> corporationIds = internalLatestAlliance.Corporations(allianceId);
 
             Assert.Equal(98000001, corporationIds.First());
             Assert.Single(corporationIds);
         }
 
         [Fact]
-        public async Task GetAllianceCorporationsAsync_successfully_return_a_list_of_ints()
+        public async Task CorporationsAsync_successfully_return_a_list_of_ints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -114,14 +114,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            IList<int> corporationIds = await internalLatestAlliance.GetAllianceCorporationAsync(allianceId);
+            IList<int> corporationIds = await internalLatestAlliance.CorporationsAsync(allianceId);
 
             Assert.Equal(98000001, corporationIds.First());
             Assert.Single(corporationIds);
         }
 
         [Fact]
-        public void GetAllianceIcons_sucessfully_return_a_AllianceIcons()
+        public void Icons_successfully_return_a_AllianceIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -133,14 +133,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            V1AllianceIcons allianceIcons = internalLatestAlliance.GetAllianceIcons(allianceId);
+            V1AllianceIcons allianceIcons = internalLatestAlliance.Icons(allianceId);
 
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
 
         [Fact]
-        public async Task GetAllianceIconsAsync_sucessfully_return_a_AllianceIcons()
+        public async Task IconsAsync_successfully_return_a_AllianceIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -152,7 +152,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAlliance internalLatestAlliance = new InternalLatestAlliance(mockedWebClient.Object, string.Empty);
 
-            V1AllianceIcons allianceIcons = await internalLatestAlliance.GetAllianceIconsAsync(allianceId);
+            V1AllianceIcons allianceIcons = await internalLatestAlliance.IconsAsync(allianceId);
 
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
             Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);

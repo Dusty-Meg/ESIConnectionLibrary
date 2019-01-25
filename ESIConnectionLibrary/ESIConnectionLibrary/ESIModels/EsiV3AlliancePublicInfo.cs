@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3GetPublicAlliance
+    internal class EsiV3AlliancePublicInfo
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

@@ -14,44 +14,44 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAlliance = new InternalLatestAlliance(null, userAgent, testing);
         }
 
-        public IList<int> GetActiveAlliances()
+        public IList<int> Alliances()
         {
-            return _internalLatestAlliance.GetActiveAlliances();
+            return _internalLatestAlliance.Alliances();
         }
 
-        public async Task<IList<int>> GetActiveAlliancesAsync()
+        public async Task<IList<int>> AlliancesAsync()
         {
-            return await _internalLatestAlliance.GetActiveAlliancesAsync();
+            return await _internalLatestAlliance.AlliancesAsync();
         }
 
-        public V3GetPublicAlliance GetPublicAllianceInfo(int allianceId)
+        public V3AlliancePublicInfo PublicInfo(int allianceId)
         {
-            return _internalLatestAlliance.GetPublicAllianceInfo(allianceId);
+            return _internalLatestAlliance.PublicInfo(allianceId);
         }
 
-        public async Task<V3GetPublicAlliance> GetPublicAllianceInfoAsync(int allianceId)
+        public async Task<V3AlliancePublicInfo> PublicInfoAsync(int allianceId)
         {
-            return await _internalLatestAlliance.GetPublicAllianceInfoAsync(allianceId);
+            return await _internalLatestAlliance.PublicInfoAsync(allianceId);
         }
 
-        public IList<int> GetAllianceCorporation(int allianceId)
+        public IList<int> Corporations(int allianceId)
         {
-            return _internalLatestAlliance.GetAllianceCorporation(allianceId);
+            return _internalLatestAlliance.Corporations(allianceId);
         }
 
-        public async Task<IList<int>> GetAllianceCorporationAsync(int allianceId)
+        public async Task<IList<int>> CorporationsAsync(int allianceId)
         {
-            return await _internalLatestAlliance.GetAllianceCorporationAsync(allianceId);
+            return await _internalLatestAlliance.CorporationsAsync(allianceId);
         }
 
-        public V1AllianceIcons GetAllianceIcons(int allianceId)
+        public V1AllianceIcons Icons(int allianceId)
         {
-            return _internalLatestAlliance.GetAllianceIcons(allianceId);
+            return _internalLatestAlliance.Icons(allianceId);
         }
 
-        public async Task<V1AllianceIcons> GetAllianceIconsAsync(int allianceId)
+        public async Task<V1AllianceIcons> IconsAsync(int allianceId)
         {
-            return await _internalLatestAlliance.GetAllianceIconsAsync(allianceId);
+            return await _internalLatestAlliance.IconsAsync(allianceId);
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV3CharactersClonesLocationType
+    internal enum EsiV3ClonesLocationType
     {
         [EnumMember(Value = "station")]
         Station,

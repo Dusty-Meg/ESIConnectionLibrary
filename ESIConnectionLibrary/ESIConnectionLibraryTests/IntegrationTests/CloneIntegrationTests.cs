@@ -10,7 +10,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class CloneIntegrationTests
     {
         [Fact]
-        public void GetCharactersClones_successfully_returns_a_charactersClones()
+        public void Clones_successfully_returns_a_charactersClones()
         {
             CloneScopes scopes = CloneScopes.esi_clones_read_clones_v1;
 
@@ -18,18 +18,18 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCloneEndpoints internalLatestClones = new LatestCloneEndpoints(string.Empty, true);
 
-            V3CharactersClones getClones = internalLatestClones.GetCharactersClones(inputToken);
+            V3ClonesClone getClonesClone = internalLatestClones.Clones(inputToken);
 
-            Assert.Equal(1021348135816, getClones.HomeLocation.LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.Structure, getClones.HomeLocation.LocationType);
-            Assert.Equal(22118, getClones.JumpClones.First().Implants.First());
-            Assert.Equal(12345, getClones.JumpClones.First().JumpCloneId);
-            Assert.Equal(60003463, getClones.JumpClones.First().LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.Station, getClones.JumpClones.First().LocationType);
+            Assert.Equal(1021348135816, getClonesClone.HomeLocation.LocationId);
+            Assert.Equal(V3ClonesLocationType.Structure, getClonesClone.HomeLocation.LocationType);
+            Assert.Equal(22118, getClonesClone.JumpClones.First().Implants.First());
+            Assert.Equal(12345, getClonesClone.JumpClones.First().JumpCloneId);
+            Assert.Equal(60003463, getClonesClone.JumpClones.First().LocationId);
+            Assert.Equal(V3ClonesLocationType.Station, getClonesClone.JumpClones.First().LocationType);
         }
 
         [Fact]
-        public async Task GetCharactersClonesAsync_successfully_returns_a_charactersClones()
+        public async Task ClonesAsync_successfully_returns_a_charactersClones()
         {
             CloneScopes scopes = CloneScopes.esi_clones_read_clones_v1;
 
@@ -37,18 +37,18 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCloneEndpoints internalLatestClones = new LatestCloneEndpoints(string.Empty, true);
 
-            V3CharactersClones getClones = await internalLatestClones.GetCharactersClonesAsync(inputToken);
+            V3ClonesClone getClonesClone = await internalLatestClones.ClonesAsync(inputToken);
 
-            Assert.Equal(1021348135816, getClones.HomeLocation.LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.Structure, getClones.HomeLocation.LocationType);
-            Assert.Equal(22118, getClones.JumpClones.First().Implants.First());
-            Assert.Equal(12345, getClones.JumpClones.First().JumpCloneId);
-            Assert.Equal(60003463, getClones.JumpClones.First().LocationId);
-            Assert.Equal(V3CharactersClonesLocationType.Station, getClones.JumpClones.First().LocationType);
+            Assert.Equal(1021348135816, getClonesClone.HomeLocation.LocationId);
+            Assert.Equal(V3ClonesLocationType.Structure, getClonesClone.HomeLocation.LocationType);
+            Assert.Equal(22118, getClonesClone.JumpClones.First().Implants.First());
+            Assert.Equal(12345, getClonesClone.JumpClones.First().JumpCloneId);
+            Assert.Equal(60003463, getClonesClone.JumpClones.First().LocationId);
+            Assert.Equal(V3ClonesLocationType.Station, getClonesClone.JumpClones.First().LocationType);
         }
 
         [Fact]
-        public void GetCharactersActiveImplants_successfully_returns_a_listInt()
+        public void ActiveImplants_successfully_returns_a_listInt()
         {
             CloneScopes scopes = CloneScopes.esi_clones_read_implants_v1;
 
@@ -56,7 +56,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCloneEndpoints internalLatestClones = new LatestCloneEndpoints(string.Empty, true);
 
-            IList<int> getImplants = internalLatestClones.GetCharactersActiveImplants(inputToken);
+            IList<int> getImplants = internalLatestClones.ActiveImplants(inputToken);
 
             Assert.Equal(1, getImplants[0]);
             Assert.Equal(2, getImplants[1]);
@@ -64,7 +64,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharactersActiveImplantsAsync_successfully_returns_a_listInt()
+        public async Task ActiveImplantsAsync_successfully_returns_a_listInt()
         {
             CloneScopes scopes = CloneScopes.esi_clones_read_implants_v1;
 
@@ -72,7 +72,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestCloneEndpoints internalLatestClones = new LatestCloneEndpoints(string.Empty, true);
 
-            IList<int> getImplants = await internalLatestClones.GetCharactersActiveImplantsAsync(inputToken);
+            IList<int> getImplants = await internalLatestClones.ActiveImplantsAsync(inputToken);
 
             Assert.Equal(1, getImplants[0]);
             Assert.Equal(2, getImplants[1]);

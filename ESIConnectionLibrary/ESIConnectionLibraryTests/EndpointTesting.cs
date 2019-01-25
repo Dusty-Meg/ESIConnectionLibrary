@@ -88,8 +88,8 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("ClonesV3GetCharactersClonesRaw")]
-        [InlineData("ClonesV3GetCharactersActiveImplantsRaw")]
+        [InlineData("ClonesV3ClonesRaw")]
+        [InlineData("ClonesV3ActiveImplantsRaw")]
         public void CloneEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

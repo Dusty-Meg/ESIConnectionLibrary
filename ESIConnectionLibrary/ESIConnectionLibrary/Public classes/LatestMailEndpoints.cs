@@ -13,24 +13,24 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestMail = new InternalLatestMail(null, userAgent, testing);
         }
 
-        public PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId)
+        public PagedModel<V1MailCharacter> Character(SsoToken token, int lastMailId)
         {
-            return _internalLatestMail.GetCharactersMail(token, lastMailId);
+            return _internalLatestMail.Character(token, lastMailId);
         }
 
-        public async Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int lastMailId)
+        public async Task<PagedModel<V1MailCharacter>> CharacterAsync(SsoToken token, int lastMailId)
         {
-            return await _internalLatestMail.GetCharactersMailAsync(token, lastMailId);
+            return await _internalLatestMail.CharacterAsync(token, lastMailId);
         }
 
-        public V1MailGetMail GetMail(SsoToken token, int mailId)
+        public V1MailMail Mail(SsoToken token, int mailId)
         {
-            return _internalLatestMail.GetMail(token, mailId);
+            return _internalLatestMail.Mail(token, mailId);
         }
 
-        public async Task<V1MailGetMail> GetMailAsync(SsoToken token, int mailId)
+        public async Task<V1MailMail> MailAsync(SsoToken token, int mailId)
         {
-            return await _internalLatestMail.GetMailAsync(token, mailId);
+            return await _internalLatestMail.MailAsync(token, mailId);
         }
     }
 }

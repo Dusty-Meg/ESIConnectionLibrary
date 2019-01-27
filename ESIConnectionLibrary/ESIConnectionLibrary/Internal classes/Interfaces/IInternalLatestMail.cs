@@ -5,9 +5,9 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalLatestMail
     {
-        PagedModel<V1MailGetCharactersMail> GetCharactersMail(SsoToken token, int lastMailId);
-        Task<PagedModel<V1MailGetCharactersMail>> GetCharactersMailAsync(SsoToken token, int lastMailId);
-        V1MailGetMail GetMail(SsoToken token, int mailId);
-        Task<V1MailGetMail> GetMailAsync(SsoToken token, int mailId);
+        PagedModel<V1MailCharacter> Character(SsoToken token, int lastMailId);
+        Task<PagedModel<V1MailCharacter>> CharacterAsync(SsoToken token, int lastMailId);
+        V1MailMail Mail(SsoToken token, int mailId);
+        Task<V1MailMail> MailAsync(SsoToken token, int mailId);
     }
 }

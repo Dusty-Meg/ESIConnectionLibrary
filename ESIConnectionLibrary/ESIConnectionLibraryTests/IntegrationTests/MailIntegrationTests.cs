@@ -8,7 +8,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class MailIntegrationTests
     {
         [Fact]
-        public void GetCharactersMail_successfully_return_a_pagedModelV1MailGetCharactersMail()
+        public void Characters_successfully_return_a_pagedModelV1MailCharacters()
         {
             int characterId = 88823;
             int lastId = 222222;
@@ -18,7 +18,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
 
-            PagedModel<V1MailGetCharactersMail> getCharacterMail = internalLatestMail.GetCharactersMail(inputToken, lastId);
+            PagedModel<V1MailCharacter> getCharacterMail = internalLatestMail.Character(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
             Assert.Equal(MailRecipientType.Character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
@@ -26,7 +26,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharactersMailAsync_successfully_return_a_pagedModelV1MailGetCharactersMailAsync()
+        public async Task CharactersAsync_successfully_return_a_pagedModelV1MailCharacters()
         {
             int characterId = 88823;
             int lastId = 222222;
@@ -36,7 +36,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
 
-            PagedModel<V1MailGetCharactersMail> getCharacterMail = await internalLatestMail.GetCharactersMailAsync(inputToken, lastId);
+            PagedModel<V1MailCharacter> getCharacterMail = await internalLatestMail.CharacterAsync(inputToken, lastId);
 
             Assert.Equal(1, getCharacterMail.Model.Count);
             Assert.Equal(MailRecipientType.Character, getCharacterMail.Model[0].Recipients[0].MailRecipientType);
@@ -44,7 +44,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetMail_successfully_returns_a_V1MailGetMail()
+        public void Mail_successfully_returns_a_V1MailMail()
         {
             int characterId = 88823;
             int mailId = 222222;
@@ -54,15 +54,15 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
 
-            V1MailGetMail getMail = internalLatestMail.GetMail(inputToken, mailId);
+            V1MailMail mail = internalLatestMail.Mail(inputToken, mailId);
 
-            Assert.Equal(90000001, getMail.From);
-            Assert.Equal(2, getMail.Labels.Count);
-            Assert.True(getMail.Read);
+            Assert.Equal(90000001, mail.From);
+            Assert.Equal(2, mail.Labels.Count);
+            Assert.True(mail.Read);
         }
 
         [Fact]
-        public async Task GetMailAsync_successfully_returns_a_V1MailGetMail()
+        public async Task MailAsync_successfully_returns_a_V1MailMail()
         {
             int characterId = 88823;
             int mailId = 222222;
@@ -72,11 +72,11 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
 
-            V1MailGetMail getMail = await internalLatestMail.GetMailAsync(inputToken, mailId);
+            V1MailMail mail = await internalLatestMail.MailAsync(inputToken, mailId);
 
-            Assert.Equal(90000001, getMail.From);
-            Assert.Equal(2, getMail.Labels.Count);
-            Assert.True(getMail.Read);
+            Assert.Equal(90000001, mail.From);
+            Assert.Equal(2, mail.Labels.Count);
+            Assert.True(mail.Read);
         }
     }
 }

@@ -922,22 +922,22 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Mail
 
-        private static string MailV1MailGetCharactersMailRaw => "/v1/characters/{character_id}/mail/";
-        private static string MailV1MailGetMailRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
+        private static string MailV1CharacterRaw => "/v1/characters/{character_id}/mail/";
+        private static string MailV1MailRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
 
-        public static string MailV1MailGetCharactersMail(int characterId, int lastMailId)
+        public static string MailV1Character(int characterId, int lastMailId)
         {
             if (lastMailId == 0)
             {
-                return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString());
+                return UrlBuilder(MailV1CharacterRaw, "{character_id}", characterId.ToString());
             }
 
-            return UrlBuilder(MailV1MailGetCharactersMailRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
+            return UrlBuilder(MailV1CharacterRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
         }
 
-        public static string MailV1MailGetMail(int characterId, int mailId)
+        public static string MailV1Mail(int characterId, int mailId)
         {
-            return UrlBuilder(MailV1MailGetMailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+            return UrlBuilder(MailV1MailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
         }
 
         #endregion 

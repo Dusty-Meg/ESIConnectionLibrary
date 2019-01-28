@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ESIConnectionLibrary.PublicModels;
 using ESIConnectionLibrary.Public_classes;
 using Xunit;
@@ -77,6 +78,96 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             Assert.Equal(90000001, mail.From);
             Assert.Equal(2, mail.Labels.Count);
             Assert.True(mail.Read);
+        }
+
+        [Fact]
+        public void LabelsAndUnreadCount_successfully_returns_a_V3MailLabelsAndUnreadCount()
+        {
+            int characterId = 88823;
+            MailScopes scopes = MailScopes.esi_mail_read_mail_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MailScopesFlags = scopes };
+
+            LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
+
+            V3MailLabelsAndUnreadCount mail = internalLatestMail.LabelsAndUnreadCount(inputToken);
+
+            Assert.Equal(2, mail.Labels.Count);
+
+            Assert.Equal(MailLabelColor.Purple, mail.Labels[0].Color);
+            Assert.Equal(16, mail.Labels[0].LabelId);
+            Assert.Equal("PINK", mail.Labels[0].Name);
+            Assert.Equal(4, mail.Labels[0].UnreadCount);
+
+            Assert.Equal(MailLabelColor.White, mail.Labels[1].Color);
+            Assert.Equal(17, mail.Labels[1].LabelId);
+            Assert.Equal("WHITE", mail.Labels[1].Name);
+            Assert.Equal(1, mail.Labels[1].UnreadCount);
+
+            Assert.Equal(5, mail.TotalUnreadCount);
+        }
+
+        [Fact]
+        public async Task LabelsAndUnreadCountAsync_successfully_returns_a_V3MailLabelsAndUnreadCount()
+        {
+            int characterId = 88823;
+            MailScopes scopes = MailScopes.esi_mail_read_mail_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MailScopesFlags = scopes };
+
+            LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
+
+            V3MailLabelsAndUnreadCount mail = await internalLatestMail.LabelsAndUnreadCountAsync(inputToken);
+
+            Assert.Equal(2, mail.Labels.Count);
+
+            Assert.Equal(MailLabelColor.Purple, mail.Labels[0].Color);
+            Assert.Equal(16, mail.Labels[0].LabelId);
+            Assert.Equal("PINK", mail.Labels[0].Name);
+            Assert.Equal(4, mail.Labels[0].UnreadCount);
+
+            Assert.Equal(MailLabelColor.White, mail.Labels[1].Color);
+            Assert.Equal(17, mail.Labels[1].LabelId);
+            Assert.Equal("WHITE", mail.Labels[1].Name);
+            Assert.Equal(1, mail.Labels[1].UnreadCount);
+
+            Assert.Equal(5, mail.TotalUnreadCount);
+        }
+
+        [Fact]
+        public void MailingLists_successfully_returns_a_list_of_V1MailMailingList()
+        {
+            int characterId = 88823;
+            MailScopes scopes = MailScopes.esi_mail_read_mail_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MailScopesFlags = scopes };
+
+            LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
+
+            IList<V1MailMailingList> mail = internalLatestMail.MailingLists(inputToken);
+
+            Assert.Single(mail);
+
+            Assert.Equal(1, mail[0].MailingListId);
+            Assert.Equal("test_mailing_list", mail[0].Name);
+        }
+
+        [Fact]
+        public async Task MailingListsAsync_successfully_returns_a_list_of_V1MailMailingList()
+        {
+            int characterId = 88823;
+            MailScopes scopes = MailScopes.esi_mail_read_mail_v1;
+
+            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, MailScopesFlags = scopes };
+            
+            LatestMailEndpoints internalLatestMail = new LatestMailEndpoints(string.Empty, true);
+
+            IList<V1MailMailingList> mail = await internalLatestMail.MailingListsAsync(inputToken);
+
+            Assert.Single(mail);
+
+            Assert.Equal(1, mail[0].MailingListId);
+            Assert.Equal("test_mailing_list", mail[0].Name);
         }
     }
 }

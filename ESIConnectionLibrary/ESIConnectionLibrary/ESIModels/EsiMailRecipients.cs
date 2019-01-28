@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1MailRecipients
+    internal class EsiMailRecipients
     {
         [JsonProperty(PropertyName = "recipient_id")]
         public int RecipientId { get; set; }

@@ -9,7 +9,7 @@ namespace ESIConnectionLibrary.PublicModels
         public bool? IsRead { get; set; }
         public IList<int> Labels { get; set; }
         public int? MailId { get; set; }
-        public IList<V1MailRecipients> Recipients { get; set; }
+        public IList<MailRecipients> Recipients { get; set; }
         public string Subject { get; set; }
         public DateTime? Timestamp { get; set; }
     }

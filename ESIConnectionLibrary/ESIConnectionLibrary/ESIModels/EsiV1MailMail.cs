@@ -19,7 +19,7 @@ namespace ESIConnectionLibrary.ESIModels
         public bool? Read { get; set; }
 
         [JsonProperty(PropertyName = "recipients")]
-        public IList<EsiV1MailRecipients> Recipients { get; set; }
+        public IList<EsiMailRecipients> Recipients { get; set; }
 
         [JsonProperty(PropertyName = "subject")]
         public string Subject { get; set; }

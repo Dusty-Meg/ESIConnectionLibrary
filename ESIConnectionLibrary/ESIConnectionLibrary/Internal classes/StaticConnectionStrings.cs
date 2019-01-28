@@ -923,7 +923,14 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Mail
 
         private static string MailV1CharacterRaw => "/v1/characters/{character_id}/mail/";
+        private static string MailV1SendRaw => "/v1/characters/{character_id}/mail/";
+        private static string MailV1DeleteRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
         private static string MailV1MailRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
+        private static string MailV1MetadataRaw => "/v1/characters/{character_id}/mail/{mail_id}/";
+        private static string MailV3LabelsAndUnreadCountRaw => "/v3/characters/{character_id}/mail/labels/";
+        private static string MailV2CreateLabelRaw => "/v2/characters/{character_id}/mail/labels/";
+        private static string MailV1DeleteLabelRaw => "/v1/characters/{character_id}/mail/labels/{label_id}/";
+        private static string MailV1MailingListRaw => "/v1/characters/{character_id}/mail/lists/";
 
         public static string MailV1Character(int characterId, int lastMailId)
         {
@@ -935,9 +942,44 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(MailV1CharacterRaw, "{character_id}", characterId.ToString()) + $"?last_mail_id={lastMailId}";
         }
 
+        public static string MailV1Send(int characterId)
+        {
+            return UrlBuilder(MailV1SendRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string MailV1Delete(int characterId, int mailId)
+        {
+            return UrlBuilder(MailV1DeleteRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+        }
+
         public static string MailV1Mail(int characterId, int mailId)
         {
             return UrlBuilder(MailV1MailRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+        }
+
+        public static string MailV1Metadata(int characterId, int mailId)
+        {
+            return UrlBuilder(MailV1MetadataRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+        }
+
+        public static string MailV3LabelsAndUnreadCount(int characterId)
+        {
+            return UrlBuilder(MailV3LabelsAndUnreadCountRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string MailV2CreateLabel(int characterId)
+        {
+            return UrlBuilder(MailV2CreateLabelRaw, "{character_id}", characterId.ToString());
+        }
+
+        public static string MailV1DeleteLabel(int characterId, int mailId)
+        {
+            return UrlBuilder(MailV1DeleteLabelRaw, "{character_id}", characterId.ToString(), "{mail_id}", mailId.ToString());
+        }
+
+        public static string MailV1MailingList(int characterId)
+        {
+            return UrlBuilder(MailV1MailingListRaw, "{character_id}", characterId.ToString());
         }
 
         #endregion 

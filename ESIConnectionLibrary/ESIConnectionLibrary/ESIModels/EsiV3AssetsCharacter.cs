@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3GetCharacterAssets
+    internal class EsiV3AssetsCharacter
     {
         [JsonProperty(PropertyName = "type_id")]
         public int TypeId { get; set; }

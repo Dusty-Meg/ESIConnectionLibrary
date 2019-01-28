@@ -35,12 +35,12 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("AssetsV3GetCharactersAssetsRaw")]
-        [InlineData("AssetsV2GetCharactersAssetsLocationsRaw")]
-        [InlineData("AssetsV1GetCharactersAssetsNamesRaw")]
-        [InlineData("AssetsV3GetCorporationsAssetsRaw")]
-        [InlineData("AssetsV2GetCorporationsAssetsLocationsRaw")]
-        [InlineData("AssetsV1GetCorporationsAssetsNamesRaw")]
+        [InlineData("AssetsV3CharactersRaw")]
+        [InlineData("AssetsV2CharacterLocationsRaw")]
+        [InlineData("AssetsV1CharacterNamesRaw")]
+        [InlineData("AssetsV3CorporationsRaw")]
+        [InlineData("AssetsV2CorporationLocationsRaw")]
+        [InlineData("AssetsV1CorporationNamesRaw")]
         public void AssetsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

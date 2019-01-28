@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2GetCorporationsAssetsLocations
+    internal class EsiV2AssetsCorporationLocation
     {
         [JsonProperty(PropertyName = "item_id")]
         public long ItemId { get; set; }

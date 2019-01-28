@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3GetCorporationsAssets
+    public class V3AssetsCorporations
     {
         public bool? IsBlueprintCopy { get; set; }
         public bool IsSingleton { get; set; }

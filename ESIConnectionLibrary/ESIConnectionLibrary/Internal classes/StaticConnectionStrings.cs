@@ -89,41 +89,41 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Assets
 
-        private static string AssetsV3GetCharactersAssetsRaw => "/v3/characters/{character_id}/assets/";
-        private static string AssetsV2GetCharactersAssetsLocationsRaw => "/v2/characters/{character_id}/assets/locations/";
-        private static string AssetsV1GetCharactersAssetsNamesRaw => "/v1/characters/{character_id}/assets/names/";
-        private static string AssetsV3GetCorporationsAssetsRaw => "/v3/corporations/{corporation_id}/assets/";
-        private static string AssetsV2GetCorporationsAssetsLocationsRaw => "/v2/corporations/{corporation_id}/assets/locations/";
-        private static string AssetsV1GetCorporationsAssetsNamesRaw => "/v1/corporations/{corporation_id}/assets/names/";
+        private static string AssetsV3CharactersRaw => "/v3/characters/{character_id}/assets/";
+        private static string AssetsV2CharacterLocationsRaw => "/v2/characters/{character_id}/assets/locations/";
+        private static string AssetsV1CharacterNamesRaw => "/v1/characters/{character_id}/assets/names/";
+        private static string AssetsV3CorporationsRaw => "/v3/corporations/{corporation_id}/assets/";
+        private static string AssetsV2CorporationLocationsRaw => "/v2/corporations/{corporation_id}/assets/locations/";
+        private static string AssetsV1CorporationNamesRaw => "/v1/corporations/{corporation_id}/assets/names/";
 
-        public static string AssetsV3GetCharactersAssets(int characterId, int page)
+        public static string AssetsV3Characters(int characterId, int page)
         {
-            return UrlBuilder(AssetsV3GetCharactersAssetsRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(AssetsV3CharactersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
-        public static string AssetsV2GetCharactersAssetsLocations(int characterId)
+        public static string AssetsV2CharacterLocations(int characterId)
         {
-            return UrlBuilder(AssetsV2GetCharactersAssetsLocationsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(AssetsV2CharacterLocationsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string AssetsV1GetCharactersAssetsNames(int characterId)
+        public static string AssetsV1CharacterNames(int characterId)
         {
-            return UrlBuilder(AssetsV1GetCharactersAssetsNamesRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(AssetsV1CharacterNamesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string AssetsV3GetCorporationsAssets(int corporationId, int page)
+        public static string AssetsV3Corporations(int corporationId, int page)
         {
-            return UrlBuilder(AssetsV3GetCorporationsAssetsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(AssetsV3CorporationsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string AssetsV2GetCorporationsAssetsLocations(int corporationId)
+        public static string AssetsV2CorporationLocations(int corporationId)
         {
-            return UrlBuilder(AssetsV2GetCorporationsAssetsLocationsRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(AssetsV2CorporationLocationsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string AssetsV1GetCorporationsAssetsNames(int corporationId)
+        public static string AssetsV1CorporationNames(int corporationId)
         {
-            return UrlBuilder(AssetsV1GetCorporationsAssetsNamesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(AssetsV1CorporationNamesRaw, "{corporation_id}", corporationId.ToString());
         }
 
         #endregion

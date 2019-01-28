@@ -10,7 +10,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class AssetsIntegrationTests
     {
         [Fact]
-        public void GetCharacterAssets_successfully_returns_a_pagedModelCharacterAssets()
+        public void Characters_successfully_returns_a_pagedModelV3AssetsCharacter()
         {
             int characterId = 88823;
             int page = 1;
@@ -20,7 +20,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3GetCharacterAssets> getCharacterAssets = internalLatestAssets.GetCharactersAssets(inputToken, page);
+            PagedModel<V3AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharacterAssetsAsync_successfully_returns_a_pagedModelCharacterAssets()
+        public async Task CharactersAsync_successfully_returns_a_pagedModelV3AssetsCharacter()
         {
             int characterId = 88823;
             int page = 1;
@@ -38,7 +38,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3GetCharacterAssets> getCharacterAssets = await internalLatestAssets.GetCharactersAssetsAsync(inputToken, page);
+            PagedModel<V3AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -46,7 +46,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCharactersAssetsLocations_successfully_returns_a_ListV2GetCharactersAssetsLocations()
+        public void CharacterLocations_successfully_returns_a_ListV2AssetsCharacterLocation()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -56,14 +56,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = internalLatestAssets.GetCharactersAssetsLocations(inputToken, ids);
+            IList<V2AssetsCharacterLocation> getCharactersAssetsLocations = internalLatestAssets.CharacterLocations(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsLocations.Count);
             Assert.Equal(12345, getCharactersAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public async Task GetCharactersAssetsLocationsAsync_successfully_returns_a_ListV2GetCharactersAssetsLocations()
+        public async Task CharacterLocationsAsync_successfully_returns_a_ListV2AssetsCharacterLocation()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -73,14 +73,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = await internalLatestAssets.GetCharactersAssetsLocationsAsync(inputToken, ids);
+            IList<V2AssetsCharacterLocation> getCharactersAssetsLocations = await internalLatestAssets.CharacterLocationAsync(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsLocations.Count);
             Assert.Equal(12345, getCharactersAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public void GetCharactersAssetsNames_successfully_returns_a_ListV1GetCharactersAssetsNames()
+        public void CharacterNames_successfully_returns_a_ListV1AssetsCharacterName()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -90,7 +90,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = internalLatestAssets.GetCharactersAssetsNames(inputToken, ids);
+            IList<V1AssetsCharacterName> getCharactersAssetsNames = internalLatestAssets.CharacterNames(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsNames.Count);
             Assert.Equal(12345, getCharactersAssetsNames.First().ItemId);
@@ -98,7 +98,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCharactersAssetsNamesAsync_successfully_returns_a_ListV1GetCharactersAssetsNames()
+        public async Task CharacterNamesAsync_successfully_returns_a_ListV1AssetsCharacterName()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -108,7 +108,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = await internalLatestAssets.GetCharactersAssetsNamesAsync(inputToken, ids);
+            IList<V1AssetsCharacterName> getCharactersAssetsNames = await internalLatestAssets.CharacterNamesAsync(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsNames.Count);
             Assert.Equal(12345, getCharactersAssetsNames.First().ItemId);
@@ -116,7 +116,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCorporationsAssets_successfully_returns_a_pagedModelCorporationsAssets()
+        public void Corporations_successfully_returns_a_pagedModelV3AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -127,7 +127,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3GetCorporationsAssets> getCorporationAssets = internalLatestAssets.GetCorporationsAssets(inputToken, corporationId, page);
+            PagedModel<V3AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);
@@ -135,7 +135,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsAsync_successfully_returns_a_pagedModelCorporationsAssets()
+        public async Task CorporationsAsync_successfully_returns_a_pagedModelV3AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -146,7 +146,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3GetCorporationsAssets> getCorporationAssets = await internalLatestAssets.GetCorporationsAssetsAsync(inputToken, corporationId, page);
+            PagedModel<V3AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);
@@ -154,7 +154,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void GetCorporationsAssetsLocations_successfully_returns_a_ListV2GetCorporationsAssetsLocations()
+        public void CorporationLocations_successfully_returns_a_ListV2AssetsCorporationLocation()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -163,14 +163,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V2GetCorporationsAssetsLocations> getCorporationAssetsLocations = internalLatestAssets.GetCorporationsAssetsLocations(inputToken, characterId, ids);
+            IList<V2AssetsCorporationLocation> getCorporationAssetsLocations = internalLatestAssets.CorporationLocations(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationAssetsLocations.Count);
             Assert.Equal(12345, getCorporationAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsLocationsAsync_successfully_returns_a_ListV2GetCorporationsAssetsLocations()
+        public async Task CorporationLocationsAsync_successfully_returns_a_ListV2AssetsCorporationLocation()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -179,14 +179,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, AssetScopesFlags = scopes };
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V2GetCorporationsAssetsLocations> getCorporationAssetsLocations = await internalLatestAssets.GetCorporationsAssetsLocationsAsync(inputToken, characterId, ids);
+            IList<V2AssetsCorporationLocation> getCorporationAssetsLocations = await internalLatestAssets.CorporationLocationsAsync(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationAssetsLocations.Count);
             Assert.Equal(12345, getCorporationAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public void GetCorporationsAssetsNames_successfully_returns_a_ListV1GetCorporationsAssetsNames()
+        public void CorporationNames_successfully_returns_a_ListV1AssetsCorporationName()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -196,7 +196,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V1GetCorporationsAssetsNames> getCorporationsAssetsNames = internalLatestAssets.GetCorporationsAssetsNames(inputToken, characterId, ids);
+            IList<V1AssetsCorporationName> getCorporationsAssetsNames = internalLatestAssets.CorporationNames(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationsAssetsNames.Count);
             Assert.Equal(12345, getCorporationsAssetsNames.First().ItemId);
@@ -204,7 +204,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsNamesAsync_successfully_returns_a_ListV1GetCorporationsAssetsNames()
+        public async Task CorporationNamesAsync_successfully_returns_a_ListV1AssetsCorporationName()
         {
             int characterId = 88823;
             IList<long> ids = new List<long> { 3, 5, 6 };
@@ -214,7 +214,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            IList<V1GetCorporationsAssetsNames> getCorporationsAssetsNames = await internalLatestAssets.GetCorporationsAssetsNamesAsync(inputToken, characterId, ids);
+            IList<V1AssetsCorporationName> getCorporationsAssetsNames = await internalLatestAssets.CorporationNamesAsync(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationsAssetsNames.Count);
             Assert.Equal(12345, getCorporationsAssetsNames.First().ItemId);

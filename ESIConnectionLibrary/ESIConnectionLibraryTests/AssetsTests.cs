@@ -12,7 +12,7 @@ namespace ESIConnectionLibraryTests
     public class AssetsTests
     {
         [Fact]
-        public void GetCharacterAssets_successfully_returns_a_pagedModelCharacterAssets()
+        public void Characters_successfully_returns_a_pagedModelV3AssetsCharacter()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3GetCharacterAssets> getCharacterAssets = internalLatestAssets.GetCharactersAssets(inputToken, page);
+            PagedModel<V3AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -36,7 +36,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetCharacterAssetsAsync_successfully_returns_a_pagedModelCharacterAssets()
+        public async Task CharactersAsync_successfully_returns_a_pagedModelV3AssetsCharacter()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -51,7 +51,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3GetCharacterAssets> getCharacterAssets = await internalLatestAssets.GetCharactersAssetsAsync(inputToken, page);
+            PagedModel<V3AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -60,7 +60,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetCharactersAssetsLocations_successfully_returns_a_ListV2GetCharactersAssetsLocations()
+        public void CharacterLocations_successfully_returns_a_ListV2AssetsCharacterLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -75,14 +75,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = internalLatestAssets.GetCharactersAssetsLocations(inputToken, ids);
+            IList<V2AssetsCharacterLocation> getCharactersAssetsLocations = internalLatestAssets.CharacterLocations(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsLocations.Count);
             Assert.Equal(12345, getCharactersAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public async Task GetCharactersAssetsLocationsAsync_successfully_returns_a_ListV2GetCharactersAssetsLocations()
+        public async Task CharacterLocationsAsync_successfully_returns_a_ListV2AssetsCharacterLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -97,14 +97,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V2GetCharactersAssetsLocations> getCharactersAssetsLocations = await internalLatestAssets.GetCharactersAssetsLocationsAsync(inputToken, ids);
+            IList<V2AssetsCharacterLocation> getCharactersAssetsLocations = await internalLatestAssets.CharacterLocationAsync(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsLocations.Count);
             Assert.Equal(12345, getCharactersAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public void GetCharactersAssetsNames_successfully_returns_a_ListV1GetCharactersAssetsNames()
+        public void CharacterNames_successfully_returns_a_ListV1AssetsCharacterName()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -119,7 +119,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = internalLatestAssets.GetCharactersAssetsNames(inputToken, ids);
+            IList<V1AssetsCharacterName> getCharactersAssetsNames = internalLatestAssets.CharacterNames(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsNames.Count);
             Assert.Equal(12345, getCharactersAssetsNames.First().ItemId);
@@ -127,7 +127,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetCharactersAssetsNamesAsync_successfully_returns_a_ListV1GetCharactersAssetsNames()
+        public async Task CharacterNamesAsync_successfully_returns_a_ListV1AssetsCharacterName()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -142,7 +142,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V1GetCharactersAssetsNames> getCharactersAssetsNames = await internalLatestAssets.GetCharactersAssetsNamesAsync(inputToken, ids);
+            IList<V1AssetsCharacterName> getCharactersAssetsNames = await internalLatestAssets.CharacterNamesAsync(inputToken, ids);
 
             Assert.Equal(1, getCharactersAssetsNames.Count);
             Assert.Equal(12345, getCharactersAssetsNames.First().ItemId);
@@ -150,7 +150,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetCorporationsAssets_successfully_returns_a_pagedModelCorporationsAssets()
+        public void Corporations_successfully_returns_a_pagedModelV3AssetsCorporations()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -166,7 +166,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3GetCorporationsAssets> getCorporationAssets = internalLatestAssets.GetCorporationsAssets(inputToken, corporationId, page);
+            PagedModel<V3AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);
@@ -175,7 +175,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsAsync_successfully_returns_a_pagedModelCorporationsAssets()
+        public async Task CorporationsAsync_successfully_returns_a_pagedModelV3AssetsCorporations()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -191,7 +191,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3GetCorporationsAssets> getCorporationAssets = await internalLatestAssets.GetCorporationsAssetsAsync(inputToken, corporationId, page);
+            PagedModel<V3AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);
@@ -200,7 +200,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void GetCorporationsAssetsLocations_successfully_returns_a_ListV2GetCorporationsAssetsLocations()
+        public void CorporationLocations_successfully_returns_a_ListV2AssetsCorporationLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -215,14 +215,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V2GetCorporationsAssetsLocations> getCorporationAssetsLocations = internalLatestAssets.GetCorporationsAssetsLocations(inputToken, characterId, ids);
+            IList<V2AssetsCorporationLocation> getCorporationAssetsLocations = internalLatestAssets.CorporationLocations(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationAssetsLocations.Count);
             Assert.Equal(12345, getCorporationAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsLocationsAsync_successfully_returns_a_ListV2GetCorporationsAssetsLocations()
+        public async Task CorporationLocationsAsync_successfully_returns_a_ListV2AssetsCorporationLocation()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -237,14 +237,14 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V2GetCorporationsAssetsLocations> getCorporationAssetsLocations = await internalLatestAssets.GetCorporationsAssetsLocationsAsync(inputToken, characterId, ids);
+            IList<V2AssetsCorporationLocation> getCorporationAssetsLocations = await internalLatestAssets.CorporationLocationsAsync(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationAssetsLocations.Count);
             Assert.Equal(12345, getCorporationAssetsLocations.First().ItemId);
         }
 
         [Fact]
-        public void GetCorporationsAssetsNames_successfully_returns_a_ListV1GetCorporationsAssetsNames()
+        public void CorporationNames_successfully_returns_a_ListV1AssetsCorporationName()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -259,7 +259,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V1GetCorporationsAssetsNames> getCorporationsAssetsNames = internalLatestAssets.GetCorporationsAssetsNames(inputToken, characterId, ids);
+            IList<V1AssetsCorporationName> getCorporationsAssetsNames = internalLatestAssets.CorporationNames(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationsAssetsNames.Count);
             Assert.Equal(12345, getCorporationsAssetsNames.First().ItemId);
@@ -267,7 +267,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task GetCorporationsAssetsNamesAsync_successfully_returns_a_ListV1GetCorporationsAssetsNames()
+        public async Task CorporationNamesAsync_successfully_returns_a_ListV1AssetsCorporationName()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -282,7 +282,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            IList<V1GetCorporationsAssetsNames> getCorporationsAssetsNames = await internalLatestAssets.GetCorporationsAssetsNamesAsync(inputToken, characterId, ids);
+            IList<V1AssetsCorporationName> getCorporationsAssetsNames = await internalLatestAssets.CorporationNamesAsync(inputToken, characterId, ids);
 
             Assert.Equal(1, getCorporationsAssetsNames.Count);
             Assert.Equal(12345, getCorporationsAssetsNames.First().ItemId);

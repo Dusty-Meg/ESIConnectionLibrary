@@ -15,84 +15,84 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAssets = new InternalLatestAssets(null, userAgent, testing);
         }
 
-        public PagedModel<V3GetCharacterAssets> GetCharactersAssets(SsoToken token, int page)
+        public PagedModel<V3AssetsCharacter> Characters(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return _internalLatestAssets.GetCharactersAssets(token, page);
+            return _internalLatestAssets.Characters(token, page);
         }
 
-        public async Task<PagedModel<V3GetCharacterAssets>> GetCharactersAssetsAsync(SsoToken token, int page)
+        public async Task<PagedModel<V3AssetsCharacter>> CharactersAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestAssets.GetCharactersAssetsAsync(token, page);
+            return await _internalLatestAssets.CharactersAsync(token, page);
         }
 
-        public IList<V2GetCharactersAssetsLocations> GetCharactersAssetsLocations(SsoToken token, IList<long> ids)
+        public IList<V2AssetsCharacterLocation> CharacterLocations(SsoToken token, IList<long> ids)
         {
-            return _internalLatestAssets.GetCharactersAssetsLocations(token, ids);
+            return _internalLatestAssets.CharacterLocations(token, ids);
         }
 
-        public async Task<IList<V2GetCharactersAssetsLocations>> GetCharactersAssetsLocationsAsync(SsoToken token, IList<long> ids)
+        public async Task<IList<V2AssetsCharacterLocation>> CharacterLocationAsync(SsoToken token, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCharactersAssetsLocationsAsync(token, ids);
+            return await _internalLatestAssets.CharacterLocationAsync(token, ids);
         }
 
-        public IList<V1GetCharactersAssetsNames> GetCharactersAssetsNames(SsoToken token, IList<long> ids)
+        public IList<V1AssetsCharacterName> CharacterNames(SsoToken token, IList<long> ids)
         {
-            return _internalLatestAssets.GetCharactersAssetsNames(token, ids);
+            return _internalLatestAssets.CharacterNames(token, ids);
         }
 
-        public async Task<IList<V1GetCharactersAssetsNames>> GetCharactersAssetsNamesAsync(SsoToken token, IList<long> ids)
+        public async Task<IList<V1AssetsCharacterName>> CharacterNamesAsync(SsoToken token, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCharactersAssetsNamesAsync(token, ids);
+            return await _internalLatestAssets.CharacterNamesAsync(token, ids);
         }
 
-        public PagedModel<V3GetCorporationsAssets> GetCorporationsAssets(SsoToken token, int corporationId, int page)
-        {
-            if (page < 1)
-            {
-                throw new ESIException("Pages below 1 is not allowed!");
-            }
-
-            return _internalLatestAssets.GetCorporationsAssets(token, corporationId, page);
-        }
-
-        public async Task<PagedModel<V3GetCorporationsAssets>> GetCorporationsAssetsAsync(SsoToken token, int corporationId, int page)
+        public PagedModel<V3AssetsCorporations> Corporations(SsoToken token, int corporationId, int page)
         {
             if (page < 1)
             {
                 throw new ESIException("Pages below 1 is not allowed!");
             }
 
-            return await _internalLatestAssets.GetCorporationsAssetsAsync(token, corporationId, page);
+            return _internalLatestAssets.Corporations(token, corporationId, page);
         }
 
-        public IList<V2GetCorporationsAssetsLocations> GetCorporationsAssetsLocations(SsoToken token, int corporationId, IList<long> ids)
+        public async Task<PagedModel<V3AssetsCorporations>> CorporationsAsync(SsoToken token, int corporationId, int page)
         {
-            return _internalLatestAssets.GetCorporationsAssetsLocations(token, corporationId, ids);
+            if (page < 1)
+            {
+                throw new ESIException("Pages below 1 is not allowed!");
+            }
+
+            return await _internalLatestAssets.CorporationsAsync(token, corporationId, page);
         }
 
-        public async Task<IList<V2GetCorporationsAssetsLocations>> GetCorporationsAssetsLocationsAsync(SsoToken token, int corporationId, IList<long> ids)
+        public IList<V2AssetsCorporationLocation> CorporationLocations(SsoToken token, int corporationId, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCorporationsAssetsLocationsAsync(token, corporationId, ids);
+            return _internalLatestAssets.CorporationLocations(token, corporationId, ids);
         }
 
-        public IList<V1GetCorporationsAssetsNames> GetCorporationsAssetsNames(SsoToken token, int corporationId, IList<long> ids)
+        public async Task<IList<V2AssetsCorporationLocation>> CorporationLocationsAsync(SsoToken token, int corporationId, IList<long> ids)
         {
-            return _internalLatestAssets.GetCorporationsAssetsNames(token, corporationId, ids);
+            return await _internalLatestAssets.CorporationLocationsAsync(token, corporationId, ids);
         }
 
-        public async Task<IList<V1GetCorporationsAssetsNames>> GetCorporationsAssetsNamesAsync(SsoToken token, int corporationId, IList<long> ids)
+        public IList<V1AssetsCorporationName> CorporationNames(SsoToken token, int corporationId, IList<long> ids)
         {
-            return await _internalLatestAssets.GetCorporationsAssetsNamesAsync(token, corporationId, ids);
+            return _internalLatestAssets.CorporationNames(token, corporationId, ids);
+        }
+
+        public async Task<IList<V1AssetsCorporationName>> CorporationNamesAsync(SsoToken token, int corporationId, IList<long> ids)
+        {
+            return await _internalLatestAssets.CorporationNamesAsync(token, corporationId, ids);
         }
     }
 }

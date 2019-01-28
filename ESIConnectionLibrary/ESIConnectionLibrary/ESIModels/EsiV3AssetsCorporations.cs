@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3GetCorporationsAssets
+    internal class EsiV3AssetsCorporations
     {
         [JsonProperty(PropertyName = "is_blueprint_copy")]
         public bool? IsBlueprintCopy { get; set; }

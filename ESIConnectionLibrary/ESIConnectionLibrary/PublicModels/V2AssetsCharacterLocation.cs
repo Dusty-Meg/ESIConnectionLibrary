@@ -1,8 +1,8 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1GetCorporationsAssetsNames
+    public class V2AssetsCharacterLocation
     {
         public long ItemId { get; set; }
-        public string Name { get; set; }
+        public Position Position { get; set; }
     }
 }

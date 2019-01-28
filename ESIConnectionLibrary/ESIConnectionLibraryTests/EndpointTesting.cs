@@ -262,8 +262,15 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("MailV1MailGetCharactersMailRaw")]
-        [InlineData("MailV1MailGetMailRaw")]
+        [InlineData("MailV1CharacterRaw")]
+        [InlineData("MailV1SendRaw")]
+        [InlineData("MailV1DeleteRaw")]
+        [InlineData("MailV1MailRaw")]
+        [InlineData("MailV1MetadataRaw")]
+        [InlineData("MailV3LabelsAndUnreadCountRaw")]
+        [InlineData("MailV2CreateLabelRaw")]
+        [InlineData("MailV1DeleteLabelRaw")]
+        [InlineData("MailV1MailingListRaw")]
         public void MailEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

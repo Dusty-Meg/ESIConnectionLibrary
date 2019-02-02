@@ -14,154 +14,154 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCharacter = new InternalLatestCharacter(null, userAgent, testing);
         }
 
-        public V4CharactersPublicInfo GetCharactersPublicInfo(int characterId)
+        public V4CharactersPublicInfo PublicInfo(int characterId)
         {
-            return _internalLatestCharacter.GetCharactersPublicInfo(characterId);
+            return _internalLatestCharacter.PublicInfo(characterId);
         }
 
-        public async Task<V4CharactersPublicInfo> GetCharactersPublicInfoAsync(int characterId)
+        public async Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId)
         {
-            return await _internalLatestCharacter.GetCharactersPublicInfoAsync(characterId);
+            return await _internalLatestCharacter.PublicInfoAsync(characterId);
         }
 
-        public IList<V1CharactersResearchAgents> GetCharactersResearchAgents(SsoToken token)
+        public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersResearchAgents(token);
+            return _internalLatestCharacter.ResearchAgents(token);
         }
 
-        public async Task<IList<V1CharactersResearchAgents>> GetCharactersResearchAgentsAsync(SsoToken token)
+        public async Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersResearchAgentsAsync(token);
+            return await _internalLatestCharacter.ResearchAgentsAsync(token);
         }
 
-        public IList<V2CharactersBlueprints> GetCharactersBlueprint(SsoToken token)
+        public IList<V2CharactersBlueprints> Blueprint(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersBlueprint(token);
+            return _internalLatestCharacter.Blueprints(token);
         }
 
-        public async Task<IList<V2CharactersBlueprints>> GetCharactersBlueprintAsync(SsoToken token)
+        public async Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersBlueprintAsync(token);
+            return await _internalLatestCharacter.BlueprintsAsync(token);
         }
 
-        public IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId)
+        public IList<V1CharactersCorporationHistory> CorporationHistory(int characterId)
         {
-            return _internalLatestCharacter.GetCharactersCorporationHistory(characterId);
+            return _internalLatestCharacter.CorporationHistory(characterId);
         }
 
-        public async Task<IList<V1CharactersCorporationHistory>> GetCharactersCorporationHistoryAsync(int characterId)
+        public async Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
-            return await _internalLatestCharacter.GetCharactersCorporationHistoryAsync(characterId);
+            return await _internalLatestCharacter.CorporationHistoryAsync(characterId);
         }
 
-        public float GetCharactersCspaCost(SsoToken token, IList<int> characters)
+        public float CspaCost(SsoToken token, IList<int> characters)
         {
-            return _internalLatestCharacter.GetCharactersCspaCost(token, characters);
+            return _internalLatestCharacter.CspaCost(token, characters);
         }
 
-        public async Task<float> GetCharactersCspaCostAsync(SsoToken token, IList<int> characters)
+        public async Task<float> CspaCostAsync(SsoToken token, IList<int> characters)
         {
-            return await _internalLatestCharacter.GetCharactersCspaCostAsync(token, characters);
+            return await _internalLatestCharacter.CspaCostAsync(token, characters);
         }
 
-        public V1CharactersFatigue GetCharactersFatigue(SsoToken token)
+        public V1CharactersFatigue Fatigue(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersFatigue(token);
+            return _internalLatestCharacter.Fatigue(token);
         }
 
-        public async Task<V1CharactersFatigue> GetCharactersFatigueAsync(SsoToken token)
+        public async Task<V1CharactersFatigue> FatigueAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersFatigueAsync(token);
+            return await _internalLatestCharacter.FatigueAsync(token);
         }
 
-        public IList<V1CharactersMedals> GetCharactersMedals(SsoToken token)
+        public IList<V1CharactersMedals> Medals(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersMedals(token);
+            return _internalLatestCharacter.Medals(token);
         }
 
-        public async Task<IList<V1CharactersMedals>> GetCharactersMedalsAsync(SsoToken token)
+        public async Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersMedalsAsync(token);
+            return await _internalLatestCharacter.MedalsAsync(token);
         }
 
-        public IList<V4CharactersNotifications> GetCharactersNotifications(SsoToken token)
+        public IList<V4CharactersNotifications> Notifications(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersNotifications(token);
+            return _internalLatestCharacter.Notifications(token);
         }
 
-        public async Task<IList<V4CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token)
+        public async Task<IList<V4CharactersNotifications>> NotificationsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersNotificationsAsync(token);
+            return await _internalLatestCharacter.NotificationsAsync(token);
         }
 
-        public IList<V1CharactersNotificationsContacts> GetCharactersNotificationsContacts(SsoToken token)
+        public IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersNotificationsContacts(token);
+            return _internalLatestCharacter.ContactNotifications(token);
         }
 
-        public async Task<IList<V1CharactersNotificationsContacts>> GetCharactersNotificationsContactsAsync(SsoToken token)
+        public async Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersNotificationsContactsAsync(token);
+            return await _internalLatestCharacter.ContactNotificationsAsync(token);
         }
 
-        public V2CharactersPortrait GetCharactersPortrait(int characterId)
+        public V2CharactersPortrait Portrait(int characterId)
         {
-            return _internalLatestCharacter.GetCharactersPortrait(characterId);
+            return _internalLatestCharacter.Portrait(characterId);
         }
 
-        public async Task<V2CharactersPortrait> GetCharactersPortraitAsync(int characterId)
+        public async Task<V2CharactersPortrait> PortraitAsync(int characterId)
         {
-            return await _internalLatestCharacter.GetCharactersPortraitAsync(characterId);
+            return await _internalLatestCharacter.PortraitAsync(characterId);
         }
 
-        public V2CharacterRoles GetCharactersRoles(SsoToken token)
+        public V2CharacterRoles Roles(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersRoles(token);
+            return _internalLatestCharacter.Roles(token);
         }
 
-        public async Task<V2CharacterRoles> GetCharactersRolesAsync(SsoToken token)
+        public async Task<V2CharacterRoles> RolesAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersRolesAsync(token);
+            return await _internalLatestCharacter.RolesAsync(token);
         }
 
-        public IList<V2CharactersStandings> GetCharactersStandings(SsoToken token)
+        public IList<V2CharactersStandings> Standings(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersStandings(token);
+            return _internalLatestCharacter.Standings(token);
         }
 
-        public async Task<IList<V2CharactersStandings>> GetCharactersStandingsAsync(SsoToken token)
+        public async Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersStandingsAsync(token);
+            return await _internalLatestCharacter.StandingsAsync(token);
         }
 
-        public IList<V2CharactersStats> GetCharactersStats(SsoToken token)
+        public IList<V2CharactersStats> Stats(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersStats(token);
+            return _internalLatestCharacter.Stats(token);
         }
 
-        public async Task<IList<V2CharactersStats>> GetCharactersStatsAsync(SsoToken token)
+        public async Task<IList<V2CharactersStats>> StatsAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersStatsAsync(token);
+            return await _internalLatestCharacter.StatsAsync(token);
         }
 
-        public IList<V1CharacterTitles> GetCharactersTitles(SsoToken token)
+        public IList<V1CharacterTitles> Titles(SsoToken token)
         {
-            return _internalLatestCharacter.GetCharactersTitles(token);
+            return _internalLatestCharacter.Titles(token);
         }
 
-        public async Task<IList<V1CharacterTitles>> GetCharactersTitlesAsync(SsoToken token)
+        public async Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token)
         {
-            return await _internalLatestCharacter.GetCharactersTitlesAsync(token);
+            return await _internalLatestCharacter.TitlesAsync(token);
         }
 
-        public IList<V1CharacterAffiliations> GetCharactersAffiliation(IList<int> characters)
+        public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)
         {
-            return _internalLatestCharacter.GetCharactersAffiliation(characters);
+            return _internalLatestCharacter.Affiliations(characters);
         }
 
-        public async Task<IList<V1CharacterAffiliations>> GetCharactersAffiliationAsync(IList<int> characters)
+        public async Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
         {
-            return await _internalLatestCharacter.GetCharactersAffiliationAsync(characters);
+            return await _internalLatestCharacter.AffiliationsAsync(characters);
         }
     }
 }

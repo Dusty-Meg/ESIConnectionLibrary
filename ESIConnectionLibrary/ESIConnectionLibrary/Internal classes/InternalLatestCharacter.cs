@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public V4CharactersPublicInfo GetCharactersPublicInfo(int characterId)
+        public V4CharactersPublicInfo PublicInfo(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersPublicInfo(characterId), _testing);
 
@@ -33,7 +33,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV4CharactersPublicInfo, V4CharactersPublicInfo>(esiV4PublicInfo);
         }
 
-        public async Task<V4CharactersPublicInfo> GetCharactersPublicInfoAsync(int characterId)
+        public async Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersPublicInfo(characterId), _testing);
 
@@ -44,7 +44,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV4CharactersPublicInfo, V4CharactersPublicInfo>(esiV4PublicInfo);
         }
 
-        public IList<V1CharactersResearchAgents> GetCharactersResearchAgents(SsoToken token)
+        public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
@@ -57,7 +57,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersResearchAgents>, IList<V1CharactersResearchAgents>>(esiV1CharactersResearchAgents);
         }
 
-        public async Task<IList<V1CharactersResearchAgents>> GetCharactersResearchAgentsAsync(SsoToken token)
+        public async Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
@@ -70,7 +70,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersResearchAgents>, IList<V1CharactersResearchAgents>>(esiV1CharactersResearchAgents);
         }
 
-        public IList<V2CharactersBlueprints> GetCharactersBlueprint(SsoToken token)
+        public IList<V2CharactersBlueprints> Blueprints(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
@@ -83,7 +83,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
         }
 
-        public async Task<IList<V2CharactersBlueprints>> GetCharactersBlueprintAsync(SsoToken token)
+        public async Task<IList<V2CharactersBlueprints>> BlueprintsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
@@ -96,7 +96,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
         }
 
-        public IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId)
+        public IList<V1CharactersCorporationHistory> CorporationHistory(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersCorporationHistory(characterId), _testing);
 
@@ -107,7 +107,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersCorporationHistory>, IList<V1CharactersCorporationHistory>>(esiV1CharactersCorporationHistory);
         }
 
-        public async Task<IList<V1CharactersCorporationHistory>> GetCharactersCorporationHistoryAsync(int characterId)
+        public async Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersCorporationHistory(characterId), _testing);
 
@@ -118,7 +118,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersCorporationHistory>, IList<V1CharactersCorporationHistory>>(esiV1CharactersCorporationHistory);
         }
 
-        public float GetCharactersCspaCost(SsoToken token, IList<int> characters)
+        public float CspaCost(SsoToken token, IList<int> characters)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
@@ -133,7 +133,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return esiV4CharactersCspa;
         }
 
-        public async Task<float> GetCharactersCspaCostAsync(SsoToken token, IList<int> characters)
+        public async Task<float> CspaCostAsync(SsoToken token, IList<int> characters)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
@@ -148,7 +148,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return esiV4CharactersCspa;
         }
 
-        public V1CharactersFatigue GetCharactersFatigue(SsoToken token)
+        public V1CharactersFatigue Fatigue(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
@@ -161,7 +161,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1CharactersFatigue, V1CharactersFatigue>(esiV1CharactersFatigue);
         }
 
-        public async Task<V1CharactersFatigue> GetCharactersFatigueAsync(SsoToken token)
+        public async Task<V1CharactersFatigue> FatigueAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
@@ -174,7 +174,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV1CharactersFatigue, V1CharactersFatigue>(esiV1CharactersFatigue);
         }
 
-        public IList<V1CharactersMedals> GetCharactersMedals(SsoToken token)
+        public IList<V1CharactersMedals> Medals(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
@@ -187,7 +187,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersMedals>, IList<V1CharactersMedals>>(esiV1CharactersMedals);
         }
 
-        public async Task<IList<V1CharactersMedals>> GetCharactersMedalsAsync(SsoToken token)
+        public async Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
@@ -200,7 +200,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersMedals>, IList<V1CharactersMedals>>(esiV1CharactersMedals);
         }
 
-        public IList<V4CharactersNotifications> GetCharactersNotifications(SsoToken token)
+        public IList<V4CharactersNotifications> Notifications(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
@@ -213,7 +213,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V4CharactersNotifications>>(esiV1Notifications);
         }
 
-        public async Task<IList<V4CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token)
+        public async Task<IList<V4CharactersNotifications>> NotificationsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
@@ -226,7 +226,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V4CharactersNotifications>>(esiV1Notifications);
         }
 
-        public IList<V1CharactersNotificationsContacts> GetCharactersNotificationsContacts(SsoToken token)
+        public IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
@@ -239,7 +239,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersNotificationsContacts>, IList<V1CharactersNotificationsContacts>>(esiV1CharactersNotificationsContacts);
         }
 
-        public async Task<IList<V1CharactersNotificationsContacts>> GetCharactersNotificationsContactsAsync(SsoToken token)
+        public async Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
@@ -252,7 +252,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersNotificationsContacts>, IList<V1CharactersNotificationsContacts>>(esiV1CharactersNotificationsContacts);
         }
 
-        public V2CharactersPortrait GetCharactersPortrait(int characterId)
+        public V2CharactersPortrait Portrait(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersPortrait(characterId), _testing);
 
@@ -263,7 +263,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharactersPortrait, V2CharactersPortrait>(esiV2CharactersPortrait);
         }
 
-        public async Task<V2CharactersPortrait> GetCharactersPortraitAsync(int characterId)
+        public async Task<V2CharactersPortrait> PortraitAsync(int characterId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersPortrait(characterId), _testing);
 
@@ -274,7 +274,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharactersPortrait, V2CharactersPortrait>(esiV2CharactersPortrait);
         }
 
-        public V2CharacterRoles GetCharactersRoles(SsoToken token)
+        public V2CharacterRoles Roles(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
@@ -287,7 +287,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharacterRoles, V2CharacterRoles>(esiV2CharacterRoles);
         }
 
-        public async Task<V2CharacterRoles> GetCharactersRolesAsync(SsoToken token)
+        public async Task<V2CharacterRoles> RolesAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
@@ -300,7 +300,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharacterRoles, V2CharacterRoles>(esiV2CharacterRoles);
         }
 
-        public IList<V2CharactersStandings> GetCharactersStandings(SsoToken token)
+        public IList<V2CharactersStandings> Standings(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_standings_v1);
 
@@ -313,7 +313,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersStandings>, IList<V2CharactersStandings>>(esiV2CharactersStandings);
         }
 
-        public async Task<IList<V2CharactersStandings>> GetCharactersStandingsAsync(SsoToken token)
+        public async Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_standings_v1);
 
@@ -326,7 +326,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersStandings>, IList<V2CharactersStandings>>(esiV2CharactersStandings);
         }
 
-        public IList<V2CharactersStats> GetCharactersStats(SsoToken token)
+        public IList<V2CharactersStats> Stats(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characterstats_read_v1);
 
@@ -339,7 +339,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersStats>, IList<V2CharactersStats>>(esiV2CharactersStats);
         }
 
-        public async Task<IList<V2CharactersStats>> GetCharactersStatsAsync(SsoToken token)
+        public async Task<IList<V2CharactersStats>> StatsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characterstats_read_v1);
 
@@ -352,7 +352,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersStats>, IList<V2CharactersStats>>(esiV2CharactersStats);
         }
 
-        public IList<V1CharacterTitles> GetCharactersTitles(SsoToken token)
+        public IList<V1CharacterTitles> Titles(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
@@ -365,7 +365,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharacterTitles>, IList<V1CharacterTitles>>(esiV1CharacterTitles);
         }
 
-        public async Task<IList<V1CharacterTitles>> GetCharactersTitlesAsync(SsoToken token)
+        public async Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
@@ -378,7 +378,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharacterTitles>, IList<V1CharacterTitles>>(esiV1CharacterTitles);
         }
 
-        public IList<V1CharacterAffiliations> GetCharactersAffiliation(IList<int> characters)
+        public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterAffiliations(), _testing);
 
@@ -391,7 +391,7 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
         }
 
-        public async Task<IList<V1CharacterAffiliations>> GetCharactersAffiliationAsync(IList<int> characters)
+        public async Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterAffiliations(), _testing);
 

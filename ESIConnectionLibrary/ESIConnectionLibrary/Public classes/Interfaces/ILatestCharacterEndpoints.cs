@@ -6,35 +6,35 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestCharacterEndpoints
     {
-        IList<V1CharacterAffiliations> GetCharactersAffiliation(IList<int> characters);
-        Task<IList<V1CharacterAffiliations>> GetCharactersAffiliationAsync(IList<int> characters);
-        IList<V2CharactersBlueprints> GetCharactersBlueprint(SsoToken token);
-        Task<IList<V2CharactersBlueprints>> GetCharactersBlueprintAsync(SsoToken token);
-        IList<V1CharactersCorporationHistory> GetCharactersCorporationHistory(int characterId);
-        Task<IList<V1CharactersCorporationHistory>> GetCharactersCorporationHistoryAsync(int characterId);
-        float GetCharactersCspaCost(SsoToken token, IList<int> characters);
-        Task<float> GetCharactersCspaCostAsync(SsoToken token, IList<int> characters);
-        V1CharactersFatigue GetCharactersFatigue(SsoToken token);
-        Task<V1CharactersFatigue> GetCharactersFatigueAsync(SsoToken token);
-        IList<V1CharactersMedals> GetCharactersMedals(SsoToken token);
-        Task<IList<V1CharactersMedals>> GetCharactersMedalsAsync(SsoToken token);
-        IList<V4CharactersNotifications> GetCharactersNotifications(SsoToken token);
-        Task<IList<V4CharactersNotifications>> GetCharactersNotificationsAsync(SsoToken token);
-        IList<V1CharactersNotificationsContacts> GetCharactersNotificationsContacts(SsoToken token);
-        Task<IList<V1CharactersNotificationsContacts>> GetCharactersNotificationsContactsAsync(SsoToken token);
-        V2CharactersPortrait GetCharactersPortrait(int characterId);
-        Task<V2CharactersPortrait> GetCharactersPortraitAsync(int characterId);
-        V4CharactersPublicInfo GetCharactersPublicInfo(int characterId);
-        Task<V4CharactersPublicInfo> GetCharactersPublicInfoAsync(int characterId);
-        IList<V1CharactersResearchAgents> GetCharactersResearchAgents(SsoToken token);
-        Task<IList<V1CharactersResearchAgents>> GetCharactersResearchAgentsAsync(SsoToken token);
-        V2CharacterRoles GetCharactersRoles(SsoToken token);
-        Task<V2CharacterRoles> GetCharactersRolesAsync(SsoToken token);
-        IList<V2CharactersStandings> GetCharactersStandings(SsoToken token);
-        Task<IList<V2CharactersStandings>> GetCharactersStandingsAsync(SsoToken token);
-        IList<V2CharactersStats> GetCharactersStats(SsoToken token);
-        Task<IList<V2CharactersStats>> GetCharactersStatsAsync(SsoToken token);
-        IList<V1CharacterTitles> GetCharactersTitles(SsoToken token);
-        Task<IList<V1CharacterTitles>> GetCharactersTitlesAsync(SsoToken token);
+        IList<V1CharacterAffiliations> Affiliations(IList<int> characters);
+        Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters);
+        IList<V2CharactersBlueprints> Blueprint(SsoToken token);
+        Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token);
+        IList<V1CharactersCorporationHistory> CorporationHistory(int characterId);
+        Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId);
+        float CspaCost(SsoToken token, IList<int> characters);
+        Task<float> CspaCostAsync(SsoToken token, IList<int> characters);
+        V1CharactersFatigue Fatigue(SsoToken token);
+        Task<V1CharactersFatigue> FatigueAsync(SsoToken token);
+        IList<V1CharactersMedals> Medals(SsoToken token);
+        Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token);
+        IList<V4CharactersNotifications> Notifications(SsoToken token);
+        Task<IList<V4CharactersNotifications>> NotificationsAsync(SsoToken token);
+        IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token);
+        Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token);
+        V2CharactersPortrait Portrait(int characterId);
+        Task<V2CharactersPortrait> PortraitAsync(int characterId);
+        V4CharactersPublicInfo PublicInfo(int characterId);
+        Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId);
+        IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token);
+        Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token);
+        V2CharacterRoles Roles(SsoToken token);
+        Task<V2CharacterRoles> RolesAsync(SsoToken token);
+        IList<V2CharactersStandings> Standings(SsoToken token);
+        Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token);
+        IList<V2CharactersStats> Stats(SsoToken token);
+        Task<IList<V2CharactersStats>> StatsAsync(SsoToken token);
+        IList<V1CharacterTitles> Titles(SsoToken token);
+        Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token);
     }
 }

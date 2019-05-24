@@ -1,6 +1,6 @@
-#addin "Cake.FileHelpers"
+#addin "Cake.FileHelpers&version=3.2.0"
 #tool nuget:?package=xunit.runner.console&version=2.4.1
-#addin "nuget:?package=Cake.Incubator"
+#addin "nuget:?package=Cake.Incubator&version=5.0.1"
 
 var target = Argument("target", "Default");
 var configuration = Argument("Configuration", "Release");

@@ -1,5 +1,5 @@
 #addin "Cake.FileHelpers"
-#tool nuget:?package=xunit.runner.console&version=2.3.1
+#tool nuget:?package=xunit.runner.console&version=2.4.1
 #addin "nuget:?package=Cake.Incubator"
 
 var target = Argument("target", "Default");

@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_read_fittings_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV1CharacterGet(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV2CharacterGet(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -39,7 +39,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_read_fittings_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV1CharacterGet(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV2CharacterGet(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
@@ -48,26 +48,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2FittingsCharacter>, IList<V2FittingsCharacter>>(esiModel);
         }
 
-        public void CharacterAddUpdate(SsoToken token, V1FittingsCharacterSave fitting)
+        public void CharacterAddUpdate(SsoToken token, V2FittingsCharacterSave fitting)
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_write_fittings_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV1CharacterUpdate(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV2CharacterUpdate(token.CharacterId), _testing);
 
-            EsiV1FittingsCharacterSave model = _mapper.Map<EsiV1FittingsCharacterSave>(fitting);
+            EsiV2FittingsCharacterSave model = _mapper.Map<EsiV2FittingsCharacterSave>(fitting);
 
             string objectModel = JsonConvert.SerializeObject(model);
 
             PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, objectModel));
         }
 
-        public async Task CharacterAddUpdateAsync(SsoToken token, V1FittingsCharacterSave fitting)
+        public async Task CharacterAddUpdateAsync(SsoToken token, V2FittingsCharacterSave fitting)
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_write_fittings_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV1CharacterUpdate(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FittingsV2CharacterUpdate(token.CharacterId), _testing);
 
-            EsiV1FittingsCharacterSave model = _mapper.Map<EsiV1FittingsCharacterSave>(fitting);
+            EsiV2FittingsCharacterSave model = _mapper.Map<EsiV2FittingsCharacterSave>(fitting);
 
             string objectModel = JsonConvert.SerializeObject(model);
 

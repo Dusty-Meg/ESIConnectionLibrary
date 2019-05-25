@@ -179,8 +179,8 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("FittingsV1CharacterGetRaw")]
-        [InlineData("FittingsV1CharacterUpdateRaw")]
+        [InlineData("FittingsV2CharacterGetRaw")]
+        [InlineData("FittingsV2CharacterUpdateRaw")]
         [InlineData("FittingsV1CharacterDeleteRaw")]
         public void FittingsEndpoints(string endpoint)
         {

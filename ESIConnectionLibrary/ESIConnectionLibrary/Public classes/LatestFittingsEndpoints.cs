@@ -24,12 +24,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestFittings.CharacterAsync(token);
         }
 
-        public void CharacterAddUpdate(SsoToken token, V1FittingsCharacterSave fitting)
+        public void CharacterAddUpdate(SsoToken token, V2FittingsCharacterSave fitting)
         {
             _internalLatestFittings.CharacterAddUpdate(token, fitting);
         }
 
-        public async Task CharacterAddUpdateAsync(SsoToken token, V1FittingsCharacterSave fitting)
+        public async Task CharacterAddUpdateAsync(SsoToken token, V2FittingsCharacterSave fitting)
         {
             await _internalLatestFittings.CharacterAddUpdateAsync(token, fitting);
         }

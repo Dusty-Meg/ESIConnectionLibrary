@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
 using ESIConnectionLibrary.Internal_classes;
 using ESIConnectionLibrary.PublicModels;
-using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.Public_classes
 {
@@ -51,7 +49,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.ContainerLogs(token, corporationId, page);
@@ -61,7 +59,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.ContainerLogsAsync(token, corporationId, page);
@@ -101,7 +99,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.Medals(token, corporationId, page);
@@ -111,7 +109,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.MedalsAsync(token, corporationId, page);
@@ -121,7 +119,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.IssuedMedals(token, corporationId, page);
@@ -131,7 +129,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.IssuedMedalsAsync(token, corporationId, page);
@@ -191,7 +189,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.RoleHistory(token, corporationId, page);
@@ -201,7 +199,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.RoleHistoryAsync(token, corporationId, page);
@@ -211,7 +209,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.Shareholders(token, corporationId, page);
@@ -221,7 +219,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.ShareholdersAsync(token, corporationId, page);
@@ -231,7 +229,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.Standings(token, corporationId, page);
@@ -241,7 +239,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.StandingsAsync(token, corporationId, page);
@@ -251,7 +249,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.Starbases(token, corporationId, page);
@@ -261,7 +259,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.StarbasesAsync(token, corporationId, page);
@@ -281,7 +279,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestCorporations.Structures(token, corporationId, page);
@@ -291,7 +289,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestCorporations.StructuresAsync(token, corporationId, page);

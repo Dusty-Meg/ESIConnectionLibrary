@@ -20,20 +20,20 @@ namespace ESIConnectionLibraryTests
             FittingScopes scopes = FittingScopes.esi_fittings_read_fittings_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, FittingScopesFlags = scopes };
-            string json = "[\r\n  {\r\n    \"description\": \"Awesome Vindi fitting\",\r\n    \"fitting_id\": 1,\r\n    \"items\": [\r\n      {\r\n        \"flag\": 12,\r\n        \"quantity\": 1,\r\n        \"type_id\": 1234\r\n      }\r\n    ],\r\n    \"name\": \"Best Vindicator\",\r\n    \"ship_type_id\": 123\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"description\": \"Awesome Vindi fitting\",\r\n    \"fitting_id\": 1,\r\n    \"items\": [\r\n      {\r\n        \"flag\": \"Cargo\",\r\n        \"quantity\": 1,\r\n        \"type_id\": 1234\r\n      }\r\n    ],\r\n    \"name\": \"Best Vindicator\",\r\n    \"ship_type_id\": 123\r\n  }\r\n]";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestFittings internalLatestFittings = new InternalLatestFittings(mockedWebClient.Object, string.Empty);
 
-            IList<V1FittingsCharacter> model = internalLatestFittings.Character(inputToken);
+            IList<V2FittingsCharacter> model = internalLatestFittings.Character(inputToken);
 
             Assert.Single(model);
             Assert.Equal("Awesome Vindi fitting", model[0].Description);
             Assert.Equal(1, model[0].FittingId);
 
             Assert.Single(model[0].Items);
-            Assert.Equal(12, model[0].Items[0].Flag);
+            Assert.Equal(V2FittingsCharacterItemFlag.Cargo, model[0].Items[0].Flag);
             Assert.Equal(1, model[0].Items[0].Quantity);
             Assert.Equal(1234, model[0].Items[0].TypeId);
 
@@ -50,20 +50,20 @@ namespace ESIConnectionLibraryTests
             FittingScopes scopes = FittingScopes.esi_fittings_read_fittings_v1;
 
             SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterName = characterName, FittingScopesFlags = scopes };
-            string json = "[\r\n  {\r\n    \"description\": \"Awesome Vindi fitting\",\r\n    \"fitting_id\": 1,\r\n    \"items\": [\r\n      {\r\n        \"flag\": 12,\r\n        \"quantity\": 1,\r\n        \"type_id\": 1234\r\n      }\r\n    ],\r\n    \"name\": \"Best Vindicator\",\r\n    \"ship_type_id\": 123\r\n  }\r\n]";
+            string json = "[\r\n  {\r\n    \"description\": \"Awesome Vindi fitting\",\r\n    \"fitting_id\": 1,\r\n    \"items\": [\r\n      {\r\n        \"flag\": \"Cargo\",\r\n        \"quantity\": 1,\r\n        \"type_id\": 1234\r\n      }\r\n    ],\r\n    \"name\": \"Best Vindicator\",\r\n    \"ship_type_id\": 123\r\n  }\r\n]";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestFittings internalLatestFittings = new InternalLatestFittings(mockedWebClient.Object, string.Empty);
 
-            IList<V1FittingsCharacter> model = await internalLatestFittings.CharacterAsync(inputToken);
+            IList<V2FittingsCharacter> model = await internalLatestFittings.CharacterAsync(inputToken);
 
             Assert.Single(model);
             Assert.Equal("Awesome Vindi fitting", model[0].Description);
             Assert.Equal(1, model[0].FittingId);
 
             Assert.Single(model[0].Items);
-            Assert.Equal(12, model[0].Items[0].Flag);
+            Assert.Equal(V2FittingsCharacterItemFlag.Cargo, model[0].Items[0].Flag);
             Assert.Equal(1, model[0].Items[0].Quantity);
             Assert.Equal(1234, model[0].Items[0].TypeId);
 

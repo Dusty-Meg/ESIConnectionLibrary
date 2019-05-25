@@ -19,7 +19,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestContracts.Character(token, page);
@@ -29,7 +29,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestContracts.CharacterAsync(token, page);
@@ -59,7 +59,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestContracts.Corporation(token, corporationId, page);
@@ -69,7 +69,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestContracts.CorporationAsync(token, corporationId, page);
@@ -99,7 +99,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestContracts.Public(regionId, page);
@@ -109,7 +109,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestContracts.PublicAsync(regionId, page);
@@ -119,7 +119,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestContracts.PublicBids(contractId, page);
@@ -129,7 +129,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestContracts.PublicBidsAsync(contractId, page);
@@ -139,7 +139,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestContracts.PublicItems(contractId, page);
@@ -149,7 +149,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestContracts.PublicItemsAsync(contractId, page);

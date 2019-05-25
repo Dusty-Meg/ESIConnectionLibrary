@@ -25,21 +25,21 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestWallet.CharacterAsync(token);
         }
 
-        public PagedModel<V5WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
+        public PagedModel<V6WalletCharacterJournal> CharacterJournal(SsoToken token, int page)
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestWallet.CharacterJournal(token, page);
         }
 
-        public async Task<PagedModel<V5WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
+        public async Task<PagedModel<V6WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestWallet.CharacterJournalAsync(token, page);

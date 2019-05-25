@@ -45,7 +45,7 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalAuthentication.MakeToken(null, null, userId));
+            Exception ex = Assert.Throws<EsiException>(() => internalAuthentication.MakeToken(null, null, userId));
 
             Assert.Equal("Code or EVESSOKey is null or empty", ex.Message);
             Assert.Null(ex.InnerException);
@@ -81,7 +81,7 @@ namespace ESIConnectionLibraryTests
 
             InternalAuthentication internalAuthentication = new InternalAuthentication(mockedWebClient.Object, string.Empty);
 
-            Exception ex = Assert.Throws<ESIException>(() => internalAuthentication.RefreshToken(null, null));
+            Exception ex = Assert.Throws<EsiException>(() => internalAuthentication.RefreshToken(null, null));
 
             Assert.Equal("Token or EVESSOKey is null or empty", ex.Message);
             Assert.Null(ex.InnerException);

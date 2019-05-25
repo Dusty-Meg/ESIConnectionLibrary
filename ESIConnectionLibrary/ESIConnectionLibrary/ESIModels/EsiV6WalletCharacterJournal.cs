@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV5WalletCharacterJournal
+    internal class EsiV6WalletCharacterJournal
     {
         [JsonProperty(PropertyName = "amount")]
         public double? Amount { get; set; }
@@ -15,7 +15,7 @@ namespace ESIConnectionLibrary.ESIModels
         public long? ContextId { get; set; }
 
         [JsonProperty(PropertyName = "context_id_type")]
-        public EsiWalletContextIdType? ContextIdType { get; set; }
+        public EsiV6WalletCharacterJournalContextIdType? ContextIdType { get; set; }
 
         [JsonProperty(PropertyName = "date")]
         public DateTime Date { get; set; }
@@ -33,7 +33,7 @@ namespace ESIConnectionLibrary.ESIModels
         public string Reason { get; set; }
 
         [JsonProperty(PropertyName = "ref_type")]
-        public EsiWalletRefType RefType { get; set; }
+        public EsiV6WalletCharacterJournalRefType RefType { get; set; }
 
         [JsonProperty(PropertyName = "second_party_id")]
         public int? SecondPartyId { get; set; }

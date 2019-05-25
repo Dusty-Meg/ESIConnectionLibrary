@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Code or EVESSOKey is null or empty");
+                throw new EsiException("Code or EVESSOKey is null or empty");
             }
 
             EsiRevokeTokenType mapperType = _mapper.Map<EsiRevokeTokenType>(type);
@@ -52,7 +52,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Code or EVESSOKey is null or empty");
+                throw new EsiException("Code or EVESSOKey is null or empty");
             }
 
             EsiRevokeTokenType mapperType = _mapper.Map<EsiRevokeTokenType>(type);
@@ -78,7 +78,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Code or EVESSOKey is null or empty");
+                throw new EsiException("Code or EVESSOKey is null or empty");
             }
 
             string ssoData = "grant_type=authorization_code&code=" + code;
@@ -104,7 +104,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Code or EVESSOKey is null or empty");
+                throw new EsiException("Code or EVESSOKey is null or empty");
             }
 
             string ssoData = "grant_type=authorization_code&code=" + code;
@@ -130,7 +130,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (token == null || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Token or EVESSOKey is null or empty");
+                throw new EsiException("Token or EVESSOKey is null or empty");
             }
 
             string ssoData = "grant_type=refresh_token&refresh_token=" + token.RefreshToken;
@@ -148,7 +148,7 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             if (token == null || string.IsNullOrEmpty(evessokey))
             {
-                throw new ESIException("Token or EVESSOKey is null or empty");
+                throw new EsiException("Token or EVESSOKey is null or empty");
             }
 
             string ssoData = "grant_type=refresh_token&refresh_token=" + token.RefreshToken;

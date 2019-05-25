@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1FittingsCharacter
+    internal class EsiV2FittingsCharacter
     {
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int FittingId { get; set; }
 
         [JsonProperty(PropertyName = "items")]
-        public IList<EsiV1FittingsCharacterItem> Items { get; set; }
+        public IList<EsiV2FittingsCharacterItem> Items { get; set; }
 
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

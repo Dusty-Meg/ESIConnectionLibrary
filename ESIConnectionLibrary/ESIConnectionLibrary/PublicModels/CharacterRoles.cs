@@ -1,4 +1,6 @@
-﻿namespace ESIConnectionLibrary.PublicModels
+﻿// ReSharper disable InconsistentNaming
+
+namespace ESIConnectionLibrary.PublicModels
 {
     public enum CharacterRoles
     {

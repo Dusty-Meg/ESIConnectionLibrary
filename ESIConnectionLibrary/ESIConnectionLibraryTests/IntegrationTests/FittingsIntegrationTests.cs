@@ -19,14 +19,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestFittingsEndpoints internalLatestFittings = new LatestFittingsEndpoints(string.Empty, true);
 
-            IList<V1FittingsCharacter> model = internalLatestFittings.Character(inputToken);
+            IList<V2FittingsCharacter> model = internalLatestFittings.Character(inputToken);
 
             Assert.Single(model);
             Assert.Equal("Awesome Vindi fitting", model[0].Description);
             Assert.Equal(1, model[0].FittingId);
 
             Assert.Single(model[0].Items);
-            Assert.Equal(12, model[0].Items[0].Flag);
+            Assert.Equal(V2FittingsCharacterItemFlag.Cargo, model[0].Items[0].Flag);
             Assert.Equal(1, model[0].Items[0].Quantity);
             Assert.Equal(1234, model[0].Items[0].TypeId);
 
@@ -44,14 +44,14 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestFittingsEndpoints internalLatestFittings = new LatestFittingsEndpoints(string.Empty, true);
 
-            IList<V1FittingsCharacter> model = await internalLatestFittings.CharacterAsync(inputToken);
+            IList<V2FittingsCharacter> model = await internalLatestFittings.CharacterAsync(inputToken);
 
             Assert.Single(model);
             Assert.Equal("Awesome Vindi fitting", model[0].Description);
             Assert.Equal(1, model[0].FittingId);
 
             Assert.Single(model[0].Items);
-            Assert.Equal(12, model[0].Items[0].Flag);
+            Assert.Equal(V2FittingsCharacterItemFlag.Cargo, model[0].Items[0].Flag);
             Assert.Equal(1, model[0].Items[0].Quantity);
             Assert.Equal(1234, model[0].Items[0].TypeId);
 

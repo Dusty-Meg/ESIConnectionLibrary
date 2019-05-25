@@ -632,13 +632,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseNames> returnModel = internalLatestUniverse.Names(new List<int>());
+            IList<V3UniverseNames> returnModel = internalLatestUniverse.Names(new List<int>());
 
             Assert.Equal(2, returnModel.Count);
-            Assert.Equal(V2UniverseNamesCategory.Character, returnModel[0].Category);
+            Assert.Equal(V3UniverseNamesCategory.Character, returnModel[0].Category);
             Assert.Equal(95465499, returnModel[0].Id);
             Assert.Equal("CCP Bartender", returnModel[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.SolarSystem, returnModel[1].Category);
+            Assert.Equal(V3UniverseNamesCategory.SolarSystem, returnModel[1].Category);
             Assert.Equal(30000142, returnModel[1].Id);
             Assert.Equal("Jita", returnModel[1].Name);
         }
@@ -654,13 +654,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestUniverse internalLatestUniverse = new InternalLatestUniverse(mockedWebClient.Object, string.Empty);
 
-            IList<V2UniverseNames> returnModel = await internalLatestUniverse.NamesAsync(new List<int>());
+            IList<V3UniverseNames> returnModel = await internalLatestUniverse.NamesAsync(new List<int>());
 
             Assert.Equal(2, returnModel.Count);
-            Assert.Equal(V2UniverseNamesCategory.Character, returnModel[0].Category);
+            Assert.Equal(V3UniverseNamesCategory.Character, returnModel[0].Category);
             Assert.Equal(95465499, returnModel[0].Id);
             Assert.Equal("CCP Bartender", returnModel[0].Name);
-            Assert.Equal(V2UniverseNamesCategory.SolarSystem, returnModel[1].Category);
+            Assert.Equal(V3UniverseNamesCategory.SolarSystem, returnModel[1].Category);
             Assert.Equal(30000142, returnModel[1].Id);
             Assert.Equal("Jita", returnModel[1].Name);
         }

@@ -165,12 +165,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestUniverse.MoonAsync(moonId);
         }
 
-        public IList<V2UniverseNames> Names(IList<int> ids)
+        public IList<V3UniverseNames> Names(IList<int> ids)
         {
             return _internalLatestUniverse.Names(ids);
         }
 
-        public async Task<IList<V2UniverseNames>> NamesAsync(IList<int> ids)
+        public async Task<IList<V3UniverseNames>> NamesAsync(IList<int> ids)
         {
             return await _internalLatestUniverse.NamesAsync(ids);
         }

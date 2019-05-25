@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V2UniverseNamesCategory
+    public enum V3UniverseNamesCategory
     {
         Alliance,
         Character,
@@ -9,6 +9,7 @@
         InventoryType,
         Region,
         SolarSystem,
-        Station
+        Station,
+        Faction
     }
 }

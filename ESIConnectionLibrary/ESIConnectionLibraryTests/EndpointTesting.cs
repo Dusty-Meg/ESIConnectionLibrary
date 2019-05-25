@@ -179,8 +179,8 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("FittingsV1CharacterGetRaw")]
-        [InlineData("FittingsV1CharacterUpdateRaw")]
+        [InlineData("FittingsV2CharacterGetRaw")]
+        [InlineData("FittingsV2CharacterUpdateRaw")]
         [InlineData("FittingsV1CharacterDeleteRaw")]
         public void FittingsEndpoints(string endpoint)
         {
@@ -369,7 +369,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("UniverseV1GroupRaw")]
         [InlineData("UniverseV1IdsRaw")]
         [InlineData("UniverseV1MoonRaw")]
-        [InlineData("UniverseV2NamesRaw")]
+        [InlineData("UniverseV3NamesRaw")]
         [InlineData("UniverseV1PlanetRaw")]
         [InlineData("UniverseV1RacesRaw")]
         [InlineData("UniverseV1RegionsRaw")]
@@ -403,7 +403,7 @@ namespace ESIConnectionLibraryTests
 
         [Theory]
         [InlineData("WalletV1CharactersWalletRaw")]
-        [InlineData("WalletV5CharactersWalletJournalRaw")]
+        [InlineData("WalletV6CharactersWalletJournalRaw")]
         [InlineData("WalletV4CharactersWalletTransactionRaw")]
         [InlineData("WalletV1CorporationWalletsRaw")]
         [InlineData("WalletV4CorporationDivisionsJournalRaw")]

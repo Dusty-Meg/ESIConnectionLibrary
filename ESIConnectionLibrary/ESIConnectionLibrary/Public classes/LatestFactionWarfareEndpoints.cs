@@ -5,7 +5,7 @@ using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Public_classes
 {
-    public class LatestFactionWarfareEndpoints
+    public class LatestFactionWarfareEndpoints : ILatestFactionWarfareEndpoints
     {
         private readonly IInternalLatestFactionWarfare _internalLatestFactionWarfare;
 

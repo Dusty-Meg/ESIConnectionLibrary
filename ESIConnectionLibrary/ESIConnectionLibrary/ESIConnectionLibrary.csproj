@@ -2,11 +2,26 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Dusty-Meg</Authors>
+        <Company>Dusty-Meg</Company>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/Dusty-Meg/ESIConnectionLibrary</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Dusty-Meg/ESIConnectionLibrary</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <Copyright>MIT</Copyright>
+        <Title>Esi Connection Library</Title>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="8.1.0" />
       <PackageReference Include="LazyCache" Version="2.0.1" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
       <PackageReference Include="Polly" Version="7.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="..\..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 </Project>

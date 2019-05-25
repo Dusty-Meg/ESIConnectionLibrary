@@ -1256,7 +1256,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string UniverseV1GroupRaw => "/v1/universe/groups/{group_id}/";
         private static string UniverseV1IdsRaw => "/v1/universe/ids/";
         private static string UniverseV1MoonRaw => "/v1/universe/moons/{moon_id}/";
-        private static string UniverseV2NamesRaw => "/v2/universe/names/";
+        private static string UniverseV3NamesRaw => "/v3/universe/names/";
         private static string UniverseV1PlanetRaw => "/v1/universe/planets/{planet_id}/";
         private static string UniverseV1RacesRaw => "/v1/universe/races/";
         private static string UniverseV1RegionsRaw => "/v1/universe/regions/";
@@ -1343,9 +1343,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(UniverseV1MoonRaw, "{moon_id}", moonId.ToString());
         }
 
-        public static string UniverseV2Names()
+        public static string UniverseV3Names()
         {
-            return UrlBuilder(UniverseV2NamesRaw);
+            return UrlBuilder(UniverseV3NamesRaw);
         }
 
         public static string UniverseV1Planet(int planetId)

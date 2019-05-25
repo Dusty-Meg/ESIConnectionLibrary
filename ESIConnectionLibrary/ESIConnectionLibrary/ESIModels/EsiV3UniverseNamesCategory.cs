@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV2UniverseNamesCategory
+    internal enum EsiV3UniverseNamesCategory
     {
         [EnumMember(Value = "alliance")]
         Alliance,
@@ -29,6 +29,9 @@ namespace ESIConnectionLibrary.ESIModels
         SolarSystem,
 
         [EnumMember(Value = "station")]
-        Station
+        Station,
+
+        [EnumMember(Value = "faction")]
+        Faction
     }
 }

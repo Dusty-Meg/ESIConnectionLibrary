@@ -369,7 +369,7 @@ namespace ESIConnectionLibraryTests
         [InlineData("UniverseV1GroupRaw")]
         [InlineData("UniverseV1IdsRaw")]
         [InlineData("UniverseV1MoonRaw")]
-        [InlineData("UniverseV2NamesRaw")]
+        [InlineData("UniverseV3NamesRaw")]
         [InlineData("UniverseV1PlanetRaw")]
         [InlineData("UniverseV1RacesRaw")]
         [InlineData("UniverseV1RegionsRaw")]

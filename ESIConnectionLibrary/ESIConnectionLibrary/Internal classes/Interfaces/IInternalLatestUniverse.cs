@@ -34,8 +34,8 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<V1UniverseNamesToIds> IdsAsync(IList<string> names);
         V1UniverseMoon Moon(int moonId);
         Task<V1UniverseMoon> MoonAsync(int moonId);
-        IList<V2UniverseNames> Names(IList<int> ids);
-        Task<IList<V2UniverseNames>> NamesAsync(IList<int> ids);
+        IList<V3UniverseNames> Names(IList<int> ids);
+        Task<IList<V3UniverseNames>> NamesAsync(IList<int> ids);
         V1UniversePlanet Planet(int planetId);
         Task<V1UniversePlanet> PlanetAsync(int planetId);
         IList<V1UniverseRaces> Races();

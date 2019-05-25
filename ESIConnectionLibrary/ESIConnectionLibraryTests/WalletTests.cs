@@ -67,13 +67,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
+            PagedModel<V6WalletCharacterJournal> getCharactersWalletJournal = internalLatestWallet.CharacterJournal(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
-            Assert.Equal(WalletRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
-            Assert.Equal(WalletContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
+            Assert.Equal(V6WalletCharacterJournalRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
+            Assert.Equal(V6WalletCharacterJournalContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
             Assert.Equal(-100000, getCharactersWalletJournal.Model[0].Amount);
             Assert.Equal(500000.4316, getCharactersWalletJournal.Model[0].Balance);
         }
@@ -94,13 +94,13 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestWallet internalLatestWallet = new InternalLatestWallet(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V5WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
+            PagedModel<V6WalletCharacterJournal> getCharactersWalletJournal = await internalLatestWallet.CharacterJournalAsync(inputToken, page);
 
             Assert.Equal(2, getCharactersWalletJournal.MaxPages);
             Assert.Equal(1, getCharactersWalletJournal.CurrentPage);
             Assert.Equal(1, getCharactersWalletJournal.Model.Count);
-            Assert.Equal(WalletRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
-            Assert.Equal(WalletContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
+            Assert.Equal(V6WalletCharacterJournalRefType.ContractDeposit, getCharactersWalletJournal.Model[0].RefType);
+            Assert.Equal(V6WalletCharacterJournalContextIdType.ContractId, getCharactersWalletJournal.Model[0].ContextIdType);
             Assert.Equal(-100000, getCharactersWalletJournal.Model[0].Amount);
             Assert.Equal(500000.4316, getCharactersWalletJournal.Model[0].Balance);
         }

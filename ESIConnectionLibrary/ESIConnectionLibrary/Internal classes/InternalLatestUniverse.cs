@@ -337,30 +337,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V1UniverseMoon>(esiModel);
         }
 
-        public IList<V2UniverseNames> Names(IList<int> ids)
+        public IList<V3UniverseNames> Names(IList<int> ids)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Names(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3Names(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            IList<EsiV2UniverseNames> esiModel = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw.Model);
+            IList<EsiV3UniverseNames> esiModel = JsonConvert.DeserializeObject<IList<EsiV3UniverseNames>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2UniverseNames>, IList<V2UniverseNames>>(esiModel);
+            return _mapper.Map<IList<EsiV3UniverseNames>, IList<V3UniverseNames>>(esiModel);
         }
 
-        public async Task<IList<V2UniverseNames>> NamesAsync(IList<int> ids)
+        public async Task<IList<V3UniverseNames>> NamesAsync(IList<int> ids)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV2Names(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.UniverseV3Names(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(ids);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, SecondsToDT()));
 
-            IList<EsiV2UniverseNames> esiModel = JsonConvert.DeserializeObject<IList<EsiV2UniverseNames>>(esiRaw.Model);
+            IList<EsiV3UniverseNames> esiModel = JsonConvert.DeserializeObject<IList<EsiV3UniverseNames>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2UniverseNames>, IList<V2UniverseNames>>(esiModel);
+            return _mapper.Map<IList<EsiV3UniverseNames>, IList<V3UniverseNames>>(esiModel);
         }
 
         public V1UniversePlanet Planet(int planetId)

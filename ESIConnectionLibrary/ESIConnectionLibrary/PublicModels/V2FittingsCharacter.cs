@@ -2,10 +2,11 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1FittingsCharacterSave
+    public class V2FittingsCharacter
     {
         public string Description { get; set; }
-        public IList<V1FittingsCharacterSaveItem> Items { get; set; }
+        public int FittingId { get; set; }
+        public IList<V2FittingsCharacterItem> Items { get; set; }
         public string Name { get; set; }
         public int ShipTypeId { get; set; }
     }

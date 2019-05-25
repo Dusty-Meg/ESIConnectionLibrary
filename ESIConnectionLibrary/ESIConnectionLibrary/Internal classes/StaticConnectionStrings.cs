@@ -672,18 +672,18 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Fittings
 
-        private static string FittingsV1CharacterGetRaw => "/v1/characters/{character_id}/fittings/";
-        private static string FittingsV1CharacterUpdateRaw => "/v1/characters/{character_id}/fittings/";
+        private static string FittingsV2CharacterGetRaw => "/v2/characters/{character_id}/fittings/";
+        private static string FittingsV2CharacterUpdateRaw => "/v2/characters/{character_id}/fittings/";
         private static string FittingsV1CharacterDeleteRaw => "/v1/characters/{character_id}/fittings/{fitting_id}/";
 
-        public static string FittingsV1CharacterGet(int characterId)
+        public static string FittingsV2CharacterGet(int characterId)
         {
-            return UrlBuilder(FittingsV1CharacterGetRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(FittingsV2CharacterGetRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string FittingsV1CharacterUpdate(int characterId)
+        public static string FittingsV2CharacterUpdate(int characterId)
         {
-            return UrlBuilder(FittingsV1CharacterUpdateRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(FittingsV2CharacterUpdateRaw, "{character_id}", characterId.ToString());
         }
 
         public static string FittingsV1CharacterDelete(int characterId, int fittingId)
@@ -1256,7 +1256,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string UniverseV1GroupRaw => "/v1/universe/groups/{group_id}/";
         private static string UniverseV1IdsRaw => "/v1/universe/ids/";
         private static string UniverseV1MoonRaw => "/v1/universe/moons/{moon_id}/";
-        private static string UniverseV2NamesRaw => "/v2/universe/names/";
+        private static string UniverseV3NamesRaw => "/v3/universe/names/";
         private static string UniverseV1PlanetRaw => "/v1/universe/planets/{planet_id}/";
         private static string UniverseV1RacesRaw => "/v1/universe/races/";
         private static string UniverseV1RegionsRaw => "/v1/universe/regions/";
@@ -1343,9 +1343,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(UniverseV1MoonRaw, "{moon_id}", moonId.ToString());
         }
 
-        public static string UniverseV2Names()
+        public static string UniverseV3Names()
         {
-            return UrlBuilder(UniverseV2NamesRaw);
+            return UrlBuilder(UniverseV3NamesRaw);
         }
 
         public static string UniverseV1Planet(int planetId)
@@ -1463,7 +1463,7 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Wallet
 
         private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";
-        private static string WalletV5CharactersWalletJournalRaw => "/v5/characters/{character_id}/wallet/journal/";
+        private static string WalletV6CharactersWalletJournalRaw => "/v6/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
         private static string WalletV1CorporationWalletsRaw => "/v1/corporations/{corporation_id}/wallets/";
         private static string WalletV4CorporationDivisionsJournalRaw => "/v4/corporations/{corporation_id}/wallets/{division}/journal/";
@@ -1474,9 +1474,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(WalletV1CharactersWalletRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string WalletV5CharactersWalletJournal(int characterId, int page)
+        public static string WalletV6CharactersWalletJournal(int characterId, int page)
         {
-            return UrlBuilder(WalletV5CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(WalletV6CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         public static string WalletV4CharactersWalletTransaction(int characterId, int lastTransactionId)

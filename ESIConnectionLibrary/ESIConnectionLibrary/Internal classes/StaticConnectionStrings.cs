@@ -1463,7 +1463,7 @@ namespace ESIConnectionLibrary.Internal_classes
         #region Wallet
 
         private static string WalletV1CharactersWalletRaw => "/v1/characters/{character_id}/wallet/";
-        private static string WalletV5CharactersWalletJournalRaw => "/v5/characters/{character_id}/wallet/journal/";
+        private static string WalletV6CharactersWalletJournalRaw => "/v6/characters/{character_id}/wallet/journal/";
         private static string WalletV4CharactersWalletTransactionRaw => "/v1/characters/{character_id}/wallet/transactions/";
         private static string WalletV1CorporationWalletsRaw => "/v1/corporations/{corporation_id}/wallets/";
         private static string WalletV4CorporationDivisionsJournalRaw => "/v4/corporations/{corporation_id}/wallets/{division}/journal/";
@@ -1474,9 +1474,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(WalletV1CharactersWalletRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string WalletV5CharactersWalletJournal(int characterId, int page)
+        public static string WalletV6CharactersWalletJournal(int characterId, int page)
         {
-            return UrlBuilder(WalletV5CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(WalletV6CharactersWalletJournalRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         public static string WalletV4CharactersWalletTransaction(int characterId, int lastTransactionId)

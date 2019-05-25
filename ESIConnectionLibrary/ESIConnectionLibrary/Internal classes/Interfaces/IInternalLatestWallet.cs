@@ -8,8 +8,8 @@ namespace ESIConnectionLibrary.Internal_classes
     {
         double Character(SsoToken token);
         Task<double> CharacterAsync(SsoToken token);
-        PagedModel<V5WalletCharacterJournal> CharacterJournal(SsoToken token, int page);
-        Task<PagedModel<V5WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page);
+        PagedModel<V6WalletCharacterJournal> CharacterJournal(SsoToken token, int page);
+        Task<PagedModel<V6WalletCharacterJournal>> CharacterJournalAsync(SsoToken token, int page);
         PagedModel<V1WalletCharacterTransactions> CharacterTransactions(SsoToken token, int lastTransactionId);
         Task<PagedModel<V1WalletCharacterTransactions>> CharacterTransactionsAsync(SsoToken token, int lastTransactionId);
         PagedModel<V4WalletCorporationJournal> CorporationJournal(SsoToken token, int corporationId, int division, int page);

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ESIConnectionLibrary.PublicModels
+﻿namespace ESIConnectionLibrary.PublicModels
 {
     public class V1FwFactionStats
     {

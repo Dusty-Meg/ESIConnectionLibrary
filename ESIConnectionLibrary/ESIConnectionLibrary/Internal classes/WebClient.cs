@@ -506,7 +506,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
                     if (responseStream == null)
                     {
-                        throw new ESIException($"{e.Message} Url: {address}");
+                        throw new EsiException($"{e.Message} Url: {address}");
                     }
 
                     string resp = new StreamReader(responseStream).ReadToEnd();
@@ -532,9 +532,10 @@ namespace ESIConnectionLibrary.Internal_classes
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
-                    throw new ESIException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {returnHeadersString} . Data: {data}", e);
+                    throw new EsiException($"{e.Message} Url: {address} Message From Server: {errorMessage} : Return Headers = {returnHeadersString} . Data: {data}", e);
             }
 
             return null;

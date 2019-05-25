@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 
 namespace ESIConnectionLibrary.Internal_classes

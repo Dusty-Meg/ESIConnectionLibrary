@@ -129,7 +129,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestUniverse.Groups(page);
@@ -139,7 +139,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestUniverse.GroupsAsync(page);
@@ -309,7 +309,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestUniverse.Types(page);
@@ -319,7 +319,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestUniverse.TypesAsync(page);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
@@ -17,23 +16,6 @@ namespace ESIConnectionLibrary.Internal_classes
             for (int i = 0; i < count; i += 2)
             {
                 urlBuilder = urlBuilder.Replace(urls[i], urls[i + 1]);
-            }
-
-            return EsiBaseUrl + urlBuilder;
-        }
-
-        private static string UrlBuilder(string rawUrl, string prefix, IList<string> variables)
-        {
-            string urlBuilder = rawUrl + "?" + prefix + "=";
-
-            for (int i = 0; i < variables.Count; i++)
-            {
-                if (i != 0)
-                {
-                    urlBuilder = urlBuilder + ",";
-                }
-
-                urlBuilder = urlBuilder + variables[i];
             }
 
             return EsiBaseUrl + urlBuilder;
@@ -354,7 +336,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public static string ContactsV2CharacterEdit(int characterId, V2ContactCharacterEdit model)
         {
-            string url = UrlBuilder(ContactsV2CharacterAddRaw, "{character_id}", characterId.ToString()) + $"?standing={model.Standing}";
+            string url = UrlBuilder(ContactsV2CharacterEditRaw, "{character_id}", characterId.ToString()) + $"?standing={model.Standing}";
 
             if (model.LabelIds != null && model.LabelIds.Any())
             {

@@ -29,7 +29,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return _internalLatestWallet.CharacterJournal(token, page);
@@ -39,7 +39,7 @@ namespace ESIConnectionLibrary.Public_classes
         {
             if (page < 1)
             {
-                throw new ESIException("Pages below 1 is not allowed!");
+                throw new EsiException("Pages below 1 is not allowed!");
             }
 
             return await _internalLatestWallet.CharacterJournalAsync(token, page);

@@ -672,13 +672,13 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Fittings
 
-        private static string FittingsV1CharacterGetRaw => "/v1/characters/{character_id}/fittings/";
+        private static string FittingsV2CharacterGetRaw => "/v2/characters/{character_id}/fittings/";
         private static string FittingsV1CharacterUpdateRaw => "/v1/characters/{character_id}/fittings/";
         private static string FittingsV1CharacterDeleteRaw => "/v1/characters/{character_id}/fittings/{fitting_id}/";
 
         public static string FittingsV1CharacterGet(int characterId)
         {
-            return UrlBuilder(FittingsV1CharacterGetRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(FittingsV2CharacterGetRaw, "{character_id}", characterId.ToString());
         }
 
         public static string FittingsV1CharacterUpdate(int characterId)

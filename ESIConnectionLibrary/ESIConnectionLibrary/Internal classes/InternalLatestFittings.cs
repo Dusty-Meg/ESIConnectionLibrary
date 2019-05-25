@@ -22,7 +22,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public IList<V1FittingsCharacter> Character(SsoToken token)
+        public IList<V2FittingsCharacter> Character(SsoToken token)
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_read_fittings_v1);
 
@@ -30,12 +30,12 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1FittingsCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV1FittingsCharacter>>(esiRaw.Model);
+            IList<EsiV2FittingsCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV2FittingsCharacter>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1FittingsCharacter>, IList<V1FittingsCharacter>>(esiModel);
+            return _mapper.Map<IList<EsiV2FittingsCharacter>, IList<V2FittingsCharacter>>(esiModel);
         }
 
-        public async Task<IList<V1FittingsCharacter>> CharacterAsync(SsoToken token)
+        public async Task<IList<V2FittingsCharacter>> CharacterAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, FittingScopes.esi_fittings_read_fittings_v1);
 
@@ -43,9 +43,9 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            IList<EsiV1FittingsCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV1FittingsCharacter>>(esiRaw.Model);
+            IList<EsiV2FittingsCharacter> esiModel = JsonConvert.DeserializeObject<IList<EsiV2FittingsCharacter>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1FittingsCharacter>, IList<V1FittingsCharacter>>(esiModel);
+            return _mapper.Map<IList<EsiV2FittingsCharacter>, IList<V2FittingsCharacter>>(esiModel);
         }
 
         public void CharacterAddUpdate(SsoToken token, V1FittingsCharacterSave fitting)

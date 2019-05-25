@@ -2,10 +2,10 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1FittingsCharacterItem
+    internal class EsiV2FittingsCharacterItem
     {
         [JsonProperty(PropertyName = "flag")]
-        public int Flag { get; set; }
+        public EsiV2FittingsCharacterItemFlag Flag { get; set; }
 
         [JsonProperty(PropertyName = "quantity")]
         public int Quantity { get; set; }

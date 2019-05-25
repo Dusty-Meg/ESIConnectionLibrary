@@ -14,12 +14,12 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestFittings = new InternalLatestFittings(null, userAgent, testing);
         }
 
-        public IList<V1FittingsCharacter> Character(SsoToken token)
+        public IList<V2FittingsCharacter> Character(SsoToken token)
         {
             return _internalLatestFittings.Character(token);
         }
 
-        public async Task<IList<V1FittingsCharacter>> CharacterAsync(SsoToken token)
+        public async Task<IList<V2FittingsCharacter>> CharacterAsync(SsoToken token)
         {
             return await _internalLatestFittings.CharacterAsync(token);
         }

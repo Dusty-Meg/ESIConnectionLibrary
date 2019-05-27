@@ -29,6 +29,7 @@ namespace ESIConnectionLibrary.Internal_classes
                     .WithRedisConfiguration("redisConnectionEsiConnectionLibrary", redisConnectionString)
                     .WithRedisBackplane("redisConnectionEsiConnectionLibrary")
                     .WithUpdateMode(CacheUpdateMode.Up)
+                    .WithJsonSerializer()
                     .WithRedisCacheHandle("redisConnectionEsiConnectionLibrary"));
             }
 

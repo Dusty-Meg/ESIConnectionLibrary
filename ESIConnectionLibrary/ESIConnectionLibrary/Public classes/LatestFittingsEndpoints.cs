@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestFittings = new InternalLatestFittings(null, userAgent, testing);
         }
 
+        internal LatestFittingsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestFittings = new InternalLatestFittings(webClient, userAgent, testing);
+        }
+
         public IList<V2FittingsCharacter> Character(SsoToken token)
         {
             return _internalLatestFittings.Character(token);

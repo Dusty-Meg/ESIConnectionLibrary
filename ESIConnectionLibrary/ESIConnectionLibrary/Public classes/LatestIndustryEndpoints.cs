@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestIndustry = new InternalLatestIndustry(null, userAgent, testing);
         }
 
+        internal LatestIndustryEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestIndustry = new InternalLatestIndustry(webClient, userAgent, testing);
+        }
+
         public IList<V1IndustryCharacter> Character(SsoToken token, bool includeCompletedJobs)
         {
             return _internalLatestIndustry.Character(token, includeCompletedJobs);

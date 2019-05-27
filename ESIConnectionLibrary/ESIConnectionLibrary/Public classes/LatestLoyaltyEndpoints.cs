@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestLoyalty = new InternalLatestLoyalty(null, userAgent, testing);
         }
 
+        internal LatestLoyaltyEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestLoyalty = new InternalLatestLoyalty(webClient, userAgent, testing);
+        }
+
         public IList<V1LoyaltyPoint> Points(SsoToken token)
         {
             return _internalLatestLoyalty.Points(token);

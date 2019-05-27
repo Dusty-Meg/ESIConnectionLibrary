@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAlliance = new InternalLatestAlliance(null, userAgent, testing);
         }
 
+        internal LatestAllianceEndpoints(string userAgent, IWebClient webClient)
+        {
+            _internalLatestAlliance = new InternalLatestAlliance(webClient, userAgent);
+        }
+
         public IList<int> Alliances()
         {
             return _internalLatestAlliance.Alliances();

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(null, userAgent, testing);
         }
 
+        internal LatestPlanetaryInteractionEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestPlanetaryInteraction = new InternalLatestPlanetaryInteraction(webClient, userAgent, testing);
+        }
+
         public IList<V1PlanetaryInteractionCharactersPlanets> CharactersPlanets(SsoToken token)
         {
             return _internalLatestPlanetaryInteraction.CharactersPlanets(token);

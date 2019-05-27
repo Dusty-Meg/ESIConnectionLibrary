@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestInsurance = new InternalLatestInsurance(null, userAgent, testing);
         }
 
+        internal LatestInsuranceEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestInsurance = new InternalLatestInsurance(webClient, userAgent, testing);
+        }
+
         public IList<V1InsuranceInsurance> Insurance()
         {
             return _internalLatestInsurance.Insurance();

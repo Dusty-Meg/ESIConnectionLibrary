@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestDogma = new InternalLatestDogma(null, userAgent, testing);
         }
 
+        internal LatestDogmaEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestDogma = new InternalLatestDogma(webClient, userAgent, testing);
+        }
+
         public IList<int> Attributes()
         {
             return _internalLatestDogma.Attributes();

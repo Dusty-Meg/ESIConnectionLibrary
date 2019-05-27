@@ -2,6 +2,7 @@
 
 namespace ESIConnectionLibrary.Internal_classes
 {
+    [Serializable]
     internal class CacheModel
     {
         public CacheModel(string item, string etag, int cacheTime, int page)

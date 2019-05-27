@@ -13,6 +13,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestUi = new InternalLatestUi(null, userAgent);
         }
 
+        internal LatestUiEndpoints(string userAgent, IWebClient webClient)
+        {
+            _internalLatestUi = new InternalLatestUi(webClient, userAgent);
+        }
+
         public void AddSolarSystemIntoAutopilotWaypoint(SsoToken token, bool addToBeginning, bool clearOtherWaypoints, int destinationId)
         {
             _internalLatestUi.AddSolarSystemIntoAutopilotWaypoint(token, addToBeginning, clearOtherWaypoints, destinationId);

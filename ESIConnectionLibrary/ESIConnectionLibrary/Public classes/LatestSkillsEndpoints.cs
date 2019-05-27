@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestSkills = new InternalLatestSkills(null, userAgent, testing);
         }
 
+        internal LatestSkillsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestSkills = new InternalLatestSkills(webClient, userAgent, testing);
+        }
+
         public IList<V2SkillsSkillQueue> SkillQueue(SsoToken token)
         {
             return _internalLatestSkills.SkillQueue(token);

@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWallet = new InternalLatestWallet(null, userAgent, testing);
         }
 
+        internal LatestWalletEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestWallet = new InternalLatestWallet(webClient, userAgent, testing);
+        }
+
         public double Character(SsoToken token)
         {
             return _internalLatestWallet.Character(token);

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestBookmarks = new InternalLatestBookmarks(null, userAgent, testing);
         }
 
+        internal LatestBookmarksEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestBookmarks = new InternalLatestBookmarks(webClient, userAgent, testing);
+        }
+
         public PagedModel<V2BookmarksCharacter> CharacterBookmarks(SsoToken token, int page)
         {
             if (page < 1)

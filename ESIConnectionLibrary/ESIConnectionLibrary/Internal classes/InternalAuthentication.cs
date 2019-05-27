@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -84,7 +87,15 @@ namespace ESIConnectionLibrary.Internal_classes
             string ssoData = "grant_type=authorization_code&code=" + code;
 
             OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
-            OauthVerify oauthVerify = GetOauthVerify(oauthToken.AccessToken);
+            JwtSecurityToken decodedToken = new JwtSecurityToken(oauthToken.AccessToken);
+
+            string sub = decodedToken.Claims.First(c => c.Type == "sub").Value;
+            IList<string> subSplit = string.IsNullOrEmpty(sub) ? null : sub.Split(':');
+
+            if (subSplit == null)
+            {
+                throw new EsiException("Something went wrong getting the sub from the JWT token");
+            }
 
             SsoToken token = new SsoToken
             {
@@ -92,12 +103,12 @@ namespace ESIConnectionLibrary.Internal_classes
                 AccessToken = oauthToken.AccessToken,
                 ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn),
                 RefreshToken = oauthToken.RefreshToken,
-                CharacterId = oauthVerify.CharacterId,
-                CharacterName = oauthVerify.CharacterName,
-                TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
+                CharacterId = Convert.ToInt32(subSplit[2]),
+                CharacterName = decodedToken.Claims.First(c => c.Type == "name").Value,
+                TokenType = (TokenType)Enum.Parse(typeof(TokenType), subSplit[0], true)
             };
 
-            return CreateScopesFlags(token, oauthVerify.Scopes);
+            return CreateScopesFlags(token, JsonConvert.DeserializeObject<IList<string>>(decodedToken.Claims.First(c => c.Type == "scp").Value));
         }
 
         public async Task<SsoToken> MakeTokenAsync(string code, string evessokey, Guid userId)
@@ -110,7 +121,15 @@ namespace ESIConnectionLibrary.Internal_classes
             string ssoData = "grant_type=authorization_code&code=" + code;
 
             OauthToken oauthToken = await GetOauthTokenAsync(evessokey, ssoData);
-            OauthVerify oauthVerify = await GetOauthVerifyAsync(oauthToken.AccessToken);
+            JwtSecurityToken decodedToken = new JwtSecurityToken(oauthToken.AccessToken);
+
+            string sub = decodedToken.Claims.First(c => c.Type == "sub").Value;
+            IList<string> subSplit = string.IsNullOrEmpty(sub) ? null : sub.Split(':');
+
+            if (subSplit == null)
+            {
+                throw new EsiException("Something went wrong getting the sub from the JWT token");
+            }
 
             SsoToken token = new SsoToken
             {
@@ -118,12 +137,12 @@ namespace ESIConnectionLibrary.Internal_classes
                 AccessToken = oauthToken.AccessToken,
                 ExpiresIn = DateTime.UtcNow.AddSeconds(oauthToken.ExpiresIn),
                 RefreshToken = oauthToken.RefreshToken,
-                CharacterId = oauthVerify.CharacterId,
-                CharacterName = oauthVerify.CharacterName,
-                TokenType = (TokenType)Enum.Parse(typeof(TokenType), oauthVerify.TokenType, true)
+                CharacterId = Convert.ToInt32(subSplit[2]),
+                CharacterName = decodedToken.Claims.First(c => c.Type == "name").Value,
+                TokenType = (TokenType)Enum.Parse(typeof(TokenType), subSplit[0], true)
             };
 
-            return CreateScopesFlags(token, oauthVerify.Scopes);
+            return CreateScopesFlags(token, JsonConvert.DeserializeObject<IList<string>>(decodedToken.Claims.First(c => c.Type == "scp").Value));
         }
 
         public SsoToken RefreshToken(SsoToken token, string evessokey)
@@ -173,7 +192,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            EsiModel ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/token/", data));
+            EsiModel ssoRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/v2/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw.Model);
         }
 
@@ -188,7 +207,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            EsiModel ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/token/", data));
+            EsiModel ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/v2/oauth/token/", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw.Model);
         }
 
@@ -203,7 +222,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/oauth/revoke", data));
+            PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(headers, "https://login.eveonline.com/v2/oauth/revoke", data));
         }
 
         private async Task RevokeOauthTokenAsync(string eveSsoKey, string data)
@@ -217,32 +236,10 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/oauth/revoke", data));
+            await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/v2/oauth/revoke", data));
         }
 
-        private OauthVerify GetOauthVerify(string accessToken)
-        {
-            WebHeaderCollection headers = new WebHeaderCollection
-            {
-                [HttpRequestHeader.Authorization] = "Bearer " + accessToken,
-            };
-
-            EsiModel clientStringRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(headers, StaticConnectionStrings.AuthenticationVerify()));
-            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw.Model);
-        }
-
-        private async Task<OauthVerify> GetOauthVerifyAsync(string accessToken)
-        {
-            WebHeaderCollection headers = new WebHeaderCollection
-            {
-                [HttpRequestHeader.Authorization] = "Bearer " + accessToken,
-            };
-
-            EsiModel clientStringRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(headers, StaticConnectionStrings.AuthenticationVerify()));
-            return JsonConvert.DeserializeObject<OauthVerify>(clientStringRaw.Model);
-        }
-
-        private SsoToken CreateScopesFlags(SsoToken token, string scopes)
+        private SsoToken CreateScopesFlags(SsoToken token, IList<string> scopes)
         {
             token.AllianceScopesFlags = AllianceScopes.None;
             token.AssetScopesFlags = AssetScopes.None;
@@ -266,9 +263,7 @@ namespace ESIConnectionLibrary.Internal_classes
             token.UniverseScopesFlags = UniverseScopes.None;
             token.WalletScopesFlags = WalletScopes.None;
 
-            string[] scopeList = scopes.Split(' ');
-
-            foreach (string scope in scopeList)
+            foreach (string scope in scopes)
             {
                 switch (scope)
                 {

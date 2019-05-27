@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCorporations = new InternalLatestCorporations(null, userAgent, testing);
         }
 
+        internal LatestCorporationsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestCorporations = new InternalLatestCorporations(webClient, userAgent, testing);
+        }
+
         public V4CorporationPublicInfo PublicInfo(long corporationId)
         {
             return _internalLatestCorporations.PublicInfo(corporationId);

@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestContracts = new InternalLatestContracts(null, userAgent, testing);   
         }
 
+        internal LatestContractEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestContracts = new InternalLatestContracts(webClient, userAgent, testing);
+        }
+
         public PagedModel<V1ContractsCharacter> Character(SsoToken token, int page)
         {
             if (page < 1)

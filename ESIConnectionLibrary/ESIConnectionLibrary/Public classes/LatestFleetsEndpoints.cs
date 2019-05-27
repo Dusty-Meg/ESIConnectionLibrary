@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestFleets = new InternalLatestFleets(null, userAgent, testing);
         }
 
+        internal LatestFleetsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestFleets = new InternalLatestFleets(webClient, userAgent, testing);
+        }
+
         public V1FleetCharacter Character(SsoToken token)
         {
             return _internalLatestFleets.Character(token);

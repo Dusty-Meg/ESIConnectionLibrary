@@ -3,22 +3,35 @@ using System.IO;
 using System.Net;
 using System.Net.Cache;
 using System.Threading.Tasks;
+using CacheManager.Core;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.Exceptions;
-using LazyCache;
 using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.Internal_classes
 {
     internal class WebClient : IWebClient
     {
-        private readonly IAppCache _cache;
+        private readonly ICacheManager<CacheModel> _cache;
         private readonly string _userAgent;
 
-
-        public WebClient(string userAgent)
+        public WebClient(string userAgent, string redisConnectionString = null)
         {
-            _cache = new CachingService();
+            if (string.IsNullOrEmpty(redisConnectionString))
+            {
+                _cache = CacheFactory.Build<CacheModel>(settings => settings
+                    .WithUpdateMode(CacheUpdateMode.Up)
+                        .WithSystemRuntimeCacheHandle());
+            }
+            else
+            {
+                _cache = CacheFactory.Build<CacheModel>(settings => settings
+                    .WithRedisConfiguration("redisConnectionEsiConnectionLibrary", redisConnectionString)
+                    .WithRedisBackplane("redisConnectionEsiConnectionLibrary")
+                    .WithUpdateMode(CacheUpdateMode.Up)
+                    .WithRedisCacheHandle("redisConnectionEsiConnectionLibrary"));
+            }
+
             _userAgent = userAgent;
         }
 
@@ -109,7 +122,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             client.Headers["UserAgent"] = _userAgent;
 
-            CacheModel cachedItem = await _cache.GetAsync<CacheModel>(address);
+            CacheModel cachedItem = _cache.Get<CacheModel>(address);
             EsiModel esiModel = new EsiModel();
 
             try
@@ -297,7 +310,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 client.Headers["UserAgent"] = _userAgent;
             }
 
-            CacheModel cachedItem = await _cache.GetAsync<CacheModel>(address);
+            CacheModel cachedItem = _cache.Get<CacheModel>(address);
             EsiModel esiModel = new EsiModel();
 
             try

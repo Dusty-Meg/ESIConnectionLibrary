@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestFactionWarfare = new InternalLatestFactionWarfare(null, userAgent, testing);
         }
 
+        internal LatestFactionWarfareEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestFactionWarfare = new InternalLatestFactionWarfare(webClient, userAgent, testing);
+        }
+
         public V1FwCharacterStats CharacterStats(SsoToken token)
         {
             return _internalLatestFactionWarfare.CharacterStats(token);

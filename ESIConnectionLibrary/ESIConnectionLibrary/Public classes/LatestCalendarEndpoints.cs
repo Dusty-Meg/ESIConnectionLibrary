@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCalendar = new InternalLatestCalendar(null, userAgent, testing);
         }
 
+        internal LatestCalendarEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestCalendar = new InternalLatestCalendar(webClient, userAgent, testing);
+        }
+
         public IList<V1CalendarSummary> Summaries(SsoToken token, int fromEvent)
         {
             return _internalLatestCalendar.Summaries(token, fromEvent);

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestSearch = new InternalLatestSearch(null, userAgent, testing);
         }
 
+        internal LatestSearchEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestSearch = new InternalLatestSearch(webClient, userAgent, testing);
+        }
+
         public V3SearchAuthSearch CharacterSearch(SsoToken token, IList<V3SearchAuthSearchCategories> categories, string search, bool strict)
         {
             return _internalLatestSearch.CharacterSearch(token, categories, search, strict);

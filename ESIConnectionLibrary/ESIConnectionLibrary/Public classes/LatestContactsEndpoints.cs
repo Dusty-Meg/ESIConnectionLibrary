@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestContacts = new InternalLatestContacts(null, userAgent, testing);
         }
 
+        internal LatestContactsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestContacts = new InternalLatestContacts(webClient, userAgent, testing);
+        }
+
         public PagedModel<V2ContactAlliance> Alliance(SsoToken token, int allianceId, int page)
         {
             if (page < 1)

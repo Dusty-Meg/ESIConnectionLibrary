@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestClones = new InternalLatestClones(null, userAgent, testing);
         }
 
+        internal LatestCloneEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestClones = new InternalLatestClones(webClient, userAgent, testing);
+        }
+
         public V3ClonesClone Clones(SsoToken token)
         {
             return _internalLatestClones.Clones(token);

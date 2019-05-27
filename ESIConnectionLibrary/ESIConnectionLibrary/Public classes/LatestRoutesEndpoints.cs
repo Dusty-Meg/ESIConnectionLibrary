@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestRoutes = new InternalLatestRoutes(null, userAgent, testing);
         }
 
+        internal LatestRoutesEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestRoutes = new InternalLatestRoutes(webClient, userAgent, testing);
+        }
+
         public IList<int> Route(int origin, int destination, V1RoutesFlag flag, IList<int> avoid, IList<IList<int>> connections)
         {
             return _internalLatestRoutes.Route(origin, destination, flag, avoid, connections);

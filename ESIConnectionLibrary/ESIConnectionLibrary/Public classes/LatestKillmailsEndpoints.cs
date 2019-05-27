@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestKillmails = new InternalLatestKillmails(null, userAgent, testing);
         }
 
+        internal LatestKillmailsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestKillmails = new InternalLatestKillmails(webClient, userAgent, testing);
+        }
+
         public IList<V1KillmailCharacter> Character(SsoToken token, int page)
         {
             return _internalLatestKillmails.Character(token, page);

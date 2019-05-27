@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestOpportunities = new InternalLatestOpportunities(null, userAgent, testing);
         }
 
+        internal LatestOpportunitiesEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestOpportunities = new InternalLatestOpportunities(webClient, userAgent, testing);
+        }
+
         public IList<V1OpportunitiesCharacter> Character(SsoToken token)
         {
             return _internalLatestOpportunities.Character(token);

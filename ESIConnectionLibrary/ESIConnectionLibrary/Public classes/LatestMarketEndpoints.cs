@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestMarket = new InternalLatestMarket(null, userAgent, testing);
         }
 
+        internal LatestMarketEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestMarket = new InternalLatestMarket(webClient, userAgent, testing);
+        }
+
         public IList<V2MarketCharactersOrders> CharacterOrders(SsoToken token)
         {
             return _internalLatestMarket.CharacterOrders(token);

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCharacter = new InternalLatestCharacter(null, userAgent, testing);
         }
 
+        internal LatestCharacterEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestCharacter = new InternalLatestCharacter(webClient, userAgent, testing);
+        }
+
         public V4CharactersPublicInfo PublicInfo(int characterId)
         {
             return _internalLatestCharacter.PublicInfo(characterId);

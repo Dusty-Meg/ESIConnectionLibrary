@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestWars = new InternalLatestWars(null, userAgent, testing);
         }
 
+        internal LatestWarsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestWars = new InternalLatestWars(webClient, userAgent, testing);
+        }
+
         public IList<int> Wars(int maxWarId = 0)
         {
             return _internalLatestWars.Wars(maxWarId);

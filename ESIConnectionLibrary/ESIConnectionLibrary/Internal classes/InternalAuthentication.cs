@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Web;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using ESIConnectionLibrary.ESIModels;
@@ -142,7 +144,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), subSplit[0], true)
             };
 
-            return CreateScopesFlags(token, JsonConvert.DeserializeObject<IList<string>>(decodedToken.Claims.First(c => c.Type == "scp").Value));
+            return CreateScopesFlags(token, decodedToken.Claims.Where(c => c.Type == "scp").Select(x => x.Value).ToList());
         }
 
         public SsoToken RefreshToken(SsoToken token, string evessokey)
@@ -152,7 +154,9 @@ namespace ESIConnectionLibrary.Internal_classes
                 throw new EsiException("Token or EVESSOKey is null or empty");
             }
 
-            string ssoData = "grant_type=refresh_token&refresh_token=" + token.RefreshToken;
+            string code = HttpUtility.HtmlEncode(token.RefreshToken);
+
+            string ssoData = "grant_type=refresh_token&refresh_token=" + code;
 
             OauthToken oauthToken = GetOauthToken(evessokey, ssoData);
 
@@ -170,7 +174,9 @@ namespace ESIConnectionLibrary.Internal_classes
                 throw new EsiException("Token or EVESSOKey is null or empty");
             }
 
-            string ssoData = "grant_type=refresh_token&refresh_token=" + token.RefreshToken;
+            string code = HttpUtility.HtmlEncode(token.RefreshToken);
+
+            string ssoData = "grant_type=refresh_token&refresh_token=" + code;
 
             OauthToken oauthToken = await GetOauthTokenAsync(evessokey, ssoData);
 
@@ -207,7 +213,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 [HttpRequestHeader.Host] = StaticHostHeader.Login,
             };
 
-            EsiModel ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/v2/oauth/token/", data));
+            EsiModel ssoRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(headers, "https://login.eveonline.com/v2/oauth/token", data));
             return JsonConvert.DeserializeObject<OauthToken>(ssoRaw.Model);
         }
 

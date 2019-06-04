@@ -110,7 +110,7 @@ namespace ESIConnectionLibrary.Internal_classes
                 TokenType = (TokenType)Enum.Parse(typeof(TokenType), subSplit[0], true)
             };
 
-            return CreateScopesFlags(token, JsonConvert.DeserializeObject<IList<string>>(decodedToken.Claims.First(c => c.Type == "scp").Value));
+            return CreateScopesFlags(token, decodedToken.Claims.Where(x => x.Type == "scp").Select(x => x.Value).ToList());
         }
 
         public async Task<SsoToken> MakeTokenAsync(string code, string evessokey, Guid userId)

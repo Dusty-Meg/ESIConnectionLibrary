@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.ESIModels
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "planets")]
-        public IList<EsiV3UniverseSystemPlanets> Planets { get; set; }
+        public IList<EsiV4UniverseSystemPlanets> Planets { get; set; }
 
         [JsonProperty(PropertyName = "position")]
         public EsiPosition Position { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using ESIConnectionLibrary.Automapper_Profiles;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
@@ -15,7 +16,10 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public InternalLatestFleets(IWebClient webClient, string userAgent, bool testing = false)
         {
-            IConfigurationProvider provider = new MapperConfiguration(cfg => { });
+            IConfigurationProvider provider = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<FleetsProfile>();
+            });
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);
@@ -176,7 +180,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FleetsV1MemberMove(fleetId, characterId), _testing);
 
-            EsiV1FleetMemberInvite model = _mapper.Map<EsiV1FleetMemberInvite>(moveModel);
+            EsiV1FleetMemberMove model = _mapper.Map<EsiV1FleetMemberMove>(moveModel);
 
             string objectModel = JsonConvert.SerializeObject(model);
 
@@ -189,7 +193,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.FleetsV1MemberMove(fleetId, characterId), _testing);
 
-            EsiV1FleetMemberInvite model = _mapper.Map<EsiV1FleetMemberInvite>(moveModel);
+            EsiV1FleetMemberMove model = _mapper.Map<EsiV1FleetMemberMove>(moveModel);
 
             string objectModel = JsonConvert.SerializeObject(model);
 

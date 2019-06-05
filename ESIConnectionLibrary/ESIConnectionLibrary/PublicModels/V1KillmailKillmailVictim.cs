@@ -9,8 +9,8 @@ namespace ESIConnectionLibrary.PublicModels
         public int? CorporationId { get; set; }
         public int DamageTaken { get; set; }
         public int? FactionId { get; set; }
-        public IList<V1KillmailKillmailItem> Items { get; set; }
-        public V1KillmailKillmailPosition Position { get; set; }
+        public IList<V1KillmailKillmailVictimItem> Items { get; set; }
+        public V1KillmailKillmailVictimPosition Position { get; set; }
         public int ShipTypeId { get; set; }
     }
 }

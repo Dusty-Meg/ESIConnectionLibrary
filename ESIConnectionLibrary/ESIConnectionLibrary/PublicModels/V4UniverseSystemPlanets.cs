@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3UniverseSystemPlanets
+    public class V4UniverseSystemPlanets
     {
         public IList<int> AsteroidBelts { get; set; }
         public IList<int> Moons { get; set; }

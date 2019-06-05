@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using ESIConnectionLibrary.Automapper_Profiles;
 using ESIConnectionLibrary.ESIModels;
 using ESIConnectionLibrary.PublicModels;
 using Newtonsoft.Json;
@@ -15,7 +16,10 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public InternalLatestContacts(IWebClient webClient, string userAgent, bool testing = false)
         {
-            IConfigurationProvider provider = new MapperConfiguration(cfg => { });
+            IConfigurationProvider provider = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<ContactsProfile>();
+            });
 
             _webClient = webClient ?? new WebClient(userAgent);
             _mapper = new Mapper(provider);

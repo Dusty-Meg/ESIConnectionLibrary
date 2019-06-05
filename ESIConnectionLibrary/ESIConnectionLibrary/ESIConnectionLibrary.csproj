@@ -14,7 +14,7 @@
         <Version>1.2.1</Version>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="8.1.0" />
+      <PackageReference Include="AutoMapper" Version="8.1.1" />
       <PackageReference Include="CacheManager.Serialization.Json" Version="2.0.0-beta-1629" />
       <PackageReference Include="CacheManager.StackExchange.Redis" Version="2.0.0-beta-1629" />
       <PackageReference Include="CacheManager.SystemRuntimeCaching" Version="2.0.0-beta-1629" />

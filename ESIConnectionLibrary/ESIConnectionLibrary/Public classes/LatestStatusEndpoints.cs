@@ -13,6 +13,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestStatus = new InternalLatestStatus(null, userAgent, testing);
         }
 
+        internal LatestStatusEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestStatus = new InternalLatestStatus(webClient, userAgent, testing);
+        }
+
         public V1Status Status()
         {
             return _internalLatestStatus.Status();

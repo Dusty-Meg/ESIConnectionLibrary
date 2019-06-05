@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestUniverse = new InternalLatestUniverse(null, userAgent, testing);
         }
 
+        internal LatestUniverseEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestUniverse = new InternalLatestUniverse(webClient, userAgent, testing);
+        }
+
         public IList<V1UniverseAncestries> Ancestries()
         {
             return _internalLatestUniverse.Ancestries();

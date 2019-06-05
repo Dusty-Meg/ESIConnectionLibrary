@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestMail = new InternalLatestMail(null, userAgent, testing);
         }
 
+        internal LatestMailEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestMail = new InternalLatestMail(webClient, userAgent, testing);
+        }
+
         public PagedModel<V1MailCharacter> Character(SsoToken token, int lastMailId)
         {
             return _internalLatestMail.Character(token, lastMailId);

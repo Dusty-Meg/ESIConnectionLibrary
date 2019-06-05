@@ -15,6 +15,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAssets = new InternalLatestAssets(null, userAgent, testing);
         }
 
+        internal LatestAssetsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestAssets = new InternalLatestAssets(webClient, userAgent);
+        }
+
         public PagedModel<V3AssetsCharacter> Characters(SsoToken token, int page)
         {
             if (page < 1)

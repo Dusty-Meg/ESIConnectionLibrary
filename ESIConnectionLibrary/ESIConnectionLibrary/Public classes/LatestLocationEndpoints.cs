@@ -13,6 +13,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestLocation = new InternalLatestLocation(null, userAgent, testing);
         }
 
+        internal LatestLocationEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestLocation = new InternalLatestLocation(webClient, userAgent, testing);
+        }
+
         public V1LocationLocation Location(SsoToken token)
         {
             return _internalLatestLocation.Location(token);

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalAuthentication = new InternalAuthentication(null, userAgent);
         }
 
+        internal AuthenticationEndpoints(string userAgent, IWebClient webClient)
+        {
+            _internalAuthentication = new InternalAuthentication(webClient, userAgent);
+        }
+
         public SsoToken CheckToken (SsoToken token, string evessokey)
         {
             if (DateTime.UtcNow.CompareTo(token.ExpiresIn) == 1)

@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestSovereignty = new InternalLatestSovereignty(null, userAgent, testing);
         }
 
+        internal LatestSovereigntyEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestSovereignty = new InternalLatestSovereignty(webClient, userAgent, testing);
+        }
+
         public IList<V1SovereigntyCampaigns> Campaigns()
         {
             return _internalLatestSovereignty.Campaigns();

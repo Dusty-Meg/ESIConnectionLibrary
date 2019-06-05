@@ -14,6 +14,11 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestIncursions = new InternalLatestIncursions(null, userAgent, testing);
         }
 
+        internal LatestIncursionsEndpoints(string userAgent, IWebClient webClient, bool testing = false)
+        {
+            _internalLatestIncursions = new InternalLatestIncursions(webClient, userAgent, testing);
+        }
+
         public IList<V1Incursion> Incursions()
         {
             return _internalLatestIncursions.Incursions();

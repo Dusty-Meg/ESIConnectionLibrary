@@ -204,30 +204,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersMedals>, IList<V1CharactersMedals>>(esiV1CharactersMedals);
         }
 
-        public IList<V4CharactersNotifications> Notifications(SsoToken token)
+        public IList<V5CharactersNotifications> Notifications(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersNotifications(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersNotifications(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
             IList<EsiV4CharactersNotifications> esiV1Notifications = JsonConvert.DeserializeObject<IList<EsiV4CharactersNotifications>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V4CharactersNotifications>>(esiV1Notifications);
+            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V5CharactersNotifications>>(esiV1Notifications);
         }
 
-        public async Task<IList<V4CharactersNotifications>> NotificationsAsync(SsoToken token)
+        public async Task<IList<V5CharactersNotifications>> NotificationsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersNotifications(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersNotifications(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
             IList<EsiV4CharactersNotifications> esiV1Notifications = JsonConvert.DeserializeObject<IList<EsiV4CharactersNotifications>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V4CharactersNotifications>>(esiV1Notifications);
+            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V5CharactersNotifications>>(esiV1Notifications);
         }
 
         public IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token)

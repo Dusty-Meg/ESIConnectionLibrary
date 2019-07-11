@@ -6,7 +6,7 @@ namespace ESIConnectionLibrary.PublicModels
     {
         public int ConstellationId { get; set; }
         public string Name { get; set; }
-        public IList<V3UniverseSystemPlanets> Planets { get; set; }
+        public IList<V4UniverseSystemPlanets> Planets { get; set; }
         public Position Position { get; set; }
         public string SecurityClass { get; set; }
         public float SecurityStatus { get; set; }

@@ -1,11 +1,6 @@
-﻿using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace ESIConnectionLibrary.ESIModels
+﻿namespace ESIConnectionLibrary.PublicModels
 {
-    [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiNotificationType
+    public enum V5CharactersNotificationType
     {
         AcceptedAlly,
         AcceptedSurrender,
@@ -19,6 +14,7 @@ namespace ESIConnectionLibrary.ESIModels
         AllWarRetractedMsg,
         AllWarSurrenderMsg,
         AllianceCapitalChanged,
+        AllianceWarDeclaredV2,
         AllyContractCancelled,
         AllyJoinedWarAggressorMsg,
         AllyJoinedWarAllyMsg,
@@ -27,11 +23,7 @@ namespace ESIConnectionLibrary.ESIModels
         BillOutOfMoneyMsg,
         BillPaidCorpAllMsg,
         BountyClaimMsg,
-
-        [EnumMember(Value = "BountyESSShared")]
         BountyEssShared,
-
-        [EnumMember(Value = "BountyESSTaken")]
         BountyEssTaken,
         BountyPlacedAlliance,
         BountyPlacedChar,
@@ -59,6 +51,7 @@ namespace ESIConnectionLibrary.ESIModels
         CorpAppNewMsg,
         CorpAppRejectCustomMsg,
         CorpAppRejectMsg,
+        CorpBecameWarEligible,
         CorpDividendMsg,
         CorpFriendlyFireDisableTimerCompleted,
         CorpFriendlyFireDisableTimerStarted,
@@ -66,18 +59,16 @@ namespace ESIConnectionLibrary.ESIModels
         CorpFriendlyFireEnableTimerStarted,
         CorpKicked,
         CorpLiquidationMsg,
-
-        [EnumMember(Value = "CorpNewCEOMsg")]
         CorpNewCeoMsg,
         CorpNewsMsg,
+        CorpNoLongerWarEligible,
         CorpOfficeExpirationMsg,
         CorpStructLostMsg,
         CorpTaxChangeMsg,
-
-        [EnumMember(Value = "CorpVoteCEORevokedMsg")]
         CorpVoteCeoRevokedMsg,
         CorpVoteMsg,
         CorpWarDeclaredMsg,
+        CorpWarDeclaredV2,
         CorpWarFightingLegalMsg,
         CorpWarInvalidatedMsg,
         CorpWarRetractedMsg,
@@ -87,58 +78,28 @@ namespace ESIConnectionLibrary.ESIModels
         DistrictAttacked,
         DustAppAcceptedMsg,
         EntosisCaptureStarted,
-
-        [EnumMember(Value = "FWAllianceKickMsg")]
         FwAllianceKickMsg,
-
-        [EnumMember(Value = "FWAllianceWarningMsg")]
         FwAllianceWarningMsg,
-
-        [EnumMember(Value = "FWCharKickMsg")]
         FwCharKickMsg,
-
-        [EnumMember(Value = "FWCharRankGainMsg")]
         FwCharRankGainMsg,
-
-        [EnumMember(Value = "FWCharRankLossMsg")]
         FwCharRankLossMsg,
-
-        [EnumMember(Value = "FWCharWarningMsg")]
         FwCharWarningMsg,
-
-        [EnumMember(Value = "FWCorpJoinMsg")]
         FwCorpJoinMsg,
-
-        [EnumMember(Value = "FWCorpKickMsg")]
         FwCorpKickMsg,
-
-        [EnumMember(Value = "FWCorpLeaveMsg")]
         FwCorpLeaveMsg,
-
-        [EnumMember(Value = "FWCorpWarningMsg")]
         FwCorpWarningMsg,
         FacWarCorpJoinRequestMsg,
         FacWarCorpJoinWithdrawMsg,
         FacWarCorpLeaveRequestMsg,
         FacWarCorpLeaveWithdrawMsg,
-
-        [EnumMember(Value = "FacWarLPDisqualifiedEvent")]
         FacWarLpDisqualifiedEvent,
-
-        [EnumMember(Value = "FacWarLPDisqualifiedKill")]
         FacWarLpDisqualifiedKill,
-
-        [EnumMember(Value = "FacWarLPPayoutEvent")]
         FacWarLpPayoutEvent,
-
-        [EnumMember(Value = "FacWarLPPayoutKill")]
         FacWarLpPayoutKill,
         GameTimeAdded,
         GameTimeReceived,
         GameTimeSent,
         GiftReceived,
-
-        [EnumMember(Value = "IHubDestroyedByBillFailure")]
         HubDestroyedByBillFailure,
         IncursionCompletedMsg,
         IndustryOperationFinished,
@@ -150,6 +111,7 @@ namespace ESIConnectionLibrary.ESIModels
         InsuranceInvalidatedMsg,
         InsuranceIssuedMsg,
         InsurancePayoutMsg,
+        InvasionSystemLogin,
         JumpCloneDeletedMsg1,
         JumpCloneDeletedMsg2,
         KillReportFinalBlow,
@@ -170,11 +132,11 @@ namespace ESIConnectionLibrary.ESIModels
         MoonminingExtractionFinished,
         MoonminingExtractionStarted,
         MoonminingLaserFired,
-
-        [EnumMember(Value = "NPCStandingsGained")]
+        MutualWarExpired,
+        MutualWarInviteAccepted,
+        MutualWarInviteRejected,
+        MutualWarInviteSent,
         NpcStandingsGained,
-
-        [EnumMember(Value = "NPCStandingsLost")]
         NpcStandingsLost,
         OfferedSurrender,
         OfferedToAlly,
@@ -199,14 +161,8 @@ namespace ESIConnectionLibrary.ESIModels
         SovStructureSelfDestructCancel,
         SovStructureSelfDestructFinished,
         SovStructureSelfDestructRequested,
-
-        [EnumMember(Value = "SovereigntyIHDamageMsg")]
         SovereigntyIhDamageMsg,
-
-        [EnumMember(Value = "SovereigntySBUDamageMsg")]
         SovereigntySbuDamageMsg,
-
-        [EnumMember(Value = "SovereigntyTCUDamageMsg")]
         SovereigntyTcuDamageMsg,
         StationAggressionMsg1,
         StationAggressionMsg2,
@@ -236,8 +192,17 @@ namespace ESIConnectionLibrary.ESIModels
         TowerResourceAlertMsg,
         TransactionReversalMsg,
         TutorialMsg,
+        WarAdopted,
+        WarAllyInherited,
         WarAllyOfferDeclinedMsg,
         WarSurrenderDeclinedMsg,
+        WarConcordInvalidates,
+        WarDeclared,
+        WarHQRemovedFromSpace,
+        WarInherited,
+        WarInvalid,
+        WarRetracted,
+        WarRetractedByConcord,
         WarSurrenderOfferMsg
     }
 }

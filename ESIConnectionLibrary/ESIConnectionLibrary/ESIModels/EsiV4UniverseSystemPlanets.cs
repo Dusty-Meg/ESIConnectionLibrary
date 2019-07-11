@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3UniverseSystemPlanets
+    internal class EsiV4UniverseSystemPlanets
     {
         [JsonProperty(PropertyName = "asteroid_belts")]
         public IList<int> AsteroidBelts { get; set; }

@@ -341,11 +341,11 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V4CharactersNotifications> getCharactersNotifications = internalLatestCharacter.Notifications(inputToken);
+            IList<V5CharactersNotifications> getCharactersNotifications = internalLatestCharacter.Notifications(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
-            Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
+            Assert.Equal(V5CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);
@@ -366,11 +366,11 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V4CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.NotificationsAsync(inputToken);
+            IList<V5CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.NotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
-            Assert.Equal(NotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
+            Assert.Equal(V5CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);

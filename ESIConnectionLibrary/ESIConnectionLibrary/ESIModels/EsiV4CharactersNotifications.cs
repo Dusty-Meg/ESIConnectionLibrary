@@ -24,6 +24,6 @@ namespace ESIConnectionLibrary.ESIModels
         public DateTime Timestamp { get; set; }
 
         [JsonProperty(PropertyName = "type")]
-        public EsiNotificationType Type { get; set; }
+        public EsiV5CharactersNotificationType Type { get; set; }
     }
 }

@@ -8,6 +8,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+schedules:
+- cron: "0 19 * * *"
+  displayName: Daily 7PM build
+  branches:
+    include:
+    - master
+
 steps:
 - task: DockerInstaller@0
   inputs:

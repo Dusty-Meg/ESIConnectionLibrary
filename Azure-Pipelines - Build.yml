@@ -15,6 +15,10 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'docker run -d -p 8080:8080 --name MockESI antihax/mock-esi'
-- task: CmdLine@2
+- task: Bash@3
   inputs:
     filePath: './build.sh'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/TestOutput.xml'

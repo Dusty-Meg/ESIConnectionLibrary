@@ -14,7 +14,7 @@ steps:
     dockerVersion: '17.09.0-ce'
 - task: Bash@3
   inputs:
-    script: 'docker run - -p 8080:8080 --name: MockESI antihax/mock-esi'
+    script: 'docker run -d -p 8080:8080 --name: MockESI antihax/mock-esi'
 - task: Bash@3
   inputs:
     filePath: './build.sh'

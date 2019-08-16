@@ -12,6 +12,7 @@ schedules:
   branches:
     include:
     - master
+  always: true
 
 steps:
 - task: DockerInstaller@0

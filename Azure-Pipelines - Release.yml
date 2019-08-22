@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+    - master
+
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: CmdLine@2
+  displayName: Run Mock-ESI container
+  inputs:
+    script: 'docker run -d -p 8080:8080 --name MockESI antihax/mock-esi'
+- task: Bash@3
+  displayName: Run cake build script
+  inputs:
+    filePath: './build.sh'
+- task: PublishTestResults@2
+  displayName: Publish Test Results
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/TestOutput.xml'
+- task: DotNetCoreCLI@2
+  displayName: Nuget pack project
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/ESIConnectionLibrary.csproj'
+    nobuild: true
+    versioningScheme: 'off'
+- task: NuGetCommand@2
+  displayName: Push nuget package
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'EsiConnection Nuget'

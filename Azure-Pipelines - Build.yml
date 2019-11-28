@@ -4,6 +4,8 @@ trigger:
     include:
     - '*'
 
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 

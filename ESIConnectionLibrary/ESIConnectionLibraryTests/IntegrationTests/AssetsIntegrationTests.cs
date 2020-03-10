@@ -116,7 +116,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void Corporations_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public void Corporations_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -127,7 +127,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);
@@ -135,7 +135,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task CorporationsAsync_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public async Task CorporationsAsync_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -146,7 +146,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);

@@ -150,7 +150,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public void Corporations_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public void Corporations_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -166,7 +166,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);
@@ -175,7 +175,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task CorporationsAsync_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public async Task CorporationsAsync_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -191,7 +191,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);

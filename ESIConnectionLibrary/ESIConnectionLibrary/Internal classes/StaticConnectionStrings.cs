@@ -71,16 +71,16 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Assets
 
-        private static string AssetsV3CharactersRaw => "/v3/characters/{character_id}/assets/";
+        private static string AssetsV4CharactersRaw => "/v4/characters/{character_id}/assets/";
         private static string AssetsV2CharacterLocationsRaw => "/v2/characters/{character_id}/assets/locations/";
         private static string AssetsV1CharacterNamesRaw => "/v1/characters/{character_id}/assets/names/";
-        private static string AssetsV3CorporationsRaw => "/v3/corporations/{corporation_id}/assets/";
+        private static string AssetsV4CorporationsRaw => "/v4/corporations/{corporation_id}/assets/";
         private static string AssetsV2CorporationLocationsRaw => "/v2/corporations/{corporation_id}/assets/locations/";
         private static string AssetsV1CorporationNamesRaw => "/v1/corporations/{corporation_id}/assets/names/";
 
-        public static string AssetsV3Characters(int characterId, int page)
+        public static string AssetsV4Characters(int characterId, int page)
         {
-            return UrlBuilder(AssetsV3CharactersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
+            return UrlBuilder(AssetsV4CharactersRaw, "{character_id}", characterId.ToString()) + $"?page={page}";
         }
 
         public static string AssetsV2CharacterLocations(int characterId)
@@ -93,9 +93,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(AssetsV1CharacterNamesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string AssetsV3Corporations(int corporationId, int page)
+        public static string AssetsV4Corporations(int corporationId, int page)
         {
-            return UrlBuilder(AssetsV3CorporationsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(AssetsV4CorporationsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string AssetsV2CorporationLocations(int corporationId)

@@ -26,7 +26,7 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public PagedModel<V3AssetsCharacter> Characters(SsoToken token, int page)
+        public PagedModel<V4AssetsCharacter> Characters(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
@@ -34,14 +34,14 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3AssetsCharacter>>(raw.Model);
+            IList<EsiV4AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCharacter>>(raw.Model);
 
-            IList<V3AssetsCharacter> mapped = _mapper.Map<IList<EsiV3AssetsCharacter>, IList<V3AssetsCharacter>>(esiCharacterAssets);
+            IList<V4AssetsCharacter> mapped = _mapper.Map<IList<EsiV4AssetsCharacter>, IList<V4AssetsCharacter>>(esiCharacterAssets);
 
-            return new PagedModel<V3AssetsCharacter>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
+            return new PagedModel<V4AssetsCharacter>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
-        public async Task<PagedModel<V3AssetsCharacter>> CharactersAsync(SsoToken token, int page)
+        public async Task<PagedModel<V4AssetsCharacter>> CharactersAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
@@ -49,11 +49,11 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV3AssetsCharacter>>(raw.Model);
+            IList<EsiV4AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCharacter>>(raw.Model);
 
-            IList<V3AssetsCharacter> mapped = _mapper.Map<IList<EsiV3AssetsCharacter>, IList<V3AssetsCharacter>>(esiCharacterAssets);
+            IList<V4AssetsCharacter> mapped = _mapper.Map<IList<EsiV4AssetsCharacter>, IList<V4AssetsCharacter>>(esiCharacterAssets);
 
-            return new PagedModel<V3AssetsCharacter> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V4AssetsCharacter> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V2AssetsCharacterLocation> CharacterLocations(SsoToken token, IList<long> ids)

@@ -91,8 +91,8 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             V1AllianceIcons allianceIcons = latestAlliance.Icons(allianceId);
 
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_64.png", allianceIcons.Px64X64);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
 
         [Fact]
@@ -104,8 +104,8 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             V1AllianceIcons allianceIcons = await latestAlliance.IconsAsync(allianceId);
 
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_64.png", allianceIcons.Px64X64);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
     }
 }

@@ -4,6 +4,7 @@
     {
         Station,
         SolarSystem,
+        Item,
         Other
     }
 }

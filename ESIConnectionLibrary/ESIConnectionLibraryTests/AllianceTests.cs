@@ -125,7 +125,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Alliance/503818424_64.png\",\"px128x128\": \"https://imageserver.eveonline.com/Alliance/503818424_128.png\"}";
+            string json = "{\"px64x64\": \"https://images.evetech.net/Alliance/503818424_64.png\",\"px128x128\": \"https://images.evetech.net/Alliance/503818424_128.png\"}";
 
             int allianceId = 8762;
 
@@ -135,8 +135,8 @@ namespace ESIConnectionLibraryTests
 
             V1AllianceIcons allianceIcons = internalLatestAlliance.Icons(allianceId);
 
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_64.png", allianceIcons.Px64X64);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
 
         [Fact]
@@ -144,7 +144,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Alliance/503818424_64.png\",\"px128x128\": \"https://imageserver.eveonline.com/Alliance/503818424_128.png\"}";
+            string json = "{\"px64x64\": \"https://images.evetech.net/Alliance/503818424_64.png\",\"px128x128\": \"https://images.evetech.net/Alliance/503818424_128.png\"}";
 
             int allianceId = 8762;
 
@@ -154,8 +154,8 @@ namespace ESIConnectionLibraryTests
 
             V1AllianceIcons allianceIcons = await internalLatestAlliance.IconsAsync(allianceId);
 
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_64.png", allianceIcons.Px64X64);
-            Assert.Equal("https://imageserver.eveonline.com/Alliance/503818424_128.png", allianceIcons.Px128X128);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_64.png", allianceIcons.Px64X64);
+            Assert.Equal("https://images.evetech.net/Alliance/503818424_128.png", allianceIcons.Px128X128);
         }
     }
 }

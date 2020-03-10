@@ -10,7 +10,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
     public class AssetsIntegrationTests
     {
         [Fact]
-        public void Characters_successfully_returns_a_pagedModelV3AssetsCharacter()
+        public void Characters_successfully_returns_a_pagedModelV4AssetsCharacter()
         {
             int characterId = 88823;
             int page = 1;
@@ -20,7 +20,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
+            PagedModel<V4AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -28,7 +28,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task CharactersAsync_successfully_returns_a_pagedModelV3AssetsCharacter()
+        public async Task CharactersAsync_successfully_returns_a_pagedModelV4AssetsCharacter()
         {
             int characterId = 88823;
             int page = 1;
@@ -38,7 +38,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
+            PagedModel<V4AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -116,7 +116,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public void Corporations_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public void Corporations_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -127,7 +127,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);
@@ -135,7 +135,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
         }
 
         [Fact]
-        public async Task CorporationsAsync_successfully_returns_a_pagedModelV3AssetsCorporations()
+        public async Task CorporationsAsync_successfully_returns_a_pagedModelV4AssetsCorporations()
         {
             int characterId = 88823;
             int corporationId = 888233;
@@ -146,7 +146,7 @@ namespace ESIConnectionLibraryTests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V3AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
+            PagedModel<V4AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);

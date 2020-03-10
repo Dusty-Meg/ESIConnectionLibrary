@@ -371,7 +371,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\r\n  \"px128x128\": \"https://imageserver.eveonline.com/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://imageserver.eveonline.com/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://imageserver.eveonline.com/Corporation/1000010_64.png\"\r\n}";
+            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://images.evetech.net/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://images.evetech.net/Corporation/1000010_64.png\"\r\n}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
@@ -379,9 +379,9 @@ namespace ESIConnectionLibraryTests
 
             V1CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
 
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
         }
 
         [Fact]
@@ -389,7 +389,7 @@ namespace ESIConnectionLibraryTests
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\r\n  \"px128x128\": \"https://imageserver.eveonline.com/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://imageserver.eveonline.com/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://imageserver.eveonline.com/Corporation/1000010_64.png\"\r\n}";
+            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://images.evetech.net/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://images.evetech.net/Corporation/1000010_64.png\"\r\n}";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
@@ -397,9 +397,9 @@ namespace ESIConnectionLibraryTests
 
             V1CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
 
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://imageserver.eveonline.com/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
         }
 
         [Fact]

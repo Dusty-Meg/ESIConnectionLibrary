@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V3AssetsCharacter
+    public class V4AssetsCharacter
     {
         public int TypeId { get; set; }
         public int Quantity { get; set; }

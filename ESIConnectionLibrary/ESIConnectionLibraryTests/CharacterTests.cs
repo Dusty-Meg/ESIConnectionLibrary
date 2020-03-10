@@ -431,7 +431,7 @@ namespace ESIConnectionLibraryTests
 
             int characterId = 88823;
 
-            string json = "{\"px64x64\": \"https://imageserver.eveonline.com/Character/95465499_64.jpg\",\"px128x128\": \"https://imageserver.eveonline.com/Character/95465499_128.jpg\",\"px256x256\": \"https://imageserver.eveonline.com/Character/95465499_256.jpg\",\"px512x512\": \"https://imageserver.eveonline.com/Character/95465499_512.jpg\"}";
+            string json = "{\"px64x64\": \"https://images.evetech.net/Character/95465499_64.jpg\",\"px128x128\": \"https://images.evetech.net/Character/95465499_128.jpg\",\"px256x256\": \"https://images.evetech.net/Character/95465499_256.jpg\",\"px512x512\": \"https://images.evetech.net/Character/95465499_512.jpg\"}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel{Model = json });
 
@@ -439,10 +439,10 @@ namespace ESIConnectionLibraryTests
 
             V2CharactersPortrait getCharactersPortrait = internalLatestCharacter.Portrait(characterId);
 
-            Assert.Equal("https://imageserver.eveonline.com/Character/95465499_64.jpg", getCharactersPortrait.Px64X64);
-            Assert.Equal("https://imageserver.eveonline.com/Character/95465499_128.jpg", getCharactersPortrait.Px128X128);
-            Assert.Equal("https://imageserver.eveonline.com/Character/95465499_256.jpg", getCharactersPortrait.Px256X256);
-            Assert.Equal("https://imageserver.eveonline.com/Character/95465499_512.jpg", getCharactersPortrait.Px512X512);
+            Assert.Equal("https://images.evetech.net/Character/95465499_64.jpg", getCharactersPortrait.Px64X64);
+            Assert.Equal("https://images.evetech.net/Character/95465499_128.jpg", getCharactersPortrait.Px128X128);
+            Assert.Equal("https://images.evetech.net/Character/95465499_256.jpg", getCharactersPortrait.Px256X256);
+            Assert.Equal("https://images.evetech.net/Character/95465499_512.jpg", getCharactersPortrait.Px512X512);
         }
 
         [Fact]

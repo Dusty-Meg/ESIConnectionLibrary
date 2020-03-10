@@ -1,9 +1,10 @@
 trigger:
+  batch: true
   branches:
     include:
     - '*'
-    exclude:
-    - master
+
+pr: none
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -14,18 +15,19 @@ schedules:
   branches:
     include:
     - master
+  always: true
 
 steps:
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: '17.09.0-ce'
 - task: CmdLine@2
+  displayName: Run Mock-ESI container
   inputs:
     script: 'docker run -d -p 8080:8080 --name MockESI antihax/mock-esi'
 - task: Bash@3
+  displayName: Run cake build script
   inputs:
     filePath: './build.sh'
 - task: PublishTestResults@2
+  displayName: Publish Test Results
   inputs:
     testResultsFormat: 'VSTest'
     testResultsFiles: '**/TestOutput.xml'

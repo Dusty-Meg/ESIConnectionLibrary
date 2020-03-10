@@ -13,6 +13,9 @@ namespace ESIConnectionLibrary.ESIModels
         [EnumMember(Value = "solar_system")]
         SolarSystem,
 
+        [EnumMember(Value = "item")]
+        Item,
+
         [EnumMember(Value = "other")]
         Other
     }

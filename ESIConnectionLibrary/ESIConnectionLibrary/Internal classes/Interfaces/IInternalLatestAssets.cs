@@ -6,8 +6,8 @@ namespace ESIConnectionLibrary.Internal_classes
 {
     internal interface IInternalLatestAssets
     {
-        PagedModel<V3AssetsCharacter> Characters(SsoToken token, int page);
-        Task<PagedModel<V3AssetsCharacter>> CharactersAsync(SsoToken token, int page);
+        PagedModel<V4AssetsCharacter> Characters(SsoToken token, int page);
+        Task<PagedModel<V4AssetsCharacter>> CharactersAsync(SsoToken token, int page);
         IList<V2AssetsCharacterLocation> CharacterLocations(SsoToken token, IList<long> ids);
         Task<IList<V2AssetsCharacterLocation>> CharacterLocationAsync(SsoToken token, IList<long> ids);
         IList<V1AssetsCharacterName> CharacterNames(SsoToken token, IList<long> ids);

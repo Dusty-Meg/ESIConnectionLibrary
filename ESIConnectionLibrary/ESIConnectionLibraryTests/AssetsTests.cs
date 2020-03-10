@@ -12,7 +12,7 @@ namespace ESIConnectionLibraryTests
     public class AssetsTests
     {
         [Fact]
-        public void Characters_successfully_returns_a_pagedModelV3AssetsCharacter()
+        public void Characters_successfully_returns_a_pagedModelV4AssetsCharacter()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -27,7 +27,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
+            PagedModel<V4AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -36,7 +36,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Fact]
-        public async Task CharactersAsync_successfully_returns_a_pagedModelV3AssetsCharacter()
+        public async Task CharactersAsync_successfully_returns_a_pagedModelV4AssetsCharacter()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -51,7 +51,7 @@ namespace ESIConnectionLibraryTests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
+            PagedModel<V4AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);

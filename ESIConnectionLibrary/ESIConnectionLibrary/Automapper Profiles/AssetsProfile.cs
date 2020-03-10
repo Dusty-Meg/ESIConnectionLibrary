@@ -10,7 +10,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
         {
             CreateMap<EsiV2AssetsCharacterLocation, V2AssetsCharacterLocation>();
             CreateMap<EsiPosition, Position>();
-            CreateMap<EsiV3AssetsCharacter, V3AssetsCharacter>();
+            CreateMap<EsiV4AssetsCharacter, V4AssetsCharacter>();
             CreateMap<EsiV1AssetsCharacterNames, V1AssetsCharacterName>();
             CreateMap<EsiV3AssetsCorporations, V3AssetsCorporations>();
             CreateMap<EsiV2AssetsCorporationLocation, V2AssetsCorporationLocation>();

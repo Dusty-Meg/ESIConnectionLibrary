@@ -35,7 +35,7 @@ namespace ESIConnectionLibraryTests
         }
 
         [Theory]
-        [InlineData("AssetsV3CharactersRaw")]
+        [InlineData("AssetsV4CharactersRaw")]
         [InlineData("AssetsV2CharacterLocationsRaw")]
         [InlineData("AssetsV1CharacterNamesRaw")]
         [InlineData("AssetsV3CorporationsRaw")]

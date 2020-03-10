@@ -20,7 +20,7 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAssets = new InternalLatestAssets(webClient, userAgent);
         }
 
-        public PagedModel<V3AssetsCharacter> Characters(SsoToken token, int page)
+        public PagedModel<V4AssetsCharacter> Characters(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -30,7 +30,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestAssets.Characters(token, page);
         }
 
-        public async Task<PagedModel<V3AssetsCharacter>> CharactersAsync(SsoToken token, int page)
+        public async Task<PagedModel<V4AssetsCharacter>> CharactersAsync(SsoToken token, int page)
         {
             if (page < 1)
             {

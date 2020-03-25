@@ -8,6 +8,7 @@
         CorpseBay,
         Deliveries,
         DroneBay,
+        FrigateEscapeBay,
         FighterBay,
         FighterTube0,
         FighterTube1,

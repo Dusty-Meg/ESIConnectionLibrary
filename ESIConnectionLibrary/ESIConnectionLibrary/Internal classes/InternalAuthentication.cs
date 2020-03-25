@@ -336,9 +336,6 @@ namespace ESIConnectionLibrary.Internal_classes
                     case "esi-corporations.track_members.v1":
                         token.CorporationScopesFlags |= CorporationScopes.esi_corporations_track_members_v1;
                         break;
-                    case "esi-corporations.write_structures.v1":
-                        token.CorporationScopesFlags |= CorporationScopes.esi_corporations_write_structures_v1;
-                        break;
                     case "esi-fittings.read_fittings.v1":
                         token.FittingScopesFlags |= FittingScopes.esi_fittings_read_fittings_v1;
                         break;
@@ -458,9 +455,6 @@ namespace ESIConnectionLibrary.Internal_classes
                         break;
                     case "esi-corporations.read_medals.v1":
                         token.CorporationScopesFlags |= CorporationScopes.esi_corporations_read_medals_v1;
-                        break;
-                    case "esi-corporations.read_outposts.v1":
-                        token.CorporationScopesFlags |= CorporationScopes.esi_corporations_read_outposts_v1;
                         break;
                     case "esi-corporations.read_standings.v1":
                         token.CorporationScopesFlags |= CorporationScopes.esi_corporations_read_standings_v1;

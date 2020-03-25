@@ -41,6 +41,7 @@ namespace ESIConnectionLibrary.ESIModels
         DroneBay,
         DustBattle,
         DustDatabank,
+        FrigateEscapeBay,
         FighterBay,
         FighterTube0,
         FighterTube1,

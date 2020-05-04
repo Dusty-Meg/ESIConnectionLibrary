@@ -19,7 +19,7 @@
       <PackageReference Include="CacheManager.StackExchange.Redis" Version="2.0.0-beta-1629" />
       <PackageReference Include="CacheManager.SystemRuntimeCaching" Version="2.0.0-beta-1629" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-      <PackageReference Include="Polly" Version="7.2.0" />
+      <PackageReference Include="Polly" Version="7.2.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>

@@ -11,7 +11,7 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <Copyright>MIT</Copyright>
         <Title>Esi Connection Library</Title>
-        <Version>1.4.0</Version>
+        <Version>1.5.0</Version>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="9.0.0" />

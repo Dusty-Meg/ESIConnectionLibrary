@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly: InternalsVisibleTo("ESIConnectionLibraryTests")]
+[assembly: InternalsVisibleTo("ESIConnectionLibrary.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

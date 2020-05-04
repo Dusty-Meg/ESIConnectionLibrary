@@ -27,7 +27,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
+            PagedModel<V5AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -51,7 +51,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
+            PagedModel<V5AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(2, getCharacterAssets.MaxPages);
             Assert.Equal(1, getCharacterAssets.CurrentPage);
@@ -166,7 +166,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
+            PagedModel<V5AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);
@@ -191,7 +191,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestAssets internalLatestAssets = new InternalLatestAssets(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V4AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
+            PagedModel<V5AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(2, getCorporationAssets.MaxPages);
             Assert.Equal(1, getCorporationAssets.CurrentPage);

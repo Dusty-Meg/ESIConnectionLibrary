@@ -20,7 +20,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V4AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
+            PagedModel<V5AssetsCharacter> getCharacterAssets = internalLatestAssets.Characters(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V4AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
+            PagedModel<V5AssetsCharacter> getCharacterAssets = await internalLatestAssets.CharactersAsync(inputToken, page);
 
             Assert.Equal(1, getCharacterAssets.CurrentPage);
             Assert.Equal(1, getCharacterAssets.Model.Count);
@@ -127,7 +127,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V4AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
+            PagedModel<V5AssetsCorporations> getCorporationAssets = internalLatestAssets.Corporations(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);
@@ -146,7 +146,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestAssetsEndpoints internalLatestAssets = new LatestAssetsEndpoints(string.Empty, true);
 
-            PagedModel<V4AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
+            PagedModel<V5AssetsCorporations> getCorporationAssets = await internalLatestAssets.CorporationsAsync(inputToken, corporationId, page);
 
             Assert.Equal(1, getCorporationAssets.CurrentPage);
             Assert.Equal(1, getCorporationAssets.Model.Count);

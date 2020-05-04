@@ -20,7 +20,7 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestAssets = new InternalLatestAssets(webClient, userAgent);
         }
 
-        public PagedModel<V4AssetsCharacter> Characters(SsoToken token, int page)
+        public PagedModel<V5AssetsCharacter> Characters(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -30,7 +30,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestAssets.Characters(token, page);
         }
 
-        public async Task<PagedModel<V4AssetsCharacter>> CharactersAsync(SsoToken token, int page)
+        public async Task<PagedModel<V5AssetsCharacter>> CharactersAsync(SsoToken token, int page)
         {
             if (page < 1)
             {
@@ -60,7 +60,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestAssets.CharacterNamesAsync(token, ids);
         }
 
-        public PagedModel<V4AssetsCorporations> Corporations(SsoToken token, int corporationId, int page)
+        public PagedModel<V5AssetsCorporations> Corporations(SsoToken token, int corporationId, int page)
         {
             if (page < 1)
             {
@@ -70,7 +70,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestAssets.Corporations(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V4AssetsCorporations>> CorporationsAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V5AssetsCorporations>> CorporationsAsync(SsoToken token, int corporationId, int page)
         {
             if (page < 1)
             {

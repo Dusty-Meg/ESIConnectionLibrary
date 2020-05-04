@@ -35,10 +35,10 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Theory]
-        [InlineData("AssetsV4CharactersRaw")]
+        [InlineData("AssetsV5CharactersRaw")]
         [InlineData("AssetsV2CharacterLocationsRaw")]
         [InlineData("AssetsV1CharacterNamesRaw")]
-        [InlineData("AssetsV4CorporationsRaw")]
+        [InlineData("AssetsV5CorporationsRaw")]
         [InlineData("AssetsV2CorporationLocationsRaw")]
         [InlineData("AssetsV1CorporationNamesRaw")]
         public void AssetsEndpoints(string endpoint)

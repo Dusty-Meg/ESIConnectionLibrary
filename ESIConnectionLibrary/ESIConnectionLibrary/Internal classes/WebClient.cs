@@ -512,10 +512,13 @@ namespace ESIConnectionLibrary.Internal_classes
                     esiModel.MaxPages = cachedItem.Page;
 
                     return esiModel;
-                case HttpStatusCode.Forbidden:
-                case HttpStatusCode.InternalServerError:
-                case HttpStatusCode.NotFound:
                 case HttpStatusCode.BadRequest:
+                case HttpStatusCode.Forbidden:
+                case HttpStatusCode.NotFound:
+                case HttpStatusCode.InternalServerError:
+                case HttpStatusCode.BadGateway:
+                case HttpStatusCode.ServiceUnavailable:
+                case HttpStatusCode.GatewayTimeout:
                     Stream responseStream = webResponse.GetResponseStream();
 
                     if (responseStream == null)

@@ -26,34 +26,34 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public PagedModel<V4AssetsCharacter> Characters(SsoToken token, int page)
+        public PagedModel<V5AssetsCharacter> Characters(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV4Characters(token.CharacterId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV5Characters(token.CharacterId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCharacter>>(raw.Model);
+            IList<EsiV5AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV5AssetsCharacter>>(raw.Model);
 
-            IList<V4AssetsCharacter> mapped = _mapper.Map<IList<EsiV4AssetsCharacter>, IList<V4AssetsCharacter>>(esiCharacterAssets);
+            IList<V5AssetsCharacter> mapped = _mapper.Map<IList<EsiV5AssetsCharacter>, IList<V5AssetsCharacter>>(esiCharacterAssets);
 
-            return new PagedModel<V4AssetsCharacter>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
+            return new PagedModel<V5AssetsCharacter>{Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page};
         }
 
-        public async Task<PagedModel<V4AssetsCharacter>> CharactersAsync(SsoToken token, int page)
+        public async Task<PagedModel<V5AssetsCharacter>> CharactersAsync(SsoToken token, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_assets_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV4Characters(token.CharacterId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV5Characters(token.CharacterId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCharacter>>(raw.Model);
+            IList<EsiV5AssetsCharacter> esiCharacterAssets = JsonConvert.DeserializeObject<IList<EsiV5AssetsCharacter>>(raw.Model);
 
-            IList<V4AssetsCharacter> mapped = _mapper.Map<IList<EsiV4AssetsCharacter>, IList<V4AssetsCharacter>>(esiCharacterAssets);
+            IList<V5AssetsCharacter> mapped = _mapper.Map<IList<EsiV5AssetsCharacter>, IList<V5AssetsCharacter>>(esiCharacterAssets);
 
-            return new PagedModel<V4AssetsCharacter> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V5AssetsCharacter> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V2AssetsCharacterLocation> CharacterLocations(SsoToken token, IList<long> ids)
@@ -116,34 +116,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1AssetsCharacterNames>, IList<V1AssetsCharacterName>>(esiAssetsNames);
         }
 
-        public PagedModel<V4AssetsCorporations> Corporations(SsoToken token, int corporationId, int page)
+        public PagedModel<V5AssetsCorporations> Corporations(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV4Corporations(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV5Corporations(corporationId, page), _testing);
 
             EsiModel raw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4AssetsCorporations> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCorporations>>(raw.Model);
+            IList<EsiV5AssetsCorporations> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV5AssetsCorporations>>(raw.Model);
 
-            IList<V4AssetsCorporations> mapped = _mapper.Map<IList<EsiV4AssetsCorporations>, IList<V4AssetsCorporations>>(esiCorporationAssets);
+            IList<V5AssetsCorporations> mapped = _mapper.Map<IList<EsiV5AssetsCorporations>, IList<V5AssetsCorporations>>(esiCorporationAssets);
 
-            return new PagedModel<V4AssetsCorporations> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V5AssetsCorporations> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V4AssetsCorporations>> CorporationsAsync(SsoToken token, int corporationId, int page)
+        public async Task<PagedModel<V5AssetsCorporations>> CorporationsAsync(SsoToken token, int corporationId, int page)
         {
             StaticMethods.CheckToken(token, AssetScopes.esi_assets_read_corporation_assets_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV4Corporations(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.AssetsV5Corporations(corporationId, page), _testing);
 
             EsiModel raw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV4AssetsCorporations> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV4AssetsCorporations>>(raw.Model);
+            IList<EsiV5AssetsCorporations> esiCorporationAssets = JsonConvert.DeserializeObject<IList<EsiV5AssetsCorporations>>(raw.Model);
 
-            IList<V4AssetsCorporations> mapped = _mapper.Map<IList<EsiV4AssetsCorporations>, IList<V4AssetsCorporations>>(esiCorporationAssets);
+            IList<V5AssetsCorporations> mapped = _mapper.Map<IList<EsiV5AssetsCorporations>, IList<V5AssetsCorporations>>(esiCorporationAssets);
 
-            return new PagedModel<V4AssetsCorporations> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
+            return new PagedModel<V5AssetsCorporations> { Model = mapped, MaxPages = raw.MaxPages, CurrentPage = page };
         }
 
         public IList<V2AssetsCorporationLocation> CorporationLocations(SsoToken token, int corporationId, IList<long> ids)

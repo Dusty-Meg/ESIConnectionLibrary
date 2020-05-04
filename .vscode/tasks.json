@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibraryTests/ESIConnectionLibraryTests.csproj",
+                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibrary.Tests/ESIConnectionLibrary.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibraryTests/ESIConnectionLibraryTests.csproj",
+                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibrary.Tests/ESIConnectionLibrary.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibraryTests/ESIConnectionLibraryTests.csproj",
+                "${workspaceFolder}/ESIConnectionLibrary/ESIConnectionLibrary.Tests/ESIConnectionLibrary.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

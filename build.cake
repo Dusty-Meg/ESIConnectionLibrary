@@ -36,7 +36,7 @@ Task("Test")
 .IsDependentOn("ReplaceTestingUrl")
     .Does(() =>
     {
-        var testAssemblies = GetFiles($"./ESIConnectionLibrary/ESIConnectionLibraryTests/ESIConnectionLibraryTests.csproj");
+        var testAssemblies = GetFiles($"./ESIConnectionLibrary/ESIConnectionLibrary.Tests/ESIConnectionLibrary.Tests.csproj");
 
         XUnit2Settings xunitSettings = new XUnit2Settings{
             // HtmlReport = true,

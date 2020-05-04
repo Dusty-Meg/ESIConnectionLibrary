@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ESIConnectionLibrary.Tests
 {
-    public class AuthenticaionTests
+    public class AuthenticationTests
     {
         [Fact]
         public void MakeToken_successfully_returns_a_SsoLogicToken()

@@ -1,6 +1,6 @@
-#addin "Cake.FileHelpers&version=3.2.0"
+#addin "Cake.FileHelpers&version=5.0.0"
 #tool nuget:?package=xunit.runner.console&version=2.4.1
-#addin "nuget:?package=Cake.Incubator&version=5.0.1"
+#addin "nuget:?package=Cake.Incubator&version=7.0.0"
 
 var target = Argument("target", "Default");
 var configuration = Argument("Configuration", "Release");
@@ -10,15 +10,15 @@ var solutionFile = "";
 Task("Restore")  
     .Does(() =>
     {
-        DotNetCoreRestore("./ESIConnectionLibrary/");
+        DotNetRestore("./ESIConnectionLibrary/");
     });
 
 Task("Build")
 .IsDependentOn("Restore")
 .Does(() =>
 {
-    DotNetCoreBuild("./ESIConnectionLibrary/",
-        new DotNetCoreBuildSettings()
+    DotNetBuild("./ESIConnectionLibrary/",
+        new DotNetBuildSettings()
         {
             Configuration = configuration,
             ArgumentCustomization = args => args.Append("--no-restore"),
@@ -43,14 +43,14 @@ Task("Test")
             OutputDirectory = "./TestOutput"
         };
 
-        DotNetCoreTestSettings  settings = new DotNetCoreTestSettings {
+        DotNetTestSettings  settings = new DotNetTestSettings {
             ResultsDirectory = "./TestOutput",
             Logger = "trx;LogFileName=TestOutput.xml"
         };
 
         foreach(var project in testAssemblies)
         {
-            DotNetCoreTest(settings, project, xunitSettings);
+            DotNetTest(settings, project, xunitSettings);
         }
     }).OnError(exception =>
 {

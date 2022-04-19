@@ -50,7 +50,7 @@ Task("Test")
 
         foreach(var project in testAssemblies)
         {
-            DotNetTest(settings, project, xunitSettings);
+            DotNetTest(project, settings);
         }
     }).OnError(exception =>
 {

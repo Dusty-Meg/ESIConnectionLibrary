@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2CharactersBlueprints
+    public class V3CharactersBlueprints
     {
         public long ItemId { get; set; }
 

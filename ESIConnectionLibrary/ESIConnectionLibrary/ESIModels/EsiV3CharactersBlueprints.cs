@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2CharactersBlueprints
+    internal class EsiV3CharactersBlueprints
     {
         [JsonProperty(PropertyName = "item_id")]
         public long ItemId { get; set; }

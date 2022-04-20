@@ -74,30 +74,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CharactersResearchAgents>, IList<V1CharactersResearchAgents>>(esiV1CharactersResearchAgents);
         }
 
-        public IList<V2CharactersBlueprints> Blueprints(SsoToken token)
+        public IList<V3CharactersBlueprints> Blueprints(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersBlueprints(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV3CharactersBlueprints(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV2CharactersBlueprints> esiv2CharactersBlueprints = JsonConvert.DeserializeObject<IList<EsiV2CharactersBlueprints>>(esiRaw.Model);
+            IList<EsiV3CharactersBlueprints> esiv3CharactersBlueprints = JsonConvert.DeserializeObject<IList<EsiV3CharactersBlueprints>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
+            return _mapper.Map<IList<EsiV3CharactersBlueprints>, IList<V3CharactersBlueprints>>(esiv3CharactersBlueprints);
         }
 
-        public async Task<IList<V2CharactersBlueprints>> BlueprintsAsync(SsoToken token)
+        public async Task<IList<V3CharactersBlueprints>> BlueprintsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_blueprints_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersBlueprints(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV3CharactersBlueprints(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV2CharactersBlueprints> esiv2CharactersBlueprints = JsonConvert.DeserializeObject<IList<EsiV2CharactersBlueprints>>(esiRaw.Model);
+            IList<EsiV3CharactersBlueprints> esiv3CharactersBlueprints = JsonConvert.DeserializeObject<IList<EsiV3CharactersBlueprints>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
+            return _mapper.Map<IList<EsiV3CharactersBlueprints>, IList<V3CharactersBlueprints>>(esiv3CharactersBlueprints);
         }
 
         public IList<V2CharactersCorporationHistory> CorporationHistory(int characterId)

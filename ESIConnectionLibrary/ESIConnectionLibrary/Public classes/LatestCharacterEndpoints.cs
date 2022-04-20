@@ -39,12 +39,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.ResearchAgentsAsync(token);
         }
 
-        public IList<V2CharactersBlueprints> Blueprint(SsoToken token)
+        public IList<V3CharactersBlueprints> Blueprint(SsoToken token)
         {
             return _internalLatestCharacter.Blueprints(token);
         }
 
-        public async Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token)
+        public async Task<IList<V3CharactersBlueprints>> BlueprintAsync(SsoToken token)
         {
             return await _internalLatestCharacter.BlueprintsAsync(token);
         }

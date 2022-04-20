@@ -97,7 +97,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Blueprints_successfully_returns_a_list_of_V2CharactersBlueprints()
+        public void Blueprints_successfully_returns_a_list_of_V3CharactersBlueprints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -111,7 +111,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersBlueprints> getCharactersBlueprint = internalLatestCharacter.Blueprints(inputToken);
+            IList<V3CharactersBlueprints> getCharactersBlueprint = internalLatestCharacter.Blueprints(inputToken);
 
             Assert.Equal(1, getCharactersBlueprint.Count);
             Assert.Equal(1000000010495, getCharactersBlueprint.First().ItemId);
@@ -120,7 +120,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task BlueprintsAsync_successfully_returns_a_list_of_V2CharactersBlueprints()
+        public async Task BlueprintsAsync_successfully_returns_a_list_of_V3CharactersBlueprints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -134,7 +134,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V2CharactersBlueprints> getCharactersBlueprint = await internalLatestCharacter.BlueprintsAsync(inputToken);
+            IList<V3CharactersBlueprints> getCharactersBlueprint = await internalLatestCharacter.BlueprintsAsync(inputToken);
 
             Assert.Equal(1, getCharactersBlueprint.Count);
             Assert.Equal(1000000010495, getCharactersBlueprint.First().ItemId);

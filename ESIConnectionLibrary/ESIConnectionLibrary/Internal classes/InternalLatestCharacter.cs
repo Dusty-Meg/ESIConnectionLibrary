@@ -126,30 +126,30 @@ namespace ESIConnectionLibrary.Internal_classes
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersCspa(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersCspa(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
+            float esiV5CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
 
-            return esiV4CharactersCspa;
+            return esiV5CharactersCspa;
         }
 
         public async Task<float> CspaCostAsync(SsoToken token, IList<int> characters)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_contacts_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersCspa(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersCspa(token.CharacterId), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(token), url, jsonObject));
 
-            float esiV4CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
+            float esiV5CharactersCspa = JsonConvert.DeserializeObject<float>(esiRaw.Model);
 
-            return esiV4CharactersCspa;
+            return esiV5CharactersCspa;
         }
 
         public V1CharactersFatigue Fatigue(SsoToken token)

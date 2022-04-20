@@ -307,9 +307,9 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             V1CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
 
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64", returnModel.Px64X64);
         }
 
         [Fact]
@@ -319,9 +319,9 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             V1CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
 
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64", returnModel.Px64X64);
         }
 
         [Fact]

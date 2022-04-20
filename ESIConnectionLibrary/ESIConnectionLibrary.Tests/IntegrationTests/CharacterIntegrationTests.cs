@@ -291,7 +291,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void ContactNotifications_successfully_returns_a_list_of_V1CharactersNotificationsContacts()
+        public void ContactNotifications_successfully_returns_a_list_of_V2CharactersNotificationsContacts()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
@@ -300,7 +300,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.ContactNotifications(inputToken);
+            IList<V2CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.ContactNotifications(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);
@@ -310,7 +310,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task ContactNotificationsAsync_successfully_returns_a_list_of_V1CharactersNotificationsContacts()
+        public async Task ContactNotificationsAsync_successfully_returns_a_list_of_V2CharactersNotificationsContacts()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_notifications_v1;
@@ -319,7 +319,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.ContactNotificationsAsync(inputToken);
+            IList<V2CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.ContactNotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);

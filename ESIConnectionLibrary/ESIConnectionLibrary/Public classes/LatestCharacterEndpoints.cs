@@ -99,12 +99,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.NotificationsAsync(token);
         }
 
-        public IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token)
+        public IList<V2CharactersNotificationsContacts> ContactNotifications(SsoToken token)
         {
             return _internalLatestCharacter.ContactNotifications(token);
         }
 
-        public async Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
+        public async Task<IList<V2CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.ContactNotificationsAsync(token);
         }

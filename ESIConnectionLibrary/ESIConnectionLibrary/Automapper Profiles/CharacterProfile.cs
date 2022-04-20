@@ -13,7 +13,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV2CharactersStandings, V2CharactersStandings>();
             CreateMap<EsiV3CharacterRoles, V3CharacterRoles>();
             CreateMap<EsiV2CharactersPortrait, V2CharactersPortrait>();
-            CreateMap<EsiV1CharactersNotificationsContacts, V1CharactersNotificationsContacts>();
+            CreateMap<EsiV2CharactersNotificationsContacts, V2CharactersNotificationsContacts>();
             CreateMap<EsiV4CharactersNotifications, V5CharactersNotifications>();
             CreateMap<EsiV2CharactersMedals, V2CharactersMedals>();
             CreateMap<EsiV2CharactersMedalsGraphics, V2CharactersMedalsGraphics>();

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharactersNotificationsContacts
+    internal class EsiV2CharactersNotificationsContacts
     {
         [JsonProperty(PropertyName = "notification_id")]
         public float NotificationId { get; set; }

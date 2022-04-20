@@ -20,8 +20,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<V2CharactersMedals>> MedalsAsync(SsoToken token);
         IList<V5CharactersNotifications> Notifications(SsoToken token);
         Task<IList<V5CharactersNotifications>> NotificationsAsync(SsoToken token);
-        IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token);
-        Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token);
+        IList<V2CharactersNotificationsContacts> ContactNotifications(SsoToken token);
+        Task<IList<V2CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token);
         V2CharactersPortrait Portrait(int characterId);
         Task<V2CharactersPortrait> PortraitAsync(int characterId);
         V5CharactersPublicInfo PublicInfo(int characterId);

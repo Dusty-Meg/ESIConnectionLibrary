@@ -377,7 +377,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void ContactNotifications_successfully_returns_a_list_of_V1CharactersNotificationsContacts()
+        public void ContactNotifications_successfully_returns_a_list_of_V2CharactersNotificationsContacts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -391,7 +391,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.ContactNotifications(inputToken);
+            IList<V2CharactersNotificationsContacts> getCharactersNotificationsContacts = internalLatestCharacter.ContactNotifications(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);
@@ -401,7 +401,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task ContactNotificationsAsync_successfully_returns_a_list_of_V1CharactersNotificationsContacts()
+        public async Task ContactNotificationsAsync_successfully_returns_a_list_of_V2CharactersNotificationsContacts()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -415,7 +415,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.ContactNotificationsAsync(inputToken);
+            IList<V2CharactersNotificationsContacts> getCharactersNotificationsContacts = await internalLatestCharacter.ContactNotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotificationsContacts.Count);
             Assert.Equal(1, getCharactersNotificationsContacts.First().NotificationId);

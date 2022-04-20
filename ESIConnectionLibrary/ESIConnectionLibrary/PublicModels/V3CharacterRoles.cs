@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2CharacterRoles
+    public class V3CharacterRoles
     {
         public IList<CharacterRoles> Roles { get; set; }
 

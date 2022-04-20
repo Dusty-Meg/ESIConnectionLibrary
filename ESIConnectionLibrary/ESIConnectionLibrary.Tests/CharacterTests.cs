@@ -467,7 +467,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Roles_successfully_returns_a_V2CharacterRoles()
+        public void Roles_successfully_returns_a_V3CharacterRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -481,7 +481,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V2CharacterRoles getCharactersRoles = internalLatestCharacter.Roles(inputToken);
+            V3CharacterRoles getCharactersRoles = internalLatestCharacter.Roles(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
@@ -492,7 +492,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task RolesAsync_successfully_returns_a_V2CharacterRoles()
+        public async Task RolesAsync_successfully_returns_a_V3CharacterRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -506,7 +506,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V2CharacterRoles getCharactersRoles = await internalLatestCharacter.RolesAsync(inputToken);
+            V3CharacterRoles getCharactersRoles = await internalLatestCharacter.RolesAsync(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);

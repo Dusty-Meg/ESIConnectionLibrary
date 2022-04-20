@@ -28,8 +28,8 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId);
         IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token);
         Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token);
-        V2CharacterRoles Roles(SsoToken token);
-        Task<V2CharacterRoles> RolesAsync(SsoToken token);
+        V3CharacterRoles Roles(SsoToken token);
+        Task<V3CharacterRoles> RolesAsync(SsoToken token);
         IList<V2CharactersStandings> Standings(SsoToken token);
         Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token);
         IList<V1CharacterTitles> Titles(SsoToken token);

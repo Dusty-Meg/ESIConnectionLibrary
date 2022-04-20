@@ -359,7 +359,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Roles_successfully_returns_a_V2CharacterRoles()
+        public void Roles_successfully_returns_a_V3CharacterRoles()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
@@ -368,7 +368,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V2CharacterRoles getCharactersRoles = internalLatestCharacter.Roles(inputToken);
+            V3CharacterRoles getCharactersRoles = internalLatestCharacter.Roles(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);
@@ -379,7 +379,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task RolesAsync_successfully_returns_a_V2CharacterRoles()
+        public async Task RolesAsync_successfully_returns_a_V3CharacterRoles()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_corporation_roles_v1;
@@ -388,7 +388,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V2CharacterRoles getCharactersRoles = await internalLatestCharacter.RolesAsync(inputToken);
+            V3CharacterRoles getCharactersRoles = await internalLatestCharacter.RolesAsync(inputToken);
 
             Assert.Equal(2, getCharactersRoles.Roles.Count);
             Assert.Equal(CharacterRoles.Director, getCharactersRoles.Roles[0]);

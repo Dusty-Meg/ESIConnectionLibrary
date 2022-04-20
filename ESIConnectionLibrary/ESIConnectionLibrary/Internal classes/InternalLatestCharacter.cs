@@ -278,30 +278,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharactersPortrait, V2CharactersPortrait>(esiV2CharactersPortrait);
         }
 
-        public V2CharacterRoles Roles(SsoToken token)
+        public V3CharacterRoles Roles(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterRoles(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV3CharacterRoles(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV2CharacterRoles esiV2CharacterRoles = JsonConvert.DeserializeObject<EsiV2CharacterRoles>(esiRaw.Model);
+            EsiV3CharacterRoles esiV3CharacterRoles = JsonConvert.DeserializeObject<EsiV3CharacterRoles>(esiRaw.Model);
 
-            return _mapper.Map<EsiV2CharacterRoles, V2CharacterRoles>(esiV2CharacterRoles);
+            return _mapper.Map<EsiV3CharacterRoles, V3CharacterRoles>(esiV3CharacterRoles);
         }
 
-        public async Task<V2CharacterRoles> RolesAsync(SsoToken token)
+        public async Task<V3CharacterRoles> RolesAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_corporation_roles_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterRoles(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV3CharacterRoles(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV2CharacterRoles esiV2CharacterRoles = JsonConvert.DeserializeObject<EsiV2CharacterRoles>(esiRaw.Model);
+            EsiV32CharacterRoles esiV3CharacterRoles = JsonConvert.DeserializeObject<EsiV3CharacterRoles>(esiRaw.Model);
 
-            return _mapper.Map<EsiV2CharacterRoles, V2CharacterRoles>(esiV2CharacterRoles);
+            return _mapper.Map<EsiV3CharacterRoles, V3CharacterRoles>(esiV3CharacterRoles);
         }
 
         public IList<V2CharactersStandings> Standings(SsoToken token)

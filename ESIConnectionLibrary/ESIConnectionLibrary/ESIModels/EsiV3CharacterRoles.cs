@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2CharacterRoles
+    internal class EsiV3CharacterRoles
     {
         [JsonProperty(PropertyName = "roles")]
         public IList<EsiCharacterRoles> Roles { get; set; }

@@ -119,12 +119,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.PortraitAsync(characterId);
         }
 
-        public V2CharacterRoles Roles(SsoToken token)
+        public V3CharacterRoles Roles(SsoToken token)
         {
             return _internalLatestCharacter.Roles(token);
         }
 
-        public async Task<V2CharacterRoles> RolesAsync(SsoToken token)
+        public async Task<V3CharacterRoles> RolesAsync(SsoToken token)
         {
             return await _internalLatestCharacter.RolesAsync(token);
         }

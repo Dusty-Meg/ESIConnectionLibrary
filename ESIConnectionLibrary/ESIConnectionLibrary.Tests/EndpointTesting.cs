@@ -146,7 +146,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("CorporationV1StarbaseRaw")]
         [InlineData("CorporationV3StructuresRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]
-        [InlineData("CorporationV1NpcCorpsRaw")]
+        [InlineData("CorporationV2NpcCorpsRaw")]
         public void CorporationsEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

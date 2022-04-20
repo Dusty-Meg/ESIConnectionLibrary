@@ -444,7 +444,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV1StarbaseRaw => "/v1/corporations/{corporation_id}/starbases/{starbase_id}/";
         private static string CorporationV3StructuresRaw => "/v3/corporations/{corporation_id}/structures/";
         private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
-        private static string CorporationV1NpcCorpsRaw => "/v1/corporations/npccorps/";
+        private static string CorporationV2NpcCorpsRaw => "/v2/corporations/npccorps/";
 
         public static string CorporationV4PublicInfo(long corporationId)
         {
@@ -551,9 +551,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1NpcCorps()
+        public static string CorporationV2NpcCorps()
         {
-            return UrlBuilder(CorporationV1NpcCorpsRaw);
+            return UrlBuilder(CorporationV2NpcCorpsRaw);
         }
 
         #endregion

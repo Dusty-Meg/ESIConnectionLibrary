@@ -605,7 +605,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public IList<int> NpcCorps()
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1NpcCorps(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2NpcCorps(), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 
@@ -614,7 +614,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<int>> NpcCorpsAsync()
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1NpcCorps(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2NpcCorps(), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, SecondsToDT()));
 

@@ -8,27 +8,27 @@ namespace ESIConnectionLibrary.Automapper_Profiles
     {
         public CorporationsProfile()
         {
-            CreateMap<EsiV1CorporationTitles, V1CorporationTitles>();
-            CreateMap<EsiV3CorporationStructures, V3CorporationStructures>();
-            CreateMap<EsiV1CorporationStarbase, V1CorporationStarbase>();
-            CreateMap<EsiV1CorporationStarbases, V1CorporationStarbases>();
-            CreateMap<EsiV1CorporationStandings, V1CorporationStandings>();
+            CreateMap<EsiV2CorporationTitles, V2CorporationTitles>();
+            CreateMap<EsiV4CorporationStructures, V4CorporationStructures>();
+            CreateMap<EsiV2CorporationStarbase, V2CorporationStarbase>();
+            CreateMap<EsiV2CorporationStarbases, V2CorporationStarbases>();
+            CreateMap<EsiV2CorporationStandings, V2CorporationStandings>();
             CreateMap<EsiV1CorporationShareholders, V1CorporationShareholders>();
-            CreateMap<EsiV1CorporationRolesHistory, V1CorporationRolesHistory>();
-            CreateMap<EsiV1CorporationRoles, V1CorporationRoles>();
-            CreateMap<EsiV1CorporationMemberTracking, V1CorporationMemberTracking>();
-            CreateMap<EsiV1CorporationMembersTitles, V1CorporationMembersTitles>();
-            CreateMap<EsiV1CorporationMedalsIssued, V1CorporationMedalsIssued>();
-            CreateMap<EsiV1CorporationMedals, V1CorporationMedals>();
-            CreateMap<EsiV1CorporationIcons, V1CorporationIcons>();
-            CreateMap<EsiV1CorporationFacilities, V1CorporationFacilities>();
-            CreateMap<EsiV1CorporationDivisions, V1CorporationDivisions>();
-            CreateMap<EsiV1CorporationDivisionsHangar, V1CorporationDivisionsHangar>();
-            CreateMap<EsiV1CorporationDivisionsWallet, V1CorporationDivisionsWallet>();
-            CreateMap<EsiV2CorporationContainerLogs, V2CorporationContainerLogs>();
-            CreateMap<EsiV2CorporationBlueprints, V2CorporationBlueprints>();
-            CreateMap<EsiV2CorporationAllianceHistory, V2CorporationAllianceHistory>();
-            CreateMap<EsiV4CorporationPublicInfo, V4CorporationPublicInfo>();
+            CreateMap<EsiV2CorporationRolesHistory, V2CorporationRolesHistory>();
+            CreateMap<EsiV2CorporationRoles, V2CorporationRoles>();
+            CreateMap<EsiV2CorporationMemberTracking, V2CorporationMemberTracking>();
+            CreateMap<EsiV2CorporationMembersTitles, V2CorporationMembersTitles>();
+            CreateMap<EsiV2CorporationMedalsIssued, V2CorporationMedalsIssued>();
+            CreateMap<EsiV2CorporationMedals, V2CorporationMedals>();
+            CreateMap<EsiV2CorporationIcons, V2CorporationIcons>();
+            CreateMap<EsiV2CorporationFacilities, V2CorporationFacilities>();
+            CreateMap<EsiV2CorporationDivisions, V2CorporationDivisions>();
+            CreateMap<EsiV2CorporationDivisionsHangar, V2CorporationDivisionsHangar>();
+            CreateMap<EsiV2CorporationDivisionsWallet, V2CorporationDivisionsWallet>();
+            CreateMap<EsiV3CorporationContainerLogs, V3CorporationContainerLogs>();
+            CreateMap<EsiV3CorporationBlueprints, V3CorporationBlueprints>();
+            CreateMap<EsiV3CorporationAllianceHistory, V3CorporationAllianceHistory>();
+            CreateMap<EsiV5CorporationPublicInfo, V5CorporationPublicInfo>();
         }
     }
 }

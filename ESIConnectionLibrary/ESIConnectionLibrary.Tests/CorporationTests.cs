@@ -13,7 +13,7 @@ namespace ESIConnectionLibrary.Tests
     public class CorporationTests
     {
         [Fact]
-        public void PublicInfo_successully_returns_a_V4CorporationPublicInfo()
+        public void PublicInfo_successully_returns_a_V5CorporationPublicInfo()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -23,7 +23,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V4CorporationPublicInfo returnModel = internalLatestCorporations.PublicInfo(18888888);
+            V5CorporationPublicInfo returnModel = internalLatestCorporations.PublicInfo(18888888);
 
             Assert.Equal(434243723, returnModel.AllianceId);
             Assert.Equal(180548812, returnModel.CeoId);
@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task PublicInfoAsync_successully_returns_a_V4CorporationPublicInfo()
+        public async Task PublicInfoAsync_successully_returns_a_V5CorporationPublicInfo()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V4CorporationPublicInfo returnModel = await internalLatestCorporations.PublicInfoAsync(18888888);
+            V5CorporationPublicInfo returnModel = await internalLatestCorporations.PublicInfoAsync(18888888);
 
             Assert.Equal(434243723, returnModel.AllianceId);
             Assert.Equal(180548812, returnModel.CeoId);
@@ -63,7 +63,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void AllianceHistory_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public void AllianceHistory_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -73,7 +73,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V2CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);
@@ -85,7 +85,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -95,7 +95,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V2CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);
@@ -107,7 +107,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Blueprints_succesfully_returns_a_list_of_V2CorporationBlueprints()
+        public void Blueprints_succesfully_returns_a_list_of_V3CorporationBlueprints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -122,7 +122,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationBlueprints> returnModel = internalLatestCorporations.Blueprints(inputToken, 123123, 1);
+            PagedModel<V3CorporationBlueprints> returnModel = internalLatestCorporations.Blueprints(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(1000000010495, returnModel.Model.First().ItemId);
@@ -136,7 +136,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task BlueprintsAsync_succesfully_returns_a_list_of_V2CorporationBlueprints()
+        public async Task BlueprintsAsync_succesfully_returns_a_list_of_V3CorporationBlueprints()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -151,7 +151,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationBlueprints> returnModel = await internalLatestCorporations.BlueprintsAsync(inputToken, 123123, 1);
+            PagedModel<V3CorporationBlueprints> returnModel = await internalLatestCorporations.BlueprintsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(1000000010495, returnModel.Model.First().ItemId);
@@ -165,7 +165,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void ContainerLogs_succesfully_returns_a_list_of_V2CorporationContainerLogs()
+        public void ContainerLogs_succesfully_returns_a_list_of_V3CorporationContainerLogs()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -180,20 +180,20 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationContainerLogs> returnModel = internalLatestCorporations.ContainerLogs(inputToken, 123123, 1);
+            PagedModel<V3CorporationContainerLogs> returnModel = internalLatestCorporations.ContainerLogs(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
-            Assert.Equal(V2CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
+            Assert.Equal(V3CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
             Assert.Equal(2112625428, returnModel.Model.First().CharacterId);
             Assert.Equal(1000000012279, returnModel.Model.First().ContainerId);
             Assert.Equal(17365, returnModel.Model.First().ContainerTypeId);
             Assert.Equal(LocationFlagCorporation.CorpSag1, returnModel.Model.First().LocationFlag);
             Assert.Equal(1000000012278, returnModel.Model.First().LocationId);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().LoggedAt);
-            Assert.Equal(V2CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
+            Assert.Equal(V3CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
 
-            Assert.Equal(V2CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
             Assert.Equal(2112625428, returnModel.Model[1].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[1].ContainerId);
             Assert.Equal(17365, returnModel.Model[1].ContainerTypeId);
@@ -203,7 +203,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(30, returnModel.Model[1].Quantity);
             Assert.Equal(1230, returnModel.Model[1].TypeId);
 
-            Assert.Equal(V2CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
             Assert.Equal(2112625428, returnModel.Model[2].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[2].ContainerId);
             Assert.Equal(17365, returnModel.Model[2].ContainerTypeId);
@@ -215,7 +215,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task ContainerLogsAsync_succesfully_returns_a_list_of_V2CorporationContainerLogs()
+        public async Task ContainerLogsAsync_succesfully_returns_a_list_of_V3CorporationContainerLogs()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -230,20 +230,20 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V2CorporationContainerLogs> returnModel = await internalLatestCorporations.ContainerLogsAsync(inputToken, 123123, 1);
+            PagedModel<V3CorporationContainerLogs> returnModel = await internalLatestCorporations.ContainerLogsAsync(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
-            Assert.Equal(V2CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
+            Assert.Equal(V3CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
             Assert.Equal(2112625428, returnModel.Model.First().CharacterId);
             Assert.Equal(1000000012279, returnModel.Model.First().ContainerId);
             Assert.Equal(17365, returnModel.Model.First().ContainerTypeId);
             Assert.Equal(LocationFlagCorporation.CorpSag1, returnModel.Model.First().LocationFlag);
             Assert.Equal(1000000012278, returnModel.Model.First().LocationId);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().LoggedAt);
-            Assert.Equal(V2CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
+            Assert.Equal(V3CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
 
-            Assert.Equal(V2CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
             Assert.Equal(2112625428, returnModel.Model[1].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[1].ContainerId);
             Assert.Equal(17365, returnModel.Model[1].ContainerTypeId);
@@ -253,7 +253,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(30, returnModel.Model[1].Quantity);
             Assert.Equal(1230, returnModel.Model[1].TypeId);
 
-            Assert.Equal(V2CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
             Assert.Equal(2112625428, returnModel.Model[2].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[2].ContainerId);
             Assert.Equal(17365, returnModel.Model[2].ContainerTypeId);
@@ -265,7 +265,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Divisions_succesfully_returns_a_V1CorporationDivisions()
+        public void Divisions_succesfully_returns_a_V2CorporationDivisions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -280,7 +280,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
+            V2CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);
@@ -292,7 +292,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task DivisionsAsync_succesfully_returns_a_V1CorporationDivisions()
+        public async Task DivisionsAsync_succesfully_returns_a_V2CorporationDivisions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -307,7 +307,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
+            V2CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);
@@ -319,7 +319,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Facilities_succesfully_returns_a_list_of_V1CorporationFacilities()
+        public void Facilities_succesfully_returns_a_list_of_V2CorporationFacilities()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -334,7 +334,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationFacilities> returnModel = internalLatestCorporations.Facilities(inputToken, 123123);
+            IList<V2CorporationFacilities> returnModel = internalLatestCorporations.Facilities(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(123, returnModel.First().FacilityId);
@@ -343,7 +343,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task FacilitiesAsync_succesfully_returns_a_list_of_V1CorporationFacilities()
+        public async Task FacilitiesAsync_succesfully_returns_a_list_of_V2CorporationFacilities()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -358,7 +358,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationFacilities> returnModel = await internalLatestCorporations.FacilitiesAsync(inputToken, 123123);
+            IList<V2CorporationFacilities> returnModel = await internalLatestCorporations.FacilitiesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(123, returnModel.First().FacilityId);
@@ -367,43 +367,43 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Icons_successully_returns_a_V1CorporationIcons()
+        public void Icons_successully_returns_a_V2CorporationIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://images.evetech.net/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://images.evetech.net/Corporation/1000010_64.png\"\r\n}";
+            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128\",\r\n  \"px256x256\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256\",\r\n  \"px64x64\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64\"\r\n}";
 
             mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
+            V2CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
 
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64", returnModel.Px64X64);
         }
 
         [Fact]
-        public async Task IconsAsync_successully_returns_a_V1CorporationIcons()
+        public async Task IconsAsync_successully_returns_a_V2CorporationIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
-            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/Corporation/1000010_128.png\",\r\n  \"px256x256\": \"https://images.evetech.net/Corporation/1000010_256.png\",\r\n  \"px64x64\": \"https://images.evetech.net/Corporation/1000010_64.png\"\r\n}";
+            string json = "{\r\n  \"px128x128\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128\",\r\n  \"px256x256\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256\",\r\n  \"px64x64\": \"https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64\"\r\n}";
 
             mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
+            V2CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
 
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
-            Assert.Equal("https://images.evetech.net/Corporation/1000010_64.png", returnModel.Px64X64);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);
+            Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64", returnModel.Px64X64);
         }
 
         [Fact]
-        public void Medals_succesfully_returns_a_list_of_V1CorporationMedals()
+        public void Medals_succesfully_returns_a_list_of_V2CorporationMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -418,7 +418,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedals> returnModel = internalLatestCorporations.Medals(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedals> returnModel = internalLatestCorporations.Medals(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().CreatedAt);
@@ -429,7 +429,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MedalsAsync_succesfully_returns_a_list_of_V1CorporationMedals()
+        public async Task MedalsAsync_succesfully_returns_a_list_of_V2CorporationMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -444,7 +444,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedals> returnModel = await internalLatestCorporations.MedalsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedals> returnModel = await internalLatestCorporations.MedalsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().CreatedAt);
@@ -455,7 +455,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void IssuedMedals_succesfully_returns_a_list_of_V1CorporationMedalsIssued()
+        public void IssuedMedals_succesfully_returns_a_list_of_V2CorporationMedalsIssued()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -470,7 +470,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedalsIssued> returnModel = internalLatestCorporations.IssuedMedals(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedalsIssued> returnModel = internalLatestCorporations.IssuedMedals(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(45678, returnModel.Model.First().CharacterId);
@@ -478,11 +478,11 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(67890, returnModel.Model.First().IssuerId);
             Assert.Equal(123, returnModel.Model.First().MedalId);
             Assert.Equal("Awesome Reason", returnModel.Model.First().Reason);
-            Assert.Equal(V1CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
+            Assert.Equal(V2CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
         }
 
         [Fact]
-        public async Task IssuedMedalsAsync_succesfully_returns_a_list_of_V1CorporationMedalsIssued()
+        public async Task IssuedMedalsAsync_succesfully_returns_a_list_of_V2CorporationMedalsIssued()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -497,7 +497,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedalsIssued> returnModel = await internalLatestCorporations.IssuedMedalsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedalsIssued> returnModel = await internalLatestCorporations.IssuedMedalsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(45678, returnModel.Model.First().CharacterId);
@@ -505,7 +505,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(67890, returnModel.Model.First().IssuerId);
             Assert.Equal(123, returnModel.Model.First().MedalId);
             Assert.Equal("Awesome Reason", returnModel.Model.First().Reason);
-            Assert.Equal(V1CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
+            Assert.Equal(V2CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
         }
 
         [Fact]
@@ -597,7 +597,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void MembersTitles_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public void MembersTitles_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -612,7 +612,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);
@@ -620,7 +620,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -635,7 +635,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);
@@ -643,7 +643,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void MemberTracking_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public void MemberTracking_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -658,7 +658,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 
@@ -678,7 +678,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -693,7 +693,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 
@@ -713,7 +713,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Roles_succesfully_returns_a_list_of_V1CorporationRoles()
+        public void Roles_succesfully_returns_a_list_of_V2CorporationRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -728,7 +728,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationRoles> returnModel = internalLatestCorporations.Roles(inputToken, 123123);
+            IList<V2CorporationRoles> returnModel = internalLatestCorporations.Roles(inputToken, 123123);
 
             Assert.Single(returnModel);
 
@@ -740,7 +740,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task RolesAsync_succesfully_returns_a_list_of_V1CorporationRoles()
+        public async Task RolesAsync_succesfully_returns_a_list_of_V2CorporationRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -755,7 +755,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationRoles> returnModel = await internalLatestCorporations.RolesAsync(inputToken, 123123);
+            IList<V2CorporationRoles> returnModel = await internalLatestCorporations.RolesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
 
@@ -767,7 +767,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void RoleHistory_succesfully_returns_a_list_of_V1CorporationRolesHistory()
+        public void RoleHistory_succesfully_returns_a_list_of_V2CorporationRolesHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -782,7 +782,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationRolesHistory> returnModel = internalLatestCorporations.RoleHistory(inputToken, 123123, 1);
+            PagedModel<V2CorporationRolesHistory> returnModel = internalLatestCorporations.RoleHistory(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -793,11 +793,11 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(CorporationRoles.StationManager, returnModel.Model.First().NewRoles.First());
             Assert.Single(returnModel.Model.First().OldRoles);
             Assert.Equal(CorporationRoles.Diplomat, returnModel.Model.First().OldRoles.First());
-            Assert.Equal(V1CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
+            Assert.Equal(V2CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
         }
 
         [Fact]
-        public async Task RoleHistoryAsync_succesfully_returns_a_list_of_V1CorporationRolesHistory()
+        public async Task RoleHistoryAsync_succesfully_returns_a_list_of_V2CorporationRolesHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -812,7 +812,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationRolesHistory> returnModel = await internalLatestCorporations.RoleHistoryAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationRolesHistory> returnModel = await internalLatestCorporations.RoleHistoryAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -823,7 +823,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(CorporationRoles.StationManager, returnModel.Model.First().NewRoles.First());
             Assert.Single(returnModel.Model.First().OldRoles);
             Assert.Equal(CorporationRoles.Diplomat, returnModel.Model.First().OldRoles.First());
-            Assert.Equal(V1CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
+            Assert.Equal(V2CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
         }
 
         [Fact]
@@ -901,7 +901,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Standings_succesfully_returns_a_list_of_V1CorporationStandings()
+        public void Standings_succesfully_returns_a_list_of_V2CorporationStandings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -916,25 +916,25 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStandings> returnModel = internalLatestCorporations.Standings(inputToken, 123123, 1);
+            PagedModel<V2CorporationStandings> returnModel = internalLatestCorporations.Standings(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
             Assert.Equal(3009841, returnModel.Model[0].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
             Assert.Equal(0.1f, returnModel.Model[0].Standing);
 
             Assert.Equal(1000061, returnModel.Model[1].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
             Assert.Equal(0, returnModel.Model[1].Standing);
 
             Assert.Equal(500003, returnModel.Model[2].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
             Assert.Equal(-1, returnModel.Model[2].Standing);
         }
 
         [Fact]
-        public async Task StandingsAsync_succesfully_returns_a_list_of_V1CorporationStandings()
+        public async Task StandingsAsync_succesfully_returns_a_list_of_V2CorporationStandings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -949,25 +949,25 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStandings> returnModel = await internalLatestCorporations.StandingsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationStandings> returnModel = await internalLatestCorporations.StandingsAsync(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
             Assert.Equal(3009841, returnModel.Model[0].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
             Assert.Equal(0.1f, returnModel.Model[0].Standing);
 
             Assert.Equal(1000061, returnModel.Model[1].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
             Assert.Equal(0, returnModel.Model[1].Standing);
 
             Assert.Equal(500003, returnModel.Model[2].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
             Assert.Equal(-1, returnModel.Model[2].Standing);
         }
 
         [Fact]
-        public void Starbases_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public void Starbases_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -982,7 +982,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -992,7 +992,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task StarbasesAsync_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public async Task StarbasesAsync_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1007,7 +1007,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -1017,7 +1017,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Starbase_succesfully_returns_a_V1CorporationStarbase()
+        public void Starbase_succesfully_returns_a_V2CorporationStarbase()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1032,23 +1032,23 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationStarbase returnModel = internalLatestCorporations.Starbase(inputToken, 123123, 112323);
+            V2CorporationStarbase returnModel = internalLatestCorporations.Starbase(inputToken, 123123, 112323);
 
             Assert.False(returnModel.AllowAllianceMembers);
             Assert.True(returnModel.AllowCorporationMembers);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
             Assert.True(returnModel.AttackIfAtWar);
             Assert.False(returnModel.AttackIfOtherSecurityStatusDropping);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
             Assert.False(returnModel.UseAllianceStandings);
         }
 
         [Fact]
-        public async Task StarbaseAsync_succesfully_returns_a_V1CorporationStarbase()
+        public async Task StarbaseAsync_succesfully_returns_a_V2CorporationStarbase()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1063,23 +1063,23 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationStarbase returnModel = await internalLatestCorporations.StarbaseAsync(inputToken, 123123, 112323);
+            V2CorporationStarbase returnModel = await internalLatestCorporations.StarbaseAsync(inputToken, 123123, 112323);
 
             Assert.False(returnModel.AllowAllianceMembers);
             Assert.True(returnModel.AllowCorporationMembers);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
             Assert.True(returnModel.AttackIfAtWar);
             Assert.False(returnModel.AttackIfOtherSecurityStatusDropping);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
             Assert.False(returnModel.UseAllianceStandings);
         }
 
         [Fact]
-        public void Structures_succesfully_returns_a_list_of_V2CorporationStructures()
+        public void Structures_succesfully_returns_a_list_of_V4CorporationStructures()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1094,21 +1094,21 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3CorporationStructures> returnModel = internalLatestCorporations.Structures(inputToken, 123123, 1);
+            PagedModel<V4CorporationStructures> returnModel = internalLatestCorporations.Structures(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
             Assert.Equal(667531913, returnModel.Model[0].CorporationId);
             Assert.Equal(11237, returnModel.Model[0].ProfileId);
             Assert.Equal(22, returnModel.Model[0].ReinforceHour);
-            Assert.Equal(V3CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
+            Assert.Equal(V4CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
             Assert.Equal(1021975535893, returnModel.Model[0].StructureId);
             Assert.Equal(30004763, returnModel.Model[0].SystemId);
             Assert.Equal(35833, returnModel.Model[0].TypeId);
         }
 
         [Fact]
-        public async Task StructuresAsync_succesfully_returns_a_list_of_V2CorporationStructures()
+        public async Task StructuresAsync_succesfully_returns_a_list_of_V4CorporationStructures()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1123,21 +1123,21 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V3CorporationStructures> returnModel = await internalLatestCorporations.StructuresAsync(inputToken, 123123, 1);
+            PagedModel<V4CorporationStructures> returnModel = await internalLatestCorporations.StructuresAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
             Assert.Equal(667531913, returnModel.Model[0].CorporationId);
             Assert.Equal(11237, returnModel.Model[0].ProfileId);
             Assert.Equal(22, returnModel.Model[0].ReinforceHour);
-            Assert.Equal(V3CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
+            Assert.Equal(V4CorporationStructuresState.ShieldVulnerable, returnModel.Model[0].State);
             Assert.Equal(1021975535893, returnModel.Model[0].StructureId);
             Assert.Equal(30004763, returnModel.Model[0].SystemId);
             Assert.Equal(35833, returnModel.Model[0].TypeId);
         }
 
         [Fact]
-        public void Titles_successully_returns_a_list_of_V1CorporationTitles()
+        public void Titles_successully_returns_a_list_of_V2CorporationTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1152,7 +1152,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationTitles> corporationRoles = internalLatestCorporations.Titles(inputToken, 18888888);
+            IList<V2CorporationTitles> corporationRoles = internalLatestCorporations.Titles(inputToken, 18888888);
 
             Assert.Equal(1, corporationRoles.Count);
             Assert.Equal("Awesome Title", corporationRoles.First().Name);
@@ -1162,7 +1162,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task TitlesAsync_successully_returns_a_list_of_V1CorporationTitles()
+        public async Task TitlesAsync_successully_returns_a_list_of_V2CorporationTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1177,7 +1177,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationTitles> corporationRoles = await internalLatestCorporations.TitlesAsync(inputToken, 18888888);
+            IList<V2CorporationTitles> corporationRoles = await internalLatestCorporations.TitlesAsync(inputToken, 18888888);
 
             Assert.Equal(1, corporationRoles.Count);
             Assert.Equal("Awesome Title", corporationRoles.First().Name);

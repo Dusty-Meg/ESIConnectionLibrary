@@ -175,65 +175,64 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Character
 
-        private static string EsiV4CharactersPublicInfoRaw => "/v4/characters/{character_id}/";
-        private static string EsiV1CharactersResearchAgentsRaw => "/v1/characters/{character_id}/agents_research/";
-        private static string EsiV2CharactersBlueprintsRaw => "/v2/characters/{character_id}/blueprints/";
-        private static string EsiV1CharactersCorporationHistoryRaw => "/v1/characters/{character_id}/corporationhistory/";
-        private static string EsiV4CharactersCspaRaw => "/v4/characters/{character_id}/cspa/";
-        private static string EsiV1CharactersFatigueRaw => "/v1/characters/{character_id}/fatigue/";
-        private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
-        private static string EsiV5CharactersNotificationsRaw => "/v5/characters/{character_id}/notifications/";
-        private static string EsiV1CharactersNotificationsContactsRaw => "/v1/characters/{character_id}/notifications/contacts/";
+        private static string EsiV5CharactersPublicInfoRaw => "/v5/characters/{character_id}/";
+        private static string EsiV2CharactersResearchAgentsRaw => "/v2/characters/{character_id}/agents_research/";
+        private static string EsiV3CharactersBlueprintsRaw => "/v3/characters/{character_id}/blueprints/";
+        private static string EsiV2CharactersCorporationHistoryRaw => "/v2/characters/{character_id}/corporationhistory/";
+        private static string EsiV5CharactersCspaRaw => "/v5/characters/{character_id}/cspa/";
+        private static string EsiV2CharactersFatigueRaw => "/v2/characters/{character_id}/fatigue/";
+        private static string EsiV2CharactersMedalsRaw => "/v2/characters/{character_id}/medals/";
+        private static string EsiV6CharactersNotificationsRaw => "/v6/characters/{character_id}/notifications/";
+        private static string EsiV2CharactersNotificationsContactsRaw => "/v2/characters/{character_id}/notifications/contacts/";
         private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
-        private static string EsiV2CharacterRolesRaw => "/v2/characters/{character_id}/roles/";
-        private static string EsiV2CharactersStandingsRaw => "/v1/characters/{character_id}/standings/";
-        private static string EsiV2CharactersStatsRaw => "/v2/characters/{character_id}/stats/";
-        private static string EsiV1CharacterTitlesRaw => "/v1/characters/{character_id}/titles/";
-        private static string EsiV1CharacterAffiliationsRaw => "/v1/characters/affiliation/";
+        private static string EsiV3CharacterRolesRaw => "/v3/characters/{character_id}/roles/";
+        private static string EsiV2CharactersStandingsRaw => "/v2/characters/{character_id}/standings/";
+        private static string EsiV2CharacterTitlesRaw => "/v2/characters/{character_id}/titles/";
+        private static string EsiV2CharacterAffiliationsRaw => "/v2/characters/affiliation/";
 
-        public static string EsiV4CharactersPublicInfo(int characterId)
+        public static string EsiV5CharactersPublicInfo(int characterId)
         {
-            return UrlBuilder(EsiV4CharactersPublicInfoRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV5CharactersPublicInfoRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersResearchAgents(int characterId)
+        public static string EsiV2CharactersResearchAgents(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersResearchAgentsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersResearchAgentsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV2CharactersBlueprints(int characterId)
+        public static string EsiV3CharactersBlueprints(int characterId)
         {
-            return UrlBuilder(EsiV2CharactersBlueprintsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV3CharactersBlueprintsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersCorporationHistory(int characterId)
+        public static string EsiV2CharactersCorporationHistory(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersCorporationHistoryRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersCorporationHistoryRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV4CharactersCspa(int characterId)
+        public static string EsiV5CharactersCspa(int characterId)
         {
-            return UrlBuilder(EsiV4CharactersCspaRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV5CharactersCspaRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersFatigue(int characterId)
+        public static string EsiV2CharactersFatigue(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersFatigueRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersFatigueRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersMedals(int characterId)
+        public static string EsiV2CharactersMedals(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersMedalsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersMedalsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV5CharactersNotifications(int characterId)
+        public static string EsiV6CharactersNotifications(int characterId)
         {
-            return UrlBuilder(EsiV5CharactersNotificationsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV6CharactersNotificationsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersNotificationsContacts(int characterId)
+        public static string EsiV2CharactersNotificationsContacts(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersNotificationsContactsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersNotificationsContactsRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV2CharactersPortrait(int characterId)
@@ -241,9 +240,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharactersPortraitRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV2CharacterRoles(int characterId)
+        public static string EsiV3CharacterRoles(int characterId)
         {
-            return UrlBuilder(EsiV2CharacterRolesRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV3CharacterRolesRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV2CharactersStandings(int characterId)
@@ -251,19 +250,14 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharactersStandingsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV2CharactersStats(int characterId)
+        public static string EsiV2CharacterTitles(int characterId)
         {
-            return UrlBuilder(EsiV2CharactersStatsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharacterTitlesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharacterTitles(int characterId)
+        public static string EsiV2CharacterAffiliations()
         {
-            return UrlBuilder(EsiV1CharacterTitlesRaw, "{character_id}", characterId.ToString());
-        }
-
-        public static string EsiV1CharacterAffiliations()
-        {
-            return UrlBuilder(EsiV1CharacterAffiliationsRaw);
+            return UrlBuilder(EsiV2CharacterAffiliationsRaw);
         }
 
         #endregion
@@ -429,102 +423,102 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Corporations
 
-        private static string CorporationV4PublicInfoRaw => "/v4/corporations/{corporation_id}/";
-        private static string CorporationV2AllianceHistoryRaw => "/v2/corporations/{corporation_id}/alliancehistory/";
-        private static string CorporationV2BluepintsRaw => "/v2/corporations/{corporation_id}/blueprints/";
-        private static string CorporationV2ContainersLogsRaw => "/v2/corporations/{corporation_id}/containers/logs/";
-        private static string CorporationV1DivisionsRaw => "/v1/corporations/{corporation_id}/divisions/";
-        private static string CorporationV1FacilitiesRaw => "/v1/corporations/{corporation_id}/facilities/";
-        private static string CorporationV1IconsRaw => "/v1/corporations/{corporation_id}/icons/";
-        private static string CorporationV1MedalsRaw => "/v1/corporations/{corporation_id}/medals/";
-        private static string CorporationV1MedalsIssuedRaw => "/v1/corporations/{corporation_id}/medals/issued/";
-        private static string CorporationV3MembersRaw => "/v3/corporations/{corporation_id}/members/";
-        private static string CorporationV1MembersLimitRaw => "/v1/corporations/{corporation_id}/members/limit/";
-        private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
-        private static string CorporationV1MemberTrackingRaw => "/v1/corporations/{corporation_id}/membertracking/";
-        private static string CorporationV1RolesRaw => "/v1/corporations/{corporation_id}/roles/";
-        private static string CorporationV1RolesHistoryRaw => "/v1/corporations/{corporation_id}/roles/history/";
+        private static string CorporationV5PublicInfoRaw => "/v5/corporations/{corporation_id}/";
+        private static string CorporationV3AllianceHistoryRaw => "/v3/corporations/{corporation_id}/alliancehistory/";
+        private static string CorporationV3BluepintsRaw => "/v3/corporations/{corporation_id}/blueprints/";
+        private static string CorporationV3ContainersLogsRaw => "/v3/corporations/{corporation_id}/containers/logs/";
+        private static string CorporationV2DivisionsRaw => "/v2/corporations/{corporation_id}/divisions/";
+        private static string CorporationV2FacilitiesRaw => "/v2/corporations/{corporation_id}/facilities/";
+        private static string CorporationV2IconsRaw => "/v2/corporations/{corporation_id}/icons/";
+        private static string CorporationV2MedalsRaw => "/v2/corporations/{corporation_id}/medals/";
+        private static string CorporationV2MedalsIssuedRaw => "/v2/corporations/{corporation_id}/medals/issued/";
+        private static string CorporationV4MembersRaw => "/v4/corporations/{corporation_id}/members/";
+        private static string CorporationV2MembersLimitRaw => "/v2/corporations/{corporation_id}/members/limit/";
+        private static string CorporationV2CorporationMemberTitlesRaw => "/v2/corporations/{corporation_id}/members/titles/";
+        private static string CorporationV2MemberTrackingRaw => "/v2/corporations/{corporation_id}/membertracking/";
+        private static string CorporationV2RolesRaw => "/v2/corporations/{corporation_id}/roles/";
+        private static string CorporationV2RolesHistoryRaw => "/v2/corporations/{corporation_id}/roles/history/";
         private static string CorporationV1ShareHoldersRaw => "/v1/corporations/{corporation_id}/shareholders/";
-        private static string CorporationV1StandingsRaw => "/v1/corporations/{corporation_id}/standings/";
-        private static string CorporationV1StarbasesRaw => "/v1/corporations/{corporation_id}/starbases/";
-        private static string CorporationV1StarbaseRaw => "/v1/corporations/{corporation_id}/starbases/{starbase_id}/";
-        private static string CorporationV3StructuresRaw => "/v3/corporations/{corporation_id}/structures/";
-        private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
-        private static string CorporationV1NpcCorpsRaw => "/v1/corporations/npccorps/";
+        private static string CorporationV2StandingsRaw => "/v2/corporations/{corporation_id}/standings/";
+        private static string CorporationV2StarbasesRaw => "/v2/corporations/{corporation_id}/starbases/";
+        private static string CorporationV2StarbaseRaw => "/v2/corporations/{corporation_id}/starbases/{starbase_id}/";
+        private static string CorporationV4StructuresRaw => "/v4/corporations/{corporation_id}/structures/";
+        private static string CorporationV2CorporationTitlesRaw => "/v2/corporations/{corporation_id}/titles/";
+        private static string CorporationV2NpcCorpsRaw => "/v2/corporations/npccorps/";
 
-        public static string CorporationV4PublicInfo(long corporationId)
+        public static string CorporationV5PublicInfo(long corporationId)
         {
-            return UrlBuilder(CorporationV4PublicInfoRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV5PublicInfoRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV2AllianceHistory(long corporationId)
+        public static string CorporationV3AllianceHistory(long corporationId)
         {
-            return UrlBuilder(CorporationV2AllianceHistoryRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV3AllianceHistoryRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV2Bluepints(long corporationId, int page)
+        public static string CorporationV3Bluepints(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV2BluepintsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV3BluepintsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV2ContainersLogs(long corporationId, int page)
+        public static string CorporationV3ContainersLogs(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV2ContainersLogsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV3ContainersLogsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1Divisions(long corporationId)
+        public static string CorporationV2Divisions(long corporationId)
         {
-            return UrlBuilder(CorporationV1DivisionsRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2DivisionsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Facilities(long corporationId)
+        public static string CorporationV2Facilities(long corporationId)
         {
-            return UrlBuilder(CorporationV1FacilitiesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2FacilitiesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Icons(long corporationId)
+        public static string CorporationV2Icons(long corporationId)
         {
-            return UrlBuilder(CorporationV1IconsRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2IconsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Medals(long corporationId, int page)
+        public static string CorporationV2Medals(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1MedalsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2MedalsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1MedalsIssued(long corporationId, int page)
+        public static string CorporationV2MedalsIssued(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1MedalsIssuedRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2MedalsIssuedRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV3Members(long corporationId)
+        public static string CorporationV4Members(long corporationId)
         {
-            return UrlBuilder(CorporationV3MembersRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV4MembersRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1MembersLimit(long corporationId)
+        public static string CorporationV2MembersLimit(long corporationId)
         {
-            return UrlBuilder(CorporationV1MembersLimitRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2MembersLimitRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1CorporationMemberTitles(long corporationId)
+        public static string CorporationV2CorporationMemberTitles(long corporationId)
         {
-            return UrlBuilder(CorporationV1CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1MemberTracking(long corporationId)
+        public static string CorporationV2MemberTracking(long corporationId)
         {
-            return UrlBuilder(CorporationV1MemberTrackingRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2MemberTrackingRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Roles(long corporationId)
+        public static string CorporationV2Roles(long corporationId)
         {
-            return UrlBuilder(CorporationV1RolesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2RolesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1RolesHistory(long corporationId, int page)
+        public static string CorporationV2RolesHistory(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1RolesHistoryRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2RolesHistoryRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string CorporationV1ShareHolders(long corporationId, int page)
@@ -532,34 +526,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1ShareHoldersRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1Standings(long corporationId, int page)
+        public static string CorporationV2Standings(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1StandingsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2StandingsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1Starbases(long corporationId, int page)
+        public static string CorporationV2Starbases(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1StarbasesRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2StarbasesRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1Starbase(long corporationId, long starbaseId)
+        public static string CorporationV2Starbase(long corporationId, long starbaseId)
         {
-            return UrlBuilder(CorporationV1StarbaseRaw, "{corporation_id}", corporationId.ToString(), "{starbase_id}", starbaseId.ToString());
+            return UrlBuilder(CorporationV2StarbaseRaw, "{corporation_id}", corporationId.ToString(), "{starbase_id}", starbaseId.ToString());
         }
 
-        public static string CorporationV3Structures(long corporationId, int page)
+        public static string CorporationV4Structures(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV3StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV4StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1CorporationTitles(long corporationId)
+        public static string CorporationV2CorporationTitles(long corporationId)
         {
-            return UrlBuilder(CorporationV1CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2CorporationTitlesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1NpcCorps()
+        public static string CorporationV2NpcCorps()
         {
-            return UrlBuilder(CorporationV1NpcCorpsRaw);
+            return UrlBuilder(CorporationV2NpcCorpsRaw);
         }
 
         #endregion

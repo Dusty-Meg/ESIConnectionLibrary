@@ -32,7 +32,7 @@ namespace ESIConnectionLibrary.Public_classes
         Task<V3CharacterRoles> RolesAsync(SsoToken token);
         IList<V2CharactersStandings> Standings(SsoToken token);
         Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token);
-        IList<V1CharacterTitles> Titles(SsoToken token);
-        Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token);
+        IList<V2CharacterTitles> Titles(SsoToken token);
+        Task<IList<V2CharacterTitles>> TitlesAsync(SsoToken token);
     }
 }

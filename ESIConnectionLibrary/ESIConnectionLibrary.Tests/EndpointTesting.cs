@@ -79,7 +79,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("EsiV2CharactersPortraitRaw")]
         [InlineData("EsiV3CharacterRolesRaw")]
         [InlineData("EsiV2CharactersStandingsRaw")]
-        [InlineData("EsiV1CharacterTitlesRaw")]
+        [InlineData("EsiV2CharacterTitlesRaw")]
         [InlineData("EsiV1CharacterAffiliationsRaw")]
         public void CharacterEndpoints(string endpoint)
         {

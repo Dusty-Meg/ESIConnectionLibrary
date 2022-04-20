@@ -330,30 +330,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersStandings>, IList<V2CharactersStandings>>(esiV2CharactersStandings);
         }
 
-        public IList<V1CharacterTitles> Titles(SsoToken token)
+        public IList<V2CharacterTitles> Titles(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterTitles(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterTitles(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharacterTitles> esiV1CharacterTitles = JsonConvert.DeserializeObject<IList<EsiV1CharacterTitles>>(esiRaw.Model);
+            IList<EsiV2CharacterTitles> esiV2CharacterTitles = JsonConvert.DeserializeObject<IList<EsiV2CharacterTitles>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharacterTitles>, IList<V1CharacterTitles>>(esiV1CharacterTitles);
+            return _mapper.Map<IList<EsiV2CharacterTitles>, IList<V2CharacterTitles>>(esiV2CharacterTitles);
         }
 
-        public async Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token)
+        public async Task<IList<V2CharacterTitles>> TitlesAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_titles_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterTitles(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterTitles(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharacterTitles> esiV1CharacterTitles = JsonConvert.DeserializeObject<IList<EsiV1CharacterTitles>>(esiRaw.Model);
+            IList<EsiV2CharacterTitles> esiV2CharacterTitles = JsonConvert.DeserializeObject<IList<EsiV2CharacterTitles>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharacterTitles>, IList<V1CharacterTitles>>(esiV1CharacterTitles);
+            return _mapper.Map<IList<EsiV2CharacterTitles>, IList<V2CharacterTitles>>(esiV2CharacterTitles);
         }
 
         public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)

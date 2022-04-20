@@ -567,7 +567,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Titles_successfully_returns_a_list_of_V1CharacterTitles()
+        public void Titles_successfully_returns_a_list_of_V2CharacterTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -581,7 +581,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharacterTitles> getCharactersTitles = internalLatestCharacter.Titles(inputToken);
+            IList<V2CharacterTitles> getCharactersTitles = internalLatestCharacter.Titles(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);
@@ -589,7 +589,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task TitlesAsync_successfully_returns_a_list_of_V1CharacterTitles()
+        public async Task TitlesAsync_successfully_returns_a_list_of_V2CharacterTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -603,7 +603,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharacterTitles> getCharactersTitles = await internalLatestCharacter.TitlesAsync(inputToken);
+            IList<V2CharacterTitles> getCharactersTitles = await internalLatestCharacter.TitlesAsync(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);

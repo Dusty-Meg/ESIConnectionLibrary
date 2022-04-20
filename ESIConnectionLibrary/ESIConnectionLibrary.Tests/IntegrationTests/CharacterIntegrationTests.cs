@@ -439,7 +439,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Titles_successfully_returns_a_list_of_V1CharacterTitles()
+        public void Titles_successfully_returns_a_list_of_V2CharacterTitles()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
@@ -448,7 +448,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharacterTitles> getCharactersTitles = internalLatestCharacter.Titles(inputToken);
+            IList<V2CharacterTitles> getCharactersTitles = internalLatestCharacter.Titles(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);
@@ -456,7 +456,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task TitlesAsync_successfully_returns_a_list_of_V1CharacterTitles()
+        public async Task TitlesAsync_successfully_returns_a_list_of_V2CharacterTitles()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_titles_v1;
@@ -465,7 +465,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharacterTitles> getCharactersTitles = await internalLatestCharacter.TitlesAsync(inputToken);
+            IList<V2CharacterTitles> getCharactersTitles = await internalLatestCharacter.TitlesAsync(inputToken);
 
             Assert.Equal(1, getCharactersTitles.Count);
             Assert.Equal(1, getCharactersTitles.First().TitleId);

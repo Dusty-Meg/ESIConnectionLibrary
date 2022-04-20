@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharacterTitles
+    internal class EsiV2CharacterTitles
     {
         [JsonProperty(PropertyName = "title_id")]
         public int? TitleId { get; set; }

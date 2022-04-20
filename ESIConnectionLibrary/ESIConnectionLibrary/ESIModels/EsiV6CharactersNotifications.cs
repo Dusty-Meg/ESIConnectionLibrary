@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4CharactersNotifications
+    internal class EsiV6CharactersNotifications
     {
         [JsonProperty(PropertyName = "is_read")]
         public bool? IsRead { get; set; }
@@ -24,6 +24,6 @@ namespace ESIConnectionLibrary.ESIModels
         public DateTime Timestamp { get; set; }
 
         [JsonProperty(PropertyName = "type")]
-        public EsiV5CharactersNotificationType Type { get; set; }
+        public EsiV6CharactersNotificationType Type { get; set; }
     }
 }

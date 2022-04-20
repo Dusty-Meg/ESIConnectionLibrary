@@ -204,30 +204,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersMedals>, IList<V2CharactersMedals>>(esiV2CharactersMedals);
         }
 
-        public IList<V5CharactersNotifications> Notifications(SsoToken token)
+        public IList<V6CharactersNotifications> Notifications(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersNotifications(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV6CharactersNotifications(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV4CharactersNotifications> esiV1Notifications = JsonConvert.DeserializeObject<IList<EsiV4CharactersNotifications>>(esiRaw.Model);
+            IList<EsiV6CharactersNotifications> esiV6Notifications = JsonConvert.DeserializeObject<IList<EsiV6CharactersNotifications>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V5CharactersNotifications>>(esiV1Notifications);
+            return _mapper.Map<IList<EsiV6CharactersNotifications>, IList<V6CharactersNotifications>>(esiV6Notifications);
         }
 
-        public async Task<IList<V5CharactersNotifications>> NotificationsAsync(SsoToken token)
+        public async Task<IList<V6CharactersNotifications>> NotificationsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_notifications_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersNotifications(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV6CharactersNotifications(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV4CharactersNotifications> esiV1Notifications = JsonConvert.DeserializeObject<IList<EsiV4CharactersNotifications>>(esiRaw.Model);
+            IList<EsiV6CharactersNotifications> esiV6Notifications = JsonConvert.DeserializeObject<IList<EsiV6CharactersNotifications>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV4CharactersNotifications>, IList<V5CharactersNotifications>>(esiV1Notifications);
+            return _mapper.Map<IList<EsiV6CharactersNotifications>, IList<V6CharactersNotifications>>(esiV6Notifications);
         }
 
         public IList<V2CharactersNotificationsContacts> ContactNotifications(SsoToken token)

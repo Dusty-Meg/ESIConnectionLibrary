@@ -182,7 +182,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV5CharactersCspaRaw => "/v5/characters/{character_id}/cspa/";
         private static string EsiV2CharactersFatigueRaw => "/v2/characters/{character_id}/fatigue/";
         private static string EsiV2CharactersMedalsRaw => "/v2/characters/{character_id}/medals/";
-        private static string EsiV5CharactersNotificationsRaw => "/v5/characters/{character_id}/notifications/";
+        private static string EsiV6CharactersNotificationsRaw => "/v6/characters/{character_id}/notifications/";
         private static string EsiV2CharactersNotificationsContactsRaw => "/v2/characters/{character_id}/notifications/contacts/";
         private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
         private static string EsiV3CharacterRolesRaw => "/v3/characters/{character_id}/roles/";
@@ -225,9 +225,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharactersMedalsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV5CharactersNotifications(int characterId)
+        public static string EsiV6CharactersNotifications(int characterId)
         {
-            return UrlBuilder(EsiV5CharactersNotificationsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV6CharactersNotificationsRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV2CharactersNotificationsContacts(int characterId)

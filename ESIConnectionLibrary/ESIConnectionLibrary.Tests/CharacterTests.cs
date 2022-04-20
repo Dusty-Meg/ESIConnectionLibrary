@@ -327,7 +327,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Notifications_successfully_returns_a_list_of_V4CharactersNotifications()
+        public void Notifications_successfully_returns_a_list_of_V6CharactersNotifications()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -341,18 +341,18 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V5CharactersNotifications> getCharactersNotifications = internalLatestCharacter.Notifications(inputToken);
+            IList<V6CharactersNotifications> getCharactersNotifications = internalLatestCharacter.Notifications(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
-            Assert.Equal(V5CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
+            Assert.Equal(V6CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);
         }
 
         [Fact]
-        public async Task NotificationsAsync_successfully_returns_a_list_of_V4CharactersNotifications()
+        public async Task NotificationsAsync_successfully_returns_a_list_of_V6CharactersNotifications()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -366,11 +366,11 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V5CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.NotificationsAsync(inputToken);
+            IList<V6CharactersNotifications> getCharactersNotifications = await internalLatestCharacter.NotificationsAsync(inputToken);
 
             Assert.Equal(1, getCharactersNotifications.Count);
             Assert.Equal(1, getCharactersNotifications.First().NotificationId);
-            Assert.Equal(V5CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
+            Assert.Equal(V6CharactersNotificationType.InsurancePayoutMsg, getCharactersNotifications.First().Type);
             Assert.Equal(SenderType.Corporation, getCharactersNotifications.First().SenderType);
             Assert.Equal(new DateTime(2017, 08, 16, 10, 08, 00), getCharactersNotifications.First().Timestamp);
             Assert.True(getCharactersNotifications.First().IsRead);

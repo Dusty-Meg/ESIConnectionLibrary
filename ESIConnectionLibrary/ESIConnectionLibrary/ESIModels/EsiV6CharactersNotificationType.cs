@@ -1,9 +1,15 @@
-﻿namespace ESIConnectionLibrary.PublicModels
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ESIConnectionLibrary.ESIModels
 {
-    public enum V5CharactersNotificationType
+    [JsonConverter(typeof(StringEnumConverter))]
+    internal enum EsiV6CharactersNotificationType
     {
         AcceptedAlly,
         AcceptedSurrender,
+        AgentRetiredTrigravian,
         AllAnchoringMsg,
         AllMaintenanceBillMsg,
         AllStrucInvulnerableMsg,
@@ -23,7 +29,11 @@
         BillOutOfMoneyMsg,
         BillPaidCorpAllMsg,
         BountyClaimMsg,
+
+        [EnumMember(Value = "BountyESSShared")]
         BountyEssShared,
+
+        [EnumMember(Value = "BountyESSTaken")]
         BountyEssTaken,
         BountyPlacedAlliance,
         BountyPlacedChar,
@@ -45,6 +55,7 @@
         ContactAdd,
         ContactEdit,
         ContainerPasswordMsg,
+        ContractRegionChangedToPochven, 
         CorpAllBillMsg,
         CorpAppAcceptMsg,
         CorpAppInvitedMsg,
@@ -59,12 +70,16 @@
         CorpFriendlyFireEnableTimerStarted,
         CorpKicked,
         CorpLiquidationMsg,
+
+        [EnumMember(Value = "CorpNewCEOMsg")]
         CorpNewCeoMsg,
         CorpNewsMsg,
         CorpNoLongerWarEligible,
         CorpOfficeExpirationMsg,
         CorpStructLostMsg,
         CorpTaxChangeMsg,
+
+        [EnumMember(Value = "CorpVoteCEORevokedMsg")]
         CorpVoteCeoRevokedMsg,
         CorpVoteMsg,
         CorpWarDeclaredMsg,
@@ -77,29 +92,62 @@
         DeclareWar,
         DistrictAttacked,
         DustAppAcceptedMsg,
+        ESSMainBankLink,
         EntosisCaptureStarted,
+        ExpertSystemExpired,
+        ExpertSystemExpiryImminent,
+
+        [EnumMember(Value = "FWAllianceKickMsg")]
         FwAllianceKickMsg,
+
+        [EnumMember(Value = "FWAllianceWarningMsg")]
         FwAllianceWarningMsg,
+
+        [EnumMember(Value = "FWCharKickMsg")]
         FwCharKickMsg,
+
+        [EnumMember(Value = "FWCharRankGainMsg")]
         FwCharRankGainMsg,
+
+        [EnumMember(Value = "FWCharRankLossMsg")]
         FwCharRankLossMsg,
+
+        [EnumMember(Value = "FWCharWarningMsg")]
         FwCharWarningMsg,
+
+        [EnumMember(Value = "FWCorpJoinMsg")]
         FwCorpJoinMsg,
+
+        [EnumMember(Value = "FWCorpKickMsg")]
         FwCorpKickMsg,
+
+        [EnumMember(Value = "FWCorpLeaveMsg")]
         FwCorpLeaveMsg,
+
+        [EnumMember(Value = "FWCorpWarningMsg")]
         FwCorpWarningMsg,
         FacWarCorpJoinRequestMsg,
         FacWarCorpJoinWithdrawMsg,
         FacWarCorpLeaveRequestMsg,
         FacWarCorpLeaveWithdrawMsg,
+
+        [EnumMember(Value = "FacWarLPDisqualifiedEvent")]
         FacWarLpDisqualifiedEvent,
+
+        [EnumMember(Value = "FacWarLPDisqualifiedKill")]
         FacWarLpDisqualifiedKill,
+
+        [EnumMember(Value = "FacWarLPPayoutEvent")]
         FacWarLpPayoutEvent,
+
+        [EnumMember(Value = "FacWarLPPayoutKill")]
         FacWarLpPayoutKill,
         GameTimeAdded,
         GameTimeReceived,
         GameTimeSent,
         GiftReceived,
+
+        [EnumMember(Value = "IHubDestroyedByBillFailure")]
         HubDestroyedByBillFailure,
         IncursionCompletedMsg,
         IndustryOperationFinished,
@@ -111,7 +159,9 @@
         InsuranceInvalidatedMsg,
         InsuranceIssuedMsg,
         InsurancePayoutMsg,
+        InvasionCompletedMsg,
         InvasionSystemLogin,
+        InvasionSystemStart,
         JumpCloneDeletedMsg1,
         JumpCloneDeletedMsg2,
         KillReportFinalBlow,
@@ -124,7 +174,9 @@
         KillRightUsed,
         LocateCharMsg,
         MadeWarMutual,
+        MercOfferRetractedMsg,
         MercOfferedNegotiationMsg,
+        MissionCanceledTriglavian,
         MissionOfferExpirationMsg,
         MissionTimeoutMsg,
         MoonminingAutomaticFracture,
@@ -136,15 +188,24 @@
         MutualWarInviteAccepted,
         MutualWarInviteRejected,
         MutualWarInviteSent,
+
+        [EnumMember(Value = "NPCStandingsGained")]
         NpcStandingsGained,
+
+        [EnumMember(Value = "NPCStandingsLost")]
         NpcStandingsLost,
+        OfferToAllyRetracted,
         OfferedSurrender,
         OfferedToAlly,
+        OfficeLeaseCanceledInsufficientStandings,
         OldLscMessages,
         OperationFinished,
         OrbitalAttacked,
         OrbitalReinforced,
         OwnershipTransferred,
+        RaffleCreated,
+        RaffleExpired,
+        RaffleFinished, 
         ReimbursementMsg,
         ResearchMissionAvailableMsg,
         RetractsWar,
@@ -161,8 +222,14 @@
         SovStructureSelfDestructCancel,
         SovStructureSelfDestructFinished,
         SovStructureSelfDestructRequested,
+
+        [EnumMember(Value = "SovereigntyIHDamageMsg")]
         SovereigntyIhDamageMsg,
+
+        [EnumMember(Value = "SovereigntySBUDamageMsg")]
         SovereigntySbuDamageMsg,
+
+        [EnumMember(Value = "SovereigntyTCUDamageMsg")]
         SovereigntyTcuDamageMsg,
         StationAggressionMsg1,
         StationAggressionMsg2,
@@ -175,6 +242,7 @@
         StructureCourierContractChanged,
         StructureDestroyed,
         StructureFuelAlert,
+        StructureImpendingAbandonmentAssetsAtRisk,
         StructureItemsDelivered,
         StructureItemsMovedToSafety,
         StructureLostArmor,
@@ -195,14 +263,15 @@
         WarAdopted,
         WarAllyInherited,
         WarAllyOfferDeclinedMsg,
-        WarSurrenderDeclinedMsg,
         WarConcordInvalidates,
         WarDeclared,
+        WarEndedHqSecurityDrop,
         WarHQRemovedFromSpace,
         WarInherited,
         WarInvalid,
         WarRetracted,
         WarRetractedByConcord,
+        WarSurrenderDeclinedMsg,
         WarSurrenderOfferMsg
     }
 }

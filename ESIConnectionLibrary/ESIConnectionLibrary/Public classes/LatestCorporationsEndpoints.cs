@@ -300,12 +300,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.StructuresAsync(token, corporationId, page);
         }
 
-        public IList<V1CorporationTitles> Titles(SsoToken token, long corporationId)
+        public IList<V2CorporationTitles> Titles(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.Titles(token, corporationId);
         }
 
-        public async Task<IList<V1CorporationTitles>> TitlesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationTitles>> TitlesAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.TitlesAsync(token, corporationId);
         }

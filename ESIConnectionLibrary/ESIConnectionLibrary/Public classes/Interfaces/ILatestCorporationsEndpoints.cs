@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.Public_classes
         Task<PagedModel<V2CorporationStarbases>> StarbasesAsync(SsoToken token, long corporationId, int page);
         PagedModel<V4CorporationStructures> Structures(SsoToken token, long corporationId, int page);
         Task<PagedModel<V4CorporationStructures>> StructuresAsync(SsoToken token, long corporationId, int page);
-        IList<V1CorporationTitles> Titles(SsoToken token, long corporationId);
-        Task<IList<V1CorporationTitles>> TitlesAsync(SsoToken token, long corporationId);
+        IList<V2CorporationTitles> Titles(SsoToken token, long corporationId);
+        Task<IList<V2CorporationTitles>> TitlesAsync(SsoToken token, long corporationId);
     }
 }

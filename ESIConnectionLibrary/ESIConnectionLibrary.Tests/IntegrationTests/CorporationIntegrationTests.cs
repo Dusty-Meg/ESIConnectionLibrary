@@ -877,7 +877,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Titles_successully_returns_a_list_of_V1CorporationTitles()
+        public void Titles_successully_returns_a_list_of_V2CorporationTitles()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -887,7 +887,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationTitles> corporationRoles = internalLatestCorporations.Titles(inputToken, 18888888);
+            IList<V2CorporationTitles> corporationRoles = internalLatestCorporations.Titles(inputToken, 18888888);
 
             Assert.Equal(1, corporationRoles.Count);
             Assert.Equal("Awesome Title", corporationRoles.First().Name);
@@ -897,7 +897,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task TitlesAsync_successully_returns_a_list_of_V1CorporationTitles()
+        public async Task TitlesAsync_successully_returns_a_list_of_V2CorporationTitles()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -907,7 +907,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationTitles> corporationRoles = await internalLatestCorporations.TitlesAsync(inputToken, 18888888);
+            IList<V2CorporationTitles> corporationRoles = await internalLatestCorporations.TitlesAsync(inputToken, 18888888);
 
             Assert.Equal(1, corporationRoles.Count);
             Assert.Equal("Awesome Title", corporationRoles.First().Name);

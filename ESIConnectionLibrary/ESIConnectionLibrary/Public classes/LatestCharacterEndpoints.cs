@@ -19,42 +19,42 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCharacter = new InternalLatestCharacter(webClient, userAgent, testing);
         }
 
-        public V4CharactersPublicInfo PublicInfo(int characterId)
+        public V5CharactersPublicInfo PublicInfo(int characterId)
         {
             return _internalLatestCharacter.PublicInfo(characterId);
         }
 
-        public async Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId)
+        public async Task<V5CharactersPublicInfo> PublicInfoAsync(int characterId)
         {
             return await _internalLatestCharacter.PublicInfoAsync(characterId);
         }
 
-        public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)
+        public IList<V2CharactersResearchAgents> ResearchAgents(SsoToken token)
         {
             return _internalLatestCharacter.ResearchAgents(token);
         }
 
-        public async Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
+        public async Task<IList<V2CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.ResearchAgentsAsync(token);
         }
 
-        public IList<V2CharactersBlueprints> Blueprint(SsoToken token)
+        public IList<V3CharactersBlueprints> Blueprint(SsoToken token)
         {
             return _internalLatestCharacter.Blueprints(token);
         }
 
-        public async Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token)
+        public async Task<IList<V3CharactersBlueprints>> BlueprintAsync(SsoToken token)
         {
             return await _internalLatestCharacter.BlueprintsAsync(token);
         }
 
-        public IList<V1CharactersCorporationHistory> CorporationHistory(int characterId)
+        public IList<V2CharactersCorporationHistory> CorporationHistory(int characterId)
         {
             return _internalLatestCharacter.CorporationHistory(characterId);
         }
 
-        public async Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
+        public async Task<IList<V2CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
             return await _internalLatestCharacter.CorporationHistoryAsync(characterId);
         }
@@ -69,42 +69,42 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.CspaCostAsync(token, characters);
         }
 
-        public V1CharactersFatigue Fatigue(SsoToken token)
+        public V2CharactersFatigue Fatigue(SsoToken token)
         {
             return _internalLatestCharacter.Fatigue(token);
         }
 
-        public async Task<V1CharactersFatigue> FatigueAsync(SsoToken token)
+        public async Task<V2CharactersFatigue> FatigueAsync(SsoToken token)
         {
             return await _internalLatestCharacter.FatigueAsync(token);
         }
 
-        public IList<V1CharactersMedals> Medals(SsoToken token)
+        public IList<V2CharactersMedals> Medals(SsoToken token)
         {
             return _internalLatestCharacter.Medals(token);
         }
 
-        public async Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token)
+        public async Task<IList<V2CharactersMedals>> MedalsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.MedalsAsync(token);
         }
 
-        public IList<V5CharactersNotifications> Notifications(SsoToken token)
+        public IList<V6CharactersNotifications> Notifications(SsoToken token)
         {
             return _internalLatestCharacter.Notifications(token);
         }
 
-        public async Task<IList<V5CharactersNotifications>> NotificationsAsync(SsoToken token)
+        public async Task<IList<V6CharactersNotifications>> NotificationsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.NotificationsAsync(token);
         }
 
-        public IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token)
+        public IList<V2CharactersNotificationsContacts> ContactNotifications(SsoToken token)
         {
             return _internalLatestCharacter.ContactNotifications(token);
         }
 
-        public async Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
+        public async Task<IList<V2CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.ContactNotificationsAsync(token);
         }
@@ -119,12 +119,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.PortraitAsync(characterId);
         }
 
-        public V2CharacterRoles Roles(SsoToken token)
+        public V3CharacterRoles Roles(SsoToken token)
         {
             return _internalLatestCharacter.Roles(token);
         }
 
-        public async Task<V2CharacterRoles> RolesAsync(SsoToken token)
+        public async Task<V3CharacterRoles> RolesAsync(SsoToken token)
         {
             return await _internalLatestCharacter.RolesAsync(token);
         }
@@ -139,32 +139,22 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.StandingsAsync(token);
         }
 
-        public IList<V2CharactersStats> Stats(SsoToken token)
-        {
-            return _internalLatestCharacter.Stats(token);
-        }
-
-        public async Task<IList<V2CharactersStats>> StatsAsync(SsoToken token)
-        {
-            return await _internalLatestCharacter.StatsAsync(token);
-        }
-
-        public IList<V1CharacterTitles> Titles(SsoToken token)
+        public IList<V2CharacterTitles> Titles(SsoToken token)
         {
             return _internalLatestCharacter.Titles(token);
         }
 
-        public async Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token)
+        public async Task<IList<V2CharacterTitles>> TitlesAsync(SsoToken token)
         {
             return await _internalLatestCharacter.TitlesAsync(token);
         }
 
-        public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)
+        public IList<V2CharacterAffiliations> Affiliations(IList<int> characters)
         {
             return _internalLatestCharacter.Affiliations(characters);
         }
 
-        public async Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
+        public async Task<IList<V2CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
         {
             return await _internalLatestCharacter.AffiliationsAsync(characters);
         }

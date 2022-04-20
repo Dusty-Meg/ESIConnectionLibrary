@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V4CorporationPublicInfo
+    public class V5CorporationPublicInfo
     {
         public int? AllianceId { get; set; }
         public int CeoId { get; set; }
@@ -17,5 +17,6 @@ namespace ESIConnectionLibrary.PublicModels
         public float TaxRate { get; set; }
         public string Ticker { get; set; }
         public string Url { get; set; }
+        public bool? WarEligible { get; set; }
     }
 }

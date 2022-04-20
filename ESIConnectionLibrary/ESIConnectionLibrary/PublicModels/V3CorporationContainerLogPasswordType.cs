@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V2CorporationContainerLogPasswordType
+    public enum V3CorporationContainerLogPasswordType
     {
         Config,
         General

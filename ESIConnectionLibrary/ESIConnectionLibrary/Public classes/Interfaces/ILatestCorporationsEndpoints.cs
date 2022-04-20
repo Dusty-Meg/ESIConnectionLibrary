@@ -10,8 +10,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<V2CorporationAllianceHistory>> AllianceHistoryAsync(long corporationId);
         PagedModel<V2CorporationBlueprints> Blueprints(SsoToken token, long corporationId, int page);
         Task<PagedModel<V2CorporationBlueprints>> BlueprintsAsync(SsoToken token, long corporationId, int page);
-        PagedModel<V2CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page);
-        Task<PagedModel<V2CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page);
+        PagedModel<V3CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page);
+        Task<PagedModel<V3CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page);
         V2CorporationDivisions Divisions(SsoToken token, long corporationId);
         Task<V2CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId);
         IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId);

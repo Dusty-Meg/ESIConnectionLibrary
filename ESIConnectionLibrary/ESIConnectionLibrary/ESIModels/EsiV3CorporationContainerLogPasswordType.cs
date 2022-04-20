@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV2CorporationContainerLogPasswordType
+    internal enum EsiV3CorporationContainerLogPasswordType
     {
         [EnumMember(Value = "config")]
         Config,

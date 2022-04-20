@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV2CorporationContainerLogAction
+    internal enum EsiV3CorporationContainerLogAction
     {
         [EnumMember(Value = "add")]
         Add,

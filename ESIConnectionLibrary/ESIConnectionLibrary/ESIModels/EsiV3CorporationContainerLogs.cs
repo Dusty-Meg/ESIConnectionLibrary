@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV2CorporationContainerLogs
+    internal class EsiV3CorporationContainerLogs
     {
         [JsonProperty(PropertyName = "action")]
-        public EsiV2CorporationContainerLogAction Action { get; set; }
+        public EsiV3CorporationContainerLogAction Action { get; set; }
 
         [JsonProperty(PropertyName = "character_id")]
         public int CharacterId { get; set; }
@@ -33,7 +33,7 @@ namespace ESIConnectionLibrary.ESIModels
         public int? OldConfigBitmask { get; set; }
 
         [JsonProperty(PropertyName = "password_type")]
-        public EsiV2CorporationContainerLogPasswordType? PasswordType { get; set; }
+        public EsiV3CorporationContainerLogPasswordType? PasswordType { get; set; }
 
         [JsonProperty(PropertyName = "quantity")]
         public int? Quantity { get; set; }

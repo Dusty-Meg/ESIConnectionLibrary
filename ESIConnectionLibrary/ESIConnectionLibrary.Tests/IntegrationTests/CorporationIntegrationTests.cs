@@ -129,7 +129,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void ContainerLogs_succesfully_returns_a_list_of_V2CorporationContainerLogs()
+        public void ContainerLogs_succesfully_returns_a_list_of_V3CorporationContainerLogs()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -139,20 +139,20 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V2CorporationContainerLogs> returnModel = internalLatestCorporations.ContainerLogs(inputToken, 123123, 1);
+            PagedModel<V3CorporationContainerLogs> returnModel = internalLatestCorporations.ContainerLogs(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
-            Assert.Equal(V2CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
+            Assert.Equal(V3CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
             Assert.Equal(2112625428, returnModel.Model.First().CharacterId);
             Assert.Equal(1000000012279, returnModel.Model.First().ContainerId);
             Assert.Equal(17365, returnModel.Model.First().ContainerTypeId);
             Assert.Equal(LocationFlagCorporation.CorpSag1, returnModel.Model.First().LocationFlag);
             Assert.Equal(1000000012278, returnModel.Model.First().LocationId);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().LoggedAt);
-            Assert.Equal(V2CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
+            Assert.Equal(V3CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
 
-            Assert.Equal(V2CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
             Assert.Equal(2112625428, returnModel.Model[1].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[1].ContainerId);
             Assert.Equal(17365, returnModel.Model[1].ContainerTypeId);
@@ -162,7 +162,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
             Assert.Equal(30, returnModel.Model[1].Quantity);
             Assert.Equal(1230, returnModel.Model[1].TypeId);
 
-            Assert.Equal(V2CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
             Assert.Equal(2112625428, returnModel.Model[2].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[2].ContainerId);
             Assert.Equal(17365, returnModel.Model[2].ContainerTypeId);
@@ -174,7 +174,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task ContainerLogsAsync_succesfully_returns_a_list_of_V2CorporationContainerLogs()
+        public async Task ContainerLogsAsync_succesfully_returns_a_list_of_V3CorporationContainerLogs()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -184,20 +184,20 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V2CorporationContainerLogs> returnModel = await internalLatestCorporations.ContainerLogsAsync(inputToken, 123123, 1);
+            PagedModel<V3CorporationContainerLogs> returnModel = await internalLatestCorporations.ContainerLogsAsync(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
-            Assert.Equal(V2CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
+            Assert.Equal(V3CorporationContainerLogAction.SetPassword, returnModel.Model.First().Action);
             Assert.Equal(2112625428, returnModel.Model.First().CharacterId);
             Assert.Equal(1000000012279, returnModel.Model.First().ContainerId);
             Assert.Equal(17365, returnModel.Model.First().ContainerTypeId);
             Assert.Equal(LocationFlagCorporation.CorpSag1, returnModel.Model.First().LocationFlag);
             Assert.Equal(1000000012278, returnModel.Model.First().LocationId);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().LoggedAt);
-            Assert.Equal(V2CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
+            Assert.Equal(V3CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
 
-            Assert.Equal(V2CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
             Assert.Equal(2112625428, returnModel.Model[1].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[1].ContainerId);
             Assert.Equal(17365, returnModel.Model[1].ContainerTypeId);
@@ -207,7 +207,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
             Assert.Equal(30, returnModel.Model[1].Quantity);
             Assert.Equal(1230, returnModel.Model[1].TypeId);
 
-            Assert.Equal(V2CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
+            Assert.Equal(V3CorporationContainerLogAction.Configure, returnModel.Model[2].Action);
             Assert.Equal(2112625428, returnModel.Model[2].CharacterId);
             Assert.Equal(1000000012279, returnModel.Model[2].ContainerId);
             Assert.Equal(17365, returnModel.Model[2].ContainerTypeId);

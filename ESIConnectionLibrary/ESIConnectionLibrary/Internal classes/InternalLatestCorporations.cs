@@ -115,34 +115,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V2CorporationBlueprints>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public PagedModel<V2CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page)
+        public PagedModel<V3CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_container_logs_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2ContainersLogs(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3ContainersLogs(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV2CorporationContainerLogs> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationContainerLogs>>(esiRaw.Model);
+            IList<EsiV3CorporationContainerLogs> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationContainerLogs>>(esiRaw.Model);
 
-            IList<V2CorporationContainerLogs> mapped = _mapper.Map<IList<EsiV2CorporationContainerLogs>, IList<V2CorporationContainerLogs>>(esiModel);
+            IList<V3CorporationContainerLogs> mapped = _mapper.Map<IList<EsiV3CorporationContainerLogs>, IList<V3CorporationContainerLogs>>(esiModel);
 
-            return new PagedModel<V2CorporationContainerLogs>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+            return new PagedModel<V3CorporationContainerLogs>{ Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public async Task<PagedModel<V2CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V3CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_container_logs_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2ContainersLogs(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3ContainersLogs(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 600));
 
-            IList<EsiV2CorporationContainerLogs> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationContainerLogs>>(esiRaw.Model);
+            IList<EsiV3CorporationContainerLogs> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationContainerLogs>>(esiRaw.Model);
 
-            IList<V2CorporationContainerLogs> mapped = _mapper.Map<IList<EsiV2CorporationContainerLogs>, IList<V2CorporationContainerLogs>>(esiModel);
+            IList<V3CorporationContainerLogs> mapped = _mapper.Map<IList<EsiV3CorporationContainerLogs>, IList<V3CorporationContainerLogs>>(esiModel);
 
-            return new PagedModel<V2CorporationContainerLogs> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
+            return new PagedModel<V3CorporationContainerLogs> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
         public V2CorporationDivisions Divisions(SsoToken token, long corporationId)

@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V2CorporationContainerLogAction
+    public enum V3CorporationContainerLogAction
     {
         Add,
         Assemble,

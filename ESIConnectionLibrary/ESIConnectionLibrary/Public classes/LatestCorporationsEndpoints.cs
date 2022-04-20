@@ -50,7 +50,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.BlueprintsAsync(token, corporationId, page);
         }
 
-        public PagedModel<V2CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page)
+        public PagedModel<V3CorporationContainerLogs> ContainerLogs(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -60,7 +60,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.ContainerLogs(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V2CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V3CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {

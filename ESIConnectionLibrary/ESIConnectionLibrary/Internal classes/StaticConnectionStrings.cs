@@ -442,7 +442,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV1StandingsRaw => "/v1/corporations/{corporation_id}/standings/";
         private static string CorporationV1StarbasesRaw => "/v1/corporations/{corporation_id}/starbases/";
         private static string CorporationV1StarbaseRaw => "/v1/corporations/{corporation_id}/starbases/{starbase_id}/";
-        private static string CorporationV3StructuresRaw => "/v3/corporations/{corporation_id}/structures/";
+        private static string CorporationV4StructuresRaw => "/v4/corporations/{corporation_id}/structures/";
         private static string CorporationV1CorporationTitlesRaw => "/v1/corporations/{corporation_id}/titles/";
         private static string CorporationV2NpcCorpsRaw => "/v2/corporations/npccorps/";
 
@@ -541,9 +541,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1StarbaseRaw, "{corporation_id}", corporationId.ToString(), "{starbase_id}", starbaseId.ToString());
         }
 
-        public static string CorporationV3Structures(long corporationId, int page)
+        public static string CorporationV4Structures(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV3StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV4StructuresRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string CorporationV1CorporationTitles(long corporationId)

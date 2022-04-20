@@ -144,7 +144,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("CorporationV1StandingsRaw")]
         [InlineData("CorporationV1StarbasesRaw")]
         [InlineData("CorporationV1StarbaseRaw")]
-        [InlineData("CorporationV3StructuresRaw")]
+        [InlineData("CorporationV4StructuresRaw")]
         [InlineData("CorporationV1CorporationTitlesRaw")]
         [InlineData("CorporationV2NpcCorpsRaw")]
         public void CorporationsEndpoints(string endpoint)

@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V3CorporationStructuresState
+    public enum V4CorporationStructuresState
     {
         AnchorVulnerable,
         Anchoring,

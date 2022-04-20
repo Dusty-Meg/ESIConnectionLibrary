@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3CorporationStructures
+    internal class EsiV4CorporationStructures
     {
         [JsonProperty(PropertyName = "corporation_id")]
         public int CorporationId { get; set; }
@@ -12,14 +12,14 @@ namespace ESIConnectionLibrary.ESIModels
         [JsonProperty(PropertyName = "fuel_expires")]
         public DateTime? FuelExpires { get; set; }
 
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
         [JsonProperty(PropertyName = "next_reinforce_apply")]
         public DateTime? NextReinforceApply { get; set; }
 
         [JsonProperty(PropertyName = "next_reinforce_hour")]
         public int? NextReinforceHour { get; set; }
-
-        [JsonProperty(PropertyName = "next_reinforce_weekday")]
-        public int? NextReinforceWeekday { get; set; }
 
         [JsonProperty(PropertyName = "profile_id")]
         public int ProfileId { get; set; }
@@ -28,10 +28,10 @@ namespace ESIConnectionLibrary.ESIModels
         public int ReinforceHour { get; set; }
 
         [JsonProperty(PropertyName = "services")]
-        public IList<EsiV3CorporationStructuresServices> Services { get; set; }
+        public IList<EsiV4CorporationStructuresServices> Services { get; set; }
 
         [JsonProperty(PropertyName = "state")]
-        public EsiV3CorporationStructuresState State { get; set; }
+        public EsiV4CorporationStructuresState State { get; set; }
 
         [JsonProperty(PropertyName = "state_timer_end")]
         public DateTime? StateTimerEnd { get; set; }

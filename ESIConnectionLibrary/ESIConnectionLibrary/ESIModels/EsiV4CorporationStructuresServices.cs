@@ -2,12 +2,12 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV3CorporationStructuresServices
+    internal class EsiV4CorporationStructuresServices
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "state")]
-        public EsiV3CorporationStructuresServicesState State { get; set; }
+        public EsiV4CorporationStructuresServicesState State { get; set; }
     }
 }

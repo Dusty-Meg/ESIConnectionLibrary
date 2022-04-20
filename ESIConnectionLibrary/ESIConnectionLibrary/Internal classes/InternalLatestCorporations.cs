@@ -547,34 +547,34 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V1CorporationStarbase>(esiModel);
         }
 
-        public PagedModel<V3CorporationStructures> Structures(SsoToken token, long corporationId, int page)
+        public PagedModel<V4CorporationStructures> Structures(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_structures_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3Structures(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV4Structures(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3CorporationStructures> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationStructures>>(esiRaw.Model);
+            IList<EsiV4CorporationStructures> esiModel = JsonConvert.DeserializeObject<IList<EsiV4CorporationStructures>>(esiRaw.Model);
 
-            IList<V3CorporationStructures> mapped = _mapper.Map<IList<EsiV3CorporationStructures>, IList<V3CorporationStructures>>(esiModel);
+            IList<V4CorporationStructures> mapped = _mapper.Map<IList<EsiV4CorporationStructures>, IList<V4CorporationStructures>>(esiModel);
 
-            return new PagedModel<V3CorporationStructures> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V4CorporationStructures> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public async Task<PagedModel<V3CorporationStructures>> StructuresAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V4CorporationStructures>> StructuresAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_structures_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3Structures(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV4Structures(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV3CorporationStructures> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationStructures>>(esiRaw.Model);
+            IList<EsiV4CorporationStructures> esiModel = JsonConvert.DeserializeObject<IList<EsiV4CorporationStructures>>(esiRaw.Model);
 
-            IList<V3CorporationStructures> mapped = _mapper.Map<IList<EsiV3CorporationStructures>, IList<V3CorporationStructures>>(esiModel);
+            IList<V4CorporationStructures> mapped = _mapper.Map<IList<EsiV4CorporationStructures>, IList<V4CorporationStructures>>(esiModel);
 
-            return new PagedModel<V3CorporationStructures> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V4CorporationStructures> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
         public IList<V1CorporationTitles> Titles(SsoToken token, long corporationId)

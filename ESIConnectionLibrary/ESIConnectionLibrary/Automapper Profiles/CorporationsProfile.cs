@@ -9,7 +9,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
         public CorporationsProfile()
         {
             CreateMap<EsiV1CorporationTitles, V1CorporationTitles>();
-            CreateMap<EsiV3CorporationStructures, V3CorporationStructures>();
+            CreateMap<EsiV4CorporationStructures, V4CorporationStructures>();
             CreateMap<EsiV1CorporationStarbase, V1CorporationStarbase>();
             CreateMap<EsiV1CorporationStarbases, V1CorporationStarbases>();
             CreateMap<EsiV1CorporationStandings, V1CorporationStandings>();

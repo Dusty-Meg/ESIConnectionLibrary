@@ -32,7 +32,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV5CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
+            EsiV5CharactersPublicInfo esiV5PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
 
             return _mapper.Map<EsiV5CharactersPublicInfo, V5CharactersPublicInfo>(esiV5PublicInfo);
         }
@@ -43,7 +43,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV5CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
+            EsiV5CharactersPublicInfo esiV5PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
 
             return _mapper.Map<EsiV5CharactersPublicInfo, V5CharactersPublicInfo>(esiV5PublicInfo);
         }
@@ -113,7 +113,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         public async Task<IList<V2CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV21CharactersCorporationHistory(characterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersCorporationHistory(characterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
@@ -299,7 +299,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV32CharacterRoles esiV3CharacterRoles = JsonConvert.DeserializeObject<EsiV3CharacterRoles>(esiRaw.Model);
+            EsiV3CharacterRoles esiV3CharacterRoles = JsonConvert.DeserializeObject<EsiV3CharacterRoles>(esiRaw.Model);
 
             return _mapper.Map<EsiV3CharacterRoles, V3CharacterRoles>(esiV3CharacterRoles);
         }

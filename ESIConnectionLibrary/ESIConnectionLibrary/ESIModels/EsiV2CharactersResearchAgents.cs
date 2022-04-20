@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharactersResearchAgents
+    internal class EsiV2CharactersResearchAgents
     {
         [JsonProperty(PropertyName = "agent_id")]
         public int AgentId { get; set; }

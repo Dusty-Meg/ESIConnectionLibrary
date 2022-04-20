@@ -48,30 +48,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV5CharactersPublicInfo, V5CharactersPublicInfo>(esiV5PublicInfo);
         }
 
-        public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)
+        public IList<V2CharactersResearchAgents> ResearchAgents(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersResearchAgents(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersResearchAgents(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharactersResearchAgents> esiV1CharactersResearchAgents = JsonConvert.DeserializeObject<IList<EsiV1CharactersResearchAgents>>(esiRaw.Model);
+            IList<EsiV2CharactersResearchAgents> esiV2CharactersResearchAgents = JsonConvert.DeserializeObject<IList<EsiV2CharactersResearchAgents>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersResearchAgents>, IList<V1CharactersResearchAgents>>(esiV1CharactersResearchAgents);
+            return _mapper.Map<IList<EsiV2CharactersResearchAgents>, IList<V2CharactersResearchAgents>>(esiV2CharactersResearchAgents);
         }
 
-        public async Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
+        public async Task<IList<V2CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_agents_research_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersResearchAgents(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersResearchAgents(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharactersResearchAgents> esiV1CharactersResearchAgents = JsonConvert.DeserializeObject<IList<EsiV1CharactersResearchAgents>>(esiRaw.Model);
+            IList<EsiV2CharactersResearchAgents> esiV2CharactersResearchAgents = JsonConvert.DeserializeObject<IList<EsiV2CharactersResearchAgents>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersResearchAgents>, IList<V1CharactersResearchAgents>>(esiV1CharactersResearchAgents);
+            return _mapper.Map<IList<EsiV2CharactersResearchAgents>, IList<V2CharactersResearchAgents>>(esiV2CharactersResearchAgents);
         }
 
         public IList<V3CharactersBlueprints> Blueprints(SsoToken token)

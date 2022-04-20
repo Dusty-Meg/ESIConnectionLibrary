@@ -53,7 +53,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void ResearchAgents_successfully_returns_a_list_of_V1CharactersResearchAgents()
+        public void ResearchAgents_successfully_returns_a_list_of_V2CharactersResearchAgents()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -67,7 +67,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.ResearchAgents(inputToken);
+            IList<V2CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.ResearchAgents(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);
@@ -75,7 +75,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task ResearchAgentsAsync_successfully_returns_a_list_of_V1CharactersResearchAgents()
+        public async Task ResearchAgentsAsync_successfully_returns_a_list_of_V2CharactersResearchAgents()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -89,7 +89,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.ResearchAgentsAsync(inputToken);
+            IList<V2CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.ResearchAgentsAsync(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);

@@ -29,12 +29,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.PublicInfoAsync(characterId);
         }
 
-        public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)
+        public IList<V2CharactersResearchAgents> ResearchAgents(SsoToken token)
         {
             return _internalLatestCharacter.ResearchAgents(token);
         }
 
-        public async Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
+        public async Task<IList<V2CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.ResearchAgentsAsync(token);
         }

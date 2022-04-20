@@ -39,7 +39,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void ResearchAgents_successfully_returns_a_list_of_V1CharactersResearchAgents()
+        public void ResearchAgents_successfully_returns_a_list_of_V2CharactersResearchAgents()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.ResearchAgents(inputToken);
+            IList<V2CharactersResearchAgents> getCharactersResearchAgents = internalLatestCharacter.ResearchAgents(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);
@@ -56,7 +56,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task ResearchAgentsAsync_successfully_returns_a_list_of_V1CharactersResearchAgents()
+        public async Task ResearchAgentsAsync_successfully_returns_a_list_of_V2CharactersResearchAgents()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_agents_research_v1;
@@ -65,7 +65,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.ResearchAgentsAsync(inputToken);
+            IList<V2CharactersResearchAgents> getCharactersResearchAgents = await internalLatestCharacter.ResearchAgentsAsync(inputToken);
 
             Assert.Equal(1, getCharactersResearchAgents.Count);
             Assert.Equal(3009358, getCharactersResearchAgents.First().AgentId);

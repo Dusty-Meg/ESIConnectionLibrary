@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4CorporationPublicInfo
+    internal class EsiV5CorporationPublicInfo
     {
         [JsonProperty(PropertyName = "alliance_id")]
         public int? AllianceId { get; set; }
@@ -43,5 +43,8 @@ namespace ESIConnectionLibrary.ESIModels
 
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
+
+        [JsonProperty(PropertyName = "war_eligible")]
+        public bool? WarEligible { get; set; }
     }
 }

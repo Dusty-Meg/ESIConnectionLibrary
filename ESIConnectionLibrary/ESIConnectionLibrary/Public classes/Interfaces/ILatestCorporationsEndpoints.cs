@@ -32,8 +32,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<V2CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId);
         IList<int> NpcCorps();
         Task<IList<int>> NpcCorpsAsync();
-        V4CorporationPublicInfo PublicInfo(long corporationId);
-        Task<V4CorporationPublicInfo> PublicInfoAsync(long corporationId);
+        V5CorporationPublicInfo PublicInfo(long corporationId);
+        Task<V5CorporationPublicInfo> PublicInfoAsync(long corporationId);
         PagedModel<V2CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page);
         Task<PagedModel<V2CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page);
         IList<V2CorporationRoles> Roles(SsoToken token, long corporationId);

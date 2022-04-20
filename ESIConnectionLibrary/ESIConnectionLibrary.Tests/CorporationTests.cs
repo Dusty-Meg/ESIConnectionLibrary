@@ -13,7 +13,7 @@ namespace ESIConnectionLibrary.Tests
     public class CorporationTests
     {
         [Fact]
-        public void PublicInfo_successully_returns_a_V4CorporationPublicInfo()
+        public void PublicInfo_successully_returns_a_V5CorporationPublicInfo()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -23,7 +23,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V4CorporationPublicInfo returnModel = internalLatestCorporations.PublicInfo(18888888);
+            V5CorporationPublicInfo returnModel = internalLatestCorporations.PublicInfo(18888888);
 
             Assert.Equal(434243723, returnModel.AllianceId);
             Assert.Equal(180548812, returnModel.CeoId);
@@ -38,7 +38,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task PublicInfoAsync_successully_returns_a_V4CorporationPublicInfo()
+        public async Task PublicInfoAsync_successully_returns_a_V5CorporationPublicInfo()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -48,7 +48,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V4CorporationPublicInfo returnModel = await internalLatestCorporations.PublicInfoAsync(18888888);
+            V5CorporationPublicInfo returnModel = await internalLatestCorporations.PublicInfoAsync(18888888);
 
             Assert.Equal(434243723, returnModel.AllianceId);
             Assert.Equal(180548812, returnModel.CeoId);

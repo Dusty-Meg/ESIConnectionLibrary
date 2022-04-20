@@ -41,26 +41,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return (int)(todaysDt - now).TotalSeconds;
         }
 
-        public V4CorporationPublicInfo PublicInfo(long corporationId)
+        public V5CorporationPublicInfo PublicInfo(long corporationId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV4PublicInfo(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV5PublicInfo(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV4CorporationPublicInfo esiModel = JsonConvert.DeserializeObject<EsiV4CorporationPublicInfo>(esiRaw.Model);
+            EsiV5CorporationPublicInfo esiModel = JsonConvert.DeserializeObject<EsiV5CorporationPublicInfo>(esiRaw.Model);
 
-            return _mapper.Map<V4CorporationPublicInfo>(esiModel);
+            return _mapper.Map<V5CorporationPublicInfo>(esiModel);
         }
 
-        public async Task<V4CorporationPublicInfo> PublicInfoAsync(long corporationId)
+        public async Task<V5CorporationPublicInfo> PublicInfoAsync(long corporationId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV4PublicInfo(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV5PublicInfo(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV4CorporationPublicInfo esiModel = JsonConvert.DeserializeObject<EsiV4CorporationPublicInfo>(esiRaw.Model);
+            EsiV5CorporationPublicInfo esiModel = JsonConvert.DeserializeObject<EsiV5CorporationPublicInfo>(esiRaw.Model);
 
-            return _mapper.Map<V4CorporationPublicInfo>(esiModel);
+            return _mapper.Map<V5CorporationPublicInfo>(esiModel);
         }
 
         public IList<V3CorporationAllianceHistory> AllianceHistory(long corporationId)

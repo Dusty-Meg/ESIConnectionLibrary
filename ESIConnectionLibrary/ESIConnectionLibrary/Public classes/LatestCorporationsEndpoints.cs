@@ -20,12 +20,12 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCorporations = new InternalLatestCorporations(webClient, userAgent, testing);
         }
 
-        public V4CorporationPublicInfo PublicInfo(long corporationId)
+        public V5CorporationPublicInfo PublicInfo(long corporationId)
         {
             return _internalLatestCorporations.PublicInfo(corporationId);
         }
 
-        public async Task<V4CorporationPublicInfo> PublicInfoAsync(long corporationId)
+        public async Task<V5CorporationPublicInfo> PublicInfoAsync(long corporationId)
         {
             return await _internalLatestCorporations.PublicInfoAsync(corporationId);
         }

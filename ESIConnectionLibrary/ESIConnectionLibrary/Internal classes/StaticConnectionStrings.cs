@@ -423,7 +423,7 @@ namespace ESIConnectionLibrary.Internal_classes
 
         #region Corporations
 
-        private static string CorporationV4PublicInfoRaw => "/v4/corporations/{corporation_id}/";
+        private static string CorporationV5PublicInfoRaw => "/v5/corporations/{corporation_id}/";
         private static string CorporationV3AllianceHistoryRaw => "/v3/corporations/{corporation_id}/alliancehistory/";
         private static string CorporationV3BluepintsRaw => "/v3/corporations/{corporation_id}/blueprints/";
         private static string CorporationV3ContainersLogsRaw => "/v3/corporations/{corporation_id}/containers/logs/";
@@ -446,9 +446,9 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV2CorporationTitlesRaw => "/v2/corporations/{corporation_id}/titles/";
         private static string CorporationV2NpcCorpsRaw => "/v2/corporations/npccorps/";
 
-        public static string CorporationV4PublicInfo(long corporationId)
+        public static string CorporationV5PublicInfo(long corporationId)
         {
-            return UrlBuilder(CorporationV4PublicInfoRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV5PublicInfoRaw, "{corporation_id}", corporationId.ToString());
         }
 
         public static string CorporationV3AllianceHistory(long corporationId)

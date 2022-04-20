@@ -337,10 +337,10 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             V2CharactersPortrait getCharactersPortrait = internalLatestCharacter.Portrait(characterId);
 
-            Assert.Equal("https://images.evetech.net/Character/95465499_64.jpg", getCharactersPortrait.Px64X64);
-            Assert.Equal("https://images.evetech.net/Character/95465499_128.jpg", getCharactersPortrait.Px128X128);
-            Assert.Equal("https://images.evetech.net/Character/95465499_256.jpg", getCharactersPortrait.Px256X256);
-            Assert.Equal("https://images.evetech.net/Character/95465499_512.jpg", getCharactersPortrait.Px512X512);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=64", getCharactersPortrait.Px64X64);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=128", getCharactersPortrait.Px128X128);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=256", getCharactersPortrait.Px256X256);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=512", getCharactersPortrait.Px512X512);
         }
 
         [Fact]
@@ -352,10 +352,10 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             V2CharactersPortrait getCharactersPortrait = await internalLatestCharacter.PortraitAsync(characterId);
 
-            Assert.Equal("https://images.evetech.net/Character/95465499_64.jpg", getCharactersPortrait.Px64X64);
-            Assert.Equal("https://images.evetech.net/Character/95465499_128.jpg", getCharactersPortrait.Px128X128);
-            Assert.Equal("https://images.evetech.net/Character/95465499_256.jpg", getCharactersPortrait.Px256X256);
-            Assert.Equal("https://images.evetech.net/Character/95465499_512.jpg", getCharactersPortrait.Px512X512);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=64", getCharactersPortrait.Px64X64);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=128", getCharactersPortrait.Px128X128);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=256", getCharactersPortrait.Px256X256);
+            Assert.Equal("https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=512", getCharactersPortrait.Px512X512);
         }
 
         [Fact]

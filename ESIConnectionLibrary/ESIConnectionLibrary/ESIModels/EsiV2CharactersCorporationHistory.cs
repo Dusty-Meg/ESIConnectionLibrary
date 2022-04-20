@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharactersCorporationHistory
+    internal class EsiV2CharactersCorporationHistory
     {
         [JsonProperty(PropertyName = "start_date")]
         public DateTime StartDate { get; set; }

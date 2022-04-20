@@ -49,12 +49,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.BlueprintsAsync(token);
         }
 
-        public IList<V1CharactersCorporationHistory> CorporationHistory(int characterId)
+        public IList<V2CharactersCorporationHistory> CorporationHistory(int characterId)
         {
             return _internalLatestCharacter.CorporationHistory(characterId);
         }
 
-        public async Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
+        public async Task<IList<V2CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
             return await _internalLatestCharacter.CorporationHistoryAsync(characterId);
         }

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharactersCorporationHistory
+    public class V2CharactersCorporationHistory
     {
         public DateTime StartDate { get; set; }
 

@@ -100,26 +100,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharactersBlueprints>, IList<V2CharactersBlueprints>>(esiv2CharactersBlueprints);
         }
 
-        public IList<V1CharactersCorporationHistory> CorporationHistory(int characterId)
+        public IList<V2CharactersCorporationHistory> CorporationHistory(int characterId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersCorporationHistory(characterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersCorporationHistory(characterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1CharactersCorporationHistory> esiV1CharactersCorporationHistory = JsonConvert.DeserializeObject<IList<EsiV1CharactersCorporationHistory>>(esiRaw.Model);
+            IList<EsiV2CharactersCorporationHistory> esiV2CharactersCorporationHistory = JsonConvert.DeserializeObject<IList<EsiV2CharactersCorporationHistory>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersCorporationHistory>, IList<V1CharactersCorporationHistory>>(esiV1CharactersCorporationHistory);
+            return _mapper.Map<IList<EsiV2CharactersCorporationHistory>, IList<V2CharactersCorporationHistory>>(esiV2CharactersCorporationHistory);
         }
 
-        public async Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
+        public async Task<IList<V2CharactersCorporationHistory>> CorporationHistoryAsync(int characterId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersCorporationHistory(characterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV21CharactersCorporationHistory(characterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV1CharactersCorporationHistory> esiV1CharactersCorporationHistory = JsonConvert.DeserializeObject<IList<EsiV1CharactersCorporationHistory>>(esiRaw.Model);
+            IList<EsiV2CharactersCorporationHistory> esiV2CharactersCorporationHistory = JsonConvert.DeserializeObject<IList<EsiV2CharactersCorporationHistory>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersCorporationHistory>, IList<V1CharactersCorporationHistory>>(esiV1CharactersCorporationHistory);
+            return _mapper.Map<IList<EsiV2CharactersCorporationHistory>, IList<V2CharactersCorporationHistory>>(esiV2CharactersCorporationHistory);
         }
 
         public float CspaCost(SsoToken token, IList<int> characters)

@@ -10,8 +10,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters);
         IList<V2CharactersBlueprints> Blueprint(SsoToken token);
         Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token);
-        IList<V1CharactersCorporationHistory> CorporationHistory(int characterId);
-        Task<IList<V1CharactersCorporationHistory>> CorporationHistoryAsync(int characterId);
+        IList<V2CharactersCorporationHistory> CorporationHistory(int characterId);
+        Task<IList<V2CharactersCorporationHistory>> CorporationHistoryAsync(int characterId);
         float CspaCost(SsoToken token, IList<int> characters);
         Task<float> CspaCostAsync(SsoToken token, IList<int> characters);
         V1CharactersFatigue Fatigue(SsoToken token);

@@ -178,7 +178,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV4CharactersPublicInfoRaw => "/v4/characters/{character_id}/";
         private static string EsiV1CharactersResearchAgentsRaw => "/v1/characters/{character_id}/agents_research/";
         private static string EsiV2CharactersBlueprintsRaw => "/v2/characters/{character_id}/blueprints/";
-        private static string EsiV1CharactersCorporationHistoryRaw => "/v1/characters/{character_id}/corporationhistory/";
+        private static string EsiV2CharactersCorporationHistoryRaw => "/v2/characters/{character_id}/corporationhistory/";
         private static string EsiV5CharactersCspaRaw => "/v5/characters/{character_id}/cspa/";
         private static string EsiV1CharactersFatigueRaw => "/v1/characters/{character_id}/fatigue/";
         private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
@@ -205,9 +205,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharactersBlueprintsRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersCorporationHistory(int characterId)
+        public static string EsiV2CharactersCorporationHistory(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersCorporationHistoryRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersCorporationHistoryRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV5CharactersCspa(int characterId)

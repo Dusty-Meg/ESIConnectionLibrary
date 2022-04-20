@@ -143,7 +143,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void CorporationHistory_successfully_returns_a_list_of_V1CharactersCorporationHistory()
+        public void CorporationHistory_successfully_returns_a_list_of_V2CharactersCorporationHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -155,7 +155,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersCorporationHistory> getCharactersCorporationHistory = internalLatestCharacter.CorporationHistory(characterId);
+            IList<V2CharactersCorporationHistory> getCharactersCorporationHistory = internalLatestCharacter.CorporationHistory(characterId);
 
             Assert.Equal(2, getCharactersCorporationHistory.Count);
             Assert.Equal(90000001, getCharactersCorporationHistory.First().CorporationId);
@@ -164,7 +164,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task CorporationHistoryAsync_successfully_returns_a_list_of_V1CharactersCorporationHistory()
+        public async Task CorporationHistoryAsync_successfully_returns_a_list_of_V2CharactersCorporationHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -176,7 +176,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersCorporationHistory> getCharactersCorporationHistory = await internalLatestCharacter.CorporationHistoryAsync(characterId);
+            IList<V2CharactersCorporationHistory> getCharactersCorporationHistory = await internalLatestCharacter.CorporationHistoryAsync(characterId);
 
             Assert.Equal(2, getCharactersCorporationHistory.Count);
             Assert.Equal(90000001, getCharactersCorporationHistory.First().CorporationId);

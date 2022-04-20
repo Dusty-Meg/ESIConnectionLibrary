@@ -100,7 +100,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.IconsAsync(corporationId);
         }
 
-        public PagedModel<V1CorporationMedals> Medals(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationMedals> Medals(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -110,7 +110,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.Medals(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -120,7 +120,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.MedalsAsync(token, corporationId, page);
         }
 
-        public PagedModel<V1CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -130,7 +130,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.IssuedMedals(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CorporationMedals
+    public class V2CorporationMedals
     {
         public DateTime CreatedAt { get; set; }
         public int CreatorId { get; set; }

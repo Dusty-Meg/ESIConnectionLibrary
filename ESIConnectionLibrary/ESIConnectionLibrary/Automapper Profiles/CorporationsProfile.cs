@@ -18,8 +18,8 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV1CorporationRoles, V1CorporationRoles>();
             CreateMap<EsiV2CorporationMemberTracking, V2CorporationMemberTracking>();
             CreateMap<EsiV1CorporationMembersTitles, V1CorporationMembersTitles>();
-            CreateMap<EsiV1CorporationMedalsIssued, V1CorporationMedalsIssued>();
-            CreateMap<EsiV1CorporationMedals, V1CorporationMedals>();
+            CreateMap<EsiV2CorporationMedalsIssued, V2CorporationMedalsIssued>();
+            CreateMap<EsiV2CorporationMedals, V2CorporationMedals>();
             CreateMap<EsiV1CorporationIcons, V1CorporationIcons>();
             CreateMap<EsiV1CorporationFacilities, V1CorporationFacilities>();
             CreateMap<EsiV2CorporationDivisions, V2CorporationDivisions>();

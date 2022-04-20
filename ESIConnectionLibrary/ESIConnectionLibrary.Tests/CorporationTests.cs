@@ -403,7 +403,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Medals_succesfully_returns_a_list_of_V1CorporationMedals()
+        public void Medals_succesfully_returns_a_list_of_V2CorporationMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -418,7 +418,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedals> returnModel = internalLatestCorporations.Medals(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedals> returnModel = internalLatestCorporations.Medals(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().CreatedAt);
@@ -429,7 +429,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MedalsAsync_succesfully_returns_a_list_of_V1CorporationMedals()
+        public async Task MedalsAsync_succesfully_returns_a_list_of_V2CorporationMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -444,7 +444,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedals> returnModel = await internalLatestCorporations.MedalsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedals> returnModel = await internalLatestCorporations.MedalsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().CreatedAt);
@@ -455,7 +455,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void IssuedMedals_succesfully_returns_a_list_of_V1CorporationMedalsIssued()
+        public void IssuedMedals_succesfully_returns_a_list_of_V2CorporationMedalsIssued()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -470,7 +470,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedalsIssued> returnModel = internalLatestCorporations.IssuedMedals(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedalsIssued> returnModel = internalLatestCorporations.IssuedMedals(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(45678, returnModel.Model.First().CharacterId);
@@ -478,11 +478,11 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(67890, returnModel.Model.First().IssuerId);
             Assert.Equal(123, returnModel.Model.First().MedalId);
             Assert.Equal("Awesome Reason", returnModel.Model.First().Reason);
-            Assert.Equal(V1CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
+            Assert.Equal(V2CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
         }
 
         [Fact]
-        public async Task IssuedMedalsAsync_succesfully_returns_a_list_of_V1CorporationMedalsIssued()
+        public async Task IssuedMedalsAsync_succesfully_returns_a_list_of_V2CorporationMedalsIssued()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -497,7 +497,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationMedalsIssued> returnModel = await internalLatestCorporations.IssuedMedalsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationMedalsIssued> returnModel = await internalLatestCorporations.IssuedMedalsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(45678, returnModel.Model.First().CharacterId);
@@ -505,7 +505,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(67890, returnModel.Model.First().IssuerId);
             Assert.Equal(123, returnModel.Model.First().MedalId);
             Assert.Equal("Awesome Reason", returnModel.Model.First().Reason);
-            Assert.Equal(V1CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
+            Assert.Equal(V2CorporationMedalsIssuedStatus.Private, returnModel.Model.First().Status);
         }
 
         [Fact]

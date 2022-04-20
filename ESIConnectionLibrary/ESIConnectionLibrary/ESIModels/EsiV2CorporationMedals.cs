@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationMedals
+    internal class EsiV2CorporationMedals
     {
         [JsonProperty(PropertyName = "created_at")]
         public DateTime CreatedAt { get; set; }

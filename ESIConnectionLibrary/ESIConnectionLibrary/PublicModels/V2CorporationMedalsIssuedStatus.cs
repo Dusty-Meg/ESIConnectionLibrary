@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1CorporationMedalsIssuedStatus
+    public enum V2CorporationMedalsIssuedStatus
     {
         Private,
         Public

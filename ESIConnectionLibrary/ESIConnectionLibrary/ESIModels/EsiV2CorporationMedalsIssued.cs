@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationMedalsIssued
+    internal class EsiV2CorporationMedalsIssued
     {
         [JsonProperty(PropertyName = "character_id")]
         public int CharacterId { get; set; }
@@ -21,6 +21,6 @@ namespace ESIConnectionLibrary.ESIModels
         public string Reason { get; set; }
 
         [JsonProperty(PropertyName = "status")]
-        public EsiV1CorporationMedalsIssuedStatus Status { get; set; }
+        public EsiV2CorporationMedalsIssuedStatus Status { get; set; }
     }
 }

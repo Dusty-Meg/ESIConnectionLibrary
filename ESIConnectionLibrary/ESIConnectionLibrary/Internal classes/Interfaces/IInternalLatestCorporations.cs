@@ -18,10 +18,10 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<IList<V1CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId);
         V1CorporationIcons Icons(long corporationId);
         Task<V1CorporationIcons> IconsAsync(long corporationId);
-        PagedModel<V1CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page);
-        Task<PagedModel<V1CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page);
-        PagedModel<V1CorporationMedals> Medals(SsoToken token, long corporationId, int page);
-        Task<PagedModel<V1CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page);
+        PagedModel<V2CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page);
+        Task<PagedModel<V2CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page);
+        PagedModel<V2CorporationMedals> Medals(SsoToken token, long corporationId, int page);
+        Task<PagedModel<V2CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page);
         IList<int> Members(SsoToken token, long corporationId);
         Task<IList<int>> MembersAsync(SsoToken token, long corporationId);
         int MembersLimit(SsoToken token, long corporationId);

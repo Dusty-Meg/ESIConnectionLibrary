@@ -430,8 +430,8 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV2DivisionsRaw => "/v2/corporations/{corporation_id}/divisions/";
         private static string CorporationV1FacilitiesRaw => "/v1/corporations/{corporation_id}/facilities/";
         private static string CorporationV1IconsRaw => "/v1/corporations/{corporation_id}/icons/";
-        private static string CorporationV1MedalsRaw => "/v1/corporations/{corporation_id}/medals/";
-        private static string CorporationV1MedalsIssuedRaw => "/v1/corporations/{corporation_id}/medals/issued/";
+        private static string CorporationV2MedalsRaw => "/v2/corporations/{corporation_id}/medals/";
+        private static string CorporationV2MedalsIssuedRaw => "/v2/corporations/{corporation_id}/medals/issued/";
         private static string CorporationV4MembersRaw => "/v4/corporations/{corporation_id}/members/";
         private static string CorporationV1MembersLimitRaw => "/v1/corporations/{corporation_id}/members/limit/";
         private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
@@ -481,14 +481,14 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1IconsRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Medals(long corporationId, int page)
+        public static string CorporationV2Medals(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1MedalsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2MedalsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1MedalsIssued(long corporationId, int page)
+        public static string CorporationV2MedalsIssued(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1MedalsIssuedRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2MedalsIssuedRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string CorporationV4Members(long corporationId)

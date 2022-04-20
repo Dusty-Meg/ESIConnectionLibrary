@@ -219,64 +219,64 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V1CorporationIcons>(esiModel);
         }
 
-        public PagedModel<V1CorporationMedals> Medals(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationMedals> Medals(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Medals(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Medals(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMedals> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMedals>>(esiRaw.Model);
+            IList<EsiV2CorporationMedals> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMedals>>(esiRaw.Model);
 
-            IList<V1CorporationMedals> mapped = _mapper.Map<IList<EsiV1CorporationMedals>, IList<V1CorporationMedals>>(esiModel);
+            IList<V2CorporationMedals> mapped = _mapper.Map<IList<EsiV2CorporationMedals>, IList<V2CorporationMedals>>(esiModel);
 
-            return new PagedModel<V1CorporationMedals>{ CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationMedals>{ CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public async Task<PagedModel<V1CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationMedals>> MedalsAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Medals(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Medals(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMedals> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMedals>>(esiRaw.Model);
+            IList<EsiV2CorporationMedals> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMedals>>(esiRaw.Model);
 
-            IList<V1CorporationMedals> mapped = _mapper.Map<IList<EsiV1CorporationMedals>, IList<V1CorporationMedals>>(esiModel);
+            IList<V2CorporationMedals> mapped = _mapper.Map<IList<EsiV2CorporationMedals>, IList<V2CorporationMedals>>(esiModel);
 
-            return new PagedModel<V1CorporationMedals> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationMedals> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public PagedModel<V1CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1MedalsIssued(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2MedalsIssued(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMedalsIssued> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMedalsIssued>>(esiRaw.Model);
+            IList<EsiV2CorporationMedalsIssued> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMedalsIssued>>(esiRaw.Model);
 
-            IList<V1CorporationMedalsIssued> mapped = _mapper.Map<IList<EsiV1CorporationMedalsIssued>, IList<V1CorporationMedalsIssued>>(esiModel);
+            IList<V2CorporationMedalsIssued> mapped = _mapper.Map<IList<EsiV2CorporationMedalsIssued>, IList<V2CorporationMedalsIssued>>(esiModel);
 
-            return new PagedModel<V1CorporationMedalsIssued> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationMedalsIssued> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public async Task<PagedModel<V1CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1MedalsIssued(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2MedalsIssued(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMedalsIssued> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMedalsIssued>>(esiRaw.Model);
+            IList<EsiV2CorporationMedalsIssued> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMedalsIssued>>(esiRaw.Model);
 
-            IList<V1CorporationMedalsIssued> mapped = _mapper.Map<IList<EsiV1CorporationMedalsIssued>, IList<V1CorporationMedalsIssued>>(esiModel);
+            IList<V2CorporationMedalsIssued> mapped = _mapper.Map<IList<EsiV2CorporationMedalsIssued>, IList<V2CorporationMedalsIssued>>(esiModel);
 
-            return new PagedModel<V1CorporationMedalsIssued> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationMedalsIssued> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
         public IList<int> Members(SsoToken token, long corporationId)

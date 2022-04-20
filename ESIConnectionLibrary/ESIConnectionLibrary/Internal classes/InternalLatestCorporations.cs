@@ -375,60 +375,60 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CorporationMemberTracking>, IList<V2CorporationMemberTracking>>(esiModel);
         }
 
-        public IList<V1CorporationRoles> Roles(SsoToken token, long corporationId)
+        public IList<V2CorporationRoles> Roles(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Roles(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Roles(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationRoles> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationRoles>>(esiRaw.Model);
+            IList<EsiV2CorporationRoles> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationRoles>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationRoles>, IList<V1CorporationRoles>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationRoles>, IList<V2CorporationRoles>>(esiModel);
         }
 
-        public async Task<IList<V1CorporationRoles>> RolesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationRoles>> RolesAsync(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Roles(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Roles(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationRoles> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationRoles>>(esiRaw.Model);
+            IList<EsiV2CorporationRoles> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationRoles>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationRoles>, IList<V1CorporationRoles>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationRoles>, IList<V2CorporationRoles>>(esiModel);
         }
 
-        public PagedModel<V1CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1RolesHistory(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2RolesHistory(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationRolesHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationRolesHistory>>(esiRaw.Model);
+            IList<EsiV2CorporationRolesHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationRolesHistory>>(esiRaw.Model);
 
-            IList<V1CorporationRolesHistory> mapped = _mapper.Map<IList<EsiV1CorporationRolesHistory>, IList<V1CorporationRolesHistory>>(esiModel);
+            IList<V2CorporationRolesHistory> mapped = _mapper.Map<IList<EsiV2CorporationRolesHistory>, IList<V2CorporationRolesHistory>>(esiModel);
 
-            return new PagedModel<V1CorporationRolesHistory> {CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped};
+            return new PagedModel<V2CorporationRolesHistory> {CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped};
         }
 
-        public async Task<PagedModel<V1CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_corporation_membership_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1RolesHistory(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2RolesHistory(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationRolesHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationRolesHistory>>(esiRaw.Model);
+            IList<EsiV2CorporationRolesHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationRolesHistory>>(esiRaw.Model);
 
-            IList<V1CorporationRolesHistory> mapped = _mapper.Map<IList<EsiV1CorporationRolesHistory>, IList<V1CorporationRolesHistory>>(esiModel);
+            IList<V2CorporationRolesHistory> mapped = _mapper.Map<IList<EsiV2CorporationRolesHistory>, IList<V2CorporationRolesHistory>>(esiModel);
 
-            return new PagedModel<V1CorporationRolesHistory> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationRolesHistory> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
         public PagedModel<V1CorporationShareholders> Shareholders(SsoToken token, long corporationId, int page)

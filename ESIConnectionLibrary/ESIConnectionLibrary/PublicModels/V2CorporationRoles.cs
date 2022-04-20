@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CorporationRoles
+    public class V2CorporationRoles
     {
         public int CharacterId { get; set; }
         public IList<CorporationRoles> GrantableRoles { get; set; }

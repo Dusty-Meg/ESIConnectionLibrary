@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1CorporationRolesHistoryRoleType
+    public enum V2CorporationRolesHistoryRoleType
     {
         GrantableRoles,
         GrantableRolesAtBase,

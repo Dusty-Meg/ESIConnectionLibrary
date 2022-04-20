@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationRolesHistory
+    internal class EsiV2CorporationRolesHistory
     {
         [JsonProperty(PropertyName = "changed_at")]
         public DateTime ChangedAt { get; set; }
@@ -22,6 +22,6 @@ namespace ESIConnectionLibrary.ESIModels
         public IList<EsiCorporationRoles> OldRoles { get; set; }
 
         [JsonProperty(PropertyName = "role_type")]
-        public EsiV1CorporationRolesHistoryRoleType RoleType { get; set; }
+        public EsiV2CorporationRolesHistoryRoleType RoleType { get; set; }
     }
 }

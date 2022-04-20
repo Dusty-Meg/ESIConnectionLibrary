@@ -436,8 +436,8 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV2MembersLimitRaw => "/v2/corporations/{corporation_id}/members/limit/";
         private static string CorporationV2CorporationMemberTitlesRaw => "/v2/corporations/{corporation_id}/members/titles/";
         private static string CorporationV2MemberTrackingRaw => "/v2/corporations/{corporation_id}/membertracking/";
-        private static string CorporationV1RolesRaw => "/v1/corporations/{corporation_id}/roles/";
-        private static string CorporationV1RolesHistoryRaw => "/v1/corporations/{corporation_id}/roles/history/";
+        private static string CorporationV2RolesRaw => "/v2/corporations/{corporation_id}/roles/";
+        private static string CorporationV2RolesHistoryRaw => "/v2/corporations/{corporation_id}/roles/history/";
         private static string CorporationV1ShareHoldersRaw => "/v1/corporations/{corporation_id}/shareholders/";
         private static string CorporationV1StandingsRaw => "/v1/corporations/{corporation_id}/standings/";
         private static string CorporationV2StarbasesRaw => "/v2/corporations/{corporation_id}/starbases/";
@@ -511,14 +511,14 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV2MemberTrackingRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1Roles(long corporationId)
+        public static string CorporationV2Roles(long corporationId)
         {
-            return UrlBuilder(CorporationV1RolesRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2RolesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1RolesHistory(long corporationId, int page)
+        public static string CorporationV2RolesHistory(long corporationId, int page)
         {
-            return UrlBuilder(CorporationV1RolesHistoryRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
+            return UrlBuilder(CorporationV2RolesHistoryRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
         public static string CorporationV1ShareHolders(long corporationId, int page)

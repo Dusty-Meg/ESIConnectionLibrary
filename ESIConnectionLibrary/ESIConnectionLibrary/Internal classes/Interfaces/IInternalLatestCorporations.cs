@@ -34,10 +34,10 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<IList<int>> NpcCorpsAsync();
         V4CorporationPublicInfo PublicInfo(long corporationId);
         Task<V4CorporationPublicInfo> PublicInfoAsync(long corporationId);
-        PagedModel<V1CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page);
-        Task<PagedModel<V1CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page);
-        IList<V1CorporationRoles> Roles(SsoToken token, long corporationId);
-        Task<IList<V1CorporationRoles>> RolesAsync(SsoToken token, long corporationId);
+        PagedModel<V2CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page);
+        Task<PagedModel<V2CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page);
+        IList<V2CorporationRoles> Roles(SsoToken token, long corporationId);
+        Task<IList<V2CorporationRoles>> RolesAsync(SsoToken token, long corporationId);
         PagedModel<V1CorporationShareholders> Shareholders(SsoToken token, long corporationId, int page);
         Task<PagedModel<V1CorporationShareholders>> ShareholdersAsync(SsoToken token, long corporationId, int page);
         PagedModel<V1CorporationStandings> Standings(SsoToken token, long corporationId, int page);

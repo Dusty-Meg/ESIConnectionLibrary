@@ -713,7 +713,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Roles_succesfully_returns_a_list_of_V1CorporationRoles()
+        public void Roles_succesfully_returns_a_list_of_V2CorporationRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -728,7 +728,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationRoles> returnModel = internalLatestCorporations.Roles(inputToken, 123123);
+            IList<V2CorporationRoles> returnModel = internalLatestCorporations.Roles(inputToken, 123123);
 
             Assert.Single(returnModel);
 
@@ -740,7 +740,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task RolesAsync_succesfully_returns_a_list_of_V1CorporationRoles()
+        public async Task RolesAsync_succesfully_returns_a_list_of_V2CorporationRoles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -755,7 +755,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationRoles> returnModel = await internalLatestCorporations.RolesAsync(inputToken, 123123);
+            IList<V2CorporationRoles> returnModel = await internalLatestCorporations.RolesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
 
@@ -767,7 +767,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void RoleHistory_succesfully_returns_a_list_of_V1CorporationRolesHistory()
+        public void RoleHistory_succesfully_returns_a_list_of_V2CorporationRolesHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -782,7 +782,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationRolesHistory> returnModel = internalLatestCorporations.RoleHistory(inputToken, 123123, 1);
+            PagedModel<V2CorporationRolesHistory> returnModel = internalLatestCorporations.RoleHistory(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -793,11 +793,11 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(CorporationRoles.StationManager, returnModel.Model.First().NewRoles.First());
             Assert.Single(returnModel.Model.First().OldRoles);
             Assert.Equal(CorporationRoles.Diplomat, returnModel.Model.First().OldRoles.First());
-            Assert.Equal(V1CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
+            Assert.Equal(V2CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
         }
 
         [Fact]
-        public async Task RoleHistoryAsync_succesfully_returns_a_list_of_V1CorporationRolesHistory()
+        public async Task RoleHistoryAsync_succesfully_returns_a_list_of_V2CorporationRolesHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -812,7 +812,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationRolesHistory> returnModel = await internalLatestCorporations.RoleHistoryAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationRolesHistory> returnModel = await internalLatestCorporations.RoleHistoryAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -823,7 +823,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(CorporationRoles.StationManager, returnModel.Model.First().NewRoles.First());
             Assert.Single(returnModel.Model.First().OldRoles);
             Assert.Equal(CorporationRoles.Diplomat, returnModel.Model.First().OldRoles.First());
-            Assert.Equal(V1CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
+            Assert.Equal(V2CorporationRolesHistoryRoleType.Roles, returnModel.Model.First().RoleType);
         }
 
         [Fact]

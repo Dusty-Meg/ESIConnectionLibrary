@@ -180,17 +180,17 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.MemberTrackingAsync(token, corporationId);
         }
 
-        public IList<V1CorporationRoles> Roles(SsoToken token, long corporationId)
+        public IList<V2CorporationRoles> Roles(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.Roles(token, corporationId);
         }
 
-        public async Task<IList<V1CorporationRoles>> RolesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationRoles>> RolesAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.RolesAsync(token, corporationId);
         }
 
-        public PagedModel<V1CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationRolesHistory> RoleHistory(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -200,7 +200,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.RoleHistory(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationRolesHistory>> RoleHistoryAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {

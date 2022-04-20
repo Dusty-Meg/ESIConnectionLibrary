@@ -40,12 +40,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.AllianceHistoryAsync(corporationId);
         }
 
-        public PagedModel<V2CorporationBlueprints> Blueprints(SsoToken token, long corporationId, int page)
+        public PagedModel<V3CorporationBlueprints> Blueprints(SsoToken token, long corporationId, int page)
         {
             return _internalLatestCorporations.Blueprints(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V2CorporationBlueprints>> BlueprintsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V3CorporationBlueprints>> BlueprintsAsync(SsoToken token, long corporationId, int page)
         {
             return await _internalLatestCorporations.BlueprintsAsync(token, corporationId, page);
         }

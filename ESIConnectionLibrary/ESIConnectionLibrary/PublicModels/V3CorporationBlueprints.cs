@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2CorporationBlueprints
+    public class V3CorporationBlueprints
     {
         public long ItemId { get; set; }
         public LocationFlagCorporation LocationFlag { get; set; }

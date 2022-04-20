@@ -81,7 +81,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Blueprints_succesfully_returns_a_list_of_V2CorporationBlueprints()
+        public void Blueprints_succesfully_returns_a_list_of_V3CorporationBlueprints()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -91,7 +91,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V2CorporationBlueprints> returnModel = internalLatestCorporations.Blueprints(inputToken, 123123, 1);
+            PagedModel<V3CorporationBlueprints> returnModel = internalLatestCorporations.Blueprints(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(1000000010495, returnModel.Model.First().ItemId);
@@ -105,7 +105,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task BlueprintsAsync_succesfully_returns_a_list_of_V2CorporationBlueprints()
+        public async Task BlueprintsAsync_succesfully_returns_a_list_of_V3CorporationBlueprints()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -115,7 +115,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V2CorporationBlueprints> returnModel = await internalLatestCorporations.BlueprintsAsync(inputToken, 123123, 1);
+            PagedModel<V3CorporationBlueprints> returnModel = await internalLatestCorporations.BlueprintsAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
             Assert.Equal(1000000010495, returnModel.Model.First().ItemId);

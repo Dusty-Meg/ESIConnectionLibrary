@@ -80,12 +80,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.DivisionsAsync(token, corporationId);
         }
 
-        public IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId)
+        public IList<V2CorporationFacilities> Facilities(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.Facilities(token, corporationId);
         }
 
-        public async Task<IList<V1CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.FacilitiesAsync(token, corporationId);
         }

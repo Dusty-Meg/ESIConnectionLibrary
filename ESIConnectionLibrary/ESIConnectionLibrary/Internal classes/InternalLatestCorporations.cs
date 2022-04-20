@@ -171,30 +171,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V2CorporationDivisions>(esiModel);
         }
 
-        public IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId)
+        public IList<V2CorporationFacilities> Facilities(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_facilities_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Facilities(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Facilities(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationFacilities> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationFacilities>>(esiRaw.Model);
+            IList<EsiV2CorporationFacilities> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationFacilities>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationFacilities>, IList<V1CorporationFacilities>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationFacilities>, IList<V2CorporationFacilities>>(esiModel);
         }
 
-        public async Task<IList<V1CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_facilities_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Facilities(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Facilities(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationFacilities> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationFacilities>>(esiRaw.Model);
+            IList<EsiV2CorporationFacilities> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationFacilities>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationFacilities>, IList<V1CorporationFacilities>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationFacilities>, IList<V2CorporationFacilities>>(esiModel);
         }
 
         public V2CorporationIcons Icons(long corporationId)

@@ -21,7 +21,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV2CorporationMedalsIssued, V2CorporationMedalsIssued>();
             CreateMap<EsiV2CorporationMedals, V2CorporationMedals>();
             CreateMap<EsiV2CorporationIcons, V2CorporationIcons>();
-            CreateMap<EsiV1CorporationFacilities, V1CorporationFacilities>();
+            CreateMap<EsiV2CorporationFacilities, V2CorporationFacilities>();
             CreateMap<EsiV2CorporationDivisions, V2CorporationDivisions>();
             CreateMap<EsiV2CorporationDivisionsHangar, V2CorporationDivisionsHangar>();
             CreateMap<EsiV2CorporationDivisionsWallet, V2CorporationDivisionsWallet>();

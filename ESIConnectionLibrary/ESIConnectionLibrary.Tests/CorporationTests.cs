@@ -319,7 +319,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Facilities_succesfully_returns_a_list_of_V1CorporationFacilities()
+        public void Facilities_succesfully_returns_a_list_of_V2CorporationFacilities()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -334,7 +334,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationFacilities> returnModel = internalLatestCorporations.Facilities(inputToken, 123123);
+            IList<V2CorporationFacilities> returnModel = internalLatestCorporations.Facilities(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(123, returnModel.First().FacilityId);
@@ -343,7 +343,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task FacilitiesAsync_succesfully_returns_a_list_of_V1CorporationFacilities()
+        public async Task FacilitiesAsync_succesfully_returns_a_list_of_V2CorporationFacilities()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -358,7 +358,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationFacilities> returnModel = await internalLatestCorporations.FacilitiesAsync(inputToken, 123123);
+            IList<V2CorporationFacilities> returnModel = await internalLatestCorporations.FacilitiesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(123, returnModel.First().FacilityId);

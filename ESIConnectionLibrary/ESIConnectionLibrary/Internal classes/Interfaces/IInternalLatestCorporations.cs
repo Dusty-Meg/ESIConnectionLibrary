@@ -14,8 +14,8 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<PagedModel<V3CorporationContainerLogs>> ContainerLogsAsync(SsoToken token, long corporationId, int page);
         V2CorporationDivisions Divisions(SsoToken token, long corporationId);
         Task<V2CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId);
-        IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId);
-        Task<IList<V1CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId);
+        IList<V2CorporationFacilities> Facilities(SsoToken token, long corporationId);
+        Task<IList<V2CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId);
         V2CorporationIcons Icons(long corporationId);
         Task<V2CorporationIcons> IconsAsync(long corporationId);
         PagedModel<V2CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page);

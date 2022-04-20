@@ -90,12 +90,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.FacilitiesAsync(token, corporationId);
         }
 
-        public V1CorporationIcons Icons(long corporationId)
+        public V2CorporationIcons Icons(long corporationId)
         {
             return _internalLatestCorporations.Icons(corporationId);
         }
 
-        public async Task<V1CorporationIcons> IconsAsync(long corporationId)
+        public async Task<V2CorporationIcons> IconsAsync(long corporationId)
         {
             return await _internalLatestCorporations.IconsAsync(corporationId);
         }

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationIcons
+    internal class EsiV2CorporationIcons
     {
         [JsonProperty(PropertyName = "px128x128")]
         public string Px128X128 { get; set; }

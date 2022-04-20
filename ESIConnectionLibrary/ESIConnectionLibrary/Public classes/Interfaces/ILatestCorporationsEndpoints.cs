@@ -16,8 +16,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<V2CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId);
         IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId);
         Task<IList<V1CorporationFacilities>> FacilitiesAsync(SsoToken token, long corporationId);
-        V1CorporationIcons Icons(long corporationId);
-        Task<V1CorporationIcons> IconsAsync(long corporationId);
+        V2CorporationIcons Icons(long corporationId);
+        Task<V2CorporationIcons> IconsAsync(long corporationId);
         PagedModel<V2CorporationMedalsIssued> IssuedMedals(SsoToken token, long corporationId, int page);
         Task<PagedModel<V2CorporationMedalsIssued>> IssuedMedalsAsync(SsoToken token, long corporationId, int page);
         PagedModel<V2CorporationMedals> Medals(SsoToken token, long corporationId, int page);

@@ -241,7 +241,7 @@ namespace ESIConnectionLibrary.Tests
             Assert.Equal(LocationFlagCorporation.CorpSag1, returnModel.Model.First().LocationFlag);
             Assert.Equal(1000000012278, returnModel.Model.First().LocationId);
             Assert.Equal(new DateTime(2017, 10, 10, 14, 00, 00), returnModel.Model.First().LoggedAt);
-            Assert.Equal(V2CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
+            Assert.Equal(V3CorporationContainerLogPasswordType.General, returnModel.Model.First().PasswordType);
 
             Assert.Equal(V3CorporationContainerLogAction.Lock, returnModel.Model[1].Action);
             Assert.Equal(2112625428, returnModel.Model[1].CharacterId);
@@ -367,7 +367,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Icons_successully_returns_a_V1CorporationIcons()
+        public void Icons_successully_returns_a_V2CorporationIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -377,7 +377,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
+            V2CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
 
             Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
             Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);
@@ -385,7 +385,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task IconsAsync_successully_returns_a_V1CorporationIcons()
+        public async Task IconsAsync_successully_returns_a_V2CorporationIcons()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -395,7 +395,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
+            V2CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
 
             Assert.Equal("https://images.evetech.net/Corporation/1000010_128.png", returnModel.Px128X128);
             Assert.Equal("https://images.evetech.net/Corporation/1000010_256.png", returnModel.Px256X256);

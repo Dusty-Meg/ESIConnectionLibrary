@@ -301,11 +301,11 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Icons_successully_returns_a_V1CorporationIcons()
+        public void Icons_successully_returns_a_V2CorporationIcons()
         {
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            V1CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
+            V2CorporationIcons returnModel = internalLatestCorporations.Icons(18888888);
 
             Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
             Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);
@@ -313,11 +313,11 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task IconsAsync_successully_returns_a_V1CorporationIcons()
+        public async Task IconsAsync_successully_returns_a_V2CorporationIcons()
         {
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            V1CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
+            V2CorporationIcons returnModel = await internalLatestCorporations.IconsAsync(18888888);
 
             Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128", returnModel.Px128X128);
             Assert.Equal("https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256", returnModel.Px256X256);

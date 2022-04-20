@@ -197,26 +197,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CorporationFacilities>, IList<V1CorporationFacilities>>(esiModel);
         }
 
-        public V1CorporationIcons Icons(long corporationId)
+        public V2CorporationIcons Icons(long corporationId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Icons(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1CorporationIcons esiModel = JsonConvert.DeserializeObject<EsiV1CorporationIcons>(esiRaw.Model);
+            EsiV2CorporationIcons esiModel = JsonConvert.DeserializeObject<EsiV2CorporationIcons>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationIcons>(esiModel);
+            return _mapper.Map<V2CorporationIcons>(esiModel);
         }
 
-        public async Task<V1CorporationIcons> IconsAsync(long corporationId)
+        public async Task<V2CorporationIcons> IconsAsync(long corporationId)
         {
             string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Icons(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV1CorporationIcons esiModel = JsonConvert.DeserializeObject<EsiV1CorporationIcons>(esiRaw.Model);
+            EsiV2CorporationIcons esiModel = JsonConvert.DeserializeObject<EsiV2CorporationIcons>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationIcons>(esiModel);
+            return _mapper.Map<V2CorporationIcons>(esiModel);
         }
 
         public PagedModel<V2CorporationMedals> Medals(SsoToken token, long corporationId, int page)

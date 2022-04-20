@@ -70,12 +70,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.ContainerLogsAsync(token, corporationId, page);
         }
 
-        public V1CorporationDivisions Divisions(SsoToken token, long corporationId)
+        public V2CorporationDivisions Divisions(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.Divisions(token, corporationId);
         }
 
-        public async Task<V1CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId)
+        public async Task<V2CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.DivisionsAsync(token, corporationId);
         }

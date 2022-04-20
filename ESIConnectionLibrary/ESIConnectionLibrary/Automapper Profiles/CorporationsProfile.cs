@@ -22,9 +22,9 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV1CorporationMedals, V1CorporationMedals>();
             CreateMap<EsiV1CorporationIcons, V1CorporationIcons>();
             CreateMap<EsiV1CorporationFacilities, V1CorporationFacilities>();
-            CreateMap<EsiV1CorporationDivisions, V1CorporationDivisions>();
-            CreateMap<EsiV1CorporationDivisionsHangar, V1CorporationDivisionsHangar>();
-            CreateMap<EsiV1CorporationDivisionsWallet, V1CorporationDivisionsWallet>();
+            CreateMap<EsiV2CorporationDivisions, V2CorporationDivisions>();
+            CreateMap<EsiV2CorporationDivisionsHangar, V2CorporationDivisionsHangar>();
+            CreateMap<EsiV2CorporationDivisionsWallet, V2CorporationDivisionsWallet>();
             CreateMap<EsiV2CorporationContainerLogs, V2CorporationContainerLogs>();
             CreateMap<EsiV2CorporationBlueprints, V2CorporationBlueprints>();
             CreateMap<EsiV2CorporationAllianceHistory, V2CorporationAllianceHistory>();

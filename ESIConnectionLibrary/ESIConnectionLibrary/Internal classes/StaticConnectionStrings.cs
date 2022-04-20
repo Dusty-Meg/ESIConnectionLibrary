@@ -427,7 +427,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV2AllianceHistoryRaw => "/v2/corporations/{corporation_id}/alliancehistory/";
         private static string CorporationV2BluepintsRaw => "/v2/corporations/{corporation_id}/blueprints/";
         private static string CorporationV2ContainersLogsRaw => "/v2/corporations/{corporation_id}/containers/logs/";
-        private static string CorporationV1DivisionsRaw => "/v1/corporations/{corporation_id}/divisions/";
+        private static string CorporationV2DivisionsRaw => "/v2/corporations/{corporation_id}/divisions/";
         private static string CorporationV1FacilitiesRaw => "/v1/corporations/{corporation_id}/facilities/";
         private static string CorporationV1IconsRaw => "/v1/corporations/{corporation_id}/icons/";
         private static string CorporationV1MedalsRaw => "/v1/corporations/{corporation_id}/medals/";
@@ -466,9 +466,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV2ContainersLogsRaw, "{corporation_id}", corporationId.ToString()) + $"?page={page}";
         }
 
-        public static string CorporationV1Divisions(long corporationId)
+        public static string CorporationV2Divisions(long corporationId)
         {
-            return UrlBuilder(CorporationV1DivisionsRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2DivisionsRaw, "{corporation_id}", corporationId.ToString());
         }
 
         public static string CorporationV1Facilities(long corporationId)

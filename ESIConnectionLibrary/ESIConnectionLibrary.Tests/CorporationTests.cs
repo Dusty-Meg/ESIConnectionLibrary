@@ -265,7 +265,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Divisions_succesfully_returns_a_V1CorporationDivisions()
+        public void Divisions_succesfully_returns_a_V2CorporationDivisions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -280,7 +280,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
+            V2CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);
@@ -292,7 +292,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task DivisionsAsync_succesfully_returns_a_V1CorporationDivisions()
+        public async Task DivisionsAsync_succesfully_returns_a_V2CorporationDivisions()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -307,7 +307,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
+            V2CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);

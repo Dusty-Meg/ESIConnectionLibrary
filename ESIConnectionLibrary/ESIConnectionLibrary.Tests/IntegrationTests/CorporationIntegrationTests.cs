@@ -219,7 +219,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Divisions_succesfully_returns_a_V1CorporationDivisions()
+        public void Divisions_succesfully_returns_a_V2CorporationDivisions()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -229,7 +229,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            V1CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
+            V2CorporationDivisions returnModel = internalLatestCorporations.Divisions(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);
@@ -241,7 +241,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task DivisionsAsync_succesfully_returns_a_V1CorporationDivisions()
+        public async Task DivisionsAsync_succesfully_returns_a_V2CorporationDivisions()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -251,7 +251,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            V1CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
+            V2CorporationDivisions returnModel = await internalLatestCorporations.DivisionsAsync(inputToken, 123123);
 
             Assert.Single(returnModel.Hangar);
             Assert.Single(returnModel.Wallet);

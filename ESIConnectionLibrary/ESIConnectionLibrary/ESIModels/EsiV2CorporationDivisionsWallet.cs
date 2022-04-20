@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationDivisionsWallet
+    internal class EsiV2CorporationDivisionsWallet
     {
         [JsonProperty(PropertyName = "division")]
         public int Division { get; set; }

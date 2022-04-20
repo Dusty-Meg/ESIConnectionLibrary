@@ -145,30 +145,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V2CorporationContainerLogs> { Model = mapped, MaxPages = esiRaw.MaxPages, CurrentPage = page };
         }
 
-        public V1CorporationDivisions Divisions(SsoToken token, long corporationId)
+        public V2CorporationDivisions Divisions(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_divisions_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Divisions(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Divisions(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1CorporationDivisions esiModel = JsonConvert.DeserializeObject<EsiV1CorporationDivisions>(esiRaw.Model);
+            EsiV2CorporationDivisions esiModel = JsonConvert.DeserializeObject<EsiV2CorporationDivisions>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationDivisions>(esiModel);
+            return _mapper.Map<V2CorporationDivisions>(esiModel);
         }
 
-        public async Task<V1CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId)
+        public async Task<V2CorporationDivisions> DivisionsAsync(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_divisions_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Divisions(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Divisions(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1CorporationDivisions esiModel = JsonConvert.DeserializeObject<EsiV1CorporationDivisions>(esiRaw.Model);
+            EsiV2CorporationDivisions esiModel = JsonConvert.DeserializeObject<EsiV2CorporationDivisions>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationDivisions>(esiModel);
+            return _mapper.Map<V2CorporationDivisions>(esiModel);
         }
 
         public IList<V1CorporationFacilities> Facilities(SsoToken token, long corporationId)

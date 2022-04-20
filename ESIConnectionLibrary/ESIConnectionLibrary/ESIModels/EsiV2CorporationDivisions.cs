@@ -3,12 +3,12 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationDivisions
+    internal class EsiV2CorporationDivisions
     {
         [JsonProperty(PropertyName = "hangar")]
-        public IList<EsiV1CorporationDivisionsHangar> Hangar { get; set; }
+        public IList<EsiV2CorporationDivisionsHangar> Hangar { get; set; }
 
         [JsonProperty(PropertyName = "wallet")]
-        public IList<EsiV1CorporationDivisionsWallet> Wallet { get; set; }
+        public IList<EsiV2CorporationDivisionsWallet> Wallet { get; set; }
     }
 }

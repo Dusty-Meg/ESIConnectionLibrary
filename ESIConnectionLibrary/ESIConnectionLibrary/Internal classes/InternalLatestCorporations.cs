@@ -63,26 +63,26 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<V4CorporationPublicInfo>(esiModel);
         }
 
-        public IList<V2CorporationAllianceHistory> AllianceHistory(long corporationId)
+        public IList<V3CorporationAllianceHistory> AllianceHistory(long corporationId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2AllianceHistory(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3AllianceHistory(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2CorporationAllianceHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationAllianceHistory>>(esiRaw.Model);
+            IList<EsiV3CorporationAllianceHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationAllianceHistory>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2CorporationAllianceHistory>, IList<V2CorporationAllianceHistory>>(esiModel);
+            return _mapper.Map<IList<EsiV3CorporationAllianceHistory>, IList<V3CorporationAllianceHistory>>(esiModel);
         }
 
-        public async Task<IList<V2CorporationAllianceHistory>> AllianceHistoryAsync(long corporationId)
+        public async Task<IList<V3CorporationAllianceHistory>> AllianceHistoryAsync(long corporationId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2AllianceHistory(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV3AllianceHistory(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            IList<EsiV2CorporationAllianceHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationAllianceHistory>>(esiRaw.Model);
+            IList<EsiV3CorporationAllianceHistory> esiModel = JsonConvert.DeserializeObject<IList<EsiV3CorporationAllianceHistory>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV2CorporationAllianceHistory>, IList<V2CorporationAllianceHistory>>(esiModel);
+            return _mapper.Map<IList<EsiV3CorporationAllianceHistory>, IList<V3CorporationAllianceHistory>>(esiModel);
         }
 
         public PagedModel<V2CorporationBlueprints> Blueprints(SsoToken token, long corporationId, int page)

@@ -126,7 +126,7 @@ namespace ESIConnectionLibrary.Tests
 
         [Theory]
         [InlineData("CorporationV4PublicInfoRaw")]
-        [InlineData("CorporationV2AllianceHistoryRaw")]
+        [InlineData("CorporationV3AllianceHistoryRaw")]
         [InlineData("CorporationV2BluepintsRaw")]
         [InlineData("CorporationV3ContainersLogsRaw")]
         [InlineData("CorporationV2DivisionsRaw")]

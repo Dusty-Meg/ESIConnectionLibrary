@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V2CorporationAllianceHistory
+    public class V3CorporationAllianceHistory
     {
         public int? AllianceId { get; set; }
         public bool? IsDeleted { get; set; }

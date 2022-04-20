@@ -30,12 +30,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.PublicInfoAsync(corporationId);
         }
 
-        public IList<V2CorporationAllianceHistory> AllianceHistory(long corporationId)
+        public IList<V3CorporationAllianceHistory> AllianceHistory(long corporationId)
         {
             return _internalLatestCorporations.AllianceHistory(corporationId);
         }
 
-        public async Task<IList<V2CorporationAllianceHistory>> AllianceHistoryAsync(long corporationId)
+        public async Task<IList<V3CorporationAllianceHistory>> AllianceHistoryAsync(long corporationId)
         {
             return await _internalLatestCorporations.AllianceHistoryAsync(corporationId);
         }

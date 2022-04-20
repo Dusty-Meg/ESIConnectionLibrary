@@ -63,7 +63,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void AllianceHistory_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public void AllianceHistory_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -73,7 +73,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V2CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);
@@ -85,7 +85,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -95,7 +95,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V2CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);

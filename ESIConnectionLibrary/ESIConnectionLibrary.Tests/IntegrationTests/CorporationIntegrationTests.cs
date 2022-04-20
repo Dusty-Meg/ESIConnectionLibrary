@@ -49,11 +49,11 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void AllianceHistory_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public void AllianceHistory_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V2CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = internalLatestCorporations.AllianceHistory(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);
@@ -65,11 +65,11 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V2CorporationAllianceHistory()
+        public async Task AllianceHistoryAsync_successully_returns_a_list_of_V3CorporationAllianceHistory()
         {
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V2CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
+            IList<V3CorporationAllianceHistory> returnModel = await internalLatestCorporations.AllianceHistoryAsync(18888888);
 
             Assert.Equal(2, returnModel.Count);
             Assert.Equal(99000006, returnModel.First().AllianceId);

@@ -597,7 +597,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void MembersTitles_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public void MembersTitles_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -612,7 +612,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);
@@ -620,7 +620,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -635,7 +635,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);

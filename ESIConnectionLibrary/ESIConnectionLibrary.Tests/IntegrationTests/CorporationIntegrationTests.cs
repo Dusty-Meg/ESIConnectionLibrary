@@ -479,7 +479,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void MembersTitles_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public void MembersTitles_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -489,7 +489,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = internalLatestCorporations.MembersTitles(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);
@@ -497,7 +497,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V1CorporationMembersTitles()
+        public async Task MembersTitlesAsync_succesfully_returns_a_list_of_V2CorporationMembersTitles()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -507,7 +507,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
+            IList<V2CorporationMembersTitles> returnModel = await internalLatestCorporations.MembersTitlesAsync(inputToken, 123123);
 
             Assert.Single(returnModel);
             Assert.Equal(12345, returnModel.First().CharacterId);

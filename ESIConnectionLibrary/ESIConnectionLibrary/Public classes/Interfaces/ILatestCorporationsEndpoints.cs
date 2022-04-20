@@ -26,8 +26,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<IList<int>> MembersAsync(SsoToken token, long corporationId);
         int MembersLimit(SsoToken token, long corporationId);
         Task<int> MembersLimitAsync(SsoToken token, long corporationId);
-        IList<V1CorporationMembersTitles> MembersTitles(SsoToken token, long corporationId);
-        Task<IList<V1CorporationMembersTitles>> MembersTitlesAsync(SsoToken token, long corporationId);
+        IList<V2CorporationMembersTitles> MembersTitles(SsoToken token, long corporationId);
+        Task<IList<V2CorporationMembersTitles>> MembersTitlesAsync(SsoToken token, long corporationId);
         IList<V2CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId);
         Task<IList<V2CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId);
         IList<int> NpcCorps();

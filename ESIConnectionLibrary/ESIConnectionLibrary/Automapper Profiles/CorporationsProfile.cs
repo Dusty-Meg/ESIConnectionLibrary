@@ -17,7 +17,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV1CorporationRolesHistory, V1CorporationRolesHistory>();
             CreateMap<EsiV1CorporationRoles, V1CorporationRoles>();
             CreateMap<EsiV2CorporationMemberTracking, V2CorporationMemberTracking>();
-            CreateMap<EsiV1CorporationMembersTitles, V1CorporationMembersTitles>();
+            CreateMap<EsiV2CorporationMembersTitles, V2CorporationMembersTitles>();
             CreateMap<EsiV2CorporationMedalsIssued, V2CorporationMedalsIssued>();
             CreateMap<EsiV2CorporationMedals, V2CorporationMedals>();
             CreateMap<EsiV1CorporationIcons, V1CorporationIcons>();

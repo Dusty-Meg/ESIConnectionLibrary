@@ -188,7 +188,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV3CharacterRolesRaw => "/v3/characters/{character_id}/roles/";
         private static string EsiV2CharactersStandingsRaw => "/v1/characters/{character_id}/standings/";
         private static string EsiV2CharacterTitlesRaw => "/v2/characters/{character_id}/titles/";
-        private static string EsiV1CharacterAffiliationsRaw => "/v1/characters/affiliation/";
+        private static string EsiV2CharacterAffiliationsRaw => "/v2/characters/affiliation/";
 
         public static string EsiV4CharactersPublicInfo(int characterId)
         {
@@ -255,9 +255,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharacterTitlesRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharacterAffiliations()
+        public static string EsiV2CharacterAffiliations()
         {
-            return UrlBuilder(EsiV1CharacterAffiliationsRaw);
+            return UrlBuilder(EsiV2CharacterAffiliationsRaw);
         }
 
         #endregion

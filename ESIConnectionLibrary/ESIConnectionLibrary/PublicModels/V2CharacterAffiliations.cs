@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharacterAffiliations
+    public class V2CharacterAffiliations
     {
         public int CharacterId { get; set; }
 

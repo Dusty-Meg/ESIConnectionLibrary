@@ -6,8 +6,8 @@ namespace ESIConnectionLibrary.Public_classes
 {
     public interface ILatestCharacterEndpoints
     {
-        IList<V1CharacterAffiliations> Affiliations(IList<int> characters);
-        Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters);
+        IList<V2CharacterAffiliations> Affiliations(IList<int> characters);
+        Task<IList<V2CharacterAffiliations>> AffiliationsAsync(IList<int> characters);
         IList<V2CharactersBlueprints> Blueprint(SsoToken token);
         Task<IList<V2CharactersBlueprints>> BlueprintAsync(SsoToken token);
         IList<V2CharactersCorporationHistory> CorporationHistory(int characterId);

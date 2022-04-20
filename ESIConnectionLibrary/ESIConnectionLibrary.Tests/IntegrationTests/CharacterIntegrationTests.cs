@@ -473,13 +473,13 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Affiliations_successfully_returns_a_list_of_V1CharacterAffiliations()
+        public void Affiliations_successfully_returns_a_list_of_V2CharacterAffiliations()
         {
             IList<int> characterIds = new List<int>(23);
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharacterAffiliations> getCharactersAffiliation = internalLatestCharacter.Affiliations(characterIds);
+            IList<V2CharacterAffiliations> getCharactersAffiliation = internalLatestCharacter.Affiliations(characterIds);
 
             Assert.Equal(1, getCharactersAffiliation.Count);
             Assert.Equal(95538921, getCharactersAffiliation.First().CharacterId);
@@ -488,13 +488,13 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task AffiliationsAsync_successfully_returns_a_list_of_V1CharacterAffiliations()
+        public async Task AffiliationsAsync_successfully_returns_a_list_of_V2CharacterAffiliations()
         {
             IList<int> characterIds = new List<int>(23);
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharacterAffiliations> getCharactersAffiliation = await internalLatestCharacter.AffiliationsAsync(characterIds);
+            IList<V2CharacterAffiliations> getCharactersAffiliation = await internalLatestCharacter.AffiliationsAsync(characterIds);
 
             Assert.Equal(1, getCharactersAffiliation.Count);
             Assert.Equal(95538921, getCharactersAffiliation.First().CharacterId);

@@ -149,12 +149,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.TitlesAsync(token);
         }
 
-        public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)
+        public IList<V2CharacterAffiliations> Affiliations(IList<int> characters)
         {
             return _internalLatestCharacter.Affiliations(characters);
         }
 
-        public async Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
+        public async Task<IList<V2CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
         {
             return await _internalLatestCharacter.AffiliationsAsync(characters);
         }

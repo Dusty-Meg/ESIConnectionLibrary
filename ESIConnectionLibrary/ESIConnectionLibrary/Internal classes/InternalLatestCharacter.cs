@@ -356,30 +356,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV2CharacterTitles>, IList<V2CharacterTitles>>(esiV2CharacterTitles);
         }
 
-        public IList<V1CharacterAffiliations> Affiliations(IList<int> characters)
+        public IList<V2CharacterAffiliations> Affiliations(IList<int> characters)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterAffiliations(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterAffiliations(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Post(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
 
-            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw.Model);
+            IList<EsiV2CharacterAffiliations> esiV2CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV2CharacterAffiliations>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
+            return _mapper.Map<IList<EsiV2CharacterAffiliations>, IList<V2CharacterAffiliations>>(esiV2CharacterAffiliations);
         }
 
-        public async Task<IList<V1CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
+        public async Task<IList<V2CharacterAffiliations>> AffiliationsAsync(IList<int> characters)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharacterAffiliations(), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharacterAffiliations(), _testing);
 
             string jsonObject = JsonConvert.SerializeObject(characters);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.PostAsync(StaticMethods.CreateHeaders(), url, jsonObject, 3600));
 
-            IList<EsiV1CharacterAffiliations> esiV1CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV1CharacterAffiliations>>(esiRaw.Model);
+            IList<EsiV2CharacterAffiliations> esiV2CharacterAffiliations = JsonConvert.DeserializeObject<IList<EsiV2CharacterAffiliations>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharacterAffiliations>, IList<V1CharacterAffiliations>>(esiV1CharacterAffiliations);
+            return _mapper.Map<IList<EsiV2CharacterAffiliations>, IList<V2CharacterAffiliations>>(esiV2CharacterAffiliations);
         }
     }
 }

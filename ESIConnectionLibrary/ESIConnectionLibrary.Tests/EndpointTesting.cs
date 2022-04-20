@@ -80,7 +80,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("EsiV3CharacterRolesRaw")]
         [InlineData("EsiV2CharactersStandingsRaw")]
         [InlineData("EsiV2CharacterTitlesRaw")]
-        [InlineData("EsiV1CharacterAffiliationsRaw")]
+        [InlineData("EsiV2CharacterAffiliationsRaw")]
         public void CharacterEndpoints(string endpoint)
         {
             Assert.Contains(GetPrivateString(endpoint), SwaggerSpec.SwaggerSpec);

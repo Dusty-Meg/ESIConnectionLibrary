@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharacterAffiliations
+    internal class EsiV2CharacterAffiliations
     {
         [JsonProperty(PropertyName = "character_id")]
         public int CharacterId { get; set; }

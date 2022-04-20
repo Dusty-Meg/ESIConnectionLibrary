@@ -8,7 +8,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
     {
         public CharacterProfile()
         {
-            CreateMap<EsiV1CharacterAffiliations, V1CharacterAffiliations>();
+            CreateMap<EsiV2CharacterAffiliations, V2CharacterAffiliations>();
             CreateMap<EsiV2CharacterTitles, V2CharacterTitles>();
             CreateMap<EsiV2CharactersStandings, V2CharactersStandings>();
             CreateMap<EsiV3CharacterRoles, V3CharacterRoles>();

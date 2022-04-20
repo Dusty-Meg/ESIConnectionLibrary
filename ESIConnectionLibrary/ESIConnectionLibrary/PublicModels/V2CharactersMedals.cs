@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharactersMedals
+    public class V2CharactersMedals
     {
         public int MedalId { get; set; }
 
@@ -21,6 +21,6 @@ namespace ESIConnectionLibrary.PublicModels
 
         public MedalsStatus Status { get; set; }
 
-        public IList<V1CharactersMedalsGraphics> Graphics { get; set; }
+        public IList<V2CharactersMedalsGraphics> Graphics { get; set; }
     }
 }

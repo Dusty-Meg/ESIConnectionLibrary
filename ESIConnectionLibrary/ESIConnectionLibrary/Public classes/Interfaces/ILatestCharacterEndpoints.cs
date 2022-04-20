@@ -16,8 +16,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<float> CspaCostAsync(SsoToken token, IList<int> characters);
         V2CharactersFatigue Fatigue(SsoToken token);
         Task<V2CharactersFatigue> FatigueAsync(SsoToken token);
-        IList<V1CharactersMedals> Medals(SsoToken token);
-        Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token);
+        IList<V2CharactersMedals> Medals(SsoToken token);
+        Task<IList<V2CharactersMedals>> MedalsAsync(SsoToken token);
         IList<V5CharactersNotifications> Notifications(SsoToken token);
         Task<IList<V5CharactersNotifications>> NotificationsAsync(SsoToken token);
         IList<V1CharactersNotificationsContacts> ContactNotifications(SsoToken token);

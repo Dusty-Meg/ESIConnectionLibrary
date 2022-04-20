@@ -271,7 +271,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Medals_successfully_returns_a_list_of_V1CharactersMedals()
+        public void Medals_successfully_returns_a_list_of_V2CharactersMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -285,7 +285,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersMedals> getCharactersMedals = internalLatestCharacter.Medals(inputToken);
+            IList<V2CharactersMedals> getCharactersMedals = internalLatestCharacter.Medals(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
@@ -299,7 +299,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MedalsAsync_successfully_returns_a_list_of_V1CharactersMedals()
+        public async Task MedalsAsync_successfully_returns_a_list_of_V2CharactersMedals()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -313,7 +313,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            IList<V1CharactersMedals> getCharactersMedals = await internalLatestCharacter.MedalsAsync(inputToken);
+            IList<V2CharactersMedals> getCharactersMedals = await internalLatestCharacter.MedalsAsync(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);

@@ -15,8 +15,8 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV2CharactersPortrait, V2CharactersPortrait>();
             CreateMap<EsiV1CharactersNotificationsContacts, V1CharactersNotificationsContacts>();
             CreateMap<EsiV4CharactersNotifications, V5CharactersNotifications>();
-            CreateMap<EsiV1CharactersMedals, V1CharactersMedals>();
-            CreateMap<EsiV1CharactersMedalsGraphics, V1CharactersMedalsGraphics>();
+            CreateMap<EsiV2CharactersMedals, V2CharactersMedals>();
+            CreateMap<EsiV2CharactersMedalsGraphics, V2CharactersMedalsGraphics>();
             CreateMap<EsiV2CharactersFatigue, V2CharactersFatigue>();
             CreateMap<EsiV2CharactersCorporationHistory, V2CharactersCorporationHistory>();
             CreateMap<EsiV3CharactersBlueprints, V3CharactersBlueprints>();

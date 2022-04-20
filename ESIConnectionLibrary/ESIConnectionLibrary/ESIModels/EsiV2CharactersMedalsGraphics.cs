@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CharactersMedalsGraphics
+    internal class EsiV2CharactersMedalsGraphics
     {
         [JsonProperty(PropertyName = "part")]
         public int Part { get; set; }

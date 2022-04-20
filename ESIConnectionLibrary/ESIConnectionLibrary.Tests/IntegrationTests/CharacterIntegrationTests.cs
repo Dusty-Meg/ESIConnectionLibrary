@@ -205,7 +205,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Medals_successfully_returns_a_list_of_V1CharactersMedals()
+        public void Medals_successfully_returns_a_list_of_V2CharactersMedals()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
@@ -214,7 +214,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersMedals> getCharactersMedals = internalLatestCharacter.Medals(inputToken);
+            IList<V2CharactersMedals> getCharactersMedals = internalLatestCharacter.Medals(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);
@@ -228,7 +228,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task MedalsAsync_successfully_returns_a_list_of_V1CharactersMedals()
+        public async Task MedalsAsync_successfully_returns_a_list_of_V2CharactersMedals()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_medals_v1;
@@ -237,7 +237,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            IList<V1CharactersMedals> getCharactersMedals = await internalLatestCharacter.MedalsAsync(inputToken);
+            IList<V2CharactersMedals> getCharactersMedals = await internalLatestCharacter.MedalsAsync(inputToken);
 
             Assert.Equal(1, getCharactersMedals.Count);
             Assert.Equal(3, getCharactersMedals.First().MedalId);

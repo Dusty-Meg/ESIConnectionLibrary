@@ -178,30 +178,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<EsiV2CharactersFatigue, V2CharactersFatigue>(esiV2CharactersFatigue);
         }
 
-        public IList<V1CharactersMedals> Medals(SsoToken token)
+        public IList<V2CharactersMedals> Medals(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersMedals(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersMedals(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharactersMedals> esiV1CharactersMedals = JsonConvert.DeserializeObject<IList<EsiV1CharactersMedals>>(esiRaw.Model);
+            IList<EsiV2CharactersMedals> esiV2CharactersMedals = JsonConvert.DeserializeObject<IList<EsiV2CharactersMedals>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersMedals>, IList<V1CharactersMedals>>(esiV1CharactersMedals);
+            return _mapper.Map<IList<EsiV2CharactersMedals>, IList<V2CharactersMedals>>(esiV2CharactersMedals);
         }
 
-        public async Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token)
+        public async Task<IList<V2CharactersMedals>> MedalsAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_medals_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersMedals(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersMedals(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CharactersMedals> esiV1CharactersMedals = JsonConvert.DeserializeObject<IList<EsiV1CharactersMedals>>(esiRaw.Model);
+            IList<EsiV2CharactersMedals> esiV2CharactersMedals = JsonConvert.DeserializeObject<IList<EsiV2CharactersMedals>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CharactersMedals>, IList<V1CharactersMedals>>(esiV1CharactersMedals);
+            return _mapper.Map<IList<EsiV2CharactersMedals>, IList<V2CharactersMedals>>(esiV2CharactersMedals);
         }
 
         public IList<V5CharactersNotifications> Notifications(SsoToken token)

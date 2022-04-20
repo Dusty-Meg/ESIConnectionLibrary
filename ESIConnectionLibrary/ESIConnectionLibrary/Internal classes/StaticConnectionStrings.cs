@@ -181,12 +181,12 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string EsiV2CharactersCorporationHistoryRaw => "/v2/characters/{character_id}/corporationhistory/";
         private static string EsiV5CharactersCspaRaw => "/v5/characters/{character_id}/cspa/";
         private static string EsiV2CharactersFatigueRaw => "/v2/characters/{character_id}/fatigue/";
-        private static string EsiV1CharactersMedalsRaw => "/v1/characters/{character_id}/medals/";
+        private static string EsiV2CharactersMedalsRaw => "/v2/characters/{character_id}/medals/";
         private static string EsiV5CharactersNotificationsRaw => "/v5/characters/{character_id}/notifications/";
         private static string EsiV1CharactersNotificationsContactsRaw => "/v1/characters/{character_id}/notifications/contacts/";
         private static string EsiV2CharactersPortraitRaw => "/v2/characters/{character_id}/portrait/";
         private static string EsiV3CharacterRolesRaw => "/v3/characters/{character_id}/roles/";
-        private static string EsiV2CharactersStandingsRaw => "/v1/characters/{character_id}/standings/";
+        private static string EsiV2CharactersStandingsRaw => "/v2/characters/{character_id}/standings/";
         private static string EsiV2CharacterTitlesRaw => "/v2/characters/{character_id}/titles/";
         private static string EsiV2CharacterAffiliationsRaw => "/v2/characters/affiliation/";
 
@@ -220,9 +220,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(EsiV2CharactersFatigueRaw, "{character_id}", characterId.ToString());
         }
 
-        public static string EsiV1CharactersMedals(int characterId)
+        public static string EsiV2CharactersMedals(int characterId)
         {
-            return UrlBuilder(EsiV1CharactersMedalsRaw, "{character_id}", characterId.ToString());
+            return UrlBuilder(EsiV2CharactersMedalsRaw, "{character_id}", characterId.ToString());
         }
 
         public static string EsiV5CharactersNotifications(int characterId)

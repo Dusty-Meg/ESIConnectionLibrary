@@ -79,12 +79,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.FatigueAsync(token);
         }
 
-        public IList<V1CharactersMedals> Medals(SsoToken token)
+        public IList<V2CharactersMedals> Medals(SsoToken token)
         {
             return _internalLatestCharacter.Medals(token);
         }
 
-        public async Task<IList<V1CharactersMedals>> MedalsAsync(SsoToken token)
+        public async Task<IList<V2CharactersMedals>> MedalsAsync(SsoToken token)
         {
             return await _internalLatestCharacter.MedalsAsync(token);
         }

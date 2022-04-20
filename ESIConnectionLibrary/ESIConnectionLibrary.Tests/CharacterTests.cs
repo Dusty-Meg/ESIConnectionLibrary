@@ -227,7 +227,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Fatigue_successfully_returns_a_V1CharactersFatigue()
+        public void Fatigue_successfully_returns_a_V2CharactersFatigue()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -241,7 +241,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V1CharactersFatigue getCharactersFatigue = internalLatestCharacter.Fatigue(inputToken);
+            V2CharactersFatigue getCharactersFatigue = internalLatestCharacter.Fatigue(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);
@@ -249,7 +249,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task FatigueAsync_successfully_returns_a_V1CharactersFatigue()
+        public async Task FatigueAsync_successfully_returns_a_V2CharactersFatigue()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -263,7 +263,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
 
-            V1CharactersFatigue getCharactersFatigue = await internalLatestCharacter.FatigueAsync(inputToken);
+            V2CharactersFatigue getCharactersFatigue = await internalLatestCharacter.FatigueAsync(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);

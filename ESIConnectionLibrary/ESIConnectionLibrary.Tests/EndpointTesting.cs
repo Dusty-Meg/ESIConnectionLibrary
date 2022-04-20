@@ -72,7 +72,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("EsiV2CharactersBlueprintsRaw")]
         [InlineData("EsiV2CharactersCorporationHistoryRaw")]
         [InlineData("EsiV5CharactersCspaRaw")]
-        [InlineData("EsiV1CharactersFatigueRaw")]
+        [InlineData("EsiV2CharactersFatigueRaw")]
         [InlineData("EsiV1CharactersMedalsRaw")]
         [InlineData("EsiV5CharactersNotificationsRaw")]
         [InlineData("EsiV1CharactersNotificationsContactsRaw")]

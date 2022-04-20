@@ -69,12 +69,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.CspaCostAsync(token, characters);
         }
 
-        public V1CharactersFatigue Fatigue(SsoToken token)
+        public V2CharactersFatigue Fatigue(SsoToken token)
         {
             return _internalLatestCharacter.Fatigue(token);
         }
 
-        public async Task<V1CharactersFatigue> FatigueAsync(SsoToken token)
+        public async Task<V2CharactersFatigue> FatigueAsync(SsoToken token)
         {
             return await _internalLatestCharacter.FatigueAsync(token);
         }

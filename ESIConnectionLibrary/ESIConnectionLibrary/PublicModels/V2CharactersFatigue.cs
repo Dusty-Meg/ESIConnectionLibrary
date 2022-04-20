@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharactersFatigue
+    public class V2CharactersFatigue
     {
         public DateTime? LastJumpDate { get; set; }
 

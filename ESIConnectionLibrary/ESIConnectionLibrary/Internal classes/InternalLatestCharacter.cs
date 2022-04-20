@@ -152,30 +152,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return esiV5CharactersCspa;
         }
 
-        public V1CharactersFatigue Fatigue(SsoToken token)
+        public V2CharactersFatigue Fatigue(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersFatigue(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersFatigue(token.CharacterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 300));
 
-            EsiV1CharactersFatigue esiV1CharactersFatigue = JsonConvert.DeserializeObject<EsiV1CharactersFatigue>(esiRaw.Model);
+            EsiV2CharactersFatigue esiV2CharactersFatigue = JsonConvert.DeserializeObject<EsiV2CharactersFatigue>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1CharactersFatigue, V1CharactersFatigue>(esiV1CharactersFatigue);
+            return _mapper.Map<EsiV2CharactersFatigue, V2CharactersFatigue>(esiV2CharactersFatigue);
         }
 
-        public async Task<V1CharactersFatigue> FatigueAsync(SsoToken token)
+        public async Task<V2CharactersFatigue> FatigueAsync(SsoToken token)
         {
             StaticMethods.CheckToken(token, CharacterScopes.esi_characters_read_fatigue_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV1CharactersFatigue(token.CharacterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV2CharactersFatigue(token.CharacterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 300));
 
-            EsiV1CharactersFatigue esiV1CharactersFatigue = JsonConvert.DeserializeObject<EsiV1CharactersFatigue>(esiRaw.Model);
+            EsiV2CharactersFatigue esiV2CharactersFatigue = JsonConvert.DeserializeObject<EsiV2CharactersFatigue>(esiRaw.Model);
 
-            return _mapper.Map<EsiV1CharactersFatigue, V1CharactersFatigue>(esiV1CharactersFatigue);
+            return _mapper.Map<EsiV2CharactersFatigue, V2CharactersFatigue>(esiV2CharactersFatigue);
         }
 
         public IList<V1CharactersMedals> Medals(SsoToken token)

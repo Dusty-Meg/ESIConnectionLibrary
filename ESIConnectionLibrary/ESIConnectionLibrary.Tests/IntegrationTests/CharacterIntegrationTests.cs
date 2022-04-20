@@ -171,7 +171,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Fatigue_successfully_returns_a_V1CharactersFatigue()
+        public void Fatigue_successfully_returns_a_V2CharactersFatigue()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
@@ -180,7 +180,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V1CharactersFatigue getCharactersFatigue = internalLatestCharacter.Fatigue(inputToken);
+            V2CharactersFatigue getCharactersFatigue = internalLatestCharacter.Fatigue(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);
@@ -188,7 +188,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task FatigueAsync_successfully_returns_a_V1CharactersFatigue()
+        public async Task FatigueAsync_successfully_returns_a_V2CharactersFatigue()
         {
             int characterId = 88823;
             CharacterScopes scopes = CharacterScopes.esi_characters_read_fatigue_v1;
@@ -197,7 +197,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V1CharactersFatigue getCharactersFatigue = await internalLatestCharacter.FatigueAsync(inputToken);
+            V2CharactersFatigue getCharactersFatigue = await internalLatestCharacter.FatigueAsync(inputToken);
 
             Assert.Equal(new DateTime(2017, 07, 05, 15, 47, 00), getCharactersFatigue.LastJumpDate);
             Assert.Equal(new DateTime(2017, 07, 06, 15, 47, 00), getCharactersFatigue.JumpFatigueExpireDate);

@@ -439,46 +439,6 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Stats_successfully_returns_a_list_of_V2CharactersStats()
-        {
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
- 
-            LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
-
-            IList<V2CharactersStats> getCharactersStats = internalLatestCharacter.Stats(inputToken);
-
-            Assert.Equal(2, getCharactersStats.Count);
-            Assert.Equal(2014, getCharactersStats.First().Year);
-            Assert.Equal(365, getCharactersStats.First().Character.DaysOfActivity);
-            Assert.Equal(42, getCharactersStats.First().Combat.KillsLowSec);
-            Assert.Equal(365, getCharactersStats[1].Character.DaysOfActivity);
-            Assert.Equal(1337, getCharactersStats[1].Combat.KillsNullSec);
-        }
-
-        [Fact]
-        public async Task StatsAsync_successfully_returns_a_list_of_V2CharactersStats()
-        {
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-
-            LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
-
-            IList<V2CharactersStats> getCharactersStats = await internalLatestCharacter.StatsAsync(inputToken);
-
-            Assert.Equal(2, getCharactersStats.Count);
-            Assert.Equal(2014, getCharactersStats.First().Year);
-            Assert.Equal(365, getCharactersStats.First().Character.DaysOfActivity);
-            Assert.Equal(42, getCharactersStats.First().Combat.KillsLowSec);
-            Assert.Equal(365, getCharactersStats[1].Character.DaysOfActivity);
-            Assert.Equal(1337, getCharactersStats[1].Combat.KillsNullSec);
-        }
-
-        [Fact]
         public void Titles_successfully_returns_a_list_of_V1CharacterTitles()
         {
             int characterId = 88823;

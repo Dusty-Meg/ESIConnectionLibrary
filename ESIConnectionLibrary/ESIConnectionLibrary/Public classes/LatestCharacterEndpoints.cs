@@ -139,16 +139,6 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCharacter.StandingsAsync(token);
         }
 
-        public IList<V2CharactersStats> Stats(SsoToken token)
-        {
-            return _internalLatestCharacter.Stats(token);
-        }
-
-        public async Task<IList<V2CharactersStats>> StatsAsync(SsoToken token)
-        {
-            return await _internalLatestCharacter.StatsAsync(token);
-        }
-
         public IList<V1CharacterTitles> Titles(SsoToken token)
         {
             return _internalLatestCharacter.Titles(token);

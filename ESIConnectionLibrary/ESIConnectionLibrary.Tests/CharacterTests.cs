@@ -567,56 +567,6 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Stats_successfully_returns_a_list_of_V2CharactersStats()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string json = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
-
-            mockedWebClient.Setup(x => x.Get(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).Returns(new EsiModel { Model = json });
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V2CharactersStats> getCharactersStats = internalLatestCharacter.Stats(inputToken);
-
-            Assert.Equal(2, getCharactersStats.Count);
-            Assert.Equal(2014, getCharactersStats.First().Year);
-            Assert.Equal(365, getCharactersStats.First().Character.DaysOfActivity);
-            Assert.Equal(42, getCharactersStats.First().Combat.KillsLowSec);
-            Assert.Equal(365, getCharactersStats[1].Character.DaysOfActivity);
-            Assert.Equal(1337, getCharactersStats[1].Combat.KillsNullSec);
-        }
-
-        [Fact]
-        public async Task StatsAsync_successfully_returns_a_list_of_V2CharactersStats()
-        {
-            Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
-
-            int characterId = 88823;
-            CharacterScopes scopes = CharacterScopes.esi_characterstats_read_v1;
-
-            SsoToken inputToken = new SsoToken { AccessToken = "This is a old access token", RefreshToken = "This is a old refresh token", CharacterId = characterId, CharacterScopesFlags = scopes };
-            string json = "[{\"year\": 2014,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000,\"sessions_started\": 500},\"combat\": {\"kills_low_sec\": 42}},{\"year\": 2015,\"character\": {\"days_of_activity\": 365,\"minutes\": 1000000, \"sessions_started\": 500},\"combat\": {\"kills_null_sec\": 1337}}]";
-
-            mockedWebClient.Setup(x => x.GetAsync(It.IsAny<WebHeaderCollection>(), It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(new EsiModel { Model = json });
-
-            InternalLatestCharacter internalLatestCharacter = new InternalLatestCharacter(mockedWebClient.Object, string.Empty);
-
-            IList<V2CharactersStats> getCharactersStats = await internalLatestCharacter.StatsAsync(inputToken);
-
-            Assert.Equal(2, getCharactersStats.Count);
-            Assert.Equal(2014, getCharactersStats.First().Year);
-            Assert.Equal(365, getCharactersStats.First().Character.DaysOfActivity);
-            Assert.Equal(42, getCharactersStats.First().Combat.KillsLowSec);
-            Assert.Equal(365, getCharactersStats[1].Character.DaysOfActivity);
-            Assert.Equal(1337, getCharactersStats[1].Combat.KillsNullSec);
-        }
-
-        [Fact]
         public void Titles_successfully_returns_a_list_of_V1CharacterTitles()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();

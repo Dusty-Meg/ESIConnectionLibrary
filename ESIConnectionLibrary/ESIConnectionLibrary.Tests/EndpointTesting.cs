@@ -79,7 +79,6 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("EsiV2CharactersPortraitRaw")]
         [InlineData("EsiV2CharacterRolesRaw")]
         [InlineData("EsiV2CharactersStandingsRaw")]
-        [InlineData("EsiV2CharactersStatsRaw")]
         [InlineData("EsiV1CharacterTitlesRaw")]
         [InlineData("EsiV1CharacterAffiliationsRaw")]
         public void CharacterEndpoints(string endpoint)

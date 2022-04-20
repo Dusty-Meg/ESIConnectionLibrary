@@ -32,8 +32,6 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<V2CharacterRoles> RolesAsync(SsoToken token);
         IList<V2CharactersStandings> Standings(SsoToken token);
         Task<IList<V2CharactersStandings>> StandingsAsync(SsoToken token);
-        IList<V2CharactersStats> Stats(SsoToken token);
-        Task<IList<V2CharactersStats>> StatsAsync(SsoToken token);
         IList<V1CharacterTitles> Titles(SsoToken token);
         Task<IList<V1CharacterTitles>> TitlesAsync(SsoToken token);
     }

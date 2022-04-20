@@ -135,7 +135,7 @@ namespace ESIConnectionLibrary.Tests
         [InlineData("CorporationV2MedalsRaw")]
         [InlineData("CorporationV2MedalsIssuedRaw")]
         [InlineData("CorporationV4MembersRaw")]
-        [InlineData("CorporationV1MembersLimitRaw")]
+        [InlineData("CorporationV2MembersLimitRaw")]
         [InlineData("CorporationV1CorporationMemberTitlesRaw")]
         [InlineData("CorporationV2MemberTrackingRaw")]
         [InlineData("CorporationV1RolesRaw")]

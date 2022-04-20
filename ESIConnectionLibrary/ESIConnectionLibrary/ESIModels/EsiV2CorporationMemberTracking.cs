@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationMemberTracking
+    internal class EsiV2CorporationMemberTracking
     {
         [JsonProperty(PropertyName = "base_id")]
         public int? BaseId { get; set; }

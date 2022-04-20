@@ -643,7 +643,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void MemberTracking_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public void MemberTracking_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -658,7 +658,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 
@@ -678,7 +678,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -693,7 +693,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            IList<V1CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 

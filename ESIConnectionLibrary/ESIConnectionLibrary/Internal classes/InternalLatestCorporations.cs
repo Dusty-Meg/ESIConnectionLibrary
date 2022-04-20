@@ -349,30 +349,30 @@ namespace ESIConnectionLibrary.Internal_classes
             return _mapper.Map<IList<EsiV1CorporationMembersTitles>, IList<V1CorporationMembersTitles>>(esiModel);
         }
 
-        public IList<V1CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId)
+        public IList<V2CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_track_members_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1MemberTracking(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2MemberTracking(corporationId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMemberTracking> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTracking>>(esiRaw.Model);
+            IList<EsiV2CorporationMemberTracking> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMemberTracking>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationMemberTracking>, IList<V1CorporationMemberTracking>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationMemberTracking>, IList<V2CorporationMemberTracking>>(esiModel);
         }
 
-        public async Task<IList<V1CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_track_members_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1MemberTracking(corporationId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2MemberTracking(corporationId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationMemberTracking> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationMemberTracking>>(esiRaw.Model);
+            IList<EsiV2CorporationMemberTracking> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationMemberTracking>>(esiRaw.Model);
 
-            return _mapper.Map<IList<EsiV1CorporationMemberTracking>, IList<V1CorporationMemberTracking>>(esiModel);
+            return _mapper.Map<IList<EsiV2CorporationMemberTracking>, IList<V2CorporationMemberTracking>>(esiModel);
         }
 
         public IList<V1CorporationRoles> Roles(SsoToken token, long corporationId)

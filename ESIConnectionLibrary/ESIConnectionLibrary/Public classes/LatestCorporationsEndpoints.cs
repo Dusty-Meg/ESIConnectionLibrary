@@ -170,12 +170,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.MembersTitlesAsync(token, corporationId);
         }
 
-        public IList<V1CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId)
+        public IList<V2CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId)
         {
             return _internalLatestCorporations.MemberTracking(token, corporationId);
         }
 
-        public async Task<IList<V1CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId)
+        public async Task<IList<V2CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId)
         {
             return await _internalLatestCorporations.MemberTrackingAsync(token, corporationId);
         }

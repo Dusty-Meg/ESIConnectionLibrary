@@ -435,7 +435,7 @@ namespace ESIConnectionLibrary.Internal_classes
         private static string CorporationV3MembersRaw => "/v3/corporations/{corporation_id}/members/";
         private static string CorporationV1MembersLimitRaw => "/v1/corporations/{corporation_id}/members/limit/";
         private static string CorporationV1CorporationMemberTitlesRaw => "/v1/corporations/{corporation_id}/members/titles/";
-        private static string CorporationV1MemberTrackingRaw => "/v1/corporations/{corporation_id}/membertracking/";
+        private static string CorporationV2MemberTrackingRaw => "/v2/corporations/{corporation_id}/membertracking/";
         private static string CorporationV1RolesRaw => "/v1/corporations/{corporation_id}/roles/";
         private static string CorporationV1RolesHistoryRaw => "/v1/corporations/{corporation_id}/roles/history/";
         private static string CorporationV1ShareHoldersRaw => "/v1/corporations/{corporation_id}/shareholders/";
@@ -506,9 +506,9 @@ namespace ESIConnectionLibrary.Internal_classes
             return UrlBuilder(CorporationV1CorporationMemberTitlesRaw, "{corporation_id}", corporationId.ToString());
         }
 
-        public static string CorporationV1MemberTracking(long corporationId)
+        public static string CorporationV2MemberTracking(long corporationId)
         {
-            return UrlBuilder(CorporationV1MemberTrackingRaw, "{corporation_id}", corporationId.ToString());
+            return UrlBuilder(CorporationV2MemberTrackingRaw, "{corporation_id}", corporationId.ToString());
         }
 
         public static string CorporationV1Roles(long corporationId)

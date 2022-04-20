@@ -28,8 +28,8 @@ namespace ESIConnectionLibrary.Public_classes
         Task<int> MembersLimitAsync(SsoToken token, long corporationId);
         IList<V1CorporationMembersTitles> MembersTitles(SsoToken token, long corporationId);
         Task<IList<V1CorporationMembersTitles>> MembersTitlesAsync(SsoToken token, long corporationId);
-        IList<V1CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId);
-        Task<IList<V1CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId);
+        IList<V2CorporationMemberTracking> MemberTracking(SsoToken token, long corporationId);
+        Task<IList<V2CorporationMemberTracking>> MemberTrackingAsync(SsoToken token, long corporationId);
         IList<int> NpcCorps();
         Task<IList<int>> NpcCorpsAsync();
         V4CorporationPublicInfo PublicInfo(long corporationId);

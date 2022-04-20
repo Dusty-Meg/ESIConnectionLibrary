@@ -515,7 +515,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void MemberTracking_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public void MemberTracking_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -525,7 +525,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = internalLatestCorporations.MemberTracking(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 
@@ -545,7 +545,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V1CorporationMemberTracking()
+        public async Task MemberTrackingAsync_succesfully_returns_a_list_of_V2CorporationMemberTracking()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -555,7 +555,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            IList<V1CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
+            IList<V2CorporationMemberTracking> returnModel = await internalLatestCorporations.MemberTrackingAsync(inputToken, 123123);
 
             Assert.Equal(2, returnModel.Count);
 

@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CorporationMemberTracking
+    public class V2CorporationMemberTracking
     {
         public int? BaseId { get; set; }
         public int CharacterId { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1CorporationStarbasesState
+    public enum V2CorporationStarbasesState
     {
         Offline,
         Online,

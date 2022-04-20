@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationStarbases
+    internal class EsiV2CorporationStarbases
     {
         [JsonProperty(PropertyName = "moon_id")]
         public int? MoonId { get; set; }
@@ -18,7 +18,7 @@ namespace ESIConnectionLibrary.ESIModels
         public long StarbaseId { get; set; }
 
         [JsonProperty(PropertyName = "state")]
-        public EsiV1CorporationStarbasesState? State { get; set; }
+        public EsiV2CorporationStarbasesState? State { get; set; }
 
         [JsonProperty(PropertyName = "system_id")]
         public int SystemId { get; set; }

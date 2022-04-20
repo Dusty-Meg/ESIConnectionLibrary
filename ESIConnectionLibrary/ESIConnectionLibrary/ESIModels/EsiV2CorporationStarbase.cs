@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationStarbase
+    internal class EsiV2CorporationStarbase
     {
         [JsonProperty(PropertyName = "allow_alliance_members")]
         public bool AllowAllianceMembers { get; set; }
@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.ESIModels
         public bool AllowCorporationMembers { get; set; }
 
         [JsonProperty(PropertyName = "anchor")]
-        public EsiV1CorporationStarbaseRoles Anchor { get; set; }
+        public EsiV2CorporationStarbaseRoles Anchor { get; set; }
 
         [JsonProperty(PropertyName = "attack_if_at_war")]
         public bool AttackIfAtWar { get; set; }
@@ -27,22 +27,22 @@ namespace ESIConnectionLibrary.ESIModels
         public float? AttackStandingThreshold { get; set; }
 
         [JsonProperty(PropertyName = "fuel_bay_take")]
-        public EsiV1CorporationStarbaseRoles FuelBayTake { get; set; }
+        public EsiV2CorporationStarbaseRoles FuelBayTake { get; set; }
 
         [JsonProperty(PropertyName = "fuel_bay_view")]
-        public EsiV1CorporationStarbaseRoles FuelBayView { get; set; }
+        public EsiV2CorporationStarbaseRoles FuelBayView { get; set; }
 
         [JsonProperty(PropertyName = "fuels")]
-        public IList<EsiV1CorporationStarbaseFuels> Fuels { get; set; }
+        public IList<EsiV2CorporationStarbaseFuels> Fuels { get; set; }
 
         [JsonProperty(PropertyName = "offline")]
-        public EsiV1CorporationStarbaseRoles Offline { get; set; }
+        public EsiV2CorporationStarbaseRoles Offline { get; set; }
 
         [JsonProperty(PropertyName = "online")]
-        public EsiV1CorporationStarbaseRoles Online { get; set; }
+        public EsiV2CorporationStarbaseRoles Online { get; set; }
 
         [JsonProperty(PropertyName = "unanchor")]
-        public EsiV1CorporationStarbaseRoles Unanchor { get; set; }
+        public EsiV2CorporationStarbaseRoles Unanchor { get; set; }
 
         [JsonProperty(PropertyName = "use_alliance_standings")]
         public bool UseAllianceStandings { get; set; }

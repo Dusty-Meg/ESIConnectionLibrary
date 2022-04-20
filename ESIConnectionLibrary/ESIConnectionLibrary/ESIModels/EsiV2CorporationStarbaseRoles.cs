@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace ESIConnectionLibrary.ESIModels
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum EsiV1CorporationStarbaseRoles
+    internal enum EsiV2CorporationStarbaseRoles
     {
         [EnumMember(Value = "alliance_member")]
         AllianceMember,

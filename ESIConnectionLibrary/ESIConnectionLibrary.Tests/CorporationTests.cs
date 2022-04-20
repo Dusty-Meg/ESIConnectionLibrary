@@ -967,7 +967,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Starbases_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public void Starbases_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -982,7 +982,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -992,7 +992,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public async Task StarbasesAsync_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public async Task StarbasesAsync_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1007,7 +1007,7 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -1017,7 +1017,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Starbase_succesfully_returns_a_V1CorporationStarbase()
+        public void Starbase_succesfully_returns_a_V2CorporationStarbase()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1032,23 +1032,23 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationStarbase returnModel = internalLatestCorporations.Starbase(inputToken, 123123, 112323);
+            V2CorporationStarbase returnModel = internalLatestCorporations.Starbase(inputToken, 123123, 112323);
 
             Assert.False(returnModel.AllowAllianceMembers);
             Assert.True(returnModel.AllowCorporationMembers);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
             Assert.True(returnModel.AttackIfAtWar);
             Assert.False(returnModel.AttackIfOtherSecurityStatusDropping);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
             Assert.False(returnModel.UseAllianceStandings);
         }
 
         [Fact]
-        public async Task StarbaseAsync_succesfully_returns_a_V1CorporationStarbase()
+        public async Task StarbaseAsync_succesfully_returns_a_V2CorporationStarbase()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -1063,18 +1063,18 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            V1CorporationStarbase returnModel = await internalLatestCorporations.StarbaseAsync(inputToken, 123123, 112323);
+            V2CorporationStarbase returnModel = await internalLatestCorporations.StarbaseAsync(inputToken, 123123, 112323);
 
             Assert.False(returnModel.AllowAllianceMembers);
             Assert.True(returnModel.AllowCorporationMembers);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Anchor);
             Assert.True(returnModel.AttackIfAtWar);
             Assert.False(returnModel.AttackIfOtherSecurityStatusDropping);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
-            Assert.Equal(V1CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayTake);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.FuelBayView);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Offline);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Online);
+            Assert.Equal(V2CorporationStarbaseRoles.ConfigStarbaseEquipmentRole, returnModel.Unanchor);
             Assert.False(returnModel.UseAllianceStandings);
         }
 

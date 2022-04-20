@@ -491,60 +491,60 @@ namespace ESIConnectionLibrary.Internal_classes
             return new PagedModel<V1CorporationStandings> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public PagedModel<V1CorporationStarbases> Starbases(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationStarbases> Starbases(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_starbases_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Starbases(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Starbases(corporationId, page), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationStarbases> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationStarbases>>(esiRaw.Model);
+            IList<EsiV2CorporationStarbases> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationStarbases>>(esiRaw.Model);
 
-            IList<V1CorporationStarbases> mapped = _mapper.Map<IList<EsiV1CorporationStarbases>, IList<V1CorporationStarbases>>(esiModel);
+            IList<V2CorporationStarbases> mapped = _mapper.Map<IList<EsiV2CorporationStarbases>, IList<V2CorporationStarbases>>(esiModel);
 
-            return new PagedModel<V1CorporationStarbases> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationStarbases> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public async Task<PagedModel<V1CorporationStarbases>> StarbasesAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationStarbases>> StarbasesAsync(SsoToken token, long corporationId, int page)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_starbases_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Starbases(corporationId, page), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Starbases(corporationId, page), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            IList<EsiV1CorporationStarbases> esiModel = JsonConvert.DeserializeObject<IList<EsiV1CorporationStarbases>>(esiRaw.Model);
+            IList<EsiV2CorporationStarbases> esiModel = JsonConvert.DeserializeObject<IList<EsiV2CorporationStarbases>>(esiRaw.Model);
 
-            IList<V1CorporationStarbases> mapped = _mapper.Map<IList<EsiV1CorporationStarbases>, IList<V1CorporationStarbases>>(esiModel);
+            IList<V2CorporationStarbases> mapped = _mapper.Map<IList<EsiV2CorporationStarbases>, IList<V2CorporationStarbases>>(esiModel);
 
-            return new PagedModel<V1CorporationStarbases> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
+            return new PagedModel<V2CorporationStarbases> { CurrentPage = page, MaxPages = esiRaw.MaxPages, Model = mapped };
         }
 
-        public V1CorporationStarbase Starbase(SsoToken token, long corporationId, int starbaseId)
+        public V2CorporationStarbase Starbase(SsoToken token, long corporationId, int starbaseId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_starbases_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Starbase(corporationId, starbaseId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Starbase(corporationId, starbaseId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1CorporationStarbase esiModel = JsonConvert.DeserializeObject<EsiV1CorporationStarbase>(esiRaw.Model);
+            EsiV2CorporationStarbase esiModel = JsonConvert.DeserializeObject<EsiV2CorporationStarbase>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationStarbase>(esiModel);
+            return _mapper.Map<V2CorporationStarbase>(esiModel);
         }
 
-        public async Task<V1CorporationStarbase> StarbaseAsync(SsoToken token, long corporationId, int starbaseId)
+        public async Task<V2CorporationStarbase> StarbaseAsync(SsoToken token, long corporationId, int starbaseId)
         {
             StaticMethods.CheckToken(token, CorporationScopes.esi_corporations_read_starbases_v1);
 
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV1Starbase(corporationId, starbaseId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.CorporationV2Starbase(corporationId, starbaseId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync(async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(token), url, 3600));
 
-            EsiV1CorporationStarbase esiModel = JsonConvert.DeserializeObject<EsiV1CorporationStarbase>(esiRaw.Model);
+            EsiV2CorporationStarbase esiModel = JsonConvert.DeserializeObject<EsiV2CorporationStarbase>(esiRaw.Model);
 
-            return _mapper.Map<V1CorporationStarbase>(esiModel);
+            return _mapper.Map<V2CorporationStarbase>(esiModel);
         }
 
         public PagedModel<V4CorporationStructures> Structures(SsoToken token, long corporationId, int page)

@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1CorporationStarbaseRoles
+    public enum V2CorporationStarbaseRoles
     {
         AllianceMember,
         ConfigStarbaseEquipmentRole,

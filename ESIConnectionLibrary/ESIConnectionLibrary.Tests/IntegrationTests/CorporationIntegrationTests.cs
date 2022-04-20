@@ -789,7 +789,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public void Starbases_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public void Starbases_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -799,7 +799,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V1CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = internalLatestCorporations.Starbases(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 
@@ -809,7 +809,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
         }
 
         [Fact]
-        public async Task StarbasesAsync_succesfully_returns_a_list_of_V1CorporationStarbases()
+        public async Task StarbasesAsync_succesfully_returns_a_list_of_V2CorporationStarbases()
         {
             int characterId = 828658;
             string characterName = "ThisIsACharacter";
@@ -819,7 +819,7 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
 
             LatestCorporationsEndpoints internalLatestCorporations = new LatestCorporationsEndpoints(string.Empty, true);
 
-            PagedModel<V1CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationStarbases> returnModel = await internalLatestCorporations.StarbasesAsync(inputToken, 123123, 1);
 
             Assert.Single(returnModel.Model);
 

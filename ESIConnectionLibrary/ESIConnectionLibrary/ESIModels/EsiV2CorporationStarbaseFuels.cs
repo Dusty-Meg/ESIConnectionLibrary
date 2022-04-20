@@ -2,7 +2,7 @@
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV1CorporationStarbaseFuels
+    internal class EsiV2CorporationStarbaseFuels
     {
         [JsonProperty(PropertyName = "quantity")]
         public int Quantity { get; set; }

@@ -10,8 +10,8 @@ namespace ESIConnectionLibrary.Automapper_Profiles
         {
             CreateMap<EsiV1CorporationTitles, V1CorporationTitles>();
             CreateMap<EsiV4CorporationStructures, V4CorporationStructures>();
-            CreateMap<EsiV1CorporationStarbase, V1CorporationStarbase>();
-            CreateMap<EsiV1CorporationStarbases, V1CorporationStarbases>();
+            CreateMap<EsiV2CorporationStarbase, V2CorporationStarbase>();
+            CreateMap<EsiV2CorporationStarbases, V2CorporationStarbases>();
             CreateMap<EsiV1CorporationStandings, V1CorporationStandings>();
             CreateMap<EsiV1CorporationShareholders, V1CorporationShareholders>();
             CreateMap<EsiV1CorporationRolesHistory, V1CorporationRolesHistory>();

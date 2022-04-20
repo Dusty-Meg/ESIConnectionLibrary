@@ -250,7 +250,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.StandingsAsync(token, corporationId, page);
         }
 
-        public PagedModel<V1CorporationStarbases> Starbases(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationStarbases> Starbases(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -260,7 +260,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.Starbases(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1CorporationStarbases>> StarbasesAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationStarbases>> StarbasesAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -270,12 +270,12 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.StarbasesAsync(token, corporationId, page);
         }
 
-        public V1CorporationStarbase Starbase(SsoToken token, long corporationId, int starbaseId)
+        public V2CorporationStarbase Starbase(SsoToken token, long corporationId, int starbaseId)
         {
             return _internalLatestCorporations.Starbase(token, corporationId, starbaseId);
         }
 
-        public async Task<V1CorporationStarbase> StarbaseAsync(SsoToken token, long corporationId, int starbaseId)
+        public async Task<V2CorporationStarbase> StarbaseAsync(SsoToken token, long corporationId, int starbaseId)
         {
             return await _internalLatestCorporations.StarbaseAsync(token, corporationId, starbaseId);
         }

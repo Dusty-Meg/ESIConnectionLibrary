@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public class V1CharactersMedalsGraphics
+    public class V2CharactersMedalsGraphics
     {
         public int Part { get; set; }
 

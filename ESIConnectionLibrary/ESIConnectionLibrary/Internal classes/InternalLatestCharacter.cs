@@ -26,26 +26,26 @@ namespace ESIConnectionLibrary.Internal_classes
             _testing = testing;
         }
 
-        public V4CharactersPublicInfo PublicInfo(int characterId)
+        public V5CharactersPublicInfo PublicInfo(int characterId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersPublicInfo(characterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersPublicInfo(characterId), _testing);
 
             EsiModel esiRaw = PollyPolicies.WebExceptionRetryWithFallback.Execute(() => _webClient.Get(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV4CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV4CharactersPublicInfo>(esiRaw.Model);
+            EsiV5CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
 
-            return _mapper.Map<EsiV4CharactersPublicInfo, V4CharactersPublicInfo>(esiV4PublicInfo);
+            return _mapper.Map<EsiV5CharactersPublicInfo, V5CharactersPublicInfo>(esiV5PublicInfo);
         }
 
-        public async Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId)
+        public async Task<V5CharactersPublicInfo> PublicInfoAsync(int characterId)
         {
-            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV4CharactersPublicInfo(characterId), _testing);
+            string url = StaticConnectionStrings.CheckTestingUrl(StaticConnectionStrings.EsiV5CharactersPublicInfo(characterId), _testing);
 
             EsiModel esiRaw = await PollyPolicies.WebExceptionRetryWithFallbackAsync.ExecuteAsync( async () => await _webClient.GetAsync(StaticMethods.CreateHeaders(), url, 3600));
 
-            EsiV4CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV4CharactersPublicInfo>(esiRaw.Model);
+            EsiV5CharactersPublicInfo esiV4PublicInfo = JsonConvert.DeserializeObject<EsiV5CharactersPublicInfo>(esiRaw.Model);
 
-            return _mapper.Map<EsiV4CharactersPublicInfo, V4CharactersPublicInfo>(esiV4PublicInfo);
+            return _mapper.Map<EsiV5CharactersPublicInfo, V5CharactersPublicInfo>(esiV5PublicInfo);
         }
 
         public IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token)

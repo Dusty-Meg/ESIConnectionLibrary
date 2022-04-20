@@ -19,12 +19,12 @@ namespace ESIConnectionLibrary.Public_classes
             _internalLatestCharacter = new InternalLatestCharacter(webClient, userAgent, testing);
         }
 
-        public V4CharactersPublicInfo PublicInfo(int characterId)
+        public V5CharactersPublicInfo PublicInfo(int characterId)
         {
             return _internalLatestCharacter.PublicInfo(characterId);
         }
 
-        public async Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId)
+        public async Task<V5CharactersPublicInfo> PublicInfoAsync(int characterId)
         {
             return await _internalLatestCharacter.PublicInfoAsync(characterId);
         }

@@ -3,10 +3,13 @@ using Newtonsoft.Json;
 
 namespace ESIConnectionLibrary.ESIModels
 {
-    internal class EsiV4CharactersPublicInfo
+    internal class EsiV5CharactersPublicInfo
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
 
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
@@ -28,9 +31,6 @@ namespace ESIConnectionLibrary.ESIModels
 
         [JsonProperty(PropertyName = "bloodline_id")]
         public int BloodlineId { get; set; }
-
-        [JsonProperty(PropertyName = "ancestry_id")]
-        public int? AncestryId { get; set; }
 
         [JsonProperty(PropertyName = "security_status")]
         public float? SecurityStatus { get; set; }

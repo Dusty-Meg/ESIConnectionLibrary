@@ -11,31 +11,31 @@ namespace ESIConnectionLibrary.Tests.IntegrationTests
     public class CharacterIntegrationTests
     {
         [Fact]
-        public void PublicInfo_Successfully_returns_a_V4CharactersPublicInfo()
+        public void PublicInfo_Successfully_returns_a_V5CharactersPublicInfo()
         {
             int characterId = 8976562;
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V4CharactersPublicInfo v4CharactersPublicInfo = internalLatestCharacter.PublicInfo(characterId);
+            V5CharactersPublicInfo v5CharactersPublicInfo = internalLatestCharacter.PublicInfo(characterId);
 
-            Assert.Equal(Gender.Male, v4CharactersPublicInfo.Gender);
-            Assert.Equal(109299958, v4CharactersPublicInfo.CorporationId);
-            Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v4CharactersPublicInfo.Birthday);
+            Assert.Equal(Gender.Male, v5CharactersPublicInfo.Gender);
+            Assert.Equal(109299958, v5CharactersPublicInfo.CorporationId);
+            Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v5CharactersPublicInfo.Birthday);
         }
 
         [Fact]
-        public async Task PublicInfoAsync_Successfully_returns_a_V4CharactersPublicInfo()
+        public async Task PublicInfoAsync_Successfully_returns_a_V5CharactersPublicInfo()
         {
             int characterId = 8976562;
 
             LatestCharacterEndpoints internalLatestCharacter = new LatestCharacterEndpoints(string.Empty, true);
 
-            V4CharactersPublicInfo v4CharactersPublicInfo = await internalLatestCharacter.PublicInfoAsync(characterId);
+            V5CharactersPublicInfo v5CharactersPublicInfo = await internalLatestCharacter.PublicInfoAsync(characterId);
 
-            Assert.Equal(Gender.Male, v4CharactersPublicInfo.Gender);
-            Assert.Equal(109299958, v4CharactersPublicInfo.CorporationId);
-            Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v4CharactersPublicInfo.Birthday);
+            Assert.Equal(Gender.Male, v5CharactersPublicInfo.Gender);
+            Assert.Equal(109299958, v5CharactersPublicInfo.CorporationId);
+            Assert.Equal(new DateTime(2015, 03, 24, 11, 37, 0), v5CharactersPublicInfo.Birthday);
         }
 
         [Fact]

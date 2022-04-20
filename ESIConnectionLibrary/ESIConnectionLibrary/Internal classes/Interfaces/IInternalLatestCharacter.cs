@@ -24,8 +24,8 @@ namespace ESIConnectionLibrary.Internal_classes
         Task<IList<V1CharactersNotificationsContacts>> ContactNotificationsAsync(SsoToken token);
         V2CharactersPortrait Portrait(int characterId);
         Task<V2CharactersPortrait> PortraitAsync(int characterId);
-        V4CharactersPublicInfo PublicInfo(int characterId);
-        Task<V4CharactersPublicInfo> PublicInfoAsync(int characterId);
+        V5CharactersPublicInfo PublicInfo(int characterId);
+        Task<V5CharactersPublicInfo> PublicInfoAsync(int characterId);
         IList<V1CharactersResearchAgents> ResearchAgents(SsoToken token);
         Task<IList<V1CharactersResearchAgents>> ResearchAgentsAsync(SsoToken token);
         V3CharacterRoles Roles(SsoToken token);

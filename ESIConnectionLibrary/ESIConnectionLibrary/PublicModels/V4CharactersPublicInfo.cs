@@ -2,9 +2,11 @@
 
 namespace ESIConnectionLibrary.PublicModels
 {
-    public class V4CharactersPublicInfo
+    public class V5CharactersPublicInfo
     {
         public string Name { get; set; }
+        
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
@@ -19,8 +21,6 @@ namespace ESIConnectionLibrary.PublicModels
         public int RaceId { get; set; }
 
         public int BloodlineId { get; set; }
-
-        public int? AncestryId { get; set; }
 
         public float? SecurityStatus { get; set; }
 

@@ -67,7 +67,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Theory]
-        [InlineData("EsiV4CharactersPublicInfoRaw")]
+        [InlineData("EsiV5CharactersPublicInfoRaw")]
         [InlineData("EsiV1CharactersResearchAgentsRaw")]
         [InlineData("EsiV3CharactersBlueprintsRaw")]
         [InlineData("EsiV2CharactersCorporationHistoryRaw")]

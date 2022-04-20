@@ -230,7 +230,7 @@ namespace ESIConnectionLibrary.Public_classes
             return await _internalLatestCorporations.ShareholdersAsync(token, corporationId, page);
         }
 
-        public PagedModel<V1CorporationStandings> Standings(SsoToken token, long corporationId, int page)
+        public PagedModel<V2CorporationStandings> Standings(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {
@@ -240,7 +240,7 @@ namespace ESIConnectionLibrary.Public_classes
             return _internalLatestCorporations.Standings(token, corporationId, page);
         }
 
-        public async Task<PagedModel<V1CorporationStandings>> StandingsAsync(SsoToken token, long corporationId, int page)
+        public async Task<PagedModel<V2CorporationStandings>> StandingsAsync(SsoToken token, long corporationId, int page)
         {
             if (page < 1)
             {

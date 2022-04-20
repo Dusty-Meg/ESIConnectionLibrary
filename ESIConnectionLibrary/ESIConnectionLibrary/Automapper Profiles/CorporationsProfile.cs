@@ -12,7 +12,7 @@ namespace ESIConnectionLibrary.Automapper_Profiles
             CreateMap<EsiV4CorporationStructures, V4CorporationStructures>();
             CreateMap<EsiV2CorporationStarbase, V2CorporationStarbase>();
             CreateMap<EsiV2CorporationStarbases, V2CorporationStarbases>();
-            CreateMap<EsiV1CorporationStandings, V1CorporationStandings>();
+            CreateMap<EsiV2CorporationStandings, V2CorporationStandings>();
             CreateMap<EsiV1CorporationShareholders, V1CorporationShareholders>();
             CreateMap<EsiV2CorporationRolesHistory, V2CorporationRolesHistory>();
             CreateMap<EsiV2CorporationRoles, V2CorporationRoles>();

@@ -901,7 +901,7 @@ namespace ESIConnectionLibrary.Tests
         }
 
         [Fact]
-        public void Standings_succesfully_returns_a_list_of_V1CorporationStandings()
+        public void Standings_succesfully_returns_a_list_of_V2CorporationStandings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -916,25 +916,25 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStandings> returnModel = internalLatestCorporations.Standings(inputToken, 123123, 1);
+            PagedModel<V2CorporationStandings> returnModel = internalLatestCorporations.Standings(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
             Assert.Equal(3009841, returnModel.Model[0].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
             Assert.Equal(0.1f, returnModel.Model[0].Standing);
 
             Assert.Equal(1000061, returnModel.Model[1].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
             Assert.Equal(0, returnModel.Model[1].Standing);
 
             Assert.Equal(500003, returnModel.Model[2].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
             Assert.Equal(-1, returnModel.Model[2].Standing);
         }
 
         [Fact]
-        public async Task StandingsAsync_succesfully_returns_a_list_of_V1CorporationStandings()
+        public async Task StandingsAsync_succesfully_returns_a_list_of_V2CorporationStandings()
         {
             Mock<IWebClient> mockedWebClient = new Mock<IWebClient>();
 
@@ -949,20 +949,20 @@ namespace ESIConnectionLibrary.Tests
 
             InternalLatestCorporations internalLatestCorporations = new InternalLatestCorporations(mockedWebClient.Object, string.Empty);
 
-            PagedModel<V1CorporationStandings> returnModel = await internalLatestCorporations.StandingsAsync(inputToken, 123123, 1);
+            PagedModel<V2CorporationStandings> returnModel = await internalLatestCorporations.StandingsAsync(inputToken, 123123, 1);
 
             Assert.Equal(3, returnModel.Model.Count);
 
             Assert.Equal(3009841, returnModel.Model[0].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Agent, returnModel.Model[0].FromType);
             Assert.Equal(0.1f, returnModel.Model[0].Standing);
 
             Assert.Equal(1000061, returnModel.Model[1].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.NpcCorp, returnModel.Model[1].FromType);
             Assert.Equal(0, returnModel.Model[1].Standing);
 
             Assert.Equal(500003, returnModel.Model[2].FromId);
-            Assert.Equal(V1CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
+            Assert.Equal(V2CorporationStandingsFromType.Faction, returnModel.Model[2].FromType);
             Assert.Equal(-1, returnModel.Model[2].Standing);
         }
 

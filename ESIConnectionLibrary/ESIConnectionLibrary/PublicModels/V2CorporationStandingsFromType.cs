@@ -1,6 +1,6 @@
 ﻿namespace ESIConnectionLibrary.PublicModels
 {
-    public enum V1CorporationStandingsFromType
+    public enum V2CorporationStandingsFromType
     {
         Agent,
         NpcCorp,

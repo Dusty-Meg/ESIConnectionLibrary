@@ -1,4 +1,4 @@
-#addin "Cake.FileHelpers&version=5.0.0"
+#addin "Cake.FileHelpers&version=6.0.0"
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 #addin "nuget:?package=Cake.Incubator&version=7.0.0"
 
